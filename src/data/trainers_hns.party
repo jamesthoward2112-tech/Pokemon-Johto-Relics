@@ -9436,7 +9436,7 @@ Double Battle: No
 AI: Basic Trainer
 Mugshot: Dark Red
 
-Chikorita
+Bulbasaur
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -9467,10 +9467,10 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Screech
 - Sandstorm
 
-Bayleef
+Ivysaur
 Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Razor Leaf
+- Vine Whip
 - Reflect
 - Poison Powder
 - Tackle
@@ -9510,13 +9510,13 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Poison Sting
 - Air Cutter
 
-Bayleef
+Ivysaur
 Level: 24
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Mega Drain
-- Magical Leaf
-- Tackle
 - Leech Seed
+- Razor Leaf
+- Tackle
+- Sleep Powder
 
 === TRAINER_RIVAL_CHIKORITA_4_HNS ===
 Name: {B_RIVAL_NAME}
@@ -9561,13 +9561,13 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Confuse Ray
 - Air Cutter
 
-Meganium
+Venusaur
 Level: 40
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Synthesis
-- Magical Leaf
+- Solar Beam
+- Razor Leaf
 - Sunny Day
-- Body Slam
+- Double Edge
 
 === TRAINER_RIVAL_CHIKORITA_5_HNS ===
 Name: {B_RIVAL_NAME}
@@ -9612,13 +9612,13 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Crunch
 - Sunny Day
 
-Meganium @ Miracle Seed
+Venusaur @ Miracle Seed
 Level: 47
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Play Rough
-- Petal Dance
-- Petal Blizzard
-- Poison Powder
+- Earthquake
+- Sunny Day
+- Solar Beam
+- Sludge Bomb
 
 Tyranitar
 Level: 48
@@ -9671,13 +9671,13 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Crunch
 - Sunny Day
 
-Meganium @ Miracle Seed
+Venusaur @ Miracle Seed
 Level: 64
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Synthesis
-- MoonBlast
+- Earthquake
+- Sludge Bomb
 - Petal Blizzard
-- Body Slam
+- Take Down
 
 Tyranitar @ Quick Claw
 Level: 64
@@ -9730,13 +9730,13 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Crunch
 - Sunny Day
 
-Meganium @ Miracle Seed
+Venusaur @ Miracle Seed
 Level: 68
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Reflect
-- Giga Drain
-- Solar Beam
-- Body Slam
+- Petal Blizzard
+- Sludge Bomb
+- Giga Impact
 
 Tyranitar @ Quick Claw
 Level: 68
@@ -9756,7 +9756,7 @@ Double Battle: No
 AI: Basic Trainer
 Mugshot: Dark Red
 
-Cyndaquil
+Charmander
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -9787,10 +9787,10 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Screech
 - Sandstorm
 
-Quilava
+Charmeleon
 Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Leer
+- Growl
 - Smokescreen
 - Ember
 - Tackle
@@ -9830,12 +9830,12 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Poison Sting
 - Air Cutter
 
-Quilava
+Charmeleon
 Level: 24
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Flame Wheel
+- Ember
 - Dig
-- Quick Attack
+- Tackle
 - Smokescreen
 
 === TRAINER_RIVAL_CYNDAQUIL_4_HNS ===
@@ -9881,13 +9881,13 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Confuse Ray
 - Air Cutter
 
-Typhlosion
+Charizard
 Level: 40
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Thunder Punch
 - Flamethrower
-- Quick Attack
-- Iron Tail
+- Metal Claw
+- Dragon Rage
 
 === TRAINER_RIVAL_CYNDAQUIL_5_HNS ===
 Name: {B_RIVAL_NAME}
@@ -9932,12 +9932,12 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Sleep Powder
 - Growth
 
-Typhlosion @ Charcoal
+Charizard @ Charcoal
 Level: 47
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Flamethrower
-- Quick Attack
-- Iron Tail
+- Slash
+- Metal Claw
 - Thunder Punch
 
 Tyranitar
@@ -9991,12 +9991,12 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Sleep Powder
 - Growth
 
-Typhlosion @ Charcoal
+Charizard @ Charcoal
 Level: 64
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Fire Blast
 - Earthquake
-- Iron Tail
+- Steel Wing
 - Thunder Punch
 
 Tyranitar @ Quick Claw
@@ -10050,12 +10050,12 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Sleep Powder
 - Growth
 
-Typhlosion @ Charcoal
+Charizard @ Charcoal
 Level: 68
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Fire Blast
 - Earthquake
-- Iron Tail
+- Steel Wing
 - Thunder Punch
 
 Tyranitar @ Quick Claw
@@ -10076,7 +10076,7 @@ Double Battle: No
 AI: Basic Trainer
 Mugshot: Dark Red
 
-Totodile
+Squirtle
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -10107,13 +10107,13 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Screech
 - Sandstorm
 
-Croconaw
+Wartortle
 Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Scratch
-- Rage
-- Bubble Beam
-- Leer
+- Tackle
+- Bite
+- Bubble
+- Tail Whip
 
 === TRAINER_RIVAL_TOTODILE_3_HNS ===
 Name: {B_RIVAL_NAME}
@@ -10150,13 +10150,13 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Poison Sting
 - Air Cutter
 
-Croconaw
+Wartortle
 Level: 24
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Bite
 - Ice Punch
-- Bubble Beam
-- Mud Slap
+- Bubble
+- Rapid Spin
 
 === TRAINER_RIVAL_TOTODILE_4_HNS ===
 Name: {B_RIVAL_NAME}
@@ -10201,12 +10201,12 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Confuse Ray
 - Air Cutter
 
-Feraligatr
+Blastoise
 Level: 40
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Ice Punch
 - Surf
-- Slash
+- Skull Bash
 - Bite
 
 === TRAINER_RIVAL_TOTODILE_5_HNS ===
@@ -10252,7 +10252,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Crunch
 - Double Team
 
-Feraligatr @ Mystic Water
+Blastoise @ Mystic Water
 Level: 47
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Ice Punch
@@ -10311,12 +10311,12 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Crunch
 - Double Team
 
-Feraligatr @ Scope Lens
+Blastoise @ Scope Lens
 Level: 64
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Ice Beam
 - Surf
-- Slash
+- Skull Bash
 - Earthquake
 
 Tyranitar @ Quick Claw
@@ -10370,12 +10370,12 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Crunch
 - Double Team
 
-Feraligatr @ Scope Lens
+Blastoise @ Scope Lens
 Level: 68
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Ice Beam
 - Surf
-- Slash
+- Skull Bash
 - Earthquake
 
 Tyranitar @ Quick Claw
