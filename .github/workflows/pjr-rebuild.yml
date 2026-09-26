@@ -1,4 +1,4 @@
-name: PJR clean rebuild
+name: PJR Scarabub test
 
 on:
   push:
@@ -13,7 +13,7 @@ env:
   DEPRECATED_ERROR: 1
 
 jobs:
-  baseline:
+  scarabub-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,14 +21,14 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3
-      - name: Build clean HnS baseline
+      - name: Build PJR Scarabub test
         run: |
           make hns -j4 -O
-      - name: Package baseline
-        run: cp pokehns.gba PJR-Rebuild-Baseline.gba
+      - name: Package Scarabub test
+        run: cp pokehns.gba PJR-Scarabub-Test.gba
       - uses: actions/upload-artifact@v4
         with:
-          name: PJR-Rebuild-Baseline
-          path: PJR-Rebuild-Baseline.gba
+          name: PJR-Scarabub-Test
+          path: PJR-Scarabub-Test.gba
           if-no-files-found: error
           retention-days: 7
