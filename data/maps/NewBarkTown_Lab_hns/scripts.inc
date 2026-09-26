@@ -171,7 +171,7 @@ NewBarkTown_Lab_EventScript_ChikoritaBall::
 NewBarkTown_Lab_EventScript_ChikoritaBall_Choice::
 	@callnative DisableStaticRandomizer
 	setvar VAR_STARTER_MON, 0
-	setvar PLAYER_STARTER_SPECIES, SPECIES_CHIKORITA
+	setvar PLAYER_STARTER_SPECIES, SPECIES_SCARABUB
 	showmonpic PLAYER_STARTER_SPECIES, 10, 3
 	playmoncry PLAYER_STARTER_SPECIES, CRY_MODE_NORMAL
 	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
@@ -193,7 +193,7 @@ NewBarkTown_Lab_EventScript_CyndaquilBall::
 NewBarkTown_Lab_EventScript_CyndaquilBall_Choice::
 	@callnative DisableStaticRandomizer
 	setvar VAR_STARTER_MON, 1
-	setvar PLAYER_STARTER_SPECIES, SPECIES_CYNDAQUIL
+	setvar PLAYER_STARTER_SPECIES, SPECIES_SKARMET
 	showmonpic PLAYER_STARTER_SPECIES, 10, 3
 	playmoncry PLAYER_STARTER_SPECIES, CRY_MODE_NORMAL
 	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
@@ -215,7 +215,7 @@ NewBarkTown_Lab_EventScript_TotodileBall::
 NewBarkTown_Lab_EventScript_TotodileBall_Choice::
 	@callnative DisableStaticRandomizer
 	setvar VAR_STARTER_MON, 2
-	setvar PLAYER_STARTER_SPECIES, SPECIES_TOTODILE
+	setvar PLAYER_STARTER_SPECIES, SPECIES_MOOTINY
 	showmonpic PLAYER_STARTER_SPECIES, 10, 3
 	playmoncry PLAYER_STARTER_SPECIES, CRY_MODE_NORMAL
 	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
@@ -241,11 +241,17 @@ NewBarkTown_Lab_EventScript_ChoseStarter::
 	call_if_eq VAR_STARTER_MON, 0, NewBarkTown_Lab_EventScript_GiveStarter_Chikorita
 	call_if_eq VAR_STARTER_MON, 1, NewBarkTown_Lab_EventScript_GiveStarter_Cyndaquil
 	call_if_eq VAR_STARTER_MON, 2, NewBarkTown_Lab_EventScript_GiveStarter_Totodile
+	call_if_eq VAR_STARTER_MON, 0, PJR_NewBark_SetStarterScarabub
+	call_if_eq VAR_STARTER_MON, 1, PJR_NewBark_SetStarterSkarmet
+	call_if_eq VAR_STARTER_MON, 2, PJR_NewBark_SetStarterMootiny
+	setflag FLAG_PJR_STARTER_CHOSEN
+	setflag FLAG_PJR_SILVER_STARTER_SET
 	setflag FLAG_SYS_POKEMON_GET
 	playfanfare MUS_OBTAIN_ITEM
 	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
 	message NewBarkTown_Lab_Text_ReceivedStarter
 	waitfanfare
+	call PJR_NewBark_GiveStarterKit
 	specialvar VAR_RESULT, IsNuzlockeNicknamingActive
 	goto_if_eq VAR_RESULT, TRUE, NewBarkTown_Lab_EventScript_ChoseStarter_NicknameStarter_Nuzlocke
 	msgbox NewBarkTown_Lab_Text_Nickname, MSGBOX_YESNO
@@ -275,6 +281,31 @@ NewBarkTown_Lab_EventScript_GiveStarter_NotShiny::
 
 NewBarkTown_Lab_EventScript_GiveStarter_Shiny::
 	givemon PLAYER_STARTER_SPECIES, 5, ITEM_NONE, BALL_POKE, NATURE_RANDOM, NUM_ABILITY_PERSONALITY, MON_GENDER_RANDOM, 0, 0, 0, 0, 0, 0, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, SHINY_MODE_ALWAYS	
+	return
+
+
+PJR_NewBark_SetStarterScarabub::
+	setvar VAR_PJR_STARTER_CHOICE, 1
+	setvar VAR_PJR_SILVER_STARTER, 2
+	return
+
+PJR_NewBark_SetStarterSkarmet::
+	setvar VAR_PJR_STARTER_CHOICE, 2
+	setvar VAR_PJR_SILVER_STARTER, 3
+	return
+
+PJR_NewBark_SetStarterMootiny::
+	setvar VAR_PJR_STARTER_CHOICE, 3
+	setvar VAR_PJR_SILVER_STARTER, 1
+	return
+
+PJR_NewBark_GiveStarterKit::
+	giveitem ITEM_RELIC_JOURNAL
+	setflag FLAG_PJR_GOT_RELIC_JOURNAL
+	giveitem ITEM_DEXNAV
+	setflag FLAG_PJR_DEXNAV_GET
+	giveitem ITEM_POKEMON_BOX_LINK
+	setvar VAR_PJR_CURRENT_LEAD, 1
 	return
 
 NewBarkTown_Lab_EventScript_NicknameStarter::

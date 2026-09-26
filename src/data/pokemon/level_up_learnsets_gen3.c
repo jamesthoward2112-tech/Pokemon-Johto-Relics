@@ -5,6 +5,9 @@
 #include "level_up_learnsets/gen_3.h"
 
 const struct LevelUpMove *const gLevelUpLearnsets_Gen3[NUM_SPECIES] = {
+    [SPECIES_SCARABUB] = sScarabubLevelUpLearnset,
+    [SPECIES_SKARMET] = sSkarmetLevelUpLearnset,
+    [SPECIES_MOOTINY] = sMootinyLevelUpLearnset,
 #if P_FAMILY_BULBASAUR
     [SPECIES_BULBASAUR] = sBulbasaurLevelUpLearnset,
     [SPECIES_IVYSAUR] = sIvysaurLevelUpLearnset,
