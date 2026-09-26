@@ -16,7 +16,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: Pokemon-Johto-Relics-Alpha1
-          run-id: 36264740891
+          run-id: 36266032854
           github-token: ${{ github.token }}
           repository: jamesthoward2112-tech/Pokemon-Johto-Relics
       - name: Install emulator and display tools
