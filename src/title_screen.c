@@ -49,6 +49,7 @@ static void MainCB2(void);
 #if IS_HNS && PJR_BUILD
 static void CB2_InitPjrTitleScreen(void);
 static void Task_PjrTitleScreenInput(u8 taskId);
+static void LoadPjrTitlePaletteBrightened(void);
 #endif
 static void Task_TitleScreenPhase1(u8);
 static void Task_TitleScreenPhase2(u8);
@@ -636,6 +637,9 @@ void CB2_InitTitleScreen(void)
         ScanlineEffect_Stop();
         ResetTasks();
         ResetSpriteData();
+        // Bitmap video modes reserve the first 512 OBJ tile indices.
+        // Start dynamic sprite allocation at tile 512 so PRESS START is visible.
+        gReservedSpriteTileCount = 512;
         FreeAllSpritePalettes();
         gReservedSpritePaletteCount = 9;
         LoadCompressedSpriteSheet(&sSpriteSheet_EmeraldVersion[0]);
@@ -705,6 +709,32 @@ void CB2_InitTitleScreen(void)
 }
 
 #if IS_HNS && PJR_BUILD
+static void LoadPjrTitlePaletteBrightened(void)
+{
+    u16 palette[ARRAY_COUNT(sPjrTitlePalette)];
+    u32 i;
+
+    for (i = 0; i < ARRAY_COUNT(sPjrTitlePalette); i++)
+    {
+        u16 color = sPjrTitlePalette[i];
+        u32 r = color & 31;
+        u32 g = (color >> 5) & 31;
+        u32 b = (color >> 10) & 31;
+
+        // Lift each non-black channel by 20%, capped to the GBA's 5-bit range.
+        r = (r * 6 + 2) / 5;
+        g = (g * 6 + 2) / 5;
+        b = (b * 6 + 2) / 5;
+        if (r > 31) r = 31;
+        if (g > 31) g = 31;
+        if (b > 31) b = 31;
+
+        palette[i] = r | (g << 5) | (b << 10);
+    }
+
+    LoadPalette(palette, BG_PLTT_ID(0), sizeof(palette));
+}
+
 static void CB2_InitPjrTitleScreen(void)
 {
     switch (gMain.state)
@@ -724,11 +754,12 @@ static void CB2_InitPjrTitleScreen(void)
         break;
     case 1:
         DmaCopy16(3, sPjrTitleBitmap, (void *)VRAM, sizeof(sPjrTitleBitmap));
-        LoadPalette(sPjrTitlePalette, BG_PLTT_ID(0), sizeof(sPjrTitlePalette));
+        LoadPjrTitlePaletteBrightened();
         LoadCompressedSpriteSheet(&sSpriteSheet_PressStart[0]);
         LoadSpritePalette(&sSpritePalette_PressStart[0]);
         CreatePressStartBanner(START_BANNER_X, 138);
         CreateTask(Task_PjrTitleScreenInput, 0);
+        SetGpuReg(REG_OFFSET_BG2CNT, BGCNT_PRIORITY(3));
         SetGpuReg(REG_OFFSET_BG2PA, 0x100);
         SetGpuReg(REG_OFFSET_BG2PB, 0);
         SetGpuReg(REG_OFFSET_BG2PC, 0);
