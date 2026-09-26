@@ -22,7 +22,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3
       - name: Build Pokémon Johto Relics
-        run: make hns -j$(nproc) -O all
+        run: make hns -j$(nproc) -O
       - name: Package Alpha 1 ROM
         run: cp pokehns.gba Pokemon-Johto-Relics-Alpha1.gba
       - name: Upload Alpha 1 ROM
