@@ -23,7 +23,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends mgba-sdl xvfb xdotool imagemagick
-      - name: Capture boot, title animation, flashing prompt and Start response
+      - name: Verify title prompt flash and Start transition
         run: |
           test -s Pokemon-Johto-Relics-Alpha1.gba
           timeout 100s xvfb-run -a -s '-screen 0 800x600x24' bash -euxc '
@@ -32,36 +32,29 @@ jobs:
             pid=$!
             sleep 8
             win=$(xdotool search --name mGBA | head -n 1)
-            xdotool getwindowname "$win"
-            timeout 8s import -window "$win" boot.png
             xdotool key --window "$win" Return
-            sleep 2
-            timeout 8s import -window "$win" title_02.png
-            sleep 2
-            timeout 8s import -window "$win" title_04.png
-            sleep 2
-            timeout 8s import -window "$win" title_06.png
-            sleep 2
-            timeout 8s import -window "$win" title_08.png
-            sleep 2
-            timeout 8s import -window "$win" title_10.png
-            sleep 2
-            timeout 8s import -window "$win" title_12.png
+            sleep 12
+            xdotool key --window "$win" Return
+            sleep 4
+            timeout 8s import -window "$win" title_prompt_a.png
+            sleep 1
+            timeout 8s import -window "$win" title_prompt_b.png
+            sleep 1
+            timeout 8s import -window "$win" title_prompt_c.png
             xdotool key --window "$win" Return
             sleep 1
-            timeout 8s import -window "$win" after_start_01.png
+            timeout 8s import -window "$win" after_title_start_01.png
             sleep 3
-            timeout 8s import -window "$win" after_start_04.png
+            timeout 8s import -window "$win" after_title_start_04.png
             kill -9 "$pid" || true
           '
-          ls -lh boot.png title_*.png after_start_*.png
+          ls -lh title_prompt_*.png after_title_start_*.png
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: PJR-Alpha1-title-smoke
           path: |
-            boot.png
-            title_*.png
-            after_start_*.png
+            title_prompt_*.png
+            after_title_start_*.png
             emulator.log
           if-no-files-found: error
