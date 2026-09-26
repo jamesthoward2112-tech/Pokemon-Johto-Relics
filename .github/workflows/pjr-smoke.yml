@@ -31,13 +31,15 @@ jobs:
             "$emulator" Pokemon-Johto-Relics-Alpha1.gba > emulator.log 2>&1 &
             pid=$!
             sleep 8
-            xdotool search --name . getwindowname || true
-            timeout 8s import -screen -window root title_a.png
+            win=$(xdotool search --name mGBA | head -n 1)
+            xdotool getwindowname "$win"
+            timeout 8s import -window "$win" title_a.png
             sleep 1
-            timeout 8s import -screen -window root title_b.png
+            timeout 8s import -window "$win" title_b.png
+            xdotool windowactivate --sync "$win"
             xdotool key Return
             sleep 4
-            timeout 8s import -screen -window root after_start.png
+            timeout 8s import -window "$win" after_start.png
             kill -9 "$pid" || true
           '
           ls -lh title_a.png title_b.png after_start.png
