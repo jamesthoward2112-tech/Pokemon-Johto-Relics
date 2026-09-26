@@ -1,8 +1,9 @@
 name: PJR Alpha 1 opening smoke
 
 on:
-  push:
-    paths: [.github/workflows/pjr-smoke.yml]
+  workflow_run:
+    workflows: ["PJR Alpha 1 CI"]
+    types: [completed]
 
 permissions:
   contents: read
@@ -10,13 +11,14 @@ permissions:
 
 jobs:
   opening-smoke:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 4
     steps:
       - uses: actions/download-artifact@v4
         with:
           name: Pokemon-Johto-Relics-Alpha1
-          run-id: 36266569661
+          run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ github.token }}
           repository: jamesthoward2112-tech/Pokemon-Johto-Relics
       - name: Install emulator and display tools
