@@ -23,28 +23,20 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends mgba-sdl xvfb xdotool imagemagick
-      - name: Keep emulator focused through name confirmation
+      - name: Test name confirmation without mid-transition capture
         run: |
           test -s Pokemon-Johto-Relics-Alpha1.gba
-          timeout 150s xvfb-run -a -s '-screen 0 800x600x24' bash -euxc '
+          timeout 145s xvfb-run -a -s '-screen 0 800x600x24' bash -euxc '
             emulator=$(command -v mgba || find /usr/games -name mgba -type f -print -quit)
             SDL_VIDEODRIVER=x11 SDL_RENDER_DRIVER=software SDL_AUDIODRIVER=dummy LIBGL_ALWAYS_SOFTWARE=1 "$emulator" Pokemon-Johto-Relics-Alpha1.gba > emulator.log 2>&1 &
             pid=$!
             sleep 26
             win=$(xdotool search --name mGBA | head -n 1)
-
             press() {
               xdotool windowfocus --sync "$win"
               xdotool keydown "$1"
               sleep 0.2
               xdotool keyup "$1"
-            }
-
-            shot() {
-              xdotool windowfocus --sync "$win"
-              sleep 0.5
-              timeout 8s import -window "$win" "$1"
-              xdotool windowfocus --sync "$win"
             }
 
             press Return
@@ -55,30 +47,38 @@ jobs:
               press x
               sleep 1.5
             done
-            shot name_a.png
 
+            # Naming screen: keep default single-letter A and accept it.
             press Return
             sleep 1
             press x
             sleep 2
-            shot name_confirm.png
-
             press x
-            for i in $(seq -w 1 10); do
-              sleep 1.5
-              shot "post_confirm_$i.png"
+
+            # Give the post-name transition time to complete before any capture.
+            sleep 12
+            xdotool windowfocus --sync "$win"
+            timeout 8s import -window "$win" after_confirm_12s.png
+
+            # Continue through any remaining intro text without capturing between presses.
+            xdotool windowfocus --sync "$win"
+            for i in $(seq 1 10); do
+              press x
+              sleep 1.2
             done
+            sleep 5
+            xdotool windowfocus --sync "$win"
+            timeout 8s import -window "$win" after_continue.png
 
             kill -9 "$pid" || true
           '
-          ls -lh name_a.png name_confirm.png post_confirm_*.png
+          ls -lh after_confirm_12s.png after_continue.png
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: PJR-Alpha1-opening-smoke
           path: |
-            name_a.png
-            name_confirm.png
-            post_confirm_*.png
+            after_confirm_12s.png
+            after_continue.png
             emulator.log
           if-no-files-found: error
