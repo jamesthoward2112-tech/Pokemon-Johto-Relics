@@ -116,8 +116,10 @@ static void SetDefaultOptions(void)
 
 void SetDefaultChallengeSettings(void)
 {
-    gSaveblock3.challengeSettings.followerEnable = 0;
-    gSaveblock3.challengeSettings.followerLargeEnable = 0;
+    // PJR deliberately has no overworld Pokémon followers. Many custom species
+    // do not have overworld sprites, so keep both follower options disabled.
+    gSaveblock3.challengeSettings.followerEnable = 1;
+    gSaveblock3.challengeSettings.followerLargeEnable = 1;
     gSaveblock3.challengeSettings.autoRun = 1;
     gSaveblock3.challengeSettings.autorunSurf = 1;
     gSaveblock3.challengeSettings.autorunDive = 1;
