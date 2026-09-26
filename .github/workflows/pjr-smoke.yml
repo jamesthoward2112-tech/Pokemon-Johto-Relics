@@ -37,11 +37,11 @@ jobs:
             xdotool key Return
             sleep 4
             timeout 8s import -window root after_start.png
-            kill "$pid" || true
-            wait "$pid" || true
+            kill -9 "$pid" || true
           '
           ls -lh title_a.png title_b.png after_start.png
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: PJR-Alpha1-title-smoke
           path: |
