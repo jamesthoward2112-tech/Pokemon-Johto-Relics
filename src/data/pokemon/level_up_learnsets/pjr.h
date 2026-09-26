@@ -1,0 +1,10 @@
+static const struct LevelUpMove sScarabubLevelUpLearnset[] =
+{
+    LEVEL_UP_MOVE(1, MOVE_TACKLE),
+    LEVEL_UP_MOVE(1, MOVE_LEER),
+    LEVEL_UP_MOVE(5, MOVE_ENDURE),
+    LEVEL_UP_MOVE(8, MOVE_BUG_BITE),
+    LEVEL_UP_MOVE(11, MOVE_ARM_THRUST),
+    LEVEL_UP_MOVE(14, MOVE_COUNTER),
+    LEVEL_UP_END
+};
