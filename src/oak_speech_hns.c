@@ -379,7 +379,7 @@ static void Task_NewGameHnsSpeechSub_InitPokeBall(u8 taskId)
     gSprites[spriteId].invisible = FALSE;
     gSprites[spriteId].data[0] = 0;
 
-    CreatePokeballSpriteToReleaseMon(spriteId, gSprites[spriteId].oam.paletteNum, 112, 58, 0, 0, 32, PALETTES_BG, SPECIES_WOOPER);
+    CreatePokeballSpriteToReleaseMon(spriteId, gSprites[spriteId].oam.paletteNum, 112, 58, 0, 0, 32, PALETTES_BG, SPECIES_UNOWN);
     gTasks[taskId].func = Task_NewGameHnsSpeechSub_WaitForMon;
     gTasks[sHnsSpeechMainTaskId].tTimer = 0;
 }
@@ -580,11 +580,34 @@ static void Task_NewGameHnsSpeech_SlideInNewGenderSprite(u8 taskId)
 
 static void Task_NewGameHnsSpeech_ChallengeDisclaimer(u8 taskId)
 {
-    static const u8 sText_Disclaimer[] = _("What challenge are you\nexpecting?\p{COLOR RED}The following settings can be changed\nfrom the PC once you start the game.\lHowever, after starting the game, the\lnuzlocke, randomizer, difficulty and\lchallenge settings can only be made\leasier, not harder.");
-    NewGameHnsSpeech_ClearWindow(0);
-    StringCopy(gStringVar4, sText_Disclaimer);
-    AddTextPrinterWithCustomSpeedForMessage(FALSE, 2);
-    gTasks[taskId].func = Task_NewGameHnsSpeech_WaitDisclaimerText;
+    struct ChallengeSettings savedOptions = gSaveBlock3Ptr->challengeSettings;
+
+    // PJR uses one curated ruleset. Keep ordinary user-facing options, but
+    // initialise the hidden challenge flags to their recommended defaults.
+    memset(&gSaveBlock3Ptr->challengeSettings, 0, sizeof(struct ChallengeSettings));
+    SetDefaultChallengeSettings();
+    gSaveBlock3Ptr->challengeSettings.followerEnable      = savedOptions.followerEnable;
+    gSaveBlock3Ptr->challengeSettings.followerLargeEnable = savedOptions.followerLargeEnable;
+    gSaveBlock3Ptr->challengeSettings.autoRun             = savedOptions.autoRun;
+    gSaveBlock3Ptr->challengeSettings.autorunSurf         = savedOptions.autorunSurf;
+    gSaveBlock3Ptr->challengeSettings.fishing             = savedOptions.fishing;
+    gSaveBlock3Ptr->challengeSettings.evenFasterJoy       = savedOptions.evenFasterJoy;
+    gSaveBlock3Ptr->challengeSettings.unitSystem          = savedOptions.unitSystem;
+    gSaveBlock3Ptr->challengeSettings.disableMatchCall    = savedOptions.disableMatchCall;
+    gSaveBlock3Ptr->challengeSettings.fastIntro           = savedOptions.fastIntro;
+    gSaveBlock3Ptr->challengeSettings.fastBattle          = savedOptions.fastBattle;
+    gSaveBlock3Ptr->challengeSettings.newBackgrounds      = savedOptions.newBackgrounds;
+    gSaveBlock3Ptr->challengeSettings.newBattleUI         = savedOptions.newBattleUI;
+    gSaveBlock3Ptr->challengeSettings.ballPrompt          = savedOptions.ballPrompt;
+    gSaveBlock3Ptr->challengeSettings.lrToRun             = savedOptions.lrToRun;
+    gSaveBlock3Ptr->challengeSettings.runType             = savedOptions.runType;
+    gSaveBlock3Ptr->challengeSettings.musicOnOff          = savedOptions.musicOnOff;
+    gSaveBlock3Ptr->challengeSettings.bikeMusic           = savedOptions.bikeMusic;
+    gSaveBlock3Ptr->challengeSettings.surfMusic           = savedOptions.surfMusic;
+
+    // Skip the inherited HnS MODE / FEATURES / NUZLOCKE / DIFFICULTY /
+    // CHALLENGES setup screens entirely and resume the normal intro.
+    gTasks[taskId].func = Task_NewGameHnsSpeech_SlidePlatformAway2;
 }
 
 static void Task_NewGameHnsSpeech_WaitDisclaimerText(u8 taskId)
@@ -1054,7 +1077,7 @@ static void SpriteCB_MovePlayerDownWhileShrinking(struct Sprite *sprite)
 
 static u8 NewGameHnsSpeech_CreateMonSprite(u8 x, u8 y)
 {
-    return CreateMonPicSprite_Affine(SPECIES_WOOPER, FALSE, 0, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
+    return CreateMonPicSprite_Affine(SPECIES_UNOWN, FALSE, 0, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
 }
 
 static void AddHnsSpeechObjects(u8 taskId)
