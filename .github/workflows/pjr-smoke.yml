@@ -1,0 +1,50 @@
+name: PJR Alpha 1 title smoke
+
+on:
+  push:
+    paths: [.github/workflows/pjr-smoke.yml]
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  title-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: Pokemon-Johto-Relics-Alpha1
+          run-id: 36260818362
+          github-token: ${{ github.token }}
+          repository: jamesthoward2112-tech/Pokemon-Johto-Relics
+      - name: Install emulator and display tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends mgba-sdl xvfb xdotool imagemagick
+      - name: Capture title and Start response
+        run: |
+          test -s Pokemon-Johto-Relics-Alpha1.gba
+          xvfb-run -a -s '-screen 0 800x600x24' bash -euc '
+            emulator=$(command -v mgba || find /usr/games -name mgba -type f -print -quit)
+            "$emulator" Pokemon-Johto-Relics-Alpha1.gba > emulator.log 2>&1 &
+            pid=$!
+            sleep 8
+            import -window root title_a.png
+            sleep 1
+            import -window root title_b.png
+            xdotool key Return
+            sleep 4
+            import -window root after_start.png
+            kill "$pid" || true
+            wait "$pid" || true
+          '
+          ls -lh title_a.png title_b.png after_start.png
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PJR-Alpha1-title-smoke
+          path: |
+            title_a.png
+            title_b.png
+            after_start.png
+          if-no-files-found: error
