@@ -1,8876 +1,1117 @@
-#ifdef __INTELLISENSE__
-const struct SpeciesInfo gSpeciesInfoGen2[] =
-{
-#endif
-
-#if P_FAMILY_CHIKORITA
-    [SPECIES_CHIKORITA] =
-    {
-        .baseHP        = 45,
-        .baseAttack    = 49,
-        .baseDefense   = 65,
-        .baseSpeed     = 45,
-        .baseSpAttack  = 49,
-        .baseSpDefense = 65,
-        .types = MON_TYPES(TYPE_GRASS),
-        .catchRate = 45,
-        .expYield = 64,
-        .evYield_SpDefense = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_GRASS),
-        .abilities = { ABILITY_OVERGROW, ABILITY_NONE, ABILITY_LEAF_GUARD },
-        .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("CHIKORITA"),
-        .cryId = CRY_CHIKORITA,
-        .natDexNum = NATIONAL_DEX_CHIKORITA,
-        .categoryName = _("Leaf"),
-        .height = 9,
-        .weight = 64,
-        .description = COMPOUND_STRING(
-            "It waves its leaf around to keep foes\n"
-            "at bay. However, a sweet fragrance also\n"
-            "wafts from the leaf, creating a friendly\n"
-            "atmosphere that becalms the battlers."),
-        .pokemonScale = 512,
-        .pokemonOffset = 20,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Chikorita,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 40) : MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 10,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Chikorita,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 48) : MON_COORDS_SIZE(56, 48),
-        .backPicYOffset = 10,
-        .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
-        .palette = gMonPalette_Chikorita,
-        .shinyPalette = gMonShinyPalette_Chikorita,
-        .iconSprite = gMonIcon_Chikorita,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(-1, 2, SHADOW_SIZE_S)
-        FOOTPRINT(Chikorita)
-        OVERWORLD(
-            sPicTable_Chikorita,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Chikorita,
-            gShinyOverworldPalette_Chikorita
-        )
-        .levelUpLearnset = sChikoritaLevelUpLearnset,
-        .teachableLearnset = sChikoritaTeachableLearnset,
-        .eggMoveLearnset = sChikoritaEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 16, SPECIES_BAYLEEF}),
-    },
-
-    [SPECIES_BAYLEEF] =
-    {
-        .baseHP        = 60,
-        .baseAttack    = 62,
-        .baseDefense   = 80,
-        .baseSpeed     = 60,
-        .baseSpAttack  = 63,
-        .baseSpDefense = 80,
-        .types = MON_TYPES(TYPE_GRASS),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 142 : 141,
-        .evYield_Defense = 1,
-        .evYield_SpDefense = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_GRASS),
-        .abilities = { ABILITY_OVERGROW, ABILITY_NONE, ABILITY_LEAF_GUARD },
-        .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("BAYLEEF"),
-        .cryId = CRY_BAYLEEF,
-        .natDexNum = NATIONAL_DEX_BAYLEEF,
-        .categoryName = _("Leaf"),
-        .height = 12,
-        .weight = 158,
-        .description = COMPOUND_STRING(
-            "A Bayleef's neck is ringed by curled-up\n"
-            "leaves. Inside each leaf is a small tree\n"
-            "shoot. The fragrance of this shoot\n"
-            "makes people peppy."),
-        .pokemonScale = 296,
-        .pokemonOffset = 4,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Bayleef,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(48, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 3,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 40),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Bayleef,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 5,
-        .backAnimId = BACK_ANIM_H_SLIDE,
-        .palette = gMonPalette_Bayleef,
-        .shinyPalette = gMonShinyPalette_Bayleef,
-        .iconSprite = gMonIcon_Bayleef,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 10, SHADOW_SIZE_M)
-        FOOTPRINT(Bayleef)
-        OVERWORLD(
-            sPicTable_Bayleef,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Bayleef,
-            gShinyOverworldPalette_Bayleef
-        )
-        .levelUpLearnset = sBayleefLevelUpLearnset,
-        .teachableLearnset = sBayleefTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 32, SPECIES_MEGANIUM}),
-    },
-
-    [SPECIES_MEGANIUM] =
-    {
-        .baseHP        = 80,
-        .baseAttack    = 82,
-        .baseDefense   = 100,
-        .baseSpeed     = 80,
-        .baseSpAttack  = 83,
-        .baseSpDefense = 100,
-        .types = MON_TYPES(TYPE_GRASS),
-        .catchRate = 45,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 263,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 236,
-    #else
-        .expYield = 208,
-    #endif
-        .evYield_Defense = 1,
-        .evYield_SpDefense = 2,
-        .genderRatio = PERCENT_FEMALE(12.5),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_GRASS),
-        .abilities = { ABILITY_OVERGROW, ABILITY_NONE, ABILITY_LEAF_GUARD },
-        .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("MEGANIUM"),
-        .cryId = CRY_MEGANIUM,
-        .natDexNum = NATIONAL_DEX_MEGANIUM,
-        .categoryName = _("Herb"),
-        .height = 18,
-        .weight = 1005,
-        .description = COMPOUND_STRING(
-            "The fragrance of a Meganium's flower\n"
-            "soothes and calms emotions. In battle,\n"
-            "it gives off more of its becalming scent\n"
-            "to blunt the foe's fighting spirit."),
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 277,
-        .trainerOffset = 1,
-        .frontPic = gMonFrontPic_Meganium,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 64) : MON_COORDS_SIZE(48, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 40),
-            ANIMCMD_FRAME(0, 5),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_GROW_VIBRATE,
-        .backPic = gMonBackPic_Meganium,
-        .backPicSize = MON_COORDS_SIZE(56, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 2,
-        .backAnimId = BACK_ANIM_V_SHAKE,
-        .palette = gMonPalette_Meganium,
-        .shinyPalette = gMonShinyPalette_Meganium,
-        .iconSprite = gMonIcon_Meganium,
-        .iconPalIndex = 1,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_MeganiumF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(48, 64),
-        .backPicFemale = gMonBackPic_MeganiumF,
-        .backPicSizeFemale = MON_COORDS_SIZE(56, 64),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 13, SHADOW_SIZE_M)
-        FOOTPRINT(Meganium)
-        OVERWORLD(
-            sPicTable_Meganium,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Meganium,
-            gShinyOverworldPalette_Meganium
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_MeganiumF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sMeganiumLevelUpLearnset,
-        .teachableLearnset = sMeganiumTeachableLearnset,
-        .formSpeciesIdTable = sMeganiumFormSpeciesIdTable,
-        .formChangeTable = sMeganiumFormChangeTable,
-    },
-
-#if P_GEN_9_MEGA_EVOLUTIONS
-    [SPECIES_MEGANIUM_MEGA] =
-    {
-        .baseHP        = 80,
-        .baseAttack    = 92,
-        .baseDefense   = 115,
-        .baseSpeed     = 80,
-        .baseSpAttack  = 143,
-        .baseSpDefense = 115,
-        .types = MON_TYPES(TYPE_GRASS, TYPE_FAIRY),
-        .catchRate = 45,
-        .expYield = 263,
-        .evYield_Defense = 1,
-        .evYield_SpDefense = 2,
-        .genderRatio = PERCENT_FEMALE(12.5),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_GRASS),
-        .abilities = { ABILITY_OVERGROW, ABILITY_NONE, ABILITY_LEAF_GUARD },
-        .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("MEGANIUM"),
-    #if P_MODIFIED_MEGA_CRIES
-        .cryId = CRY_MEGANIUM_MEGA,
-    #else
-        .cryId = CRY_MEGANIUM,
-    #endif // P_MODIFIED_MEGA_CRIES
-        .natDexNum = NATIONAL_DEX_MEGANIUM,
-        .categoryName = _("Herb"),
-        .height = 24,
-        .weight = 2010,
-        .description = COMPOUND_STRING(
-            "This PokÃ©mon can fire a tremendously\n"
-            "powerful Solar Beam from its four\n"
-            "flowers. Another name for this is\n"
-            "Mega Sol Cannon."),
-        .frontPic = gMonFrontPic_MeganiumMega,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_MeganiumMega,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 0,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_MeganiumMega,
-        .shinyPalette = gMonShinyPalette_MeganiumMega,
-        .iconSprite = gMonIcon_MeganiumMega,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        FOOTPRINT(Meganium)
-        SHADOW(-2, 13, SHADOW_SIZE_M)
-        .isMegaEvolution = TRUE,
-        .levelUpLearnset = sMeganiumLevelUpLearnset,
-        .teachableLearnset = sMeganiumTeachableLearnset,
-        .formSpeciesIdTable = sMeganiumFormSpeciesIdTable,
-        .formChangeTable = sMeganiumFormChangeTable,
-        .randomizerMode = MON_RANDOMIZER_INVALID,
-    },
-#endif //P_GEN_9_MEGA_EVOLUTIONS
-#endif //P_FAMILY_CHIKORITA
-
-#if P_FAMILY_CYNDAQUIL
-    [SPECIES_CYNDAQUIL] =
-    {
-        .baseHP        = 39,
-        .baseAttack    = 52,
-        .baseDefense   = 43,
-        .baseSpeed     = 65,
-        .baseSpAttack  = 60,
-        .baseSpDefense = 50,
-        .types = MON_TYPES(TYPE_FIRE),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 62 : 65,
-        .evYield_Speed = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_BLAZE, ABILITY_NONE, ABILITY_FLASH_FIRE },
-        .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("CYNDAQUIL"),
-        .cryId = CRY_CYNDAQUIL,
-        .natDexNum = NATIONAL_DEX_CYNDAQUIL,
-        .categoryName = _("Fire Mouse"),
-        .height = 5,
-        .weight = 79,
-        .description = COMPOUND_STRING(
-            "It flares flames from its back to protect\n"
-            "itself. The fire burns vigorously if the\n"
-            "PokÃ©mon is angry. When it is tired,\n"
-            "it sputters with incomplete combustion."),
-        .pokemonScale = 539,
-        .pokemonOffset = 21,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Cyndaquil,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(48, 40),
-        .frontPicYOffset = 14,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_JUMPS_SMALL : ANIM_V_STRETCH,
-        .backPic = gMonBackPic_Cyndaquil,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 3,
-        .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
-        .palette = gMonPalette_Cyndaquil,
-        .shinyPalette = gMonShinyPalette_Cyndaquil,
-        .iconSprite = gMonIcon_Cyndaquil,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 1 : 3,
-        .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(0, -1, SHADOW_SIZE_S)
-        FOOTPRINT(Cyndaquil)
-        OVERWORLD(
-            sPicTable_Cyndaquil,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Cyndaquil,
-            gShinyOverworldPalette_Cyndaquil
-        )
-        .levelUpLearnset = sCyndaquilLevelUpLearnset,
-        .teachableLearnset = sCyndaquilTeachableLearnset,
-        .eggMoveLearnset = sCyndaquilEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 14, SPECIES_QUILAVA}),
-    },
-
-    [SPECIES_QUILAVA] =
-    {
-        .baseHP        = 58,
-        .baseAttack    = 64,
-        .baseDefense   = 58,
-        .baseSpeed     = 80,
-        .baseSpAttack  = 80,
-        .baseSpDefense = 65,
-        .types = MON_TYPES(TYPE_FIRE),
-        .catchRate = 45,
-        .expYield = 142,
-        .evYield_Speed = 1,
-        .evYield_SpAttack = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_BLAZE, ABILITY_NONE, ABILITY_FLASH_FIRE },
-        .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("QUILAVA"),
-        .cryId = CRY_QUILAVA,
-        .natDexNum = NATIONAL_DEX_QUILAVA,
-        .categoryName = _("Volcano"),
-        .height = 9,
-        .weight = 190,
-        .description = COMPOUND_STRING(
-            "It intimidates foes with intense gusts of\n"
-            "flames and superheated air. Its quick\n"
-            "nimbleness lets it dodge attacks even\n"
-            "while scorching an enemy."),
-        .pokemonScale = 329,
-        .pokemonOffset = 11,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Quilava,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(64, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 9,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_H_STRETCH,
-        .backPic = gMonBackPic_Quilava,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 0,
-        .backAnimId = BACK_ANIM_JOLT_RIGHT,
-        .palette = gMonPalette_Quilava,
-        .shinyPalette = gMonShinyPalette_Quilava,
-        .iconSprite = gMonIcon_Quilava,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 1 : 3,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 2, SHADOW_SIZE_M)
-        FOOTPRINT(Quilava)
-        OVERWORLD(
-            sPicTable_Quilava,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Quilava,
-            gShinyOverworldPalette_Quilava
-        )
-        .levelUpLearnset = sQuilavaLevelUpLearnset,
-        .teachableLearnset = sQuilavaTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_TYPHLOSION, CONDITIONS({IF_NOT_REGION, REGION_HISUI})}
-                            #if P_HISUIAN_FORMS
-                                ,{EVO_LEVEL, 36, SPECIES_TYPHLOSION_HISUI, CONDITIONS({IF_REGION, REGION_HISUI})}
-                            #endif
-                            ),
-    },
-
-    [SPECIES_TYPHLOSION] =
-    {
-        .baseHP        = 78,
-        .baseAttack    = 84,
-        .baseDefense   = 78,
-        .baseSpeed     = 100,
-        .baseSpAttack  = 109,
-        .baseSpDefense = 85,
-        .types = MON_TYPES(TYPE_FIRE),
-        .catchRate = 45,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 267,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 240,
-    #else
-        .expYield = 209,
-    #endif
-        .evYield_SpAttack = 3,
-        .genderRatio = PERCENT_FEMALE(12.5),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_BLAZE, ABILITY_NONE, ABILITY_FLASH_FIRE },
-        .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("TYPHLOSION"),
-        .cryId = CRY_TYPHLOSION,
-        .natDexNum = NATIONAL_DEX_TYPHLOSION,
-        .categoryName = _("Volcano"),
-        .height = 17,
-        .weight = 795,
-        .description = COMPOUND_STRING(
-            "It can hide behind a shimmering heat haze\n"
-            "that it creates using its intense flames.\n"
-            "Typhlosion create blazing explosive\n"
-            "blasts that burn everything to cinders."),
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 268,
-        .trainerOffset = 1,
-        .frontPic = gMonFrontPic_Typhlosion,
-        .frontPicSize = MON_COORDS_SIZE(56, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 40),
-            ANIMCMD_FRAME(0, 5),
-        ),
-        .frontAnimId = ANIM_V_SHAKE,
-        .frontAnimDelay = 20,
-        .backPic = gMonBackPic_Typhlosion,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 3,
-        .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
-        .palette = gMonPalette_Typhlosion,
-        .shinyPalette = gMonShinyPalette_Typhlosion,
-        .iconSprite = gMonIcon_Typhlosion,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 1 : 3,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(4, 14, SHADOW_SIZE_L)
-        FOOTPRINT(Typhlosion)
-        OVERWORLD(
-            sPicTable_Typhlosion,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Typhlosion,
-            gShinyOverworldPalette_Typhlosion
-        )
-        .levelUpLearnset = sTyphlosionLevelUpLearnset,
-        .teachableLearnset = sTyphlosionTeachableLearnset,
-        .formSpeciesIdTable = sTyphlosionFormSpeciesIdTable,
-    },
-
-#if P_HISUIAN_FORMS
-    [SPECIES_TYPHLOSION_HISUI] =
-    {
-        .baseHP        = 73,
-        .baseAttack    = 84,
-        .baseDefense   = 78,
-        .baseSpeed     = 95,
-        .baseSpAttack  = 119,
-        .baseSpDefense = 85,
-        .types = MON_TYPES(TYPE_FIRE, TYPE_GHOST),
-        .catchRate = 45,
-        .expYield = 267,
-        .evYield_SpAttack = 3,
-        .genderRatio = PERCENT_FEMALE(12.5),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_BLAZE, ABILITY_NONE, ABILITY_FRISK },
-        .bodyColor = BODY_COLOR_YELLOW,
-#if P_SEPARATE_REGIONAL_FORMS
-        .speciesName = _("TYPHLOSION-H"),
-#else
-        .speciesName = _("TYPHLOSION"),
-#endif
-        .cryId = CRY_TYPHLOSION,
-#if P_SEPARATE_REGIONAL_FORMS
-        .natDexNum = NATIONAL_DEX_TYPHLOSION_HISUI,
-#else
-        .natDexNum = NATIONAL_DEX_TYPHLOSION,
-#endif
-        .categoryName = _("Ghost Flame"),
-        .height = 16,
-        .weight = 698,
-        .description = COMPOUND_STRING(
-            "Said to purify lost, forsaken souls with\n"
-            "its flames and guide them to the afterlife.\n"
-            "It's believed its form was influenced by\n"
-            "the energy of Mt. Coronet in ancient times."),
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 268,
-        .trainerOffset = 1,
-        .frontPic = gMonFrontPic_TyphlosionHisui,
-        .frontPicSize = MON_COORDS_SIZE(48, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_TyphlosionHisui,
-        .backPicSize = MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = 2,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_TyphlosionHisui,
-        .shinyPalette = gMonShinyPalette_TyphlosionHisui,
-        .iconSprite = gMonIcon_TyphlosionHisui,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 14, SHADOW_SIZE_L)
-        FOOTPRINT(Typhlosion)
-        OVERWORLD(
-            sPicTable_TyphlosionHisui,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_TyphlosionHisui,
-            gShinyOverworldPalette_TyphlosionHisui
-        )
-        .isHisuianForm = TRUE,
-        .dexNotRequired = TRUE,
-        .levelUpLearnset = sTyphlosionHisuiLevelUpLearnset,
-        .teachableLearnset = sTyphlosionHisuiTeachableLearnset,
-#if P_SEPARATE_REGIONAL_FORMS
-        .formSpeciesIdTable = sTyphlosionHisuiFormSpeciesIdTable,
-#else
-        .formSpeciesIdTable = sTyphlosionFormSpeciesIdTable,
-#endif
-    },
-#endif //P_HISUIAN_FORMS
-#endif //P_FAMILY_CYNDAQUIL
-
-#if P_FAMILY_TOTODILE
-    [SPECIES_TOTODILE] =
-    {
-        .baseHP        = 50,
-        .baseAttack    = 65,
-        .baseDefense   = 64,
-        .baseSpeed     = 43,
-        .baseSpAttack  = 44,
-        .baseSpDefense = 48,
-        .types = MON_TYPES(TYPE_WATER),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 63 : 66,
-        .evYield_Attack = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_WATER_1),
-        .abilities = { ABILITY_TORRENT, ABILITY_NONE, ABILITY_SHEER_FORCE },
-        .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("TOTODILE"),
-        .cryId = CRY_TOTODILE,
-        .natDexNum = NATIONAL_DEX_TOTODILE,
-        .categoryName = _("Big Jaw"),
-        .height = 6,
-        .weight = 95,
-        .description = COMPOUND_STRING(
-            "Despite its small body, Totodile's jaws\n"
-            "are very powerful. While it may think it is\n"
-            "just playfully nipping, its bite has enough\n"
-            "strength to cause serious injury."),
-        .pokemonScale = 487,
-        .pokemonOffset = 20,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Totodile,
-        .frontPicSize = MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 14,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 8),
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 8),
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 8),
-        ),
-        .frontAnimId = ANIM_H_JUMPS,
-        .backPic = gMonBackPic_Totodile,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 48),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 10,
-        .backAnimId = BACK_ANIM_JOLT_RIGHT,
-        .palette = gMonPalette_Totodile,
-        .shinyPalette = gMonShinyPalette_Totodile,
-        .iconSprite = gMonIcon_Totodile,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 2 : 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NORMAL,
-        SHADOW(2, 0, SHADOW_SIZE_S)
-        FOOTPRINT(Totodile)
-        OVERWORLD(
-            sPicTable_Totodile,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Totodile,
-            gShinyOverworldPalette_Totodile
-        )
-        .levelUpLearnset = sTotodileLevelUpLearnset,
-        .teachableLearnset = sTotodileTeachableLearnset,
-        .eggMoveLearnset = sTotodileEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_CROCONAW}),
-    },
-
-    [SPECIES_CROCONAW] =
-    {
-        .baseHP        = 65,
-        .baseAttack    = 80,
-        .baseDefense   = 80,
-        .baseSpeed     = 58,
-        .baseSpAttack  = 59,
-        .baseSpDefense = 63,
-        .types = MON_TYPES(TYPE_WATER),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 142 : 143,
-        .evYield_Attack = 1,
-        .evYield_Defense = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_WATER_1),
-        .abilities = { ABILITY_TORRENT, ABILITY_NONE, ABILITY_SHEER_FORCE },
-        .bodyColor = BODY_COLOR_BLUE,
-        .noFlip = TRUE,
-        .speciesName = _("CROCONAW"),
-        .cryId = CRY_CROCONAW,
-        .natDexNum = NATIONAL_DEX_CROCONAW,
-        .categoryName = _("Big Jaw"),
-        .height = 11,
-        .weight = 250,
-        .description = COMPOUND_STRING(
-            "Once its jaws clamp down on its foe, it will\n"
-            "absolutely not let go. Because the tips of\n"
-            "its fangs are forked back like fishhooks,\n"
-            "they become irremovably embedded."),
-        .pokemonScale = 378,
-        .pokemonOffset = 13,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Croconaw,
-        .frontPicSize = MON_COORDS_SIZE(48, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 5,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 40),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_H_SHAKE,
-        .backPic = gMonBackPic_Croconaw,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(56, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 2,
-        .backAnimId = BACK_ANIM_JOLT_RIGHT,
-        .palette = gMonPalette_Croconaw,
-        .shinyPalette = gMonShinyPalette_Croconaw,
-        .iconSprite = gMonIcon_Croconaw,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 2 : 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 8, SHADOW_SIZE_M)
-        FOOTPRINT(Croconaw)
-        OVERWORLD(
-            sPicTable_Croconaw,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following_Asym,
-            gOverworldPalette_Croconaw,
-            gShinyOverworldPalette_Croconaw
-        )
-        .levelUpLearnset = sCroconawLevelUpLearnset,
-        .teachableLearnset = sCroconawTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_FERALIGATR}),
-    },
-
-    [SPECIES_FERALIGATR] =
-    {
-        .baseHP        = 85,
-        .baseAttack    = 105,
-        .baseDefense   = 100,
-        .baseSpeed     = 78,
-        .baseSpAttack  = 79,
-        .baseSpDefense = 83,
-        .types = MON_TYPES(TYPE_WATER),
-        .catchRate = 45,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 265,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 239,
-    #else
-        .expYield = 210,
-    #endif
-        .evYield_Attack = 2,
-        .evYield_Defense = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_WATER_1),
-        .abilities = { ABILITY_TORRENT, ABILITY_NONE, ABILITY_SHEER_FORCE },
-        .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("FERALIGATR"),
-        .cryId = CRY_FERALIGATR,
-        .natDexNum = NATIONAL_DEX_FERALIGATR,
-        .categoryName = _("Big Jaw"),
-        .height = 23,
-        .weight = 888,
-        .description = COMPOUND_STRING(
-            "It opens its huge mouth to intimidate\n"
-            "enemies. In battle, it runs using its thick\n"
-            "and powerful hind legs to charge the\n"
-            "foe with incredible speed."),
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 342,
-        .trainerOffset = 7,
-        .frontPic = gMonFrontPic_Feraligatr,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 1,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 40),
-        ),
-        .frontAnimId = ANIM_H_SHAKE,
-        .frontAnimDelay = 5,
-        .backPic = gMonBackPic_Feraligatr,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 64) : MON_COORDS_SIZE(56, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 1 : 2,
-        .backAnimId = BACK_ANIM_V_SHAKE,
-        .palette = gMonPalette_Feraligatr,
-        .shinyPalette = gMonShinyPalette_Feraligatr,
-        .iconSprite = gMonIcon_Feraligatr,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 2 : 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(3, 11, SHADOW_SIZE_XL_BATTLE_ONLY)
-        FOOTPRINT(Feraligatr)
-        OVERWORLD(
-            sPicTable_Feraligatr,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Feraligatr,
-            gShinyOverworldPalette_Feraligatr
-        )
-        .levelUpLearnset = sFeraligatrLevelUpLearnset,
-        .teachableLearnset = sFeraligatrTeachableLearnset,
-        .formSpeciesIdTable = sFeraligatrFormSpeciesIdTable,
-        .formChangeTable = sFeraligatrFormChangeTable,
-    },
-
-#if P_GEN_9_MEGA_EVOLUTIONS
-    [SPECIES_FERALIGATR_MEGA] =
-    {
-        .baseHP        = 85,
-        .baseAttack    = 160,
-        .baseDefense   = 125,
-        .baseSpeed     = 78,
-        .baseSpAttack  = 89,
-        .baseSpDefense = 93,
-        .types = MON_TYPES(TYPE_WATER, TYPE_DRAGON),
-        .catchRate = 45,
-        .expYield = 265,
-        .evYield_Attack = 2,
-        .evYield_Defense = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_WATER_1),
-        .abilities = { ABILITY_TORRENT, ABILITY_NONE, ABILITY_SHEER_FORCE },
-        .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("FERALIGATR"),
-    #if P_MODIFIED_MEGA_CRIES
-        .cryId = CRY_FERALIGATR_MEGA,
-    #else
-        .cryId = CRY_FERALIGATR,
-    #endif // P_MODIFIED_MEGA_CRIES
-        .natDexNum = NATIONAL_DEX_FERALIGATR,
-        .categoryName = _("Double Jaw"),
-        .height = 23,
-        .weight = 1088,
-        .description = COMPOUND_STRING(
-            "With its arms and hoodlike fin, this\n"
-            "PokÃ©mon forms a gigantic set of jaws\n"
-            "with a bite 10 times as powerful\n"
-            "as Mega Feraligatr's actual jaws."),
-        .frontPic = gMonFrontPic_FeraligatrMega,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_FeraligatrMega,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 4,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_FeraligatrMega,
-        .shinyPalette = gMonShinyPalette_FeraligatrMega,
-        .iconSprite = gMonIcon_FeraligatrMega,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        FOOTPRINT(Feraligatr)
-        SHADOW(2, 13, SHADOW_SIZE_L)
-        .isMegaEvolution = TRUE,
-        .levelUpLearnset = sFeraligatrLevelUpLearnset,
-        .teachableLearnset = sFeraligatrTeachableLearnset,
-        .formSpeciesIdTable = sFeraligatrFormSpeciesIdTable,
-        .formChangeTable = sFeraligatrFormChangeTable,
-        .randomizerMode = MON_RANDOMIZER_INVALID,
-    },
-#endif //P_GEN_9_MEGA_EVOLUTIONS
-#endif //P_FAMILY_TOTODILE
-
-#if P_FAMILY_SENTRET
-    [SPECIES_SENTRET] =
-    {
-        .baseHP        = 35,
-        .baseAttack    = 46,
-        .baseDefense   = 34,
-        .baseSpeed     = 20,
-        .baseSpAttack  = 35,
-        .baseSpDefense = 45,
-        .types = MON_TYPES(TYPE_NORMAL),
-        .catchRate = 255,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 43 : 57,
-        .evYield_Attack = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 15,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_RUN_AWAY, ABILITY_KEEN_EYE, ABILITY_FRISK },
-        .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("SENTRET"),
-        .cryId = CRY_SENTRET,
-        .natDexNum = NATIONAL_DEX_SENTRET,
-        .categoryName = _("Scout"),
-        .height = 8,
-        .weight = 60,
-        .description = COMPOUND_STRING(
-            "They take turns standing guard when it\n"
-            "is time to sleep. The sentry awakens the\n"
-            "others if it senses danger. If one becomes\n"
-            "separated, it turns sleepless with fear."),
-        .pokemonScale = 439,
-        .pokemonOffset = 12,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Sentret,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 56) : MON_COORDS_SIZE(40, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 2,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Sentret,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(48, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 0,
-        .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
-        .palette = gMonPalette_Sentret,
-        .shinyPalette = gMonShinyPalette_Sentret,
-        .iconSprite = gMonIcon_Sentret,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 11, SHADOW_SIZE_S)
-        FOOTPRINT(Sentret)
-        OVERWORLD(
-            sPicTable_Sentret,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Sentret,
-            gShinyOverworldPalette_Sentret
-        )
-        .levelUpLearnset = sSentretLevelUpLearnset,
-        .teachableLearnset = sSentretTeachableLearnset,
-        .eggMoveLearnset = sSentretEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 15, SPECIES_FURRET}),
-    },
-
-    [SPECIES_FURRET] =
-    {
-        .baseHP        = 85,
-        .baseAttack    = 76,
-        .baseDefense   = 64,
-        .baseSpeed     = 90,
-        .baseSpAttack  = 45,
-        .baseSpDefense = 55,
-        .types = MON_TYPES(TYPE_NORMAL),
-        .catchRate = 90,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 145 : 116,
-        .evYield_Speed = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 15,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_RUN_AWAY, ABILITY_KEEN_EYE, ABILITY_FRISK },
-        .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("FURRET"),
-        .cryId = CRY_FURRET,
-        .natDexNum = NATIONAL_DEX_FURRET,
-        .categoryName = _("Long Body"),
-        .height = 18,
-        .weight = 325,
-        .description = COMPOUND_STRING(
-            "A Furret has a very slim build. When under\n"
-            "attack, it can squirm through narrow\n"
-            "spaces and get away. In spite of its short\n"
-            "limbs, it is very nimble and fleet."),
-        .pokemonScale = 346,
-        .pokemonOffset = 11,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Furret,
-        .frontPicSize = MON_COORDS_SIZE(48, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 4,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 35),
-            ANIMCMD_FRAME(0, 5),
-        ),
-        .frontAnimId = ANIM_H_JUMPS_V_STRETCH,
-        .backPic = gMonBackPic_Furret,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 6,
-        .backAnimId = BACK_ANIM_CONCAVE_ARC_LARGE,
-        .palette = gMonPalette_Furret,
-        .shinyPalette = gMonShinyPalette_Furret,
-        .iconSprite = gMonIcon_Furret,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 9, SHADOW_SIZE_M)
-        FOOTPRINT(Furret)
-        OVERWORLD(
-            sPicTable_Furret,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Furret,
-            gShinyOverworldPalette_Furret
-        )
-        .levelUpLearnset = sFurretLevelUpLearnset,
-        .teachableLearnset = sFurretTeachableLearnset,
-    },
-#endif //P_FAMILY_SENTRET
-
-#if P_FAMILY_HOOTHOOT
-    [SPECIES_HOOTHOOT] =
-    {
-        .baseHP        = 60,
-        .baseAttack    = 30,
-        .baseDefense   = 30,
-        .baseSpeed     = 50,
-        .baseSpAttack  = 36,
-        .baseSpDefense = 56,
-        .types = MON_TYPES(TYPE_NORMAL, TYPE_FLYING),
-        .catchRate = 255,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 52 : 58,
-        .evYield_HP = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 15,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
-        .abilities = { ABILITY_INSOMNIA, ABILITY_KEEN_EYE, ABILITY_TINTED_LENS },
-        .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("HOOTHOOT"),
-        .cryId = CRY_HOOTHOOT,
-        .natDexNum = NATIONAL_DEX_HOOTHOOT,
-        .categoryName = _("Owl"),
-        .height = 7,
-        .weight = 212,
-        .description = COMPOUND_STRING(
-            "It has an internal organ that senses\n"
-            "the earth's rotation. Using this special\n"
-            "organ, a Hoothoot begins hooting at\n"
-            "precisely the same time every day."),
-        .pokemonScale = 380,
-        .pokemonOffset = -2,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Hoothoot,
-        .frontPicSize = MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 12,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 7),
-            ANIMCMD_FRAME(0, 7),
-            ANIMCMD_FRAME(1, 7),
-            ANIMCMD_FRAME(0, 7),
-            ANIMCMD_FRAME(1, 7),
-            ANIMCMD_FRAME(0, 7),
-            ANIMCMD_FRAME(1, 7),
-            ANIMCMD_FRAME(0, 7),
-            ANIMCMD_FRAME(1, 7),
-            ANIMCMD_FRAME(0, 7),
-            ANIMCMD_FRAME(1, 7),
-            ANIMCMD_FRAME(0, 7),
-        ),
-        .frontAnimId = ANIM_V_SLIDE_SLOW,
-        .backPic = gMonBackPic_Hoothoot,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 4,
-        .backAnimId = BACK_ANIM_CONVEX_DOUBLE_ARC,
-        .palette = gMonPalette_Hoothoot,
-        .shinyPalette = gMonShinyPalette_Hoothoot,
-        .iconSprite = gMonIcon_Hoothoot,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 2, SHADOW_SIZE_S)
-        FOOTPRINT(Hoothoot)
-        OVERWORLD(
-            sPicTable_Hoothoot,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Hoothoot,
-            gShinyOverworldPalette_Hoothoot
-        )
-        .isSkyBattleBanned = B_SKY_BATTLE_STRICT_ELIGIBILITY,
-        .levelUpLearnset = sHoothootLevelUpLearnset,
-        .teachableLearnset = sHoothootTeachableLearnset,
-        .eggMoveLearnset = sHoothootEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_NOCTOWL}),
-    },
-
-    [SPECIES_NOCTOWL] =
-    {
-        .baseHP        = 100,
-        .baseAttack    = 50,
-        .baseDefense   = 50,
-        .baseSpeed     = 70,
-        .baseSpAttack  = P_UPDATED_STATS >= GEN_7 ? 86 : 76,
-        .baseSpDefense = 96,
-        .types = MON_TYPES(TYPE_NORMAL, TYPE_FLYING),
-        .catchRate = 90,
-    #if P_UPDATED_EXP_YIELDS >= GEN_7
-        .expYield = 158,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 155,
-    #else
-        .expYield = 162,
-    #endif
-        .evYield_HP = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 15,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
-        .abilities = { ABILITY_INSOMNIA, ABILITY_KEEN_EYE, ABILITY_TINTED_LENS },
-        .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("NOCTOWL"),
-        .cryId = CRY_NOCTOWL,
-        .natDexNum = NATIONAL_DEX_NOCTOWL,
-        .categoryName = _("Owl"),
-        .height = 16,
-        .weight = 408,
-        .description = COMPOUND_STRING(
-            "It unfailingly catches prey in darkness.\n"
-            "Noctowl owe their success to superior\n"
-            "vision that allows them to see in minimal\n"
-            "light, and to their supple and silent wings."),
-        .pokemonScale = 278,
-        .pokemonOffset = 3,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Noctowl,
-        .frontPicSize = MON_COORDS_SIZE(40, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 3 : 2,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 40),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_V_STRETCH,
-        .backPic = gMonBackPic_Noctowl,
-        .backPicSize = MON_COORDS_SIZE(48, 64),
-        .backPicYOffset = 3,
-        .backAnimId = BACK_ANIM_TRIANGLE_DOWN,
-        .palette = gMonPalette_Noctowl,
-        .shinyPalette = gMonShinyPalette_Noctowl,
-        .iconSprite = gMonIcon_Noctowl,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-2, 10, SHADOW_SIZE_S)
-        FOOTPRINT(Noctowl)
-        OVERWORLD(
-            sPicTable_Noctowl,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_NONE,
-            sAnimTable_Following,
-            gOverworldPalette_Noctowl,
-            gShinyOverworldPalette_Noctowl
-        )
-        .levelUpLearnset = sNoctowlLevelUpLearnset,
-        .teachableLearnset = sNoctowlTeachableLearnset,
-    },
-#endif //P_FAMILY_HOOTHOOT
-
-#if P_FAMILY_LEDYBA
-    [SPECIES_LEDYBA] =
-    {
-        .baseHP        = 40,
-        .baseAttack    = 20,
-        .baseDefense   = 30,
-        .baseSpeed     = 55,
-        .baseSpAttack  = 40,
-        .baseSpDefense = 80,
-        .types = MON_TYPES(TYPE_BUG, TYPE_FLYING),
-        .catchRate = 255,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 53 : 54,
-        .evYield_SpDefense = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 15,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-        .abilities = { ABILITY_SWARM, ABILITY_EARLY_BIRD, ABILITY_RATTLED },
-        .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("LEDYBA"),
-        .cryId = CRY_LEDYBA,
-        .natDexNum = NATIONAL_DEX_LEDYBA,
-        .categoryName = _("Five Star"),
-        .height = 10,
-        .weight = 108,
-        .description = COMPOUND_STRING(
-            "Ledyba communicate using a fluid that\n"
-            "they secrete from where the legs join the\n"
-            "body. They are said to convey feelings to\n"
-            "others by altering the fluid's scent."),
-        .pokemonScale = 256,
-        .pokemonOffset = 4,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Ledyba,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 48) : MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 10,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_V_JUMPS_SMALL,
-        .backPic = gMonBackPic_Ledyba,
-        .backPicSize = MON_COORDS_SIZE(56, 48),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 8,
-        .backAnimId = BACK_ANIM_V_SHAKE_H_SLIDE,
-        .palette = gMonPalette_Ledyba,
-        .shinyPalette = gMonShinyPalette_Ledyba,
-        .iconSprite = gMonIcon_Ledyba,
-        .iconPalIndex = 0,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_LedybaF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(48, 48),
-        .backPicFemale = gMonBackPic_LedybaF,
-        .backPicSizeFemale = MON_COORDS_SIZE(56, 48),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 4, SHADOW_SIZE_M)
-        FOOTPRINT(Ledyba)
-        OVERWORLD(
-            sPicTable_Ledyba,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_BUG,
-            sAnimTable_Following,
-            gOverworldPalette_Ledyba,
-            gShinyOverworldPalette_Ledyba
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_LedybaF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_BUG,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sLedybaLevelUpLearnset,
-        .teachableLearnset = sLedybaTeachableLearnset,
-        .eggMoveLearnset = sLedybaEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_LEDIAN}),
-    },
-
-    [SPECIES_LEDIAN] =
-    {
-        .baseHP        = 55,
-        .baseAttack    = 35,
-        .baseDefense   = 50,
-        .baseSpeed     = 85,
-        .baseSpAttack  = 55,
-        .baseSpDefense = 110,
-        .types = MON_TYPES(TYPE_BUG, TYPE_FLYING),
-        .catchRate = 90,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 137 : 134,
-        .evYield_SpDefense = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 15,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-        .abilities = { ABILITY_SWARM, ABILITY_EARLY_BIRD, ABILITY_IRON_FIST },
-        .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("LEDIAN"),
-        .cryId = CRY_LEDIAN,
-        .natDexNum = NATIONAL_DEX_LEDIAN,
-        .categoryName = _("Five Star"),
-        .height = 14,
-        .weight = 356,
-        .description = COMPOUND_STRING(
-            "It is said that in lands with clean air,\n"
-            "where the stars fill the sky, there live\n"
-            "many Ledian. For good reason, they use\n"
-            "the light of the stars as energy."),
-        .pokemonScale = 256,
-        .pokemonOffset = 2,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Ledian,
-        .frontPicSize = MON_COORDS_SIZE(48, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 6,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 25),
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 25),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SLIDE_SLOW : ANIM_V_SLIDE_WOBBLE,
-        .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 8 : 10,
-        .backPic = gMonBackPic_Ledian,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 3,
-        .backAnimId = BACK_ANIM_CONVEX_DOUBLE_ARC,
-        .palette = gMonPalette_Ledian,
-        .shinyPalette = gMonShinyPalette_Ledian,
-        .iconSprite = gMonIcon_Ledian,
-        .iconPalIndex = 0,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_LedianF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(48, 56),
-        .backPicFemale = gMonBackPic_LedianF,
-        .backPicSizeFemale = MON_COORDS_SIZE(64, 64),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 15, SHADOW_SIZE_S)
-        FOOTPRINT(Ledian)
-        OVERWORLD(
-            sPicTable_Ledian,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Ledian,
-            gShinyOverworldPalette_Ledian
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_LedianF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sLedianLevelUpLearnset,
-        .teachableLearnset = sLedianTeachableLearnset,
-    },
-#endif //P_FAMILY_LEDYBA
-
-#if P_FAMILY_SPINARAK
-    [SPECIES_SPINARAK] =
-    {
-        .baseHP        = 40,
-        .baseAttack    = 60,
-        .baseDefense   = 40,
-        .baseSpeed     = 30,
-        .baseSpAttack  = 40,
-        .baseSpDefense = 40,
-        .types = MON_TYPES(TYPE_BUG, TYPE_POISON),
-        .catchRate = 255,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 50 : 54,
-        .evYield_Attack = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 15,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-        .abilities = { ABILITY_SWARM, ABILITY_INSOMNIA, ABILITY_SNIPER },
-        .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("SPINARAK"),
-        .cryId = CRY_SPINARAK,
-        .natDexNum = NATIONAL_DEX_SPINARAK,
-        .categoryName = _("String Spit"),
-        .height = 5,
-        .weight = 85,
-        .description = COMPOUND_STRING(
-            "The web it spins can be considered its\n"
-            "second nervous system. It is said that a\n"
-            "Spinarak determines its prey by the tiny\n"
-            "vibrations it feels through the web."),
-        .pokemonScale = 414,
-        .pokemonOffset = 21,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Spinarak,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 32) : MON_COORDS_SIZE(48, 32),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 19 : 16,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 6),
-            ANIMCMD_FRAME(0, 6),
-            ANIMCMD_FRAME(1, 6),
-            ANIMCMD_FRAME(0, 6),
-            ANIMCMD_FRAME(1, 6),
-            ANIMCMD_FRAME(0, 6),
-            ANIMCMD_FRAME(1, 6),
-            ANIMCMD_FRAME(0, 6),
-        ),
-        .frontAnimId = ANIM_CIRCLE_C_CLOCKWISE_SLOW,
-        .backPic = gMonBackPic_Spinarak,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 24) : MON_COORDS_SIZE(64, 32),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 21 : 16,
-        .backAnimId = BACK_ANIM_V_SHAKE_H_SLIDE,
-        .palette = gMonPalette_Spinarak,
-        .shinyPalette = gMonShinyPalette_Spinarak,
-        .iconSprite = gMonIcon_Spinarak,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(0, -8, SHADOW_SIZE_M)
-        FOOTPRINT(Spinarak)
-        OVERWORLD(
-            sPicTable_Spinarak,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_BUG,
-            sAnimTable_Following,
-            gOverworldPalette_Spinarak,
-            gShinyOverworldPalette_Spinarak
-        )
-        .levelUpLearnset = sSpinarakLevelUpLearnset,
-        .teachableLearnset = sSpinarakTeachableLearnset,
-        .eggMoveLearnset = sSpinarakEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 22, SPECIES_ARIADOS}),
-    },
-
-    [SPECIES_ARIADOS] =
-    {
-        .baseHP        = 70,
-        .baseAttack    = 90,
-        .baseDefense   = 70,
-        .baseSpeed     = 40,
-        .baseSpAttack  = 60,
-        .baseSpDefense = P_UPDATED_STATS >= GEN_7 ? 70 : 60,
-        .types = MON_TYPES(TYPE_BUG, TYPE_POISON),
-        .catchRate = 90,
-    #if P_UPDATED_EXP_YIELDS >= GEN_7
-        .expYield = 140,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 137,
-    #else
-        .expYield = 134,
-    #endif
-        .evYield_Attack = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 15,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-        .abilities = { ABILITY_SWARM, ABILITY_INSOMNIA, ABILITY_SNIPER },
-        .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("ARIADOS"),
-        .cryId = CRY_ARIADOS,
-        .natDexNum = NATIONAL_DEX_ARIADOS,
-        .categoryName = _("Long Leg"),
-        .height = 11,
-        .weight = 335,
-        .description = COMPOUND_STRING(
-            "Its feet are tipped with tiny hooked claws\n"
-            "that enable it to scuttle on ceilings and\n"
-            "vertical walls. It constricts its foe with\n"
-            "thin and strong silk webbing."),
-        .pokemonScale = 316,
-        .pokemonOffset = 8,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Ariados,
-        .frontPicSize = MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 7,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_H_SHAKE,
-        .backPic = gMonBackPic_Ariados,
-        .backPicSize = MON_COORDS_SIZE(64, 48),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 9,
-        .backAnimId = BACK_ANIM_H_SLIDE,
-        .palette = gMonPalette_Ariados,
-        .shinyPalette = gMonShinyPalette_Ariados,
-        .iconSprite = gMonIcon_Ariados,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 3, SHADOW_SIZE_XL_BATTLE_ONLY)
-        FOOTPRINT(Ariados)
-        OVERWORLD(
-            sPicTable_Ariados,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_BUG,
-            sAnimTable_Following,
-            gOverworldPalette_Ariados,
-            gShinyOverworldPalette_Ariados
-        )
-        .levelUpLearnset = sAriadosLevelUpLearnset,
-        .teachableLearnset = sAriadosTeachableLearnset,
-    },
-#endif //P_FAMILY_SPINARAK
-
-#if P_FAMILY_CHINCHOU
-    [SPECIES_CHINCHOU] =
-    {
-        .baseHP        = 75,
-        .baseAttack    = 38,
-        .baseDefense   = 38,
-        .baseSpeed     = 67,
-        .baseSpAttack  = 56,
-        .baseSpDefense = 56,
-        .types = MON_TYPES(TYPE_WATER, TYPE_ELECTRIC),
-        .catchRate = 190,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 66 : 90,
-        .evYield_HP = 1,
-        .itemRare = ITEM_DEEP_SEA_SCALE,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_2),
-        .abilities = { ABILITY_VOLT_ABSORB, ABILITY_ILLUMINATE, ABILITY_WATER_ABSORB },
-        .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("CHINCHOU"),
-        .cryId = CRY_CHINCHOU,
-        .natDexNum = NATIONAL_DEX_CHINCHOU,
-        .categoryName = _("Angler"),
-        .height = 5,
-        .weight = 120,
-        .description = COMPOUND_STRING(
-            "When it senses danger, it discharges\n"
-            "positive and negative electricity from its\n"
-            "two antennae. It lives in depths beyond\n"
-            "sunlight's reach."),
-        .pokemonScale = 424,
-        .pokemonOffset = -2,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Chinchou,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 40) : MON_COORDS_SIZE(64, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 16 : 12,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 11),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE_SLOW,
-        .backPic = gMonBackPic_Chinchou,
-        .backPicSize = MON_COORDS_SIZE(64, 48),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 11,
-        .backAnimId = BACK_ANIM_V_STRETCH,
-        .palette = gMonPalette_Chinchou,
-        .shinyPalette = gMonShinyPalette_Chinchou,
-        .shinyPaletteModern = gMonShinyPaletteModern_Chinchou,
-        .iconSprite = gMonIcon_Chinchou,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 1, SHADOW_SIZE_M)
-        FOOTPRINT(Chinchou)
-        OVERWORLD(
-            sPicTable_Chinchou,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_SPOT,
-            sAnimTable_Following,
-            gOverworldPalette_Chinchou,
-            gShinyOverworldPalette_Chinchou,
-            gShinyModernOverworldPalette_Chinchou
-        )
-        .levelUpLearnset = sChinchouLevelUpLearnset,
-        .teachableLearnset = sChinchouTeachableLearnset,
-        .eggMoveLearnset = sChinchouEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 27, SPECIES_LANTURN}),
-    },
-
-    [SPECIES_LANTURN] =
-    {
-        .baseHP        = 125,
-        .baseAttack    = 58,
-        .baseDefense   = 58,
-        .baseSpeed     = 67,
-        .baseSpAttack  = 76,
-        .baseSpDefense = 76,
-        .types = MON_TYPES(TYPE_WATER, TYPE_ELECTRIC),
-        .catchRate = 75,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 161 : 156,
-        .evYield_HP = 2,
-        .itemRare = ITEM_DEEP_SEA_SCALE,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_2),
-        .abilities = { ABILITY_VOLT_ABSORB, ABILITY_ILLUMINATE, ABILITY_WATER_ABSORB },
-        .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("LANTURN"),
-        .cryId = CRY_LANTURN,
-        .natDexNum = NATIONAL_DEX_LANTURN,
-        .categoryName = _("Light"),
-        .height = 12,
-        .weight = 225,
-        .description = COMPOUND_STRING(
-            "The light-emitting orbs on its back are\n"
-            "very bright. They are formed from a part of\n"
-            "its dorsal fin. This PokÃ©mon illuminates\n"
-            "the inky darkness of deep seas."),
-        .pokemonScale = 269,
-        .pokemonOffset = 6,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Lanturn,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 48),
-        .frontPicYOffset = 11,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 11),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_V_SLIDE_WOBBLE_SMALL,
-        .backPic = gMonBackPic_Lanturn,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 48) : MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 6,
-        .backAnimId = BACK_ANIM_SHAKE_FLASH_YELLOW,
-        .palette = gMonPalette_Lanturn,
-        .shinyPalette = gMonShinyPalette_Lanturn,
-        .shinyPaletteModern = gMonShinyPaletteModern_Lanturn,
-        .iconSprite = gMonIcon_Lanturn,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(5, 4, SHADOW_SIZE_M)
-        FOOTPRINT(Lanturn)
-        OVERWORLD(
-            sPicTable_Lanturn,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_SPOT,
-            sAnimTable_Following,
-            gOverworldPalette_Lanturn,
-            gShinyOverworldPalette_Lanturn,
-            gShinyModernOverworldPalette_Lanturn
-        )
-        .levelUpLearnset = sLanturnLevelUpLearnset,
-        .teachableLearnset = sLanturnTeachableLearnset,
-    },
-#endif //P_FAMILY_CHINCHOU
-
-#if P_FAMILY_TOGEPI
-#define TOGEPI_FAMILY_TYPE1 (P_UPDATED_TYPES >= GEN_6 ? TYPE_FAIRY : TYPE_NORMAL)
-
-    [SPECIES_TOGEPI] =
-    {
-        .baseHP        = 35,
-        .baseAttack    = 20,
-        .baseDefense   = 65,
-        .baseSpeed     = 20,
-        .baseSpAttack  = 40,
-        .baseSpDefense = 65,
-        .types = MON_TYPES(TOGEPI_FAMILY_TYPE1),
-        .catchRate = 190,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 49 : 74,
-        .evYield_SpDefense = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
-        .eggCycles = 10,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_HUSTLE, ABILITY_SERENE_GRACE, ABILITY_SUPER_LUCK },
-        .bodyColor = BODY_COLOR_WHITE,
-        .noFlip = TRUE,
-        .speciesName = _("TOGEPI"),
-        .cryId = CRY_TOGEPI,
-        .natDexNum = NATIONAL_DEX_TOGEPI,
-        .categoryName = _("Spike Ball"),
-        .height = 3,
-        .weight = 15,
-        .description = COMPOUND_STRING(
-            "As its energy, it uses the feelings of\n"
-            "compassion and pleasure exuded by\n"
-            "people and PokÃ©mon. It stores up happy\n"
-            "feelings in its shell, then shares them out."),
-        .pokemonScale = 507,
-        .pokemonOffset = 23,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Togepi,
-        .frontPicSize = MON_COORDS_SIZE(24, 32),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 20 : 16,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 50),
-            ANIMCMD_FRAME(1, 50),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_SWING_CONCAVE : ANIM_V_JUMPS_BIG,
-        .backPic = gMonBackPic_Togepi,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 32) : MON_COORDS_SIZE(48, 40),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 16 : 12,
-        .backAnimId = BACK_ANIM_DIP_RIGHT_SIDE,
-        .palette = gMonPalette_Togepi,
-        .shinyPalette = gMonShinyPalette_Togepi,
-        .iconSprite = gMonIcon_Togepi,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 2 : 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(-1, -3, SHADOW_SIZE_S)
-        FOOTPRINT(Togepi)
-        OVERWORLD(
-            sPicTable_Togepi,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Togepi,
-            gShinyOverworldPalette_Togepi
-        )
-        .levelUpLearnset = sTogepiLevelUpLearnset,
-        .teachableLearnset = sTogepiTeachableLearnset,
-        .eggMoveLearnset = sTogepiEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_TOGETIC, CONDITIONS({IF_MIN_FRIENDSHIP, FRIENDSHIP_EVO_THRESHOLD})}),
-    },
-
-    [SPECIES_TOGETIC] =
-    {
-        .baseHP        = 55,
-        .baseAttack    = 40,
-        .baseDefense   = 85,
-        .baseSpeed     = 40,
-        .baseSpAttack  = 80,
-        .baseSpDefense = 105,
-        .types = MON_TYPES(TOGEPI_FAMILY_TYPE1, TYPE_FLYING),
-        .catchRate = 75,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 142 : 114,
-        .evYield_SpDefense = 2,
-        .genderRatio = PERCENT_FEMALE(12.5),
-        .eggCycles = 10,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING, EGG_GROUP_FAIRY),
-        .abilities = { ABILITY_HUSTLE, ABILITY_SERENE_GRACE, ABILITY_SUPER_LUCK },
-        .bodyColor = BODY_COLOR_WHITE,
-        .noFlip = TRUE,
-        .speciesName = _("TOGETIC"),
-        .cryId = CRY_TOGETIC,
-        .natDexNum = NATIONAL_DEX_TOGETIC,
-        .categoryName = _("Happiness"),
-        .height = 6,
-        .weight = 32,
-        .description = COMPOUND_STRING(
-            "It is said to be a PokÃ©mon that brings good\n"
-            "fortune. When it spots someone who is pure\n"
-            "of heart, a Togetic appears and shares its\n"
-            "happiness with that person."),
-        .pokemonScale = 424,
-        .pokemonOffset = 17,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Togetic,
-        .frontPicSize = MON_COORDS_SIZE(32, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 8,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Togetic,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 6,
-        .backAnimId = BACK_ANIM_CONVEX_DOUBLE_ARC,
-        .palette = gMonPalette_Togetic,
-        .shinyPalette = gMonShinyPalette_Togetic,
-        .iconSprite = gMonIcon_Togetic,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 2 : 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 6, SHADOW_SIZE_S)
-        FOOTPRINT(Togetic)
-        OVERWORLD(
-            sPicTable_Togetic,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_NONE,
-            sAnimTable_Following,
-            gOverworldPalette_Togetic,
-            gShinyOverworldPalette_Togetic
-        )
-        .levelUpLearnset = sTogeticLevelUpLearnset,
-        .teachableLearnset = sTogeticTeachableLearnset,
-    #if P_GEN_4_CROSS_EVOS
-        .evolutions = EVOLUTION({EVO_ITEM, ITEM_SHINY_STONE, SPECIES_TOGEKISS}),
-    #endif
-    },
-
-#if P_GEN_4_CROSS_EVOS
-    [SPECIES_TOGEKISS] =
-    {
-        .baseHP        = 85,
-        .baseAttack    = 50,
-        .baseDefense   = 95,
-        .baseSpeed     = 80,
-        .baseSpAttack  = 120,
-        .baseSpDefense = 115,
-        .types = MON_TYPES(TOGEPI_FAMILY_TYPE1, TYPE_FLYING),
-        .catchRate = 30,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 273,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 245,
-    #else
-        .expYield = 220,
-    #endif
-        .evYield_SpAttack = 2,
-        .evYield_SpDefense = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
-        .eggCycles = 10,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING, EGG_GROUP_FAIRY),
-        .abilities = { ABILITY_HUSTLE, ABILITY_SERENE_GRACE, ABILITY_SUPER_LUCK },
-        .bodyColor = BODY_COLOR_WHITE,
-        .noFlip = TRUE,
-        .speciesName = _("TOGEKISS"),
-        .cryId = CRY_TOGEKISS,
-        .natDexNum = NATIONAL_DEX_TOGEKISS,
-        .categoryName = _("Jubilee"),
-        .height = 15,
-        .weight = 380,
-        .description = COMPOUND_STRING(
-            "As everyone knows, it visits peaceful\n"
-            "regions, bringing them gifts of kindness\n"
-            "and sweet blessings. It will never appear\n"
-            "where there is strife."),
-        .pokemonScale = 268,
-        .pokemonOffset = 2,
-        .trainerScale = 271,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Togekiss,
-        .frontPicSize = MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = 10,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_SWING_CONVEX,
-        .enemyMonElevation = 14,
-        .backPic = gMonBackPic_Togekiss,
-        .backPicSize = MON_COORDS_SIZE(64, 48),
-        .backPicYOffset = 10,
-        .backAnimId = BACK_ANIM_CONCAVE_ARC_LARGE,
-        .palette = gMonPalette_Togekiss,
-        .shinyPalette = gMonShinyPalette_Togekiss,
-        .iconSprite = gMonIcon_Togekiss,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(4, 15, SHADOW_SIZE_M)
-        FOOTPRINT(Togekiss)
-        OVERWORLD(
-            sPicTable_Togekiss,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following_Asym,
-            gOverworldPalette_Togekiss,
-            gShinyOverworldPalette_Togekiss
-        )
-        .levelUpLearnset = sTogekissLevelUpLearnset,
-        .teachableLearnset = sTogekissTeachableLearnset,
-    },
-#endif //P_GEN_4_CROSS_EVOS
-#endif //P_FAMILY_TOGEPI
-
-#if P_FAMILY_NATU
-    [SPECIES_NATU] =
-    {
-        .baseHP        = 40,
-        .baseAttack    = 50,
-        .baseDefense   = 45,
-        .baseSpeed     = 70,
-        .baseSpAttack  = 70,
-        .baseSpDefense = 45,
-        .types = MON_TYPES(TYPE_PSYCHIC, TYPE_FLYING),
-        .catchRate = 190,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 64 : 73,
-        .evYield_SpAttack = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
-        .abilities = { ABILITY_SYNCHRONIZE, ABILITY_EARLY_BIRD, ABILITY_MAGIC_BOUNCE },
-        .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("NATU"),
-        .cryId = CRY_NATU,
-        .natDexNum = NATIONAL_DEX_NATU,
-        .categoryName = _("Tiny Bird"),
-        .height = 2,
-        .weight = 20,
-        .description = COMPOUND_STRING(
-            "It runs up short trees that grow on the\n"
-            "savanna to peck at new shoots.\n"
-            "A Natu's eyes look as if they are\n"
-            "always observing something."),
-        .pokemonScale = 610,
-        .pokemonOffset = 25,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Natu,
-        .frontPicSize = MON_COORDS_SIZE(32, 32),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 20 : 17,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_H_JUMPS,
-        .frontAnimDelay = 30,
-        .backPic = gMonBackPic_Natu,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 32) : MON_COORDS_SIZE(40, 40),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 17 : 15,
-        .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
-        .palette = gMonPalette_Natu,
-        .shinyPalette = gMonShinyPalette_Natu,
-        .iconSprite = gMonIcon_Natu,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 0 : 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-2, -4, SHADOW_SIZE_S)
-        FOOTPRINT(Natu)
-        OVERWORLD(
-            sPicTable_Natu,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Natu,
-            gShinyOverworldPalette_Natu
-        )
-        .isSkyBattleBanned = B_SKY_BATTLE_STRICT_ELIGIBILITY,
-        .levelUpLearnset = sNatuLevelUpLearnset,
-        .teachableLearnset = sNatuTeachableLearnset,
-        .eggMoveLearnset = sNatuEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 25, SPECIES_XATU}),
-    },
-
-    [SPECIES_XATU] =
-    {
-        .baseHP        = 65,
-        .baseAttack    = 75,
-        .baseDefense   = 70,
-        .baseSpeed     = 95,
-        .baseSpAttack  = 95,
-        .baseSpDefense = 70,
-        .types = MON_TYPES(TYPE_PSYCHIC, TYPE_FLYING),
-        .catchRate = 75,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 165 : 171,
-        .evYield_Speed = 1,
-        .evYield_SpAttack = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
-        .abilities = { ABILITY_SYNCHRONIZE, ABILITY_EARLY_BIRD, ABILITY_MAGIC_BOUNCE },
-        .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("XATU"),
-        .cryId = CRY_XATU,
-        .natDexNum = NATIONAL_DEX_XATU,
-        .categoryName = _("Mystic"),
-        .height = 15,
-        .weight = 150,
-        .description = COMPOUND_STRING(
-            "It has the enigmatic power of foreseeing\n"
-            "the future. Some people in different lands\n"
-            "have long believed that Xatu are\n"
-            "emissaries from another world."),
-        .pokemonScale = 256,
-        .pokemonOffset = 6,
-        .trainerScale = 318,
-        .trainerOffset = 4,
-        .frontPic = gMonFrontPic_Xatu,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 56) : MON_COORDS_SIZE(40, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 5,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 45),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_GROW_VIBRATE,
-        .backPic = gMonBackPic_Xatu,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 6,
-        .backAnimId = BACK_ANIM_SHRINK_GROW_VIBRATE,
-        .palette = gMonPalette_Xatu,
-        .shinyPalette = gMonShinyPalette_Xatu,
-        .shinyPaletteModern = gMonShinyPaletteModern_Xatu,
-        .iconSprite = gMonIcon_Xatu,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 0 : 1,
-#if P_GENDER_DIFFERENCES
-        .frontPicFemale = gMonFrontPic_XatuF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(40, 56),
-#endif //P_GENDER_DIFFERENCES
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 9, SHADOW_SIZE_S)
-        FOOTPRINT(Xatu)
-        OVERWORLD(
-            sPicTable_Xatu,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Xatu,
-            gShinyOverworldPalette_Xatu,
-            gShinyModernOverworldPalette_Xatu
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_XatuF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sXatuLevelUpLearnset,
-        .teachableLearnset = sXatuTeachableLearnset,
-    },
-#endif //P_FAMILY_NATU
-
-#if P_FAMILY_MAREEP
-    [SPECIES_MAREEP] =
-    {
-        .baseHP        = 55,
-        .baseAttack    = 40,
-        .baseDefense   = 40,
-        .baseSpeed     = 35,
-        .baseSpAttack  = 65,
-        .baseSpDefense = 45,
-        .types = MON_TYPES(TYPE_ELECTRIC),
-        .catchRate = 235,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 56 : 59,
-        .evYield_SpAttack = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_FIELD),
-        .abilities = { ABILITY_STATIC, ABILITY_NONE, ABILITY_PLUS },
-        .bodyColor = BODY_COLOR_WHITE,
-        .noFlip = TRUE,
-        .speciesName = _("MAREEP"),
-        .cryId = CRY_MAREEP,
-        .natDexNum = NATIONAL_DEX_MAREEP,
-        .categoryName = _("Wool"),
-        .height = 6,
-        .weight = 78,
-        .description = COMPOUND_STRING(
-            "Its fluffy wool rubs together and builds\n"
-            "a static charge. The more energy is\n"
-            "charged, the more brightly the lightbulb\n"
-            "at the tip of its tail glows."),
-        .pokemonScale = 379,
-        .pokemonOffset = 18,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Mareep,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(40, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 16 : 12,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 20),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .frontAnimDelay = 50,
-        .backPic = gMonBackPic_Mareep,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 40),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 15,
-        .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
-        .palette = gMonPalette_Mareep,
-        .shinyPalette = gMonShinyPalette_Mareep,
-        .iconSprite = gMonIcon_Mareep,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 2 : 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NORMAL,
-        SHADOW(1, 1, SHADOW_SIZE_M)
-        FOOTPRINT(Mareep)
-        OVERWORLD(
-            sPicTable_Mareep,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Mareep,
-            gShinyOverworldPalette_Mareep
-        )
-        .levelUpLearnset = sMareepLevelUpLearnset,
-        .teachableLearnset = sMareepTeachableLearnset,
-        .eggMoveLearnset = sMareepEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 15, SPECIES_FLAAFFY}),
-    },
-
-    [SPECIES_FLAAFFY] =
-    {
-        .baseHP        = 70,
-        .baseAttack    = 55,
-        .baseDefense   = 55,
-        .baseSpeed     = 45,
-        .baseSpAttack  = 80,
-        .baseSpDefense = 60,
-        .types = MON_TYPES(TYPE_ELECTRIC),
-        .catchRate = 120,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 128 : 117,
-        .evYield_SpAttack = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_FIELD),
-        .abilities = { ABILITY_STATIC, ABILITY_NONE, ABILITY_PLUS },
-        .bodyColor = BODY_COLOR_PINK,
-        .speciesName = _("FLAAFFY"),
-        .cryId = CRY_FLAAFFY,
-        .natDexNum = NATIONAL_DEX_FLAAFFY,
-        .categoryName = _("Wool"),
-        .height = 8,
-        .weight = 133,
-        .description = COMPOUND_STRING(
-            "Its fleece quality changes to generate\n"
-            "strong static electricity with a small\n"
-            "amount of wool. The bare, slick parts of its\n"
-            "hide are shielded against electricity."),
-        .pokemonScale = 372,
-        .pokemonOffset = 15,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Flaaffy,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 48) : MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 9,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_JUMPS_BIG : ANIM_V_STRETCH,
-        .backPic = gMonBackPic_Flaaffy,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(48, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 7,
-        .backAnimId = BACK_ANIM_DIP_RIGHT_SIDE,
-        .palette = gMonPalette_Flaaffy,
-        .shinyPalette = gMonShinyPalette_Flaaffy,
-        .iconSprite = gMonIcon_Flaaffy,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 4, SHADOW_SIZE_S)
-        FOOTPRINT(Flaaffy)
-        OVERWORLD(
-            sPicTable_Flaaffy,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Flaaffy,
-            gShinyOverworldPalette_Flaaffy
-        )
-        .levelUpLearnset = sFlaaffyLevelUpLearnset,
-        .teachableLearnset = sFlaaffyTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_AMPHAROS}),
-    },
-
-    [SPECIES_AMPHAROS] =
-    {
-        .baseHP        = 90,
-        .baseAttack    = 75,
-        .baseDefense   = P_UPDATED_STATS >= GEN_6 ? 85 : 75,
-        .baseSpeed     = 55,
-        .baseSpAttack  = 115,
-        .baseSpDefense = 90,
-        .types = MON_TYPES(TYPE_ELECTRIC),
-        .catchRate = 45,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 255,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_6
-        .expYield = 230,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 225,
-    #else
-        .expYield = 194,
-    #endif
-        .evYield_SpAttack = 3,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_FIELD),
-        .abilities = { ABILITY_STATIC, ABILITY_NONE, ABILITY_PLUS },
-        .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("AMPHAROS"),
-        .cryId = CRY_AMPHAROS,
-        .natDexNum = NATIONAL_DEX_AMPHAROS,
-        .categoryName = _("Light"),
-        .height = 14,
-        .weight = 615,
-        .description = COMPOUND_STRING(
-            "It gives off so much light that it can be\n"
-            "seen even from space. People in the old\n"
-            "days used its light to send signals back\n"
-            "and forth with others far away."),
-        .pokemonScale = 256,
-        .pokemonOffset = 4,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Ampharos,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(56, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 2,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 50),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_FLASH_YELLOW,
-        .frontAnimDelay = 10,
-        .backPic = gMonBackPic_Ampharos,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 64) : MON_COORDS_SIZE(56, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 1 : 3,
-        .backAnimId = BACK_ANIM_SHAKE_FLASH_YELLOW,
-        .palette = gMonPalette_Ampharos,
-        .shinyPalette = gMonShinyPalette_Ampharos,
-        .iconSprite = gMonIcon_Ampharos,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(3, 11, SHADOW_SIZE_M)
-        FOOTPRINT(Ampharos)
-        OVERWORLD(
-            sPicTable_Ampharos,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Ampharos,
-            gShinyOverworldPalette_Ampharos
-        )
-        .levelUpLearnset = sAmpharosLevelUpLearnset,
-        .teachableLearnset = sAmpharosTeachableLearnset,
-        .formSpeciesIdTable = sAmpharosFormSpeciesIdTable,
-        .formChangeTable = sAmpharosFormChangeTable,
-    },
-
-#if P_MEGA_EVOLUTIONS
-    [SPECIES_AMPHAROS_MEGA] =
-    {
-        .baseHP        = 90,
-        .baseAttack    = 95,
-        .baseDefense   = 105,
-        .baseSpeed     = 45,
-        .baseSpAttack  = 165,
-        .baseSpDefense = 110,
-        .types = MON_TYPES(TYPE_ELECTRIC, TYPE_DRAGON),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 305 : 275,
-        .evYield_SpAttack = 3,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_FIELD),
-        .abilities = { ABILITY_MOLD_BREAKER, ABILITY_MOLD_BREAKER, ABILITY_MOLD_BREAKER },
-        .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("AMPHAROS"),
-    #if P_MODIFIED_MEGA_CRIES
-        .cryId = CRY_AMPHAROS_MEGA,
-    #else
-        .cryId = CRY_AMPHAROS,
-    #endif // P_MODIFIED_MEGA_CRIES
-        .natDexNum = NATIONAL_DEX_AMPHAROS,
-        .categoryName = _("Light"),
-        .height = 14,
-        .weight = 615,
-        .description = COMPOUND_STRING(
-            "Massive amounts of energy intensely\n"
-            "stimulated Ampharos's cells, apparently\n"
-            "awakening its long-sleeping dragon's\n"
-            "blood."),
-        .pokemonScale = 256,
-        .pokemonOffset = 4,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_AmpharosMega,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_AmpharosMega,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 0,
-        .backAnimId = BACK_ANIM_SHAKE_FLASH_YELLOW,
-        .palette = gMonPalette_AmpharosMega,
-        .shinyPalette = gMonShinyPalette_AmpharosMega,
-        .iconSprite = gMonIcon_AmpharosMega,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-7, 13, SHADOW_SIZE_M)
-        FOOTPRINT(Ampharos)
-    #if OW_BATTLE_ONLY_FORMS
-        OVERWORLD(
-            sPicTable_AmpharosMega,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_AmpharosMega,
-            gShinyOverworldPalette_AmpharosMega
-        )
-    #endif //OW_BATTLE_ONLY_FORMS
-        .isMegaEvolution = TRUE,
-        .levelUpLearnset = sAmpharosLevelUpLearnset,
-        .teachableLearnset = sAmpharosTeachableLearnset,
-        .formSpeciesIdTable = sAmpharosFormSpeciesIdTable,
-        .formChangeTable = sAmpharosFormChangeTable,
-        .randomizerMode = MON_RANDOMIZER_INVALID,
-    },
-#endif //P_MEGA_EVOLUTIONS
-#endif //P_FAMILY_MAREEP
-
-#if P_FAMILY_MARILL
-#if P_GEN_3_CROSS_EVOS
-    [SPECIES_AZURILL] =
-    {
-        .baseHP        = 50,
-        .baseAttack    = 20,
-        .baseDefense   = 40,
-        .baseSpeed     = 20,
-        .baseSpAttack  = 20,
-        .baseSpDefense = 40,
-    #if P_UPDATED_TYPES >= GEN_6
-        .types = MON_TYPES(TYPE_NORMAL, TYPE_FAIRY),
-    #else
-        .types = MON_TYPES(TYPE_NORMAL),
-    #endif
-        .catchRate = 150,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 38 : 33,
-        .evYield_HP = 1,
-        .genderRatio = PERCENT_FEMALE(75),
-        .eggCycles = 10,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_THICK_FAT, ABILITY_HUGE_POWER, ABILITY_SAP_SIPPER },
-        .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("AZURILL"),
-        .cryId = CRY_AZURILL,
-        .natDexNum = NATIONAL_DEX_AZURILL,
-        .categoryName = _("Polka Dot"),
-        .height = 2,
-        .weight = 20,
-        .description = COMPOUND_STRING(
-            "Its tail, which is packed with nutrition,\n"
-            "is very bouncy like a rubber ball. On sunny\n"
-            "days they gather at the edge of water and\n"
-            "splash about for fun."),
-        .pokemonScale = 603,
-        .pokemonOffset = 23,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Azurill,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 11,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 12),
-            ANIMCMD_FRAME(1, 12),
-            ANIMCMD_FRAME(0, 12),
-            ANIMCMD_FRAME(1, 12),
-            ANIMCMD_FRAME(0, 12),
-            ANIMCMD_FRAME(1, 12),
-            ANIMCMD_FRAME(0, 12),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Azurill,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 48) : MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 6,
-        .backAnimId = BACK_ANIM_CONCAVE_ARC_LARGE,
-        .palette = gMonPalette_Azurill,
-        .shinyPalette = gMonShinyPalette_Azurill,
-        .iconSprite = gMonIcon_Azurill,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 2 : 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(-4, 3, SHADOW_SIZE_S)
-        FOOTPRINT(Azurill)
-        OVERWORLD(
-            sPicTable_Azurill,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Azurill,
-            gShinyOverworldPalette_Azurill
-        )
-        .levelUpLearnset = sAzurillLevelUpLearnset,
-        .teachableLearnset = sAzurillTeachableLearnset,
-        .eggMoveLearnset = sAzurillEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_MARILL, CONDITIONS({IF_MIN_FRIENDSHIP, FRIENDSHIP_EVO_THRESHOLD})}),
-    },
-#endif //P_GEN_3_CROSS_EVOS
-
-    [SPECIES_MARILL] =
-    {
-        .baseHP        = 70,
-        .baseAttack    = 20,
-        .baseDefense   = 50,
-        .baseSpeed     = 40,
-        .baseSpAttack  = 20,
-        .baseSpDefense = 50,
-    #if P_UPDATED_TYPES >= GEN_6
-        .types = MON_TYPES(TYPE_WATER, TYPE_FAIRY),
-    #else
-        .types = MON_TYPES(TYPE_WATER),
-    #endif
-        .catchRate = 190,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 88 : 58,
-        .evYield_HP = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 10,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_FAIRY),
-        .abilities = { ABILITY_THICK_FAT, ABILITY_HUGE_POWER, ABILITY_SAP_SIPPER },
-        .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("MARILL"),
-        .cryId = CRY_MARILL,
-        .natDexNum = NATIONAL_DEX_MARILL,
-        .categoryName = _("Aqua Mouse"),
-        .height = 4,
-        .weight = 85,
-        .description = COMPOUND_STRING(
-            "Its body is covered with water-repellent\n"
-            "fur. Because of the fur, it can swim\n"
-            "through water at high speed without being\n"
-            "slowed by the water's resistance."),
-        .pokemonScale = 476,
-        .pokemonOffset = 20,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Marill,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(56, 40),
-        .frontPicYOffset = 14,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 30),
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Marill,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 40) : MON_COORDS_SIZE(64, 40),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 13,
-        .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
-        .palette = gMonPalette_Marill,
-        .shinyPalette = gMonShinyPalette_Marill,
-        .iconSprite = gMonIcon_Marill,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 2 : 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(-2, 0, SHADOW_SIZE_S)
-        FOOTPRINT(Marill)
-        OVERWORLD(
-            sPicTable_Marill,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Marill,
-            gShinyOverworldPalette_Marill
-        )
-        .levelUpLearnset = sMarillLevelUpLearnset,
-        .teachableLearnset = sMarillTeachableLearnset,
-        .eggMoveLearnset = sMarillEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_AZUMARILL}),
-    },
-
-    [SPECIES_AZUMARILL] =
-    {
-        .baseHP        = 100,
-        .baseAttack    = 50,
-        .baseDefense   = 80,
-        .baseSpeed     = 50,
-        .baseSpAttack  = P_UPDATED_STATS >= GEN_6 ? 60 : 50,
-        .baseSpDefense = 80,
-    #if P_UPDATED_TYPES >= GEN_6
-        .types = MON_TYPES(TYPE_WATER, TYPE_FAIRY),
-    #else
-        .types = MON_TYPES(TYPE_WATER),
-    #endif
-        .catchRate = 75,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 210,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_6
-        .expYield = 189,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 185,
-    #else
-        .expYield = 153,
-    #endif
-        .evYield_HP = 3,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 10,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_FAIRY),
-        .abilities = { ABILITY_THICK_FAT, ABILITY_HUGE_POWER, ABILITY_SAP_SIPPER },
-        .bodyColor = BODY_COLOR_BLUE,
-        .noFlip = TRUE,
-        .speciesName = _("AZUMARILL"),
-        .cryId = CRY_AZUMARILL,
-        .natDexNum = NATIONAL_DEX_AZUMARILL,
-        .categoryName = _("Aqua Rabbit"),
-        .height = 8,
-        .weight = 285,
-        .description = COMPOUND_STRING(
-            "It lives in water virtually all day long.\n"
-            "Its body color and pattern act as\n"
-            "camouflage that makes it tough for\n"
-            "enemies to spot in water."),
-        .pokemonScale = 448,
-        .pokemonOffset = 16,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Azumarill,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(56, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 6,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL_SLOW : ANIM_SHRINK_GROW,
-        .backPic = gMonBackPic_Azumarill,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 48) : MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 3,
-        .backAnimId = BACK_ANIM_DIP_RIGHT_SIDE,
-        .palette = gMonPalette_Azumarill,
-        .shinyPalette = gMonShinyPalette_Azumarill,
-        .iconSprite = gMonIcon_Azumarill,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 2 : 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-4, 8, SHADOW_SIZE_S)
-        FOOTPRINT(Azumarill)
-        OVERWORLD(
-            sPicTable_Azumarill,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Azumarill,
-            gShinyOverworldPalette_Azumarill
-        )
-        .levelUpLearnset = sAzumarillLevelUpLearnset,
-        .teachableLearnset = sAzumarillTeachableLearnset,
-    },
-#endif //P_FAMILY_MARILL
-
-#if P_FAMILY_SUDOWOODO
-#if P_GEN_4_CROSS_EVOS
-    [SPECIES_BONSLY] =
-    {
-        .baseHP        = 50,
-        .baseAttack    = 80,
-        .baseDefense   = 95,
-        .baseSpeed     = 10,
-        .baseSpAttack  = 10,
-        .baseSpDefense = 45,
-        .types = MON_TYPES(TYPE_ROCK),
-        .catchRate = 255,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 58 : 68,
-        .evYield_Defense = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_STURDY, ABILITY_ROCK_HEAD, ABILITY_RATTLED },
-        .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("BONSLY"),
-        .cryId = CRY_BONSLY,
-        .natDexNum = NATIONAL_DEX_BONSLY,
-        .categoryName = _("Bonsai"),
-        .height = 5,
-        .weight = 150,
-        .description = COMPOUND_STRING(
-            "Bonsly prefers an arid atmosphere.\n"
-            "In order to adjust the level of fluids\n"
-            "in its body, it exudes water from its eyes.\n"
-            "This makes it appear to be crying."),
-        .pokemonScale = 432,
-        .pokemonOffset = 13,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Bonsly,
-        .frontPicSize = MON_COORDS_SIZE(32, 48),
-        .frontPicYOffset = 9,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_BOUNCE_ROTATE_TO_SIDES,
-        .backPic = gMonBackPic_Bonsly,
-        .backPicSize = MON_COORDS_SIZE(40, 64),
-        .backPicYOffset = 6,
-        .backAnimId = BACK_ANIM_H_VIBRATE,
-        .palette = gMonPalette_Bonsly,
-        .shinyPalette = gMonShinyPalette_Bonsly,
-        .iconSprite = gMonIcon_Bonsly,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(-3, 4, SHADOW_SIZE_S)
-        FOOTPRINT(Bonsly)
-        OVERWORLD(
-            sPicTable_Bonsly,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Bonsly,
-            gShinyOverworldPalette_Bonsly
-        )
-        .levelUpLearnset = sBonslyLevelUpLearnset,
-        .teachableLearnset = sBonslyTeachableLearnset,
-        .eggMoveLearnset = sBonslyEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_SUDOWOODO, CONDITIONS({IF_KNOWS_MOVE, MOVE_MIMIC})}),
-    },
-#endif //P_GEN_4_CROSS_EVOS
-
-    [SPECIES_SUDOWOODO] =
-    {
-        .baseHP        = 70,
-        .baseAttack    = 100,
-        .baseDefense   = 115,
-        .baseSpeed     = 30,
-        .baseSpAttack  = 30,
-        .baseSpDefense = 65,
-        .types = MON_TYPES(TYPE_ROCK),
-        .catchRate = 65,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 144 : 135,
-        .evYield_Defense = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
-        .abilities = { ABILITY_STURDY, ABILITY_ROCK_HEAD, ABILITY_RATTLED },
-        .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("SUDOWOODO"),
-        .cryId = CRY_SUDOWOODO,
-        .natDexNum = NATIONAL_DEX_SUDOWOODO,
-        .categoryName = _("Imitation"),
-        .height = 12,
-        .weight = 380,
-        .description = COMPOUND_STRING(
-            "It mimics a tree to avoid being attacked\n"
-            "by enemies. But since its forelegs\n"
-            "remain green throughout the year, it is\n"
-            "easily identified as a fake in the winter."),
-        .pokemonScale = 305,
-        .pokemonOffset = 8,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Sudowoodo,
-        .frontPicSize = MON_COORDS_SIZE(48, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 7,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_H_SLIDE_SLOW,
-        .backPic = gMonBackPic_Sudowoodo,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(48, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 5,
-        .backAnimId = BACK_ANIM_H_SLIDE,
-        .palette = gMonPalette_Sudowoodo,
-        .shinyPalette = gMonShinyPalette_Sudowoodo,
-        .iconSprite = gMonIcon_Sudowoodo,
-        .iconPalIndex = 1,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_SudowoodoF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(48, 56),
-        .backPicFemale = gMonBackPic_SudowoodoF,
-        .backPicSizeFemale = MON_COORDS_SIZE(48, 56),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-2, 7, SHADOW_SIZE_S)
-        FOOTPRINT(Sudowoodo)
-        OVERWORLD(
-            sPicTable_Sudowoodo,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Sudowoodo,
-            gShinyOverworldPalette_Sudowoodo
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_SudowoodoF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sSudowoodoLevelUpLearnset,
-        .teachableLearnset = sSudowoodoTeachableLearnset,
-        .eggMoveLearnset = sSudowoodoEggMoveLearnset,
-    },
-#endif //P_FAMILY_SUDOWOODO
-
-#if P_FAMILY_HOPPIP
-    [SPECIES_HOPPIP] =
-    {
-        .baseHP        = 35,
-        .baseAttack    = 35,
-        .baseDefense   = 40,
-        .baseSpeed     = 50,
-        .baseSpAttack  = 35,
-        .baseSpDefense = 55,
-        .types = MON_TYPES(TYPE_GRASS, TYPE_FLYING),
-        .catchRate = 255,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 50 : 74,
-        .evYield_SpDefense = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FAIRY, EGG_GROUP_GRASS),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_LEAF_GUARD, ABILITY_INFILTRATOR },
-    #else
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_NONE, ABILITY_INFILTRATOR },
-    #endif
-        .bodyColor = BODY_COLOR_PINK,
-        .speciesName = _("HOPPIP"),
-        .cryId = CRY_HOPPIP,
-        .natDexNum = NATIONAL_DEX_HOPPIP,
-        .categoryName = _("Cottonweed"),
-        .height = 4,
-        .weight = 5,
-        .description = COMPOUND_STRING(
-            "This PokÃ©mon drifts and floats with the\n"
-            "wind. If it senses the approach of strong\n"
-            "winds, a Hoppip links leaves with others\n"
-            "to prepare against being blown away."),
-        .pokemonScale = 562,
-        .pokemonOffset = -7,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Hoppip,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 14,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 25),
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 25),
-        ),
-        .frontAnimId = ANIM_V_SLIDE_WOBBLE,
-        .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 11 : 15,
-        .backPic = gMonBackPic_Hoppip,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(64, 48),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 8,
-        .backAnimId = BACK_ANIM_CONVEX_DOUBLE_ARC,
-        .palette = gMonPalette_Hoppip,
-        .shinyPalette = gMonShinyPalette_Hoppip,
-        .iconSprite = gMonIcon_Hoppip,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-5, 12, SHADOW_SIZE_S)
-        FOOTPRINT(Hoppip)
-        OVERWORLD(
-            sPicTable_Hoppip,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_NONE,
-            sAnimTable_Following,
-            gOverworldPalette_Hoppip,
-            gShinyOverworldPalette_Hoppip
-        )
-        .levelUpLearnset = sHoppipLevelUpLearnset,
-        .teachableLearnset = sHoppipTeachableLearnset,
-        .eggMoveLearnset = sHoppipEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_SKIPLOOM}),
-    },
-
-    [SPECIES_SKIPLOOM] =
-    {
-        .baseHP        = 55,
-        .baseAttack    = 45,
-        .baseDefense   = 50,
-        .baseSpeed     = 80,
-        .baseSpAttack  = 45,
-        .baseSpDefense = 65,
-        .types = MON_TYPES(TYPE_GRASS, TYPE_FLYING),
-        .catchRate = 120,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 119 : 136,
-        .evYield_Speed = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FAIRY, EGG_GROUP_GRASS),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_LEAF_GUARD, ABILITY_INFILTRATOR },
-    #else
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_NONE, ABILITY_INFILTRATOR },
-    #endif
-        .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("SKIPLOOM"),
-        .cryId = CRY_SKIPLOOM,
-        .natDexNum = NATIONAL_DEX_SKIPLOOM,
-        .categoryName = _("Cottonweed"),
-        .height = 6,
-        .weight = 10,
-        .description = COMPOUND_STRING(
-            "It blossoms when the temperature rises\n"
-            "above 64 degrees F. Because its flower's\n"
-            "blooming changes with the temperature,\n"
-            "it is sometimes used as a thermometer."),
-        .pokemonScale = 387,
-        .pokemonOffset = 0,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Skiploom,
-        .frontPicSize = MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = 15,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 12),
-            ANIMCMD_FRAME(0, 12),
-            ANIMCMD_FRAME(1, 12),
-            ANIMCMD_FRAME(0, 30),
-            ANIMCMD_FRAME(1, 12),
-            ANIMCMD_FRAME(0, 12),
-            ANIMCMD_FRAME(1, 12),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_RISING_WOBBLE,
-        .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 12 : 15,
-        .backPic = gMonBackPic_Skiploom,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 4,
-        .backAnimId = BACK_ANIM_CONVEX_DOUBLE_ARC,
-        .palette = gMonPalette_Skiploom,
-        .shinyPalette = gMonShinyPalette_Skiploom,
-        .iconSprite = gMonIcon_Skiploom,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 10, SHADOW_SIZE_S)
-        FOOTPRINT(Skiploom)
-        OVERWORLD(
-            sPicTable_Skiploom,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_NONE,
-            sAnimTable_Following,
-            gOverworldPalette_Skiploom,
-            gShinyOverworldPalette_Skiploom
-        )
-        .levelUpLearnset = sSkiploomLevelUpLearnset,
-        .teachableLearnset = sSkiploomTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 27, SPECIES_JUMPLUFF}),
-    },
-
-    [SPECIES_JUMPLUFF] =
-    {
-        .baseHP        = 75,
-        .baseAttack    = 55,
-        .baseDefense   = 70,
-        .baseSpeed     = 110,
-        .baseSpAttack  = 55,
-        .baseSpDefense = P_UPDATED_STATS >= GEN_6 ? 95 : 85,
-        .types = MON_TYPES(TYPE_GRASS, TYPE_FLYING),
-        .catchRate = 45,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 230,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_6
-        .expYield = 207,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 203,
-    #else
-        .expYield = 176,
-    #endif
-        .evYield_Speed = 3,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FAIRY, EGG_GROUP_GRASS),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_LEAF_GUARD, ABILITY_INFILTRATOR },
-    #else
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_NONE, ABILITY_INFILTRATOR },
-    #endif
-        .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("JUMPLUFF"),
-        .cryId = CRY_JUMPLUFF,
-        .natDexNum = NATIONAL_DEX_JUMPLUFF,
-        .categoryName = _("Cottonweed"),
-        .height = 8,
-        .weight = 30,
-        .description = COMPOUND_STRING(
-            "Jumpluff ride warm southern winds to\n"
-            "cross the sea and fly to foreign lands.\n"
-            "This PokÃ©mon lands when it encounters\n"
-            "cold air while it is floating."),
-        .pokemonScale = 418,
-        .pokemonOffset = -4,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Jumpluff,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 9,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 25),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 25),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_V_SLIDE_WOBBLE_SMALL,
-        .enemyMonElevation = 9,
-        .backPic = gMonBackPic_Jumpluff,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(56, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 3,
-        .backAnimId = BACK_ANIM_CONVEX_DOUBLE_ARC,
-        .palette = gMonPalette_Jumpluff,
-        .shinyPalette = gMonShinyPalette_Jumpluff,
-        .iconSprite = gMonIcon_Jumpluff,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-2, 11, SHADOW_SIZE_S)
-        FOOTPRINT(Jumpluff)
-        OVERWORLD(
-            sPicTable_Jumpluff,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_NONE,
-            sAnimTable_Following,
-            gOverworldPalette_Jumpluff,
-            gShinyOverworldPalette_Jumpluff
-        )
-        .levelUpLearnset = sJumpluffLevelUpLearnset,
-        .teachableLearnset = sJumpluffTeachableLearnset,
-    },
-#endif //P_FAMILY_HOPPIP
-
-#if P_FAMILY_AIPOM
-    [SPECIES_AIPOM] =
-    {
-        .baseHP        = 55,
-        .baseAttack    = 70,
-        .baseDefense   = 55,
-        .baseSpeed     = 85,
-        .baseSpAttack  = 40,
-        .baseSpDefense = 55,
-        .types = MON_TYPES(TYPE_NORMAL),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 72 : 94,
-        .evYield_Speed = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_RUN_AWAY, ABILITY_PICKUP, ABILITY_SKILL_LINK },
-        .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("AIPOM"),
-        .cryId = CRY_AIPOM,
-        .natDexNum = NATIONAL_DEX_AIPOM,
-        .categoryName = _("Long Tail"),
-        .height = 8,
-        .weight = 115,
-        .description = COMPOUND_STRING(
-            "Its tail ends with a dexterous, handlike\n"
-            "appendage. However, because it uses the\n"
-            "tail so much, Aipom's real hands have\n"
-            "become rather clumsy."),
-        .pokemonScale = 363,
-        .pokemonOffset = 6,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Aipom,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 64) : MON_COORDS_SIZE(32, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 3 : 1,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 35),
-            ANIMCMD_FRAME(0, 5),
-        ),
-        .frontAnimId = ANIM_H_JUMPS_V_STRETCH,
-        .backPic = gMonBackPic_Aipom,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 3,
-        .backAnimId = BACK_ANIM_CONCAVE_ARC_LARGE,
-        .palette = gMonPalette_Aipom,
-        .shinyPalette = gMonShinyPalette_Aipom,
-        .iconSprite = gMonIcon_Aipom,
-        .iconPalIndex = 2,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_AipomF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(32, 64),
-        .backPicFemale = gMonBackPic_AipomF,
-        .backPicSizeFemale = MON_COORDS_SIZE(64, 64),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 12, SHADOW_SIZE_S)
-        FOOTPRINT(Aipom)
-        OVERWORLD(
-            sPicTable_Aipom,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Aipom,
-            gShinyOverworldPalette_Aipom
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_AipomF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sAipomLevelUpLearnset,
-        .teachableLearnset = sAipomTeachableLearnset,
-        .eggMoveLearnset = sAipomEggMoveLearnset,
-    #if P_GEN_4_CROSS_EVOS
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_AMBIPOM, CONDITIONS({IF_KNOWS_MOVE, MOVE_DOUBLE_HIT})}),
-    #endif
-    },
-
-#if P_GEN_4_CROSS_EVOS
-    [SPECIES_AMBIPOM] =
-    {
-        .baseHP        = 75,
-        .baseAttack    = 100,
-        .baseDefense   = 66,
-        .baseSpeed     = 115,
-        .baseSpAttack  = 60,
-        .baseSpDefense = 66,
-        .types = MON_TYPES(TYPE_NORMAL),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 169 : 186,
-        .evYield_Speed = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = 100,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_TECHNICIAN, ABILITY_PICKUP, ABILITY_SKILL_LINK },
-        .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("AMBIPOM"),
-        .cryId = CRY_AMBIPOM,
-        .natDexNum = NATIONAL_DEX_AMBIPOM,
-        .categoryName = _("Long Tail"),
-        .height = 12,
-        .weight = 203,
-        .description = COMPOUND_STRING(
-            "They live on large trees. Split into two,\n"
-            "the tails are so adept at handling and\n"
-            "doing things, Ambipom rarely uses\n"
-            "its hands now."),
-        .pokemonScale = 282,
-        .pokemonOffset = 3,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Ambipom,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 1,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 30),
-        ),
-        .frontAnimId = ANIM_BACK_AND_LUNGE,
-        .backPic = gMonBackPic_Ambipom,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 3,
-        .backAnimId = BACK_ANIM_CONCAVE_ARC_LARGE,
-        .palette = gMonPalette_Ambipom,
-        .shinyPalette = gMonShinyPalette_Ambipom,
-        .iconSprite = gMonIcon_Ambipom,
-        .iconPalIndex = 2,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_AmbipomF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(64, 64),
-        .backPicFemale = gMonBackPic_AmbipomF,
-        .backPicSizeFemale = MON_COORDS_SIZE(64, 64),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 13, SHADOW_SIZE_S)
-        FOOTPRINT(Ambipom)
-        OVERWORLD(
-            sPicTable_Ambipom,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Ambipom,
-            gShinyOverworldPalette_Ambipom
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_AmbipomF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sAmbipomLevelUpLearnset,
-        .teachableLearnset = sAmbipomTeachableLearnset,
-    },
-#endif //P_GEN_4_CROSS_EVOS
-#endif //P_FAMILY_AIPOM
-
-#if P_FAMILY_SUNKERN
-    [SPECIES_SUNKERN] =
-    {
-        .baseHP        = 30,
-        .baseAttack    = 30,
-        .baseDefense   = 30,
-        .baseSpeed     = 30,
-        .baseSpAttack  = 30,
-        .baseSpDefense = 30,
-        .types = MON_TYPES(TYPE_GRASS),
-        .catchRate = 235,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 36 : 52,
-        .evYield_SpAttack = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_GRASS),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_SOLAR_POWER, ABILITY_EARLY_BIRD },
-    #else
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_NONE, ABILITY_EARLY_BIRD },
-    #endif
-        .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("SUNKERN"),
-        .cryId = CRY_SUNKERN,
-        .natDexNum = NATIONAL_DEX_SUNKERN,
-        .categoryName = _("Seed"),
-        .height = 3,
-        .weight = 18,
-        .description = COMPOUND_STRING(
-            "Sunkern try to minimize movement to\n"
-            "conserve the nutrients they have stored\n"
-            "in their bodies for evolution. They will\n"
-            "not eat, subsisting only on morning dew."),
-        .pokemonScale = 541,
-        .pokemonOffset = 0,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Sunkern,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 32) : MON_COORDS_SIZE(32, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 16 : 17,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 8),
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 8),
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 8),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_JUMPS_SMALL : ANIM_H_JUMPS,
-        .backPic = gMonBackPic_Sunkern,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 48) : MON_COORDS_SIZE(48, 48),
-        .backPicYOffset = 10,
-        .backAnimId = BACK_ANIM_DIP_RIGHT_SIDE,
-        .palette = gMonPalette_Sunkern,
-        .shinyPalette = gMonShinyPalette_Sunkern,
-        .iconSprite = gMonIcon_Sunkern,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(-1, -4, SHADOW_SIZE_S)
-        FOOTPRINT(Sunkern)
-        OVERWORLD(
-            sPicTable_Sunkern,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_SPOT,
-            sAnimTable_Following,
-            gOverworldPalette_Sunkern,
-            gShinyOverworldPalette_Sunkern
-        )
-        .levelUpLearnset = sSunkernLevelUpLearnset,
-        .teachableLearnset = sSunkernTeachableLearnset,
-        .eggMoveLearnset = sSunkernEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_ITEM, ITEM_SUN_STONE, SPECIES_SUNFLORA}),
-    },
-
-    [SPECIES_SUNFLORA] =
-    {
-        .baseHP        = 75,
-        .baseAttack    = 75,
-        .baseDefense   = 55,
-        .baseSpeed     = 30,
-        .baseSpAttack  = 105,
-        .baseSpDefense = 85,
-        .types = MON_TYPES(TYPE_GRASS),
-        .catchRate = 120,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 149 : 146,
-        .evYield_SpAttack = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_GRASS),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_SOLAR_POWER, ABILITY_EARLY_BIRD },
-    #else
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_NONE, ABILITY_EARLY_BIRD },
-    #endif
-        .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("SUNFLORA"),
-        .cryId = CRY_SUNFLORA,
-        .natDexNum = NATIONAL_DEX_SUNFLORA,
-        .categoryName = _("Sun"),
-        .height = 8,
-        .weight = 85,
-        .description = COMPOUND_STRING(
-            "Sunflora convert solar energy into\n"
-            "nutrition. They are highly active in the\n"
-            "warm daytime but suddenly stop moving as\n"
-            "soon as the sun sets."),
-        .pokemonScale = 444,
-        .pokemonOffset = 15,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Sunflora,
-        .frontPicSize = MON_COORDS_SIZE(40, 48),
-        .frontPicYOffset = 8,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Sunflora,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 7,
-        .backAnimId = BACK_ANIM_H_SLIDE,
-        .palette = gMonPalette_Sunflora,
-        .shinyPalette = gMonShinyPalette_Sunflora,
-        .iconSprite = gMonIcon_Sunflora,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 6, SHADOW_SIZE_S)
-        FOOTPRINT(Sunflora)
-        OVERWORLD(
-            sPicTable_Sunflora,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Sunflora,
-            gShinyOverworldPalette_Sunflora
-        )
-        .levelUpLearnset = sSunfloraLevelUpLearnset,
-        .teachableLearnset = sSunfloraTeachableLearnset,
-    },
-#endif //P_FAMILY_SUNKERN
-
-#if P_FAMILY_YANMA
-    [SPECIES_YANMA] =
-    {
-        .baseHP        = 65,
-        .baseAttack    = 65,
-        .baseDefense   = 45,
-        .baseSpeed     = 95,
-        .baseSpAttack  = 75,
-        .baseSpDefense = 45,
-        .types = MON_TYPES(TYPE_BUG, TYPE_FLYING),
-        .catchRate = 75,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 78 : 147,
-        .evYield_Speed = (P_UPDATED_EVS >= GEN_4) ? 1 : 2,
-        .itemRare = ITEM_WIDE_LENS,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-        .abilities = { ABILITY_SPEED_BOOST, ABILITY_COMPOUND_EYES, ABILITY_FRISK },
-        .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("YANMA"),
-        .cryId = CRY_YANMA,
-        .natDexNum = NATIONAL_DEX_YANMA,
-        .categoryName = _("Clear Wing"),
-        .height = 12,
-        .weight = 380,
-        .description = COMPOUND_STRING(
-            "It can see 360 degrees without moving\n"
-            "its eyes. It is a great flier capable of\n"
-            "making sudden stops and turning midair to\n"
-            "quickly chase down targeted prey."),
-        .pokemonScale = 274,
-        .pokemonOffset = -1,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Yanma,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 48) : MON_COORDS_SIZE(64, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 14,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 2),
-            ANIMCMD_FRAME(0, 2),
-            ANIMCMD_FRAME(1, 2),
-            ANIMCMD_FRAME(0, 2),
-            ANIMCMD_FRAME(1, 2),
-            ANIMCMD_FRAME(0, 2),
-            ANIMCMD_FRAME(1, 2),
-            ANIMCMD_FRAME(0, 2),
-            ANIMCMD_FRAME(1, 2),
-            ANIMCMD_FRAME(0, 20),
-            ANIMCMD_FRAME(1, 2),
-            ANIMCMD_FRAME(0, 2),
-            ANIMCMD_FRAME(1, 2),
-            ANIMCMD_FRAME(0, 2),
-            ANIMCMD_FRAME(1, 2),
-            ANIMCMD_FRAME(0, 2),
-            ANIMCMD_FRAME(1, 2),
-            ANIMCMD_FRAME(0, 2),
-            ANIMCMD_FRAME(1, 2),
-            ANIMCMD_FRAME(0, 2),
-            ANIMCMD_FRAME(1, 2),
-            ANIMCMD_FRAME(0, 2),
-        ),
-        .frontAnimId = ANIM_FIGURE_8,
-        .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 8 : 13,
-        .backPic = gMonBackPic_Yanma,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 0,
-        .backAnimId = BACK_ANIM_CONVEX_DOUBLE_ARC,
-        .palette = gMonPalette_Yanma,
-        .shinyPalette = gMonShinyPalette_Yanma,
-        .iconSprite = gMonIcon_Yanma,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-2, 10, SHADOW_SIZE_S)
-        FOOTPRINT(Yanma)
-        OVERWORLD(
-            sPicTable_Yanma,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_NONE,
-            sAnimTable_Following,
-            gOverworldPalette_Yanma,
-            gShinyOverworldPalette_Yanma
-        )
-        .levelUpLearnset = sYanmaLevelUpLearnset,
-        .teachableLearnset = sYanmaTeachableLearnset,
-        .eggMoveLearnset = sYanmaEggMoveLearnset,
-    #if P_GEN_4_CROSS_EVOS
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_YANMEGA, CONDITIONS({IF_KNOWS_MOVE, MOVE_ANCIENT_POWER})}),
-    #endif
-    },
-
-#if P_GEN_4_CROSS_EVOS
-    [SPECIES_YANMEGA] =
-    {
-        .baseHP        = 86,
-        .baseAttack    = 76,
-        .baseDefense   = 86,
-        .baseSpeed     = 95,
-        .baseSpAttack  = 116,
-        .baseSpDefense = 56,
-        .types = MON_TYPES(TYPE_BUG, TYPE_FLYING),
-        .catchRate = 30,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 180 : 198,
-        .evYield_Attack = 2,
-        .itemRare = ITEM_WIDE_LENS,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-        .abilities = { ABILITY_SPEED_BOOST, ABILITY_TINTED_LENS, ABILITY_FRISK },
-        .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("YANMEGA"),
-        .cryId = CRY_YANMEGA,
-        .natDexNum = NATIONAL_DEX_YANMEGA,
-        .categoryName = _("Ogre Darner"),
-        .height = 19,
-        .weight = 515,
-        .description = COMPOUND_STRING(
-            "This six-legged PokÃ©mon is easily capable\n"
-            "of transporting an adult in flight. It is\n"
-            "adept at biting apart foes while flying\n"
-            "by at high speed."),
-        .pokemonScale = 256,
-        .pokemonOffset = 1,
-        .trainerScale = 326,
-        .trainerOffset = 4,
-        .frontPic = gMonFrontPic_Yanmega,
-        .frontPicSize = MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = 5,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 3),
-            ANIMCMD_FRAME(0, 3),
-            ANIMCMD_FRAME(1, 3),
-            ANIMCMD_FRAME(0, 3),
-            ANIMCMD_FRAME(1, 3),
-            ANIMCMD_FRAME(0, 3),
-            ANIMCMD_FRAME(1, 3),
-            ANIMCMD_FRAME(0, 3),
-            ANIMCMD_FRAME(1, 3),
-            ANIMCMD_FRAME(0, 3),
-            ANIMCMD_FRAME(1, 3),
-            ANIMCMD_FRAME(0, 3),
-            ANIMCMD_FRAME(1, 3),
-            ANIMCMD_FRAME(0, 3),
-            ANIMCMD_FRAME(1, 3),
-            ANIMCMD_FRAME(0, 3),
-            ANIMCMD_FRAME(1, 3),
-            ANIMCMD_FRAME(0, 3),
-            ANIMCMD_FRAME(1, 3),
-            ANIMCMD_FRAME(0, 3),
-            ANIMCMD_FRAME(1, 3),
-            ANIMCMD_FRAME(0, 3),
-            ANIMCMD_FRAME(1, 3),
-            ANIMCMD_FRAME(0, 3),
-            ANIMCMD_FRAME(1, 3),
-            ANIMCMD_FRAME(0, 3),
-        ),
-        .frontAnimId = ANIM_H_VIBRATE,
-        .enemyMonElevation = 6,
-        .backPic = gMonBackPic_Yanmega,
-        .backPicSize = MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = 6,
-        .backAnimId = BACK_ANIM_H_VIBRATE,
-        .palette = gMonPalette_Yanmega,
-        .shinyPalette = gMonShinyPalette_Yanmega,
-        .iconSprite = gMonIcon_Yanmega,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 12, SHADOW_SIZE_M)
-        FOOTPRINT(Yanmega)
-        OVERWORLD(
-            sPicTable_Yanmega,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Yanmega,
-            gShinyOverworldPalette_Yanmega
-        )
-        .levelUpLearnset = sYanmegaLevelUpLearnset,
-        .teachableLearnset = sYanmegaTeachableLearnset,
-    },
-#endif //P_GEN_4_CROSS_EVOS
-#endif //P_FAMILY_YANMA
-
-#if P_FAMILY_WOOPER
-    [SPECIES_WOOPER] =
-    {
-        .baseHP        = 55,
-        .baseAttack    = 45,
-        .baseDefense   = 45,
-        .baseSpeed     = 15,
-        .baseSpAttack  = 25,
-        .baseSpDefense = 25,
-        .types = MON_TYPES(TYPE_WATER, TYPE_GROUND),
-        .catchRate = 255,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 42 : 52,
-        .evYield_HP = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_FIELD),
-        .abilities = { ABILITY_DAMP, ABILITY_WATER_ABSORB, ABILITY_UNAWARE },
-        .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("WOOPER"),
-        .cryId = CRY_WOOPER,
-        .natDexNum = NATIONAL_DEX_WOOPER,
-        .categoryName = _("Water Fish"),
-        .height = 4,
-        .weight = 85,
-        .description = COMPOUND_STRING(
-            "Wooper usually live in water but come\n"
-            "out onto land seeking food occasionally.\n"
-            "On land, they coat their bodies with a\n"
-            "gooey, toxic film."),
-        .pokemonScale = 479,
-        .pokemonOffset = 21,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Wooper,
-        .frontPicSize = MON_COORDS_SIZE(40, 32),
-        .frontPicYOffset = 16,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Wooper,
-        .backPicSize = MON_COORDS_SIZE(64, 40),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 12,
-        .backAnimId = BACK_ANIM_V_STRETCH,
-        .palette = gMonPalette_Wooper,
-        .shinyPalette = gMonShinyPalette_Wooper,
-        .iconSprite = gMonIcon_Wooper,
-        .iconPalIndex = 0,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_WooperF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(40, 32),
-        .backPicFemale = gMonBackPic_WooperF,
-        .backPicSizeFemale = MON_COORDS_SIZE(64, 40),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(1, -2, SHADOW_SIZE_S)
-        FOOTPRINT(Wooper)
-        OVERWORLD(
-            sPicTable_Wooper,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Wooper,
-            gShinyOverworldPalette_Wooper
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_WooperF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sWooperLevelUpLearnset,
-        .teachableLearnset = sWooperTeachableLearnset,
-        .eggMoveLearnset = sWooperEggMoveLearnset,
-        .formSpeciesIdTable = sWooperFormSpeciesIdTable,
-        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_QUAGSIRE}),
-    },
-
-    [SPECIES_QUAGSIRE] =
-    {
-        .baseHP        = 95,
-        .baseAttack    = 85,
-        .baseDefense   = 85,
-        .baseSpeed     = 35,
-        .baseSpAttack  = 65,
-        .baseSpDefense = 65,
-        .types = MON_TYPES(TYPE_WATER, TYPE_GROUND),
-        .catchRate = 90,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 151 : 137,
-        .evYield_HP = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_FIELD),
-        .abilities = { ABILITY_DAMP, ABILITY_WATER_ABSORB, ABILITY_UNAWARE },
-        .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("QUAGSIRE"),
-        .cryId = CRY_QUAGSIRE,
-        .natDexNum = NATIONAL_DEX_QUAGSIRE,
-        .categoryName = _("Water Fish"),
-        .height = 14,
-        .weight = 750,
-        .description = COMPOUND_STRING(
-            "A Quagsire hunts by leaving its mouth wide\n"
-            "open in water and waiting for its prey to\n"
-            "blunder in. Because it doesn't move, it\n"
-            "does not get very hungry."),
-        .pokemonScale = 256,
-        .pokemonOffset = 4,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Quagsire,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 5,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 32),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_H_STRETCH,
-        .backPic = gMonBackPic_Quagsire,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 5,
-        .backAnimId = BACK_ANIM_H_SLIDE,
-        .palette = gMonPalette_Quagsire,
-        .shinyPalette = gMonShinyPalette_Quagsire,
-        .iconSprite = gMonIcon_Quagsire,
-        .iconPalIndex = 0,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_QuagsireF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(64, 56),
-        .backPicFemale = gMonBackPic_QuagsireF,
-        .backPicSizeFemale = MON_COORDS_SIZE(64, 56),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 8, SHADOW_SIZE_M)
-        FOOTPRINT(Quagsire)
-        OVERWORLD(
-            sPicTable_Quagsire,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Quagsire,
-            gShinyOverworldPalette_Quagsire
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_QuagsireF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sQuagsireLevelUpLearnset,
-        .teachableLearnset = sQuagsireTeachableLearnset,
-    },
-
-#if P_PALDEAN_FORMS
-    [SPECIES_WOOPER_PALDEA] =
-    {
-        .baseHP        = 55,
-        .baseAttack    = 45,
-        .baseDefense   = 45,
-        .baseSpeed     = 15,
-        .baseSpAttack  = 25,
-        .baseSpDefense = 25,
-        .types = MON_TYPES(TYPE_POISON, TYPE_GROUND),
-        .catchRate = 255,
-        .expYield = 42,
-        .evYield_HP = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_FIELD),
-        .abilities = { ABILITY_POISON_POINT, ABILITY_WATER_ABSORB, ABILITY_UNAWARE },
-        .bodyColor = BODY_COLOR_BROWN,
-#if P_SEPARATE_REGIONAL_FORMS
-        .speciesName = _("WOOPER-P"),
-#else
-        .speciesName = _("WOOPER"),
-#endif
-        .cryId = CRY_WOOPER,
-#if P_SEPARATE_REGIONAL_FORMS
-        .natDexNum = NATIONAL_DEX_WOOPER_PALDEA,
-#else
-        .natDexNum = NATIONAL_DEX_WOOPER,
-#endif
-        .categoryName = _("Poison Fish"),
-        .height = 4,
-        .weight = 110,
-        .description = COMPOUND_STRING(
-            "After losing a territorial struggle,\n"
-            "Wooper began living on land.\n"
-            "The PokÃ©mon changed over time, developing\n"
-            "a poisonous film to protect its body."),
-        .pokemonScale = 479,
-        .pokemonOffset = 21,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_WooperPaldea,
-        .frontPicSize = MON_COORDS_SIZE(40, 32),
-        .frontPicYOffset = 16,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_WooperPaldea,
-        .backPicSize = MON_COORDS_SIZE(64, 40),
-        .backPicYOffset = 12,
-        .backAnimId = BACK_ANIM_V_STRETCH,
-        .palette = gMonPalette_WooperPaldea,
-        .shinyPalette = gMonShinyPalette_WooperPaldea,
-        .iconSprite = gMonIcon_WooperPaldea,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(-1, -2, SHADOW_SIZE_S)
-        FOOTPRINT(Wooper)
-        OVERWORLD(
-            sPicTable_WooperPaldea,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_WooperPaldea,
-            gShinyOverworldPalette_WooperPaldea
-        )
-        .isPaldeanForm = TRUE,
-        .dexNotRequired = TRUE,
-        .levelUpLearnset = sWooperPaldeaLevelUpLearnset,
-        .teachableLearnset = sWooperPaldeaTeachableLearnset,
-        .eggMoveLearnset = sWooperPaldeaEggMoveLearnset,
-#if P_SEPARATE_REGIONAL_FORMS
-        .formSpeciesIdTable = sWooperPaldeaFormSpeciesIdTable,
-#else
-        .formSpeciesIdTable = sWooperFormSpeciesIdTable,
-#endif
-        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_CLODSIRE}),
-    },
-
-    [SPECIES_CLODSIRE] =
-    {
-        .dexNotRequired = TRUE,
-        .baseHP        = 130,
-        .baseAttack    = 75,
-        .baseDefense   = 60,
-        .baseSpeed     = 20,
-        .baseSpAttack  = 45,
-        .baseSpDefense = 100,
-        .types = MON_TYPES(TYPE_POISON, TYPE_GROUND),
-        .catchRate = 90,
-        .expYield = 151,
-        .evYield_HP = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_FIELD),
-        .abilities = { ABILITY_POISON_POINT, ABILITY_WATER_ABSORB, ABILITY_UNAWARE },
-        .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("CLODSIRE"),
-        .cryId = CRY_CLODSIRE,
-        .natDexNum = NATIONAL_DEX_CLODSIRE,
-        .categoryName = _("Spiny Fish"),
-        .height = 18,
-        .weight = 2230,
-        .description = COMPOUND_STRING(
-            "When attacked, this PokÃ©mon will\n"
-            "retaliate by sticking thick spines out\n"
-            "from its body. It's a risky move\n"
-            "that puts everything on the line."),
-        .pokemonScale = 356,
-        .pokemonOffset = 17,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Clodsire,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 8,
-        .frontAnimFrames = sAnims_TwoFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Clodsire,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 15,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Clodsire,
-        .shinyPalette = gMonShinyPalette_Clodsire,
-        .iconSprite = gMonIcon_Clodsire,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-2, 3, SHADOW_SIZE_L)
-        FOOTPRINT(Clodsire)
-        OVERWORLD(
-            sPicTable_Clodsire,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Clodsire,
-            gShinyOverworldPalette_Clodsire
-        )
-        .levelUpLearnset = sClodsireLevelUpLearnset,
-        .teachableLearnset = sClodsireTeachableLearnset,
-    },
-#endif //P_PALDEAN_FORMS
-#endif //P_FAMILY_WOOPER
-
-#if P_FAMILY_MURKROW
-    [SPECIES_MURKROW] =
-    {
-        .baseHP        = 60,
-        .baseAttack    = 85,
-        .baseDefense   = 42,
-        .baseSpeed     = 91,
-        .baseSpAttack  = 85,
-        .baseSpDefense = 42,
-        .types = MON_TYPES(TYPE_DARK, TYPE_FLYING),
-        .catchRate = 30,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 81 : 107,
-        .evYield_Speed = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = 35,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_INSOMNIA, ABILITY_SUPER_LUCK, ABILITY_PRANKSTER },
-    #else
-        .abilities = { ABILITY_INSOMNIA, ABILITY_NONE, ABILITY_PRANKSTER },
-    #endif
-        .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("MURKROW"),
-        .cryId = CRY_MURKROW,
-        .natDexNum = NATIONAL_DEX_MURKROW,
-        .categoryName = _("Darkness"),
-        .height = 5,
-        .weight = 21,
-        .description = COMPOUND_STRING(
-            "Murkrow were feared as the alleged\n"
-            "bearers of ill fortune. It shows strong\n"
-            "interest in anything that sparkles. It will\n"
-            "even try to steal rings from women."),
-        .pokemonScale = 401,
-        .pokemonOffset = -8,
-        .trainerScale = 256,
-        .trainerOffset = 1,
-        .frontPic = gMonFrontPic_Murkrow,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(48, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 15,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 0 : 12,
-        .backPic = gMonBackPic_Murkrow,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(40, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 10,
-        .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
-        .palette = gMonPalette_Murkrow,
-        .shinyPalette = gMonShinyPalette_Murkrow,
-        .iconSprite = gMonIcon_Murkrow,
-        .iconPalIndex = 2,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_MurkrowF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(48, 40),
-        .backPicFemale = gMonBackPic_MurkrowF,
-        .backPicSizeFemale = MON_COORDS_SIZE(40, 56),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-2, 8, SHADOW_SIZE_S)
-        FOOTPRINT(Murkrow)
-        OVERWORLD(
-            sPicTable_Murkrow,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Murkrow,
-            gShinyOverworldPalette_Murkrow
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_MurkrowF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .isSkyBattleBanned = B_SKY_BATTLE_STRICT_ELIGIBILITY,
-        .levelUpLearnset = sMurkrowLevelUpLearnset,
-        .teachableLearnset = sMurkrowTeachableLearnset,
-        .eggMoveLearnset = sMurkrowEggMoveLearnset,
-    #if P_GEN_4_CROSS_EVOS
-        .evolutions = EVOLUTION({EVO_ITEM, ITEM_DUSK_STONE, SPECIES_HONCHKROW}),
-    #endif
-    },
-
-#if P_GEN_4_CROSS_EVOS
-    [SPECIES_HONCHKROW] =
-    {
-        .baseHP        = 100,
-        .baseAttack    = 125,
-        .baseDefense   = 52,
-        .baseSpeed     = 71,
-        .baseSpAttack  = 105,
-        .baseSpDefense = 52,
-        .types = MON_TYPES(TYPE_DARK, TYPE_FLYING),
-        .catchRate = 30,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 177 : 187,
-        .evYield_Attack = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = 35,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
-        .abilities = { ABILITY_INSOMNIA, ABILITY_SUPER_LUCK, ABILITY_MOXIE },
-        .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("HONCHKROW"),
-        .cryId = CRY_HONCHKROW,
-        .natDexNum = NATIONAL_DEX_HONCHKROW,
-        .categoryName = _("Big Boss"),
-        .height = 9,
-        .weight = 273,
-        .description = COMPOUND_STRING(
-            "Becoming active at night, it is known\n"
-            "to swarm with numerous Murkrow in tow.\n"
-            "It is said that it never forgives the\n"
-            "mistakes of its cronies."),
-        .pokemonScale = 338,
-        .pokemonOffset = 8,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Honchkrow,
-        .frontPicSize = MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = 6,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 21),
-            ANIMCMD_FRAME(1, 45),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE_SLOW,
-        .backPic = gMonBackPic_Honchkrow,
-        .backPicSize = MON_COORDS_SIZE(64, 48),
-        .backPicYOffset = 8,
-        .backAnimId = BACK_ANIM_H_STRETCH,
-        .palette = gMonPalette_Honchkrow,
-        .shinyPalette = gMonShinyPalette_Honchkrow,
-        .iconSprite = gMonIcon_Honchkrow,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(5, 7, SHADOW_SIZE_M)
-        FOOTPRINT(Honchkrow)
-        OVERWORLD(
-            sPicTable_Honchkrow,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Honchkrow,
-            gShinyOverworldPalette_Honchkrow
-        )
-        .levelUpLearnset = sHonchkrowLevelUpLearnset,
-        .teachableLearnset = sHonchkrowTeachableLearnset,
-    },
-#endif //P_GEN_4_CROSS_EVOS
-#endif //P_FAMILY_MURKROW
-
-#if P_FAMILY_MISDREAVUS
-    [SPECIES_MISDREAVUS] =
-    {
-        .baseHP        = 60,
-        .baseAttack    = 60,
-        .baseDefense   = 60,
-        .baseSpeed     = 85,
-        .baseSpAttack  = 85,
-        .baseSpDefense = 85,
-        .types = MON_TYPES(TYPE_GHOST),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 87 : 147,
-        .evYield_SpAttack = (P_UPDATED_EVS >= GEN_4) ? 0 : 1,
-        .evYield_SpDefense = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 25,
-        .friendship = 35,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
-        .bodyColor = BODY_COLOR_GRAY,
-        .speciesName = _("MISDREAVUS"),
-        .cryId = CRY_MISDREAVUS,
-        .natDexNum = NATIONAL_DEX_MISDREAVUS,
-        .categoryName = _("Screech"),
-        .height = 7,
-        .weight = 10,
-        .description = COMPOUND_STRING(
-            "A Misdreavus frightens people with a\n"
-            "creepy, sobbing cry. It apparently uses\n"
-            "its red spheres to absorb the fear of foes\n"
-            "as its nutrition."),
-        .pokemonScale = 407,
-        .pokemonOffset = -8,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Misdreavus,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 13,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_V_SLIDE_WOBBLE,
-        .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 8 : 12,
-        .backPic = gMonBackPic_Misdreavus,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 48),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 9,
-        .backAnimId = BACK_ANIM_H_VIBRATE,
-        .palette = gMonPalette_Misdreavus,
-        .shinyPalette = gMonShinyPalette_Misdreavus,
-        .iconSprite = gMonIcon_Misdreavus,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 10, SHADOW_SIZE_S)
-        FOOTPRINT(Misdreavus)
-        OVERWORLD(
-            sPicTable_Misdreavus,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_NONE,
-            sAnimTable_Following,
-            gOverworldPalette_Misdreavus,
-            gShinyOverworldPalette_Misdreavus
-        )
-        .levelUpLearnset = sMisdreavusLevelUpLearnset,
-        .teachableLearnset = sMisdreavusTeachableLearnset,
-        .eggMoveLearnset = sMisdreavusEggMoveLearnset,
-    #if P_GEN_4_CROSS_EVOS
-        .evolutions = EVOLUTION({EVO_ITEM, ITEM_DUSK_STONE, SPECIES_MISMAGIUS}),
-    #endif
-    },
-
-#if P_GEN_4_CROSS_EVOS
-    [SPECIES_MISMAGIUS] =
-    {
-        .baseHP        = 60,
-        .baseAttack    = 60,
-        .baseDefense   = 60,
-        .baseSpeed     = 105,
-        .baseSpAttack  = 105,
-        .baseSpDefense = 105,
-        .types = MON_TYPES(TYPE_GHOST),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 173 : 187,
-        .evYield_SpAttack = 1,
-        .evYield_SpDefense = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 25,
-        .friendship = 35,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
-        .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("MISMAGIUS"),
-        .cryId = CRY_MISMAGIUS,
-        .natDexNum = NATIONAL_DEX_MISMAGIUS,
-        .categoryName = _("Magical"),
-        .height = 9,
-        .weight = 44,
-        .description = COMPOUND_STRING(
-            "Its cries sound like incantations.\n"
-            "Those hearing it are tormented by\n"
-            "headaches and hallucinations.\n"
-            "It appears where you least expect it."),
-        .pokemonScale = 338,
-        .pokemonOffset = 8,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Mismagius,
-        .frontPicSize = MON_COORDS_SIZE(56, 64),
-        .frontPicYOffset = 3,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_H_SLIDE_WOBBLE,
-        .enemyMonElevation = 3,
-        .backPic = gMonBackPic_Mismagius,
-        .backPicSize = MON_COORDS_SIZE(56, 64),
-        .backPicYOffset = 3,
-        .backAnimId = BACK_ANIM_CONVEX_DOUBLE_ARC,
-        .palette = gMonPalette_Mismagius,
-        .shinyPalette = gMonShinyPalette_Mismagius,
-        .iconSprite = gMonIcon_Mismagius,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 11, SHADOW_SIZE_M)
-        FOOTPRINT(Mismagius)
-        OVERWORLD(
-            sPicTable_Mismagius,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Mismagius,
-            gShinyOverworldPalette_Mismagius
-        )
-        .levelUpLearnset = sMismagiusLevelUpLearnset,
-        .teachableLearnset = sMismagiusTeachableLearnset,
-    },
-#endif //P_GEN_4_CROSS_EVOS
-#endif //P_FAMILY_MISDREAVUS
-
-#if P_FAMILY_UNOWN
-#define UNOWN_MISC_INFO(letter, _noFlip, frontWidth, frontHeight, backWidth, backHeight, backYOffset, rzMode)   \
-    {                                                                                                   \
-        .baseHP        = 48,                                                                            \
-        .baseAttack    = 72,                                                                            \
-        .baseDefense   = 48,                                                                            \
-        .baseSpeed     = 48,                                                                            \
-        .baseSpAttack  = 72,                                                                            \
-        .baseSpDefense = 48,                                                                            \
-        .types = MON_TYPES(TYPE_PSYCHIC),                                                               \
-        .catchRate = 225,                                                                               \
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 118 : 61,                                         \
-        .evYield_Attack = 1,                                                                            \
-        .evYield_SpAttack = 1,                                                                          \
-        .genderRatio = MON_GENDERLESS,                                                                  \
-        .eggCycles = 40,                                                                                \
-        .friendship = STANDARD_FRIENDSHIP,                                                              \
-        .growthRate = GROWTH_MEDIUM_FAST,                                                               \
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),                                      \
-        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },                                  \
-        .bodyColor = BODY_COLOR_BLACK,                                                                  \
-        .noFlip = _noFlip,                                                                              \
-        .speciesName = _("UNOWN"),                                                                      \
-        .cryId = CRY_UNOWN,                                                                             \
-        .natDexNum = NATIONAL_DEX_UNOWN,                                                                \
-        .categoryName = _("Symbol"),                                                                    \
-        .height = 5,                                                                                    \
-        .weight = 50,                                                                                   \
-        .description = gUnownPokedexText,                                                               \
-        .pokemonScale = 411,                                                                            \
-        .pokemonOffset = 2,                                                                             \
-        .trainerScale = 256,                                                                            \
-        .trainerOffset = 0,                                                                             \
-        .frontPic = gMonFrontPic_Unown ##letter,                                                        \
-        .frontPicSize = MON_COORDS_SIZE(frontWidth, frontHeight),                                       \
-        .frontPicYOffset = 16,                                                                          \
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,                                               \
-        .frontAnimId = ANIM_ZIGZAG_FAST,                                                                \
-        .enemyMonElevation = 8,                                                                         \
-        .backPic = gMonBackPic_Unown ##letter,                                                          \
-        .backPicSize = MON_COORDS_SIZE(backWidth, backHeight),                                          \
-        .backPicYOffset = backYOffset,                                                                  \
-        .backAnimId = BACK_ANIM_SHRINK_GROW_VIBRATE,                                                    \
-        .palette = gMonPalette_Unown,                                                                   \
-        .shinyPalette = gMonShinyPalette_Unown,                                                         \
-        .iconSprite = gMonIcon_Unown ##letter,                                                          \
-        .iconPalIndex = 0,                                                                              \
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,                                                         \
-        SHADOW(0, 3, SHADOW_SIZE_S)                                                                     \
-        FOOTPRINT(Unown)                                                                                \
-        OVERWORLD(                                                                                      \
-            sPicTable_Unown ##letter,                                                                   \
-            SIZE_32x32,                                                                                 \
-            SHADOW_SIZE_M,                                                                              \
-            TRACKS_NONE,                                                                                \
-            sAnimTable_Following,                                                                       \
-            gOverworldPalette_Unown,                                                                    \
-            gShinyOverworldPalette_Unown,                                                               \
-        )                                                                                               \
-        .teachingType = TM_ILLITERATE,                                                                  \
-        .levelUpLearnset = sUnownLevelUpLearnset,                                                       \
-        .teachableLearnset = sUnownTeachableLearnset,                                                   \
-        .formSpeciesIdTable = sUnownFormSpeciesIdTable,                                                 \
-        .randomizerMode = rzMode,                                                                       \
-    }
-
-    [SPECIES_UNOWN]             = UNOWN_MISC_INFO(A,           FALSE, 24, 40, 24, 48,  8,  MON_RANDOMIZER_RANDOM_FORM  ),
-    [SPECIES_UNOWN_B]           = UNOWN_MISC_INFO(B,           TRUE,  24, 32, 40, 48,  9,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_C]           = UNOWN_MISC_INFO(C,           TRUE,  32, 32, 48, 56,  6,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_D]           = UNOWN_MISC_INFO(D,           TRUE,  32, 32, 40, 48,  8,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_E]           = UNOWN_MISC_INFO(E,           TRUE,  32, 32, 40, 48, 10,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_F]           = UNOWN_MISC_INFO(F,           TRUE,  32, 32, 48, 48, 10,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_G]           = UNOWN_MISC_INFO(G,           TRUE,  24, 40, 40, 56,  5,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_H]           = UNOWN_MISC_INFO(H,           TRUE,  32, 32, 48, 48,  8,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_I]           = UNOWN_MISC_INFO(I,           FALSE, 24, 32, 24, 56,  7,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_J]           = UNOWN_MISC_INFO(J,           TRUE,  24, 32, 32, 48,  9,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_K]           = UNOWN_MISC_INFO(K,           TRUE,  32, 32, 40, 56,  7,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_L]           = UNOWN_MISC_INFO(L,           TRUE,  24, 32, 32, 48, 10,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_M]           = UNOWN_MISC_INFO(M,           FALSE, 32, 32, 48, 40, 13,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_N]           = UNOWN_MISC_INFO(N,           TRUE,  32, 24, 48, 40, 13,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_O]           = UNOWN_MISC_INFO(O,           FALSE, 32, 32, 48, 48,  8,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_P]           = UNOWN_MISC_INFO(P,           TRUE,  24, 32, 32, 48, 10,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_Q]           = UNOWN_MISC_INFO(Q,           TRUE,  32, 24, 40, 40, 15,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_R]           = UNOWN_MISC_INFO(R,           TRUE,  24, 32, 32, 40, 12,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_S]           = UNOWN_MISC_INFO(S,           TRUE,  32, 40, 40, 56,  4,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_T]           = UNOWN_MISC_INFO(T,           FALSE, 24, 32, 32, 40, 13,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_U]           = UNOWN_MISC_INFO(U,           FALSE, 32, 32, 48, 40, 13,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_V]           = UNOWN_MISC_INFO(V,           TRUE,  32, 32, 40, 48, 11,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_W]           = UNOWN_MISC_INFO(W,           FALSE, 32, 32, 40, 40, 13,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_X]           = UNOWN_MISC_INFO(X,           FALSE, 24, 24, 40, 40, 15,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_Y]           = UNOWN_MISC_INFO(Y,           FALSE, 24, 32, 32, 48, 10,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_Z]           = UNOWN_MISC_INFO(Z,           TRUE,  24, 32, 32, 48, 10,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_EXCLAMATION] = UNOWN_MISC_INFO(Exclamation, FALSE, 24, 40, 24, 56,  6,  MON_RANDOMIZER_INVALID ),
-    [SPECIES_UNOWN_QUESTION]    = UNOWN_MISC_INFO(Question,    TRUE,  24, 40, 32, 56,  6,  MON_RANDOMIZER_INVALID ),
-#endif //P_FAMILY_UNOWN
-
-#if P_FAMILY_WOBBUFFET
-#if P_GEN_3_CROSS_EVOS
-    [SPECIES_WYNAUT] =
-    {
-        .baseHP        = 95,
-        .baseAttack    = 23,
-        .baseDefense   = 48,
-        .baseSpeed     = 23,
-        .baseSpAttack  = 23,
-        .baseSpDefense = 48,
-        .types = MON_TYPES(TYPE_PSYCHIC),
-        .catchRate = 125,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 52 : 44,
-        .evYield_HP = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_SHADOW_TAG, ABILITY_NONE, ABILITY_TELEPATHY },
-        .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("WYNAUT"),
-        .cryId = CRY_WYNAUT,
-        .natDexNum = NATIONAL_DEX_WYNAUT,
-        .categoryName = _("Bright"),
-        .height = 6,
-        .weight = 140,
-        .description = COMPOUND_STRING(
-            "A Wynaut loves to eat sweet fruits.\n"
-            "It cleverly picks fruits using its earlike\n"
-            "arms. They gather in fruit gardens, drawn\n"
-            "by the fragrance."),
-        .pokemonScale = 484,
-        .pokemonOffset = 19,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Wynaut,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(48, 40),
-        .frontPicYOffset = 12,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_H_JUMPS_V_STRETCH,
-        .frontAnimDelay = 15,
-        .backPic = gMonBackPic_Wynaut,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(48, 48),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 11,
-        .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
-        .palette = gMonPalette_Wynaut,
-        .shinyPalette = gMonShinyPalette_Wynaut,
-        .iconSprite = gMonIcon_Wynaut,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NORMAL,
-        SHADOW(-1, 2, SHADOW_SIZE_S)
-        FOOTPRINT(Wynaut)
-        OVERWORLD(
-            sPicTable_Wynaut,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Wynaut,
-            gShinyOverworldPalette_Wynaut
-        )
-        .teachingType = TM_ILLITERATE,
-        .levelUpLearnset = sWynautLevelUpLearnset,
-        .teachableLearnset = sWynautTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 15, SPECIES_WOBBUFFET}),
-    },
-#endif //P_GEN_3_CROSS_EVOS
-
-    [SPECIES_WOBBUFFET] =
-    {
-        .baseHP        = 190,
-        .baseAttack    = 33,
-        .baseDefense   = 58,
-        .baseSpeed     = 33,
-        .baseSpAttack  = 33,
-        .baseSpDefense = 58,
-        .types = MON_TYPES(TYPE_PSYCHIC),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 142 : 177,
-        .evYield_HP = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_SHADOW_TAG, ABILITY_NONE, ABILITY_TELEPATHY },
-        .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("WOBBUFFET"),
-        .cryId = CRY_WOBBUFFET,
-        .natDexNum = NATIONAL_DEX_WOBBUFFET,
-        .categoryName = _("Patient"),
-        .height = 13,
-        .weight = 285,
-        .description = COMPOUND_STRING(
-            "Usually docile, a Wobbuffet strikes back\n"
-            "ferociously if its black tail is attacked.\n"
-            "It makes its lair in caves where it waits\n"
-            "for nightfall."),
-        .pokemonScale = 274,
-        .pokemonOffset = 4,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Wobbuffet,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 5,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_DEEP_V_SQUISH_AND_BOUNCE : ANIM_GROW_VIBRATE,
-        .backPic = gMonBackPic_Wobbuffet,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 40) : MON_COORDS_SIZE(56, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 10,
-        .backAnimId = BACK_ANIM_V_STRETCH,
-        .palette = gMonPalette_Wobbuffet,
-        .shinyPalette = gMonShinyPalette_Wobbuffet,
-        .iconSprite = gMonIcon_Wobbuffet,
-        .iconPalIndex = 0,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_WobbuffetF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(64, 56),
-        .backPicFemale = gMonBackPic_WobbuffetF,
-        .backPicSizeFemale = MON_COORDS_SIZE(56, 56),
-    #if P_CUSTOM_GENDER_DIFF_ICONS == TRUE
-        .iconSpriteFemale = gMonIcon_WobbuffetF,
-        .iconPalIndexFemale = 0,
-    #endif
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-3, 8, SHADOW_SIZE_M)
-        FOOTPRINT(Wobbuffet)
-        OVERWORLD(
-            sPicTable_Wobbuffet,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Wobbuffet,
-            gShinyOverworldPalette_Wobbuffet
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_WobbuffetF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .teachingType = TM_ILLITERATE,
-        .levelUpLearnset = sWobbuffetLevelUpLearnset,
-        .teachableLearnset = sWobbuffetTeachableLearnset,
-    },
-#endif //P_FAMILY_WOBBUFFET
-
-#if P_FAMILY_GIRAFARIG
-    [SPECIES_GIRAFARIG] =
-    {
-        .baseHP        = 70,
-        .baseAttack    = 80,
-        .baseDefense   = 65,
-        .baseSpeed     = 85,
-        .baseSpAttack  = 90,
-        .baseSpDefense = 65,
-        .types = MON_TYPES(TYPE_NORMAL, TYPE_PSYCHIC),
-        .catchRate = 60,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 159 : 149,
-        .evYield_SpAttack = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_INNER_FOCUS, ABILITY_EARLY_BIRD, ABILITY_SAP_SIPPER },
-        .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("GIRAFARIG"),
-        .cryId = CRY_GIRAFARIG,
-        .natDexNum = NATIONAL_DEX_GIRAFARIG,
-        .categoryName = _("Long Neck"),
-        .height = 15,
-        .weight = 415,
-        .description = COMPOUND_STRING(
-            "A Girafarig is an herbivore--it eats\n"
-            "grass and tree shoots. While it is eating,\n"
-            "its tail makes chewing and swallowing\n"
-            "motions as if it were also eating."),
-        .pokemonScale = 281,
-        .pokemonOffset = 1,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Girafarig,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 64) : MON_COORDS_SIZE(56, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 3 : 0,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 30),
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 30),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_JUMPS_BIG : ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Girafarig,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 1,
-        .backAnimId = BACK_ANIM_SHRINK_GROW_VIBRATE,
-        .palette = gMonPalette_Girafarig,
-        .shinyPalette = gMonShinyPalette_Girafarig,
-        .iconSprite = gMonIcon_Girafarig,
-        .iconPalIndex = 1,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_GirafarigF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(56, 64),
-        .backPicFemale = gMonBackPic_GirafarigF,
-        .backPicSizeFemale = MON_COORDS_SIZE(64, 64),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 13, SHADOW_SIZE_M)
-        FOOTPRINT(Girafarig)
-        OVERWORLD(
-            sPicTable_Girafarig,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Girafarig,
-            gShinyOverworldPalette_Girafarig
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_GirafarigF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sGirafarigLevelUpLearnset,
-        .teachableLearnset = sGirafarigTeachableLearnset,
-        .eggMoveLearnset = sGirafarigEggMoveLearnset,
-    #if P_GEN_9_CROSS_EVOS
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_FARIGIRAF, CONDITIONS({IF_KNOWS_MOVE, MOVE_TWIN_BEAM})}),
-    #endif
-    },
-
-#if P_GEN_9_CROSS_EVOS
-    [SPECIES_FARIGIRAF] =
-    {
-        .baseHP        = 120,
-        .baseAttack    = 90,
-        .baseDefense   = 70,
-        .baseSpeed     = 60,
-        .baseSpAttack  = 110,
-        .baseSpDefense = 70,
-        .types = MON_TYPES(TYPE_NORMAL, TYPE_PSYCHIC),
-        .catchRate = 45,
-        .expYield = 260,
-        .evYield_HP = 3,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_CUD_CHEW, ABILITY_ARMOR_TAIL, ABILITY_SAP_SIPPER },
-        .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("FARIGIRAF"),
-        .cryId = CRY_FARIGIRAF,
-        .natDexNum = NATIONAL_DEX_FARIGIRAF,
-        .categoryName = _("Long Neck"),
-        .height = 32,
-        .weight = 1600,
-        .description = COMPOUND_STRING(
-            "Now that the brain waves from the\n"
-            "head and tail are synced up, the\n"
-            "psychic power of this PokÃ©mon is 10\n"
-            "times stronger than Girafarig's."),
-        .pokemonScale = 356,
-        .pokemonOffset = 17,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Farigiraf,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Farigiraf,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 0,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Farigiraf,
-        .shinyPalette = gMonShinyPalette_Farigiraf,
-        .iconSprite = gMonIcon_Farigiraf,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(11, 13, SHADOW_SIZE_L)
-        FOOTPRINT(Farigiraf)
-        OVERWORLD(
-            sPicTable_Farigiraf,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Farigiraf,
-            gShinyOverworldPalette_Farigiraf
-        )
-        .levelUpLearnset = sFarigirafLevelUpLearnset,
-        .teachableLearnset = sFarigirafTeachableLearnset,
-    },
-#endif //P_GEN_9_CROSS_EVOS
-#endif //P_FAMILY_GIRAFARIG
-
-#if P_FAMILY_PINECO
-    [SPECIES_PINECO] =
-    {
-        .baseHP        = 50,
-        .baseAttack    = 65,
-        .baseDefense   = 90,
-        .baseSpeed     = 15,
-        .baseSpAttack  = 35,
-        .baseSpDefense = 35,
-        .types = MON_TYPES(TYPE_BUG),
-        .catchRate = 190,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 58 : 60,
-        .evYield_Defense = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-        .abilities = { ABILITY_STURDY, ABILITY_NONE, ABILITY_OVERCOAT },
-        .bodyColor = BODY_COLOR_GRAY,
-        .speciesName = _("PINECO"),
-        .cryId = CRY_PINECO,
-        .natDexNum = NATIONAL_DEX_PINECO,
-        .categoryName = _("Bagworm"),
-        .height = 6,
-        .weight = 72,
-        .description = COMPOUND_STRING(
-            "A Pineco hangs from a tree branch and\n"
-            "waits for prey. While eating, if it is\n"
-            "disturbed by someone shaking its tree, it\n"
-            "falls on the ground and suddenly explodes."),
-        .pokemonScale = 445,
-        .pokemonOffset = 2,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Pineco,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 48) : MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 12,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 20),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_SWING_CONCAVE,
-        .backPic = gMonBackPic_Pineco,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(56, 40),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 13,
-        .backAnimId = BACK_ANIM_H_SHAKE,
-        .palette = gMonPalette_Pineco,
-        .shinyPalette = gMonShinyPalette_Pineco,
-        .iconSprite = gMonIcon_Pineco,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(0, 2, SHADOW_SIZE_S)
-        FOOTPRINT(Pineco)
-        OVERWORLD(
-            sPicTable_Pineco,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_SPOT,
-            sAnimTable_Following,
-            gOverworldPalette_Pineco,
-            gShinyOverworldPalette_Pineco
-        )
-        .levelUpLearnset = sPinecoLevelUpLearnset,
-        .teachableLearnset = sPinecoTeachableLearnset,
-        .eggMoveLearnset = sPinecoEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 31, SPECIES_FORRETRESS}),
-    },
-
-    [SPECIES_FORRETRESS] =
-    {
-        .baseHP        = 75,
-        .baseAttack    = 90,
-        .baseDefense   = 140,
-        .baseSpeed     = 40,
-        .baseSpAttack  = 60,
-        .baseSpDefense = 60,
-        .types = MON_TYPES(TYPE_BUG, TYPE_STEEL),
-        .catchRate = 75,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 163 : 118,
-        .evYield_Defense = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-        .abilities = { ABILITY_STURDY, ABILITY_NONE, ABILITY_OVERCOAT },
-        .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("FORRETRESS"),
-        .cryId = CRY_FORRETRESS,
-        .natDexNum = NATIONAL_DEX_FORRETRESS,
-        .categoryName = _("Bagworm"),
-        .height = 12,
-        .weight = 1258,
-        .description = COMPOUND_STRING(
-            "It keeps itself inside its steel shell.\n"
-            "The shell is opened when it is catching\n"
-            "prey, but it is so quick that the shell's\n"
-            "inside cannot be seen."),
-        .pokemonScale = 293,
-        .pokemonOffset = 5,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Forretress,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(64, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 8,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_V_SHAKE,
-        .backPic = gMonBackPic_Forretress,
-        .backPicSize = MON_COORDS_SIZE(64, 32),
-        .backPicYOffset = 16,
-        .backAnimId = BACK_ANIM_V_SHAKE,
-        .palette = gMonPalette_Forretress,
-        .shinyPalette = gMonShinyPalette_Forretress,
-        .iconSprite = gMonIcon_Forretress,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 6, SHADOW_SIZE_L)
-        FOOTPRINT(Forretress)
-        OVERWORLD(
-            sPicTable_Forretress,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_SPOT,
-            sAnimTable_Following,
-            gOverworldPalette_Forretress,
-            gShinyOverworldPalette_Forretress
-        )
-        .levelUpLearnset = sForretressLevelUpLearnset,
-        .teachableLearnset = sForretressTeachableLearnset,
-    },
-#endif //P_FAMILY_PINECO
-
-#if P_FAMILY_DUNSPARCE
-    [SPECIES_DUNSPARCE] =
-    {
-        .baseHP        = 100,
-        .baseAttack    = 70,
-        .baseDefense   = 70,
-        .baseSpeed     = 45,
-        .baseSpAttack  = 65,
-        .baseSpDefense = 65,
-        .types = MON_TYPES(TYPE_NORMAL),
-        .catchRate = 190,
-    #if P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 145,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_4
-        .expYield = 125,
-    #else
-        .expYield = 75,
-    #endif
-        .evYield_HP = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_SERENE_GRACE, ABILITY_RUN_AWAY, ABILITY_RATTLED },
-        .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("DUNSPARCE"),
-        .cryId = CRY_DUNSPARCE,
-        .natDexNum = NATIONAL_DEX_DUNSPARCE,
-        .categoryName = _("Land Snake"),
-        .height = 15,
-        .weight = 140,
-        .description = COMPOUND_STRING(
-            "Its drill-tipped tail is used to burrow into\n"
-            "the ground backwards. This PokÃ©mon is\n"
-            "known to make its nest in complex shapes\n"
-            "deep under the ground."),
-        .pokemonScale = 316,
-        .pokemonOffset = 17,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Dunsparce,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 32) : MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 17 : 9,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .frontAnimDelay = 10,
-        .backPic = gMonBackPic_Dunsparce,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 40) : MON_COORDS_SIZE(56, 32),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 15 : 17,
-        .backAnimId = BACK_ANIM_TRIANGLE_DOWN,
-        .palette = gMonPalette_Dunsparce,
-        .shinyPalette = gMonShinyPalette_Dunsparce,
-        .iconSprite = gMonIcon_Dunsparce,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 2 : 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, -4, SHADOW_SIZE_M)
-        FOOTPRINT(Dunsparce)
-        OVERWORLD(
-            sPicTable_Dunsparce,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_SPOT,
-            sAnimTable_Following,
-            gOverworldPalette_Dunsparce,
-            gShinyOverworldPalette_Dunsparce
-        )
-        .levelUpLearnset = sDunsparceLevelUpLearnset,
-        .teachableLearnset = sDunsparceTeachableLearnset,
-        .eggMoveLearnset = sDunsparceEggMoveLearnset,
-    #if P_GEN_9_CROSS_EVOS
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_DUDUNSPARCE_TWO_SEGMENT, CONDITIONS({IF_KNOWS_MOVE, MOVE_HYPER_DRILL}, {IF_PID_MODULO_100_GT, 0})},
-                                {EVO_LEVEL, 0, SPECIES_DUDUNSPARCE_THREE_SEGMENT, CONDITIONS({IF_KNOWS_MOVE, MOVE_HYPER_DRILL}, {IF_PID_MODULO_100_EQ, 0})}),
-    #endif
-    },
-
-#if P_GEN_9_CROSS_EVOS
-    [SPECIES_DUDUNSPARCE_TWO_SEGMENT] =
-    {
-        .baseHP        = 125,
-        .baseAttack    = 100,
-        .baseDefense   = 80,
-        .baseSpeed     = 55,
-        .baseSpAttack  = 85,
-        .baseSpDefense = 75,
-        .types = MON_TYPES(TYPE_NORMAL),
-        .catchRate = 45,
-        .expYield = 182,
-        .evYield_HP = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_SERENE_GRACE, ABILITY_RUN_AWAY, ABILITY_RATTLED },
-        .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("DUDUNSPARCE"),
-        .cryId = CRY_DUDUNSPARCE,
-        .natDexNum = NATIONAL_DEX_DUDUNSPARCE,
-        .categoryName = _("Land Snake"),
-        .height = 36,
-        .weight = 392,
-        .description = COMPOUND_STRING(
-            "This PokÃ©mon uses its hard tail to\n"
-            "make its nest by boring holes into\n"
-            "bedrock deep underground. The nest\n"
-            "can reach lengths of over six miles."),
-        .pokemonScale = 356,
-        .pokemonOffset = 17,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_DudunsparceTwoSegment,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 10,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_DudunsparceTwoSegment,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 11,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Dudunsparce,
-        .shinyPalette = gMonShinyPalette_Dudunsparce,
-        .iconSprite = gMonIcon_Dudunsparce,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 5, SHADOW_SIZE_L)
-        FOOTPRINT(Dudunsparce)
-        OVERWORLD(
-            sPicTable_DudunsparceTwoSegment,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_SLITHER,
-            sAnimTable_Following,
-            gOverworldPalette_Dudunsparce,
-            gShinyOverworldPalette_Dudunsparce
-        )
-        .levelUpLearnset = sDudunsparceLevelUpLearnset,
-        .teachableLearnset = sDudunsparceTeachableLearnset,
-        .formSpeciesIdTable = sDudunsparceFormSpeciesIdTable,
-        .randomizerMode = MON_RANDOMIZER_SPECIAL_FORM,
-    },
-
-    [SPECIES_DUDUNSPARCE_THREE_SEGMENT] =
-    {
-        .baseHP        = 125,
-        .baseAttack    = 100,
-        .baseDefense   = 80,
-        .baseSpeed     = 55,
-        .baseSpAttack  = 85,
-        .baseSpDefense = 75,
-        .types = MON_TYPES(TYPE_NORMAL),
-        .catchRate = 45,
-        .expYield = 182,
-        .evYield_HP = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_SERENE_GRACE, ABILITY_RUN_AWAY, ABILITY_RATTLED },
-        .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("DUDUNSPARCE"),
-        .cryId = CRY_DUDUNSPARCE,
-        .natDexNum = NATIONAL_DEX_DUDUNSPARCE,
-        .categoryName = _("Land Snake"),
-        .height = 45,
-        .weight = 474,
-        .description = COMPOUND_STRING(
-            "A recent study uncovered that the\n"
-            "number of segments a Dudunsparce's\n"
-            "body has is determined by the\n"
-            "PokÃ©mon's genes."),
-        .pokemonScale = 356,
-        .pokemonOffset = 17,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_DudunsparceThreeSegment,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 10,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_DudunsparceThreeSegment,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 11,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Dudunsparce,
-        .shinyPalette = gMonShinyPalette_Dudunsparce,
-        .iconSprite = gMonIcon_Dudunsparce,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(4, 4, SHADOW_SIZE_L)
-        FOOTPRINT(Dudunsparce)
-        OVERWORLD(
-            sPicTable_DudunsparceThreeSegment,
-            SIZE_64x64,
-            SHADOW_SIZE_M,
-            TRACKS_SLITHER,
-            sAnimTable_Following,
-            gOverworldPalette_DudunsparceThreeSegment,
-            gShinyOverworldPalette_DudunsparceThreeSegment
-        )
-        .levelUpLearnset = sDudunsparceLevelUpLearnset,
-        .teachableLearnset = sDudunsparceTeachableLearnset,
-        .formSpeciesIdTable = sDudunsparceFormSpeciesIdTable,
-        .randomizerMode = MON_RANDOMIZER_INVALID,
-    },
-#endif //P_GEN_9_CROSS_EVOS
-#endif //P_FAMILY_DUNSPARCE
-
-#if P_FAMILY_GLIGAR
-    [SPECIES_GLIGAR] =
-    {
-        .baseHP        = 65,
-        .baseAttack    = 75,
-        .baseDefense   = 105,
-        .baseSpeed     = 85,
-        .baseSpAttack  = 35,
-        .baseSpDefense = 65,
-        .types = MON_TYPES(TYPE_GROUND, TYPE_FLYING),
-        .catchRate = 60,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 86 : 108,
-        .evYield_Defense = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-        .abilities = { ABILITY_HYPER_CUTTER, ABILITY_SAND_VEIL, ABILITY_IMMUNITY },
-        .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("GLIGAR"),
-        .cryId = CRY_GLIGAR,
-        .natDexNum = NATIONAL_DEX_GLIGAR,
-        .categoryName = _("Fly Scorpion"),
-        .height = 11,
-        .weight = 648,
-        .description = COMPOUND_STRING(
-            "It glides without making a single sound.\n"
-            "It grasps the face of its foe using its\n"
-            "hind and large front claws, then stabs\n"
-            "with its poison barb."),
-        .pokemonScale = 350,
-        .pokemonOffset = -1,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Gligar,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 64) : MON_COORDS_SIZE(56, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 3 : 4,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 17),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_SHRINK_GROW,
-        .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 6 : 8,
-        .backPic = gMonBackPic_Gligar,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 2,
-        .backAnimId = BACK_ANIM_SHRINK_GROW,
-        .palette = gMonPalette_Gligar,
-        .shinyPalette = gMonShinyPalette_Gligar,
-        .iconSprite = gMonIcon_Gligar,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 2 : 0,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_GligarF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(56, 56),
-        .backPicFemale = gMonBackPic_GligarF,
-        .backPicSizeFemale = MON_COORDS_SIZE(64, 64),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 15, SHADOW_SIZE_S)
-        FOOTPRINT(Gligar)
-        OVERWORLD(
-            sPicTable_Gligar,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_NONE,
-            sAnimTable_Following,
-            gOverworldPalette_Gligar,
-            gShinyOverworldPalette_Gligar
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_GligarF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_NONE,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sGligarLevelUpLearnset,
-        .teachableLearnset = sGligarTeachableLearnset,
-        .eggMoveLearnset = sGligarEggMoveLearnset,
-    #if P_GEN_4_CROSS_EVOS
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_GLISCOR, CONDITIONS({IF_TIME, TIME_NIGHT}, {IF_HOLD_ITEM, ITEM_RAZOR_FANG})},
-                                {EVO_ITEM, ITEM_RAZOR_FANG, SPECIES_GLISCOR, CONDITIONS({IF_TIME, TIME_NIGHT})}),
-    #endif
-    },
-
-#if P_GEN_4_CROSS_EVOS
-    [SPECIES_GLISCOR] =
-    {
-        .baseHP        = 75,
-        .baseAttack    = 95,
-        .baseDefense   = 125,
-        .baseSpeed     = 95,
-        .baseSpAttack  = 45,
-        .baseSpDefense = 75,
-        .types = MON_TYPES(TYPE_GROUND, TYPE_FLYING),
-        .catchRate = 30,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 179 : 192,
-        .evYield_Defense = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-        .abilities = { ABILITY_HYPER_CUTTER, ABILITY_SAND_VEIL, ABILITY_POISON_HEAL },
-        .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("GLISCOR"),
-        .cryId = CRY_GLISCOR,
-        .natDexNum = NATIONAL_DEX_GLISCOR,
-        .categoryName = _("Fang Scorp"),
-        .height = 20,
-        .weight = 425,
-        .description = COMPOUND_STRING(
-            "Gliscor observes prey while hanging\n"
-            "upside down from branches. Its flight is\n"
-            "soundless. When the chance presents\n"
-            "itself, it swoops!"),
-        .pokemonScale = 261,
-        .pokemonOffset = 1,
-        .trainerScale = 334,
-        .trainerOffset = 4,
-        .frontPic = gMonFrontPic_Gliscor,
-        .frontPicSize = MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = 7,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 30),
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 40),
-        ),
-        .frontAnimId = ANIM_SWING_CONVEX,
-        .enemyMonElevation = 9,
-        .backPic = gMonBackPic_Gliscor,
-        .backPicSize = MON_COORDS_SIZE(64, 48),
-        .backPicYOffset = 11,
-        .backAnimId = BACK_ANIM_V_STRETCH,
-        .palette = gMonPalette_Gliscor,
-        .shinyPalette = gMonShinyPalette_Gliscor,
-        .iconSprite = gMonIcon_Gliscor,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 13, SHADOW_SIZE_M)
-        FOOTPRINT(Gliscor)
-        OVERWORLD(
-            sPicTable_Gliscor,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Gliscor,
-            gShinyOverworldPalette_Gliscor
-        )
-        .levelUpLearnset = sGliscorLevelUpLearnset,
-        .teachableLearnset = sGliscorTeachableLearnset,
-    },
-#endif //P_GEN_4_CROSS_EVOS
-#endif //P_FAMILY_GLIGAR
-
-#if P_FAMILY_SNUBBULL
-    [SPECIES_SNUBBULL] =
-    {
-        .baseHP        = 60,
-        .baseAttack    = 80,
-        .baseDefense   = 50,
-        .baseSpeed     = 30,
-        .baseSpAttack  = 40,
-        .baseSpDefense = 40,
-    #if P_UPDATED_TYPES >= GEN_6
-        .types = MON_TYPES(TYPE_FAIRY),
-    #else
-        .types = MON_TYPES(TYPE_NORMAL),
-    #endif
-        .catchRate = 190,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 60 : 63,
-        .evYield_Attack = 1,
-        .genderRatio = PERCENT_FEMALE(75),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD, EGG_GROUP_FAIRY),
-        .abilities = { ABILITY_INTIMIDATE, ABILITY_RUN_AWAY, ABILITY_RATTLED },
-        .bodyColor = BODY_COLOR_PINK,
-        .speciesName = _("SNUBBULL"),
-        .cryId = CRY_SNUBBULL,
-        .natDexNum = NATIONAL_DEX_SNUBBULL,
-        .categoryName = _("Fairy"),
-        .height = 6,
-        .weight = 78,
-        .description = COMPOUND_STRING(
-            "By baring its fangs and making a scary\n"
-            "face, it sends smaller PokÃ©mon scurrying\n"
-            "in terror. The Snubbull does seem a\n"
-            "little sad at making its foes flee."),
-        .pokemonScale = 465,
-        .pokemonOffset = 19,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Snubbull,
-        .frontPicSize = MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 12,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 32),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_V_STRETCH,
-        .backPic = gMonBackPic_Snubbull,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(56, 40),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 12,
-        .backAnimId = BACK_ANIM_JOLT_RIGHT,
-        .palette = gMonPalette_Snubbull,
-        .shinyPalette = gMonShinyPalette_Snubbull,
-        .iconSprite = gMonIcon_Snubbull,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NORMAL,
-        SHADOW(-1, 1, SHADOW_SIZE_S)
-        FOOTPRINT(Snubbull)
-        OVERWORLD(
-            sPicTable_Snubbull,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Snubbull,
-            gShinyOverworldPalette_Snubbull
-        )
-        .levelUpLearnset = sSnubbullLevelUpLearnset,
-        .teachableLearnset = sSnubbullTeachableLearnset,
-        .eggMoveLearnset = sSnubbullEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 23, SPECIES_GRANBULL}),
-    },
-
-    [SPECIES_GRANBULL] =
-    {
-        .baseHP        = 90,
-        .baseAttack    = 120,
-        .baseDefense   = 75,
-        .baseSpeed     = 45,
-        .baseSpAttack  = 60,
-        .baseSpDefense = 60,
-    #if P_UPDATED_TYPES >= GEN_6
-        .types = MON_TYPES(TYPE_FAIRY),
-    #else
-        .types = MON_TYPES(TYPE_NORMAL),
-    #endif
-        .catchRate = 75,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 158 : 178,
-        .evYield_Attack = 2,
-        .genderRatio = PERCENT_FEMALE(75),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD, EGG_GROUP_FAIRY),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_INTIMIDATE, ABILITY_QUICK_FEET, ABILITY_RATTLED },
-    #else
-        .abilities = { ABILITY_INTIMIDATE, ABILITY_NONE, ABILITY_RATTLED },
-    #endif
-        .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("GRANBULL"),
-        .cryId = CRY_GRANBULL,
-        .natDexNum = NATIONAL_DEX_GRANBULL,
-        .categoryName = _("Fairy"),
-        .height = 14,
-        .weight = 487,
-        .description = COMPOUND_STRING(
-            "It has a particularly well-developed lower\n"
-            "jaw. The huge fangs are heavy, causing\n"
-            "it to tilt its head. Unless it is startled,\n"
-            "it will not try to bite."),
-        .pokemonScale = 256,
-        .pokemonOffset = 4,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Granbull,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 56) : MON_COORDS_SIZE(56, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 4,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 35),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_V_SHAKE,
-        .backPic = gMonBackPic_Granbull,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(56, 48),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 8,
-        .backAnimId = BACK_ANIM_V_SHAKE,
-        .palette = gMonPalette_Granbull,
-        .shinyPalette = gMonShinyPalette_Granbull,
-        .iconSprite = gMonIcon_Granbull,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(3, 10, SHADOW_SIZE_L)
-        FOOTPRINT(Granbull)
-        OVERWORLD(
-            sPicTable_Granbull,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Granbull,
-            gShinyOverworldPalette_Granbull
-        )
-        .levelUpLearnset = sGranbullLevelUpLearnset,
-        .teachableLearnset = sGranbullTeachableLearnset,
-    },
-#endif //P_FAMILY_SNUBBULL
-
-#if P_FAMILY_QWILFISH
-    [SPECIES_QWILFISH] =
-    {
-        .baseHP        = 65,
-        .baseAttack    = 95,
-        .baseDefense   = P_UPDATED_STATS >= GEN_7 ? 85 : 75,
-        .baseSpeed     = 85,
-        .baseSpAttack  = 55,
-        .baseSpDefense = 55,
-        .types = MON_TYPES(TYPE_WATER, TYPE_POISON),
-        .catchRate = 45,
-    #if P_UPDATED_EXP_YIELDS >= GEN_7
-        .expYield = 88,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 86,
-    #else
-        .expYield = 100,
-    #endif
-        .evYield_Attack = 1,
-        .itemRare = ITEM_POISON_BARB,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_2),
-        .abilities = { ABILITY_POISON_POINT, ABILITY_SWIFT_SWIM, ABILITY_INTIMIDATE },
-        .bodyColor = BODY_COLOR_GRAY,
-        .speciesName = _("QWILFISH"),
-        .cryId = CRY_QWILFISH,
-        .natDexNum = NATIONAL_DEX_QWILFISH,
-        .categoryName = _("Balloon"),
-        .height = 5,
-        .weight = 39,
-        .description = COMPOUND_STRING(
-            "A Qwilfish uses the pressure of water\n"
-            "it swallows to shoot toxic quills all at\n"
-            "once from all over its body. It finds\n"
-            "swimming to be somewhat challenging."),
-        .pokemonScale = 430,
-        .pokemonOffset = 0,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Qwilfish,
-        .frontPicSize = MON_COORDS_SIZE(40, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 8,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 8),
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 50),
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 30),
-        ),
-        .frontAnimId = ANIM_GROW_IN_STAGES,
-        .frontAnimDelay = 39,
-        .backPic = gMonBackPic_Qwilfish,
-        .backPicSize = MON_COORDS_SIZE(56, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 6,
-        .backAnimId = BACK_ANIM_GROW_STUTTER,
-        .palette = gMonPalette_Qwilfish,
-        .shinyPalette = gMonShinyPalette_Qwilfish,
-        .iconSprite = gMonIcon_Qwilfish,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-2, 3, SHADOW_SIZE_S)
-        FOOTPRINT(Qwilfish)
-        OVERWORLD(
-            sPicTable_Qwilfish,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_SPOT,
-            sAnimTable_Following,
-            gOverworldPalette_Qwilfish,
-            gShinyOverworldPalette_Qwilfish
-        )
-        .levelUpLearnset = sQwilfishLevelUpLearnset,
-        .teachableLearnset = sQwilfishTeachableLearnset,
-        .eggMoveLearnset = sQwilfishEggMoveLearnset,
-        .formSpeciesIdTable = sQwilfishFormSpeciesIdTable,
-    },
-
-#if P_HISUIAN_FORMS
-    [SPECIES_QWILFISH_HISUI] =
-    {
-        .baseHP        = 65,
-        .baseAttack    = 95,
-        .baseDefense   = 85,
-        .baseSpeed     = 85,
-        .baseSpAttack  = 55,
-        .baseSpDefense = 55,
-        .types = MON_TYPES(TYPE_DARK, TYPE_POISON),
-        .catchRate = 45,
-        .expYield = 88,
-        .evYield_Attack = 1,
-        .itemRare = ITEM_POISON_BARB,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_2),
-        .abilities = { ABILITY_POISON_POINT, ABILITY_SWIFT_SWIM, ABILITY_INTIMIDATE },
-        .bodyColor = BODY_COLOR_BLACK,
-        .noFlip = TRUE,
-#if P_SEPARATE_REGIONAL_FORMS
-        .speciesName = _("QWILFISH-H"),
-#else
-        .speciesName = _("QWILFISH"),
-#endif
-        .cryId = CRY_QWILFISH,
-#if P_SEPARATE_REGIONAL_FORMS
-        .natDexNum = NATIONAL_DEX_QWILFISH_HISUI,
-#else
-        .natDexNum = NATIONAL_DEX_QWILFISH,
-#endif
-        .categoryName = _("Balloon"),
-        .height = 5,
-        .weight = 39,
-        .description = COMPOUND_STRING(
-            "A form of Qwilfish from the distant past.\n"
-            "Fishers detest this troublesome PokÃ©mon\n"
-            "because it sprays poison from its spines,\n"
-            "getting it everywhere."),
-        .pokemonScale = 430,
-        .pokemonOffset = 0,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_QwilfishHisui,
-        .frontPicSize = MON_COORDS_SIZE(48, 40),
-        .frontPicYOffset = 16,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .enemyMonElevation = 9,
-        .backPic = gMonBackPic_QwilfishHisui,
-        .backPicSize = MON_COORDS_SIZE(56, 56),
-        .backPicYOffset = 8,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_QwilfishHisui,
-        .shinyPalette = gMonShinyPalette_QwilfishHisui,
-        .iconSprite = gMonIcon_QwilfishHisui,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-5, 4, SHADOW_SIZE_S)
-        FOOTPRINT(Qwilfish)
-        OVERWORLD(
-            sPicTable_QwilfishHisui,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_QwilfishHisui,
-            gShinyOverworldPalette_QwilfishHisui
-        )
-        .isHisuianForm = TRUE,
-        .dexNotRequired = TRUE,
-        .levelUpLearnset = sQwilfishHisuiLevelUpLearnset,
-        .teachableLearnset = sQwilfishHisuiTeachableLearnset,
-        .eggMoveLearnset = sQwilfishHisuiEggMoveLearnset,
-#if P_SEPARATE_REGIONAL_FORMS
-        .formSpeciesIdTable = sQwilfishHisuiFormSpeciesIdTable,
-#else
-        .formSpeciesIdTable = sQwilfishFormSpeciesIdTable,
-#endif
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_OVERQWIL, CONDITIONS({IF_KNOWS_MOVE, MOVE_BARB_BARRAGE}, {IF_REGION, REGION_HISUI})}),
-    },
-
-    [SPECIES_OVERQWIL] =
-    {
-        .dexNotRequired = TRUE,
-        .baseHP        = 85,
-        .baseAttack    = 115,
-        .baseDefense   = 95,
-        .baseSpeed     = 85,
-        .baseSpAttack  = 65,
-        .baseSpDefense = 65,
-        .types = MON_TYPES(TYPE_DARK, TYPE_POISON),
-        .catchRate = 45,
-        .expYield = 179,
-        .evYield_Attack = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_2),
-        .abilities = { ABILITY_POISON_POINT, ABILITY_SWIFT_SWIM, ABILITY_INTIMIDATE },
-        .bodyColor = BODY_COLOR_BLACK,
-        .noFlip = TRUE,
-        .speciesName = _("OVERQWIL"),
-        .cryId = CRY_OVERQWIL,
-        .natDexNum = NATIONAL_DEX_OVERQWIL,
-        .categoryName = _("Pin Cluster"),
-        .height = 25,
-        .weight = 605,
-        .description = COMPOUND_STRING(
-            "Its lancelike spikes and savage\n"
-            "temperament have earned it the\n"
-            "nickname â€œSea Fiendâ€.\n"
-            "It slurps up poison to nourish itself."),
-        .pokemonScale = 257,
-        .pokemonOffset = 10,
-        .trainerScale = 423,
-        .trainerOffset = 8,
-        .frontPic = gMonFrontPic_Overqwil,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Overqwil,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 11,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Overqwil,
-        .shinyPalette = gMonShinyPalette_Overqwil,
-        .iconSprite = gMonIcon_Overqwil,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 11, SHADOW_SIZE_M)
-        FOOTPRINT(Overqwil)
-        OVERWORLD(
-            sPicTable_Overqwil,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Overqwil,
-            gShinyOverworldPalette_Overqwil
-        )
-        .levelUpLearnset = sOverqwilLevelUpLearnset,
-        .teachableLearnset = sOverqwilTeachableLearnset,
-    },
-#endif //P_HISUIAN_FORMS
-#endif //P_FAMILY_QWILFISH
-
-#if P_FAMILY_SHUCKLE
-    [SPECIES_SHUCKLE] =
-    {
-        .baseHP        = 20,
-        .baseAttack    = 10,
-        .baseDefense   = 230,
-        .baseSpeed     = 5,
-        .baseSpAttack  = 10,
-        .baseSpDefense = 230,
-        .types = MON_TYPES(TYPE_BUG, TYPE_ROCK),
-        .catchRate = 190,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 177 : 80,
-        .evYield_Defense = 1,
-        .evYield_SpDefense = 1,
-        .itemCommon = ITEM_BERRY_JUICE,
-        .itemRare = ITEM_BERRY_JUICE,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_STURDY, ABILITY_GLUTTONY, ABILITY_CONTRARY },
-    #else
-        .abilities = { ABILITY_STURDY, ABILITY_NONE, ABILITY_CONTRARY },
-    #endif
-        .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("SHUCKLE"),
-        .cryId = CRY_SHUCKLE,
-        .natDexNum = NATIONAL_DEX_SHUCKLE,
-        .categoryName = _("Mold"),
-        .height = 6,
-        .weight = 205,
-        .description = COMPOUND_STRING(
-            "A Shuckle hides under rocks, keeping its\n"
-            "body concealed inside its shell while\n"
-            "eating stored berries. The berries mix with\n"
-            "its body fluids to become a juice."),
-        .pokemonScale = 485,
-        .pokemonOffset = 18,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Shuckle,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 8,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 50),
-            ANIMCMD_FRAME(1, 50),
-            ANIMCMD_FRAME(0, 30),
-        ),
-        .frontAnimId = ANIM_SWING_CONCAVE,
-        .backPic = gMonBackPic_Shuckle,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 48) : MON_COORDS_SIZE(48, 48),
-        .backPicYOffset = 11,
-        .backAnimId = BACK_ANIM_DIP_RIGHT_SIDE,
-        .palette = gMonPalette_Shuckle,
-        .shinyPalette = gMonShinyPalette_Shuckle,
-        .iconSprite = gMonIcon_Shuckle,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(1, 3, SHADOW_SIZE_M)
-        FOOTPRINT(Shuckle)
-        OVERWORLD(
-            sPicTable_Shuckle,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Shuckle,
-            gShinyOverworldPalette_Shuckle
-        )
-        .levelUpLearnset = sShuckleLevelUpLearnset,
-        .teachableLearnset = sShuckleTeachableLearnset,
-        .eggMoveLearnset = sShuckleEggMoveLearnset,
-    },
-#endif //P_FAMILY_SHUCKLE
-
-#if P_FAMILY_HERACROSS
-    [SPECIES_HERACROSS] =
-    {
-        .baseHP        = 80,
-        .baseAttack    = 125,
-        .baseDefense   = 75,
-        .baseSpeed     = 85,
-        .baseSpAttack  = 40,
-        .baseSpDefense = 95,
-        .types = MON_TYPES(TYPE_BUG, TYPE_FIGHTING),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 175 : 200,
-        .evYield_Attack = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 25,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-        .abilities = { ABILITY_SWARM, ABILITY_GUTS, ABILITY_MOXIE },
-        .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("HERACROSS"),
-        .cryId = CRY_HERACROSS,
-        .natDexNum = NATIONAL_DEX_HERACROSS,
-        .categoryName = _("Single Horn"),
-        .height = 15,
-        .weight = 540,
-        .description = COMPOUND_STRING(
-            "They gather in forests seeking the sweet\n"
-            "sap of trees. It is completely clad in a\n"
-            "steel-hard shell. It is proud of its horn,\n"
-            "which it uses to fling foes."),
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Heracross,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 3 : 1,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_LUNGE_GROW : ANIM_V_STRETCH,
-        .backPic = gMonBackPic_Heracross,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(48, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 2,
-        .backAnimId = BACK_ANIM_JOLT_RIGHT,
-        .palette = gMonPalette_Heracross,
-        .shinyPalette = gMonShinyPalette_Heracross,
-        .shinyPaletteModern = gMonShinyPaletteModern_Heracross,
-        .iconSprite = gMonIcon_Heracross,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 2 : 0,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_HeracrossF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(64, 64),
-        .backPicFemale = gMonBackPic_HeracrossF,
-        .backPicSizeFemale = MON_COORDS_SIZE(48, 64),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 10, SHADOW_SIZE_M)
-        FOOTPRINT(Heracross)
-        OVERWORLD(
-            sPicTable_Heracross,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Heracross,
-            gShinyOverworldPalette_Heracross,
-            gShinyModernOverworldPalette_Heracross
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_HeracrossF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sHeracrossLevelUpLearnset,
-        .teachableLearnset = sHeracrossTeachableLearnset,
-        .eggMoveLearnset = sHeracrossEggMoveLearnset,
-        .formSpeciesIdTable = sHeracrossFormSpeciesIdTable,
-        .formChangeTable = sHeracrossFormChangeTable,
-    },
-
-#if P_MEGA_EVOLUTIONS
-    [SPECIES_HERACROSS_MEGA] =
-    {
-        .baseHP        = 80,
-        .baseAttack    = 185,
-        .baseDefense   = 115,
-        .baseSpeed     = 75,
-        .baseSpAttack  = 40,
-        .baseSpDefense = 105,
-        .types = MON_TYPES(TYPE_BUG, TYPE_FIGHTING),
-        .catchRate = 45,
-        .expYield = 210,
-        .evYield_Attack = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 25,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-        .abilities = { ABILITY_SKILL_LINK, ABILITY_SKILL_LINK, ABILITY_SKILL_LINK },
-        .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("HERACROSS"),
-    #if P_MODIFIED_MEGA_CRIES
-        .cryId = CRY_HERACROSS_MEGA,
-    #else
-        .cryId = CRY_HERACROSS,
-    #endif // P_MODIFIED_MEGA_CRIES
-        .natDexNum = NATIONAL_DEX_HERACROSS,
-        .categoryName = _("Single Horn"),
-        .height = 17,
-        .weight = 625,
-        .description = COMPOUND_STRING(
-            "A tremendous influx of energy builds it up,\n"
-            "but when Mega Evolution ends, Heracross\n"
-            "is bothered by terrible soreness in its\n"
-            "muscles."),
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_HeracrossMega,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_HeracrossMega,
-        .backPicSize = MON_COORDS_SIZE(56, 64),
-        .backPicYOffset = 0,
-        .backAnimId = BACK_ANIM_JOLT_RIGHT,
-        .palette = gMonPalette_HeracrossMega,
-        .shinyPalette = gMonShinyPalette_HeracrossMega,
-        .iconSprite = gMonIcon_HeracrossMega,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 13, SHADOW_SIZE_M)
-        FOOTPRINT(Heracross)
-    #if OW_BATTLE_ONLY_FORMS
-        OVERWORLD(
-            sPicTable_HeracrossMega,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_HeracrossMega,
-            gShinyOverworldPalette_HeracrossMega
-        )
-    #endif //OW_BATTLE_ONLY_FORMS
-        .isMegaEvolution = TRUE,
-        .levelUpLearnset = sHeracrossLevelUpLearnset,
-        .teachableLearnset = sHeracrossTeachableLearnset,
-        .eggMoveLearnset = sHeracrossEggMoveLearnset,
-        .formSpeciesIdTable = sHeracrossFormSpeciesIdTable,
-        .formChangeTable = sHeracrossFormChangeTable,
-        .randomizerMode = MON_RANDOMIZER_INVALID,
-    },
-#endif //P_MEGA_EVOLUTIONS
-#endif //P_FAMILY_HERACROSS
-
-#if P_FAMILY_SNEASEL
-    [SPECIES_SNEASEL] =
-    {
-        .baseHP        = 55,
-        .baseAttack    = 95,
-        .baseDefense   = 55,
-        .baseSpeed     = 115,
-        .baseSpAttack  = 35,
-        .baseSpDefense = 75,
-        .types = MON_TYPES(TYPE_DARK, TYPE_ICE),
-        .catchRate = 60,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 86 : 132,
-        .evYield_Speed = 1,
-        .itemRare = ITEM_QUICK_CLAW,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = 35,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_INNER_FOCUS, ABILITY_KEEN_EYE, ABILITY_PICKPOCKET },
-        .bodyColor = BODY_COLOR_BLACK,
-        .noFlip = TRUE,
-        .speciesName = _("SNEASEL"),
-        .cryId = CRY_SNEASEL,
-        .natDexNum = NATIONAL_DEX_SNEASEL,
-        .categoryName = _("Sharp Claw"),
-        .height = 9,
-        .weight = 280,
-        .description = COMPOUND_STRING(
-            "A Sneasel scales trees by punching its\n"
-            "hooked claws into the bark. It seeks out\n"
-            "unguarded nests and steals eggs for food\n"
-            "while the parents are away."),
-        .pokemonScale = 413,
-        .pokemonOffset = -3,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Sneasel,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(56, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 8,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 8),
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 8),
-            ANIMCMD_FRAME(1, 8),
-            ANIMCMD_FRAME(0, 8),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_STRETCH : ANIM_H_JUMPS,
-        .backPic = gMonBackPic_Sneasel,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 3,
-        .backAnimId = BACK_ANIM_TRIANGLE_DOWN,
-        .palette = gMonPalette_Sneasel,
-        .shinyPalette = gMonShinyPalette_Sneasel,
-        .iconSprite = gMonIcon_Sneasel,
-        .iconPalIndex = 0,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_SneaselF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(56, 48),
-        .backPicFemale = gMonBackPic_SneaselF,
-        .backPicSizeFemale = MON_COORDS_SIZE(64, 64),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 5, SHADOW_SIZE_S)
-        FOOTPRINT(Sneasel)
-        OVERWORLD(
-            sPicTable_Sneasel,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following_Asym,
-            gOverworldPalette_Sneasel,
-            gShinyOverworldPalette_Sneasel
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_SneaselF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following_Asym
-        )
-        .levelUpLearnset = sSneaselLevelUpLearnset,
-        .teachableLearnset = sSneaselTeachableLearnset,
-        .eggMoveLearnset = sSneaselEggMoveLearnset,
-        .formSpeciesIdTable = sSneaselFormSpeciesIdTable,
-    #if P_GEN_4_CROSS_EVOS
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_WEAVILE, CONDITIONS({IF_TIME, TIME_NIGHT}, {IF_HOLD_ITEM, ITEM_RAZOR_CLAW})},
-                                {EVO_ITEM, ITEM_RAZOR_CLAW, SPECIES_WEAVILE, CONDITIONS({IF_TIME, TIME_NIGHT})}),
-    #endif
-    },
-
-#if P_GEN_4_CROSS_EVOS
-    [SPECIES_WEAVILE] =
-    {
-        .baseHP        = 70,
-        .baseAttack    = 120,
-        .baseDefense   = 65,
-        .baseSpeed     = 125,
-        .baseSpAttack  = 45,
-        .baseSpDefense = 85,
-        .types = MON_TYPES(TYPE_DARK, TYPE_ICE),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 179 : 199,
-        .evYield_Attack = 1,
-        .evYield_Speed = 1,
-        .itemRare = ITEM_QUICK_CLAW,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = 35,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_PICKPOCKET },
-        .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("WEAVILE"),
-        .cryId = CRY_WEAVILE,
-        .natDexNum = NATIONAL_DEX_WEAVILE,
-        .categoryName = _("Sharp Claw"),
-        .height = 11,
-        .weight = 340,
-        .description = COMPOUND_STRING(
-            "They travel in groups of four or five,\n"
-            "leaving signs for one another on trees\n"
-            "and rocks. They bring down their prey\n"
-            "with coordinated attacks."),
-        .pokemonScale = 320,
-        .pokemonOffset = 7,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Weavile,
-        .frontPicSize = MON_COORDS_SIZE(56, 56),
-        .frontPicYOffset = 4,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_H_VIBRATE,
-        .backPic = gMonBackPic_Weavile,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 6,
-        .backAnimId = BACK_ANIM_JOLT_RIGHT,
-        .palette = gMonPalette_Weavile,
-        .shinyPalette = gMonShinyPalette_Weavile,
-        .iconSprite = gMonIcon_Weavile,
-        .iconPalIndex = 0,
-#if P_GENDER_DIFFERENCES
-        .frontPicFemale = gMonFrontPic_WeavileF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(56, 56),
-        .backPicFemale = gMonBackPic_WeavileF,
-        .backPicSizeFemale = MON_COORDS_SIZE(64, 64),
-#endif //P_GENDER_DIFFERENCES
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-4, 10, SHADOW_SIZE_M)
-        FOOTPRINT(Weavile)
-        OVERWORLD(
-            sPicTable_Weavile,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Weavile,
-            gShinyOverworldPalette_Weavile
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_WeavileF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sWeavileLevelUpLearnset,
-        .teachableLearnset = sWeavileTeachableLearnset,
-    },
-#endif //P_GEN_4_CROSS_EVOS
-
-#if P_HISUIAN_FORMS
-    [SPECIES_SNEASEL_HISUI] =
-    {
-        .baseHP        = 55,
-        .baseAttack    = 95,
-        .baseDefense   = 55,
-        .baseSpeed     = 115,
-        .baseSpAttack  = 35,
-        .baseSpDefense = 75,
-        .types = MON_TYPES(TYPE_FIGHTING, TYPE_POISON),
-        .catchRate = 60,
-        .expYield = 86,
-        .evYield_Speed = 1,
-        .itemRare = ITEM_QUICK_CLAW,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = 35,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_INNER_FOCUS, ABILITY_KEEN_EYE, ABILITY_PICKPOCKET },
-        .bodyColor = BODY_COLOR_GRAY,
-        .noFlip = TRUE,
-#if P_SEPARATE_REGIONAL_FORMS
-        .speciesName = _("SNEASEL-H"),
-#else
-        .speciesName = _("SNEASEL"),
-#endif
-        .cryId = CRY_SNEASEL,
-#if P_SEPARATE_REGIONAL_FORMS
-        .natDexNum = NATIONAL_DEX_SNEASEL_HISUI,
-#else
-        .natDexNum = NATIONAL_DEX_SNEASEL,
-#endif
-        .categoryName = _("Sharp Claw"),
-        .height = 9,
-        .weight = 270,
-        .description = COMPOUND_STRING(
-            "Its sturdy, curved claws are ideal for\n"
-            "traversing precipitous cliffs. From the\n"
-            "tips of these claws drips a venom that\n"
-            "infiltrates the nerves of any prey caught."),
-        .pokemonScale = 413,
-        .pokemonOffset = -3,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_SneaselHisui,
-        .frontPicSize = MON_COORDS_SIZE(56, 56),
-        .frontPicYOffset = 8,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_SneaselHisui,
-        .backPicSize = MON_COORDS_SIZE(56, 64),
-        .backPicYOffset = 3,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_SneaselHisui,
-        .shinyPalette = gMonShinyPalette_SneaselHisui,
-        .iconSprite = gMonIcon_SneaselHisui,
-        .iconPalIndex = 2,
-#if P_GENDER_DIFFERENCES
-        .frontPicFemale = gMonFrontPic_SneaselHisuiF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(56, 56),
-        .backPicFemale = gMonBackPic_SneaselHisuiF,
-        .backPicSizeFemale = MON_COORDS_SIZE(56, 64),
-#endif //P_GENDER_DIFFERENCES
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 5, SHADOW_SIZE_S)
-        FOOTPRINT(Sneasel)
-        OVERWORLD(
-            sPicTable_SneaselHisui,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_SneaselHisui,
-            gShinyOverworldPalette_SneaselHisui
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_SneaselHisuiF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .isHisuianForm = TRUE,
-        .dexNotRequired = TRUE,
-        .levelUpLearnset = sSneaselHisuiLevelUpLearnset,
-        .teachableLearnset = sSneaselHisuiTeachableLearnset,
-        .eggMoveLearnset = sSneaselHisuiEggMoveLearnset,
-#if P_SEPARATE_REGIONAL_FORMS
-        .formSpeciesIdTable = sSneaselHisuiFormSpeciesIdTable,
-#else
-        .formSpeciesIdTable = sSneaselFormSpeciesIdTable,
-#endif
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_SNEASLER, CONDITIONS({IF_NOT_TIME, TIME_NIGHT}, {IF_HOLD_ITEM, ITEM_RAZOR_CLAW})},
-                                {EVO_ITEM, ITEM_RAZOR_CLAW, SPECIES_SNEASLER, CONDITIONS({IF_NOT_TIME, TIME_NIGHT})}),
-    },
-
-    [SPECIES_SNEASLER] =
-    {
-        .dexNotRequired = TRUE,
-        .baseHP        = 80,
-        .baseAttack    = 130,
-        .baseDefense   = 60,
-        .baseSpeed     = 120,
-        .baseSpAttack  = 40,
-        .baseSpDefense = 80,
-        .types = MON_TYPES(TYPE_FIGHTING, TYPE_POISON),
-        .catchRate = 20,
-        .expYield = 102,
-        .evYield_Attack = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_PRESSURE, ABILITY_UNBURDEN, ABILITY_POISON_TOUCH },
-        .bodyColor = BODY_COLOR_BLUE,
-        .noFlip = TRUE,
-        .speciesName = _("SNEASLER"),
-        .cryId = CRY_SNEASLER,
-        .natDexNum = NATIONAL_DEX_SNEASLER,
-        .categoryName = _("Free Climb"),
-        .height = 13,
-        .weight = 430,
-        .description = COMPOUND_STRING(
-            "Because of its wicked poison and daunting\n"
-            "physical prowess, no other species could\n"
-            "hope to best it on frozen highlands. It\n"
-            "prefers solitude and doesn't form packs."),
-        .pokemonScale = 272,
-        .pokemonOffset = 3,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Sneasler,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Sneasler,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 6,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Sneasler,
-        .shinyPalette = gMonShinyPalette_Sneasler,
-        .iconSprite = gMonIcon_Sneasler,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 11, SHADOW_SIZE_M)
-        FOOTPRINT(Sneasler)
-        OVERWORLD(
-            sPicTable_Sneasler,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Sneasler,
-            gShinyOverworldPalette_Sneasler
-        )
-        .levelUpLearnset = sSneaslerLevelUpLearnset,
-        .teachableLearnset = sSneaslerTeachableLearnset,
-    },
-#endif //P_HISUIAN_FORMS
-#endif //P_FAMILY_SNEASEL
-
-#if P_FAMILY_TEDDIURSA
-    [SPECIES_TEDDIURSA] =
-    {
-        .baseHP        = 60,
-        .baseAttack    = 80,
-        .baseDefense   = 50,
-        .baseSpeed     = 40,
-        .baseSpAttack  = 50,
-        .baseSpDefense = 50,
-        .types = MON_TYPES(TYPE_NORMAL),
-        .catchRate = 120,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 66 : 124,
-        .evYield_Attack = 1,
-        .itemRare = ITEM_HONEY,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_PICKUP, ABILITY_QUICK_FEET, ABILITY_HONEY_GATHER },
-    #else
-        .abilities = { ABILITY_PICKUP, ABILITY_NONE, ABILITY_HONEY_GATHER },
-    #endif
-        .bodyColor = BODY_COLOR_BROWN,
-        .noFlip = TRUE,
-        .speciesName = _("TEDDIURSA"),
-        .cryId = CRY_TEDDIURSA,
-        .natDexNum = NATIONAL_DEX_TEDDIURSA,
-        .categoryName = _("Little Bear"),
-        .height = 6,
-        .weight = 88,
-        .description = COMPOUND_STRING(
-            "It licks its palms that are sweetened by\n"
-            "being soaked in honey. A Teddiursa makes\n"
-            "its own honey by blending fruits and pollen\n"
-            "collected by Beedrill."),
-        .pokemonScale = 455,
-        .pokemonOffset = 19,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Teddiursa,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 40) : MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 12,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_V_STRETCH,
-        .backPic = gMonBackPic_Teddiursa,
-        .backPicSize = MON_COORDS_SIZE(48, 48),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 10,
-        .backAnimId = BACK_ANIM_DIP_RIGHT_SIDE,
-        .palette = gMonPalette_Teddiursa,
-        .shinyPalette = gMonShinyPalette_Teddiursa,
-        .iconSprite = gMonIcon_Teddiursa,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NORMAL,
-        SHADOW(-2, 1, SHADOW_SIZE_S)
-        FOOTPRINT(Teddiursa)
-        OVERWORLD(
-            sPicTable_Teddiursa,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following_Asym,
-            gOverworldPalette_Teddiursa,
-            gShinyOverworldPalette_Teddiursa
-        )
-        .levelUpLearnset = sTeddiursaLevelUpLearnset,
-        .teachableLearnset = sTeddiursaTeachableLearnset,
-        .eggMoveLearnset = sTeddiursaEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_URSARING}),
-    },
-
-    [SPECIES_URSARING] =
-    {
-        .baseHP        = 90,
-        .baseAttack    = 130,
-        .baseDefense   = 75,
-        .baseSpeed     = 55,
-        .baseSpAttack  = 75,
-        .baseSpDefense = 75,
-        .types = MON_TYPES(TYPE_NORMAL),
-        .catchRate = 60,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 175 : 189,
-        .evYield_Attack = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_GUTS, ABILITY_QUICK_FEET, ABILITY_UNNERVE },
-    #else
-        .abilities = { ABILITY_GUTS, ABILITY_NONE, ABILITY_UNNERVE },
-    #endif
-        .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("URSARING"),
-        .cryId = CRY_URSARING,
-        .natDexNum = NATIONAL_DEX_URSARING,
-        .categoryName = _("Hibernator"),
-        .height = 18,
-        .weight = 1258,
-        .description = COMPOUND_STRING(
-            "In forests, it is said that there are many\n"
-            "streams and towering trees where an\n"
-            "Ursaring gathers food. It walks through\n"
-            "its forest collecting food every day."),
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Ursaring,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 64) : MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 1 : 0,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 40),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SHAKE : ANIM_H_SHAKE,
-        .backPic = gMonBackPic_Ursaring,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 64) : MON_COORDS_SIZE(56, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 3 : 2,
-        .backAnimId = BACK_ANIM_V_SHAKE,
-        .palette = gMonPalette_Ursaring,
-        .shinyPalette = gMonShinyPalette_Ursaring,
-        .iconSprite = gMonIcon_Ursaring,
-        .iconPalIndex = 2,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_UrsaringF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(64, 64),
-        .backPicFemale = gMonBackPic_UrsaringF,
-        .backPicSizeFemale = MON_COORDS_SIZE(56, 64),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 14, SHADOW_SIZE_L)
-        FOOTPRINT(Ursaring)
-        OVERWORLD(
-            sPicTable_Ursaring,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Ursaring,
-            gShinyOverworldPalette_Ursaring
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_UrsaringF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sUrsaringLevelUpLearnset,
-        .teachableLearnset = sUrsaringTeachableLearnset,
-    #if P_GEN_8_CROSS_EVOS
-        .evolutions = EVOLUTION({EVO_ITEM, ITEM_PEAT_BLOCK, SPECIES_URSALUNA_BLOODMOON, CONDITIONS({IF_IN_MAPSEC, MAPSEC_MT_MOON}, {IF_TIME, TIME_NIGHT})},
-                                {EVO_ITEM, ITEM_PEAT_BLOCK, SPECIES_URSALUNA_BLOODMOON, CONDITIONS({IF_REGION, REGION_HISUI}, {IF_TIME, TIME_NIGHT})},
-                                {EVO_ITEM, ITEM_PEAT_BLOCK, SPECIES_URSALUNA, CONDITIONS({IF_TIME, TIME_NIGHT})}),
-    #endif
-    },
-
-#if P_GEN_8_CROSS_EVOS
-    [SPECIES_URSALUNA] =
-    {
-        .baseHP        = 130,
-        .baseAttack    = 140,
-        .baseDefense   = 105,
-        .baseSpeed     = 50,
-        .baseSpAttack  = 45,
-        .baseSpDefense = 80,
-        .types = MON_TYPES(TYPE_GROUND, TYPE_NORMAL),
-        .catchRate = 20,
-        .expYield = 275,
-        .evYield_Attack = 3,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_GUTS, ABILITY_BULLETPROOF, ABILITY_UNNERVE },
-        .bodyColor = BODY_COLOR_BROWN,
-        .noFlip = TRUE,
-        .speciesName = _("URSALUNA"),
-        .cryId = CRY_URSALUNA,
-        .natDexNum = NATIONAL_DEX_URSALUNA,
-        .categoryName = _("Peat"),
-        .height = 24,
-        .weight = 2900,
-        .description = COMPOUND_STRING(
-            "Swampy terrain gives Ursaluna its burly\n"
-            "physique and newfound capacity to\n"
-            "manipulate peat at will."),
-        .pokemonScale = 256,
-        .pokemonOffset = 3,
-        .trainerScale = 369,
-        .trainerOffset = 7,
-        .frontPic = gMonFrontPic_Ursaluna,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 3,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Ursaluna,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 9,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Ursaluna,
-        .shinyPalette = gMonShinyPalette_Ursaluna,
-        .iconSprite = gMonIcon_Ursaluna,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 4, SHADOW_SIZE_XL_BATTLE_ONLY)
-        FOOTPRINT(Ursaluna)
-        OVERWORLD(
-            sPicTable_Ursaluna,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Ursaluna,
-            gShinyOverworldPalette_Ursaluna
-        )
-        .levelUpLearnset = sUrsalunaLevelUpLearnset,
-        .teachableLearnset = sUrsalunaTeachableLearnset,
-        .formSpeciesIdTable = sUrsalunaFormSpeciesIdTable,
-    },
-
-    [SPECIES_URSALUNA_BLOODMOON] =
-    {
-        .baseHP        = 113,
-        .baseAttack    = 70,
-        .baseDefense   = 120,
-        .baseSpeed     = 52,
-        .baseSpAttack  = 135,
-        .baseSpDefense = 65,
-        .types = MON_TYPES(TYPE_GROUND, TYPE_NORMAL),
-        .catchRate = 5,
-        .expYield = 278,
-        .evYield_SpAttack = 3,
-        .genderRatio = MON_MALE,
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_MINDS_EYE, ABILITY_NONE, ABILITY_NONE },
-        .bodyColor = BODY_COLOR_BROWN,
-        .noFlip = TRUE,
-        .speciesName = _("URSALUNA"),
-        .cryId = CRY_URSALUNA_BLOODMOON,
-        .natDexNum = NATIONAL_DEX_URSALUNA,
-        .categoryName = _("Peat"),
-        .height = 27,
-        .weight = 3330,
-        .description = COMPOUND_STRING(
-            "It crossed the sea and drifted\n"
-            "ashore in a new land. Surviving in this\n"
-            "place led it to take on a unique\n"
-            "appearance and gain special powers."),
-        .pokemonScale = 256,
-        .pokemonOffset = 3,
-        .trainerScale = 369,
-        .trainerOffset = 7,
-        .frontPic = gMonFrontPic_UrsalunaBloodmoon,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_UrsalunaBloodmoon,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 9,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_UrsalunaBloodmoon,
-        .shinyPalette = gMonShinyPalette_UrsalunaBloodmoon,
-        .iconSprite = gMonIcon_UrsalunaBloodmoon,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(6, 11, SHADOW_SIZE_L)
-        FOOTPRINT(Ursaluna)
-        OVERWORLD(
-            sPicTable_UrsalunaBloodmoon,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_UrsalunaBloodmoon,
-            gShinyOverworldPalette_UrsalunaBloodmoon
-        )
-        .levelUpLearnset = sUrsalunaBloodmoonLevelUpLearnset,
-        .teachableLearnset = sUrsalunaBloodmoonTeachableLearnset,
-        .formSpeciesIdTable = sUrsalunaFormSpeciesIdTable,
-    },
-#endif //P_GEN_8_CROSS_EVOS
-#endif //P_FAMILY_TEDDIURSA
-
-#if P_FAMILY_SLUGMA
-    [SPECIES_SLUGMA] =
-    {
-        .baseHP        = 40,
-        .baseAttack    = 40,
-        .baseDefense   = 40,
-        .baseSpeed     = 20,
-        .baseSpAttack  = 70,
-        .baseSpDefense = 40,
-        .types = MON_TYPES(TYPE_FIRE),
-        .catchRate = 190,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 50 : 78,
-        .evYield_SpAttack = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_MAGMA_ARMOR, ABILITY_FLAME_BODY, ABILITY_WEAK_ARMOR },
-        .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("SLUGMA"),
-        .cryId = CRY_SLUGMA,
-        .natDexNum = NATIONAL_DEX_SLUGMA,
-        .categoryName = _("Lava"),
-        .height = 7,
-        .weight = 350,
-        .description = COMPOUND_STRING(
-            "It is a species of PokÃ©mon that lives in\n"
-            "volcanic areas. If its body cools, its skin\n"
-            "hardens and immobilizes it. To avoid that,\n"
-            "it sleeps near magma."),
-        .pokemonScale = 329,
-        .pokemonOffset = 15,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Slugma,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 40) : MON_COORDS_SIZE(32, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 12,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_V_STRETCH,
-        .backPic = gMonBackPic_Slugma,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 6,
-        .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
-        .palette = gMonPalette_Slugma,
-        .shinyPalette = gMonShinyPalette_Slugma,
-        .iconSprite = gMonIcon_Slugma,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(0, 0, SHADOW_SIZE_S)
-        FOOTPRINT(Slugma)
-        OVERWORLD(
-            sPicTable_Slugma,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_SLITHER,
-            sAnimTable_Following,
-            gOverworldPalette_Slugma,
-            gShinyOverworldPalette_Slugma
-        )
-        .levelUpLearnset = sSlugmaLevelUpLearnset,
-        .teachableLearnset = sSlugmaTeachableLearnset,
-        .eggMoveLearnset = sSlugmaEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 38, SPECIES_MAGCARGO}),
-    },
-
-    [SPECIES_MAGCARGO] =
-    {
-        .baseHP        = P_UPDATED_STATS >= GEN_7 ? 60 : 50,
-        .baseAttack    = 50,
-        .baseDefense   = 120,
-        .baseSpeed     = 30,
-        .baseSpAttack  = P_UPDATED_STATS >= GEN_7 ? 90 : 80,
-        .baseSpDefense = 80,
-        .types = MON_TYPES(TYPE_FIRE, TYPE_ROCK),
-        .catchRate = 75,
-    #if P_UPDATED_EXP_YIELDS >= GEN_7
-        .expYield = 151,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 144,
-    #else
-        .expYield = 154,
-    #endif
-        .evYield_Defense = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_MAGMA_ARMOR, ABILITY_FLAME_BODY, ABILITY_WEAK_ARMOR },
-        .bodyColor = BODY_COLOR_RED,
-        .noFlip = TRUE,
-        .speciesName = _("MAGCARGO"),
-        .cryId = CRY_MAGCARGO,
-        .natDexNum = NATIONAL_DEX_MAGCARGO,
-        .categoryName = _("Lava"),
-        .height = 8,
-        .weight = 550,
-        .description = COMPOUND_STRING(
-            "The shell on its back is made of hardened\n"
-            "magma. Tens of thousands of years spent\n"
-            "living in volcanic craters have turned\n"
-            "Magcargo's bodies into magma."),
-        .pokemonScale = 332,
-        .pokemonOffset = 15,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Magcargo,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 56) : MON_COORDS_SIZE(56, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 6,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_V_STRETCH,
-        .backPic = gMonBackPic_Magcargo,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 7,
-        .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
-        .palette = gMonPalette_Magcargo,
-        .shinyPalette = gMonShinyPalette_Magcargo,
-        .iconSprite = gMonIcon_Magcargo,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 5, SHADOW_SIZE_M)
-        FOOTPRINT(Magcargo)
-        OVERWORLD(
-            sPicTable_Magcargo,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_SLITHER,
-            sAnimTable_Following_Asym,
-            gOverworldPalette_Magcargo,
-            gShinyOverworldPalette_Magcargo
-        )
-        .levelUpLearnset = sMagcargoLevelUpLearnset,
-        .teachableLearnset = sMagcargoTeachableLearnset,
-    },
-#endif //P_FAMILY_SLUGMA
-
-#if P_FAMILY_SWINUB
-    [SPECIES_SWINUB] =
-    {
-        .baseHP        = 50,
-        .baseAttack    = 50,
-        .baseDefense   = 40,
-        .baseSpeed     = 50,
-        .baseSpAttack  = 30,
-        .baseSpDefense = 30,
-        .types = MON_TYPES(TYPE_ICE, TYPE_GROUND),
-        .catchRate = 225,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 50 : 78,
-        .evYield_Attack = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_OBLIVIOUS, ABILITY_SNOW_CLOAK, ABILITY_THICK_FAT },
-    #else
-        .abilities = { ABILITY_OBLIVIOUS, ABILITY_NONE, ABILITY_THICK_FAT },
-    #endif
-        .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("SWINUB"),
-        .cryId = CRY_SWINUB,
-        .natDexNum = NATIONAL_DEX_SWINUB,
-        .categoryName = _("Pig"),
-        .height = 4,
-        .weight = 65,
-        .description = COMPOUND_STRING(
-            "It roots for food by rubbing its snout\n"
-            "against the ground. Its favorite food is a\n"
-            "mushroom that grows under dried grass.\n"
-            "It occasionally roots out hot springs."),
-        .pokemonScale = 324,
-        .pokemonOffset = 20,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Swinub,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 24) : MON_COORDS_SIZE(40, 32),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 20 : 18,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Swinub,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 24) : MON_COORDS_SIZE(56, 40),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 21 : 15,
-        .backAnimId = BACK_ANIM_V_SHAKE_H_SLIDE,
-        .palette = gMonPalette_Swinub,
-        .shinyPalette = gMonShinyPalette_Swinub,
-        .iconSprite = gMonIcon_Swinub,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NORMAL,
-        SHADOW(-3, -6, SHADOW_SIZE_S)
-        FOOTPRINT(Swinub)
-        OVERWORLD(
-            sPicTable_Swinub,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Swinub,
-            gShinyOverworldPalette_Swinub
-        )
-        .levelUpLearnset = sSwinubLevelUpLearnset,
-        .teachableLearnset = sSwinubTeachableLearnset,
-        .eggMoveLearnset = sSwinubEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 33, SPECIES_PILOSWINE}),
-    },
-
-    [SPECIES_PILOSWINE] =
-    {
-        .baseHP        = 100,
-        .baseAttack    = 100,
-        .baseDefense   = 80,
-        .baseSpeed     = 50,
-        .baseSpAttack  = 60,
-        .baseSpDefense = 60,
-        .types = MON_TYPES(TYPE_ICE, TYPE_GROUND),
-        .catchRate = 75,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 158 : 160,
-        .evYield_HP = 1,
-        .evYield_Attack = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_OBLIVIOUS, ABILITY_SNOW_CLOAK, ABILITY_THICK_FAT },
-    #else
-        .abilities = { ABILITY_OBLIVIOUS, ABILITY_NONE, ABILITY_THICK_FAT },
-    #endif
-        .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("PILOSWINE"),
-        .cryId = CRY_PILOSWINE,
-        .natDexNum = NATIONAL_DEX_PILOSWINE,
-        .categoryName = _("Swine"),
-        .height = 11,
-        .weight = 558,
-        .description = COMPOUND_STRING(
-            "A Piloswine is covered by a thick coat\n"
-            "of long hair for enduring freezing cold.\n"
-            "It uses its tusks to dig up food that has\n"
-            "been buried under ice."),
-        .pokemonScale = 306,
-        .pokemonOffset = 10,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Piloswine,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(48, 56),
-        .frontPicYOffset = 8,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_H_SHAKE,
-        .backPic = gMonBackPic_Piloswine,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 40) : MON_COORDS_SIZE(64, 48),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 8,
-        .backAnimId = BACK_ANIM_H_SHAKE,
-        .palette = gMonPalette_Piloswine,
-        .shinyPalette = gMonShinyPalette_Piloswine,
-        .iconSprite = gMonIcon_Piloswine,
-        .iconPalIndex = 2,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_PiloswineF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(48, 56),
-        .backPicFemale = gMonBackPic_PiloswineF,
-        .backPicSizeFemale = MON_COORDS_SIZE(64, 48),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 3, SHADOW_SIZE_M)
-        FOOTPRINT(Piloswine)
-        OVERWORLD(
-            sPicTable_Piloswine,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Piloswine,
-            gShinyOverworldPalette_Piloswine
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_PiloswineF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sPiloswineLevelUpLearnset,
-        .teachableLearnset = sPiloswineTeachableLearnset,
-    #if P_GEN_4_CROSS_EVOS
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_MAMOSWINE, CONDITIONS({IF_KNOWS_MOVE, MOVE_ANCIENT_POWER})}),
-    #endif
-    },
-
-#if P_GEN_4_CROSS_EVOS
-    [SPECIES_MAMOSWINE] =
-    {
-        .baseHP        = 110,
-        .baseAttack    = 130,
-        .baseDefense   = 80,
-        .baseSpeed     = 80,
-        .baseSpAttack  = 70,
-        .baseSpDefense = 60,
-        .types = MON_TYPES(TYPE_ICE, TYPE_GROUND),
-        .catchRate = 50,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 265,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 239,
-    #else
-        .expYield = 207,
-    #endif
-        .evYield_Attack = 3,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_OBLIVIOUS, ABILITY_SNOW_CLOAK, ABILITY_THICK_FAT },
-        .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("MAMOSWINE"),
-        .cryId = CRY_MAMOSWINE,
-        .natDexNum = NATIONAL_DEX_MAMOSWINE,
-        .categoryName = _("Twin Tusk"),
-        .height = 25,
-        .weight = 2910,
-        .description = COMPOUND_STRING(
-            "A frozen Mamoswine was dug from ice\n"
-            "dating back 10,000 years. It woke up to\n"
-            "much amazement. This PokÃ©mon has been\n"
-            "around for a long, long, long time."),
-        .pokemonScale = 257,
-        .pokemonOffset = 6,
-        .trainerScale = 423,
-        .trainerOffset = 8,
-        .frontPic = gMonFrontPic_Mamoswine,
-        .frontPicSize = MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = 4,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 30),
-        ),
-        .frontAnimId = ANIM_BACK_AND_LUNGE,
-        .backPic = gMonBackPic_Mamoswine,
-        .backPicSize = MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = 6,
-        .backAnimId = BACK_ANIM_V_SHAKE_LOW,
-        .palette = gMonPalette_Mamoswine,
-        .shinyPalette = gMonShinyPalette_Mamoswine,
-        .iconSprite = gMonIcon_Mamoswine,
-        .iconPalIndex = 2,
-#if P_GENDER_DIFFERENCES
-        .frontPicFemale = gMonFrontPic_MamoswineF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(64, 56),
-#endif //P_GENDER_DIFFERENCES
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(7, 7, SHADOW_SIZE_L)
-        FOOTPRINT(Mamoswine)
-        OVERWORLD(
-            sPicTable_Mamoswine,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Mamoswine,
-            gShinyOverworldPalette_Mamoswine
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_MamoswineF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sMamoswineLevelUpLearnset,
-        .teachableLearnset = sMamoswineTeachableLearnset,
-    },
-#endif //P_GEN_4_CROSS_EVOS
-#endif //P_FAMILY_SWINUB
-
-#if P_FAMILY_CORSOLA
-    [SPECIES_CORSOLA] =
-    {
-        .baseHP        = P_UPDATED_STATS >= GEN_7 ? 65 : 55,
-        .baseAttack    = 55,
-        .baseDefense   = P_UPDATED_STATS >= GEN_7 ? 95 : 85,
-        .baseSpeed     = 35,
-        .baseSpAttack  = 65,
-        .baseSpDefense = P_UPDATED_STATS >= GEN_7 ? 95 : 85,
-        .types = MON_TYPES(TYPE_WATER, TYPE_ROCK),
-        .catchRate = 60,
-    #if P_UPDATED_EXP_YIELDS >= GEN_7
-        .expYield = 144,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 133,
-    #else
-        .expYield = 113,
-    #endif
-        .evYield_Defense = 1,
-        .evYield_SpDefense = 1,
-        .itemRare = ITEM_LUMINOUS_MOSS,
-        .genderRatio = PERCENT_FEMALE(75),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_WATER_3),
-        .abilities = { ABILITY_HUSTLE, ABILITY_NATURAL_CURE, ABILITY_REGENERATOR },
-        .bodyColor = BODY_COLOR_PINK,
-        .speciesName = _("CORSOLA"),
-        .cryId = CRY_CORSOLA,
-        .natDexNum = NATIONAL_DEX_CORSOLA,
-        .categoryName = _("Coral"),
-        .height = 6,
-        .weight = 50,
-        .description = COMPOUND_STRING(
-            "Corsola live in warm southern seas.\n"
-            "If the sea becomes polluted, the beautiful\n"
-            "coral stalks become discolored and crumble\n"
-            "away in tatters."),
-        .pokemonScale = 410,
-        .pokemonOffset = 15,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Corsola,
-        .frontPicSize = MON_COORDS_SIZE(48, 40),
-        .frontPicYOffset = 12,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 11),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_H_SLIDE,
-        .backPic = gMonBackPic_Corsola,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(56, 48),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 8,
-        .backAnimId = BACK_ANIM_H_SLIDE,
-        .palette = gMonPalette_Corsola,
-        .shinyPalette = gMonShinyPalette_Corsola,
-        .iconSprite = gMonIcon_Corsola,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 1, SHADOW_SIZE_M)
-        FOOTPRINT(Corsola)
-        OVERWORLD(
-            sPicTable_Corsola,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Corsola,
-            gShinyOverworldPalette_Corsola
-        )
-        .levelUpLearnset = sCorsolaLevelUpLearnset,
-        .teachableLearnset = sCorsolaTeachableLearnset,
-        .eggMoveLearnset = sCorsolaEggMoveLearnset,
-        .formSpeciesIdTable = sCorsolaFormSpeciesIdTable,
-    },
-
-#if P_GALARIAN_FORMS
-    [SPECIES_CORSOLA_GALAR] =
-    {
-        .baseHP        = 60,
-        .baseAttack    = 55,
-        .baseDefense   = 100,
-        .baseSpeed     = 30,
-        .baseSpAttack  = 65,
-        .baseSpDefense = 100,
-        .types = MON_TYPES(TYPE_GHOST),
-        .catchRate = 60,
-        .expYield = 144,
-        .evYield_SpDefense = 1,
-        .genderRatio = PERCENT_FEMALE(75),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_WATER_3),
-        .abilities = { ABILITY_WEAK_ARMOR, ABILITY_NONE, ABILITY_CURSED_BODY },
-        .bodyColor = BODY_COLOR_WHITE,
-#if P_SEPARATE_REGIONAL_FORMS
-        .speciesName = _("CORSOLA-G"),
-#else
-        .speciesName = _("CORSOLA"),
-#endif
-        .cryId = CRY_CORSOLA,
-#if P_SEPARATE_REGIONAL_FORMS
-        .natDexNum = NATIONAL_DEX_CORSOLA_GALAR,
-#else
-        .natDexNum = NATIONAL_DEX_CORSOLA,
-#endif
-        .categoryName = _("Coral"),
-        .height = 6,
-        .weight = 5,
-        .description = COMPOUND_STRING(
-            "Sudden climate change wiped out this\n"
-            "ancient kind of Corsola. With its branches,\n"
-            "it absorbs others' life-force. It curses\n"
-            "those unaware that kick it by accident."),
-        .pokemonScale = 410,
-        .pokemonOffset = 15,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_CorsolaGalar,
-        .frontPicSize = MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = 11,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_CorsolaGalar,
-        .backPicSize = MON_COORDS_SIZE(56, 48),
-        .backPicYOffset = 8,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_CorsolaGalar,
-        .shinyPalette = gMonShinyPalette_CorsolaGalar,
-        .iconSprite = gMonIcon_CorsolaGalar,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 2, SHADOW_SIZE_M)
-        FOOTPRINT(Corsola)
-        OVERWORLD(
-            sPicTable_CorsolaGalar,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_CorsolaGalar,
-            gShinyOverworldPalette_CorsolaGalar
-        )
-        .isGalarianForm = TRUE,
-        .dexNotRequired = TRUE,
-        .levelUpLearnset = sCorsolaGalarLevelUpLearnset,
-        .teachableLearnset = sCorsolaGalarTeachableLearnset,
-        .eggMoveLearnset = sCorsolaGalarEggMoveLearnset,
-#if P_SEPARATE_REGIONAL_FORMS
-        .formSpeciesIdTable = sCorsolaGalarFormSpeciesIdTable,
-#else
-        .formSpeciesIdTable = sCorsolaFormSpeciesIdTable,
-#endif
-        .evolutions = EVOLUTION({EVO_LEVEL, 38, SPECIES_CURSOLA}),
-    },
-
-    [SPECIES_CURSOLA] =
-    {
-        .dexNotRequired = TRUE,
-        .baseHP        = 60,
-        .baseAttack    = 95,
-        .baseDefense   = 50,
-        .baseSpeed     = 30,
-        .baseSpAttack  = 145,
-        .baseSpDefense = 130,
-        .types = MON_TYPES(TYPE_GHOST),
-        .catchRate = 30,
-        .expYield = 179,
-        .evYield_SpAttack = 2,
-        .genderRatio = PERCENT_FEMALE(75),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_WATER_3),
-        .abilities = { ABILITY_WEAK_ARMOR, ABILITY_NONE, ABILITY_PERISH_BODY },
-        .bodyColor = BODY_COLOR_WHITE,
-        .noFlip = TRUE,
-        .speciesName = _("CURSOLA"),
-        .cryId = CRY_CURSOLA,
-        .natDexNum = NATIONAL_DEX_CURSOLA,
-        .categoryName = _("Coral"),
-        .height = 10,
-        .weight = 4,
-        .description = COMPOUND_STRING(
-            "Its shell is overflowing with its\n"
-            "heightened otherworldly energy. The\n"
-            "ectoplasm serves as protection for this\n"
-            "PokÃ©mon's core spirit."),
-        .pokemonScale = 305,
-        .pokemonOffset = 7,
-        .trainerScale = 257,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Cursola,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Cursola,
-        .backPicSize = MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = 5,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Cursola,
-        .shinyPalette = gMonShinyPalette_Cursola,
-        .iconSprite = gMonIcon_Cursola,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-3, 13, SHADOW_SIZE_S)
-        FOOTPRINT(Cursola)
-        OVERWORLD(
-            sPicTable_Cursola,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Cursola,
-            gShinyOverworldPalette_Cursola
-        )
-        .levelUpLearnset = sCursolaLevelUpLearnset,
-        .teachableLearnset = sCursolaTeachableLearnset,
-    },
-#endif //P_GALARIAN_FORMS
-#endif //P_FAMILY_CORSOLA
-
-#if P_FAMILY_REMORAID
-    [SPECIES_REMORAID] =
-    {
-        .baseHP        = 35,
-        .baseAttack    = 65,
-        .baseDefense   = 35,
-        .baseSpeed     = 65,
-        .baseSpAttack  = 65,
-        .baseSpDefense = 35,
-        .types = MON_TYPES(TYPE_WATER),
-        .catchRate = 190,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 60 : 78,
-        .evYield_SpAttack = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_WATER_2),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_HUSTLE, ABILITY_SNIPER, ABILITY_MOODY },
-    #else
-        .abilities = { ABILITY_HUSTLE, ABILITY_NONE, ABILITY_MOODY },
-    #endif
-        .bodyColor = BODY_COLOR_GRAY,
-        .speciesName = _("REMORAID"),
-        .cryId = CRY_REMORAID,
-        .natDexNum = NATIONAL_DEX_REMORAID,
-        .categoryName = _("Jet"),
-        .height = 6,
-        .weight = 120,
-        .description = COMPOUND_STRING(
-            "A Remoraid uses its abdominal muscles\n"
-            "to forcefully expel swallowed water, then\n"
-            "shoot down flying prey. When evolution\n"
-            "approaches, it travels down rivers."),
-        .pokemonScale = 316,
-        .pokemonOffset = 4,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Remoraid,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(40, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 14 : 11,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 30),
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 30),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_JUMPS_SMALL : ANIM_V_SQUISH_AND_BOUNCE_SLOW,
-        .backPic = gMonBackPic_Remoraid,
-        .backPicSize = MON_COORDS_SIZE(56, 40),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 12,
-        .backAnimId = BACK_ANIM_H_SLIDE,
-        .palette = gMonPalette_Remoraid,
-        .shinyPalette = gMonShinyPalette_Remoraid,
-        .iconSprite = gMonIcon_Remoraid,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 0, SHADOW_SIZE_S)
-        FOOTPRINT(Remoraid)
-        OVERWORLD(
-            sPicTable_Remoraid,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_SPOT,
-            sAnimTable_Following,
-            gOverworldPalette_Remoraid,
-            gShinyOverworldPalette_Remoraid
-        )
-        .levelUpLearnset = sRemoraidLevelUpLearnset,
-        .teachableLearnset = sRemoraidTeachableLearnset,
-        .eggMoveLearnset = sRemoraidEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 25, SPECIES_OCTILLERY}),
-    },
-
-    [SPECIES_OCTILLERY] =
-    {
-        .baseHP        = 75,
-        .baseAttack    = 105,
-        .baseDefense   = 75,
-        .baseSpeed     = 45,
-        .baseSpAttack  = 105,
-        .baseSpDefense = 75,
-        .types = MON_TYPES(TYPE_WATER),
-        .catchRate = 75,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 168 : 164,
-        .evYield_Attack = 1,
-        .evYield_SpAttack = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_WATER_2),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_SUCTION_CUPS, ABILITY_SNIPER, ABILITY_MOODY },
-    #else
-        .abilities = { ABILITY_SUCTION_CUPS, ABILITY_NONE, ABILITY_MOODY },
-    #endif
-        .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("OCTILLERY"),
-        .cryId = CRY_OCTILLERY,
-        .natDexNum = NATIONAL_DEX_OCTILLERY,
-        .categoryName = _("Jet"),
-        .height = 9,
-        .weight = 285,
-        .description = COMPOUND_STRING(
-            "It ensnares its foe with its suction-\n"
-            "cupped tentacles before delivering the\n"
-            "finishing blow. If the foe turns out to be\n"
-            "too strong, it spews ink to escape."),
-        .pokemonScale = 296,
-        .pokemonOffset = 3,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Octillery,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 8,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_V_STRETCH,
-        .frontAnimDelay = 20,
-        .backPic = gMonBackPic_Octillery,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 8,
-        .backAnimId = BACK_ANIM_SHRINK_GROW,
-        .palette = gMonPalette_Octillery,
-        .shinyPalette = gMonShinyPalette_Octillery,
-        .iconSprite = gMonIcon_Octillery,
-        .iconPalIndex = 0,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_OctilleryF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(56, 48),
-        .backPicFemale = gMonBackPic_OctilleryF,
-        .backPicSizeFemale = MON_COORDS_SIZE(64, 56),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 4, SHADOW_SIZE_M)
-        FOOTPRINT(Octillery)
-        OVERWORLD(
-            sPicTable_Octillery,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_SLITHER,
-            sAnimTable_Following,
-            gOverworldPalette_Octillery,
-            gShinyOverworldPalette_Octillery
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_OctilleryF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_SLITHER,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sOctilleryLevelUpLearnset,
-        .teachableLearnset = sOctilleryTeachableLearnset,
-    },
-#endif //P_FAMILY_REMORAID
-
-#if P_FAMILY_DELIBIRD
-    [SPECIES_DELIBIRD] =
-    {
-        .baseHP        = 45,
-        .baseAttack    = 55,
-        .baseDefense   = 45,
-        .baseSpeed     = 75,
-        .baseSpAttack  = 65,
-        .baseSpDefense = 45,
-        .types = MON_TYPES(TYPE_ICE, TYPE_FLYING),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 116 : 183,
-        .evYield_Speed = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_FIELD),
-        .abilities = { ABILITY_VITAL_SPIRIT, ABILITY_HUSTLE, ABILITY_INSOMNIA },
-        .bodyColor = BODY_COLOR_RED,
-        .noFlip = TRUE,
-        .speciesName = _("DELIBIRD"),
-        .cryId = CRY_DELIBIRD,
-        .natDexNum = NATIONAL_DEX_DELIBIRD,
-        .categoryName = _("Delivery"),
-        .height = 9,
-        .weight = 160,
-        .description = COMPOUND_STRING(
-            "It carries food bundled up in its tail.\n"
-            "There was a famous explorer who\n"
-            "managed to scale Mt. Everest thanks\n"
-            "to a Delibird sharing its food."),
-        .pokemonScale = 293,
-        .pokemonOffset = 11,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Delibird,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 48) : MON_COORDS_SIZE(48, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 7,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_JUMPS_SMALL : ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Delibird,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 56) : MON_COORDS_SIZE(56, 56),
-        .backPicYOffset = 6,
-        .backAnimId = BACK_ANIM_TRIANGLE_DOWN,
-        .palette = gMonPalette_Delibird,
-        .shinyPalette = gMonShinyPalette_Delibird,
-        .iconSprite = gMonIcon_Delibird,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 0 : 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 7, SHADOW_SIZE_M)
-        FOOTPRINT(Delibird)
-        OVERWORLD(
-            sPicTable_Delibird,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Delibird,
-            gShinyOverworldPalette_Delibird
-        )
-        .isSkyBattleBanned = B_SKY_BATTLE_STRICT_ELIGIBILITY,
-        .levelUpLearnset = sDelibirdLevelUpLearnset,
-        .teachableLearnset = sDelibirdTeachableLearnset,
-        .eggMoveLearnset = sDelibirdEggMoveLearnset,
-    },
-#endif //P_FAMILY_DELIBIRD
-
-#if P_FAMILY_MANTINE
-#if P_GEN_4_CROSS_EVOS
-    [SPECIES_MANTYKE] =
-    {
-        .baseHP        = 45,
-        .baseAttack    = 20,
-        .baseDefense   = 50,
-        .baseSpeed     = 50,
-        .baseSpAttack  = 60,
-        .baseSpDefense = 120,
-        .types = MON_TYPES(TYPE_WATER, TYPE_FLYING),
-        .catchRate = 25,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 69 : 108,
-        .evYield_SpDefense = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 25,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_SWIFT_SWIM, ABILITY_WATER_ABSORB, ABILITY_WATER_VEIL },
-        .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("MANTYKE"),
-        .cryId = CRY_MANTYKE,
-        .natDexNum = NATIONAL_DEX_MANTYKE,
-        .categoryName = _("Kite"),
-        .height = 10,
-        .weight = 650,
-        .description = COMPOUND_STRING(
-            "When it swims close to the surface\n"
-            "of the ocean, people aboard ships are\n"
-            "able to observe the pattern on its back.\n"
-            "It often swims in a school of Remoraid."),
-        .pokemonScale = 305,
-        .pokemonOffset = 7,
-        .trainerScale = 257,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Mantyke,
-        .frontPicSize = MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = 12,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 45),
-            ANIMCMD_FRAME(0, 5),
-        ),
-        .frontAnimId = ANIM_TWIST_TWICE,
-        .backPic = gMonBackPic_Mantyke,
-        .backPicSize = MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = 6,
-        .backAnimId = BACK_ANIM_CONVEX_DOUBLE_ARC,
-        .palette = gMonPalette_Mantyke,
-        .shinyPalette = gMonShinyPalette_Mantyke,
-        .iconSprite = gMonIcon_Mantyke,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 3, SHADOW_SIZE_S)
-        FOOTPRINT(Mantyke)
-        OVERWORLD(
-            sPicTable_Mantyke,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Mantyke,
-            gShinyOverworldPalette_Mantyke
-        )
-        .levelUpLearnset = sMantykeLevelUpLearnset,
-        .teachableLearnset = sMantykeTeachableLearnset,
-        .eggMoveLearnset = sMantykeEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_MANTINE, CONDITIONS({IF_SPECIES_IN_PARTY, SPECIES_REMORAID})}),
-    },
-#endif //P_GEN_4_CROSS_EVOS
-
-    [SPECIES_MANTINE] =
-    {
-        .baseHP        = P_UPDATED_STATS >= GEN_7 ? 85 : 65,
-        .baseAttack    = 40,
-        .baseDefense   = 70,
-        .baseSpeed     = 70,
-        .baseSpAttack  = 80,
-        .baseSpDefense = 140,
-        .types = MON_TYPES(TYPE_WATER, TYPE_FLYING),
-        .catchRate = 25,
-    #if P_UPDATED_EXP_YIELDS >= GEN_7
-        .expYield = 170,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 163,
-    #else
-        .expYield = 168,
-    #endif
-        .evYield_SpDefense = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 25,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1),
-        .abilities = { ABILITY_SWIFT_SWIM, ABILITY_WATER_ABSORB, ABILITY_WATER_VEIL },
-        .bodyColor = BODY_COLOR_PURPLE,
-        .noFlip = P_GBA_STYLE_SPECIES_GFX,
-        .speciesName = _("MANTINE"),
-        .cryId = CRY_MANTINE,
-        .natDexNum = NATIONAL_DEX_MANTINE,
-        .categoryName = _("Kite"),
-        .height = 21,
-        .weight = 2200,
-        .description = COMPOUND_STRING(
-            "On sunny days, schools of Mantine can be\n"
-            "seen elegantly leaping over the waves.\n"
-            "It is not bothered by the Remoraid that\n"
-            "hitches rides."),
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 342,
-        .trainerOffset = 7,
-        .frontPic = gMonFrontPic_Mantine,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 64) : MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 1 : 9,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 30),
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 40),
-        ),
-        .frontAnimId = ANIM_SWING_CONVEX,
-        .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 0 : 6,
-        .backPic = gMonBackPic_Mantine,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 2,
-        .backAnimId = BACK_ANIM_H_SLIDE,
-        .palette = gMonPalette_Mantine,
-        .shinyPalette = gMonShinyPalette_Mantine,
-        .iconSprite = gMonIcon_Mantine,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 8, SHADOW_SIZE_M)
-        FOOTPRINT(Mantine)
-        OVERWORLD(
-            sPicTable_Mantine,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_NONE,
-            sAnimTable_Following,
-            gOverworldPalette_Mantine,
-            gShinyOverworldPalette_Mantine
-        )
-        .levelUpLearnset = sMantineLevelUpLearnset,
-        .teachableLearnset = sMantineTeachableLearnset,
-        .eggMoveLearnset = sMantineEggMoveLearnset,
-    },
-#endif //P_FAMILY_MANTINE
-
-#if P_FAMILY_SKARMORY
-    [SPECIES_SKARMORY] =
-    {
-        .baseHP        = 65,
-        .baseAttack    = 80,
-        .baseDefense   = 140,
-        .baseSpeed     = 70,
-        .baseSpAttack  = 40,
-        .baseSpDefense = 70,
-        .types = MON_TYPES(TYPE_STEEL, TYPE_FLYING),
-        .catchRate = 25,
-        .expYield = 163,
-        .evYield_Defense = 2,
-        .itemRare = ITEM_METAL_COAT,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 25,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
-        .abilities = { ABILITY_KEEN_EYE, ABILITY_STURDY, ABILITY_WEAK_ARMOR },
-        .bodyColor = BODY_COLOR_GRAY,
-        .speciesName = _("SKARMORY"),
-        .cryId = CRY_SKARMORY,
-        .natDexNum = NATIONAL_DEX_SKARMORY,
-        .categoryName = _("Armor Bird"),
-        .height = 17,
-        .weight = 505,
-        .description = COMPOUND_STRING(
-            "A PokÃ©mon that has a body and wings of\n"
-            "steel. People in the past used feathers\n"
-            "fallen from Skarmory to make swords and\n"
-            "knives."),
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 271,
-        .trainerOffset = 1,
-        .frontPic = gMonFrontPic_Skarmory,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 1,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 40),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_STRETCH : ANIM_V_SHAKE,
-        .backPic = gMonBackPic_Skarmory,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(48, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 1,
-        .backAnimId = BACK_ANIM_JOLT_RIGHT,
-        .palette = gMonPalette_Skarmory,
-        .shinyPalette = gMonShinyPalette_Skarmory,
-        .iconSprite = gMonIcon_Skarmory,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 9, SHADOW_SIZE_M)
-        FOOTPRINT(Skarmory)
-        OVERWORLD(
-            sPicTable_Skarmory,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Skarmory,
-            gShinyOverworldPalette_Skarmory
-        )
-        .levelUpLearnset = sSkarmoryLevelUpLearnset,
-        .teachableLearnset = sSkarmoryTeachableLearnset,
-        .eggMoveLearnset = sSkarmoryEggMoveLearnset,
-        .formSpeciesIdTable = sSkarmoryFormSpeciesIdTable,
-        .formChangeTable = sSkarmoryFormChangeTable,
-    },
-
-#if P_GEN_9_MEGA_EVOLUTIONS
-    [SPECIES_SKARMORY_MEGA] =
-    {
-        .baseHP        = 65,
-        .baseAttack    = 140,
-        .baseDefense   = 110,
-        .baseSpeed     = 110,
-        .baseSpAttack  = 40,
-        .baseSpDefense = 100,
-        .types = MON_TYPES(TYPE_STEEL, TYPE_FLYING),
-        .catchRate = 25,
-        .expYield = 163,
-        .evYield_Defense = 2,
-        .itemRare = ITEM_METAL_COAT,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 25,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
-        .abilities = { ABILITY_KEEN_EYE, ABILITY_STURDY, ABILITY_WEAK_ARMOR },
-        .bodyColor = BODY_COLOR_GRAY,
-        .speciesName = _("SKARMORY"),
-    #if P_MODIFIED_MEGA_CRIES
-        .cryId = CRY_SKARMORY_MEGA,
-    #else
-        .cryId = CRY_SKARMORY,
-    #endif // P_MODIFIED_MEGA_CRIES
-        .natDexNum = NATIONAL_DEX_SKARMORY,
-        .categoryName = _("Armor Bird"),
-        .height = 17,
-        .weight = 404,
-        .description = COMPOUND_STRING(
-            "Due to the effects of Mega Evolution,\n"
-            "its pincers have taken a more\n"
-            "diabolical form, ripping anything\n"
-            "they pierce to shreds."),
-        .frontPic = gMonFrontPic_SkarmoryMega,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .enemyMonElevation = 6,
-        .backPic = gMonBackPic_SkarmoryMega,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 1,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_SkarmoryMega,
-        .shinyPalette = gMonShinyPalette_SkarmoryMega,
-        .iconSprite = gMonIcon_SkarmoryMega,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        FOOTPRINT(Skarmory)
-        SHADOW(2, 16, SHADOW_SIZE_M)
-        .isMegaEvolution = TRUE,
-        .levelUpLearnset = sSkarmoryLevelUpLearnset,
-        .teachableLearnset = sSkarmoryTeachableLearnset,
-        .formSpeciesIdTable = sSkarmoryFormSpeciesIdTable,
-        .formChangeTable = sSkarmoryFormChangeTable,
-        .randomizerMode = MON_RANDOMIZER_INVALID,
-    },
-#endif //P_GEN_9_MEGA_EVOLUTIONS
-#endif //P_FAMILY_SKARMORY
-
-#if P_FAMILY_HOUNDOUR
-    [SPECIES_HOUNDOUR] =
-    {
-        .baseHP        = 45,
-        .baseAttack    = 60,
-        .baseDefense   = 30,
-        .baseSpeed     = 65,
-        .baseSpAttack  = 80,
-        .baseSpDefense = 50,
-        .types = MON_TYPES(TYPE_DARK, TYPE_FIRE),
-        .catchRate = 120,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 66 : 114,
-        .evYield_SpAttack = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = 35,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_EARLY_BIRD, ABILITY_FLASH_FIRE, ABILITY_UNNERVE },
-        .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("HOUNDOUR"),
-        .cryId = CRY_HOUNDOUR,
-        .natDexNum = NATIONAL_DEX_HOUNDOUR,
-        .categoryName = _("Dark"),
-        .height = 6,
-        .weight = 108,
-        .description = COMPOUND_STRING(
-            "Houndour communicate with each other\n"
-            "using a variety of cries to corner their\n"
-            "prey. This PokÃ©mon's remarkable teamwork\n"
-            "is simply unparalleled."),
-        .pokemonScale = 393,
-        .pokemonOffset = 16,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Houndour,
-        .frontPicSize = MON_COORDS_SIZE(40, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 9,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 40),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_V_STRETCH,
-        .backPic = gMonBackPic_Houndour,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(40, 48),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 12 : 10,
-        .backAnimId = BACK_ANIM_V_SHAKE,
-        .palette = gMonPalette_Houndour,
-        .shinyPalette = gMonShinyPalette_Houndour,
-        .iconSprite = gMonIcon_Houndour,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(0, 4, SHADOW_SIZE_M)
-        FOOTPRINT(Houndour)
-        OVERWORLD(
-            sPicTable_Houndour,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Houndour,
-            gShinyOverworldPalette_Houndour
-        )
-        .levelUpLearnset = sHoundourLevelUpLearnset,
-        .teachableLearnset = sHoundourTeachableLearnset,
-        .eggMoveLearnset = sHoundourEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 24, SPECIES_HOUNDOOM}),
-    },
-
-    [SPECIES_HOUNDOOM] =
-    {
-        .baseHP        = 75,
-        .baseAttack    = 90,
-        .baseDefense   = 50,
-        .baseSpeed     = 95,
-        .baseSpAttack  = 110,
-        .baseSpDefense = 80,
-        .types = MON_TYPES(TYPE_DARK, TYPE_FIRE),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 175 : 204,
-        .evYield_SpAttack = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = 35,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_EARLY_BIRD, ABILITY_FLASH_FIRE, ABILITY_UNNERVE },
-        .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("HOUNDOOM"),
-        .cryId = CRY_HOUNDOOM,
-        .natDexNum = NATIONAL_DEX_HOUNDOOM,
-        .categoryName = _("Dark"),
-        .height = 14,
-        .weight = 350,
-        .description = COMPOUND_STRING(
-            "In a Houndoom pack, the one with its horns\n"
-            "raked sharply back serves a leadership\n"
-            "role. They choose their leader by fighting\n"
-            "among themselves."),
-        .pokemonScale = 256,
-        .pokemonOffset = 4,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Houndoom,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 0,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 40),
-            ANIMCMD_FRAME(0, 30),
-        ),
-        .frontAnimId = ANIM_V_SHAKE,
-        .backPic = gMonBackPic_Houndoom,
-        .backPicSize = MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 6,
-        .backAnimId = BACK_ANIM_V_SHAKE,
-        .palette = gMonPalette_Houndoom,
-        .shinyPalette = gMonShinyPalette_Houndoom,
-        .iconSprite = gMonIcon_Houndoom,
-        .iconPalIndex = 0,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_HoundoomF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(64, 64),
-        .backPicFemale = gMonBackPic_HoundoomF,
-        .backPicSizeFemale = MON_COORDS_SIZE(64, 56),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-5, 13, SHADOW_SIZE_L)
-        FOOTPRINT(Houndoom)
-        OVERWORLD(
-            sPicTable_Houndoom,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Houndoom,
-            gShinyOverworldPalette_Houndoom
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_HoundoomF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sHoundoomLevelUpLearnset,
-        .teachableLearnset = sHoundoomTeachableLearnset,
-        .formSpeciesIdTable = sHoundoomFormSpeciesIdTable,
-        .formChangeTable = sHoundoomFormChangeTable,
-    },
-
-#if P_MEGA_EVOLUTIONS
-    [SPECIES_HOUNDOOM_MEGA] =
-    {
-        .baseHP        = 75,
-        .baseAttack    = 90,
-        .baseDefense   = 90,
-        .baseSpeed     = 115,
-        .baseSpAttack  = 140,
-        .baseSpDefense = 90,
-        .types = MON_TYPES(TYPE_DARK, TYPE_FIRE),
-        .catchRate = 45,
-        .expYield = 210,
-        .evYield_SpAttack = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = 35,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_SOLAR_POWER, ABILITY_SOLAR_POWER, ABILITY_SOLAR_POWER },
-        .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("HOUNDOOM"),
-    #if P_MODIFIED_MEGA_CRIES
-        .cryId = CRY_HOUNDOOM_MEGA,
-    #else
-        .cryId = CRY_HOUNDOOM,
-    #endif // P_MODIFIED_MEGA_CRIES
-        .natDexNum = NATIONAL_DEX_HOUNDOOM,
-        .categoryName = _("Dark"),
-        .height = 19,
-        .weight = 495,
-        .description = COMPOUND_STRING(
-            "Its red claws and the tips of its tail are\n"
-            "melting from high internal temperatures\n"
-            "that are painful to Houndoom itself.\n"),
-        .pokemonScale = 256,
-        .pokemonOffset = 4,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_HoundoomMega,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_HoundoomMega,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 0,
-        .backAnimId = BACK_ANIM_V_SHAKE,
-        .palette = gMonPalette_HoundoomMega,
-        .shinyPalette = gMonShinyPalette_HoundoomMega,
-        .iconSprite = gMonIcon_HoundoomMega,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-5, 13, SHADOW_SIZE_L)
-        FOOTPRINT(Houndoom)
-    #if OW_BATTLE_ONLY_FORMS
-        OVERWORLD(
-            sPicTable_HoundoomMega,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_HoundoomMega,
-            gShinyOverworldPalette_HoundoomMega
-        )
-    #endif //OW_BATTLE_ONLY_FORMS
-        .isMegaEvolution = TRUE,
-        .levelUpLearnset = sHoundoomLevelUpLearnset,
-        .teachableLearnset = sHoundoomTeachableLearnset,
-        .formSpeciesIdTable = sHoundoomFormSpeciesIdTable,
-        .formChangeTable = sHoundoomFormChangeTable,
-        .randomizerMode = MON_RANDOMIZER_INVALID,
-    },
-#endif //P_MEGA_EVOLUTIONS
-#endif //P_FAMILY_HOUNDOUR
-
-#if P_FAMILY_PHANPY
-    [SPECIES_PHANPY] =
-    {
-        .baseHP        = 90,
-        .baseAttack    = 60,
-        .baseDefense   = 60,
-        .baseSpeed     = 40,
-        .baseSpAttack  = 40,
-        .baseSpDefense = 40,
-        .types = MON_TYPES(TYPE_GROUND),
-        .catchRate = 120,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 66 : 124,
-        .evYield_HP = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_PICKUP, ABILITY_NONE, ABILITY_SAND_VEIL },
-        .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("PHANPY"),
-        .cryId = CRY_PHANPY,
-        .natDexNum = NATIONAL_DEX_PHANPY,
-        .categoryName = _("Long Nose"),
-        .height = 5,
-        .weight = 335,
-        .description = COMPOUND_STRING(
-            "Phanpy's big ears serve as broad fans.\n"
-            "When it becomes hot, it flaps the ears\n"
-            "busily to cool down. Even the young are\n"
-            "very strong."),
-        .pokemonScale = 465,
-        .pokemonOffset = 21,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Phanpy,
-        .frontPicSize = MON_COORDS_SIZE(40, 32),
-        .frontPicYOffset = 16,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_H_JUMPS_V_STRETCH,
-        .backPic = gMonBackPic_Phanpy,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 40) : MON_COORDS_SIZE(56, 40),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 14 : 12,
-        .backAnimId = BACK_ANIM_JOLT_RIGHT,
-        .palette = gMonPalette_Phanpy,
-        .shinyPalette = gMonShinyPalette_Phanpy,
-        .shinyPaletteModern = gMonShinyPaletteModern_Phanpy,
-        .iconSprite = gMonIcon_Phanpy,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NORMAL,
-        SHADOW(3, -2, SHADOW_SIZE_M)
-        FOOTPRINT(Phanpy)
-        OVERWORLD(
-            sPicTable_Phanpy,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Phanpy,
-            gShinyOverworldPalette_Phanpy,
-            gShinyModernOverworldPalette_Phanpy
-        )
-        .levelUpLearnset = sPhanpyLevelUpLearnset,
-        .teachableLearnset = sPhanpyTeachableLearnset,
-        .eggMoveLearnset = sPhanpyEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 25, SPECIES_DONPHAN}),
-    },
-
-    [SPECIES_DONPHAN] =
-    {
-        .baseHP        = 90,
-        .baseAttack    = 120,
-        .baseDefense   = 120,
-        .baseSpeed     = 50,
-        .baseSpAttack  = 60,
-        .baseSpDefense = 60,
-        .types = MON_TYPES(TYPE_GROUND),
-        .catchRate = 60,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 175 : 189,
-        .evYield_Attack = 1,
-        .evYield_Defense = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_STURDY, ABILITY_NONE, ABILITY_SAND_VEIL },
-        .bodyColor = BODY_COLOR_GRAY,
-        .speciesName = _("DONPHAN"),
-        .cryId = CRY_DONPHAN,
-        .natDexNum = NATIONAL_DEX_DONPHAN,
-        .categoryName = _("Armor"),
-        .height = 11,
-        .weight = 1200,
-        .description = COMPOUND_STRING(
-            "A Donphan is so strong it can easily haul\n"
-            "a dump truck. Its hide has toughened to a\n"
-            "rock-hard state. An ordinary sort of\n"
-            "attack won't even leave a scratch."),
-        .pokemonScale = 313,
-        .pokemonOffset = 9,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Donphan,
-        .frontPicSize = MON_COORDS_SIZE(64, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 9,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 25),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SHAKE_TWICE : ANIM_ROTATE_UP_SLAM_DOWN,
-        .backPic = gMonBackPic_Donphan,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 40) : MON_COORDS_SIZE(64, 48),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 13 : 9,
-        .backAnimId = BACK_ANIM_V_SHAKE_LOW,
-        .palette = gMonPalette_Donphan,
-        .shinyPalette = gMonShinyPalette_Donphan,
-        .iconSprite = gMonIcon_Donphan,
-        .iconPalIndex = 0,
-#if P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .frontPicFemale = gMonFrontPic_DonphanF,
-        .frontPicSizeFemale = MON_COORDS_SIZE(64, 48),
-        .backPicFemale = gMonBackPic_DonphanF,
-        .backPicSizeFemale = MON_COORDS_SIZE(64, 48),
-#endif //P_GENDER_DIFFERENCES && !P_GBA_STYLE_SPECIES_GFX
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(7, 2, SHADOW_SIZE_L)
-        FOOTPRINT(Donphan)
-        OVERWORLD(
-            sPicTable_Donphan,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Donphan,
-            gShinyOverworldPalette_Donphan
-        )
-        OVERWORLD_FEMALE(
-            sPicTable_DonphanF,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following
-        )
-        .levelUpLearnset = sDonphanLevelUpLearnset,
-        .teachableLearnset = sDonphanTeachableLearnset,
-    },
-#endif //P_FAMILY_PHANPY
-
-#if P_FAMILY_STANTLER
-    [SPECIES_STANTLER] =
-    {
-        .baseHP        = 73,
-        .baseAttack    = 95,
-        .baseDefense   = 62,
-        .baseSpeed     = 85,
-        .baseSpAttack  = 85,
-        .baseSpDefense = 65,
-        .types = MON_TYPES(TYPE_NORMAL),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 163 : 165,
-        .evYield_Attack = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_INTIMIDATE, ABILITY_FRISK, ABILITY_SAP_SIPPER },
-    #else
-        .abilities = { ABILITY_INTIMIDATE, ABILITY_NONE, ABILITY_SAP_SIPPER },
-    #endif
-        .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("STANTLER"),
-        .cryId = CRY_STANTLER,
-        .natDexNum = NATIONAL_DEX_STANTLER,
-        .categoryName = _("Big Horn"),
-        .height = 14,
-        .weight = 712,
-        .description = COMPOUND_STRING(
-            "Stantler's magnificent antlers were\n"
-            "once traded at high prices as works of art.\n"
-            "As a result, this PokÃ©mon was hunted\n"
-            "close to extinction."),
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Stantler,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 64) : MON_COORDS_SIZE(48, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Stantler,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 64) : MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 3 : 1,
-        .backAnimId = BACK_ANIM_DIP_RIGHT_SIDE,
-        .palette = gMonPalette_Stantler,
-        .shinyPalette = gMonShinyPalette_Stantler,
-        .iconSprite = gMonIcon_Stantler,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(3, 13, SHADOW_SIZE_M)
-        FOOTPRINT(Stantler)
-        OVERWORLD(
-            sPicTable_Stantler,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Stantler,
-            gShinyOverworldPalette_Stantler
-        )
-        .levelUpLearnset = sStantlerLevelUpLearnset,
-        .teachableLearnset = sStantlerTeachableLearnset,
-        .eggMoveLearnset = sStantlerEggMoveLearnset,
-    #if P_GEN_8_CROSS_EVOS
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_WYRDEER, CONDITIONS({IF_USED_MOVE_X_TIMES, MOVE_PSYSHIELD_BASH, 20})}),
-    #endif
-    },
-
-#if P_GEN_8_CROSS_EVOS
-    [SPECIES_WYRDEER] =
-    {
-        .baseHP        = 103,
-        .baseAttack    = 105,
-        .baseDefense   = 72,
-        .baseSpeed     = 65,
-        .baseSpAttack  = 105,
-        .baseSpDefense = 75,
-        .types = MON_TYPES(TYPE_NORMAL, TYPE_PSYCHIC),
-        .catchRate = 45,
-        .expYield = 263,
-        .evYield_Attack = 1,
-        .evYield_SpAttack = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_INTIMIDATE, ABILITY_FRISK, ABILITY_SAP_SIPPER },
-        .bodyColor = BODY_COLOR_GRAY,
-        .speciesName = _("WYRDEER"),
-        .cryId = CRY_WYRDEER,
-        .natDexNum = NATIONAL_DEX_WYRDEER,
-        .categoryName = _("Big Horn"),
-        .height = 18,
-        .weight = 951,
-        .description = COMPOUND_STRING(
-            "The black orbs shine with an uncanny light\n"
-            "when it is erecting invisible barriers.\n"
-            "The fur shed from its beard retains heat\n"
-            "and is useful for winter clothing."),
-        .pokemonScale = 267,
-        .pokemonOffset = 2,
-        .trainerScale = 286,
-        .trainerOffset = 1,
-        .frontPic = gMonFrontPic_Wyrdeer,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Wyrdeer,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 0,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Wyrdeer,
-        .shinyPalette = gMonShinyPalette_Wyrdeer,
-        .iconSprite = gMonIcon_Wyrdeer,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 13, SHADOW_SIZE_M)
-        FOOTPRINT(Wyrdeer)
-        OVERWORLD(
-            sPicTable_Wyrdeer,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Wyrdeer,
-            gShinyOverworldPalette_Wyrdeer
-        )
-        .levelUpLearnset = sWyrdeerLevelUpLearnset,
-        .teachableLearnset = sWyrdeerTeachableLearnset,
-    },
-#endif //P_GEN_8_CROSS_EVOS
-#endif //P_FAMILY_STANTLER
-
-#if P_FAMILY_SMEARGLE
-    [SPECIES_SMEARGLE] =
-    {
-        .baseHP        = 55,
-        .baseAttack    = 20,
-        .baseDefense   = 35,
-        .baseSpeed     = 75,
-        .baseSpAttack  = 20,
-        .baseSpDefense = 45,
-        .types = MON_TYPES(TYPE_NORMAL),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 88 : 106,
-        .evYield_Speed = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_OWN_TEMPO, ABILITY_TECHNICIAN, ABILITY_MOODY },
-    #else
-        .abilities = { ABILITY_OWN_TEMPO, ABILITY_NONE, ABILITY_MOODY },
-    #endif
-        .bodyColor = BODY_COLOR_WHITE,
-        .noFlip = TRUE,
-        .speciesName = _("SMEARGLE"),
-        .cryId = CRY_SMEARGLE,
-        .natDexNum = NATIONAL_DEX_SMEARGLE,
-        .categoryName = _("Painter"),
-        .height = 12,
-        .weight = 580,
-        .description = COMPOUND_STRING(
-            "A Smeargle marks its territory using a\n"
-            "fluid that leaks out from the tip of its\n"
-            "tail. About 5,000 different marks left by\n"
-            "this PokÃ©mon have been found."),
-        .pokemonScale = 287,
-        .pokemonOffset = 5,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Smeargle,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = 6,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 12),
-            ANIMCMD_FRAME(0, 12),
-            ANIMCMD_FRAME(1, 12),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_JUMPS : ANIM_H_JUMPS_V_STRETCH,
-        .backPic = gMonBackPic_Smeargle,
-        .backPicSize = MON_COORDS_SIZE(56, 48),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 9,
-        .backAnimId = BACK_ANIM_H_SLIDE,
-        .palette = gMonPalette_Smeargle,
-        .shinyPalette = gMonShinyPalette_Smeargle,
-        .iconSprite = gMonIcon_Smeargle,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(6, 7, SHADOW_SIZE_S)
-        FOOTPRINT(Smeargle)
-        OVERWORLD(
-            sPicTable_Smeargle,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Smeargle,
-            gShinyOverworldPalette_Smeargle
-        )
-        .teachingType = TM_ILLITERATE,
-        .levelUpLearnset = sSmeargleLevelUpLearnset,
-        .teachableLearnset = sSmeargleTeachableLearnset,
-    },
-#endif //P_FAMILY_SMEARGLE
-
-#if P_FAMILY_MILTANK
-    [SPECIES_MILTANK] =
-    {
-        .baseHP        = 95,
-        .baseAttack    = 80,
-        .baseDefense   = 105,
-        .baseSpeed     = 100,
-        .baseSpAttack  = 40,
-        .baseSpDefense = 70,
-        .types = MON_TYPES(TYPE_NORMAL),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 172 : 200,
-        .evYield_Defense = 2,
-        .itemCommon = ITEM_MOOMOO_MILK,
-        .itemRare = ITEM_MOOMOO_MILK,
-        .genderRatio = MON_FEMALE,
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_THICK_FAT, ABILITY_SCRAPPY, ABILITY_SAP_SIPPER },
-    #else
-        .abilities = { ABILITY_THICK_FAT, ABILITY_NONE, ABILITY_SAP_SIPPER },
-    #endif
-        .bodyColor = BODY_COLOR_PINK,
-        .speciesName = _("MILTANK"),
-        .cryId = CRY_MILTANK,
-        .natDexNum = NATIONAL_DEX_MILTANK,
-        .categoryName = _("Milk Cow"),
-        .height = 12,
-        .weight = 755,
-        .description = COMPOUND_STRING(
-            "It gives over five gallons of milk daily.\n"
-            "Its sweet milk is enjoyed by children and\n"
-            "grown-ups alike. People who can't drink\n"
-            "milk turn it into yogurt and eat it instead."),
-        .pokemonScale = 280,
-        .pokemonOffset = 5,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Miltank,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 8,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 30),
-        ),
-        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE_SLOW,
-        .backPic = gMonBackPic_Miltank,
-        .backPicSize = MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 6,
-        .backAnimId = BACK_ANIM_H_SLIDE,
-        .palette = gMonPalette_Miltank,
-        .shinyPalette = gMonShinyPalette_Miltank,
-        .iconSprite = gMonIcon_Miltank,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 1 : 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-3, 4, SHADOW_SIZE_M)
-        FOOTPRINT(Miltank)
-        OVERWORLD(
-            sPicTable_Miltank,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Miltank,
-            gShinyOverworldPalette_Miltank
-        )
-        .levelUpLearnset = sMiltankLevelUpLearnset,
-        .teachableLearnset = sMiltankTeachableLearnset,
-        .eggMoveLearnset = sMiltankEggMoveLearnset,
-    },
-#endif //P_FAMILY_MILTANK
-
-#if P_FAMILY_RAIKOU
-    [SPECIES_RAIKOU] =
-    {
-        .baseHP        = 90,
-        .baseAttack    = 85,
-        .baseDefense   = 75,
-        .baseSpeed     = 115,
-        .baseSpAttack  = 115,
-        .baseSpDefense = 100,
-        .types = MON_TYPES(TYPE_ELECTRIC),
-        .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 290,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 261,
-    #else
-        .expYield = 216,
-    #endif
-        .evYield_Speed = 2,
-        .evYield_SpAttack = 1,
-        .genderRatio = MON_GENDERLESS,
-        .eggCycles = 80,
-        .friendship = 35,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-    #if P_UPDATED_ABILITIES >= GEN_7
-        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_INNER_FOCUS },
-    #else
-        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_VOLT_ABSORB },
-    #endif
-        .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("RAIKOU"),
-        .cryId = CRY_RAIKOU,
-        .natDexNum = NATIONAL_DEX_RAIKOU,
-        .categoryName = _("Thunder"),
-        .height = 19,
-        .weight = 1780,
-        .description = COMPOUND_STRING(
-            "Raikou embodies the speed of lightning.\n"
-            "Its roars send shock waves shuddering\n"
-            "through the air and ground as if\n"
-            "lightning bolts were crashing down."),
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 345,
-        .trainerOffset = 7,
-        .frontPic = gMonFrontPic_Raikou,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 64) : MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 5,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 1),
-            ANIMCMD_FRAME(1, 36),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_FLASH_YELLOW : ANIM_V_STRETCH,
-        .backPic = gMonBackPic_Raikou,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 48) : MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 6,
-        .backAnimId = BACK_ANIM_SHAKE_FLASH_YELLOW,
-        .palette = gMonPalette_Raikou,
-        .shinyPalette = gMonShinyPalette_Raikou,
-        .iconSprite = gMonIcon_Raikou,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 0 : 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-4, 7, SHADOW_SIZE_L)
-        FOOTPRINT(Raikou)
-        OVERWORLD(
-            sPicTable_Raikou,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Raikou,
-            gShinyOverworldPalette_Raikou
-        )
-        .isSubLegendary = TRUE,
-        .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
-        .levelUpLearnset = sRaikouLevelUpLearnset,
-        .teachableLearnset = sRaikouTeachableLearnset,
-    },
-#endif //P_FAMILY_RAIKOU
-
-#if P_FAMILY_ENTEI
-    [SPECIES_ENTEI] =
-    {
-        .baseHP        = 115,
-        .baseAttack    = 115,
-        .baseDefense   = 85,
-        .baseSpeed     = 100,
-        .baseSpAttack  = 90,
-        .baseSpDefense = 75,
-        .types = MON_TYPES(TYPE_FIRE),
-        .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 290,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 261,
-    #else
-        .expYield = 217,
-    #endif
-        .evYield_HP = 1,
-        .evYield_Attack = 2,
-        .genderRatio = MON_GENDERLESS,
-        .eggCycles = 80,
-        .friendship = 35,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-    #if P_UPDATED_ABILITIES >= GEN_7
-        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_INNER_FOCUS },
-    #else
-        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_FLASH_FIRE },
-    #endif
-        .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("ENTEI"),
-        .cryId = CRY_ENTEI,
-        .natDexNum = NATIONAL_DEX_ENTEI,
-        .categoryName = _("Volcano"),
-        .height = 21,
-        .weight = 1980,
-        .description = COMPOUND_STRING(
-            "Entei embodies the passion of magma.\n"
-            "It is thought to have been born in the\n"
-            "eruption of a volcano. It blasts fire that\n"
-            "consumes all that it touches."),
-        .pokemonScale = 259,
-        .pokemonOffset = 0,
-        .trainerScale = 345,
-        .trainerOffset = 7,
-        .frontPic = gMonFrontPic_Entei,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 2,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_GROW_VIBRATE,
-        .backPic = gMonBackPic_Entei,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 48),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 11,
-        .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
-        .palette = gMonPalette_Entei,
-        .shinyPalette = gMonShinyPalette_Entei,
-        .iconSprite = gMonIcon_Entei,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 8, SHADOW_SIZE_L)
-        FOOTPRINT(Entei)
-        OVERWORLD(
-            sPicTable_Entei,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Entei,
-            gShinyOverworldPalette_Entei
-        )
-        .isSubLegendary = TRUE,
-        .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
-        .levelUpLearnset = sEnteiLevelUpLearnset,
-        .teachableLearnset = sEnteiTeachableLearnset,
-    },
-#endif //P_FAMILY_ENTEI
-
-#if P_FAMILY_SUICUNE
-    [SPECIES_SUICUNE] =
-    {
-        .baseHP        = 100,
-        .baseAttack    = 75,
-        .baseDefense   = 115,
-        .baseSpeed     = 85,
-        .baseSpAttack  = 90,
-        .baseSpDefense = 115,
-        .types = MON_TYPES(TYPE_WATER),
-        .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 290,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 261,
-    #else
-        .expYield = 215,
-    #endif
-        .evYield_Defense = 1,
-        .evYield_SpDefense = 2,
-        .genderRatio = MON_GENDERLESS,
-        .eggCycles = 80,
-        .friendship = 35,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-    #if P_UPDATED_ABILITIES >= GEN_7
-        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_INNER_FOCUS },
-    #else
-        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_WATER_ABSORB },
-    #endif
-        .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("SUICUNE"),
-        .cryId = CRY_SUICUNE,
-        .natDexNum = NATIONAL_DEX_SUICUNE,
-        .categoryName = _("Aurora"),
-        .height = 20,
-        .weight = 1870,
-        .description = COMPOUND_STRING(
-            "Suicune embodies the compassion of\n"
-            "a pure spring of water. It runs across\n"
-            "the land with gliding elegance. It has the\n"
-            "power to purify dirty water."),
-        .pokemonScale = 269,
-        .pokemonOffset = 0,
-        .trainerScale = 345,
-        .trainerOffset = 7,
-        .frontPic = gMonFrontPic_Suicune,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 3,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 40),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_V_SHAKE,
-        .backPic = gMonBackPic_Suicune,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 3,
-        .backAnimId = BACK_ANIM_SHAKE_GLOW_BLUE,
-        .palette = gMonPalette_Suicune,
-        .shinyPalette = gMonShinyPalette_Suicune,
-        .iconSprite = gMonIcon_Suicune,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 0 : 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(3, 10, SHADOW_SIZE_XL_BATTLE_ONLY)
-        FOOTPRINT(Suicune)
-        OVERWORLD(
-            sPicTable_Suicune,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Suicune,
-            gShinyOverworldPalette_Suicune
-        )
-        .isSubLegendary = TRUE,
-        .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
-        .levelUpLearnset = sSuicuneLevelUpLearnset,
-        .teachableLearnset = sSuicuneTeachableLearnset,
-    },
-#endif //P_FAMILY_SUICUNE
-
-#if P_FAMILY_LARVITAR
-    [SPECIES_LARVITAR] =
-    {
-        .baseHP        = 50,
-        .baseAttack    = 64,
-        .baseDefense   = 50,
-        .baseSpeed     = 41,
-        .baseSpAttack  = 45,
-        .baseSpDefense = 50,
-        .types = MON_TYPES(TYPE_ROCK, TYPE_GROUND),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 60 : 67,
-        .evYield_Attack = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 40,
-        .friendship = 35,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER),
-        .abilities = { ABILITY_GUTS, ABILITY_NONE, ABILITY_SAND_VEIL },
-        .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("LARVITAR"),
-        .cryId = CRY_LARVITAR,
-        .natDexNum = NATIONAL_DEX_LARVITAR,
-        .categoryName = _("Rock Skin"),
-        .height = 6,
-        .weight = 720,
-        .description = COMPOUND_STRING(
-            "A Larvitar is born deep under the ground.\n"
-            "It must eat its way through the soil above\n"
-            "and reach the surface for it to see its\n"
-            "parents' faces."),
-        .pokemonScale = 472,
-        .pokemonOffset = 18,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Larvitar,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 48) : MON_COORDS_SIZE(40, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 10,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 10),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_V_JUMPS_SMALL,
-        .backPic = gMonBackPic_Larvitar,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(56, 64),
-        .backPicYOffset = 8,
-        .backAnimId = BACK_ANIM_V_SHAKE_LOW,
-        .palette = gMonPalette_Larvitar,
-        .shinyPalette = gMonShinyPalette_Larvitar,
-        .iconSprite = gMonIcon_Larvitar,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(0, 3, SHADOW_SIZE_S)
-        FOOTPRINT(Larvitar)
-        OVERWORLD(
-            sPicTable_Larvitar,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Larvitar,
-            gShinyOverworldPalette_Larvitar
-        )
-        .levelUpLearnset = sLarvitarLevelUpLearnset,
-        .teachableLearnset = sLarvitarTeachableLearnset,
-        .eggMoveLearnset = sLarvitarEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_PUPITAR}),
-    },
-
-    [SPECIES_PUPITAR] =
-    {
-        .baseHP        = 70,
-        .baseAttack    = 84,
-        .baseDefense   = 70,
-        .baseSpeed     = 51,
-        .baseSpAttack  = 65,
-        .baseSpDefense = 70,
-        .types = MON_TYPES(TYPE_ROCK, TYPE_GROUND),
-        .catchRate = 45,
-        .expYield = 144,
-        .evYield_Attack = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 40,
-        .friendship = 35,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER),
-        .abilities = { ABILITY_SHED_SKIN, ABILITY_NONE, ABILITY_NONE },
-        .bodyColor = BODY_COLOR_GRAY,
-        .speciesName = _("PUPITAR"),
-        .cryId = CRY_PUPITAR,
-        .natDexNum = NATIONAL_DEX_PUPITAR,
-        .categoryName = _("Hard Shell"),
-        .height = 12,
-        .weight = 1520,
-        .description = COMPOUND_STRING(
-            "A Pupitar creates a gas inside its body\n"
-            "that it ejects under compression to propel\n"
-            "itself like a jet. Its body can withstand\n"
-            "a collision with solid steel."),
-        .pokemonScale = 292,
-        .pokemonOffset = 8,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Pupitar,
-        .frontPicSize = MON_COORDS_SIZE(40, 48),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 11,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 40),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_V_SHAKE : ANIM_H_SHAKE,
-        .backPic = gMonBackPic_Pupitar,
-        .backPicSize = MON_COORDS_SIZE(48, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 9,
-        .backAnimId = BACK_ANIM_V_SHAKE,
-        .palette = gMonPalette_Pupitar,
-        .shinyPalette = gMonShinyPalette_Pupitar,
-        .iconSprite = gMonIcon_Pupitar,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 0 : 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(3, 3, SHADOW_SIZE_S)
-        FOOTPRINT(Pupitar)
-        OVERWORLD(
-            sPicTable_Pupitar,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_SPOT,
-            sAnimTable_Following,
-            gOverworldPalette_Pupitar,
-            gShinyOverworldPalette_Pupitar
-        )
-        .levelUpLearnset = sPupitarLevelUpLearnset,
-        .teachableLearnset = sPupitarTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 55, SPECIES_TYRANITAR}),
-    },
-
-    [SPECIES_TYRANITAR] =
-    {
-        .baseHP        = 100,
-        .baseAttack    = 134,
-        .baseDefense   = 110,
-        .baseSpeed     = 61,
-        .baseSpAttack  = 95,
-        .baseSpDefense = 100,
-        .types = MON_TYPES(TYPE_ROCK, TYPE_DARK),
-        .catchRate = 45,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 300,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 270,
-    #else
-        .expYield = 218,
-    #endif
-        .evYield_Attack = 3,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 40,
-        .friendship = 35,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER),
-        .abilities = { ABILITY_SAND_STREAM, ABILITY_NONE, ABILITY_UNNERVE },
-        .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("TYRANITAR"),
-        .cryId = CRY_TYRANITAR,
-        .natDexNum = NATIONAL_DEX_TYRANITAR,
-        .categoryName = _("Armor"),
-        .height = 20,
-        .weight = 2020,
-        .description = COMPOUND_STRING(
-            "A Tyranitar is so overwhelmingly powerful,\n"
-            "it can bring down a whole mountain to make\n"
-            "its nest. It roams in mountains seeking\n"
-            "new opponents to fight."),
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 345,
-        .trainerOffset = 7,
-        .frontPic = gMonFrontPic_Tyranitar,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 50),
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_H_SHAKE : ANIM_V_SHAKE,
-        .frontAnimDelay = 10,
-        .backPic = gMonBackPic_Tyranitar,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 0 : 1,
-        .backAnimId = BACK_ANIM_V_SHAKE_LOW,
-        .palette = gMonPalette_Tyranitar,
-        .shinyPalette = gMonShinyPalette_Tyranitar,
-        .iconSprite = gMonIcon_Tyranitar,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 1 : 4,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 11, SHADOW_SIZE_L)
-        FOOTPRINT(Tyranitar)
-        OVERWORLD(
-            sPicTable_Tyranitar,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Tyranitar,
-            gShinyOverworldPalette_Tyranitar
-        )
-        .levelUpLearnset = sTyranitarLevelUpLearnset,
-        .teachableLearnset = sTyranitarTeachableLearnset,
-        .formSpeciesIdTable = sTyranitarFormSpeciesIdTable,
-        .formChangeTable = sTyranitarFormChangeTable,
-    },
-
-#if P_MEGA_EVOLUTIONS
-    [SPECIES_TYRANITAR_MEGA] =
-    {
-        .baseHP        = 100,
-        .baseAttack    = 164,
-        .baseDefense   = 150,
-        .baseSpeed     = 71,
-        .baseSpAttack  = 95,
-        .baseSpDefense = 120,
-        .types = MON_TYPES(TYPE_ROCK, TYPE_DARK),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 350 : 315,
-        .evYield_Attack = 3,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 40,
-        .friendship = 35,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER),
-        .abilities = { ABILITY_SAND_STREAM, ABILITY_SAND_STREAM, ABILITY_SAND_STREAM },
-        .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("TYRANITAR"),
-    #if P_MODIFIED_MEGA_CRIES
-        .cryId = CRY_TYRANITAR_MEGA,
-    #else
-        .cryId = CRY_TYRANITAR,
-    #endif // P_MODIFIED_MEGA_CRIES
-        .natDexNum = NATIONAL_DEX_TYRANITAR,
-        .categoryName = _("Armor"),
-        .height = 25,
-        .weight = 2550,
-        .description = COMPOUND_STRING(
-            "Due to the colossal power poured into it,\n"
-            "this PokÃ©mon's back split right open. Its\n"
-            "destructive instincts are the only thing\n"
-            "keeping it moving."),
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 345,
-        .trainerOffset = 7,
-        .frontPic = gMonFrontPic_TyranitarMega,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_TyranitarMega,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 0,
-        .backAnimId = BACK_ANIM_V_SHAKE_LOW,
-        .palette = gMonPalette_TyranitarMega,
-        .shinyPalette = gMonShinyPalette_TyranitarMega,
-        .iconSprite = gMonIcon_TyranitarMega,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 13, SHADOW_SIZE_XL_BATTLE_ONLY)
-        FOOTPRINT(Tyranitar)
-    #if OW_BATTLE_ONLY_FORMS
-        OVERWORLD(
-            sPicTable_TyranitarMega,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_TyranitarMega,
-            gShinyOverworldPalette_TyranitarMega
-        )
-    #endif //OW_BATTLE_ONLY_FORMS
-        .isMegaEvolution = TRUE,
-        .levelUpLearnset = sTyranitarLevelUpLearnset,
-        .teachableLearnset = sTyranitarTeachableLearnset,
-        .formSpeciesIdTable = sTyranitarFormSpeciesIdTable,
-        .formChangeTable = sTyranitarFormChangeTable,
-        .randomizerMode = MON_RANDOMIZER_INVALID,
-    },
-#endif //P_MEGA_EVOLUTIONS
-#endif //P_FAMILY_LARVITAR
-
-#if P_FAMILY_LUGIA
-    [SPECIES_LUGIA] =
-    {
-        .baseHP        = 106,
-        .baseAttack    = 90,
-        .baseDefense   = 130,
-        .baseSpeed     = 110,
-        .baseSpAttack  = 90,
-        .baseSpDefense = 154,
-        .types = MON_TYPES(TYPE_PSYCHIC, TYPE_FLYING),
-        .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 340,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 306,
-    #else
-        .expYield = 220,
-    #endif
-        .evYield_SpDefense = 3,
-        .genderRatio = MON_GENDERLESS,
-        .eggCycles = 120,
-        .friendship = 0,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_MULTISCALE },
-        .bodyColor = BODY_COLOR_WHITE,
-        .speciesName = _("LUGIA"),
-        .cryId = CRY_LUGIA,
-        .natDexNum = NATIONAL_DEX_LUGIA,
-        .categoryName = _("Diving"),
-        .height = 52,
-        .weight = 2160,
-        .description = COMPOUND_STRING(
-            "Lugia is so powerful even a light\n"
-            "fluttering of its wings can blow apart\n"
-            "houses. As a result, it chooses to live out\n"
-            "of sight deep under the sea."),
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 721,
-        .trainerOffset = 19,
-        .frontPic = gMonFrontPic_Lugia,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 10),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 5),
-            ANIMCMD_FRAME(1, 5),
-            ANIMCMD_FRAME(0, 10),
-        ),
-        .frontAnimId = ANIM_GROW_IN_STAGES,
-        .frontAnimDelay = 20,
-        .enemyMonElevation = 6,
-        .backPic = gMonBackPic_Lugia,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 1 : 0,
-        .backAnimId = BACK_ANIM_SHAKE_GLOW_BLUE,
-        .palette = gMonPalette_Lugia,
-        .shinyPalette = gMonShinyPalette_Lugia,
-        .iconSprite = gMonIcon_Lugia,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 17, SHADOW_SIZE_L)
-        FOOTPRINT(Lugia)
-        OVERWORLD(
-            sPicTable_Lugia,
-            SIZE_64x64,
-            SHADOW_SIZE_M,
-            TRACKS_NONE,
-            sAnimTable_Following,
-            gOverworldPalette_Lugia,
-            gShinyOverworldPalette_Lugia
-        )
-        .isRestrictedLegendary = TRUE,
-        .isFrontierBanned = TRUE,
-        .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
-        .levelUpLearnset = sLugiaLevelUpLearnset,
-        .teachableLearnset = sLugiaTeachableLearnset,
-    },
-#endif //P_FAMILY_LUGIA
-
-#if P_FAMILY_HO_OH
-    [SPECIES_HO_OH] =
-    {
-        .baseHP        = 106,
-        .baseAttack    = 130,
-        .baseDefense   = 90,
-        .baseSpeed     = 90,
-        .baseSpAttack  = 110,
-        .baseSpDefense = 154,
-        .types = MON_TYPES(TYPE_FIRE, TYPE_FLYING),
-        .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 340,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 306,
-    #else
-        .expYield = 220,
-    #endif
-        .evYield_SpDefense = 3,
-        .itemCommon = ITEM_SACRED_ASH,
-        .itemRare   = ITEM_SACRED_ASH,
-        .genderRatio = MON_GENDERLESS,
-        .eggCycles = 120,
-        .friendship = 0,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_REGENERATOR },
-        .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("HO-OH"),
-        .cryId = CRY_HO_OH,
-        .natDexNum = NATIONAL_DEX_HO_OH,
-        .categoryName = _("Rainbow"),
-        .height = 38,
-        .weight = 1990,
-        .description = COMPOUND_STRING(
-            "Its feathers--which glow in seven colors\n"
-            "depending on the angle at which they are\n"
-            "struck by light--are thought to bring joy.\n"
-            "It is said to live at the foot of a rainbow."),
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 610,
-        .trainerOffset = 17,
-        .frontPic = gMonFrontPic_HoOh,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 20),
-        ),
-        .frontAnimId = ANIM_GROW_VIBRATE,
-        .enemyMonElevation = 6,
-        .backPic = gMonBackPic_HoOh,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 1 : 2,
-        .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
-        .palette = gMonPalette_HoOh,
-        .shinyPalette = gMonShinyPalette_HoOh,
-        .iconSprite = gMonIcon_HoOh,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 17, SHADOW_SIZE_L)
-        FOOTPRINT(HoOh)
-        OVERWORLD(
-            sPicTable_HoOh,
-            SIZE_64x64,
-            SHADOW_SIZE_M,
-            TRACKS_NONE,
-            sAnimTable_Following,
-            gOverworldPalette_HoOh,
-            gShinyOverworldPalette_HoOh
-        )
-        .isRestrictedLegendary = TRUE,
-        .isFrontierBanned = TRUE,
-        .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
-        .levelUpLearnset = sHoOhLevelUpLearnset,
-        .teachableLearnset = sHoOhTeachableLearnset,
-    },
-#endif //P_FAMILY_HO_OH
-
-#if P_FAMILY_CELEBI
-    [SPECIES_CELEBI] =
-    {
-        .baseHP        = 100,
-        .baseAttack    = 100,
-        .baseDefense   = 100,
-        .baseSpeed     = 100,
-        .baseSpAttack  = 100,
-        .baseSpDefense = 100,
-        .types = MON_TYPES(TYPE_PSYCHIC, TYPE_GRASS),
-        .catchRate = 45,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 300,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 270,
-    #else
-        .expYield = 64,
-    #endif
-        .evYield_HP = 3,
-        .itemCommon = ITEM_LUM_BERRY,
-        .itemRare = ITEM_LUM_BERRY,
-        .genderRatio = MON_GENDERLESS,
-        .eggCycles = 120,
-        .friendship = 100,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_NATURAL_CURE, ABILITY_NONE, ABILITY_NONE },
-        .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("CELEBI"),
-        .cryId = CRY_CELEBI,
-        .natDexNum = NATIONAL_DEX_CELEBI,
-        .categoryName = _("Time Travel"),
-        .height = 6,
-        .weight = 50,
-        .description = COMPOUND_STRING(
-            "This PokÃ©mon came from the future by\n"
-            "crossing over time. It is thought that so\n"
-            "long as Celebi appears, a bright and\n"
-            "shining future awaits us."),
-        .pokemonScale = 393,
-        .pokemonOffset = -10,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Celebi,
-        .frontPicSize = MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 14 : 12,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 30),
-            ANIMCMD_FRAME(1, 30),
-            ANIMCMD_FRAME(0, 30),
-        ),
-        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_RISING_WOBBLE : ANIM_H_SLIDE_WOBBLE,
-        .enemyMonElevation = 15,
-        .backPic = gMonBackPic_Celebi,
-        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(48, 48) : MON_COORDS_SIZE(48, 56),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 8 : 7,
-        .backAnimId = BACK_ANIM_SHAKE_GLOW_GREEN,
-        .palette = gMonPalette_Celebi,
-        .shinyPalette = gMonShinyPalette_Celebi,
-        .iconSprite = gMonIcon_Celebi,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 14, SHADOW_SIZE_S)
-        FOOTPRINT(Celebi)
-        OVERWORLD(
-            sPicTable_Celebi,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_NONE,
-            sAnimTable_Following,
-            gOverworldPalette_Celebi,
-            gShinyOverworldPalette_Celebi
-        )
-        .isMythical = TRUE,
-        .isFrontierBanned = TRUE,
-        .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
-        .levelUpLearnset = sCelebiLevelUpLearnset,
-        .teachableLearnset = sCelebiTeachableLearnset,
-    },
-#endif //P_FAMILY_CELEBI
-
-#ifdef __INTELLISENSE__
-};
-#endif
+YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×]|ã´èµ©hºÚn¶X§zÍHÚY™Yˆ×ÒS•STÑS”ÑW×Â˜ÛÛœÝÝXÝÜXÚY\Ò[™›ÈÔÜXÚY\Ò[™›ÑÙ[Œ–×HBžÂˆÙ[™Y‚‚ˆÚYˆÑSRSWÐÒRÓÔ’UBˆÔÔPÒQT×ÐÒRÓÔ’UWHBˆÂˆ˜˜\ÙRHKˆ˜˜\ÙP]XÚÈHKˆ˜˜\ÙQY™[œÙHHKˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÑÔTÔÊKˆ˜Ø]Ú˜]HHKˆ™^ZY[Hˆ™]–ZY[ÔÜY™[œÙHHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL‹JKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓSÓ”ÕT‹QÑ×ÑÔ“ÕTÑÔTÔÊKˆ˜Xš[]Y\ÈHÈP’SUWÓÕ‘T‘Ô“ÕËP’SUWÓ“Ó‘KP’SUWÓPQ—ÑÕPT‘Kˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔ‘QS‹ˆœÜXÚY\Ó˜[YHHÊÒRÓÔ’UHŠKˆ˜ÜžRYHÔ–WÐÒRÓÔ’UKˆ›˜]^[HHUSÓSÑVÐÒRÓÔ’UKˆ˜Ø]YÛÜžS˜[YHHÊ“XYˆŠKˆšZYÚHKˆÙZYÚHˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]Ø]™\È]ÈXYˆ\›Ý[™ÈÙY\›Ù\×ˆ‚ˆ˜]˜^KˆÝÙ]™\‹HÝÙY]œ˜YÜ˜[˜ÙH[Û×ˆ‚ˆØYÈœ›ÛHHXY‹Ü™X][™ÈHœšY[™Wˆ‚ˆ˜][ÜÜ\™H]™XØ[\ÈH˜]\œËˆŠKˆœÚÙ[[Û”ØØ[HHLL‹ˆœÚÙ[[Û“Ù™œÙ]HŒˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÐÚZÛÜš]Kˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLÈˆLˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÐÚZÛÜš]Kˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HLˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓÐU‘WÐT×ÔÓPSˆœ[]HHÓ[Û”[]WÐÚZÛÜš]KˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐÚZÛÜš]KˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÐÚZÛÜš]KˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÔÓÕËˆÒQÕÊLK‹ÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+ÚZÛÜš]JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐÚZÛÜš]KˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÐÚZÛÜš]KˆÔÚ[žSÝ™\ÛÜ›[]WÐÚZÛÜš]Bˆ
+Bˆ›]™[\X\›œÙ]HÐÚZÛÜš]S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐÚZÛÜš]UXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÐÚZÛÜš]QYÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SM‹ÔPÒQT×ÐVSQQŸJKˆK‚ˆÔÔPÒQT×ÐVSQQ—HBˆÂˆ˜˜\ÙRHŒˆ˜˜\ÙP]XÚÈHŒ‹ˆ˜˜\ÙQY™[œÙHHˆ˜˜\ÙTÜYYHŒˆ˜˜\ÙTÜ]XÚÈHŒËˆ˜˜\ÙTÜY™[œÙHHˆ\\ÈHSÓ—ÕTTÊTWÑÔTÔÊKˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMˆˆMKˆ™]–ZY[ÑY™[œÙHHKˆ™]–ZY[ÔÜY™[œÙHHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL‹JKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓSÓ”ÕT‹QÑ×ÑÔ“ÕTÑÔTÔÊKˆ˜Xš[]Y\ÈHÈP’SUWÓÕ‘T‘Ô“ÕËP’SUWÓ“Ó‘KP’SUWÓPQ—ÑÕPT‘Kˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔ‘QS‹ˆœÜXÚY\Ó˜[YHHÊVSQQˆŠKˆ˜ÜžRYHÔ–WÐVSQQ‹ˆ›˜]^[HHUSÓSÑVÐVSQQ‹ˆ˜Ø]YÛÜžS˜[YHHÊ“XYˆŠKˆšZYÚHL‹ˆÙZYÚHMNˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆH˜^[YY‰ÜÈ™XÚÈ\Èš[™ÙYžHÝ\›Y]\ˆ‚ˆ›X]™\Ëˆ[œÚYHXXÚXYˆ\ÈHÛX[™YWˆ‚ˆœÚÛÝˆHœ˜YÜ˜[˜ÙHÙˆ\ÈÚÛÝˆ‚ˆ›XZÙ\È[ÜH\KˆŠKˆœÚÙ[[Û”ØØ[HHŽM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ð˜^[YY‹ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆËˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJŒ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ð˜^[YY‹ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒÔÓQKˆœ[]HHÓ[Û”[]WÐ˜^[YY‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐ˜^[YY‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ð˜^[YY‹ˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKLÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+˜^[YYŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐ˜^[YY‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÐ˜^[YY‹ˆÔÚ[žSÝ™\ÛÜ›[]WÐ˜^[YY‚ˆ
+Bˆ›]™[\X\›œÙ]HÐ˜^[YY“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐ˜^[YY•XXÚX›SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÌ‹ÔPÒQT×ÓQQÐS’US_JKˆK‚ˆÔÔPÒQT×ÓQQÐS’USWHBˆÂˆ˜˜\ÙRHˆ˜˜\ÙP]XÚÈH‹ˆ˜˜\ÙQY™[œÙHHLˆ˜˜\ÙTÜYYHˆ˜˜\ÙTÜ]XÚÈHËˆ˜˜\ÙTÜY™[œÙHHLˆ\\ÈHSÓ—ÕTTÊTWÑÔTÔÊKˆ˜Ø]Ú˜]HHKˆÚYˆÕTUQÑVÖRQSÈHÑS—Îˆ™^ZY[HŒËˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HŒÍ‹ˆÙ[ÙBˆ™^ZY[HŒˆÙ[™Y‚ˆ™]–ZY[ÑY™[œÙHHKˆ™]–ZY[ÔÜY™[œÙHH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL‹JKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓSÓ”ÕT‹QÑ×ÑÔ“ÕTÑÔTÔÊKˆ˜Xš[]Y\ÈHÈP’SUWÓÕ‘T‘Ô“ÕËP’SUWÓ“Ó‘KP’SUWÓPQ—ÑÕPT‘Kˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔ‘QS‹ˆœÜXÚY\Ó˜[YHHÊ“QQÐS’USHŠKˆ˜ÜžRYHÔ–WÓQQÐS’USKˆ›˜]^[HHUSÓSÑVÓQQÐS’USKˆ˜Ø]YÛÜžS˜[YHHÊ’\˜ˆŠKˆšZYÚHNˆÙZYÚHLKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•Hœ˜YÜ˜[˜ÙHÙˆHYYØ[š][IÜÈ›ÝÙ\—ˆ‚ˆœÛÛÝ\È[™Ø[\È[[Ý[ÛœËˆ[ˆ˜]Kˆ‚ˆš]Ú]™\ÈÙ™ˆ[Ü™HÙˆ]È™XØ[Z[™ÈØÙ[ˆ‚ˆÈ›[H›ÙIÜÈšYÚ[™ÈÜ\š]ˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHÍËˆ˜Z[™\“Ù™œÙ]HKˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÓYYØ[š][Kˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJJKˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÕ—ÔÕ‘UÒˆS’SWÑÔ“Õ×Õ’P”UKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÓYYØ[š][Kˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–Èˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÒRÑKˆœ[]HHÓ[Û”[]WÓYYØ[š][KˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓYYØ[š][KˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÓYYØ[š][KˆšXÛÛ”[[™^HKˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×ÓYYØ[š][Q‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×ÓYYØ[š][Q‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+KˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLËÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+YYØ[š][JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓYYØ[š][KˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓYYØ[š][KˆÔÚ[žSÝ™\ÛÜ›[]WÓYYØ[š][Bˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÓYYØ[š][Q‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÓYYØ[š][S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓYYØ[š][UXXÚX›SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÓYYØ[š][Q›Ü›TÜXÚY\ÒYX›Kˆ™›Ü›PÚ[™ÙUX›HHÓYYØ[š][Q›Ü›PÚ[™ÙUX›KˆK‚ˆÚYˆÑÑS—ÎWÓQQÐWÑU“ÓUSÓ”ÂˆÔÔPÒQT×ÓQQÐS’USWÓQQÐWHBˆÂˆ˜˜\ÙRHˆ˜˜\ÙP]XÚÈHL‹ˆ˜˜\ÙQY™[œÙHHLMKˆ˜˜\ÙTÜYYHˆ˜˜\ÙTÜ]XÚÈHMËˆ˜˜\ÙTÜY™[œÙHHLMKˆ\\ÈHSÓ—ÕTTÊTWÑÔTÔËTWÑRT–JKˆ˜Ø]Ú˜]HHKˆ™^ZY[HŒËˆ™]–ZY[ÑY™[œÙHHKˆ™]–ZY[ÔÜY™[œÙHH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL‹JKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓSÓ”ÕT‹QÑ×ÑÔ“ÕTÑÔTÔÊKˆ˜Xš[]Y\ÈHÈP’SUWÓÕ‘T‘Ô“ÕËP’SUWÓ“Ó‘KP’SUWÓPQ—ÑÕPT‘Kˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔ‘QS‹ˆœÜXÚY\Ó˜[YHHÊ“QQÐS’USHŠKˆÚYˆÓSÑQ’QQÓQQÐWÐÔ’QTÂˆ˜ÜžRYHÔ–WÓQQÐS’USWÓQQÐKˆÙ[ÙBˆ˜ÜžRYHÔ–WÓQQÐS’USKˆÙ[™YˆËÈÓSÑQ’QQÓQQÐWÐÔ’QTÂˆ›˜]^[HHUSÓSÑVÓQQÐS’USKˆ˜Ø]YÛÜžS˜[YHHÊ’\˜ˆŠKˆšZYÚHˆÙZYÚHŒLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•\ÈÚðê[[ÛˆØ[ˆš\™HH™[Y[™Ý\ÛWˆ‚ˆœÝÙ\™[ÛÛ\ˆ™X[Hœ›ÛH]È›Ý\—ˆ‚ˆ™›ÝÙ\œËˆ[›Ý\ˆ˜[YH›Üˆ\È\×ˆ‚ˆ“YYØHÛÛØ[››Û‹ˆŠKˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÓYYØ[š][SYYØKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÓYYØ[š][SYYØKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HˆËË˜˜XÚÐ[š[RYHPÒ×ÐS’SWÓ“Ó‘Kˆœ[]HHÓ[Û”[]WÓYYØ[š][SYYØKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓYYØ[š][SYYØKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÓYYØ[š][SYYØKˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘Kˆ“ÓÕ’S•
+YYØ[š][JBˆÒQÕÊL‹LËÒQÕ×ÔÒV‘WÓJBˆš\ÓYYØQ]›Û][ÛˆH•QKˆ›]™[\X\›œÙ]HÓYYØ[š][S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓYYØ[š][UXXÚX›SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÓYYØ[š][Q›Ü›TÜXÚY\ÒYX›Kˆ™›Ü›PÚ[™ÙUX›HHÓYYØ[š][Q›Ü›PÚ[™ÙUX›Kˆœ˜[™ÛZ^™\“[ÙHHSÓ—ÔS‘ÓRV‘T—ÒS•SQˆKˆÙ[™YˆËÔÑÑS—ÎWÓQQÐWÑU“ÓUSÓ”ÂˆÙ[™YˆËÔÑSRSWÐÒRÓÔ’UB‚ˆÚYˆÑSRSWÐÖS‘TURSˆÔÔPÒQT×ÐÖS‘TURSHBˆÂˆ˜˜\ÙRHÎKˆ˜˜\ÙP]XÚÈHL‹ˆ˜˜\ÙQY™[œÙHHËˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHŒˆ˜˜\ÙTÜY™[œÙHHLˆ\\ÈHSÓ—ÕTTÊTWÑ’T‘JKˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈŒˆˆKˆ™]–ZY[ÔÜYYHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL‹JKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÐ“V‘KP’SUWÓ“Ó‘KP’SUWÑ“TÒÑ’T‘HKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÖQSÕËˆœÜXÚY\Ó˜[YHHÊÖS‘TURSŠKˆ˜ÜžRYHÔ–WÐÖS‘TURSˆ›˜]^[HHUSÓSÑVÐÖS‘TURSˆ˜Ø]YÛÜžS˜[YHHÊ‘š\™H[Ý\ÙHŠKˆšZYÚHKˆÙZYÚHÎKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]›\™\È›[Y\Èœ›ÛH]È˜XÚÈÈ›ÝXÝˆ‚ˆš]Ù[‹ˆHš\™H\›œÈšYÛÜ›Ý\ÛHYˆWˆ‚ˆ”Úðê[[Ûˆ\È[™ÜžKˆÚ[ˆ]\È\™Yˆ‚ˆš]Ü]\œÈÚ][˜ÛÛ\]HÛÛX\Ý[Û‹ˆŠKˆœÚÙ[[Û”ØØ[HHLÎKˆœÚÙ[[Û“Ù™œÙ]HŒKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÐÞ[™\]Z[ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HMˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÕ—Ò•ST×ÔÓPSˆS’SWÕ—ÔÕ‘UÒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÐÞ[™\]Z[ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆËˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓÐU‘WÐT×ÔÓPSˆœ[]HHÓ[Û”[]WÐÞ[™\]Z[ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐÞ[™\]Z[ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÐÞ[™\]Z[ˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈHˆËˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÑTÕˆÒQÕÊLKÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+Þ[™\]Z[
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐÞ[™\]Z[ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÐÞ[™\]Z[ˆÔÚ[žSÝ™\ÛÜ›[]WÐÞ[™\]Z[ˆ
+Bˆ›]™[\X\›œÙ]HÐÞ[™\]Z[]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐÞ[™\]Z[XXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÐÞ[™\]Z[YÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SMÔPÒQT×ÔURSU_JKˆK‚ˆÔÔPÒQT×ÔURSUWHBˆÂˆ˜˜\ÙRHNˆ˜˜\ÙP]XÚÈHˆ˜˜\ÙQY™[œÙHHNˆ˜˜\ÙTÜYYHˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÑ’T‘JKˆ˜Ø]Ú˜]HHKˆ™^ZY[HM‹ˆ™]–ZY[ÔÜYYHKˆ™]–ZY[ÔÜ]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL‹JKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÐ“V‘KP’SUWÓ“Ó‘KP’SUWÑ“TÒÑ’T‘HKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÖQSÕËˆœÜXÚY\Ó˜[YHHÊ”URSUHŠKˆ˜ÜžRYHÔ–WÔURSUKˆ›˜]^[HHUSÓSÑVÔURSUKˆ˜Ø]YÛÜžS˜[YHHÊ•›ÛØ[›ÈŠKˆšZYÚHKˆÙZYÚHNLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’][[ZY]\È›Ù\ÈÚ][[œÙHÝ\ÝÈÙ—ˆ‚ˆ™›[Y\È[™Ý\\šX]YZ\‹ˆ]È]ZXÚ×ˆ‚ˆ›š[X›[™\ÜÈ]È]ÙÙH]XÚÜÈ]™[—ˆ‚ˆÚ[HØÛÜ˜Ú[™È[ˆ[™[^KˆŠKˆœÚÙ[[Û”ØØ[HHÌŽKˆœÚÙ[[Û“Ù™œÙ]HLKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ô]Z[]˜Kˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKÌ
+KˆS’SPÓQÑ”SQJŒ
+Kˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÕ—ÔÕ‘UÒˆS’SWÒÔÕ‘UÒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ô]Z[]˜Kˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–Èˆˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒ“ÓÔ’QÒˆœ[]HHÓ[Û”[]WÔ]Z[]˜KˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔ]Z[]˜KˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ô]Z[]˜KˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈHˆËˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊ‹ÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+]Z[]˜JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔ]Z[]˜KˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔ]Z[]˜KˆÔÚ[žSÝ™\ÛÜ›[]WÔ]Z[]˜Bˆ
+Bˆ›]™[\X\›œÙ]HÔ]Z[]˜S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔ]Z[]˜UXXÚX›SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÍ‹ÔPÒQT×ÕTÔÒSÓ‹ÓÓ‘USÓ”ÊÒQ—Ó“ÕÔ‘QÒSÓ‹‘QÒSÓ—ÒTÕR_J_BˆÚYˆÒTÕRPS—Ñ“Ô“TÂˆÑU“×ÓU‘SÍ‹ÔPÒQT×ÕTÔÒSÓ—ÒTÕRKÓÓ‘USÓ”ÊÒQ—Ô‘QÒSÓ‹‘QÒSÓ—ÒTÕR_J_BˆÙ[™Y‚ˆ
+KˆK‚ˆÔÔPÒQT×ÕTÔÒSÓ—HBˆÂˆ˜˜\ÙRHÎˆ˜˜\ÙP]XÚÈHˆ˜˜\ÙQY™[œÙHHÎˆ˜˜\ÙTÜYYHLˆ˜˜\ÙTÜ]XÚÈHLKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÑ’T‘JKˆ˜Ø]Ú˜]HHKˆÚYˆÕTUQÑVÖRQSÈHÑS—Îˆ™^ZY[HËˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HˆÙ[ÙBˆ™^ZY[HŒKˆÙ[™Y‚ˆ™]–ZY[ÔÜ]XÚÈHËˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL‹JKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÐ“V‘KP’SUWÓ“Ó‘KP’SUWÑ“TÒÑ’T‘HKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÖQSÕËˆœÜXÚY\Ó˜[YHHÊ•TÔÒSÓˆŠKˆ˜ÜžRYHÔ–WÕTÔÒSÓ‹ˆ›˜]^[HHUSÓSÑVÕTÔÒSÓ‹ˆ˜Ø]YÛÜžS˜[YHHÊ•›ÛØ[›ÈŠKˆšZYÚHMËˆÙZYÚHÎMKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]Ø[ˆYH™Z[™HÚ[[Y\š[™ÈX]^™Wˆ‚ˆ]]Ü™X]\È\Ú[™È]È[[œÙH›[Y\Ë—ˆ‚ˆ•\ÜÚ[ÛˆÜ™X]H›^š[™È^ÜÚ]™Wˆ‚ˆ˜›\ÝÈ]\›ˆ]™\ž][™ÈÈÚ[™\œËˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHŽˆ˜Z[™\“Ù™œÙ]HKˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Õ\ÜÚ[Û‹ˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJJKˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÒRÑKˆ™œ›Û[š[Q[^HHŒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Õ\ÜÚ[Û‹ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆËˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÔÒRÑWÑÓÕ×Ô‘Qˆœ[]HHÓ[Û”[]WÕ\ÜÚ[Û‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÕ\ÜÚ[Û‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Õ\ÜÚ[Û‹ˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈHˆËˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊMÒQÕ×ÔÒV‘WÓ
+Bˆ“ÓÕ’S•
+\ÜÚ[ÛŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÕ\ÜÚ[Û‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÕ\ÜÚ[Û‹ˆÔÚ[žSÝ™\ÛÜ›[]WÕ\ÜÚ[Û‚ˆ
+Bˆ›]™[\X\›œÙ]HÕ\ÜÚ[Û“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÕ\ÜÚ[Û•XXÚX›SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÕ\ÜÚ[Û‘›Ü›TÜXÚY\ÒYX›KˆK‚ˆÚYˆÒTÕRPS—Ñ“Ô“TÂˆÔÔPÒQT×ÕTÔÒSÓ—ÒTÕRWHBˆÂˆ˜˜\ÙRHÌËˆ˜˜\ÙP]XÚÈHˆ˜˜\ÙQY™[œÙHHÎˆ˜˜\ÙTÜYYHMKˆ˜˜\ÙTÜ]XÚÈHLNKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÑ’T‘KTWÑÒÔÕ
+Kˆ˜Ø]Ú˜]HHKˆ™^ZY[HËˆ™]–ZY[ÔÜ]XÚÈHËˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL‹JKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÐ“V‘KP’SUWÓ“Ó‘KP’SUWÑ”’TÒÈKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÖQSÕËˆÚYˆÔÑTTUWÔ‘QÒSÓSÑ“Ô“TÂˆœÜXÚY\Ó˜[YHHÊ•TÔÒSÓ‹RŠKˆÙ[ÙBˆœÜXÚY\Ó˜[YHHÊ•TÔÒSÓˆŠKˆÙ[™Y‚ˆ˜ÜžRYHÔ–WÕTÔÒSÓ‹ˆÚYˆÔÑTTUWÔ‘QÒSÓSÑ“Ô“TÂˆ›˜]^[HHUSÓSÑVÕTÔÒSÓ—ÒTÕRKˆÙ[ÙBˆ›˜]^[HHUSÓSÑVÕTÔÒSÓ‹ˆÙ[™Y‚ˆ˜Ø]YÛÜžS˜[YHHÊ‘ÚÜÝ›[YHŠKˆšZYÚHM‹ˆÙZYÚHŽNˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ”ØZYÈ\šYžHÜÝ›ÜœØZÙ[ˆÛÝ[ÈÚ]ˆ‚ˆš]È›[Y\È[™ÝZYH[HÈHY\›Y™K—ˆ‚ˆ’]	ÜÈ™[Y]™Y]È›Ü›HØ\È[™›Y[˜ÙYžWˆ‚ˆH[™\™ÞHÙˆ]ˆÛÜ›Û™][ˆ[˜ÚY[[Y\ËˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHŽˆ˜Z[™\“Ù™œÙ]HKˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Õ\ÜÚ[Û’\ÝZKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Õ\ÜÚ[Û’\ÝZKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]H‹ˆËË˜˜XÚÐ[š[RYHPÒ×ÐS’SWÓ“Ó‘Kˆœ[]HHÓ[Û”[]WÕ\ÜÚ[Û’\ÝZKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÕ\ÜÚ[Û’\ÝZKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Õ\ÜÚ[Û’\ÝZKˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊ‹MÒQÕ×ÔÒV‘WÓ
+Bˆ“ÓÕ’S•
+\ÜÚ[ÛŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÕ\ÜÚ[Û’\ÝZKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÕ\ÜÚ[Û’\ÝZKˆÔÚ[žSÝ™\ÛÜ›[]WÕ\ÜÚ[Û’\ÝZBˆ
+Bˆš\Ò\ÝZX[‘›Ü›HH•QKˆ™^›Ý™\]Z\™YH•QKˆ›]™[\X\›œÙ]HÕ\ÜÚ[Û’\ÝZS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÕ\ÜÚ[Û’\ÝZUXXÚX›SX\›œÙ]ˆÚYˆÔÑTTUWÔ‘QÒSÓSÑ“Ô“TÂˆ™›Ü›TÜXÚY\ÒYX›HHÕ\ÜÚ[Û’\ÝZQ›Ü›TÜXÚY\ÒYX›KˆÙ[ÙBˆ™›Ü›TÜXÚY\ÒYX›HHÕ\ÜÚ[Û‘›Ü›TÜXÚY\ÒYX›KˆÙ[™Y‚ˆKˆÙ[™YˆËÔÒTÕRPS—Ñ“Ô“TÂˆÙ[™YˆËÔÑSRSWÐÖS‘TURS‚ˆÚYˆÑSRSWÕÕÑSBˆÔÔPÒQT×ÕÕÑSWHBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHKˆ˜˜\ÙQY™[œÙHHˆ˜˜\ÙTÜYYHËˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHˆ\\ÈHSÓ—ÕTTÊTWÕÐUTŠKˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈŒÈˆ‹ˆ™]–ZY[Ð]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL‹JKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓSÓ”ÕT‹QÑ×ÑÔ“ÕTÕÐUT—ÌJKˆ˜Xš[]Y\ÈHÈP’SUWÕÔ”‘S•P’SUWÓ“Ó‘KP’SUWÔÒQT—Ñ“ÔÑHKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆœÜXÚY\Ó˜[YHHÊ•ÕÑSHŠKˆ˜ÜžRYHÔ–WÕÕÑSKˆ›˜]^[HHUSÓSÑVÕÕÑSKˆ˜Ø]YÛÜžS˜[YHHÊšYÈ˜]ÈŠKˆšZYÚH‹ˆÙZYÚHMKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ‘\Ü]H]ÈÛX[›ÙKÝÙ[IÜÈ˜]Ü×ˆ‚ˆ˜\™H™\žHÝÙ\™[ˆÚ[H]X^H[šÈ]\×ˆ‚ˆš\Ý^Y[Hš\[™Ë]Èš]H\È[›ÝYÚˆ‚ˆœÝ™[™ÝÈØ]\ÙHÙ\š[Ý\È[š\žKˆŠKˆœÚÙ[[Û”ØØ[HHËˆœÚÙ[[Û“Ù™œÙ]HŒˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÕÝÙ[Kˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈMHˆMˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJ
+KˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJ
+KˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÒÒ•STËˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÕÝÙ[Kˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLHˆLˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒ“ÓÔ’QÒˆœ[]HHÓ[Û”[]WÕÝÙ[KˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÕÝÙ[KˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÕÝÙ[KˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈˆˆˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ô“PSˆÒQÕÊ‹ÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+ÝÙ[JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÕÝÙ[KˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÕÝÙ[KˆÔÚ[žSÝ™\ÛÜ›[]WÕÝÙ[Bˆ
+Bˆ›]™[\X\›œÙ]HÕÝÙ[S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÕÝÙ[UXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÕÝÙ[QYÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SNÔPÒQT×ÐÔ“ÐÓÓUßJKˆK‚ˆÔÔPÒQT×ÐÔ“ÐÓÓU×HBˆÂˆ˜˜\ÙRHKˆ˜˜\ÙP]XÚÈHˆ˜˜\ÙQY™[œÙHHˆ˜˜\ÙTÜYYHNˆ˜˜\ÙTÜ]XÚÈHNKˆ˜˜\ÙTÜY™[œÙHHŒËˆ\\ÈHSÓ—ÕTTÊTWÕÐUTŠKˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMˆˆMËˆ™]–ZY[Ð]XÚÈHKˆ™]–ZY[ÑY™[œÙHHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL‹JKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓSÓ”ÕT‹QÑ×ÑÔ“ÕTÕÐUT—ÌJKˆ˜Xš[]Y\ÈHÈP’SUWÕÔ”‘S•P’SUWÓ“Ó‘KP’SUWÔÒQT—Ñ“ÔÑHKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆ››Ñ›\H•QKˆœÜXÚY\Ó˜[YHHÊÔ“ÐÓÓUÈŠKˆ˜ÜžRYHÔ–WÐÔ“ÐÓÓUËˆ›˜]^[HHUSÓSÑVÐÔ“ÐÓÓUËˆ˜Ø]YÛÜžS˜[YHHÊšYÈ˜]ÈŠKˆšZYÚHLKˆÙZYÚHLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ“Û˜ÙH]È˜]ÜÈÛ[\ÝÛˆÛˆ]È›ÙK]Ú[ˆ‚ˆ˜XœÛÛ][H›Ý]ÛËˆ™XØ]\ÙHH\ÈÙ—ˆ‚ˆš]È˜[™ÜÈ\™H›ÜšÙY˜XÚÈZÙHš\ÚÛÚÜËˆ‚ˆ^H™XÛÛYH\œ™[[Ý˜X›H[X™YYˆŠKˆœÚÙ[[Û”ØØ[HHÍÎˆœÚÙ[[Û“Ù™œÙ]HLËˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÐÜ›ØÛÛ˜]Ëˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆˆKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÒÔÒRÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÐÜ›ØÛÛ˜]Ëˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈÈˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒ“ÓÔ’QÒˆœ[]HHÓ[Û”[]WÐÜ›ØÛÛ˜]ËˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐÜ›ØÛÛ˜]ËˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÐÜ›ØÛÛ˜]ËˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈˆˆˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊ‹ÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+Ü›ØÛÛ˜]ÊBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐÜ›ØÛÛ˜]ËˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™×Ð\Þ[KˆÓÝ™\ÛÜ›[]WÐÜ›ØÛÛ˜]ËˆÔÚ[žSÝ™\ÛÜ›[]WÐÜ›ØÛÛ˜]Âˆ
+Bˆ›]™[\X\›œÙ]HÐÜ›ØÛÛ˜]Ó]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐÜ›ØÛÛ˜]ÕXXÚX›SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÌÔPÒQT×Ñ‘TSQÐUŸJKˆK‚ˆÔÔPÒQT×Ñ‘TSQÐU—HBˆÂˆ˜˜\ÙRHKˆ˜˜\ÙP]XÚÈHLKˆ˜˜\ÙQY™[œÙHHLˆ˜˜\ÙTÜYYHÎˆ˜˜\ÙTÜ]XÚÈHÎKˆ˜˜\ÙTÜY™[œÙHHËˆ\\ÈHSÓ—ÕTTÊTWÕÐUTŠKˆ˜Ø]Ú˜]HHKˆÚYˆÕTUQÑVÖRQSÈHÑS—Îˆ™^ZY[HKˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HŒÎKˆÙ[ÙBˆ™^ZY[HŒLˆÙ[™Y‚ˆ™]–ZY[Ð]XÚÈH‹ˆ™]–ZY[ÑY™[œÙHHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL‹JKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓSÓ”ÕT‹QÑ×ÑÔ“ÕTÕÐUT—ÌJKˆ˜Xš[]Y\ÈHÈP’SUWÕÔ”‘S•P’SUWÓ“Ó‘KP’SUWÔÒQT—Ñ“ÔÑHKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆœÜXÚY\Ó˜[YHHÊ‘‘TSQÐUˆŠKˆ˜ÜžRYHÔ–WÑ‘TSQÐU‹ˆ›˜]^[HHUSÓSÑVÑ‘TSQÐU‹ˆ˜Ø]YÛÜžS˜[YHHÊšYÈ˜]ÈŠKˆšZYÚHŒËˆÙZYÚHˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]Ü[œÈ]ÈYÙH[Ý]È[[ZY]Wˆ‚ˆ™[™[ZY\Ëˆ[ˆ˜]K][œÈ\Ú[™È]ÈXÚ×ˆ‚ˆ˜[™ÝÙ\™[[™YÜÈÈÚ\™ÙHWˆ‚ˆ™›ÙHÚ][˜Ü™YX›HÜYYˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHÍ‹ˆ˜Z[™\“Ù™œÙ]HËˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ñ™\˜[YØ]‹ˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÒÔÒRÑKˆ™œ›Û[š[Q[^HHKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ñ™\˜[YØ]‹ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÒRÑKˆœ[]HHÓ[Û”[]WÑ™\˜[YØ]‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÑ™\˜[YØ]‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ñ™\˜[YØ]‹ˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈˆˆˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊËLKÒQÕ×ÔÒV‘WÖÐUWÓÓ“JBˆ“ÓÕ’S•
+™\˜[YØ]ŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÑ™\˜[YØ]‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÑ™\˜[YØ]‹ˆÔÚ[žSÝ™\ÛÜ›[]WÑ™\˜[YØ]‚ˆ
+Bˆ›]™[\X\›œÙ]HÑ™\˜[YØ]“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÑ™\˜[YØ]•XXÚX›SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÑ™\˜[YØ]‘›Ü›TÜXÚY\ÒYX›Kˆ™›Ü›PÚ[™ÙUX›HHÑ™\˜[YØ]‘›Ü›PÚ[™ÙUX›KˆK‚ˆÚYˆÑÑS—ÎWÓQQÐWÑU“ÓUSÓ”ÂˆÔÔPÒQT×Ñ‘TSQÐU—ÓQQÐWHBˆÂˆ˜˜\ÙRHKˆ˜˜\ÙP]XÚÈHMŒˆ˜˜\ÙQY™[œÙHHLKˆ˜˜\ÙTÜYYHÎˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHLËˆ\\ÈHSÓ—ÕTTÊTWÕÐUT‹TWÑQÓÓŠKˆ˜Ø]Ú˜]HHKˆ™^ZY[HKˆ™]–ZY[Ð]XÚÈH‹ˆ™]–ZY[ÑY™[œÙHHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL‹JKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓSÓ”ÕT‹QÑ×ÑÔ“ÕTÕÐUT—ÌJKˆ˜Xš[]Y\ÈHÈP’SUWÕÔ”‘S•P’SUWÓ“Ó‘KP’SUWÔÒQT—Ñ“ÔÑHKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆœÜXÚY\Ó˜[YHHÊ‘‘TSQÐUˆŠKˆÚYˆÓSÑQ’QQÓQQÐWÐÔ’QTÂˆ˜ÜžRYHÔ–WÑ‘TSQÐU—ÓQQÐKˆÙ[ÙBˆ˜ÜžRYHÔ–WÑ‘TSQÐU‹ˆÙ[™YˆËÈÓSÑQ’QQÓQQÐWÐÔ’QTÂˆ›˜]^[HHUSÓSÑVÑ‘TSQÐU‹ˆ˜Ø]YÛÜžS˜[YHHÊ‘ÝX›H˜]ÈŠKˆšZYÚHŒËˆÙZYÚHLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•Ú]]È\›\È[™ÛÙZÙHš[‹\×ˆ‚ˆ”Úðê[[Ûˆ›Ü›\ÈHÚYØ[XÈÙ]Ùˆ˜]Ü×ˆ‚ˆÚ]Hš]HL[Y\È\ÈÝÙ\™[ˆ‚ˆ˜\ÈYYØH™\˜[YØ]‰ÜÈXÝX[˜]ÜËˆŠKˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ñ™\˜[YØ]“YYØKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ñ™\˜[YØ]“YYØKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HˆËË˜˜XÚÐ[š[RYHPÒ×ÐS’SWÓ“Ó‘Kˆœ[]HHÓ[Û”[]WÑ™\˜[YØ]“YYØKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÑ™\˜[YØ]“YYØKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ñ™\˜[YØ]“YYØKˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘Kˆ“ÓÕ’S•
+™\˜[YØ]ŠBˆÒQÕÊ‹LËÒQÕ×ÔÒV‘WÓ
+Bˆš\ÓYYØQ]›Û][ÛˆH•QKˆ›]™[\X\›œÙ]HÑ™\˜[YØ]“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÑ™\˜[YØ]•XXÚX›SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÑ™\˜[YØ]‘›Ü›TÜXÚY\ÒYX›Kˆ™›Ü›PÚ[™ÙUX›HHÑ™\˜[YØ]‘›Ü›PÚ[™ÙUX›Kˆœ˜[™ÛZ^™\“[ÙHHSÓ—ÔS‘ÓRV‘T—ÒS•SQˆKˆÙ[™YˆËÔÑÑS—ÎWÓQQÐWÑU“ÓUSÓ”ÂˆÙ[™YˆËÔÑSRSWÕÕÑSB‚ˆÚYˆÑSRSWÔÑS•‘UˆÔÔPÒQT×ÔÑS•‘UHBˆÂˆ˜˜\ÙRHÍKˆ˜˜\ÙP]XÚÈH‹ˆ˜˜\ÙQY™[œÙHHÍˆ˜˜\ÙTÜYYHŒˆ˜˜\ÙTÜ]XÚÈHÍKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÓ“Ô“PS
+Kˆ˜Ø]Ú˜]HHMKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈÈˆMËˆ™]–ZY[Ð]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHMKˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔ•S—ÐUÐVKP’SUWÒÑQS—ÑVQKP’SUWÑ”’TÒÈKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð”“ÕÓ‹ˆœÜXÚY\Ó˜[YHHÊ”ÑS•‘UŠKˆ˜ÜžRYHÔ–WÔÑS•‘Uˆ›˜]^[HHUSÓSÑVÔÑS•‘Uˆ˜Ø]YÛÜžS˜[YHHÊ”ØÛÝ]ŠKˆšZYÚHˆÙZYÚHŒˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•^HZÙH\›œÈÝ[™[™ÈÝX\™Ú[ˆ]ˆ‚ˆš\È[YHÈÛY\ˆHÙ[žH]ØZÙ[œÈWˆ‚ˆ›Ý\œÈYˆ]Ù[œÙ\È[™Ù\‹ˆYˆÛ™H™XÛÛY\×ˆ‚ˆœÙ\\˜]Y]\›œÈÛY\\ÜÈÚ]™X\‹ˆŠKˆœÚÙ[[Û”ØØ[HHÎKˆœÚÙ[[Û“Ù™œÙ]HL‹ˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÙ[™]ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JÌ‹MŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–Èˆ‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÙ[™]ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓÐU‘WÐT×ÔÓPSˆœ[]HHÓ[Û”[]WÔÙ[™]ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÙ[™]ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÙ[™]ˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+Ù[™]
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔÙ[™]ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔÙ[™]ˆÔÚ[žSÝ™\ÛÜ›[]WÔÙ[™]ˆ
+Bˆ›]™[\X\›œÙ]HÔÙ[™]]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÙ[™]XXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÔÙ[™]YÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SMKÔPÒQT×Ñ•T”‘UJKˆK‚ˆÔÔPÒQT×Ñ•T”‘UHBˆÂˆ˜˜\ÙRHKˆ˜˜\ÙP]XÚÈHÍ‹ˆ˜˜\ÙQY™[œÙHHˆ˜˜\ÙTÜYYHLˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHMKˆ\\ÈHSÓ—ÕTTÊTWÓ“Ô“PS
+Kˆ˜Ø]Ú˜]HHLˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMHˆLM‹ˆ™]–ZY[ÔÜYYH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHMKˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔ•S—ÐUÐVKP’SUWÒÑQS—ÑVQKP’SUWÑ”’TÒÈKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð”“ÕÓ‹ˆœÜXÚY\Ó˜[YHHÊ‘•T”‘UŠKˆ˜ÜžRYHÔ–WÑ•T”‘Uˆ›˜]^[HHUSÓSÑVÑ•T”‘Uˆ˜Ø]YÛÜžS˜[YHHÊ“Û™È›ÙHŠKˆšZYÚHNˆÙZYÚHÌKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆH\œ™]\ÈH™\žHÛ[HZ[ˆÚ[ˆ[™\—ˆ‚ˆ˜]XÚË]Ø[ˆÜ]Z\›H›ÝYÚ˜\œ›Ý×ˆ‚ˆœÜXÙ\È[™Ù]]Ø^Kˆ[ˆÜ]HÙˆ]ÈÚÜˆ‚ˆ›[XœË]\È™\žHš[X›H[™›Y]ˆŠKˆœÚÙ[[Û”ØØ[HHÍ‹ˆœÚÙ[[Û“Ù™œÙ]HLKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ñ\œ™]ˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈÈˆˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKÍJKˆS’SPÓQÑ”SQJJKˆ
+Kˆ™œ›Û[š[RYHS’SWÒÒ•ST×Õ—ÔÕ‘UÒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ñ\œ™]ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–Èˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓÐU‘WÐT×ÓT‘ÑKˆœ[]HHÓ[Û”[]WÑ\œ™]ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÑ\œ™]ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ñ\œ™]ˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKKÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+\œ™]
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÑ\œ™]ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÑ\œ™]ˆÔÚ[žSÝ™\ÛÜ›[]WÑ\œ™]ˆ
+Bˆ›]™[\X\›œÙ]HÑ\œ™]]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÑ\œ™]XXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÔÑS•‘U‚ˆÚYˆÑSRSWÒÓÕÓÕˆÔÔPÒQT×ÒÓÕÓÕHBˆÂˆ˜˜\ÙRHŒˆ˜˜\ÙP]XÚÈHÌˆ˜˜\ÙQY™[œÙHHÌˆ˜˜\ÙTÜYYHLˆ˜˜\ÙTÜ]XÚÈHÍ‹ˆ˜˜\ÙTÜY™[œÙHHM‹ˆ\\ÈHSÓ—ÕTTÊTWÓ“Ô“PSTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHMKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈLˆˆNˆ™]–ZY[ÒHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHMKˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ“RS‘ÊKˆ˜Xš[]Y\ÈHÈP’SUWÒS”ÓÓS’PKP’SUWÒÑQS—ÑVQKP’SUWÕS•QÓS”ÈKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð”“ÕÓ‹ˆœÜXÚY\Ó˜[YHHÊ’ÓÕÓÕŠKˆ˜ÜžRYHÔ–WÒÓÕÓÕˆ›˜]^[HHUSÓSÑVÒÓÕÓÕˆ˜Ø]YÛÜžS˜[YHHÊ“ÝÛŠKˆšZYÚHËˆÙZYÚHŒL‹ˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]\È[ˆ[\›˜[Ü™Ø[ˆ]Ù[œÙ\×ˆ‚ˆHX\	ÜÈ›Ý][Û‹ˆ\Ú[™È\ÈÜXÚX[ˆ‚ˆ›Ü™Ø[‹HÛÝÛÝ™YÚ[œÈÛÝ[™È]ˆ‚ˆœ™XÚ\Ù[HHØ[YH[YH]™\žH^KˆŠKˆœÚÙ[[Û”ØØ[HHÎˆœÚÙ[[Û“Ù™œÙ]HL‹ˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÒÛÝÛÝˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLÈˆL‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÓQWÔÓÕËˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÒÛÝÛÝˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–Èˆˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓ•‘VÑÕP“WÐTËˆœ[]HHÓ[Û”[]WÒÛÝÛÝˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÒÛÝÛÝˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÒÛÝÛÝˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊ‹ÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+ÛÝÛÝ
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÒÛÝÛÝˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÒÛÝÛÝˆÔÚ[žSÝ™\ÛÜ›[]WÒÛÝÛÝˆ
+Bˆš\ÔÚÞP˜]P˜[›™YH—ÔÒÖWÐUWÔÕ’PÕÑSQÒP’SUKˆ›]™[\X\›œÙ]HÒÛÝÛÝ]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÒÛÝÛÝXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÒÛÝÛÝYÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SŒÔPÒQT×Ó“ÐÕÕÓJKˆK‚ˆÔÔPÒQT×Ó“ÐÕÕÓHBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHLˆ˜˜\ÙQY™[œÙHHLˆ˜˜\ÙTÜYYHÌˆ˜˜\ÙTÜ]XÚÈHÕTUQÔÕUÈHÑS—ÍÈÈˆˆÍ‹ˆ˜˜\ÙTÜY™[œÙHHM‹ˆ\\ÈHSÓ—ÕTTÊTWÓ“Ô“PSTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHLˆÚYˆÕTUQÑVÖRQSÈHÑS—ÍÂˆ™^ZY[HMNˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HMMKˆÙ[ÙBˆ™^ZY[HMŒ‹ˆÙ[™Y‚ˆ™]–ZY[ÒH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHMKˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ“RS‘ÊKˆ˜Xš[]Y\ÈHÈP’SUWÒS”ÓÓS’PKP’SUWÒÑQS—ÑVQKP’SUWÕS•QÓS”ÈKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð”“ÕÓ‹ˆœÜXÚY\Ó˜[YHHÊ““ÐÕÕÓŠKˆ˜ÜžRYHÔ–WÓ“ÐÕÕÓˆ›˜]^[HHUSÓSÑVÓ“ÐÕÕÓˆ˜Ø]YÛÜžS˜[YHHÊ“ÝÛŠKˆšZYÚHM‹ˆÙZYÚHˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’][™˜Z[[™ÛHØ]Ú\È™^H[ˆ\šÛ™\ÜË—ˆ‚ˆ“›ØÝÝÛÝÙHZ\ˆÝXØÙ\ÜÈÈÝ\\š[Ü—ˆ‚ˆš\Ú[Ûˆ][ÝÜÈ[HÈÙYH[ˆZ[š[X[ˆ‚ˆ›YÚ[™ÈZ\ˆÝ\H[™Ú[[Ú[™ÜËˆŠKˆœÚÙ[[Û”ØØ[HHÎˆœÚÙ[[Û“Ù™œÙ]HËˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ó›ØÝÝÛˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈÈˆ‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJŒ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÕ‘UÒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ó›ØÝÝÛˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HËˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ’PS‘ÓWÑÕÓ‹ˆœ[]HHÓ[Û”[]WÓ›ØÝÝÛˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓ›ØÝÝÛˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ó›ØÝÝÛˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊL‹LÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+›ØÝÝÛ
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓ›ØÝÝÛˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ó“Ó‘KˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓ›ØÝÝÛˆÔÚ[žSÝ™\ÛÜ›[]WÓ›ØÝÝÛˆ
+Bˆ›]™[\X\›œÙ]HÓ›ØÝÝÛ]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓ›ØÝÝÛXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÒÓÕÓÕ‚ˆÚYˆÑSRSWÓQPBˆÔÔPÒQT×ÓQPWHBˆÂˆ˜˜\ÙRHˆ˜˜\ÙP]XÚÈHŒˆ˜˜\ÙQY™[œÙHHÌˆ˜˜\ÙTÜYYHMKˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHˆ\\ÈHSÓ—ÕTTÊTWÐ•QËTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHMKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈLÈˆMˆ™]–ZY[ÔÜY™[œÙHHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHMKˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÐ•QÊKˆ˜Xš[]Y\ÈHÈP’SUWÔÕÐT“KP’SUWÑPT“WÐ’T‘P’SUWÔUQKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ô‘QˆœÜXÚY\Ó˜[YHHÊ“QPHŠKˆ˜ÜžRYHÔ–WÓQPKˆ›˜]^[HHUSÓSÑVÓQPKˆ˜Ø]YÛÜžS˜[YHHÊ‘š]™HÝ\ˆŠKˆšZYÚHLˆÙZYÚHLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ“YX˜HÛÛ[][šXØ]H\Ú[™ÈH›ZY]ˆ‚ˆ^HÙXÜ™]Hœ›ÛHÚ\™HHYÜÈ›Ú[ˆWˆ‚ˆ˜›ÙKˆ^H\™HØZYÈÛÛ™^H™Y[[™ÜÈ×ˆ‚ˆ›Ý\œÈžH[\š[™ÈH›ZY	ÜÈØÙ[ˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÓYX˜Kˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLˆˆLˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—Ò•ST×ÔÓPSˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÓYX˜Kˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLHˆˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÒRÑWÒÔÓQKˆœ[]HHÓ[Û”[]WÓYX˜KˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓYX˜KˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÓYX˜KˆšXÛÛ”[[™^HˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×ÓYX˜Q‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×ÓYX˜Q‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+KˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊ‹ÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+YX˜JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓYX˜KˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ð•QËˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓYX˜KˆÔÚ[žSÝ™\ÛÜ›[]WÓYX˜Bˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÓYX˜Q‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ð•QËˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÓYX˜S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓYX˜UXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÓYX˜QYÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SNÔPÒQT×ÓQPSŸJKˆK‚ˆÔÔPÒQT×ÓQPS—HBˆÂˆ˜˜\ÙRHMKˆ˜˜\ÙP]XÚÈHÍKˆ˜˜\ÙQY™[œÙHHLˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHMKˆ˜˜\ÙTÜY™[œÙHHLLˆ\\ÈHSÓ—ÕTTÊTWÐ•QËTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHLˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈLÍÈˆLÍˆ™]–ZY[ÔÜY™[œÙHH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHMKˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÐ•QÊKˆ˜Xš[]Y\ÈHÈP’SUWÔÕÐT“KP’SUWÑPT“WÐ’T‘P’SUWÒT“Ó—Ñ’TÕKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ô‘QˆœÜXÚY\Ó˜[YHHÊ“QPSˆŠKˆ˜ÜžRYHÔ–WÓQPS‹ˆ›˜]^[HHUSÓSÑVÓQPS‹ˆ˜Ø]YÛÜžS˜[YHHÊ‘š]™HÝ\ˆŠKˆšZYÚHMˆÙZYÚHÍM‹ˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]\ÈØZY][ˆ[™ÈÚ]ÛX[ˆZ\‹ˆ‚ˆÚ\™HHÝ\œÈš[HÚÞK\™H]™Wˆ‚ˆ›X[žHYX[‹ˆ›ÜˆÛÛÙ™X\ÛÛ‹^H\ÙWˆ‚ˆHYÚÙˆHÝ\œÈ\È[™\™ÞKˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]H‹ˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÓYX[‹ˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–Èˆ‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJJKˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJJKˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÕ—ÔÓQWÔÓÕÈˆS’SWÕ—ÔÓQWÕÓÐ“Kˆ™[™[^S[Û‘[]˜][ÛˆHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆLˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÓYX[‹ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈÈˆËˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓ•‘VÑÕP“WÐTËˆœ[]HHÓ[Û”[]WÓYX[‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓYX[‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÓYX[‹ˆšXÛÛ”[[™^HˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×ÓYX[‘‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×ÓYX[‘‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+KˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊMKÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+YX[ŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓYX[‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓYX[‹ˆÔÚ[žSÝ™\ÛÜ›[]WÓYX[‚ˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÓYX[‘‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÓYX[“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓYX[•XXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÓQPB‚ˆÚYˆÑSRSWÔÔSTRÂˆÔÔPÒQT×ÔÔSTR×HBˆÂˆ˜˜\ÙRHˆ˜˜\ÙP]XÚÈHŒˆ˜˜\ÙQY™[œÙHHˆ˜˜\ÙTÜYYHÌˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHˆ\\ÈHSÓ—ÕTTÊTWÐ•QËTWÔÒTÓÓŠKˆ˜Ø]Ú˜]HHMKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈLˆMˆ™]–ZY[Ð]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHMKˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÐ•QÊKˆ˜Xš[]Y\ÈHÈP’SUWÔÕÐT“KP’SUWÒS”ÓÓS’PKP’SUWÔÓ’TTˆKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔ‘QS‹ˆœÜXÚY\Ó˜[YHHÊ”ÔSTRÈŠKˆ˜ÜžRYHÔ–WÔÔSTRËˆ›˜]^[HHUSÓSÑVÔÔSTRËˆ˜Ø]YÛÜžS˜[YHHÊ”Ýš[™ÈÜ]ŠKˆšZYÚHKˆÙZYÚHKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•HÙXˆ]Ü[œÈØ[ˆ™HÛÛœÚY\™Y]×ˆ‚ˆœÙXÛÛ™™\›Ý\ÈÞ\Ý[Kˆ]\ÈØZY]Wˆ‚ˆ”Ü[˜\˜ZÈ]\›Z[™\È]È™^HžHH[žWˆ‚ˆšXœ˜][ÛœÈ]™Y[È›ÝYÚHÙX‹ˆŠKˆœÚÙ[[Û”ØØ[HHMˆœÚÙ[[Û“Ù™œÙ]HŒKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÜ[˜\˜ZËˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JÌŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘JÌŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈNHˆM‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKŠKˆS’SPÓQÑ”SQJŠKˆS’SPÓQÑ”SQJKŠKˆS’SPÓQÑ”SQJŠKˆS’SPÓQÑ”SQJKŠKˆS’SPÓQÑ”SQJŠKˆS’SPÓQÑ”SQJKŠKˆS’SPÓQÑ”SQJŠKˆ
+Kˆ™œ›Û[š[RYHS’SWÐÒTÓWÐ×ÐÓÐÒÕÒTÑWÔÓÕËˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÜ[˜\˜ZËˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JÌŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈŒHˆM‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÒRÑWÒÔÓQKˆœ[]HHÓ[Û”[]WÔÜ[˜\˜ZËˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÜ[˜\˜ZËˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÜ[˜\˜ZËˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÑTÕˆÒQÕÊNÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+Ü[˜\˜ZÊBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔÜ[˜\˜ZËˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ð•QËˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔÜ[˜\˜ZËˆÔÚ[žSÝ™\ÛÜ›[]WÔÜ[˜\˜ZÂˆ
+Bˆ›]™[\X\›œÙ]HÔÜ[˜\˜ZÓ]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÜ[˜\˜ZÕXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÔÜ[˜\˜ZÑYÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SŒ‹ÔPÒQT×ÐT’PQÔßJKˆK‚ˆÔÔPÒQT×ÐT’PQÔ×HBˆÂˆ˜˜\ÙRHÌˆ˜˜\ÙP]XÚÈHLˆ˜˜\ÙQY™[œÙHHÌˆ˜˜\ÙTÜYYHˆ˜˜\ÙTÜ]XÚÈHŒˆ˜˜\ÙTÜY™[œÙHHÕTUQÔÕUÈHÑS—ÍÈÈÌˆŒˆ\\ÈHSÓ—ÕTTÊTWÐ•QËTWÔÒTÓÓŠKˆ˜Ø]Ú˜]HHLˆÚYˆÕTUQÑVÖRQSÈHÑS—ÍÂˆ™^ZY[HMˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HLÍËˆÙ[ÙBˆ™^ZY[HLÍˆÙ[™Y‚ˆ™]–ZY[Ð]XÚÈH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHMKˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÐ•QÊKˆ˜Xš[]Y\ÈHÈP’SUWÔÕÐT“KP’SUWÒS”ÓÓS’PKP’SUWÔÓ’TTˆKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ô‘QˆœÜXÚY\Ó˜[YHHÊT’PQÔÈŠKˆ˜ÜžRYHÔ–WÐT’PQÔËˆ›˜]^[HHUSÓSÑVÐT’PQÔËˆ˜Ø]YÛÜžS˜[YHHÊ“Û™ÈYÈŠKˆšZYÚHLKˆÙZYÚHÌÍKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]È™Y]\™H\YÚ][žHÛÚÙYÛ]Ü×ˆ‚ˆ][˜X›H]ÈØÝ]HÛˆÙZ[[™ÜÈ[™ˆ‚ˆ™\XØ[Ø[Ëˆ]ÛÛœÝšXÝÈ]È›ÙHÚ]ˆ‚ˆ[ˆ[™Ý›Û™ÈÚ[ÈÙX˜š[™ËˆŠKˆœÚÙ[[Û”ØØ[HHÌM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ð\šXYÜËˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆËˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKŒ
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÒÔÒRÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ð\šXYÜËˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLHˆKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒÔÓQKˆœ[]HHÓ[Û”[]WÐ\šXYÜËˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐ\šXYÜËˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ð\šXYÜËˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊKËÒQÕ×ÔÒV‘WÖÐUWÓÓ“JBˆ“ÓÕ’S•
+\šXYÜÊBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐ\šXYÜËˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ð•QËˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÐ\šXYÜËˆÔÚ[žSÝ™\ÛÜ›[]WÐ\šXYÜÂˆ
+Bˆ›]™[\X\›œÙ]HÐ\šXYÜÓ]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐ\šXYÜÕXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÔÔSTRÂ‚ˆÚYˆÑSRSWÐÒSÒÕBˆÔÔPÒQT×ÐÒSÒÕWHBˆÂˆ˜˜\ÙRHÍKˆ˜˜\ÙP]XÚÈHÎˆ˜˜\ÙQY™[œÙHHÎˆ˜˜\ÙTÜYYHËˆ˜˜\ÙTÜ]XÚÈHM‹ˆ˜˜\ÙTÜY™[œÙHHM‹ˆ\\ÈHSÓ—ÕTTÊTWÕÐUT‹TWÑSPÕ’PÊKˆ˜Ø]Ú˜]HHNLˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈˆˆLˆ™]–ZY[ÒHKˆš][T˜\™HHUSWÑQTÔÑPWÔÐÐSKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌŠKˆ˜Xš[]Y\ÈHÈP’SUWÕ“ÓÐP”ÓÔ‹P’SUWÒSSRSUKP’SUWÕÐUT—ÐP”ÓÔˆKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆœÜXÚY\Ó˜[YHHÊÒSÒÕHŠKˆ˜ÜžRYHÔ–WÐÒSÒÕKˆ›˜]^[HHUSÓSÑVÐÒSÒÕKˆ˜Ø]YÛÜžS˜[YHHÊ[™Û\ˆŠKˆšZYÚHKˆÙZYÚHLŒˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•Ú[ˆ]Ù[œÙ\È[™Ù\‹]\ØÚ\™Ù\×ˆ‚ˆœÜÚ]]™H[™™YØ]]™H[XÝšXÚ]Hœ›ÛH]×ˆ‚ˆÛÈ[[›˜YKˆ]]™\È[ˆ\È™^[Û™ˆ‚ˆœÝ[›YÚ	ÜÈ™XXÚˆŠKˆœÚÙ[[Û”ØØ[HHˆœÚÙ[[Û“Ù™œÙ]HL‹ˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÐÚ[˜ÚÝKˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈMˆˆL‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJLJKˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKŒ
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑWÔÓÕËˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÐÚ[˜ÚÝKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆLKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÕ‘UÒˆœ[]HHÓ[Û”[]WÐÚ[˜ÚÝKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐÚ[˜ÚÝKˆœÚ[žT[]S[Ù\›ˆHÓ[Û”Ú[žT[]S[Ù\›—ÐÚ[˜ÚÝKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÐÚ[˜ÚÝKˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKKÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+Ú[˜ÚÝJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐÚ[˜ÚÝKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×ÔÔÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÐÚ[˜ÚÝKˆÔÚ[žSÝ™\ÛÜ›[]WÐÚ[˜ÚÝKˆÔÚ[žS[Ù\›“Ý™\ÛÜ›[]WÐÚ[˜ÚÝBˆ
+Bˆ›]™[\X\›œÙ]HÐÚ[˜ÚÝS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐÚ[˜ÚÝUXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÐÚ[˜ÚÝQYÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SËÔPÒQT×ÓS•T“ŸJKˆK‚ˆÔÔPÒQT×ÓS•T“—HBˆÂˆ˜˜\ÙRHLKˆ˜˜\ÙP]XÚÈHNˆ˜˜\ÙQY™[œÙHHNˆ˜˜\ÙTÜYYHËˆ˜˜\ÙTÜ]XÚÈHÍ‹ˆ˜˜\ÙTÜY™[œÙHHÍ‹ˆ\\ÈHSÓ—ÕTTÊTWÕÐUT‹TWÑSPÕ’PÊKˆ˜Ø]Ú˜]HHÍKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMŒHˆMM‹ˆ™]–ZY[ÒH‹ˆš][T˜\™HHUSWÑQTÔÑPWÔÐÐSKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌŠKˆ˜Xš[]Y\ÈHÈP’SUWÕ“ÓÐP”ÓÔ‹P’SUWÒSSRSUKP’SUWÕÐUT—ÐP”ÓÔˆKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆœÜXÚY\Ó˜[YHHÊ“S•T“ˆŠKˆ˜ÜžRYHÔ–WÓS•T“‹ˆ›˜]^[HHUSÓSÑVÓS•T“‹ˆ˜Ø]YÛÜžS˜[YHHÊ“YÚŠKˆšZYÚHL‹ˆÙZYÚHŒKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•HYÚY[Z][™ÈÜ˜œÈÛˆ]È˜XÚÈ\™Wˆ‚ˆ™\žHœšYÚˆ^H\™H›Ü›YYœ›ÛHH\Ù—ˆ‚ˆš]ÈÜœØ[š[‹ˆ\ÈÚðê[[Ûˆ[[Z[˜]\×ˆ‚ˆH[šÞH\šÛ™\ÜÈÙˆY\ÙX\ËˆŠKˆœÚÙ[[Û”ØØ[HHŽKˆœÚÙ[[Û“Ù™œÙ]H‹ˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ó[\›‹ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HLKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJLJKˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKŒ
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÓQWÕÓÐ“WÔÓPSˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ó[\›‹ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–Èˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÔÒRÑWÑ“TÒÖQSÕËˆœ[]HHÓ[Û”[]WÓ[\›‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓ[\›‹ˆœÚ[žT[]S[Ù\›ˆHÓ[Û”Ú[žT[]S[Ù\›—Ó[\›‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ó[\›‹ˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊKÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+[\›ŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓ[\›‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×ÔÔÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓ[\›‹ˆÔÚ[žSÝ™\ÛÜ›[]WÓ[\›‹ˆÔÚ[žS[Ù\›“Ý™\ÛÜ›[]WÓ[\›‚ˆ
+Bˆ›]™[\X\›œÙ]HÓ[\›“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓ[\›•XXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÐÒSÒÕB‚ˆÚYˆÑSRSWÕÑÑTBˆÙYš[™HÑÑTWÑSRSWÕTLH
+ÕTUQÕTTÈHÑS—ÍˆÈTWÑRT–HˆTWÓ“Ô“PS
+B‚ˆÔÔPÒQT×ÕÑÑTWHBˆÂˆ˜˜\ÙRHÍKˆ˜˜\ÙP]XÚÈHŒˆ˜˜\ÙQY™[œÙHHKˆ˜˜\ÙTÜYYHŒˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊÑÑTWÑSRSWÕTLJKˆ˜Ø]Ú˜]HHNLˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈHˆÍˆ™]–ZY[ÔÜY™[œÙHHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL‹JKˆ™YÙÐÞXÛ\ÈHLˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓ“×ÑQÑÔ×ÑTÐÓÕ‘T‘Q
+Kˆ˜Xš[]Y\ÈHÈP’SUWÒTÕKP’SUWÔÑT‘S‘WÑÔPÑKP’SUWÔÕTT—ÓPÒÈKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÕÒUKˆ››Ñ›\H•QKˆœÜXÚY\Ó˜[YHHÊ•ÑÑTHŠKˆ˜ÜžRYHÔ–WÕÑÑTKˆ›˜]^[HHUSÓSÑVÕÑÑTKˆ˜Ø]YÛÜžS˜[YHHÊ”ÜZÙH˜[ŠKˆšZYÚHËˆÙZYÚHMKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ\È]È[™\™ÞK]\Ù\ÈH™Y[[™ÜÈÙ—ˆ‚ˆ˜ÛÛ\\ÜÚ[Ûˆ[™X\Ý\™H^YYžWˆ‚ˆœ[ÜH[™Úðê[[Û‹ˆ]ÝÜ™\È\\Wˆ‚ˆ™™Y[[™ÜÈ[ˆ]ÈÚ[[ˆÚ\™\È[HÝ]ˆŠKˆœÚÙ[[Û”ØØ[HHLËˆœÚÙ[[Û“Ù™œÙ]HŒËˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÕÙÙ\Kˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JÌŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈŒˆM‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÔÕÒS‘×ÐÓÓÐU‘HˆS’SWÕ—Ò•ST×Ð’QËˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÕÙÙ\Kˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JÌŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈMˆˆL‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÑTÔ’QÒÔÒQKˆœ[]HHÓ[Û”[]WÕÙÙ\KˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÕÙÙ\KˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÕÙÙ\KˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈˆˆˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÔÓÕËˆÒQÕÊLKLËÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+ÙÙ\JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÕÙÙ\KˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÕÙÙ\KˆÔÚ[žSÝ™\ÛÜ›[]WÕÙÙ\Bˆ
+Bˆ›]™[\X\›œÙ]HÕÙÙ\S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÕÙÙ\UXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÕÙÙ\QYÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÔPÒQT×ÕÑÑUPËÓÓ‘USÓ”ÊÒQ—ÓRS—Ñ”’QS‘ÒT”’QS‘ÒTÑU“×Õ‘TÒÓJ_JKˆK‚ˆÔÔPÒQT×ÕÑÑUP×HBˆÂˆ˜˜\ÙRHMKˆ˜˜\ÙP]XÚÈHˆ˜˜\ÙQY™[œÙHHKˆ˜˜\ÙTÜYYHˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHLKˆ\\ÈHSÓ—ÕTTÊÑÑTWÑSRSWÕTLKTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHÍKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMˆˆLMˆ™]–ZY[ÔÜY™[œÙHH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL‹JKˆ™YÙÐÞXÛ\ÈHLˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ“RS‘ËQÑ×ÑÔ“ÕTÑRT–JKˆ˜Xš[]Y\ÈHÈP’SUWÒTÕKP’SUWÔÑT‘S‘WÑÔPÑKP’SUWÔÕTT—ÓPÒÈKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÕÒUKˆ››Ñ›\H•QKˆœÜXÚY\Ó˜[YHHÊ•ÑÑUPÈŠKˆ˜ÜžRYHÔ–WÕÑÑUPËˆ›˜]^[HHUSÓSÑVÕÑÑUPËˆ˜Ø]YÛÜžS˜[YHHÊ’\[™\ÜÈŠKˆšZYÚH‹ˆÙZYÚHÌ‹ˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]\ÈØZYÈ™HHÚðê[[Ûˆ]œš[™ÜÈÛÛÙˆ‚ˆ™›Ü[™KˆÚ[ˆ]ÜÝÈÛÛY[Û™HÚÈ\È\™Wˆ‚ˆ›ÙˆX\HÙÙ]XÈ\X\œÈ[™Ú\™\È]×ˆ‚ˆš\[™\ÜÈÚ]]\œÛÛ‹ˆŠKˆœÚÙ[[Û”ØØ[HHˆœÚÙ[[Û“Ù™œÙ]HMËˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÕÙÙ]XËˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JÌ‹
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÕÙÙ]XËˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–Èˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓ•‘VÑÕP“WÐTËˆœ[]HHÓ[Û”[]WÕÙÙ]XËˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÕÙÙ]XËˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÕÙÙ]XËˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈˆˆˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊ‹ÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+ÙÙ]XÊBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÕÙÙ]XËˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ó“Ó‘KˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÕÙÙ]XËˆÔÚ[žSÝ™\ÛÜ›[]WÕÙÙ]XÂˆ
+Bˆ›]™[\X\›œÙ]HÕÙÙ]XÓ]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÕÙÙ]XÕXXÚX›SX\›œÙ]ˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÒUSKUSWÔÒS–WÔÕÓ‘KÔPÒQT×ÕÑÑRÒTÔßJKˆÙ[™Y‚ˆK‚ˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆÔÔPÒQT×ÕÑÑRÒTÔ×HBˆÂˆ˜˜\ÙRHKˆ˜˜\ÙP]XÚÈHLˆ˜˜\ÙQY™[œÙHHMKˆ˜˜\ÙTÜYYHˆ˜˜\ÙTÜ]XÚÈHLŒˆ˜˜\ÙTÜY™[œÙHHLMKˆ\\ÈHSÓ—ÕTTÊÑÑTWÑSRSWÕTLKTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHÌˆÚYˆÕTUQÑVÖRQSÈHÑS—Îˆ™^ZY[HÌËˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HKˆÙ[ÙBˆ™^ZY[HŒŒˆÙ[™Y‚ˆ™]–ZY[ÔÜ]XÚÈH‹ˆ™]–ZY[ÔÜY™[œÙHHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL‹JKˆ™YÙÐÞXÛ\ÈHLˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ“RS‘ËQÑ×ÑÔ“ÕTÑRT–JKˆ˜Xš[]Y\ÈHÈP’SUWÒTÕKP’SUWÔÑT‘S‘WÑÔPÑKP’SUWÔÕTT—ÓPÒÈKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÕÒUKˆ››Ñ›\H•QKˆœÜXÚY\Ó˜[YHHÊ•ÑÑRÒTÔÈŠKˆ˜ÜžRYHÔ–WÕÑÑRÒTÔËˆ›˜]^[HHUSÓSÑVÕÑÑRÒTÔËˆ˜Ø]YÛÜžS˜[YHHÊ’Xš[YHŠKˆšZYÚHMKˆÙZYÚHÎˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ\È]™\ž[Û™HÛ›ÝÜË]š\Ú]ÈXXÙY[ˆ‚ˆœ™YÚ[ÛœËœš[™Ú[™È[HÚYÈÙˆÚ[™™\Ü×ˆ‚ˆ˜[™ÝÙY]›\ÜÚ[™ÜËˆ]Ú[™]™\ˆ\X\—ˆ‚ˆÚ\™H\™H\ÈÝšY™KˆŠKˆœÚÙ[[Û”ØØ[HHŽˆœÚÙ[[Û“Ù™œÙ]H‹ˆ˜Z[™\”ØØ[HHÌKˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÕÙÙZÚ\ÜËˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]HLˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHS’SWÔÕÒS‘×ÐÓÓ•‘Vˆ™[™[^S[Û‘[]˜][ÛˆHMˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÕÙÙZÚ\ÜËˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HLˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓÐU‘WÐT×ÓT‘ÑKˆœ[]HHÓ[Û”[]WÕÙÙZÚ\ÜËˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÕÙÙZÚ\ÜËˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÕÙÙZÚ\ÜËˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊMKÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+ÙÙZÚ\ÜÊBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÕÙÙZÚ\ÜËˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™×Ð\Þ[KˆÓÝ™\ÛÜ›[]WÕÙÙZÚ\ÜËˆÔÚ[žSÝ™\ÛÜ›[]WÕÙÙZÚ\ÜÂˆ
+Bˆ›]™[\X\›œÙ]HÕÙÙZÚ\ÜÓ]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÕÙÙZÚ\ÜÕXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆÙ[™YˆËÔÑSRSWÕÑÑTB‚ˆÚYˆÑSRSWÓUBˆÔÔPÒQT×ÓUWHBˆÂˆ˜˜\ÙRHˆ˜˜\ÙP]XÚÈHLˆ˜˜\ÙQY™[œÙHHKˆ˜˜\ÙTÜYYHÌˆ˜˜\ÙTÜ]XÚÈHÌˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÔÖPÒPËTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHNLˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈˆÌËˆ™]–ZY[ÔÜ]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ“RS‘ÊKˆ˜Xš[]Y\ÈHÈP’SUWÔÖSÒ“Ó’V‘KP’SUWÑPT“WÐ’T‘P’SUWÓPQÒP×Ð“ÕSÑHKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔ‘QS‹ˆœÜXÚY\Ó˜[YHHÊ“UHŠKˆ˜ÜžRYHÔ–WÓUKˆ›˜]^[HHUSÓSÑVÓUKˆ˜Ø]YÛÜžS˜[YHHÊ•[žHš\™ŠKˆšZYÚH‹ˆÙZYÚHŒˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’][œÈ\ÚÜ™Y\È]Ü›ÝÈÛˆWˆ‚ˆœØ]˜[›˜HÈXÚÈ]™]ÈÚÛÝË—ˆ‚ˆH˜]IÜÈ^Y\ÈÛÚÈ\ÈYˆ^H\™Wˆ‚ˆ˜[Ø^\ÈØœÙ\š[™ÈÛÛY][™ËˆŠKˆœÚÙ[[Û”ØØ[HHŒLˆœÚÙ[[Û“Ù™œÙ]HKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ó˜]Kˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JÌ‹ÌŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈŒˆMËˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKŒ
+KˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKŒ
+KˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHS’SWÒÒ•STËˆ™œ›Û[š[Q[^HHÌˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ó˜]Kˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JÌŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈMÈˆMKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓÐU‘WÐT×ÔÓPSˆœ[]HHÓ[Û”[]WÓ˜]KˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓ˜]KˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ó˜]KˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈˆKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊL‹MÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+˜]JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓ˜]KˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓ˜]KˆÔÚ[žSÝ™\ÛÜ›[]WÓ˜]Bˆ
+Bˆš\ÔÚÞP˜]P˜[›™YH—ÔÒÖWÐUWÔÕ’PÕÑSQÒP’SUKˆ›]™[\X\›œÙ]HÓ˜]S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓ˜]UXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÓ˜]QYÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SKÔPÒQT×ÖU_JKˆK‚ˆÔÔPÒQT×ÖUWHBˆÂˆ˜˜\ÙRHKˆ˜˜\ÙP]XÚÈHÍKˆ˜˜\ÙQY™[œÙHHÌˆ˜˜\ÙTÜYYHMKˆ˜˜\ÙTÜ]XÚÈHMKˆ˜˜\ÙTÜY™[œÙHHÌˆ\\ÈHSÓ—ÕTTÊTWÔÖPÒPËTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHÍKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMHˆMÌKˆ™]–ZY[ÔÜYYHKˆ™]–ZY[ÔÜ]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ“RS‘ÊKˆ˜Xš[]Y\ÈHÈP’SUWÔÖSÒ“Ó’V‘KP’SUWÑPT“WÐ’T‘P’SUWÓPQÒP×Ð“ÕSÑHKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔ‘QS‹ˆœÜXÚY\Ó˜[YHHÊ–UHŠKˆ˜ÜžRYHÔ–WÖUKˆ›˜]^[HHUSÓSÑVÖUKˆ˜Ø]YÛÜžS˜[YHHÊ“^\ÝXÈŠKˆšZYÚHMKˆÙZYÚHMLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]\ÈH[šYÛX]XÈÝÙ\ˆÙˆ›Ü™\ÙYZ[™×ˆ‚ˆH]\™KˆÛÛYH[ÜH[ˆY™™\™[[™×ˆ‚ˆš]™HÛ™È™[Y]™Y]]H\™Wˆ‚ˆ™[Z\ÜØ\šY\Èœ›ÛH[›Ý\ˆÛÜ›ˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]H‹ˆ˜Z[™\”ØØ[HHÌNˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ö]Kˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JÌ‹MŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈÈˆKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHS’SWÑÔ“Õ×Õ’P”UKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ö]Kˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–Èˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÔÒ’S’×ÑÔ“Õ×Õ’P”UKˆœ[]HHÓ[Û”[]WÖ]KˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÖ]KˆœÚ[žT[]S[Ù\›ˆHÓ[Û”Ú[žT[]S[Ù\›—Ö]KˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ö]KˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈˆKˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÂˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×Ö]Q‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÂˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKKÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+]JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÖ]KˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÖ]KˆÔÚ[žSÝ™\ÛÜ›[]WÖ]KˆÔÚ[žS[Ù\›“Ý™\ÛÜ›[]WÖ]Bˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÖ]Q‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÖ]S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÖ]UXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÓUB‚ˆÚYˆÑSRSWÓPT‘QTˆÔÔPÒQT×ÓPT‘QTHBˆÂˆ˜˜\ÙRHMKˆ˜˜\ÙP]XÚÈHˆ˜˜\ÙQY™[œÙHHˆ˜˜\ÙTÜYYHÍKˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÑSPÕ’PÊKˆ˜Ø]Ú˜]HHŒÍKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMˆˆNKˆ™]–ZY[ÔÜ]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓSÓ”ÕT‹QÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔÕUPËP’SUWÓ“Ó‘KP’SUWÔTÈKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÕÒUKˆ››Ñ›\H•QKˆœÜXÚY\Ó˜[YHHÊ“PT‘QTŠKˆ˜ÜžRYHÔ–WÓPT‘QTˆ›˜]^[HHUSÓSÑVÓPT‘QTˆ˜Ø]YÛÜžS˜[YHHÊ•ÛÛÛŠKˆšZYÚH‹ˆÙZYÚHÎˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]È›Y™žHÛÛÛXœÈÙÙ]\ˆ[™Z[×ˆ‚ˆ˜HÝ]XÈÚ\™ÙKˆH[Ü™H[™\™ÞH\×ˆ‚ˆ˜Ú\™ÙYH[Ü™HœšYÚHHYÚ[—ˆ‚ˆ˜]H\Ùˆ]ÈZ[ÛÝÜËˆŠKˆœÚÙ[[Û”ØØ[HHÍÎKˆœÚÙ[[Û“Ù™œÙ]HNˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÓX\™Y\ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈMˆˆL‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJŒ
+KˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ™œ›Û[š[Q[^HHLˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÓX\™Y\ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆMKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓÐU‘WÐT×ÔÓPSˆœ[]HHÓ[Û”[]WÓX\™Y\ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓX\™Y\ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÓX\™Y\ˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈˆˆˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ô“PSˆÒQÕÊKKÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+X\™Y\
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓX\™Y\ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓX\™Y\ˆÔÚ[žSÝ™\ÛÜ›[]WÓX\™Y\ˆ
+Bˆ›]™[\X\›œÙ]HÓX\™Y\]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓX\™Y\XXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÓX\™Y\YÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SMKÔPÒQT×Ñ“PQ‘–_JKˆK‚ˆÔÔPÒQT×Ñ“PQ‘–WHBˆÂˆ˜˜\ÙRHÌˆ˜˜\ÙP]XÚÈHMKˆ˜˜\ÙQY™[œÙHHMKˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHŒˆ\\ÈHSÓ—ÕTTÊTWÑSPÕ’PÊKˆ˜Ø]Ú˜]HHLŒˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈLŽˆLMËˆ™]–ZY[ÔÜ]XÚÈH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓSÓ”ÕT‹QÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔÕUPËP’SUWÓ“Ó‘KP’SUWÔTÈKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÔS’ËˆœÜXÚY\Ó˜[YHHÊ‘“PQ‘–HŠKˆ˜ÜžRYHÔ–WÑ“PQ‘–Kˆ›˜]^[HHUSÓSÑVÑ“PQ‘–Kˆ˜Ø]YÛÜžS˜[YHHÊ•ÛÛÛŠKˆšZYÚHˆÙZYÚHLÌËˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]È›YXÙH]X[]HÚ[™Ù\ÈÈÙ[™\˜]Wˆ‚ˆœÝ›Û™ÈÝ]XÈ[XÝšXÚ]HÚ]HÛX[ˆ‚ˆ˜[[Ý[ÙˆÛÛÛˆH˜\™KÛXÚÈ\ÈÙˆ]×ˆ‚ˆšYH\™HÚY[YYØZ[œÝ[XÝšXÚ]KˆŠKˆœÚÙ[[Û”ØØ[HHÍÌ‹ˆœÚÙ[[Û“Ù™œÙ]HMKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ñ›XY™žKˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLˆKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKŒ
+KˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKŒ
+KˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÕ—Ò•ST×Ð’QÈˆS’SWÕ—ÔÕ‘UÒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ñ›XY™žKˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆËˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÑTÔ’QÒÔÒQKˆœ[]HHÓ[Û”[]WÑ›XY™žKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÑ›XY™žKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ñ›XY™žKˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+›XY™žJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÑ›XY™žKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÑ›XY™žKˆÔÚ[žSÝ™\ÛÜ›[]WÑ›XY™žBˆ
+Bˆ›]™[\X\›œÙ]HÑ›XY™žS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÑ›XY™žUXXÚX›SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÌÔPÒQT×ÐSTT“ÔßJKˆK‚ˆÔÔPÒQT×ÐSTT“Ô×HBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHÍKˆ˜˜\ÙQY™[œÙHHÕTUQÔÕUÈHÑS—ÍˆÈHˆÍKˆ˜˜\ÙTÜYYHMKˆ˜˜\ÙTÜ]XÚÈHLMKˆ˜˜\ÙTÜY™[œÙHHLˆ\\ÈHSÓ—ÕTTÊTWÑSPÕ’PÊKˆ˜Ø]Ú˜]HHKˆÚYˆÕTUQÑVÖRQSÈHÑS—Îˆ™^ZY[HMKˆÙ[YˆÕTUQÑVÖRQSÈHÑS—Í‚ˆ™^ZY[HŒÌˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HŒKˆÙ[ÙBˆ™^ZY[HNMˆÙ[™Y‚ˆ™]–ZY[ÔÜ]XÚÈHËˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓSÓ”ÕT‹QÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔÕUPËP’SUWÓ“Ó‘KP’SUWÔTÈKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÖQSÕËˆœÜXÚY\Ó˜[YHHÊSTT“ÔÈŠKˆ˜ÜžRYHÔ–WÐSTT“ÔËˆ›˜]^[HHUSÓSÑVÐSTT“ÔËˆ˜Ø]YÛÜžS˜[YHHÊ“YÚŠKˆšZYÚHMˆÙZYÚHŒMKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]Ú]™\ÈÙ™ˆÛÈ]XÚYÚ]]Ø[ˆ™Wˆ‚ˆœÙY[ˆ]™[ˆœ›ÛHÜXÙKˆ[ÜH[ˆHÛˆ‚ˆ™^\È\ÙY]ÈYÚÈÙ[™ÚYÛ˜[È˜XÚ×ˆ‚ˆ˜[™›ÜÚ]Ý\œÈ˜\ˆ]Ø^KˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ð[\\›ÜËˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆ‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÑ“TÒÖQSÕËˆ™œ›Û[š[Q[^HHLˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ð[\\›ÜËˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆËˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÔÒRÑWÑ“TÒÖQSÕËˆœ[]HHÓ[Û”[]WÐ[\\›ÜËˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐ[\\›ÜËˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ð[\\›ÜËˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊËLKÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+[\\›ÜÊBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐ[\\›ÜËˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÐ[\\›ÜËˆÔÚ[žSÝ™\ÛÜ›[]WÐ[\\›ÜÂˆ
+Bˆ›]™[\X\›œÙ]HÐ[\\›ÜÓ]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐ[\\›ÜÕXXÚX›SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÐ[\\›ÜÑ›Ü›TÜXÚY\ÒYX›Kˆ™›Ü›PÚ[™ÙUX›HHÐ[\\›ÜÑ›Ü›PÚ[™ÙUX›KˆK‚ˆÚYˆÓQQÐWÑU“ÓUSÓ”ÂˆÔÔPÒQT×ÐSTT“Ô×ÓQQÐWHBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHMKˆ˜˜\ÙQY™[œÙHHLKˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHMKˆ˜˜\ÙTÜY™[œÙHHLLˆ\\ÈHSÓ—ÕTTÊTWÑSPÕ’PËTWÑQÓÓŠKˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—Î
+HÈÌHˆÍKˆ™]–ZY[ÔÜ]XÚÈHËˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓSÓ”ÕT‹QÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÓSÓÐ”‘PRÑT‹P’SUWÓSÓÐ”‘PRÑT‹P’SUWÓSÓÐ”‘PRÑTˆKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÖQSÕËˆœÜXÚY\Ó˜[YHHÊSTT“ÔÈŠKˆÚYˆÓSÑQ’QQÓQQÐWÐÔ’QTÂˆ˜ÜžRYHÔ–WÐSTT“Ô×ÓQQÐKˆÙ[ÙBˆ˜ÜžRYHÔ–WÐSTT“ÔËˆÙ[™YˆËÈÓSÑQ’QQÓQQÐWÐÔ’QTÂˆ›˜]^[HHUSÓSÑVÐSTT“ÔËˆ˜Ø]YÛÜžS˜[YHHÊ“YÚŠKˆšZYÚHMˆÙZYÚHŒMKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ“X\ÜÚ]™H[[Ý[ÈÙˆ[™\™ÞH[[œÙ[Wˆ‚ˆœÝ[][]Y[\\›ÜÉÜÈÙ[Ë\\™[Wˆ‚ˆ˜]ØZÙ[š[™È]ÈÛ™Ë\ÛY\[™È˜YÛÛ‰Ü×ˆ‚ˆ˜›ÛÙˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ð[\\›ÜÓYYØKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ð[\\›ÜÓYYØKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]Hˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÔÒRÑWÑ“TÒÖQSÕËˆœ[]HHÓ[Û”[]WÐ[\\›ÜÓYYØKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐ[\\›ÜÓYYØKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ð[\\›ÜÓYYØKˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊMËLËÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+[\\›ÜÊBˆÚYˆÕ×ÐUWÓÓ“WÑ“Ô“TÂˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐ[\\›ÜÓYYØKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÐ[\\›ÜÓYYØKˆÔÚ[žSÝ™\ÛÜ›[]WÐ[\\›ÜÓYYØBˆ
+BˆÙ[™YˆËÓÕ×ÐUWÓÓ“WÑ“Ô“TÂˆš\ÓYYØQ]›Û][ÛˆH•QKˆ›]™[\X\›œÙ]HÐ[\\›ÜÓ]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐ[\\›ÜÕXXÚX›SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÐ[\\›ÜÑ›Ü›TÜXÚY\ÒYX›Kˆ™›Ü›PÚ[™ÙUX›HHÐ[\\›ÜÑ›Ü›PÚ[™ÙUX›Kˆœ˜[™ÛZ^™\“[ÙHHSÓ—ÔS‘ÓRV‘T—ÒS•SQˆKˆÙ[™YˆËÔÓQQÐWÑU“ÓUSÓ”ÂˆÙ[™YˆËÔÑSRSWÓPT‘QT‚ˆÚYˆÑSRSWÓPT’SˆÚYˆÑÑS—Ì×ÐÔ“ÔÔ×ÑU“ÔÂˆÔÔPÒQT×ÐV•T’SHBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHŒˆ˜˜\ÙQY™[œÙHHˆ˜˜\ÙTÜYYHŒˆ˜˜\ÙTÜ]XÚÈHŒˆ˜˜\ÙTÜY™[œÙHHˆÚYˆÕTUQÕTTÈHÑS—Í‚ˆ\\ÈHSÓ—ÕTTÊTWÓ“Ô“PSTWÑRT–JKˆÙ[ÙBˆ\\ÈHSÓ—ÕTTÊTWÓ“Ô“PS
+KˆÙ[™Y‚ˆ˜Ø]Ú˜]HHMLˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈÎˆÌËˆ™]–ZY[ÒHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJÍJKˆ™YÙÐÞXÛ\ÈHLˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓ“×ÑQÑÔ×ÑTÐÓÕ‘T‘Q
+Kˆ˜Xš[]Y\ÈHÈP’SUWÕPÒ×ÑUP’SUWÒQÑWÔÕÑT‹P’SUWÔÐTÔÒTTˆKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆœÜXÚY\Ó˜[YHHÊV•T’SŠKˆ˜ÜžRYHÔ–WÐV•T’Sˆ›˜]^[HHUSÓSÑVÐV•T’Sˆ˜Ø]YÛÜžS˜[YHHÊ”ÛØHÝŠKˆšZYÚH‹ˆÙZYÚHŒˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]ÈZ[ÚXÚ\ÈXÚÙYÚ]]š][Û‹ˆ‚ˆš\È™\žH›Ý[˜ÞHZÙHHX˜™\ˆ˜[ˆÛˆÝ[›žWˆ‚ˆ™^\È^HØ]\ˆ]HYÙHÙˆØ]\ˆ[™ˆ‚ˆœÜ\ÚX›Ý]›Üˆ[‹ˆŠKˆœÚÙ[[Û”ØØ[HHŒËˆœÚÙ[[Û“Ù™œÙ]HŒËˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ð^\š[ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈMHˆLKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJLŠKˆS’SPÓQÑ”SQJKLŠKˆS’SPÓQÑ”SQJLŠKˆS’SPÓQÑ”SQJKLŠKˆS’SPÓQÑ”SQJLŠKˆS’SPÓQÑ”SQJKLŠKˆS’SPÓQÑ”SQJLŠKˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ð^\š[ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓÐU‘WÐT×ÓT‘ÑKˆœ[]HHÓ[Û”[]WÐ^\š[ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐ^\š[ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ð^\š[ˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈˆˆˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÔÓÕËˆÒQÕÊMËÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+^\š[
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐ^\š[ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÐ^\š[ˆÔÚ[žSÝ™\ÛÜ›[]WÐ^\š[ˆ
+Bˆ›]™[\X\›œÙ]HÐ^\š[]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐ^\š[XXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÐ^\š[YÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÔPÒQT×ÓPT’SÓÓ‘USÓ”ÊÒQ—ÓRS—Ñ”’QS‘ÒT”’QS‘ÒTÑU“×Õ‘TÒÓJ_JKˆKˆÙ[™YˆËÔÑÑS—Ì×ÐÔ“ÔÔ×ÑU“ÔÂ‚ˆÔÔPÒQT×ÓPT’SHBˆÂˆ˜˜\ÙRHÌˆ˜˜\ÙP]XÚÈHŒˆ˜˜\ÙQY™[œÙHHLˆ˜˜\ÙTÜYYHˆ˜˜\ÙTÜ]XÚÈHŒˆ˜˜\ÙTÜY™[œÙHHLˆÚYˆÕTUQÕTTÈHÑS—Í‚ˆ\\ÈHSÓ—ÕTTÊTWÕÐUT‹TWÑRT–JKˆÙ[ÙBˆ\\ÈHSÓ—ÕTTÊTWÕÐUTŠKˆÙ[™Y‚ˆ˜Ø]Ú˜]HHNLˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈˆNˆ™]–ZY[ÒH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHLˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌKQÑ×ÑÔ“ÕTÑRT–JKˆ˜Xš[]Y\ÈHÈP’SUWÕPÒ×ÑUP’SUWÒQÑWÔÕÑT‹P’SUWÔÐTÔÒTTˆKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆœÜXÚY\Ó˜[YHHÊ“PT’SŠKˆ˜ÜžRYHÔ–WÓPT’Sˆ›˜]^[HHUSÓSÑVÓPT’Sˆ˜Ø]YÛÜžS˜[YHHÊ\]XH[Ý\ÙHŠKˆšZYÚHˆÙZYÚHKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]È›ÙH\ÈÛÝ™\™YÚ]Ø]\‹\™\[[ˆ‚ˆ™\‹ˆ™XØ]\ÙHÙˆH\‹]Ø[ˆÝÚ[Wˆ‚ˆ›ÝYÚØ]\ˆ]YÚÜYYÚ]Ý]™Z[™×ˆ‚ˆœÛÝÙYžHHØ]\‰ÜÈ™\Ú\Ý[˜ÙKˆŠKˆœÚÙ[[Û”ØØ[HHÍ‹ˆœÚÙ[[Û“Ù™œÙ]HŒˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÓX\š[ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ™œ›ÛXÖSÙ™œÙ]HMˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJÌ
+KˆS’SPÓQÑ”SQJKÌ
+KˆS’SPÓQÑ”SQJŒ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÓX\š[ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLˆˆLËˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓÐU‘WÐT×ÔÓPSˆœ[]HHÓ[Û”[]WÓX\š[ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓX\š[ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÓX\š[ˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈˆˆˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÔÓÕËˆÒQÕÊL‹ÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+X\š[
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓX\š[ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓX\š[ˆÔÚ[žSÝ™\ÛÜ›[]WÓX\š[ˆ
+Bˆ›]™[\X\›œÙ]HÓX\š[]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓX\š[XXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÓX\š[YÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SNÔPÒQT×ÐV•SPT’SJKˆK‚ˆÔÔPÒQT×ÐV•SPT’SHBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHLˆ˜˜\ÙQY™[œÙHHˆ˜˜\ÙTÜYYHLˆ˜˜\ÙTÜ]XÚÈHÕTUQÔÕUÈHÑS—ÍˆÈŒˆLˆ˜˜\ÙTÜY™[œÙHHˆÚYˆÕTUQÕTTÈHÑS—Í‚ˆ\\ÈHSÓ—ÕTTÊTWÕÐUT‹TWÑRT–JKˆÙ[ÙBˆ\\ÈHSÓ—ÕTTÊTWÕÐUTŠKˆÙ[™Y‚ˆ˜Ø]Ú˜]HHÍKˆÚYˆÕTUQÑVÖRQSÈHÑS—Îˆ™^ZY[HŒLˆÙ[YˆÕTUQÑVÖRQSÈHÑS—Í‚ˆ™^ZY[HNKˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HNKˆÙ[ÙBˆ™^ZY[HMLËˆÙ[™Y‚ˆ™]–ZY[ÒHËˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHLˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌKQÑ×ÑÔ“ÕTÑRT–JKˆ˜Xš[]Y\ÈHÈP’SUWÕPÒ×ÑUP’SUWÒQÑWÔÕÑT‹P’SUWÔÐTÔÒTTˆKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆ››Ñ›\H•QKˆœÜXÚY\Ó˜[YHHÊV•SPT’SŠKˆ˜ÜžRYHÔ–WÐV•SPT’Sˆ›˜]^[HHUSÓSÑVÐV•SPT’Sˆ˜Ø]YÛÜžS˜[YHHÊ\]XH˜X˜š]ŠKˆšZYÚHˆÙZYÚHŽKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]]™\È[ˆØ]\ˆš\X[H[^HÛ™Ë—ˆ‚ˆ’]È›ÙHÛÛÜˆ[™]\›ˆXÝ\×ˆ‚ˆ˜Ø[[ÝY›YÙH]XZÙ\È]ÝYÚ›Ü—ˆ‚ˆ™[™[ZY\ÈÈÜÝ[ˆØ]\‹ˆŠKˆœÚÙ[[Û”ØØ[HHˆœÚÙ[[Û“Ù™œÙ]HM‹ˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ð^[X\š[ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆ‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKŒ
+KˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKŒ
+KˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÐ“ÕSÑWÔ“ÕUWÕ×ÔÒQT×ÔÓPSÔÓÕÈˆS’SWÔÒ’S’×ÑÔ“ÕËˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ð^[X\š[ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆËˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÑTÔ’QÒÔÒQKˆœ[]HHÓ[Û”[]WÐ^[X\š[ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐ^[X\š[ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ð^[X\š[ˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈˆˆˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊMÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+^[X\š[
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐ^[X\š[ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÐ^[X\š[ˆÔÚ[žSÝ™\ÛÜ›[]WÐ^[X\š[ˆ
+Bˆ›]™[\X\›œÙ]HÐ^[X\š[]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐ^[X\š[XXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÓPT’S‚ˆÚYˆÑSRSWÔÕQÕÓÓÑÂˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆÔÔPÒQT×Ð“Ó”ÓWHBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHˆ˜˜\ÙQY™[œÙHHMKˆ˜˜\ÙTÜYYHLˆ˜˜\ÙTÜ]XÚÈHLˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÔ“ÐÒÊKˆ˜Ø]Ú˜]HHMKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈNˆŽˆ™]–ZY[ÑY™[œÙHHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓ“×ÑQÑÔ×ÑTÐÓÕ‘T‘Q
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔÕT‘KP’SUWÔ“ÐÒ×ÒPQP’SUWÔUQKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð”“ÕÓ‹ˆœÜXÚY\Ó˜[YHHÊ“Ó”ÓHŠKˆ˜ÜžRYHÔ–WÐ“Ó”ÓKˆ›˜]^[HHUSÓSÑVÐ“Ó”ÓKˆ˜Ø]YÛÜžS˜[YHHÊ›ÛœØZHŠKˆšZYÚHKˆÙZYÚHMLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ›ÛœÛH™Y™\œÈ[ˆ\šY][ÜÜ\™K—ˆ‚ˆ’[ˆÜ™\ˆÈY\ÝH]™[Ùˆ›ZY×ˆ‚ˆš[ˆ]È›ÙK]^Y\ÈØ]\ˆœ›ÛH]È^Y\Ë—ˆ‚ˆ•\ÈXZÙ\È]\X\ˆÈ™HÜžZ[™ËˆŠKˆœÚÙ[[Û”ØØ[HHÌ‹ˆœÚÙ[[Û“Ù™œÙ]HLËˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ð›ÛœÛKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JÌ‹
+Kˆ™œ›ÛXÖSÙ™œÙ]HKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKŒ
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÐ“ÕSÑWÔ“ÕUWÕ×ÔÒQTËˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ð›ÛœÛKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]H‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒÕ’P”UKˆœ[]HHÓ[Û”[]WÐ›ÛœÛKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐ›ÛœÛKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ð›ÛœÛKˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÑTÕˆÒQÕÊLËÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+›ÛœÛJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐ›ÛœÛKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÐ›ÛœÛKˆÔÚ[žSÝ™\ÛÜ›[]WÐ›ÛœÛBˆ
+Bˆ›]™[\X\›œÙ]HÐ›ÛœÛS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐ›ÛœÛUXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÐ›ÛœÛQYÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÔPÒQT×ÔÕQÕÓÓÑËÓÓ‘USÓ”ÊÒQ—ÒÓ“ÕÔ×ÓSÕ‘KSÕ‘WÓRSRPßJ_JKˆKˆÙ[™YˆËÔÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂ‚ˆÔÔPÒQT×ÔÕQÕÓÓÑ×HBˆÂˆ˜˜\ÙRHÌˆ˜˜\ÙP]XÚÈHLˆ˜˜\ÙQY™[œÙHHLMKˆ˜˜\ÙTÜYYHÌˆ˜˜\ÙTÜ]XÚÈHÌˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÔ“ÐÒÊKˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMˆLÍKˆ™]–ZY[ÑY™[œÙHH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓRS‘TS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔÕT‘KP’SUWÔ“ÐÒ×ÒPQP’SUWÔUQKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð”“ÕÓ‹ˆœÜXÚY\Ó˜[YHHÊ”ÕQÕÓÓÑÈŠKˆ˜ÜžRYHÔ–WÔÕQÕÓÓÑËˆ›˜]^[HHUSÓSÑVÔÕQÕÓÓÑËˆ˜Ø]YÛÜžS˜[YHHÊ’[Z]][ÛˆŠKˆšZYÚHL‹ˆÙZYÚHÎˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]Z[ZXÜÈH™YHÈ]›ÚY™Z[™È]XÚÙYˆ‚ˆ˜žH[™[ZY\Ëˆ]Ú[˜ÙH]È›Ü™[YÜ×ˆ‚ˆœ™[XZ[ˆÜ™Y[ˆ›ÝYÚÝ]HYX\‹]\×ˆ‚ˆ™X\Ú[HY[YšYY\ÈH˜ZÙH[ˆHÚ[\‹ˆŠKˆœÚÙ[[Û”ØØ[HHÌKˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÝYÝÛÛÙËˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆˆËˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHS’SWÒÔÓQWÔÓÕËˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÝYÝÛÛÙËˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒÔÓQKˆœ[]HHÓ[Û”[]WÔÝYÝÛÛÙËˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÝYÝÛÛÙËˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÝYÝÛÛÙËˆšXÛÛ”[[™^HKˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×ÔÝYÝÛÛÙÑ‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×ÔÝYÝÛÛÙÑ‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊL‹ËÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+ÝYÝÛÛÙÊBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔÝYÝÛÛÙËˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔÝYÝÛÛÙËˆÔÚ[žSÝ™\ÛÜ›[]WÔÝYÝÛÛÙÂˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÔÝYÝÛÛÙÑ‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÔÝYÝÛÛÙÓ]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÝYÝÛÛÙÕXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÔÝYÝÛÛÙÑYÙÓ[Ý™SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÔÕQÕÓÓÑÂ‚ˆÚYˆÑSRSWÒÔTˆÔÔPÒQT×ÒÔTHBˆÂˆ˜˜\ÙRHÍKˆ˜˜\ÙP]XÚÈHÍKˆ˜˜\ÙQY™[œÙHHˆ˜˜\ÙTÜYYHLˆ˜˜\ÙTÜ]XÚÈHÍKˆ˜˜\ÙTÜY™[œÙHHMKˆ\\ÈHSÓ—ÕTTÊTWÑÔTÔËTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHMKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈLˆÍˆ™]–ZY[ÔÜY™[œÙHHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑRT–KQÑ×ÑÔ“ÕTÑÔTÔÊKˆÚYˆÕTUQÐP’SUQTÈHÑS—Íˆ˜Xš[]Y\ÈHÈP’SUWÐÒÔ“ÔSP’SUWÓPQ—ÑÕPT‘P’SUWÒS‘’SUÔˆKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÐÒÔ“ÔSP’SUWÓ“Ó‘KP’SUWÒS‘’SUÔˆKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÔS’ËˆœÜXÚY\Ó˜[YHHÊ’ÔTŠKˆ˜ÜžRYHÔ–WÒÔTˆ›˜]^[HHUSÓSÑVÒÔTˆ˜Ø]YÛÜžS˜[YHHÊÛÝÛÙYYŠKˆšZYÚHˆÙZYÚHKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•\ÈÚðê[[ÛˆšYÈ[™›Ø]ÈÚ]Wˆ‚ˆÚ[™ˆYˆ]Ù[œÙ\ÈH\›ØXÚÙˆÝ›Û™×ˆ‚ˆÚ[™ËHÜ\[šÜÈX]™\ÈÚ]Ý\œ×ˆ‚ˆÈ™\\™HYØZ[œÝ™Z[™È›ÝÛˆ]Ø^KˆŠKˆœÚÙ[[Û”ØØ[HHMŒ‹ˆœÚÙ[[Û“Ù™œÙ]HMËˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÒÜ\ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLˆMˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJJKˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJJKˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÓQWÕÓÐ“Kˆ™[™[^S[Û‘[]˜][ÛˆHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLHˆMKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÒÜ\ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLHˆˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓ•‘VÑÕP“WÐTËˆœ[]HHÓ[Û”[]WÒÜ\ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÒÜ\ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÒÜ\ˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊMKL‹ÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+Ü\
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÒÜ\ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ó“Ó‘KˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÒÜ\ˆÔÚ[žSÝ™\ÛÜ›[]WÒÜ\ˆ
+Bˆ›]™[\X\›œÙ]HÒÜ\]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÒÜ\XXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÒÜ\YÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SNÔPÒQT×ÔÒÒTÓÓ_JKˆK‚ˆÔÔPÒQT×ÔÒÒTÓÓWHBˆÂˆ˜˜\ÙRHMKˆ˜˜\ÙP]XÚÈHKˆ˜˜\ÙQY™[œÙHHLˆ˜˜\ÙTÜYYHˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÑÔTÔËTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHLŒˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈLNHˆLÍ‹ˆ™]–ZY[ÔÜYYH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑRT–KQÑ×ÑÔ“ÕTÑÔTÔÊKˆÚYˆÕTUQÐP’SUQTÈHÑS—Íˆ˜Xš[]Y\ÈHÈP’SUWÐÒÔ“ÔSP’SUWÓPQ—ÑÕPT‘P’SUWÒS‘’SUÔˆKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÐÒÔ“ÔSP’SUWÓ“Ó‘KP’SUWÒS‘’SUÔˆKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔ‘QS‹ˆœÜXÚY\Ó˜[YHHÊ”ÒÒTÓÓHŠKˆ˜ÜžRYHÔ–WÔÒÒTÓÓKˆ›˜]^[HHUSÓSÑVÔÒÒTÓÓKˆ˜Ø]YÛÜžS˜[YHHÊÛÝÛÙYYŠKˆšZYÚH‹ˆÙZYÚHLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]›ÜÜÛÛ\ÈÚ[ˆH[\\˜]\™Hš\Ù\×ˆ‚ˆ˜X›Ý™HYÜ™Y\È‹ˆ™XØ]\ÙH]È›ÝÙ\‰Ü×ˆ‚ˆ˜›ÛÛZ[™ÈÚ[™Ù\ÈÚ]H[\\˜]\™Kˆ‚ˆš]\ÈÛÛY][Y\È\ÙY\ÈH\›[ÛY]\‹ˆŠKˆœÚÙ[[Û”ØØ[HHÎËˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÚÚ\ÛÛKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HMKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKLŠKˆS’SPÓQÑ”SQJLŠKˆS’SPÓQÑ”SQJKLŠKˆS’SPÓQÑ”SQJÌ
+KˆS’SPÓQÑ”SQJKLŠKˆS’SPÓQÑ”SQJLŠKˆS’SPÓQÑ”SQJKLŠKˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHS’SWÔ’TÒS‘×ÕÓÐ“Kˆ™[™[^S[Û‘[]˜][ÛˆHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLˆˆMKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÚÚ\ÛÛKˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLÈˆˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓ•‘VÑÕP“WÐTËˆœ[]HHÓ[Û”[]WÔÚÚ\ÛÛKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÚÚ\ÛÛKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÚÚ\ÛÛKˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKLÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+ÚÚ\ÛÛJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔÚÚ\ÛÛKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ó“Ó‘KˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔÚÚ\ÛÛKˆÔÚ[žSÝ™\ÛÜ›[]WÔÚÚ\ÛÛBˆ
+Bˆ›]™[\X\›œÙ]HÔÚÚ\ÛÛS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÚÚ\ÛÛUXXÚX›SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SËÔPÒQT×Ò•STQ‘ŸJKˆK‚ˆÔÔPÒQT×Ò•STQ‘—HBˆÂˆ˜˜\ÙRHÍKˆ˜˜\ÙP]XÚÈHMKˆ˜˜\ÙQY™[œÙHHÌˆ˜˜\ÙTÜYYHLLˆ˜˜\ÙTÜ]XÚÈHMKˆ˜˜\ÙTÜY™[œÙHHÕTUQÔÕUÈHÑS—ÍˆÈMHˆKˆ\\ÈHSÓ—ÕTTÊTWÑÔTÔËTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHKˆÚYˆÕTUQÑVÖRQSÈHÑS—Îˆ™^ZY[HŒÌˆÙ[YˆÕTUQÑVÖRQSÈHÑS—Í‚ˆ™^ZY[HŒËˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HŒËˆÙ[ÙBˆ™^ZY[HMÍ‹ˆÙ[™Y‚ˆ™]–ZY[ÔÜYYHËˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑRT–KQÑ×ÑÔ“ÕTÑÔTÔÊKˆÚYˆÕTUQÐP’SUQTÈHÑS—Íˆ˜Xš[]Y\ÈHÈP’SUWÐÒÔ“ÔSP’SUWÓPQ—ÑÕPT‘P’SUWÒS‘’SUÔˆKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÐÒÔ“ÔSP’SUWÓ“Ó‘KP’SUWÒS‘’SUÔˆKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆœÜXÚY\Ó˜[YHHÊ’•STQ‘ˆŠKˆ˜ÜžRYHÔ–WÒ•STQ‘‹ˆ›˜]^[HHUSÓSÑVÒ•STQ‘‹ˆ˜Ø]YÛÜžS˜[YHHÊÛÝÛÙYYŠKˆšZYÚHˆÙZYÚHÌˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’[\Y™ˆšYHØ\›HÛÝ]\›ˆÚ[™È×ˆ‚ˆ˜Ü›ÜÜÈHÙXH[™›HÈ›Ü™ZYÛˆ[™Ë—ˆ‚ˆ•\ÈÚðê[[Ûˆ[™ÈÚ[ˆ][˜ÛÝ[\œ×ˆ‚ˆ˜ÛÛZ\ˆÚ[H]\È›Ø][™ËˆŠKˆœÚÙ[[Û”ØØ[HHNˆœÚÙ[[Û“Ù™œÙ]HMˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ò[\Y™‹ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈÈˆKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJJKˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJJKˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÓQWÕÓÐ“WÔÓPSˆ™[™[^S[Û‘[]˜][ÛˆHKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ò[\Y™‹ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆËˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓ•‘VÑÕP“WÐTËˆœ[]HHÓ[Û”[]WÒ[\Y™‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÒ[\Y™‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ò[\Y™‹ˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊL‹LKÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+[\Y™ŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÒ[\Y™‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ó“Ó‘KˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÒ[\Y™‹ˆÔÚ[žSÝ™\ÛÜ›[]WÒ[\Y™‚ˆ
+Bˆ›]™[\X\›œÙ]HÒ[\Y™“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÒ[\Y™•XXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÒÔT‚ˆÚYˆÑSRSWÐRTÓBˆÔÔPÒQT×ÐRTÓWHBˆÂˆ˜˜\ÙRHMKˆ˜˜\ÙP]XÚÈHÌˆ˜˜\ÙQY™[œÙHHMKˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHMKˆ\\ÈHSÓ—ÕTTÊTWÓ“Ô“PS
+Kˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈÌˆˆMˆ™]–ZY[ÔÜYYHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔ•S—ÐUÐVKP’SUWÔPÒÕTP’SUWÔÒÒSÓS’ÈKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÔT”KˆœÜXÚY\Ó˜[YHHÊRTÓHŠKˆ˜ÜžRYHÔ–WÐRTÓKˆ›˜]^[HHUSÓSÑVÐRTÓKˆ˜Ø]YÛÜžS˜[YHHÊ“Û™ÈZ[ŠKˆšZYÚHˆÙZYÚHLMKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]ÈZ[[™ÈÚ]H^\›Ý\Ë[™ZÙWˆ‚ˆ˜\[™YÙKˆÝÙ]™\‹™XØ]\ÙH]\Ù\ÈWˆ‚ˆZ[ÛÈ]XÚZ\ÛIÜÈ™X[[™È]™Wˆ‚ˆ˜™XÛÛYH˜]\ˆÛ[\ÞKˆŠKˆœÚÙ[[Û”ØØ[HHÍŒËˆœÚÙ[[Û“Ù™œÙ]H‹ˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÐZ\ÛKˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JÌ‹
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈÈˆKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKÍJKˆS’SPÓQÑ”SQJJKˆ
+Kˆ™œ›Û[š[RYHS’SWÒÒ•ST×Õ—ÔÕ‘UÒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÐZ\ÛKˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆËˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓÐU‘WÐT×ÓT‘ÑKˆœ[]HHÓ[Û”[]WÐZ\ÛKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐZ\ÛKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÐZ\ÛKˆšXÛÛ”[[™^H‹ˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×ÐZ\ÛQ‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JÌ‹
+Kˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×ÐZ\ÛQ‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+KˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKL‹ÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+Z\ÛJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐZ\ÛKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÐZ\ÛKˆÔÚ[žSÝ™\ÛÜ›[]WÐZ\ÛBˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÐZ\ÛQ‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÐZ\ÛS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐZ\ÛUXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÐZ\ÛQYÙÓ[Ý™SX\›œÙ]ˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÔPÒQT×ÐSP’TÓKÓÓ‘USÓ”ÊÒQ—ÒÓ“ÕÔ×ÓSÕ‘KSÕ‘WÑÕP“WÒUJ_JKˆÙ[™Y‚ˆK‚ˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆÔÔPÒQT×ÐSP’TÓWHBˆÂˆ˜˜\ÙRHÍKˆ˜˜\ÙP]XÚÈHLˆ˜˜\ÙQY™[œÙHH‹ˆ˜˜\ÙTÜYYHLMKˆ˜˜\ÙTÜ]XÚÈHŒˆ˜˜\ÙTÜY™[œÙHH‹ˆ\\ÈHSÓ—ÕTTÊTWÓ“Ô“PS
+Kˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMŽHˆN‹ˆ™]–ZY[ÔÜYYH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HLˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÕPÒ’PÒPS‹P’SUWÔPÒÕTP’SUWÔÒÒSÓS’ÈKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÔT”KˆœÜXÚY\Ó˜[YHHÊSP’TÓHŠKˆ˜ÜžRYHÔ–WÐSP’TÓKˆ›˜]^[HHUSÓSÑVÐSP’TÓKˆ˜Ø]YÛÜžS˜[YHHÊ“Û™ÈZ[ŠKˆšZYÚHL‹ˆÙZYÚHŒËˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•^H]™HÛˆ\™ÙH™Y\ËˆÜ][ÈÛËˆ‚ˆHZ[È\™HÛÈY\][™[™È[™ˆ‚ˆ™Ú[™È[™ÜË[Xš\ÛH˜\™[H\Ù\×ˆ‚ˆš]È[™È›ÝËˆŠKˆœÚÙ[[Û”ØØ[HHŽ‹ˆœÚÙ[[Û“Ù™œÙ]HËˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ð[Xš\ÛKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJÌ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÐPÒ×ÐS‘ÓS‘ÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ð[Xš\ÛKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HËˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓÐU‘WÐT×ÓT‘ÑKˆœ[]HHÓ[Û”[]WÐ[Xš\ÛKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐ[Xš\ÛKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ð[Xš\ÛKˆšXÛÛ”[[™^H‹ˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×Ð[Xš\ÛQ‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×Ð[Xš\ÛQ‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+KˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKLËÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+[Xš\ÛJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐ[Xš\ÛKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÐ[Xš\ÛKˆÔÚ[žSÝ™\ÛÜ›[]WÐ[Xš\ÛBˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÐ[Xš\ÛQ‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÐ[Xš\ÛS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐ[Xš\ÛUXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆÙ[™YˆËÔÑSRSWÐRTÓB‚ˆÚYˆÑSRSWÔÕS’ÑT“‚ˆÔÔPÒQT×ÔÕS’ÑT“—HBˆÂˆ˜˜\ÙRHÌˆ˜˜\ÙP]XÚÈHÌˆ˜˜\ÙQY™[œÙHHÌˆ˜˜\ÙTÜYYHÌˆ˜˜\ÙTÜ]XÚÈHÌˆ˜˜\ÙTÜY™[œÙHHÌˆ\\ÈHSÓ—ÕTTÊTWÑÔTÔÊKˆ˜Ø]Ú˜]HHŒÍKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈÍˆˆL‹ˆ™]–ZY[ÔÜ]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑÔTÔÊKˆÚYˆÕTUQÐP’SUQTÈHÑS—Íˆ˜Xš[]Y\ÈHÈP’SUWÐÒÔ“ÔSP’SUWÔÓÓT—ÔÕÑT‹P’SUWÑPT“WÐ’T‘KˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÐÒÔ“ÔSP’SUWÓ“Ó‘KP’SUWÑPT“WÐ’T‘KˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÖQSÕËˆœÜXÚY\Ó˜[YHHÊ”ÕS’ÑT“ˆŠKˆ˜ÜžRYHÔ–WÔÕS’ÑT“‹ˆ›˜]^[HHUSÓSÑVÔÕS’ÑT“‹ˆ˜Ø]YÛÜžS˜[YHHÊ”ÙYYŠKˆšZYÚHËˆÙZYÚHNˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ”Ý[šÙ\›ˆžHÈZ[š[Z^™H[Ý™[Y[×ˆ‚ˆ˜ÛÛœÙ\™HH]šY[È^H]™HÝÜ™Yˆ‚ˆš[ˆZ\ˆ›ÙY\È›Üˆ]›Û][Û‹ˆ^HÚ[ˆ‚ˆ››ÝX]ÝXœÚ\Ý[™ÈÛ›HÛˆ[Ü›š[™È]ËˆŠKˆœÚÙ[[Û”ØØ[HHMKˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÝ[šÙ\›‹ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JÌ‹ÌŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘JÌ‹
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈMˆˆMËˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJ
+KˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJ
+KˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJ
+Kˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÕ—Ò•ST×ÔÓPSˆS’SWÒÒ•STËˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÝ[šÙ\›‹ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HLˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÑTÔ’QÒÔÒQKˆœ[]HHÓ[Û”[]WÔÝ[šÙ\›‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÝ[šÙ\›‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÝ[šÙ\›‹ˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÔÓÕËˆÒQÕÊLKMÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+Ý[šÙ\›ŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔÝ[šÙ\›‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×ÔÔÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔÝ[šÙ\›‹ˆÔÚ[žSÝ™\ÛÜ›[]WÔÝ[šÙ\›‚ˆ
+Bˆ›]™[\X\›œÙ]HÔÝ[šÙ\›“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÝ[šÙ\›•XXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÔÝ[šÙ\›‘YÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÒUSKUSWÔÕS—ÔÕÓ‘KÔPÒQT×ÔÕS‘“Ô_JKˆK‚ˆÔÔPÒQT×ÔÕS‘“ÔWHBˆÂˆ˜˜\ÙRHÍKˆ˜˜\ÙP]XÚÈHÍKˆ˜˜\ÙQY™[œÙHHMKˆ˜˜\ÙTÜYYHÌˆ˜˜\ÙTÜ]XÚÈHLKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÑÔTÔÊKˆ˜Ø]Ú˜]HHLŒˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMHˆM‹ˆ™]–ZY[ÔÜ]XÚÈH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑÔTÔÊKˆÚYˆÕTUQÐP’SUQTÈHÑS—Íˆ˜Xš[]Y\ÈHÈP’SUWÐÒÔ“ÔSP’SUWÔÓÓT—ÔÕÑT‹P’SUWÑPT“WÐ’T‘KˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÐÒÔ“ÔSP’SUWÓ“Ó‘KP’SUWÑPT“WÐ’T‘KˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÖQSÕËˆœÜXÚY\Ó˜[YHHÊ”ÕS‘“ÔHŠKˆ˜ÜžRYHÔ–WÔÕS‘“ÔKˆ›˜]^[HHUSÓSÑVÔÕS‘“ÔKˆ˜Ø]YÛÜžS˜[YHHÊ”Ý[ˆŠKˆšZYÚHˆÙZYÚHKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ”Ý[™›Ü˜HÛÛ™\ÛÛ\ˆ[™\™ÞH[×ˆ‚ˆ›]š][Û‹ˆ^H\™HYÚHXÝ]™H[ˆWˆ‚ˆØ\›H^][YH]ÝY[›HÝÜ[Ýš[™È\×ˆ‚ˆœÛÛÛˆ\ÈHÝ[ˆÙ]ËˆŠKˆœÚÙ[[Û”ØØ[HHˆœÚÙ[[Û“Ù™œÙ]HMKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÝ[™›Ü˜Kˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÝ[™›Ü˜Kˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆËˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒÔÓQKˆœ[]HHÓ[Û”[]WÔÝ[™›Ü˜KˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÝ[™›Ü˜KˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÝ[™›Ü˜KˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLK‹ÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+Ý[™›Ü˜JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔÝ[™›Ü˜KˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔÝ[™›Ü˜KˆÔÚ[žSÝ™\ÛÜ›[]WÔÝ[™›Ü˜Bˆ
+Bˆ›]™[\X\›œÙ]HÔÝ[™›Ü˜S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÝ[™›Ü˜UXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÔÕS’ÑT“‚‚ˆÚYˆÑSRSWÖPS“PBˆÔÔPÒQT×ÖPS“PWHBˆÂˆ˜˜\ÙRHKˆ˜˜\ÙP]XÚÈHKˆ˜˜\ÙQY™[œÙHHKˆ˜˜\ÙTÜYYHMKˆ˜˜\ÙTÜ]XÚÈHÍKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÐ•QËTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHÍKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈÎˆMËˆ™]–ZY[ÔÜYYH
+ÕTUQÑU”ÈHÑS—Í
+HÈHˆ‹ˆš][T˜\™HHUSWÕÒQWÓS”Ëˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÐ•QÊKˆ˜Xš[]Y\ÈHÈP’SUWÔÔQQÐ“ÓÔÕP’SUWÐÓÓTÕS‘ÑVQTËP’SUWÑ”’TÒÈKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ô‘QˆœÜXÚY\Ó˜[YHHÊ–PS“PHŠKˆ˜ÜžRYHÔ–WÖPS“PKˆ›˜]^[HHUSÓSÑVÖPS“PKˆ˜Ø]YÛÜžS˜[YHHÊÛX\ˆÚ[™ÈŠKˆšZYÚHL‹ˆÙZYÚHÎˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]Ø[ˆÙYHÍŒYÜ™Y\ÈÚ]Ý][Ýš[™×ˆ‚ˆš]È^Y\Ëˆ]\ÈHÜ™X]›Y\ˆØ\X›HÙ—ˆ‚ˆ›XZÚ[™ÈÝY[ˆÝÜÈ[™\›š[™ÈZYZ\ˆ×ˆ‚ˆœ]ZXÚÛHÚ\ÙHÝÛˆ\™Ù]Y™^KˆŠKˆœÚÙ[[Û”ØØ[HHÍˆœÚÙ[[Û“Ù™œÙ]HLKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÖX[›XKˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLˆMˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKŠKˆS’SPÓQÑ”SQJŠKˆS’SPÓQÑ”SQJKŠKˆS’SPÓQÑ”SQJŠKˆS’SPÓQÑ”SQJKŠKˆS’SPÓQÑ”SQJŠKˆS’SPÓQÑ”SQJKŠKˆS’SPÓQÑ”SQJŠKˆS’SPÓQÑ”SQJKŠKˆS’SPÓQÑ”SQJŒ
+KˆS’SPÓQÑ”SQJKŠKˆS’SPÓQÑ”SQJŠKˆS’SPÓQÑ”SQJKŠKˆS’SPÓQÑ”SQJŠKˆS’SPÓQÑ”SQJKŠKˆS’SPÓQÑ”SQJŠKˆS’SPÓQÑ”SQJKŠKˆS’SPÓQÑ”SQJŠKˆS’SPÓQÑ”SQJKŠKˆS’SPÓQÑ”SQJŠKˆS’SPÓQÑ”SQJKŠKˆS’SPÓQÑ”SQJŠKˆ
+Kˆ™œ›Û[š[RYHS’SWÑ’QÕT‘WÎˆ™[™[^S[Û‘[]˜][ÛˆHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆLËˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÖX[›XKˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–Èˆˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓ•‘VÑÕP“WÐTËˆœ[]HHÓ[Û”[]WÖX[›XKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÖX[›XKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÖX[›XKˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊL‹LÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+X[›XJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÖX[›XKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ó“Ó‘KˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÖX[›XKˆÔÚ[žSÝ™\ÛÜ›[]WÖX[›XBˆ
+Bˆ›]™[\X\›œÙ]HÖX[›XS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÖX[›XUXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÖX[›XQYÙÓ[Ý™SX\›œÙ]ˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÔPÒQT×ÖPS“QQÐKÓÓ‘USÓ”ÊÒQ—ÒÓ“ÕÔ×ÓSÕ‘KSÕ‘WÐSÒQS•ÔÕÑTŸJ_JKˆÙ[™Y‚ˆK‚ˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆÔÔPÒQT×ÖPS“QQÐWHBˆÂˆ˜˜\ÙRH‹ˆ˜˜\ÙP]XÚÈHÍ‹ˆ˜˜\ÙQY™[œÙHH‹ˆ˜˜\ÙTÜYYHMKˆ˜˜\ÙTÜ]XÚÈHLM‹ˆ˜˜\ÙTÜY™[œÙHHM‹ˆ\\ÈHSÓ—ÕTTÊTWÐ•QËTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHÌˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈNˆNNˆ™]–ZY[Ð]XÚÈH‹ˆš][T˜\™HHUSWÕÒQWÓS”Ëˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÐ•QÊKˆ˜Xš[]Y\ÈHÈP’SUWÔÔQQÐ“ÓÔÕP’SUWÕS•QÓS”ËP’SUWÑ”’TÒÈKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔ‘QS‹ˆœÜXÚY\Ó˜[YHHÊ–PS“QQÐHŠKˆ˜ÜžRYHÔ–WÖPS“QQÐKˆ›˜]^[HHUSÓSÑVÖPS“QQÐKˆ˜Ø]YÛÜžS˜[YHHÊ“ÙÜ™H\›™\ˆŠKˆšZYÚHNKˆÙZYÚHLMKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•\ÈÚ^[YÙÙYÚðê[[Ûˆ\ÈX\Ú[HØ\X›Wˆ‚ˆ›Ùˆ˜[œÜÜ[™È[ˆY[[ˆ›YÚˆ]\×ˆ‚ˆ˜Y\]š][™È\\›Ù\ÈÚ[H›Z[™×ˆ‚ˆ˜žH]YÚÜYYˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]HKˆ˜Z[™\”ØØ[HHÌ‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÖX[›YYØKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]HKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆS’SPÓQÑ”SQJKÊKˆS’SPÓQÑ”SQJÊKˆ
+Kˆ™œ›Û[š[RYHS’SWÒÕ’P”UKˆ™[™[^S[Û‘[]˜][ÛˆH‹ˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÖX[›YYØKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]H‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒÕ’P”UKˆœ[]HHÓ[Û”[]WÖX[›YYØKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÖX[›YYØKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÖX[›YYØKˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKL‹ÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+X[›YYØJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÖX[›YYØKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÖX[›YYØKˆÔÚ[žSÝ™\ÛÜ›[]WÖX[›YYØBˆ
+Bˆ›]™[\X\›œÙ]HÖX[›YYØS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÖX[›YYØUXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆÙ[™YˆËÔÑSRSWÖPS“PB‚ˆÚYˆÑSRSWÕÓÓÔT‚ˆÔÔPÒQT×ÕÓÓÔT—HBˆÂˆ˜˜\ÙRHMKˆ˜˜\ÙP]XÚÈHKˆ˜˜\ÙQY™[œÙHHKˆ˜˜\ÙTÜYYHMKˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÕÐUT‹TWÑÔ“ÕS‘
+Kˆ˜Ø]Ú˜]HHMKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈˆˆL‹ˆ™]–ZY[ÒHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌKQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÑSTP’SUWÕÐUT—ÐP”ÓÔ‹P’SUWÕSUÐT‘HKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆœÜXÚY\Ó˜[YHHÊ•ÓÓÔTˆŠKˆ˜ÜžRYHÔ–WÕÓÓÔT‹ˆ›˜]^[HHUSÓSÑVÕÓÓÔT‹ˆ˜Ø]YÛÜžS˜[YHHÊ•Ø]\ˆš\ÚŠKˆšZYÚHˆÙZYÚHKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•ÛÛÜ\ˆ\ÝX[H]™H[ˆØ]\ˆ]ÛÛYWˆ‚ˆ›Ý]ÛÈ[™ÙYZÚ[™È›ÛÙØØØ\Ú[Û˜[K—ˆ‚ˆ“Ûˆ[™^HÛØ]Z\ˆ›ÙY\ÈÚ]Wˆ‚ˆ™ÛÛÙ^KÞXÈš[KˆŠKˆœÚÙ[[Û”ØØ[HHÎKˆœÚÙ[[Û“Ù™œÙ]HŒKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÕÛÛÜ\‹ˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JÌŠKˆ™œ›ÛXÖSÙ™œÙ]HM‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÕÛÛÜ\‹ˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈMHˆL‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÕ‘UÒˆœ[]HHÓ[Û”[]WÕÛÛÜ\‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÕÛÛÜ\‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÕÛÛÜ\‹ˆšXÛÛ”[[™^HˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×ÕÛÛÜ\‘‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JÌŠKˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×ÕÛÛÜ\‘‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+KˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÔÓÕËˆÒQÕÊKL‹ÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+ÛÛÜ\ŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÕÛÛÜ\‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÕÛÛÜ\‹ˆÔÚ[žSÝ™\ÛÜ›[]WÕÛÛÜ\‚ˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÕÛÛÜ\‘‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÕÛÛÜ\“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÕÛÛÜ\•XXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÕÛÛÜ\‘YÙÓ[Ý™SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÕÛÛÜ\‘›Ü›TÜXÚY\ÒYX›Kˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SŒÔPÒQT×ÔUPQÔÒT‘_JKˆK‚ˆÔÔPÒQT×ÔUPQÔÒT‘WHBˆÂˆ˜˜\ÙRHMKˆ˜˜\ÙP]XÚÈHKˆ˜˜\ÙQY™[œÙHHKˆ˜˜\ÙTÜYYHÍKˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÕÐUT‹TWÑÔ“ÕS‘
+Kˆ˜Ø]Ú˜]HHLˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMLHˆLÍËˆ™]–ZY[ÒH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌKQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÑSTP’SUWÕÐUT—ÐP”ÓÔ‹P’SUWÕSUÐT‘HKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆœÜXÚY\Ó˜[YHHÊ”UPQÔÒT‘HŠKˆ˜ÜžRYHÔ–WÔUPQÔÒT‘Kˆ›˜]^[HHUSÓSÑVÔUPQÔÒT‘Kˆ˜Ø]YÛÜžS˜[YHHÊ•Ø]\ˆš\ÚŠKˆšZYÚHMˆÙZYÚHÍLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆH]XYÜÚ\™H[ÈžHX]š[™È]È[Ý]ÚYWˆ‚ˆ›Ü[ˆ[ˆØ]\ˆ[™ØZ][™È›Üˆ]È™^H×ˆ‚ˆ˜›[™\ˆ[‹ˆ™XØ]\ÙH]Ù\Û‰Ý[Ý™K]ˆ‚ˆ™Ù\È›ÝÙ]™\žH[™ÜžKˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ô]XYÜÚ\™Kˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈÈˆKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKÌŠKˆS’SPÓQÑ”SQJŒ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÒÔÕ‘UÒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ô]XYÜÚ\™Kˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒÔÓQKˆœ[]HHÓ[Û”[]WÔ]XYÜÚ\™KˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔ]XYÜÚ\™KˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ô]XYÜÚ\™KˆšXÛÛ”[[™^HˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×Ô]XYÜÚ\™Q‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×Ô]XYÜÚ\™Q‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+]XYÜÚ\™JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔ]XYÜÚ\™KˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔ]XYÜÚ\™KˆÔÚ[žSÝ™\ÛÜ›[]WÔ]XYÜÚ\™Bˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÔ]XYÜÚ\™Q‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÔ]XYÜÚ\™S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔ]XYÜÚ\™UXXÚX›SX\›œÙ]ˆK‚ˆÚYˆÔSPS—Ñ“Ô“TÂˆÔÔPÒQT×ÕÓÓÔT—ÔSPWHBˆÂˆ˜˜\ÙRHMKˆ˜˜\ÙP]XÚÈHKˆ˜˜\ÙQY™[œÙHHKˆ˜˜\ÙTÜYYHMKˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÔÒTÓÓ‹TWÑÔ“ÕS‘
+Kˆ˜Ø]Ú˜]HHMKˆ™^ZY[H‹ˆ™]–ZY[ÒHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌKQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔÒTÓÓ—ÔÒS•P’SUWÕÐUT—ÐP”ÓÔ‹P’SUWÕSUÐT‘HKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð”“ÕÓ‹ˆÚYˆÔÑTTUWÔ‘QÒSÓSÑ“Ô“TÂˆœÜXÚY\Ó˜[YHHÊ•ÓÓÔT‹TŠKˆÙ[ÙBˆœÜXÚY\Ó˜[YHHÊ•ÓÓÔTˆŠKˆÙ[™Y‚ˆ˜ÜžRYHÔ–WÕÓÓÔT‹ˆÚYˆÔÑTTUWÔ‘QÒSÓSÑ“Ô“TÂˆ›˜]^[HHUSÓSÑVÕÓÓÔT—ÔSPKˆÙ[ÙBˆ›˜]^[HHUSÓSÑVÕÓÓÔT‹ˆÙ[™Y‚ˆ˜Ø]YÛÜžS˜[YHHÊ”Ú\ÛÛˆš\ÚŠKˆšZYÚHˆÙZYÚHLLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆY\ˆÜÚ[™ÈH\œš]ÜšX[ÝYÙÛKˆ‚ˆ•ÛÛÜ\ˆ™YØ[ˆ]š[™ÈÛˆ[™—ˆ‚ˆ•HÚðê[[ÛˆÚ[™ÙYÝ™\ˆ[YK]™[Ü[™×ˆ‚ˆ˜HÚ\ÛÛ›Ý\Èš[HÈ›ÝXÝ]È›ÙKˆŠKˆœÚÙ[[Û”ØØ[HHÎKˆœÚÙ[[Û“Ù™œÙ]HŒKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÕÛÛÜ\”[XKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JÌŠKˆ™œ›ÛXÖSÙ™œÙ]HM‹ˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆ™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÕÛÛÜ\”[XKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HL‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÕ‘UÒˆœ[]HHÓ[Û”[]WÕÛÛÜ\”[XKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÕÛÛÜ\”[XKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÕÛÛÜ\”[XKˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÔÓÕËˆÒQÕÊLKL‹ÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+ÛÛÜ\ŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÕÛÛÜ\”[XKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÕÛÛÜ\”[XKˆÔÚ[žSÝ™\ÛÜ›[]WÕÛÛÜ\”[XBˆ
+Bˆš\Ô[X[‘›Ü›HH•QKˆ™^›Ý™\]Z\™YH•QKˆ›]™[\X\›œÙ]HÕÛÛÜ\”[XS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÕÛÛÜ\”[XUXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÕÛÛÜ\”[XQYÙÓ[Ý™SX\›œÙ]ˆÚYˆÔÑTTUWÔ‘QÒSÓSÑ“Ô“TÂˆ™›Ü›TÜXÚY\ÒYX›HHÕÛÛÜ\”[XQ›Ü›TÜXÚY\ÒYX›KˆÙ[ÙBˆ™›Ü›TÜXÚY\ÒYX›HHÕÛÛÜ\‘›Ü›TÜXÚY\ÒYX›KˆÙ[™Y‚ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SŒÔPÒQT×ÐÓÑÒT‘_JKˆK‚ˆÔÔPÒQT×ÐÓÑÒT‘WHBˆÂˆ™^›Ý™\]Z\™YH•QKˆ˜˜\ÙRHLÌˆ˜˜\ÙP]XÚÈHÍKˆ˜˜\ÙQY™[œÙHHŒˆ˜˜\ÙTÜYYHŒˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHLˆ\\ÈHSÓ—ÕTTÊTWÔÒTÓÓ‹TWÑÔ“ÕS‘
+Kˆ˜Ø]Ú˜]HHLˆ™^ZY[HMLKˆ™]–ZY[ÒH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌKQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔÒTÓÓ—ÔÒS•P’SUWÕÐUT—ÐP”ÓÔ‹P’SUWÕSUÐT‘HKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð”“ÕÓ‹ˆœÜXÚY\Ó˜[YHHÊÓÑÒT‘HŠKˆ˜ÜžRYHÔ–WÐÓÑÒT‘Kˆ›˜]^[HHUSÓSÑVÐÓÑÒT‘Kˆ˜Ø]YÛÜžS˜[YHHÊ”Ü[žHš\ÚŠKˆšZYÚHNˆÙZYÚHŒŒÌˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•Ú[ˆ]XÚÙY\ÈÚðê[[ÛˆÚ[ˆ‚ˆœ™][X]HžHÝXÚÚ[™ÈXÚÈÜ[™\ÈÝ]ˆ‚ˆ™œ›ÛH]È›ÙKˆ]	ÜÈHš\ÚÞH[Ý™Wˆ‚ˆ]]È]™\ž][™ÈÛˆH[™KˆŠKˆœÚÙ[[Û”ØØ[HHÍM‹ˆœÚÙ[[Û“Ù™œÙ]HMËˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÐÛÙÚ\™Kˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÕÛÑœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÐÛÙÚ\™Kˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HMKˆËË˜˜XÚÐ[š[RYHPÒ×ÐS’SWÓ“Ó‘Kˆœ[]HHÓ[Û”[]WÐÛÙÚ\™KˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐÛÙÚ\™KˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÐÛÙÚ\™KˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊL‹ËÒQÕ×ÔÒV‘WÓ
+Bˆ“ÓÕ’S•
+ÛÙÚ\™JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐÛÙÚ\™KˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÐÛÙÚ\™KˆÔÚ[žSÝ™\ÛÜ›[]WÐÛÙÚ\™Bˆ
+Bˆ›]™[\X\›œÙ]HÐÛÙÚ\™S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐÛÙÚ\™UXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÔSPS—Ñ“Ô“TÂˆÙ[™YˆËÔÑSRSWÕÓÓÔT‚‚ˆÚYˆÑSRSWÓUT’Ô“ÕÂˆÔÔPÒQT×ÓUT’Ô“Õ×HBˆÂˆ˜˜\ÙRHŒˆ˜˜\ÙP]XÚÈHKˆ˜˜\ÙQY™[œÙHH‹ˆ˜˜\ÙTÜYYHLKˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHH‹ˆ\\ÈHSÓ—ÕTTÊTWÑT’ËTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHÌˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈHˆLËˆ™]–ZY[ÔÜYYHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÍKˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ“RS‘ÊKˆÚYˆÕTUQÐP’SUQTÈHÑS—Íˆ˜Xš[]Y\ÈHÈP’SUWÒS”ÓÓS’PKP’SUWÔÕTT—ÓPÒËP’SUWÔS’ÔÕTˆKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÒS”ÓÓS’PKP’SUWÓ“Ó‘KP’SUWÔS’ÔÕTˆKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“PÒËˆœÜXÚY\Ó˜[YHHÊ“UT’Ô“ÕÈŠKˆ˜ÜžRYHÔ–WÓUT’Ô“ÕËˆ›˜]^[HHUSÓSÑVÓUT’Ô“ÕËˆ˜Ø]YÛÜžS˜[YHHÊ‘\šÛ™\ÜÈŠKˆšZYÚHKˆÙZYÚHŒKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ“]\šÜ›ÝÈÙ\™H™X\™Y\ÈH[YÙYˆ‚ˆ˜™X\™\œÈÙˆ[›Ü[™Kˆ]ÚÝÜÈÝ›Û™×ˆ‚ˆš[\™\Ý[ˆ[ž][™È]Ü\šÛ\Ëˆ]Ú[ˆ‚ˆ™]™[ˆžHÈÝX[š[™ÜÈœ›ÛHÛÛY[‹ˆŠKˆœÚÙ[[Û”ØØ[HHKˆœÚÙ[[Û“Ù™œÙ]HNˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]HKˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ó]\šÜ›ÝËˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLHˆMKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJŒ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ™[™[^S[Û‘[]˜][ÛˆHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆL‹ˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ó]\šÜ›ÝËˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆLˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓÐU‘WÐT×ÔÓPSˆœ[]HHÓ[Û”[]WÓ]\šÜ›ÝËˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓ]\šÜ›ÝËˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ó]\šÜ›ÝËˆšXÛÛ”[[™^H‹ˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×Ó]\šÜ›ÝÑ‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×Ó]\šÜ›ÝÑ‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊL‹ÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+]\šÜ›ÝÊBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓ]\šÜ›ÝËˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓ]\šÜ›ÝËˆÔÚ[žSÝ™\ÛÜ›[]WÓ]\šÜ›ÝÂˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÓ]\šÜ›ÝÑ‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆš\ÔÚÞP˜]P˜[›™YH—ÔÒÖWÐUWÔÕ’PÕÑSQÒP’SUKˆ›]™[\X\›œÙ]HÓ]\šÜ›ÝÓ]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓ]\šÜ›ÝÕXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÓ]\šÜ›ÝÑYÙÓ[Ý™SX\›œÙ]ˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÒUSKUSWÑTÒ×ÔÕÓ‘KÔPÒQT×ÒÓÒÔ“ÕßJKˆÙ[™Y‚ˆK‚ˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆÔÔPÒQT×ÒÓÒÔ“Õ×HBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHLKˆ˜˜\ÙQY™[œÙHHL‹ˆ˜˜\ÙTÜYYHÌKˆ˜˜\ÙTÜ]XÚÈHLKˆ˜˜\ÙTÜY™[œÙHHL‹ˆ\\ÈHSÓ—ÕTTÊTWÑT’ËTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHÌˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMÍÈˆNËˆ™]–ZY[Ð]XÚÈH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÍKˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ“RS‘ÊKˆ˜Xš[]Y\ÈHÈP’SUWÒS”ÓÓS’PKP’SUWÔÕTT—ÓPÒËP’SUWÓSÖQHKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“PÒËˆœÜXÚY\Ó˜[YHHÊ’ÓÒÔ“ÕÈŠKˆ˜ÜžRYHÔ–WÒÓÒÔ“ÕËˆ›˜]^[HHUSÓSÑVÒÓÒÔ“ÕËˆ˜Ø]YÛÜžS˜[YHHÊšYÈ›ÜÜÈŠKˆšZYÚHKˆÙZYÚHÌËˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ™XÛÛZ[™ÈXÝ]™H]šYÚ]\ÈÛ›ÝÛ—ˆ‚ˆÈÝØ\›HÚ][Y\›Ý\È]\šÜ›ÝÈ[ˆÝË—ˆ‚ˆ’]\ÈØZY]]™]™\ˆ›Ü™Ú]™\ÈWˆ‚ˆ›Z\ÝZÙ\ÈÙˆ]ÈÜ›ÛšY\ËˆŠKˆœÚÙ[[Û”ØØ[HHÌÎˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÒÛ˜ÚÜ›ÝËˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]H‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJŒJKˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑWÔÓÕËˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÒÛ˜ÚÜ›ÝËˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]Hˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒÔÕ‘UÒˆœ[]HHÓ[Û”[]WÒÛ˜ÚÜ›ÝËˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÒÛ˜ÚÜ›ÝËˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÒÛ˜ÚÜ›ÝËˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊKËÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+Û˜ÚÜ›ÝÊBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÒÛ˜ÚÜ›ÝËˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÒÛ˜ÚÜ›ÝËˆÔÚ[žSÝ™\ÛÜ›[]WÒÛ˜ÚÜ›ÝÂˆ
+Bˆ›]™[\X\›œÙ]HÒÛ˜ÚÜ›ÝÓ]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÒÛ˜ÚÜ›ÝÕXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆÙ[™YˆËÔÑSRSWÓUT’Ô“ÕÂ‚ˆÚYˆÑSRSWÓRTÑ‘PU•TÂˆÔÔPÒQT×ÓRTÑ‘PU•T×HBˆÂˆ˜˜\ÙRHŒˆ˜˜\ÙP]XÚÈHŒˆ˜˜\ÙQY™[œÙHHŒˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÑÒÔÕ
+Kˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈÈˆMËˆ™]–ZY[ÔÜ]XÚÈH
+ÕTUQÑU”ÈHÑS—Í
+HÈˆKˆ™]–ZY[ÔÜY™[œÙHHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHKˆ™œšY[™Ú\HÍKˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÐSSÔ”ÕTÊKˆ˜Xš[]Y\ÈHÈP’SUWÓU’UUKP’SUWÓ“Ó‘KP’SUWÓ“Ó‘HKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔVKˆœÜXÚY\Ó˜[YHHÊ“RTÑ‘PU•TÈŠKˆ˜ÜžRYHÔ–WÓRTÑ‘PU•TËˆ›˜]^[HHUSÓSÑVÓRTÑ‘PU•TËˆ˜Ø]YÛÜžS˜[YHHÊ”ØÜ™YXÚŠKˆšZYÚHËˆÙZYÚHLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆHZ\Ù™X]\ÈœšYÚ[œÈ[ÜHÚ]Wˆ‚ˆ˜Ü™Y\KÛØ˜š[™ÈÜžKˆ]\\™[H\Ù\×ˆ‚ˆš]È™YÜ\™\ÈÈXœÛÜ˜ˆH™X\ˆÙˆ›Ù\×ˆ‚ˆ˜\È]È]š][Û‹ˆŠKˆœÚÙ[[Û”ØØ[HHËˆœÚÙ[[Û“Ù™œÙ]HNˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÓZ\Ù™X]\Ëˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLˆˆLËˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÓQWÕÓÐ“Kˆ™[™[^S[Û‘[]˜][ÛˆHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆL‹ˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÓZ\Ù™X]\Ëˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLˆKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒÕ’P”UKˆœ[]HHÓ[Û”[]WÓZ\Ù™X]\ËˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓZ\Ù™X]\ËˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÓZ\Ù™X]\ËˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+Z\Ù™X]\ÊBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓZ\Ù™X]\ËˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ó“Ó‘KˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓZ\Ù™X]\ËˆÔÚ[žSÝ™\ÛÜ›[]WÓZ\Ù™X]\Âˆ
+Bˆ›]™[\X\›œÙ]HÓZ\Ù™X]\Ó]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓZ\Ù™X]\ÕXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÓZ\Ù™X]\ÑYÙÓ[Ý™SX\›œÙ]ˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÒUSKUSWÑTÒ×ÔÕÓ‘KÔPÒQT×ÓRTÓPQÒUTßJKˆÙ[™Y‚ˆK‚ˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆÔÔPÒQT×ÓRTÓPQÒUT×HBˆÂˆ˜˜\ÙRHŒˆ˜˜\ÙP]XÚÈHŒˆ˜˜\ÙQY™[œÙHHŒˆ˜˜\ÙTÜYYHLKˆ˜˜\ÙTÜ]XÚÈHLKˆ˜˜\ÙTÜY™[œÙHHLKˆ\\ÈHSÓ—ÕTTÊTWÑÒÔÕ
+Kˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMÌÈˆNËˆ™]–ZY[ÔÜ]XÚÈHKˆ™]–ZY[ÔÜY™[œÙHHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHKˆ™œšY[™Ú\HÍKˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÐSSÔ”ÕTÊKˆ5×Î;¶‰žËkºwµç]Ý˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔÑT‘S‘WÑÔPÑKP’SUWÔ•S—ÐUÐVKP’SUWÔUQKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÖQSÕËˆœÜXÚY\Ó˜[YHHÊ‘QS”ÔTÑHŠKˆ˜ÜžRYHÔ–WÑQS”ÔTÑKˆ›˜]^[HHUSÓSÑVÑQS”ÔTÑKˆ˜Ø]YÛÜžS˜[YHHÊ“[™Û˜ZÙHŠKˆšZYÚHKˆÙZYÚHÍˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆH™XÙ[ÝYH[˜ÛÝ™\™Y]Wˆ‚ˆ›[X™\ˆÙˆÙYÛY[ÈHY[œÜ\˜ÙIÜ×ˆ‚ˆ˜›ÙH\È\È]\›Z[™YžHWˆ‚ˆ”Úðê[[Û‰ÜÈÙ[™\ËˆŠKˆœÚÙ[[Û”ØØ[HHÍM‹ˆœÚÙ[[Û“Ù™œÙ]HMËˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÑY[œÜ\˜ÙU™YTÙYÛY[ˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HLˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÑY[œÜ\˜ÙU™YTÙYÛY[ˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HLKˆËË˜˜XÚÐ[š[RYHPÒ×ÐS’SWÓ“Ó‘Kˆœ[]HHÓ[Û”[]WÑY[œÜ\˜ÙKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÑY[œÜ\˜ÙKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÑY[œÜ\˜ÙKˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊÒQÕ×ÔÒV‘WÓ
+Bˆ“ÓÕ’S•
+Y[œÜ\˜ÙJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÑY[œÜ\˜ÙU™YTÙYÛY[ˆÒV‘WÍˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×ÔÓUT‹ˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÑY[œÜ\˜ÙU™YTÙYÛY[ˆÔÚ[žSÝ™\ÛÜ›[]WÑY[œÜ\˜ÙU™YTÙYÛY[ˆ
+Bˆ›]™[\X\›œÙ]HÑY[œÜ\˜ÙS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÑY[œÜ\˜ÙUXXÚX›SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÑY[œÜ\˜ÙQ›Ü›TÜXÚY\ÒYX›Kˆœ˜[™ÛZ^™\“[ÙHHSÓ—ÔS‘ÓRV‘T—ÒS•SQˆKˆÙ[™YˆËÔÑÑS—ÎWÐÔ“ÔÔ×ÑU“ÔÂˆÙ[™YˆËÔÑSRSWÑS”ÔTÑB‚ˆÚYˆÑSRSWÑÓQÐT‚ˆÔÔPÒQT×ÑÓQÐT—HBˆÂˆ˜˜\ÙRHKˆ˜˜\ÙP]XÚÈHÍKˆ˜˜\ÙQY™[œÙHHLKˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHÍKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÑÔ“ÕS‘TWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHŒˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈˆˆLˆ™]–ZY[ÑY™[œÙHHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÐ•QÊKˆ˜Xš[]Y\ÈHÈP’SUWÒTT—ÐÕUT‹P’SUWÔÐS‘Õ‘RSP’SUWÒSSUS’UHKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÔT”KˆœÜXÚY\Ó˜[YHHÊ‘ÓQÐTˆŠKˆ˜ÜžRYHÔ–WÑÓQÐT‹ˆ›˜]^[HHUSÓSÑVÑÓQÐT‹ˆ˜Ø]YÛÜžS˜[YHHÊ‘›HØÛÜœ[ÛˆŠKˆšZYÚHLKˆÙZYÚHˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]ÛY\ÈÚ]Ý]XZÚ[™ÈHÚ[™ÛHÛÝ[™—ˆ‚ˆ’]Ü˜\ÜÈH˜XÙHÙˆ]È›ÙH\Ú[™È]×ˆ‚ˆš[™[™\™ÙHœ›ÛÛ]ÜË[ˆÝXœ×ˆ‚ˆÚ]]ÈÚ\ÛÛˆ˜\˜‹ˆŠKˆœÚÙ[[Û”ØØ[HHÍLˆœÚÙ[[Û“Ù™œÙ]HLKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÑÛYØ\‹ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈÈˆˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKMÊKˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÔÒ’S’×ÑÔ“ÕËˆ™[™[^S[Û‘[]˜][ÛˆHÑÐWÔÕSWÔÔPÒQT×ÑÑ–Èˆˆˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÑÛYØ\‹ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÔÒ’S’×ÑÔ“ÕËˆœ[]HHÓ[Û”[]WÑÛYØ\‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÑÛYØ\‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÑÛYØ\‹ˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈˆˆˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×ÑÛYØ\‘‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠKˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×ÑÛYØ\‘‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+KˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊMKÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+ÛYØ\ŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÑÛYØ\‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ó“Ó‘KˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÑÛYØ\‹ˆÔÚ[žSÝ™\ÛÜ›[]WÑÛYØ\‚ˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÑÛYØ\‘‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ó“Ó‘KˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÑÛYØ\“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÑÛYØ\•XXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÑÛYØ\‘YÙÓ[Ý™SX\›œÙ]ˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÔPÒQT×ÑÓTÐÓÔ‹ÓÓ‘USÓ”ÊÒQ—ÕSQKSQWÓ’QÒKÒQ—ÒÓÒUSKUSWÔV“Ô—ÑS‘ßJ_KˆÑU“×ÒUSKUSWÔV“Ô—ÑS‘ËÔPÒQT×ÑÓTÐÓÔ‹ÓÓ‘USÓ”ÊÒQ—ÕSQKSQWÓ’QÒJ_JKˆÙ[™Y‚ˆK‚ˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆÔÔPÒQT×ÑÓTÐÓÔ—HBˆÂˆ˜˜\ÙRHÍKˆ˜˜\ÙP]XÚÈHMKˆ˜˜\ÙQY™[œÙHHLKˆ˜˜\ÙTÜYYHMKˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHÍKˆ\\ÈHSÓ—ÕTTÊTWÑÔ“ÕS‘TWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHÌˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMÎHˆNL‹ˆ™]–ZY[ÑY™[œÙHH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÐ•QÊKˆ˜Xš[]Y\ÈHÈP’SUWÒTT—ÐÕUT‹P’SUWÔÐS‘Õ‘RSP’SUWÔÒTÓÓ—ÒPSKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÔT”KˆœÜXÚY\Ó˜[YHHÊ‘ÓTÐÓÔˆŠKˆ˜ÜžRYHÔ–WÑÓTÐÓÔ‹ˆ›˜]^[HHUSÓSÑVÑÓTÐÓÔ‹ˆ˜Ø]YÛÜžS˜[YHHÊ‘˜[™ÈØÛÜœŠKˆšZYÚHŒˆÙZYÚHKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ‘Û\ØÛÜˆØœÙ\™\È™^HÚ[H[™Ú[™×ˆ‚ˆ\ÚYHÝÛˆœ›ÛHœ˜[˜Ú\Ëˆ]È›YÚ\×ˆ‚ˆœÛÝ[™\ÜËˆÚ[ˆHÚ[˜ÙH™\Ù[×ˆ‚ˆš]Ù[‹]ÝÛÛÜÈHŠKˆœÚÙ[[Û”ØØ[HHŒKˆœÚÙ[[Û“Ù™œÙ]HKˆ˜Z[™\”ØØ[HHÌÍˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÑÛ\ØÛÜ‹ˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]HËˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKÌ
+KˆS’SPÓQÑ”SQJÌ
+KˆS’SPÓQÑ”SQJKÌ
+KˆS’SPÓQÑ”SQJ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÔÕÒS‘×ÐÓÓ•‘Vˆ™[™[^S[Û‘[]˜][ÛˆHKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÑÛ\ØÛÜ‹ˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HLKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÕ‘UÒˆœ[]HHÓ[Û”[]WÑÛ\ØÛÜ‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÑÛ\ØÛÜ‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÑÛ\ØÛÜ‹ˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKLËÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+Û\ØÛÜŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÑÛ\ØÛÜ‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÑÛ\ØÛÜ‹ˆÔÚ[žSÝ™\ÛÜ›[]WÑÛ\ØÛÜ‚ˆ
+Bˆ›]™[\X\›œÙ]HÑÛ\ØÛÜ“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÑÛ\ØÛÜ•XXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆÙ[™YˆËÔÑSRSWÑÓQÐT‚‚ˆÚYˆÑSRSWÔÓ•P•SˆÔÔPÒQT×ÔÓ•P•SHBˆÂˆ˜˜\ÙRHŒˆ˜˜\ÙP]XÚÈHˆ˜˜\ÙQY™[œÙHHLˆ˜˜\ÙTÜYYHÌˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHˆÚYˆÕTUQÕTTÈHÑS—Í‚ˆ\\ÈHSÓ—ÕTTÊTWÑRT–JKˆÙ[ÙBˆ\\ÈHSÓ—ÕTTÊTWÓ“Ô“PS
+KˆÙ[™Y‚ˆ˜Ø]Ú˜]HHNLˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈŒˆŒËˆ™]–ZY[Ð]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJÍJKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QSQÑ×ÑÔ“ÕTÑRT–JKˆ˜Xš[]Y\ÈHÈP’SUWÒS•SRQUKP’SUWÔ•S—ÐUÐVKP’SUWÔUQKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÔS’ËˆœÜXÚY\Ó˜[YHHÊ”Ó•P•SŠKˆ˜ÜžRYHÔ–WÔÓ•P•Sˆ›˜]^[HHUSÓSÑVÔÓ•P•Sˆ˜Ø]YÛÜžS˜[YHHÊ‘˜Z\žHŠKˆšZYÚH‹ˆÙZYÚHÎˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆžH˜\š[™È]È˜[™ÜÈ[™XZÚ[™ÈHØØ\žWˆ‚ˆ™˜XÙK]Ù[™ÈÛX[\ˆÚðê[[ÛˆØÝ\œžZ[™×ˆ‚ˆš[ˆ\œ›Ü‹ˆHÛX˜[Ù\ÈÙY[HWˆ‚ˆ›]HØY]XZÚ[™È]È›Ù\È›YKˆŠKˆœÚÙ[[Û”ØØ[HHKˆœÚÙ[[Û“Ù™œÙ]HNKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÛX˜[ˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLÈˆL‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKÌŠKˆS’SPÓQÑ”SQJŒ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÕ‘UÒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÛX˜[ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLˆL‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒ“ÓÔ’QÒˆœ[]HHÓ[Û”[]WÔÛX˜[ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÛX˜[ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÛX˜[ˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ô“PSˆÒQÕÊLKKÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+ÛX˜[
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔÛX˜[ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔÛX˜[ˆÔÚ[žSÝ™\ÛÜ›[]WÔÛX˜[ˆ
+Bˆ›]™[\X\›œÙ]HÔÛX˜[]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÛX˜[XXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÔÛX˜[YÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SŒËÔPÒQT×ÑÔS•SJKˆK‚ˆÔÔPÒQT×ÑÔS•SHBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHLŒˆ˜˜\ÙQY™[œÙHHÍKˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHŒˆ˜˜\ÙTÜY™[œÙHHŒˆÚYˆÕTUQÕTTÈHÑS—Í‚ˆ\\ÈHSÓ—ÕTTÊTWÑRT–JKˆÙ[ÙBˆ\\ÈHSÓ—ÕTTÊTWÓ“Ô“PS
+KˆÙ[™Y‚ˆ˜Ø]Ú˜]HHÍKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMNˆMÎˆ™]–ZY[Ð]XÚÈH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJÍJKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QSQÑ×ÑÔ“ÕTÑRT–JKˆÚYˆÕTUQÐP’SUQTÈHÑS—Íˆ˜Xš[]Y\ÈHÈP’SUWÒS•SRQUKP’SUWÔURPÒ×Ñ‘QUP’SUWÔUQKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÒS•SRQUKP’SUWÓ“Ó‘KP’SUWÔUQKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÔT”KˆœÜXÚY\Ó˜[YHHÊ‘ÔS•SŠKˆ˜ÜžRYHÔ–WÑÔS•Sˆ›˜]^[HHUSÓSÑVÑÔS•Sˆ˜Ø]YÛÜžS˜[YHHÊ‘˜Z\žHŠKˆšZYÚHMˆÙZYÚHËˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]\ÈH\XÝ[\›HÙ[Y]™[ÜYÝÙ\—ˆ‚ˆš˜]ËˆHYÙH˜[™ÜÈ\™HX]žKØ]\Ú[™×ˆ‚ˆš]È[]ÈXYˆ[›\ÜÈ]\ÈÝ\Yˆ‚ˆš]Ú[›ÝžHÈš]KˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÑÜ˜[˜[ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–Èˆˆˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKÍJKˆS’SPÓQÑ”SQJŒ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÒRÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÑÜ˜[˜[ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÒRÑKˆœ[]HHÓ[Û”[]WÑÜ˜[˜[ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÑÜ˜[˜[ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÑÜ˜[˜[ˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊËLÒQÕ×ÔÒV‘WÓ
+Bˆ“ÓÕ’S•
+Ü˜[˜[
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÑÜ˜[˜[ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÑÜ˜[˜[ˆÔÚ[žSÝ™\ÛÜ›[]WÑÜ˜[˜[ˆ
+Bˆ›]™[\X\›œÙ]HÑÜ˜[˜[]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÑÜ˜[˜[XXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÔÓ•P•S‚ˆÚYˆÑSRSWÔUÒS’TÒˆÔÔPÒQT×ÔUÒS’TÒHBˆÂˆ˜˜\ÙRHKˆ˜˜\ÙP]XÚÈHMKˆ˜˜\ÙQY™[œÙHHÕTUQÔÕUÈHÑS—ÍÈÈHˆÍKˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHMKˆ˜˜\ÙTÜY™[œÙHHMKˆ\\ÈHSÓ—ÕTTÊTWÕÐUT‹TWÔÒTÓÓŠKˆ˜Ø]Ú˜]HHKˆÚYˆÕTUQÑVÖRQSÈHÑS—ÍÂˆ™^ZY[HˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[H‹ˆÙ[ÙBˆ™^ZY[HLˆÙ[™Y‚ˆ™]–ZY[Ð]XÚÈHKˆš][T˜\™HHUSWÔÒTÓÓ—ÐT‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌŠKˆ˜Xš[]Y\ÈHÈP’SUWÔÒTÓÓ—ÔÒS•P’SUWÔÕÒQ•ÔÕÒSKP’SUWÒS•SRQUHKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔVKˆœÜXÚY\Ó˜[YHHÊ”UÒS’TÒŠKˆ˜ÜžRYHÔ–WÔUÒS’TÒˆ›˜]^[HHUSÓSÑVÔUÒS’TÒˆ˜Ø]YÛÜžS˜[YHHÊ˜[ÛÛˆŠKˆšZYÚHKˆÙZYÚHÎKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆH]Ú[š\Ú\Ù\ÈH™\ÜÝ\™HÙˆØ]\—ˆ‚ˆš]ÝØ[ÝÜÈÈÚÛÝÞXÈ]Z[È[]ˆ‚ˆ›Û˜ÙHœ›ÛH[Ý™\ˆ]È›ÙKˆ]š[™×ˆ‚ˆœÝÚ[[Z[™ÈÈ™HÛÛY]Ú]Ú[[™Ú[™ËˆŠKˆœÚÙ[[Û”ØØ[HHÌˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ô]Ú[š\Úˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLˆˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJ
+KˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJKÌ
+KˆS’SPÓQÑ”SQJÌ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÑÔ“Õ×ÒS—ÔÕQÑTËˆ™œ›Û[š[Q[^HHÎKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ô]Ú[š\Úˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈÈˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÑÔ“Õ×ÔÕUT‹ˆœ[]HHÓ[Û”[]WÔ]Ú[š\ÚˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔ]Ú[š\ÚˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ô]Ú[š\ÚˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊL‹ËÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+]Ú[š\Ú
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔ]Ú[š\ÚˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×ÔÔÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔ]Ú[š\ÚˆÔÚ[žSÝ™\ÛÜ›[]WÔ]Ú[š\Úˆ
+Bˆ›]™[\X\›œÙ]HÔ]Ú[š\Ú]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔ]Ú[š\ÚXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÔ]Ú[š\ÚYÙÓ[Ý™SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÔ]Ú[š\Ú›Ü›TÜXÚY\ÒYX›KˆK‚ˆÚYˆÒTÕRPS—Ñ“Ô“TÂˆÔÔPÒQT×ÔUÒS’TÒÒTÕRWHBˆÂˆ˜˜\ÙRHKˆ˜˜\ÙP]XÚÈHMKˆ˜˜\ÙQY™[œÙHHKˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHMKˆ˜˜\ÙTÜY™[œÙHHMKˆ\\ÈHSÓ—ÕTTÊTWÑT’ËTWÔÒTÓÓŠKˆ˜Ø]Ú˜]HHKˆ™^ZY[Hˆ™]–ZY[Ð]XÚÈHKˆš][T˜\™HHUSWÔÒTÓÓ—ÐT‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌŠKˆ˜Xš[]Y\ÈHÈP’SUWÔÒTÓÓ—ÔÒS•P’SUWÔÕÒQ•ÔÕÒSKP’SUWÒS•SRQUHKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“PÒËˆ››Ñ›\H•QKˆÚYˆÔÑTTUWÔ‘QÒSÓSÑ“Ô“TÂˆœÜXÚY\Ó˜[YHHÊ”UÒS’TÒRŠKˆÙ[ÙBˆœÜXÚY\Ó˜[YHHÊ”UÒS’TÒŠKˆÙ[™Y‚ˆ˜ÜžRYHÔ–WÔUÒS’TÒˆÚYˆÔÑTTUWÔ‘QÒSÓSÑ“Ô“TÂˆ›˜]^[HHUSÓSÑVÔUÒS’TÒÒTÕRKˆÙ[ÙBˆ›˜]^[HHUSÓSÑVÔUÒS’TÒˆÙ[™Y‚ˆ˜Ø]YÛÜžS˜[YHHÊ˜[ÛÛˆŠKˆšZYÚHKˆÙZYÚHÎKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆH›Ü›HÙˆ]Ú[š\Úœ›ÛHH\Ý[\Ý—ˆ‚ˆ‘š\Ú\œÈ]\Ý\È›ÝX›\ÛÛYHÚðê[[Û—ˆ‚ˆ˜™XØ]\ÙH]Ü˜^\ÈÚ\ÛÛˆœ›ÛH]ÈÜ[™\Ëˆ‚ˆ™Ù][™È]]™\ž]Ú\™KˆŠKˆœÚÙ[[Û”ØØ[HHÌˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ô]Ú[š\Ú\ÝZKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HM‹ˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ™[™[^S[Û‘[]˜][ÛˆHKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ô]Ú[š\Ú\ÝZKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠKˆ˜˜XÚÔXÖSÙ™œÙ]HˆËË˜˜XÚÐ[š[RYHPÒ×ÐS’SWÓ“Ó‘Kˆœ[]HHÓ[Û”[]WÔ]Ú[š\Ú\ÝZKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔ]Ú[š\Ú\ÝZKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ô]Ú[š\Ú\ÝZKˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊMKÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+]Ú[š\Ú
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔ]Ú[š\Ú\ÝZKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔ]Ú[š\Ú\ÝZKˆÔÚ[žSÝ™\ÛÜ›[]WÔ]Ú[š\Ú\ÝZBˆ
+Bˆš\Ò\ÝZX[‘›Ü›HH•QKˆ™^›Ý™\]Z\™YH•QKˆ›]™[\X\›œÙ]HÔ]Ú[š\Ú\ÝZS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔ]Ú[š\Ú\ÝZUXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÔ]Ú[š\Ú\ÝZQYÙÓ[Ý™SX\›œÙ]ˆÚYˆÔÑTTUWÔ‘QÒSÓSÑ“Ô“TÂˆ™›Ü›TÜXÚY\ÒYX›HHÔ]Ú[š\Ú\ÝZQ›Ü›TÜXÚY\ÒYX›KˆÙ[ÙBˆ™›Ü›TÜXÚY\ÒYX›HHÔ]Ú[š\Ú›Ü›TÜXÚY\ÒYX›KˆÙ[™Y‚ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÔPÒQT×ÓÕ‘T”UÒSÓÓ‘USÓ”ÊÒQ—ÒÓ“ÕÔ×ÓSÕ‘KSÕ‘WÐT—ÐT”QÑ_KÒQ—Ô‘QÒSÓ‹‘QÒSÓ—ÒTÕR_J_JKˆK‚ˆÔÔPÒQT×ÓÕ‘T”UÒSHBˆÂˆ™^›Ý™\]Z\™YH•QKˆ˜˜\ÙRHKˆ˜˜\ÙP]XÚÈHLMKˆ˜˜\ÙQY™[œÙHHMKˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÑT’ËTWÔÒTÓÓŠKˆ˜Ø]Ú˜]HHKˆ™^ZY[HMÎKˆ™]–ZY[Ð]XÚÈH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌŠKˆ˜Xš[]Y\ÈHÈP’SUWÔÒTÓÓ—ÔÒS•P’SUWÔÕÒQ•ÔÕÒSKP’SUWÒS•SRQUHKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“PÒËˆ››Ñ›\H•QKˆœÜXÚY\Ó˜[YHHÊ“Õ‘T”UÒSŠKˆ˜ÜžRYHÔ–WÓÕ‘T”UÒSˆ›˜]^[HHUSÓSÑVÓÕ‘T”UÒSˆ˜Ø]YÛÜžS˜[YHHÊ”[ˆÛ\Ý\ˆŠKˆšZYÚHKˆÙZYÚHŒKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]È[˜Ù[ZÙHÜZÙ\È[™Ø]˜YÙWˆ‚ˆ[\\˜[Y[]™HX\›™Y]Wˆ‚ˆ›šXÚÛ˜[YH8 'ÙXHšY[™8 'K—ˆ‚ˆ’]Û\œÈ\Ú\ÛÛˆÈ›Ý\š\Ú]Ù[‹ˆŠKˆœÚÙ[[Û”ØØ[HHMËˆœÚÙ[[Û“Ù™œÙ]HLˆ˜Z[™\”ØØ[HHŒËˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÓÝ™\œ]Ú[ˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÓÝ™\œ]Ú[ˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HLKˆËË˜˜XÚÐ[š[RYHPÒ×ÐS’SWÓ“Ó‘Kˆœ[]HHÓ[Û”[]WÓÝ™\œ]Ú[ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓÝ™\œ]Ú[ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÓÝ™\œ]Ú[ˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊ‹LKÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+Ý™\œ]Ú[
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓÝ™\œ]Ú[ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓÝ™\œ]Ú[ˆÔÚ[žSÝ™\ÛÜ›[]WÓÝ™\œ]Ú[ˆ
+Bˆ›]™[\X\›œÙ]HÓÝ™\œ]Ú[]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓÝ™\œ]Ú[XXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÒTÕRPS—Ñ“Ô“TÂˆÙ[™YˆËÔÑSRSWÔUÒS’TÒ‚ˆÚYˆÑSRSWÔÒPÒÓBˆÔÔPÒQT×ÔÒPÒÓWHBˆÂˆ˜˜\ÙRHŒˆ˜˜\ÙP]XÚÈHLˆ˜˜\ÙQY™[œÙHHŒÌˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHLˆ˜˜\ÙTÜY™[œÙHHŒÌˆ\\ÈHSÓ—ÕTTÊTWÐ•QËTWÔ“ÐÒÊKˆ˜Ø]Ú˜]HHNLˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMÍÈˆˆ™]–ZY[ÑY™[œÙHHKˆ™]–ZY[ÔÜY™[œÙHHKˆš][PÛÛ[[ÛˆHUSWÐ‘T”–WÒ•RPÑKˆš][T˜\™HHUSWÐ‘T”–WÒ•RPÑKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÐ•QÊKˆÚYˆÕTUQÐP’SUQTÈHÑS—Íˆ˜Xš[]Y\ÈHÈP’SUWÔÕT‘KP’SUWÑÓUÓ–KP’SUWÐÓÓ•T–HKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÔÕT‘KP’SUWÓ“Ó‘KP’SUWÐÓÓ•T–HKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÖQSÕËˆœÜXÚY\Ó˜[YHHÊ”ÒPÒÓHŠKˆ˜ÜžRYHÔ–WÔÒPÒÓKˆ›˜]^[HHUSÓSÑVÔÒPÒÓKˆ˜Ø]YÛÜžS˜[YHHÊ“[ÛŠKˆšZYÚH‹ˆÙZYÚHŒKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆHÚXÚÛHY\È[™\ˆ›ØÚÜËÙY\[™È]×ˆ‚ˆ˜›ÙHÛÛ˜ÙX[Y[œÚYH]ÈÚ[Ú[Wˆ‚ˆ™X][™ÈÝÜ™Y™\œšY\ËˆH™\œšY\ÈZ^Ú]ˆ‚ˆš]È›ÙH›ZYÈÈ™XÛÛYHHZXÙKˆŠKˆœÚÙ[[Û”ØØ[HHKˆœÚÙ[[Û“Ù™œÙ]HNˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÚXÚÛKˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJÌ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÔÕÒS‘×ÐÓÓÐU‘Kˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÚXÚÛKˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HLKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÑTÔ’QÒÔÒQKˆœ[]HHÓ[Û”[]WÔÚXÚÛKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÚXÚÛKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÚXÚÛKˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÔÓÕËˆÒQÕÊKËÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+ÚXÚÛJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔÚXÚÛKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔÚXÚÛKˆÔÚ[žSÝ™\ÛÜ›[]WÔÚXÚÛBˆ
+Bˆ›]™[\X\›œÙ]HÔÚXÚÛS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÚXÚÛUXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÔÚXÚÛQYÙÓ[Ý™SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÔÒPÒÓB‚ˆÚYˆÑSRSWÒTPÔ“ÔÔÂˆÔÔPÒQT×ÒTPÔ“ÔÔ×HBˆÂˆ˜˜\ÙRHˆ˜˜\ÙP]XÚÈHLKˆ˜˜\ÙQY™[œÙHHÍKˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHMKˆ\\ÈHSÓ—ÕTTÊTWÐ•QËTWÑ’QÒS‘ÊKˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMÍHˆŒˆ™]–ZY[Ð]XÚÈH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHKˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÐ•QÊKˆ˜Xš[]Y\ÈHÈP’SUWÔÕÐT“KP’SUWÑÕUËP’SUWÓSÖQHKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆœÜXÚY\Ó˜[YHHÊ’TPÔ“ÔÔÈŠKˆ˜ÜžRYHÔ–WÒTPÔ“ÔÔËˆ›˜]^[HHUSÓSÑVÒTPÔ“ÔÔËˆ˜Ø]YÛÜžS˜[YHHÊ”Ú[™ÛHÜ›ˆŠKˆšZYÚHMKˆÙZYÚHMˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•^HØ]\ˆ[ˆ›Ü™\ÝÈÙYZÚ[™ÈHÝÙY]ˆ‚ˆœØ\Ùˆ™Y\Ëˆ]\ÈÛÛ\][HÛY[ˆWˆ‚ˆœÝY[Z\™Ú[ˆ]\È›ÝYÙˆ]ÈÜ›‹ˆ‚ˆÚXÚ]\Ù\ÈÈ›[™È›Ù\ËˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ò\˜XÜ›ÜÜËˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈÈˆKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKŒ
+KˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKŒ
+KˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÓS‘ÑWÑÔ“ÕÈˆS’SWÕ—ÔÕ‘UÒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ò\˜XÜ›ÜÜËˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–Èˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒ“ÓÔ’QÒˆœ[]HHÓ[Û”[]WÒ\˜XÜ›ÜÜËˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÒ\˜XÜ›ÜÜËˆœÚ[žT[]S[Ù\›ˆHÓ[Û”Ú[žT[]S[Ù\›—Ò\˜XÜ›ÜÜËˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ò\˜XÜ›ÜÜËˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈˆˆˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×Ò\˜XÜ›ÜÜÑ‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×Ò\˜XÜ›ÜÜÑ‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+KˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKLÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+\˜XÜ›ÜÜÊBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÒ\˜XÜ›ÜÜËˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÒ\˜XÜ›ÜÜËˆÔÚ[žSÝ™\ÛÜ›[]WÒ\˜XÜ›ÜÜËˆÔÚ[žS[Ù\›“Ý™\ÛÜ›[]WÒ\˜XÜ›ÜÜÂˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÒ\˜XÜ›ÜÜÑ‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÒ\˜XÜ›ÜÜÓ]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÒ\˜XÜ›ÜÜÕXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÒ\˜XÜ›ÜÜÑYÙÓ[Ý™SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÒ\˜XÜ›ÜÜÑ›Ü›TÜXÚY\ÒYX›Kˆ™›Ü›PÚ[™ÙUX›HHÒ\˜XÜ›ÜÜÑ›Ü›PÚ[™ÙUX›KˆK‚ˆÚYˆÓQQÐWÑU“ÓUSÓ”ÂˆÔÔPÒQT×ÒTPÔ“ÔÔ×ÓQQÐWHBˆÂˆ˜˜\ÙRHˆ˜˜\ÙP]XÚÈHNKˆ˜˜\ÙQY™[œÙHHLMKˆ˜˜\ÙTÜYYHÍKˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHLKˆ\\ÈHSÓ—ÕTTÊTWÐ•QËTWÑ’QÒS‘ÊKˆ˜Ø]Ú˜]HHKˆ™^ZY[HŒLˆ™]–ZY[Ð]XÚÈH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHKˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÐ•QÊKˆ˜Xš[]Y\ÈHÈP’SUWÔÒÒSÓS’ËP’SUWÔÒÒSÓS’ËP’SUWÔÒÒSÓS’ÈKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆœÜXÚY\Ó˜[YHHÊ’TPÔ“ÔÔÈŠKˆÚYˆÓSÑQ’QQÓQQÐWÐÔ’QTÂˆ˜ÜžRYHÔ–WÒTPÔ“ÔÔ×ÓQQÐKˆÙ[ÙBˆ˜ÜžRYHÔ–WÒTPÔ“ÔÔËˆÙ[™YˆËÈÓSÑQ’QQÓQQÐWÐÔ’QTÂˆ›˜]^[HHUSÓSÑVÒTPÔ“ÔÔËˆ˜Ø]YÛÜžS˜[YHHÊ”Ú[™ÛHÜ›ˆŠKˆšZYÚHMËˆÙZYÚHŒKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆH™[Y[™Ý\È[™›^Ùˆ[™\™ÞHZ[È]\ˆ‚ˆ˜]Ú[ˆYYØH]›Û][Ûˆ[™Ë\˜XÜ›ÜÜ×ˆ‚ˆš\È›Ý\™YžH\œšX›HÛÜ™[™\ÜÈ[ˆ]×ˆ‚ˆ›]\ØÛ\ËˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ò\˜XÜ›ÜÜÓYYØKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ò\˜XÜ›ÜÜÓYYØKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]Hˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒ“ÓÔ’QÒˆœ[]HHÓ[Û”[]WÒ\˜XÜ›ÜÜÓYYØKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÒ\˜XÜ›ÜÜÓYYØKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ò\˜XÜ›ÜÜÓYYØKˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊ‹LËÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+\˜XÜ›ÜÜÊBˆÚYˆÕ×ÐUWÓÓ“WÑ“Ô“TÂˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÒ\˜XÜ›ÜÜÓYYØKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÒ\˜XÜ›ÜÜÓYYØKˆÔÚ[žSÝ™\ÛÜ›[]WÒ\˜XÜ›ÜÜÓYYØBˆ
+BˆÙ[™YˆËÓÕ×ÐUWÓÓ“WÑ“Ô“TÂˆš\ÓYYØQ]›Û][ÛˆH•QKˆ›]™[\X\›œÙ]HÒ\˜XÜ›ÜÜÓ]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÒ\˜XÜ›ÜÜÕXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÒ\˜XÜ›ÜÜÑYÙÓ[Ý™SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÒ\˜XÜ›ÜÜÑ›Ü›TÜXÚY\ÒYX›Kˆ™›Ü›PÚ[™ÙUX›HHÒ\˜XÜ›ÜÜÑ›Ü›PÚ[™ÙUX›Kˆœ˜[™ÛZ^™\“[ÙHHSÓ—ÔS‘ÓRV‘T—ÒS•SQˆKˆÙ[™YˆËÔÓQQÐWÑU“ÓUSÓ”ÂˆÙ[™YˆËÔÑSRSWÒTPÔ“ÔÔÂ‚ˆÚYˆÑSRSWÔÓ‘PTÑSˆÔÔPÒQT×ÔÓ‘PTÑSHBˆÂˆ˜˜\ÙRHMKˆ˜˜\ÙP]XÚÈHMKˆ˜˜\ÙQY™[œÙHHMKˆ˜˜\ÙTÜYYHLMKˆ˜˜\ÙTÜ]XÚÈHÍKˆ˜˜\ÙTÜY™[œÙHHÍKˆ\\ÈHSÓ—ÕTTÊTWÑT’ËTWÒPÑJKˆ˜Ø]Ú˜]HHŒˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈˆˆLÌ‹ˆ™]–ZY[ÔÜYYHKˆš][T˜\™HHUSWÔURPÒ×ÐÓUËˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÍKˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÒS“‘T—Ñ“ÐÕTËP’SUWÒÑQS—ÑVQKP’SUWÔPÒÔÐÒÑUKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“PÒËˆ››Ñ›\H•QKˆœÜXÚY\Ó˜[YHHÊ”Ó‘PTÑSŠKˆ˜ÜžRYHÔ–WÔÓ‘PTÑSˆ›˜]^[HHUSÓSÑVÔÓ‘PTÑSˆ˜Ø]YÛÜžS˜[YHHÊ”Ú\œÛ]ÈŠKˆšZYÚHKˆÙZYÚHŽˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆHÛ™X\Ù[ØØ[\È™Y\ÈžH[˜Ú[™È]×ˆ‚ˆšÛÚÙYÛ]ÜÈ[ÈH˜\šËˆ]ÙYZÜÈÝ]ˆ‚ˆ[™ÝX\™Y™\ÝÈ[™ÝX[ÈYÙÜÈ›Üˆ›ÛÙˆ‚ˆÚ[HH\™[È\™H]Ø^KˆŠKˆœÚÙ[[Û”ØØ[HHLËˆœÚÙ[[Û“Ù™œÙ]HLËˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÛ™X\Ù[ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJ
+KˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJ
+KˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJ
+Kˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÒÔÕ‘UÒˆS’SWÒÒ•STËˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÛ™X\Ù[ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆËˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ’PS‘ÓWÑÕÓ‹ˆœ[]HHÓ[Û”[]WÔÛ™X\Ù[ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÛ™X\Ù[ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÛ™X\Ù[ˆšXÛÛ”[[™^HˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×ÔÛ™X\Ù[‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×ÔÛ™X\Ù[‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+KˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKKÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+Û™X\Ù[
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔÛ™X\Ù[ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™×Ð\Þ[KˆÓÝ™\ÛÜ›[]WÔÛ™X\Ù[ˆÔÚ[žSÝ™\ÛÜ›[]WÔÛ™X\Ù[ˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÔÛ™X\Ù[‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™×Ð\Þ[Bˆ
+Bˆ›]™[\X\›œÙ]HÔÛ™X\Ù[]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÛ™X\Ù[XXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÔÛ™X\Ù[YÙÓ[Ý™SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÔÛ™X\Ù[›Ü›TÜXÚY\ÒYX›KˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÔPÒQT×ÕÑPU’SKÓÓ‘USÓ”ÊÒQ—ÕSQKSQWÓ’QÒKÒQ—ÒÓÒUSKUSWÔV“Ô—ÐÓUßJ_KˆÑU“×ÒUSKUSWÔV“Ô—ÐÓUËÔPÒQT×ÕÑPU’SKÓÓ‘USÓ”ÊÒQ—ÕSQKSQWÓ’QÒJ_JKˆÙ[™Y‚ˆK‚ˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆÔÔPÒQT×ÕÑPU’SWHBˆÂˆ˜˜\ÙRHÌˆ˜˜\ÙP]XÚÈHLŒˆ˜˜\ÙQY™[œÙHHKˆ˜˜\ÙTÜYYHLKˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÑT’ËTWÒPÑJKˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMÎHˆNNKˆ™]–ZY[Ð]XÚÈHKˆ™]–ZY[ÔÜYYHKˆš][T˜\™HHUSWÔURPÒ×ÐÓUËˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÍKˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔ‘TÔÕT‘KP’SUWÓ“Ó‘KP’SUWÔPÒÔÐÒÑUKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“PÒËˆœÜXÚY\Ó˜[YHHÊ•ÑPU’SHŠKˆ˜ÜžRYHÔ–WÕÑPU’SKˆ›˜]^[HHUSÓSÑVÕÑPU’SKˆ˜Ø]YÛÜžS˜[YHHÊ”Ú\œÛ]ÈŠKˆšZYÚHLKˆÙZYÚHÍˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•^H˜]™[[ˆÜ›Ý\ÈÙˆ›Ý\ˆÜˆš]™Kˆ‚ˆ›X]š[™ÈÚYÛœÈ›ÜˆÛ™H[›Ý\ˆÛˆ™Y\×ˆ‚ˆ˜[™›ØÚÜËˆ^Hœš[™ÈÝÛˆZ\ˆ™^Wˆ‚ˆÚ]ÛÛÜ™[˜]Y]XÚÜËˆŠKˆœÚÙ[[Û”ØØ[HHÌŒˆœÚÙ[[Û“Ù™œÙ]HËˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÕÙX]š[Kˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠKˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHS’SWÒÕ’P”UKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÕÙX]š[Kˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]H‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒ“ÓÔ’QÒˆœ[]HHÓ[Û”[]WÕÙX]š[KˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÕÙX]š[KˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÕÙX]š[KˆšXÛÛ”[[™^HˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÂˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×ÕÙX]š[Q‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠKˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×ÕÙX]š[Q‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+KˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÂˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊMLÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+ÙX]š[JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÕÙX]š[KˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÕÙX]š[KˆÔÚ[žSÝ™\ÛÜ›[]WÕÙX]š[Bˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÕÙX]š[Q‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÕÙX]š[S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÕÙX]š[UXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂ‚ˆÚYˆÒTÕRPS—Ñ“Ô“TÂˆÔÔPÒQT×ÔÓ‘PTÑSÒTÕRWHBˆÂˆ˜˜\ÙRHMKˆ˜˜\ÙP]XÚÈHMKˆ˜˜\ÙQY™[œÙHHMKˆ˜˜\ÙTÜYYHLMKˆ˜˜\ÙTÜ]XÚÈHÍKˆ˜˜\ÙTÜY™[œÙHHÍKˆ\\ÈHSÓ—ÕTTÊTWÑ’QÒS‘ËTWÔÒTÓÓŠKˆ˜Ø]Ú˜]HHŒˆ™^ZY[H‹ˆ™]–ZY[ÔÜYYHKˆš][T˜\™HHUSWÔURPÒ×ÐÓUËˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÍKˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÒS“‘T—Ñ“ÐÕTËP’SUWÒÑQS—ÑVQKP’SUWÔPÒÔÐÒÑUKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔVKˆ››Ñ›\H•QKˆÚYˆÔÑTTUWÔ‘QÒSÓSÑ“Ô“TÂˆœÜXÚY\Ó˜[YHHÊ”Ó‘PTÑSRŠKˆÙ[ÙBˆœÜXÚY\Ó˜[YHHÊ”Ó‘PTÑSŠKˆÙ[™Y‚ˆ˜ÜžRYHÔ–WÔÓ‘PTÑSˆÚYˆÔÑTTUWÔ‘QÒSÓSÑ“Ô“TÂˆ›˜]^[HHUSÓSÑVÔÓ‘PTÑSÒTÕRKˆÙ[ÙBˆ›˜]^[HHUSÓSÑVÔÓ‘PTÑSˆÙ[™Y‚ˆ˜Ø]YÛÜžS˜[YHHÊ”Ú\œÛ]ÈŠKˆšZYÚHKˆÙZYÚHÌˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]ÈÝ\™KÝ\™YÛ]ÜÈ\™HYX[›Ü—ˆ‚ˆ˜]™\œÚ[™È™XÚ\]Ý\ÈÛY™œËˆœ›ÛHWˆ‚ˆ\ÈÙˆ\ÙHÛ]ÜÈš\ÈH™[›ÛH]ˆ‚ˆš[™š[˜]\ÈH™\™\ÈÙˆ[žH™^HØ]YÚˆŠKˆœÚÙ[[Û”ØØ[HHLËˆœÚÙ[[Û“Ù™œÙ]HLËˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÛ™X\Ù[\ÝZKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠKˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÛ™X\Ù[\ÝZKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HËˆËË˜˜XÚÐ[š[RYHPÒ×ÐS’SWÓ“Ó‘Kˆœ[]HHÓ[Û”[]WÔÛ™X\Ù[\ÝZKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÛ™X\Ù[\ÝZKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÛ™X\Ù[\ÝZKˆšXÛÛ”[[™^H‹ˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÂˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×ÔÛ™X\Ù[\ÝZQ‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠKˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×ÔÛ™X\Ù[\ÝZQ‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+KˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÂˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKKÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+Û™X\Ù[
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔÛ™X\Ù[\ÝZKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔÛ™X\Ù[\ÝZKˆÔÚ[žSÝ™\ÛÜ›[]WÔÛ™X\Ù[\ÝZBˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÔÛ™X\Ù[\ÝZQ‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆš\Ò\ÝZX[‘›Ü›HH•QKˆ™^›Ý™\]Z\™YH•QKˆ›]™[\X\›œÙ]HÔÛ™X\Ù[\ÝZS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÛ™X\Ù[\ÝZUXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÔÛ™X\Ù[\ÝZQYÙÓ[Ý™SX\›œÙ]ˆÚYˆÔÑTTUWÔ‘QÒSÓSÑ“Ô“TÂˆ™›Ü›TÜXÚY\ÒYX›HHÔÛ™X\Ù[\ÝZQ›Ü›TÜXÚY\ÒYX›KˆÙ[ÙBˆ™›Ü›TÜXÚY\ÒYX›HHÔÛ™X\Ù[›Ü›TÜXÚY\ÒYX›KˆÙ[™Y‚ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÔPÒQT×ÔÓ‘PTÓT‹ÓÓ‘USÓ”ÊÒQ—Ó“ÕÕSQKSQWÓ’QÒKÒQ—ÒÓÒUSKUSWÔV“Ô—ÐÓUßJ_KˆÑU“×ÒUSKUSWÔV“Ô—ÐÓUËÔPÒQT×ÔÓ‘PTÓT‹ÓÓ‘USÓ”ÊÒQ—Ó“ÕÕSQKSQWÓ’QÒJ_JKˆK‚ˆÔÔPÒQT×ÔÓ‘PTÓT—HBˆÂˆ™^›Ý™\]Z\™YH•QKˆ˜˜\ÙRHˆ˜˜\ÙP]XÚÈHLÌˆ˜˜\ÙQY™[œÙHHŒˆ˜˜\ÙTÜYYHLŒˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHˆ\\ÈHSÓ—ÕTTÊTWÑ’QÒS‘ËTWÔÒTÓÓŠKˆ˜Ø]Ú˜]HHŒˆ™^ZY[HL‹ˆ™]–ZY[Ð]XÚÈH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔ‘TÔÕT‘KP’SUWÕS•T‘S‹P’SUWÔÒTÓÓ—ÕÕPÒKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆ››Ñ›\H•QKˆœÜXÚY\Ó˜[YHHÊ”Ó‘PTÓTˆŠKˆ˜ÜžRYHÔ–WÔÓ‘PTÓT‹ˆ›˜]^[HHUSÓSÑVÔÓ‘PTÓT‹ˆ˜Ø]YÛÜžS˜[YHHÊ‘œ™YHÛ[XˆŠKˆšZYÚHLËˆÙZYÚHÌˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ™XØ]\ÙHÙˆ]ÈÚXÚÙYÚ\ÛÛˆ[™][[™×ˆ‚ˆœ\ÚXØ[›ÝÙ\ÜË›ÈÝ\ˆÜXÚY\ÈÛÝ[ˆ‚ˆšÜHÈ™\Ý]Ûˆœ›Þ™[ˆYÚ[™Ëˆ]ˆ‚ˆœ™Y™\œÈÛÛ]YH[™Ù\Û‰Ý›Ü›HXÚÜËˆŠKˆœÚÙ[[Û”ØØ[HHÌ‹ˆœÚÙ[[Û“Ù™œÙ]HËˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÛ™X\Û\‹ˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÛ™X\Û\‹ˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]H‹ˆËË˜˜XÚÐ[š[RYHPÒ×ÐS’SWÓ“Ó‘Kˆœ[]HHÓ[Û”[]WÔÛ™X\Û\‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÛ™X\Û\‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÛ™X\Û\‹ˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊ‹LKÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+Û™X\Û\ŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔÛ™X\Û\‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔÛ™X\Û\‹ˆÔÚ[žSÝ™\ÛÜ›[]WÔÛ™X\Û\‚ˆ
+Bˆ›]™[\X\›œÙ]HÔÛ™X\Û\“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÛ™X\Û\•XXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÒTÕRPS—Ñ“Ô“TÂˆÙ[™YˆËÔÑSRSWÔÓ‘PTÑS‚ˆÚYˆÑSRSWÕQUT”ÐBˆÔÔPÒQT×ÕQUT”ÐWHBˆÂˆ˜˜\ÙRHŒˆ˜˜\ÙP]XÚÈHˆ˜˜\ÙQY™[œÙHHLˆ˜˜\ÙTÜYYHˆ˜˜\ÙTÜ]XÚÈHLˆ˜˜\ÙTÜY™[œÙHHLˆ\\ÈHSÓ—ÕTTÊTWÓ“Ô“PS
+Kˆ˜Ø]Ú˜]HHLŒˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈˆˆLˆ™]–ZY[Ð]XÚÈHKˆš][T˜\™HHUSWÒÓ‘VKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+KˆÚYˆÕTUQÐP’SUQTÈHÑS—Íˆ˜Xš[]Y\ÈHÈP’SUWÔPÒÕTP’SUWÔURPÒ×Ñ‘QUP’SUWÒÓ‘VWÑÐUTˆKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÔPÒÕTP’SUWÓ“Ó‘KP’SUWÒÓ‘VWÑÐUTˆKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð”“ÕÓ‹ˆ››Ñ›\H•QKˆœÜXÚY\Ó˜[YHHÊ•QUT”ÐHŠKˆ˜ÜžRYHÔ–WÕQUT”ÐKˆ›˜]^[HHUSÓSÑVÕQUT”ÐKˆ˜Ø]YÛÜžS˜[YHHÊ“]H™X\ˆŠKˆšZYÚH‹ˆÙZYÚHˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]XÚÜÈ]È[\È]\™HÝÙY][™YžWˆ‚ˆ˜™Z[™ÈÛØZÙY[ˆÛ™^KˆHY]\œØHXZÙ\×ˆ‚ˆš]ÈÝÛˆÛ™^HžH›[™[™ÈœZ]È[™Û[—ˆ‚ˆ˜ÛÛXÝYžH™YYš[ˆŠKˆœÚÙ[[Û”ØØ[HHMKˆœÚÙ[[Û“Ù™œÙ]HNKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÕY]\œØKˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JÌ‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLÈˆL‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKÌ
+KˆS’SPÓQÑ”SQJŒ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÕ‘UÒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÕY]\œØKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆLˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÑTÔ’QÒÔÒQKˆœ[]HHÓ[Û”[]WÕY]\œØKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÕY]\œØKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÕY]\œØKˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ô“PSˆÒQÕÊL‹KÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+Y]\œØJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÕY]\œØKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™×Ð\Þ[KˆÓÝ™\ÛÜ›[]WÕY]\œØKˆÔÚ[žSÝ™\ÛÜ›[]WÕY]\œØBˆ
+Bˆ›]™[\X\›œÙ]HÕY]\œØS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÕY]\œØUXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÕY]\œØQYÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÌÔPÒQT×ÕT”ÐT’S‘ßJKˆK‚ˆÔÔPÒQT×ÕT”ÐT’S‘×HBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHLÌˆ˜˜\ÙQY™[œÙHHÍKˆ˜˜\ÙTÜYYHMKˆ˜˜\ÙTÜ]XÚÈHÍKˆ˜˜\ÙTÜY™[œÙHHÍKˆ\\ÈHSÓ—ÕTTÊTWÓ“Ô“PS
+Kˆ˜Ø]Ú˜]HHŒˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMÍHˆNKˆ™]–ZY[Ð]XÚÈH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+KˆÚYˆÕTUQÐP’SUQTÈHÑS—Íˆ˜Xš[]Y\ÈHÈP’SUWÑÕUËP’SUWÔURPÒ×Ñ‘QUP’SUWÕS“‘T•‘HKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÑÕUËP’SUWÓ“Ó‘KP’SUWÕS“‘T•‘HKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð”“ÕÓ‹ˆœÜXÚY\Ó˜[YHHÊ•T”ÐT’S‘ÈŠKˆ˜ÜžRYHÔ–WÕT”ÐT’S‘Ëˆ›˜]^[HHUSÓSÑVÕT”ÐT’S‘Ëˆ˜Ø]YÛÜžS˜[YHHÊ’X™\›˜]ÜˆŠKˆšZYÚHNˆÙZYÚHLNˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’[ˆ›Ü™\ÝË]\ÈØZY]\™H\™HX[žWˆ‚ˆœÝ™X[\È[™ÝÙ\š[™È™Y\ÈÚ\™H[—ˆ‚ˆ•\œØ\š[™ÈØ]\œÈ›ÛÙˆ]Ø[ÜÈ›ÝYÚˆ‚ˆš]È›Ü™\ÝÛÛXÝ[™È›ÛÙ]™\žH^KˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Õ\œØ\š[™Ëˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJŒ
+Kˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÕ—ÔÒRÑHˆS’SWÒÔÒRÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Õ\œØ\š[™Ëˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈÈˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÒRÑKˆœ[]HHÓ[Û”[]WÕ\œØ\š[™ËˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÕ\œØ\š[™ËˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Õ\œØ\š[™ËˆšXÛÛ”[[™^H‹ˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×Õ\œØ\š[™Ñ‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×Õ\œØ\š[™Ñ‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+KˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊKMÒQÕ×ÔÒV‘WÓ
+Bˆ“ÓÕ’S•
+\œØ\š[™ÊBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÕ\œØ\š[™ËˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÕ\œØ\š[™ËˆÔÚ[žSÝ™\ÛÜ›[]WÕ\œØ\š[™Âˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÕ\œØ\š[™Ñ‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÕ\œØ\š[™Ó]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÕ\œØ\š[™ÕXXÚX›SX\›œÙ]ˆÚYˆÑÑS—ÎÐÔ“ÔÔ×ÑU“ÔÂˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÒUSKUSWÔPUÐ“ÐÒËÔPÒQT×ÕT”ÐSSWÐ“ÓÑSÓÓ‹ÓÓ‘USÓ”ÊÒQ—ÒS—ÓPTÑPËPTÑP×ÓUÓSÓÓŸKÒQ—ÕSQKSQWÓ’QÒJ_KˆÑU“×ÒUSKUSWÔPUÐ“ÐÒËÔPÒQT×ÕT”ÐSSWÐ“ÓÑSÓÓ‹ÓÓ‘USÓ”ÊÒQ—Ô‘QÒSÓ‹‘QÒSÓ—ÒTÕR_KÒQ—ÕSQKSQWÓ’QÒJ_KˆÑU“×ÒUSKUSWÔPUÐ“ÐÒËÔPÒQT×ÕT”ÐSSKÓÓ‘USÓ”ÊÒQ—ÕSQKSQWÓ’QÒJ_JKˆÙ[™Y‚ˆK‚ˆÚYˆÑÑS—ÎÐÔ“ÔÔ×ÑU“ÔÂˆÔÔPÒQT×ÕT”ÐSSWHBˆÂˆ˜˜\ÙRHLÌˆ˜˜\ÙP]XÚÈHMˆ˜˜\ÙQY™[œÙHHLKˆ˜˜\ÙTÜYYHLˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHˆ\\ÈHSÓ—ÕTTÊTWÑÔ“ÕS‘TWÓ“Ô“PS
+Kˆ˜Ø]Ú˜]HHŒˆ™^ZY[HÍKˆ™]–ZY[Ð]XÚÈHËˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÑÕUËP’SUWÐ•SU“ÓÑ‹P’SUWÕS“‘T•‘HKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð”“ÕÓ‹ˆ››Ñ›\H•QKˆœÜXÚY\Ó˜[YHHÊ•T”ÐSSHŠKˆ˜ÜžRYHÔ–WÕT”ÐSSKˆ›˜]^[HHUSÓSÑVÕT”ÐSSKˆ˜Ø]YÛÜžS˜[YHHÊ”X]ŠKˆšZYÚHˆÙZYÚHŽLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ”ÝØ[\H\œ˜Z[ˆÚ]™\È\œØ[[˜H]È\›Wˆ‚ˆœ\Ú\]YH[™™]Ù›Ý[™Ø\XÚ]H×ˆ‚ˆ›X[š\[]HX]]Ú[ˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]HËˆ˜Z[™\”ØØ[HHÍŽKˆ˜Z[™\“Ù™œÙ]HËˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Õ\œØ[[˜Kˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HËˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Õ\œØ[[˜Kˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HKˆËË˜˜XÚÐ[š[RYHPÒ×ÐS’SWÓ“Ó‘Kˆœ[]HHÓ[Û”[]WÕ\œØ[[˜KˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÕ\œØ[[˜KˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Õ\œØ[[˜KˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊKÒQÕ×ÔÒV‘WÖÐUWÓÓ“JBˆ“ÓÕ’S•
+\œØ[[˜JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÕ\œØ[[˜KˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÕ\œØ[[˜KˆÔÚ[žSÝ™\ÛÜ›[]WÕ\œØ[[˜Bˆ
+Bˆ›]™[\X\›œÙ]HÕ\œØ[[˜S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÕ\œØ[[˜UXXÚX›SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÕ\œØ[[˜Q›Ü›TÜXÚY\ÒYX›KˆK‚ˆÔÔPÒQT×ÕT”ÐSSWÐ“ÓÑSÓÓ—HBˆÂˆ˜˜\ÙRHLLËˆ˜˜\ÙP]XÚÈHÌˆ˜˜\ÙQY™[œÙHHLŒˆ˜˜\ÙTÜYYHL‹ˆ˜˜\ÙTÜ]XÚÈHLÍKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÑÔ“ÕS‘TWÓ“Ô“PS
+Kˆ˜Ø]Ú˜]HHKˆ™^ZY[HÎˆ™]–ZY[ÔÜ]XÚÈHËˆ™Ù[™\”˜][ÈHSÓ—ÓPSKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÓRS‘×ÑVQKP’SUWÓ“Ó‘KP’SUWÓ“Ó‘HKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð”“ÕÓ‹ˆ››Ñ›\H•QKˆœÜXÚY\Ó˜[YHHÊ•T”ÐSSHŠKˆ˜ÜžRYHÔ–WÕT”ÐSSWÐ“ÓÑSÓÓ‹ˆ›˜]^[HHUSÓSÑVÕT”ÐSSKˆ˜Ø]YÛÜžS˜[YHHÊ”X]ŠKˆšZYÚHËˆÙZYÚHÌÌÌˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]Ü›ÜÜÙYHÙXH[™šYYˆ‚ˆ˜\ÚÜ™H[ˆH™]È[™ˆÝ\š]š[™È[ˆ\×ˆ‚ˆœXÙHY]ÈZÙHÛˆH[š\]YWˆ‚ˆ˜\X\˜[˜ÙH[™ØZ[ˆÜXÚX[ÝÙ\œËˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]HËˆ˜Z[™\”ØØ[HHÍŽKˆ˜Z[™\“Ù™œÙ]HËˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Õ\œØ[[˜P›ÛÙ[ÛÛ‹ˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Õ\œØ[[˜P›ÛÙ[ÛÛ‹ˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HKˆËË˜˜XÚÐ[š[RYHPÒ×ÐS’SWÓ“Ó‘Kˆœ[]HHÓ[Û”[]WÕ\œØ[[˜P›ÛÙ[ÛÛ‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÕ\œØ[[˜P›ÛÙ[ÛÛ‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Õ\œØ[[˜P›ÛÙ[ÛÛ‹ˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊ‹LKÒQÕ×ÔÒV‘WÓ
+Bˆ“ÓÕ’S•
+\œØ[[˜JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÕ\œØ[[˜P›ÛÙ[ÛÛ‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÕ\œØ[[˜P›ÛÙ[ÛÛ‹ˆÔÚ[žSÝ™\ÛÜ›[]WÕ\œØ[[˜P›ÛÙ[ÛÛ‚ˆ
+Bˆ›]™[\X\›œÙ]HÕ\œØ[[˜P›ÛÙ[ÛÛ“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÕ\œØ[[˜P›ÛÙ[ÛÛ•XXÚX›SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÕ\œØ[[˜Q›Ü›TÜXÚY\ÒYX›KˆKˆÙ[™YˆËÔÑÑS—ÎÐÔ“ÔÔ×ÑU“ÔÂˆÙ[™YˆËÔÑSRSWÕQUT”ÐB‚ˆÚYˆÑSRSWÔÓQÓPBˆÔÔPÒQT×ÔÓQÓPWHBˆÂˆ˜˜\ÙRHˆ˜˜\ÙP]XÚÈHˆ˜˜\ÙQY™[œÙHHˆ˜˜\ÙTÜYYHŒˆ˜˜\ÙTÜ]XÚÈHÌˆ˜˜\ÙTÜY™[œÙHHˆ\\ÈHSÓ—ÕTTÊTWÑ’T‘JKˆ˜Ø]Ú˜]HHNLˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈLˆÎˆ™]–ZY[ÔÜ]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÐSSÔ”ÕTÊKˆ˜Xš[]Y\ÈHÈP’SUWÓPQÓPWÐT“SÔ‹P’SUWÑ“SQWÐ“ÑKP’SUWÕÑPR×ÐT“SÔˆKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ô‘QˆœÜXÚY\Ó˜[YHHÊ”ÓQÓPHŠKˆ˜ÜžRYHÔ–WÔÓQÓPKˆ›˜]^[HHUSÓSÑVÔÓQÓPKˆ˜Ø]YÛÜžS˜[YHHÊ“]˜HŠKˆšZYÚHËˆÙZYÚHÍLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]\ÈHÜXÚY\ÈÙˆÚðê[[Ûˆ]]™\È[—ˆ‚ˆ›ÛØ[šXÈ\™X\ËˆYˆ]È›ÙHÛÛÛË]ÈÚÚ[—ˆ‚ˆš\™[œÈ[™[[[Øš[^™\È]ˆÈ]›ÚY]ˆ‚ˆš]ÛY\È™X\ˆXYÛXKˆŠKˆœÚÙ[[Û”ØØ[HHÌŽKˆœÚÙ[[Û“Ù™œÙ]HMKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÛYÛXKˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JÌ‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JÌ‹
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLÈˆL‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÕ‘UÒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÛYÛXKˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–Èˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÔÒRÑWÑÓÕ×Ô‘Qˆœ[]HHÓ[Û”[]WÔÛYÛXKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÛYÛXKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÛYÛXKˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÔÓÕËˆÒQÕÊÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+ÛYÛXJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔÛYÛXKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×ÔÓUT‹ˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔÛYÛXKˆÔÚ[žSÝ™\ÛÜ›[]WÔÛYÛXBˆ
+Bˆ›]™[\X\›œÙ]HÔÛYÛXS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÛYÛXUXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÔÛYÛXQYÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÎÔPÒQT×ÓPQÐÐT‘ÓßJKˆK‚ˆÔÔPÒQT×ÓPQÐÐT‘Ó×HBˆÂˆ˜˜\ÙRHÕTUQÔÕUÈHÑS—ÍÈÈŒˆLˆ˜˜\ÙP]XÚÈHLˆ˜˜\ÙQY™[œÙHHLŒˆ˜˜\ÙTÜYYHÌˆ˜˜\ÙTÜ]XÚÈHÕTUQÔÕUÈHÑS—ÍÈÈLˆˆ˜˜\ÙTÜY™[œÙHHˆ\\ÈHSÓ—ÕTTÊTWÑ’T‘KTWÔ“ÐÒÊKˆ˜Ø]Ú˜]HHÍKˆÚYˆÕTUQÑVÖRQSÈHÑS—ÍÂˆ™^ZY[HMLKˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HMˆÙ[ÙBˆ™^ZY[HMMˆÙ[™Y‚ˆ™]–ZY[ÑY™[œÙHH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÐSSÔ”ÕTÊKˆ˜Xš[]Y\ÈHÈP’SUWÓPQÓPWÐT“SÔ‹P’SUWÑ“SQWÐ“ÑKP’SUWÕÑPR×ÐT“SÔˆKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ô‘Qˆ››Ñ›\H•QKˆœÜXÚY\Ó˜[YHHÊ“PQÐÐT‘ÓÈŠKˆ˜ÜžRYHÔ–WÓPQÐÐT‘ÓËˆ›˜]^[HHUSÓSÑVÓPQÐÐT‘ÓËˆ˜Ø]YÛÜžS˜[YHHÊ“]˜HŠKˆšZYÚHˆÙZYÚHMLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•HÚ[Ûˆ]È˜XÚÈ\ÈXYHÙˆ\™[™Yˆ‚ˆ›XYÛXKˆ[œÈÙˆÝ\Ø[™ÈÙˆYX\œÈÜ[ˆ‚ˆ›]š[™È[ˆ›ÛØ[šXÈÜ˜]\œÈ]™H\›™Yˆ‚ˆ“XYØØ\™ÛÉÜÈ›ÙY\È[ÈXYÛXKˆŠKˆœÚÙ[[Û”ØØ[HHÌÌ‹ˆœÚÙ[[Û“Ù™œÙ]HMKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÓXYØØ\™ÛËˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLÈˆ‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÕ‘UÒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÓXYØØ\™ÛËˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆËˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÔÒRÑWÑÓÕ×Ô‘Qˆœ[]HHÓ[Û”[]WÓXYØØ\™ÛËˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓXYØØ\™ÛËˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÓXYØØ\™ÛËˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊKÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+XYØØ\™ÛÊBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓXYØØ\™ÛËˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×ÔÓUT‹ˆÐ[š[UX›WÑ›ÛÝÚ[™×Ð\Þ[KˆÓÝ™\ÛÜ›[]WÓXYØØ\™ÛËˆÔÚ[žSÝ™\ÛÜ›[]WÓXYØØ\™ÛÂˆ
+Bˆ›]™[\X\›œÙ]HÓXYØØ\™ÛÓ]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓXYØØ\™ÛÕXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÔÓQÓPB‚ˆÚYˆÑSRSWÔÕÒS•P‚ˆÔÔPÒQT×ÔÕÒS•P—HBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHLˆ˜˜\ÙQY™[œÙHHˆ˜˜\ÙTÜYYHLˆ˜˜\ÙTÜ]XÚÈHÌˆ˜˜\ÙTÜY™[œÙHHÌˆ\\ÈHSÓ—ÕTTÊTWÒPÑKTWÑÔ“ÕS‘
+Kˆ˜Ø]Ú˜]HHŒKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈLˆÎˆ™]–ZY[Ð]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+KˆÚYˆÕTUQÐP’SUQTÈHÑS—Íˆ˜Xš[]Y\ÈHÈP’SUWÓÐ“U’SÕTËP’SUWÔÓ“Õ×ÐÓÐRËP’SUWÕPÒ×ÑUKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÓÐ“U’SÕTËP’SUWÓ“Ó‘KP’SUWÕPÒ×ÑUKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð”“ÕÓ‹ˆœÜXÚY\Ó˜[YHHÊ”ÕÒS•PˆŠKˆ˜ÜžRYHÔ–WÔÕÒS•P‹ˆ›˜]^[HHUSÓSÑVÔÕÒS•P‹ˆ˜Ø]YÛÜžS˜[YHHÊ”YÈŠKˆšZYÚHˆÙZYÚHKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]›ÛÝÈ›Üˆ›ÛÙžHX˜š[™È]ÈÛ›Ý]ˆ‚ˆ˜YØZ[œÝHÜ›Ý[™ˆ]È˜]›Üš]H›ÛÙ\ÈWˆ‚ˆ›]\Ú›ÛÛH]Ü›ÝÜÈ[™\ˆšYYÜ˜\ÜË—ˆ‚ˆ’]ØØØ\Ú[Û˜[H›ÛÝÈÝ]ÝÜš[™ÜËˆŠKˆœÚÙ[[Û”ØØ[HHÌˆœÚÙ[[Û“Ù™œÙ]HŒˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÝÚ[X‹ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JÌ‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JÌŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈŒˆNˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÝÚ[X‹ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈŒHˆMKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÒRÑWÒÔÓQKˆœ[]HHÓ[Û”[]WÔÝÚ[X‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÝÚ[X‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÝÚ[X‹ˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ô“PSˆÒQÕÊLËM‹ÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+ÝÚ[XŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔÝÚ[X‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔÝÚ[X‹ˆÔÚ[žSÝ™\ÛÜ›[]WÔÝÚ[X‚ˆ
+Bˆ›]™[\X\›œÙ]HÔÝÚ[X“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÝÚ[X•XXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÔÝÚ[X‘YÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÌËÔPÒQT×ÔSÔÕÒS‘_JKˆK‚ˆÔÔPÒQT×ÔSÔÕÒS‘WHBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHLˆ˜˜\ÙQY™[œÙHHˆ˜˜\ÙTÜYYHLˆ˜˜\ÙTÜ]XÚÈHŒˆ˜˜\ÙTÜY™[œÙHHŒˆ\\ÈHSÓ—ÕTTÊTWÒPÑKTWÑÔ“ÕS‘
+Kˆ˜Ø]Ú˜]HHÍKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMNˆMŒˆ™]–ZY[ÒHKˆ™]–ZY[Ð]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+KˆÚYˆÕTUQÐP’SUQTÈHÑS—Íˆ˜Xš[]Y\ÈHÈP’SUWÓÐ“U’SÕTËP’SUWÔÓ“Õ×ÐÓÐRËP’SUWÕPÒ×ÑUKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÓÐ“U’SÕTËP’SUWÓ“Ó‘KP’SUWÕPÒ×ÑUKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð”“ÕÓ‹ˆœÜXÚY\Ó˜[YHHÊ”SÔÕÒS‘HŠKˆ˜ÜžRYHÔ–WÔSÔÕÒS‘Kˆ›˜]^[HHUSÓSÑVÔSÔÕÒS‘Kˆ˜Ø]YÛÜžS˜[YHHÊ”ÝÚ[™HŠKˆšZYÚHLKˆÙZYÚHMNˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆH[ÜÝÚ[™H\ÈÛÝ™\™YžHHXÚÈÛØ]ˆ‚ˆ›ÙˆÛ™ÈZ\ˆ›Üˆ[™\š[™Èœ™Y^š[™ÈÛÛ—ˆ‚ˆ’]\Ù\È]È\ÚÜÈÈYÈ\›ÛÙ]\×ˆ‚ˆ˜™Y[ˆ\šYY[™\ˆXÙKˆŠKˆœÚÙ[[Û”ØØ[HHÌ‹ˆœÚÙ[[Û“Ù™œÙ]HLˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ô[ÜÝÚ[™Kˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÒÔÒRÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ô[ÜÝÚ[™Kˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLÈˆˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒÔÒRÑKˆœ[]HHÓ[Û”[]WÔ[ÜÝÚ[™KˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔ[ÜÝÚ[™KˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ô[ÜÝÚ[™KˆšXÛÛ”[[™^H‹ˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×Ô[ÜÝÚ[™Q‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×Ô[ÜÝÚ[™Q‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+KˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKËÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+[ÜÝÚ[™JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔ[ÜÝÚ[™KˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔ[ÜÝÚ[™KˆÔÚ[žSÝ™\ÛÜ›[]WÔ[ÜÝÚ[™Bˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÔ[ÜÝÚ[™Q‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÔ[ÜÝÚ[™S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔ[ÜÝÚ[™UXXÚX›SX\›œÙ]ˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÔPÒQT×ÓPSSÔÕÒS‘KÓÓ‘USÓ”ÊÒQ—ÒÓ“ÕÔ×ÓSÕ‘KSÕ‘WÐSÒQS•ÔÕÑTŸJ_JKˆÙ[™Y‚ˆK‚ˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆÔÔPÒQT×ÓPSSÔÕÒS‘WHBˆÂˆ˜˜\ÙRHLLˆ˜˜\ÙP]XÚÈHLÌˆ˜˜\ÙQY™[œÙHHˆ˜˜\ÙTÜYYHˆ˜˜\ÙTÜ]XÚÈHÌˆ˜˜\ÙTÜY™[œÙHHŒˆ\\ÈHSÓ—ÕTTÊTWÒPÑKTWÑÔ“ÕS‘
+Kˆ˜Ø]Ú˜]HHLˆÚYˆÕTUQÑVÖRQSÈHÑS—Îˆ™^ZY[HKˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HŒÎKˆÙ[ÙBˆ™^ZY[HŒËˆÙ[™Y‚ˆ™]–ZY[Ð]XÚÈHËˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÓÐ“U’SÕTËP’SUWÔÓ“Õ×ÐÓÐRËP’SUWÕPÒ×ÑUKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð”“ÕÓ‹ˆœÜXÚY\Ó˜[YHHÊ“PSSÔÕÒS‘HŠKˆ˜ÜžRYHÔ–WÓPSSÔÕÒS‘Kˆ›˜]^[HHUSÓSÑVÓPSSÔÕÒS‘Kˆ˜Ø]YÛÜžS˜[YHHÊ•Ú[ˆ\ÚÈŠKˆšZYÚHKˆÙZYÚHŽLLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆHœ›Þ™[ˆX[[ÜÝÚ[™HØ\ÈYÈœ›ÛHXÙWˆ‚ˆ™][™È˜XÚÈLYX\œËˆ]ÛÚÙH\×ˆ‚ˆ›]XÚ[X^™[Y[ˆ\ÈÚðê[[Ûˆ\È™Y[—ˆ‚ˆ˜\›Ý[™›ÜˆHÛ™ËÛ™ËÛ™È[YKˆŠKˆœÚÙ[[Û”ØØ[HHMËˆœÚÙ[[Û“Ù™œÙ]H‹ˆ˜Z[™\”ØØ[HHŒËˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÓX[[ÜÝÚ[™Kˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJÌ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÐPÒ×ÐS‘ÓS‘ÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÓX[[ÜÝÚ[™Kˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]H‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÒRÑWÓÕËˆœ[]HHÓ[Û”[]WÓX[[ÜÝÚ[™KˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓX[[ÜÝÚ[™KˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÓX[[ÜÝÚ[™KˆšXÛÛ”[[™^H‹ˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÂˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×ÓX[[ÜÝÚ[™Q‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÂˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊËËÒQÕ×ÔÒV‘WÓ
+Bˆ“ÓÕ’S•
+X[[ÜÝÚ[™JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓX[[ÜÝÚ[™KˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓX[[ÜÝÚ[™KˆÔÚ[žSÝ™\ÛÜ›[]WÓX[[ÜÝÚ[™Bˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÓX[[ÜÝÚ[™Q‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÓX[[ÜÝÚ[™S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓX[[ÜÝÚ[™UXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆÙ[™YˆËÔÑSRSWÔÕÒS•P‚‚ˆÚYˆÑSRSWÐÓÔ”ÓÓBˆÔÔPÒQT×ÐÓÔ”ÓÓWHBˆÂˆ˜˜\ÙRHÕTUQÔÕUÈHÑS—ÍÈÈHˆMKˆ˜˜\ÙP]XÚÈHMKˆ˜˜\ÙQY™[œÙHHÕTUQÔÕUÈHÑS—ÍÈÈMHˆKˆ˜˜\ÙTÜYYHÍKˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHÕTUQÔÕUÈHÑS—ÍÈÈMHˆKˆ\\ÈHSÓ—ÕTTÊTWÕÐUT‹TWÔ“ÐÒÊKˆ˜Ø]Ú˜]HHŒˆÚYˆÕTUQÑVÖRQSÈHÑS—ÍÂˆ™^ZY[HMˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HLÌËˆÙ[ÙBˆ™^ZY[HLLËˆÙ[™Y‚ˆ™]–ZY[ÑY™[œÙHHKˆ™]–ZY[ÔÜY™[œÙHHKˆš][T˜\™HHUSWÓSRS“ÕT×ÓSÔÔËˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJÍJKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌKQÑ×ÑÔ“ÕTÕÐUT—ÌÊKˆ˜Xš[]Y\ÈHÈP’SUWÒTÕKP’SUWÓUTSÐÕT‘KP’SUWÔ‘QÑS‘TUÔˆKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÔS’ËˆœÜXÚY\Ó˜[YHHÊÓÔ”ÓÓHŠKˆ˜ÜžRYHÔ–WÐÓÔ”ÓÓKˆ›˜]^[HHUSÓSÑVÐÓÔ”ÓÓKˆ˜Ø]YÛÜžS˜[YHHÊÛÜ˜[ŠKˆšZYÚH‹ˆÙZYÚHLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆÛÜœÛÛH]™H[ˆØ\›HÛÝ]\›ˆÙX\Ë—ˆ‚ˆ’YˆHÙXH™XÛÛY\ÈÛ]YH™X]]Y[ˆ‚ˆ˜ÛÜ˜[Ý[ÜÈ™XÛÛYH\ØÛÛÜ™Y[™Ü[X›Wˆ‚ˆ˜]Ø^H[ˆ]\œËˆŠKˆœÚÙ[[Û”ØØ[HHLˆœÚÙ[[Û“Ù™œÙ]HMKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÐÛÜœÛÛKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HL‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJLJKˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKŒ
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÒÔÓQKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÐÛÜœÛÛKˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLˆˆˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒÔÓQKˆœ[]HHÓ[Û”[]WÐÛÜœÛÛKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐÛÜœÛÛKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÐÛÜœÛÛKˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊKÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+ÛÜœÛÛJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐÛÜœÛÛKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÐÛÜœÛÛKˆÔÚ[žSÝ™\ÛÜ›[]WÐÛÜœÛÛBˆ
+Bˆ›]™[\X\›œÙ]HÐÛÜœÛÛS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐÛÜœÛÛUXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÐÛÜœÛÛQYÙÓ[Ý™SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÐÛÜœÛÛQ›Ü›TÜXÚY\ÒYX›KˆK‚ˆÚYˆÑÐST’PS—Ñ“Ô“TÂˆÔÔPÒQT×ÐÓÔ”ÓÓWÑÐST—HBˆÂˆ˜˜\ÙRHŒˆ˜˜\ÙP]XÚÈHMKˆ˜˜\ÙQY™[œÙHHLˆ˜˜\ÙTÜYYHÌˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHLˆ\\ÈHSÓ—ÕTTÊTWÑÒÔÕ
+Kˆ˜Ø]Ú˜]HHŒˆ™^ZY[HMˆ™]–ZY[ÔÜY™[œÙHHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJÍJKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌKQÑ×ÑÔ“ÕTÕÐUT—ÌÊKˆ˜Xš[]Y\ÈHÈP’SUWÕÑPR×ÐT“SÔ‹P’SUWÓ“Ó‘KP’SUWÐÕT”ÑQÐ“ÑHKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÕÒUKˆÚYˆÔÑTTUWÔ‘QÒSÓSÑ“Ô“TÂˆœÜXÚY\Ó˜[YHHÊÓÔ”ÓÓKQÈŠKˆÙ[ÙBˆœÜXÚY\Ó˜[YHHÊÓÔ”ÓÓHŠKˆÙ[™Y‚ˆ˜ÜžRYHÔ–WÐÓÔ”ÓÓKˆÚYˆÔÑTTUWÔ‘QÒSÓSÑ“Ô“TÂˆ›˜]^[HHUSÓSÑVÐÓÔ”ÓÓWÑÐST‹ˆÙ[ÙBˆ›˜]^[HHUSÓSÑVÐÓÔ”ÓÓKˆÙ[™Y‚ˆ˜Ø]YÛÜžS˜[YHHÊÛÜ˜[ŠKˆšZYÚH‹ˆÙZYÚHKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ”ÝY[ˆÛ[X]HÚ[™ÙHÚ\YÝ]\×ˆ‚ˆ˜[˜ÚY[Ú[™ÙˆÛÜœÛÛKˆÚ]]Èœ˜[˜Ú\Ëˆ‚ˆš]XœÛÜ˜œÈÝ\œÉÈY™KY›Ü˜ÙKˆ]Ý\œÙ\×ˆ‚ˆÜÙH[˜]Ø\™H]ÚXÚÈ]žHXØÚY[ˆŠKˆœÚÙ[[Û”ØØ[HHLˆœÚÙ[[Û“Ù™œÙ]HMKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÐÛÜœÛÛQØ[\‹ˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HLKˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÐÛÜœÛÛQØ[\‹ˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HˆËË˜˜XÚÐ[š[RYHPÒ×ÐS’SWÓ“Ó‘Kˆœ[]HHÓ[Û”[]WÐÛÜœÛÛQØ[\‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐÛÜœÛÛQØ[\‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÐÛÜœÛÛQØ[\‹ˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊ‹ÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+ÛÜœÛÛJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐÛÜœÛÛQØ[\‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÐÛÜœÛÛQØ[\‹ˆÔÚ[žSÝ™\ÛÜ›[]WÐÛÜœÛÛQØ[\‚ˆ
+Bˆš\ÑØ[\šX[‘›Ü›HH•QKˆ™^›Ý™\]Z\™YH•QKˆ›]™[\X\›œÙ]HÐÛÜœÛÛQØ[\“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐÛÜœÛÛQØ[\•XXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÐÛÜœÛÛQØ[\‘YÙÓ[Ý™SX\›œÙ]ˆÚYˆÔÑTTUWÔ‘QÒSÓSÑ“Ô“TÂˆ™›Ü›TÜXÚY\ÒYX›HHÐÛÜœÛÛQØ[\‘›Ü›TÜXÚY\ÒYX›KˆÙ[ÙBˆ™›Ü›TÜXÚY\ÒYX›HHÐÛÜœÛÛQ›Ü›TÜXÚY\ÒYX›KˆÙ[™Y‚ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÎÔPÒQT×ÐÕT”ÓÓ_JKˆK‚ˆÔÔPÒQT×ÐÕT”ÓÓWHBˆÂˆ™^›Ý™\]Z\™YH•QKˆ˜˜\ÙRHŒˆ˜˜\ÙP]XÚÈHMKˆ˜˜\ÙQY™[œÙHHLˆ˜˜\ÙTÜYYHÌˆ˜˜\ÙTÜ]XÚÈHMKˆ˜˜\ÙTÜY™[œÙHHLÌˆ\\ÈHSÓ—ÕTTÊTWÑÒÔÕ
+Kˆ˜Ø]Ú˜]HHÌˆ™^ZY[HMÎKˆ™]–ZY[ÔÜ]XÚÈH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJÍJKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌKQÑ×ÑÔ“ÕTÕÐUT—ÌÊKˆ˜Xš[]Y\ÈHÈP’SUWÕÑPR×ÐT“SÔ‹P’SUWÓ“Ó‘KP’SUWÔT’TÒÐ“ÑHKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÕÒUKˆ››Ñ›\H•QKˆœÜXÚY\Ó˜[YHHÊÕT”ÓÓHŠKˆ˜ÜžRYHÔ–WÐÕT”ÓÓKˆ›˜]^[HHUSÓSÑVÐÕT”ÓÓKˆ˜Ø]YÛÜžS˜[YHHÊÛÜ˜[ŠKˆšZYÚHLˆÙZYÚHˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]ÈÚ[\ÈÝ™\™›ÝÚ[™ÈÚ]]×ˆ‚ˆšZYÚ[™YÝ\ÛÜ›H[™\™ÞKˆWˆ‚ˆ™XÝÜ\ÛHÙ\™\È\È›ÝXÝ[Ûˆ›Üˆ\×ˆ‚ˆ”Úðê[[Û‰ÜÈÛÜ™HÜ\š]ˆŠKˆœÚÙ[[Û”ØØ[HHÌKˆœÚÙ[[Û“Ù™œÙ]HËˆ˜Z[™\”ØØ[HHMËˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÐÝ\œÛÛKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÐÝ\œÛÛKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HKˆËË˜˜XÚÐ[š[RYHPÒ×ÐS’SWÓ“Ó‘Kˆœ[]HHÓ[Û”[]WÐÝ\œÛÛKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐÝ\œÛÛKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÐÝ\œÛÛKˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLËLËÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+Ý\œÛÛJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐÝ\œÛÛKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÐÝ\œÛÛKˆÔÚ[žSÝ™\ÛÜ›[]WÐÝ\œÛÛBˆ
+Bˆ›]™[\X\›œÙ]HÐÝ\œÛÛS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐÝ\œÛÛUXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑÐST’PS—Ñ“Ô“TÂˆÙ[™YˆËÔÑSRSWÐÓÔ”ÓÓB‚ˆÚYˆÑSRSWÔ‘SSÔRQˆÔÔPÒQT×Ô‘SSÔRQHBˆÂˆ˜˜\ÙRHÍKˆ˜˜\ÙP]XÚÈHKˆ˜˜\ÙQY™[œÙHHÍKˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHÍKˆ\\ÈHSÓ—ÕTTÊTWÕÐUTŠKˆ˜Ø]Ú˜]HHNLˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈŒˆÎˆ™]–ZY[ÔÜ]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌKQÑ×ÑÔ“ÕTÕÐUT—ÌŠKˆÚYˆÕTUQÐP’SUQTÈHÑS—Íˆ˜Xš[]Y\ÈHÈP’SUWÒTÕKP’SUWÔÓ’TT‹P’SUWÓSÓÑHKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÒTÕKP’SUWÓ“Ó‘KP’SUWÓSÓÑHKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔVKˆœÜXÚY\Ó˜[YHHÊ”‘SSÔRQŠKˆ˜ÜžRYHÔ–WÔ‘SSÔRQˆ›˜]^[HHUSÓSÑVÔ‘SSÔRQˆ˜Ø]YÛÜžS˜[YHHÊ’™]ŠKˆšZYÚH‹ˆÙZYÚHLŒˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆH™[[Ü˜ZY\Ù\È]ÈX™ÛZ[˜[]\ØÛ\×ˆ‚ˆÈ›Ü˜ÙY[H^[ÝØ[ÝÙYØ]\‹[—ˆ‚ˆœÚÛÝÝÛˆ›Z[™È™^KˆÚ[ˆ]›Û][Û—ˆ‚ˆ˜\›ØXÚ\Ë]˜]™[ÈÝÛˆš]™\œËˆŠKˆœÚÙ[[Û”ØØ[HHÌM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ô™[[Ü˜ZYˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈMˆLKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJÌ
+KˆS’SPÓQÑ”SQJKÌ
+KˆS’SPÓQÑ”SQJÌ
+Kˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÕ—Ò•ST×ÔÓPSˆS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑWÔÓÕËˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ô™[[Ü˜ZYˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLÈˆL‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒÔÓQKˆœ[]HHÓ[Û”[]WÔ™[[Ü˜ZYˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔ™[[Ü˜ZYˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ô™[[Ü˜ZYˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+™[[Ü˜ZY
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔ™[[Ü˜ZYˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×ÔÔÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔ™[[Ü˜ZYˆÔÚ[žSÝ™\ÛÜ›[]WÔ™[[Ü˜ZYˆ
+Bˆ›]™[\X\›œÙ]HÔ™[[Ü˜ZY]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔ™[[Ü˜ZYXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÔ™[[Ü˜ZYYÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SKÔPÒQT×ÓÐÕST–_JKˆK‚ˆÔÔPÒQT×ÓÐÕST–WHBˆÂˆ˜˜\ÙRHÍKˆ˜˜\ÙP]XÚÈHLKˆ˜˜\ÙQY™[œÙHHÍKˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHLKˆ˜˜\ÙTÜY™[œÙHHÍKˆ\\ÈHSÓ—ÕTTÊTWÕÐUTŠKˆ˜Ø]Ú˜]HHÍKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMŽˆMˆ™]–ZY[Ð]XÚÈHKˆ™]–ZY[ÔÜ]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌKQÑ×ÑÔ“ÕTÕÐUT—ÌŠKˆÚYˆÕTUQÐP’SUQTÈHÑS—Íˆ˜Xš[]Y\ÈHÈP’SUWÔÕPÕSÓ—ÐÕTËP’SUWÔÓ’TT‹P’SUWÓSÓÑHKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÔÕPÕSÓ—ÐÕTËP’SUWÓ“Ó‘KP’SUWÓSÓÑHKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ô‘QˆœÜXÚY\Ó˜[YHHÊ“ÐÕST–HŠKˆ˜ÜžRYHÔ–WÓÐÕST–Kˆ›˜]^[HHUSÓSÑVÓÐÕST–Kˆ˜Ø]YÛÜžS˜[YHHÊ’™]ŠKˆšZYÚHKˆÙZYÚHŽKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’][œÛ˜\™\È]È›ÙHÚ]]ÈÝXÝ[Û‹Wˆ‚ˆ˜Ý\Y[XÛ\È™Y›Ü™H[]™\š[™ÈWˆ‚ˆ™š[š\Ú[™È›ÝËˆYˆH›ÙH\›œÈÝ]È™Wˆ‚ˆÛÈÝ›Û™Ë]Ü]ÜÈ[šÈÈ\ØØ\KˆŠKˆœÚÙ[[Û”ØØ[HHŽM‹ˆœÚÙ[[Û“Ù™œÙ]HËˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÓØÝ[\žKˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLˆˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKÌ
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÕ‘UÒˆ™œ›Û[š[Q[^HHŒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÓØÝ[\žKˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLˆˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÔÒ’S’×ÑÔ“ÕËˆœ[]HHÓ[Û”[]WÓØÝ[\žKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓØÝ[\žKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÓØÝ[\žKˆšXÛÛ”[[™^HˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×ÓØÝ[\žQ‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×ÓØÝ[\žQ‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊKÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+ØÝ[\žJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓØÝ[\žKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×ÔÓUT‹ˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓØÝ[\žKˆÔÚ[žSÝ™\ÛÜ›[]WÓØÝ[\žBˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÓØÝ[\žQ‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×ÔÓUT‹ˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÓØÝ[\žS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓØÝ[\žUXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÔ‘SSÔRQ‚ˆÚYˆÑSRSWÑSP’T‘ˆÔÔPÒQT×ÑSP’T‘HBˆÂˆ˜˜\ÙRHKˆ˜˜\ÙP]XÚÈHMKˆ˜˜\ÙQY™[œÙHHKˆ˜˜\ÙTÜYYHÍKˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÒPÑKTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈLMˆˆNËˆ™]–ZY[ÔÜYYHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌKQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÕ’USÔÔT’UP’SUWÒTÕKP’SUWÒS”ÓÓS’PHKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ô‘Qˆ››Ñ›\H•QKˆœÜXÚY\Ó˜[YHHÊ‘SP’T‘ŠKˆ˜ÜžRYHÔ–WÑSP’T‘ˆ›˜]^[HHUSÓSÑVÑSP’T‘ˆ˜Ø]YÛÜžS˜[YHHÊ‘[]™\žHŠKˆšZYÚHKˆÙZYÚHMŒˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]Ø\œšY\È›ÛÙ[™Y\[ˆ]ÈZ[—ˆ‚ˆ•\™HØ\ÈH˜[[Ý\È^Ü™\ˆÚ×ˆ‚ˆ›X[˜YÙYÈØØ[H]ˆ]™\™\Ý[šÜ×ˆ‚ˆÈH[Xš\™Ú\š[™È]È›ÛÙˆŠKˆœÚÙ[[Û”ØØ[HHŽLËˆœÚÙ[[Û“Ù™œÙ]HLKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ñ[Xš\™ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆËˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÕ—Ò•ST×ÔÓPSˆS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ñ[Xš\™ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠKˆ˜˜XÚÔXÖSÙ™œÙ]H‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ’PS‘ÓWÑÕÓ‹ˆœ[]HHÓ[Û”[]WÑ[Xš\™ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÑ[Xš\™ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ñ[Xš\™ˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈˆKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊËÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+[Xš\™
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÑ[Xš\™ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÑ[Xš\™ˆÔÚ[žSÝ™\ÛÜ›[]WÑ[Xš\™ˆ
+Bˆš\ÔÚÞP˜]P˜[›™YH—ÔÒÖWÐUWÔÕ’PÕÑSQÒP’SUKˆ›]™[\X\›œÙ]HÑ[Xš\™]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÑ[Xš\™XXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÑ[Xš\™YÙÓ[Ý™SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÑSP’T‘‚ˆÚYˆÑSRSWÓPS•S‘BˆÚYˆÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂˆÔÔPÒQT×ÓPS•RÑWHBˆÂˆ˜˜\ÙRHKˆ˜˜\ÙP]XÚÈHŒˆ˜˜\ÙQY™[œÙHHLˆ˜˜\ÙTÜYYHLˆ˜˜\ÙTÜ]XÚÈHŒˆ˜˜\ÙTÜY™[œÙHHLŒˆ\\ÈHSÓ—ÕTTÊTWÕÐUT‹TWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈŽHˆLˆ™]–ZY[ÔÜY™[œÙHHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHKˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓ“×ÑQÑÔ×ÑTÐÓÕ‘T‘Q
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔÕÒQ•ÔÕÒSKP’SUWÕÐUT—ÐP”ÓÔ‹P’SUWÕÐUT—Õ‘RSKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆœÜXÚY\Ó˜[YHHÊ“PS•RÑHŠKˆ˜ÜžRYHÔ–WÓPS•RÑKˆ›˜]^[HHUSÓSÑVÓPS•RÑKˆ˜Ø]YÛÜžS˜[YHHÊ’Ú]HŠKˆšZYÚHLˆÙZYÚHLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•Ú[ˆ]ÝÚ[\ÈÛÜÙHÈHÝ\™˜XÙWˆ‚ˆ›ÙˆHØÙX[‹[ÜHX›Ø\™Ú\È\™Wˆ‚ˆ˜X›HÈØœÙ\™HH]\›ˆÛˆ]È˜XÚË—ˆ‚ˆ’]Ù[ˆÝÚ[\È[ˆHØÚÛÛÙˆ™[[Ü˜ZYˆŠKˆœÚÙ[[Û”ØØ[HHÌKˆœÚÙ[[Û“Ù™œÙ]HËˆ˜Z[™\”ØØ[HHMËˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÓX[ZÙKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HL‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJJKˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJJKˆ
+Kˆ™œ›Û[š[RYHS’SWÕÒTÕÕÒPÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÓX[ZÙKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]H‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÐÓÓ•‘VÑÕP“WÐTËˆœ[]HHÓ[Û”[]WÓX[ZÙKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓX[ZÙKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÓX[ZÙKˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKËÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+X[ZÙJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓX[ZÙKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓX[ZÙKˆÔÚ[žSÝ™\ÛÜ›[]WÓX[ZÙBˆ
+Bˆ›]™[\X\›œÙ]HÓX[ZÙS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓX[ZÙUXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÓX[ZÙQYÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÔPÒQT×ÓPS•S‘KÓÓ‘USÓ”ÊÒQ—ÔÔPÒQT×ÒS—ÔT•KÔPÒQT×Ô‘SSÔRQJ_JKˆKˆÙ[™YˆËÔÑÑS—ÍÐÔ“ÔÔ×ÑU“ÔÂ‚ˆÔÔPÒQT×ÓPS•S‘WHBˆÂˆ˜˜\ÙRHÕTUQÔÕUÈHÑS—ÍÈÈHˆKˆ˜˜\ÙP]XÚÈHˆ˜˜\ÙQY™[œÙHHÌˆ˜˜\ÙTÜYYHÌˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHMˆ\\ÈHSÓ—ÕTTÊTWÕÐUT‹TWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHKˆÚYˆÕTUQÑVÖRQSÈHÑS—ÍÂˆ™^ZY[HMÌˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HMŒËˆÙ[ÙBˆ™^ZY[HMŽˆÙ[™Y‚ˆ™]–ZY[ÔÜY™[œÙHH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHKˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÕÐUT—ÌJKˆ˜Xš[]Y\ÈHÈP’SUWÔÕÒQ•ÔÕÒSKP’SUWÕÐUT—ÐP”ÓÔ‹P’SUWÕÐUT—Õ‘RSKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÔT”Kˆ››Ñ›\HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÜXÚY\Ó˜[YHHÊ“PS•S‘HŠKˆ˜ÜžRYHÔ–WÓPS•S‘Kˆ›˜]^[HHUSÓSÑVÓPS•S‘Kˆ˜Ø]YÛÜžS˜[YHHÊ’Ú]HŠKˆšZYÚHŒKˆÙZYÚHŒŒˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ“ÛˆÝ[›žH^\ËØÚÛÛÈÙˆX[[™HØ[ˆ™Wˆ‚ˆœÙY[ˆ[YØ[HX\[™ÈÝ™\ˆHØ]™\Ë—ˆ‚ˆ’]\È›Ý›Ý\™YžHH™[[Ü˜ZY]ˆ‚ˆš]Ú\ÈšY\ËˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHÍ‹ˆ˜Z[™\“Ù™œÙ]HËˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÓX[[™Kˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKÌ
+KˆS’SPÓQÑ”SQJÌ
+KˆS’SPÓQÑ”SQJKÌ
+KˆS’SPÓQÑ”SQJ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÔÕÒS‘×ÐÓÓ•‘Vˆ™[™[^S[Û‘[]˜][ÛˆHÑÐWÔÕSWÔÔPÒQT×ÑÑ–Èˆ‹ˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÓX[[™Kˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈÈˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒÔÓQKˆœ[]HHÓ[Û”[]WÓX[[™KˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓX[[™KˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÓX[[™KˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+X[[™JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓX[[™KˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ó“Ó‘KˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓX[[™KˆÔÚ[žSÝ™\ÛÜ›[]WÓX[[™Bˆ
+Bˆ›]™[\X\›œÙ]HÓX[[™S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓX[[™UXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÓX[[™QYÙÓ[Ý™SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÓPS•S‘B‚ˆÚYˆÑSRSWÔÒÐT“SÔ–BˆÔÔPÒQT×ÔÒÐT“SÔ–WHBˆÂˆ˜˜\ÙRHKˆ˜˜\ÙP]XÚÈHˆ˜˜\ÙQY™[œÙHHMˆ˜˜\ÙTÜYYHÌˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHÌˆ\\ÈHSÓ—ÕTTÊTWÔÕQSTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHKˆ™^ZY[HMŒËˆ™]–ZY[ÑY™[œÙHH‹ˆš][T˜\™HHUSWÓQUSÐÓÐUˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHKˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ“RS‘ÊKˆ˜Xš[]Y\ÈHÈP’SUWÒÑQS—ÑVQKP’SUWÔÕT‘KP’SUWÕÑPR×ÐT“SÔˆKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔVKˆœÜXÚY\Ó˜[YHHÊ”ÒÐT“SÔ–HŠKˆ˜ÜžRYHÔ–WÔÒÐT“SÔ–Kˆ›˜]^[HHUSÓSÑVÔÒÐT“SÔ–Kˆ˜Ø]YÛÜžS˜[YHHÊ\›[Üˆš\™ŠKˆšZYÚHMËˆÙZYÚHLKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆHÚðê[[Ûˆ]\ÈH›ÙH[™Ú[™ÜÈÙ—ˆ‚ˆœÝY[ˆ[ÜH[ˆH\Ý\ÙY™X]\œ×ˆ‚ˆ™˜[[ˆœ›ÛHÚØ\›[ÜžHÈXZÙHÝÛÜ™È[™ˆ‚ˆšÛš]™\ËˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHÌKˆ˜Z[™\“Ù™œÙ]HKˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÚØ\›[ÜžKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJŒ
+Kˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÕ—ÔÕ‘UÒˆS’SWÕ—ÔÒRÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÚØ\›[ÜžKˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒ“ÓÔ’QÒˆœ[]HHÓ[Û”[]WÔÚØ\›[ÜžKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÚØ\›[ÜžKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÚØ\›[ÜžKˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊ‹KÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+ÚØ\›[ÜžJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔÚØ\›[ÜžKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔÚØ\›[ÜžKˆÔÚ[žSÝ™\ÛÜ›[]WÔÚØ\›[ÜžBˆ
+Bˆ›]™[\X\›œÙ]HÔÚØ\›[ÜžS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÚØ\›[ÜžUXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÔÚØ\›[ÜžQYÙÓ[Ý™SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÔÚØ\›[ÜžQ›Ü›TÜXÚY\ÒYX›Kˆ™›Ü›PÚ[™ÙUX›HHÔÚØ\›[ÜžQ›Ü›PÚ[™ÙUX›KˆK‚ˆÚYˆÑÑS—ÎWÓQQÐWÑU“ÓUSÓ”ÂˆÔÔPÒQT×ÔÒÐT“SÔ–WÓQQÐWHBˆÂˆ˜˜\ÙRHKˆ˜˜\ÙP]XÚÈHMˆ˜˜\ÙQY™[œÙHHLLˆ˜˜\ÙTÜYYHLLˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHLˆ\\ÈHSÓ—ÕTTÊTWÔÕQSTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHKˆ™^ZY[HMŒËˆ™]–ZY[ÑY™[œÙHH‹ˆš][T˜\™HHUSWÓQUSÐÓÐUˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHKˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ“RS‘ÊKˆ˜Xš[]Y\ÈHÈP’SUWÒÑQS—ÑVQKP’SUWÔÕT‘KP’SUWÕÑPR×ÐT“SÔˆKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔVKˆœÜXÚY\Ó˜[YHHÊ”ÒÐT“SÔ–HŠKˆÚYˆÓSÑQ’QQÓQQÐWÐÔ’QTÂˆ˜ÜžRYHÔ–WÔÒÐT“SÔ–WÓQQÐKˆÙ[ÙBˆ˜ÜžRYHÔ–WÔÒÐT“SÔ–KˆÙ[™YˆËÈÓSÑQ’QQÓQQÐWÐÔ’QTÂˆ›˜]^[HHUSÓSÑVÔÒÐT“SÔ–Kˆ˜Ø]YÛÜžS˜[YHHÊ\›[Üˆš\™ŠKˆšZYÚHMËˆÙZYÚHˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ‘YHÈHY™™XÝÈÙˆYYØH]›Û][Û‹ˆ‚ˆš]È[˜Ù\œÈ]™HZÙ[ˆH[Ü™Wˆ‚ˆ™XX›ÛXØ[›Ü›Kš\[™È[ž][™×ˆ‚ˆ^HY\˜ÙHÈÚ™YËˆŠKˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÚØ\›[ÜžSYYØKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ™[™[^S[Û‘[]˜][ÛˆH‹ˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÚØ\›[ÜžSYYØKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HKˆËË˜˜XÚÐ[š[RYHPÒ×ÐS’SWÓ“Ó‘Kˆœ[]HHÓ[Û”[]WÔÚØ\›[ÜžSYYØKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÚØ\›[ÜžSYYØKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÚØ\›[ÜžSYYØKˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘Kˆ“ÓÕ’S•
+ÚØ\›[ÜžJBˆÒQÕÊ‹M‹ÒQÕ×ÔÒV‘WÓJBˆš\ÓYYØQ]›Û][ÛˆH•QKˆ›]™[\X\›œÙ]HÔÚØ\›[ÜžS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÚØ\›[ÜžUXXÚX›SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÔÚØ\›[ÜžQ›Ü›TÜXÚY\ÒYX›Kˆ™›Ü›PÚ[™ÙUX›HHÔÚØ\›[ÜžQ›Ü›PÚ[™ÙUX›Kˆœ˜[™ÛZ^™\“[ÙHHSÓ—ÔS‘ÓRV‘T—ÒS•SQˆKˆÙ[™YˆËÔÑÑS—ÎWÓQQÐWÑU“ÓUSÓ”ÂˆÙ[™YˆËÔÑSRSWÔÒÐT“SÔ–B‚ˆÚYˆÑSRSWÒÕS‘ÕT‚ˆÔÔPÒQT×ÒÕS‘ÕT—HBˆÂˆ˜˜\ÙRHKˆ˜˜\ÙP]XÚÈHŒˆ˜˜\ÙQY™[œÙHHÌˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHLˆ\\ÈHSÓ—ÕTTÊTWÑT’ËTWÑ’T‘JKˆ˜Ø]Ú˜]HHLŒˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈˆˆLMˆ™]–ZY[ÔÜ]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÍKˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÑPT“WÐ’T‘P’SUWÑ“TÒÑ’T‘KP’SUWÕS“‘T•‘HKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“PÒËˆœÜXÚY\Ó˜[YHHÊ’ÕS‘ÕTˆŠKˆ˜ÜžRYHÔ–WÒÕS‘ÕT‹ˆ›˜]^[HHUSÓSÑVÒÕS‘ÕT‹ˆ˜Ø]YÛÜžS˜[YHHÊ‘\šÈŠKˆšZYÚH‹ˆÙZYÚHLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’Ý[™Ý\ˆÛÛ[][šXØ]HÚ]XXÚÝ\—ˆ‚ˆ\Ú[™ÈH˜\šY]HÙˆÜšY\ÈÈÛÜ›™\ˆZ\—ˆ‚ˆœ™^Kˆ\ÈÚðê[[Û‰ÜÈ™[X\šØX›HX[]ÛÜš×ˆ‚ˆš\ÈÚ[\H[œ\˜[[YˆŠKˆœÚÙ[[Û”ØØ[HHÎLËˆœÚÙ[[Û“Ù™œÙ]HM‹ˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÒÝ[™Ý\‹ˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLHˆKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJŒ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÕ‘UÒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÒÝ[™Ý\‹ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLˆˆLˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÒRÑKˆœ[]HHÓ[Û”[]WÒÝ[™Ý\‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÒÝ[™Ý\‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÒÝ[™Ý\‹ˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÑTÕˆÒQÕÊÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+Ý[™Ý\ŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÒÝ[™Ý\‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÒÝ[™Ý\‹ˆÔÚ[žSÝ™\ÛÜ›[]WÒÝ[™Ý\‚ˆ
+Bˆ›]™[\X\›œÙ]HÒÝ[™Ý\“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÒÝ[™Ý\•XXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÒÝ[™Ý\‘YÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÔPÒQT×ÒÕS‘ÓÓ_JKˆK‚ˆÔÔPÒQT×ÒÕS‘ÓÓWHBˆÂˆ˜˜\ÙRHÍKˆ˜˜\ÙP]XÚÈHLˆ˜˜\ÙQY™[œÙHHLˆ˜˜\ÙTÜYYHMKˆ˜˜\ÙTÜ]XÚÈHLLˆ˜˜\ÙTÜY™[œÙHHˆ\\ÈHSÓ—ÕTTÊTWÑT’ËTWÑ’T‘JKˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMÍHˆŒˆ™]–ZY[ÔÜ]XÚÈH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÍKˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÑPT“WÐ’T‘P’SUWÑ“TÒÑ’T‘KP’SUWÕS“‘T•‘HKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“PÒËˆœÜXÚY\Ó˜[YHHÊ’ÕS‘ÓÓHŠKˆ˜ÜžRYHÔ–WÒÕS‘ÓÓKˆ›˜]^[HHUSÓSÑVÒÕS‘ÓÓKˆ˜Ø]YÛÜžS˜[YHHÊ‘\šÈŠKˆšZYÚHMˆÙZYÚHÍLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’[ˆHÝ[™ÛÛHXÚËHÛ™HÚ]]ÈÜ›œ×ˆ‚ˆœ˜ZÙYÚ\œH˜XÚÈÙ\™\ÈHXY\œÚ\ˆ‚ˆœ›ÛKˆ^HÚÛÜÙHZ\ˆXY\ˆžHšYÚ[™×ˆ‚ˆ˜[[Û™È[\Ù[™\ËˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÒÝ[™ÛÛKˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJÌ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÒRÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÒÝ[™ÛÛKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈÈˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÒRÑKˆœ[]HHÓ[Û”[]WÒÝ[™ÛÛKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÒÝ[™ÛÛKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÒÝ[™ÛÛKˆšXÛÛ”[[™^HˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×ÒÝ[™ÛÛQ‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×ÒÝ[™ÛÛQ‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊMKLËÒQÕ×ÔÒV‘WÓ
+Bˆ“ÓÕ’S•
+Ý[™ÛÛJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÒÝ[™ÛÛKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÒÝ[™ÛÛKˆÔÚ[žSÝ™\ÛÜ›[]WÒÝ[™ÛÛBˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÒÝ[™ÛÛQ‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÒÝ[™ÛÛS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÒÝ[™ÛÛUXXÚX›SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÒÝ[™ÛÛQ›Ü›TÜXÚY\ÒYX›Kˆ™›Ü›PÚ[™ÙUX›HHÒÝ[™ÛÛQ›Ü›PÚ[™ÙUX›KˆK‚ˆÚYˆÓQQÐWÑU“ÓUSÓ”ÂˆÔÔPÒQT×ÒÕS‘ÓÓWÓQQÐWHBˆÂˆ˜˜\ÙRHÍKˆ˜˜\ÙP]XÚÈHLˆ˜˜\ÙQY™[œÙHHLˆ˜˜\ÙTÜYYHLMKˆ˜˜\ÙTÜ]XÚÈHMˆ˜˜\ÙTÜY™[œÙHHLˆ\\ÈHSÓ—ÕTTÊTWÑT’ËTWÑ’T‘JKˆ˜Ø]Ú˜]HHKˆ™^ZY[HŒLˆ™]–ZY[ÔÜ]XÚÈH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÍKˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔÓÓT—ÔÕÑT‹P’SUWÔÓÓT—ÔÕÑT‹P’SUWÔÓÓT—ÔÕÑTˆKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“PÒËˆœÜXÚY\Ó˜[YHHÊ’ÕS‘ÓÓHŠKˆÚYˆÓSÑQ’QQÓQQÐWÐÔ’QTÂˆ˜ÜžRYHÔ–WÒÕS‘ÓÓWÓQQÐKˆÙ[ÙBˆ˜ÜžRYHÔ–WÒÕS‘ÓÓKˆÙ[™YˆËÈÓSÑQ’QQÓQQÐWÐÔ’QTÂˆ›˜]^[HHUSÓSÑVÒÕS‘ÓÓKˆ˜Ø]YÛÜžS˜[YHHÊ‘\šÈŠKˆšZYÚHNKˆÙZYÚHMKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]È™YÛ]ÜÈ[™H\ÈÙˆ]ÈZ[\™Wˆ‚ˆ›Y[[™Èœ›ÛHYÚ[\›˜[[\\˜]\™\×ˆ‚ˆ]\™HZ[™[ÈÝ[™ÛÛH]Ù[‹—ˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÒÝ[™ÛÛSYYØKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÒÝ[™ÛÛSYYØKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]Hˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÒRÑKˆœ[]HHÓ[Û”[]WÒÝ[™ÛÛSYYØKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÒÝ[™ÛÛSYYØKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÒÝ[™ÛÛSYYØKˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊMKLËÒQÕ×ÔÒV‘WÓ
+Bˆ“ÓÕ’S•
+Ý[™ÛÛJBˆÚYˆÕ×ÐUWÓÓ“WÑ“Ô“TÂˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÒÝ[™ÛÛSYYØKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÒÝ[™ÛÛSYYØKˆÔÚ[žSÝ™\ÛÜ›[]WÒÝ[™ÛÛSYYØBˆ
+BˆÙ[™YˆËÓÕ×ÐUWÓÓ“WÑ“Ô“TÂˆš\ÓYYØQ]›Û][ÛˆH•QKˆ›]™[\X\›œÙ]HÒÝ[™ÛÛS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÒÝ[™ÛÛUXXÚX›SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÒÝ[™ÛÛQ›Ü›TÜXÚY\ÒYX›Kˆ™›Ü›PÚ[™ÙUX›HHÒÝ[™ÛÛQ›Ü›PÚ[™ÙUX›Kˆœ˜[™ÛZ^™\“[ÙHHSÓ—ÔS‘ÓRV‘T—ÒS•SQˆKˆÙ[™YˆËÔÓQQÐWÑU“ÓUSÓ”ÂˆÙ[™YˆËÔÑSRSWÒÕS‘ÕT‚‚ˆÚYˆÑSRSWÔS”BˆÔÔPÒQT×ÔS”WHBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHŒˆ˜˜\ÙQY™[œÙHHŒˆ˜˜\ÙTÜYYHˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHˆ\\ÈHSÓ—ÕTTÊTWÑÔ“ÕS‘
+Kˆ˜Ø]Ú˜]HHLŒˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈˆˆLˆ™]–ZY[ÒHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔPÒÕTP’SUWÓ“Ó‘KP’SUWÔÐS‘Õ‘RSKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆœÜXÚY\Ó˜[YHHÊ”S”HŠKˆ˜ÜžRYHÔ–WÔS”Kˆ›˜]^[HHUSÓSÑVÔS”Kˆ˜Ø]YÛÜžS˜[YHHÊ“Û™È›ÜÙHŠKˆšZYÚHKˆÙZYÚHÌÍKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ”[œIÜÈšYÈX\œÈÙ\™H\Èœ›ØY˜[œË—ˆ‚ˆ•Ú[ˆ]™XÛÛY\ÈÝ]›\ÈHX\œ×ˆ‚ˆ˜\Ú[HÈÛÛÛÝÛ‹ˆ]™[ˆH[Ý[™È\™Wˆ‚ˆ™\žHÝ›Û™ËˆŠKˆœÚÙ[[Û”ØØ[HHKˆœÚÙ[[Û“Ù™œÙ]HŒKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ô[œKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JÌŠKˆ™œ›ÛXÖSÙ™œÙ]HM‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKŒ
+KˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJMJKˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHS’SWÒÒ•ST×Õ—ÔÕ‘UÒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ô[œKˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈMˆL‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒ“ÓÔ’QÒˆœ[]HHÓ[Û”[]WÔ[œKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔ[œKˆœÚ[žT[]S[Ù\›ˆHÓ[Û”Ú[žT[]S[Ù\›—Ô[œKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ô[œKˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ô“PSˆÒQÕÊËL‹ÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+[œJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔ[œKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔ[œKˆÔÚ[žSÝ™\ÛÜ›[]WÔ[œKˆÔÚ[žS[Ù\›“Ý™\ÛÜ›[]WÔ[œBˆ
+Bˆ›]™[\X\›œÙ]HÔ[œS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔ[œUXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÔ[œQYÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SKÔPÒQT×ÑÓ”SŸJKˆK‚ˆÔÔPÒQT×ÑÓ”S—HBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHLŒˆ˜˜\ÙQY™[œÙHHLŒˆ˜˜\ÙTÜYYHLˆ˜˜\ÙTÜ]XÚÈHŒˆ˜˜\ÙTÜY™[œÙHHŒˆ\\ÈHSÓ—ÕTTÊTWÑÔ“ÕS‘
+Kˆ˜Ø]Ú˜]HHŒˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMÍHˆNKˆ™]–ZY[Ð]XÚÈHKˆ™]–ZY[ÑY™[œÙHHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔÕT‘KP’SUWÓ“Ó‘KP’SUWÔÐS‘Õ‘RSKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔVKˆœÜXÚY\Ó˜[YHHÊ‘Ó”SˆŠKˆ˜ÜžRYHÔ–WÑÓ”S‹ˆ›˜]^[HHUSÓSÑVÑÓ”S‹ˆ˜Ø]YÛÜžS˜[YHHÊ\›[ÜˆŠKˆšZYÚHLKˆÙZYÚHLŒˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆHÛœ[ˆ\ÈÛÈÝ›Û™È]Ø[ˆX\Ú[H][ˆ‚ˆ˜H[\XÚËˆ]ÈYH\ÈÝYÚ[™YÈWˆ‚ˆœ›ØÚËZ\™Ý]Kˆ[ˆÜ™[˜\žHÛÜÙ—ˆ‚ˆ˜]XÚÈÛÛ‰Ý]™[ˆX]™HHØÜ˜]ÚˆŠKˆœÚÙ[[Û”ØØ[HHÌLËˆœÚÙ[[Û“Ù™œÙ]HKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÑÛœ[‹ˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÕ—ÔÒRÑWÕÒPÑHˆS’SWÔ“ÕUWÕTÔÓSWÑÕÓ‹ˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÑÛœ[‹ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLÈˆKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÒRÑWÓÕËˆœ[]HHÓ[Û”[]WÑÛœ[‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÑÛœ[‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÑÛœ[‹ˆšXÛÛ”[[™^HˆÚYˆÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆ™œ›ÛXÑ™[X[HHÓ[Û‘œ›ÛX×ÑÛœ[‘‹ˆ™œ›ÛXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÑ™[X[HHÓ[Û˜XÚÔX×ÑÛœ[‘‹ˆ˜˜XÚÔXÔÚ^™Q™[X[HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+KˆÙ[™YˆËÔÑÑS‘T—ÑQ‘‘T‘SÑTÈ	‰ˆTÑÐWÔÕSWÔÔPÒQT×ÑÑ–ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊË‹ÒQÕ×ÔÒV‘WÓ
+Bˆ“ÓÕ’S•
+Ûœ[ŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÑÛœ[‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÑÛœ[‹ˆÔÚ[žSÝ™\ÛÜ›[]WÑÛœ[‚ˆ
+BˆÕ‘T•ÓÔ“Ñ‘SPSJˆÔXÕX›WÑÛœ[‘‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™Âˆ
+Bˆ›]™[\X\›œÙ]HÑÛœ[“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÑÛœ[•XXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÔS”B‚ˆÚYˆÑSRSWÔÕS•T‚ˆÔÔPÒQT×ÔÕS•T—HBˆÂˆ˜˜\ÙRHÌËˆ˜˜\ÙP]XÚÈHMKˆ˜˜\ÙQY™[œÙHHŒ‹ˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÓ“Ô“PS
+Kˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMŒÈˆMKˆ™]–ZY[Ð]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+KˆÚYˆÕTUQÐP’SUQTÈHÑS—Íˆ˜Xš[]Y\ÈHÈP’SUWÒS•SRQUKP’SUWÑ”’TÒËP’SUWÔÐTÔÒTTˆKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÒS•SRQUKP’SUWÓ“Ó‘KP’SUWÔÐTÔÒTTˆKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð”“ÕÓ‹ˆœÜXÚY\Ó˜[YHHÊ”ÕS•TˆŠKˆ˜ÜžRYHÔ–WÔÕS•T‹ˆ›˜]^[HHUSÓSÑVÔÕS•T‹ˆ˜Ø]YÛÜžS˜[YHHÊšYÈÜ›ˆŠKˆšZYÚHMˆÙZYÚHÌL‹ˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ”Ý[\‰ÜÈXYÛšYšXÙ[[\œÈÙ\™Wˆ‚ˆ›Û˜ÙH˜YY]YÚšXÙ\È\ÈÛÜšÜÈÙˆ\—ˆ‚ˆ\ÈH™\Ý[\ÈÚðê[[ÛˆØ\È[Yˆ‚ˆ˜ÛÜÙHÈ^[˜Ý[Û‹ˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÝ[\‹ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKMJKˆS’SPÓQÑ”SQJMJKˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÝ[\‹ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈÈˆKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÑTÔ’QÒÔÒQKˆœ[]HHÓ[Û”[]WÔÝ[\‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÝ[\‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÝ[\‹ˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊËLËÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+Ý[\ŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔÝ[\‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔÝ[\‹ˆÔÚ[žSÝ™\ÛÜ›[]WÔÝ[\‚ˆ
+Bˆ›]™[\X\›œÙ]HÔÝ[\“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÝ[\•XXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÔÝ[\‘YÙÓ[Ý™SX\›œÙ]ˆÚYˆÑÑS—ÎÐÔ“ÔÔ×ÑU“ÔÂˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÔPÒQT×ÕÖT‘QT‹ÓÓ‘USÓ”ÊÒQ—ÕTÑQÓSÕ‘WÖÕSQTËSÕ‘WÔÖTÒQSÐTÒŒJ_JKˆÙ[™Y‚ˆK‚ˆÚYˆÑÑS—ÎÐÔ“ÔÔ×ÑU“ÔÂˆÔÔPÒQT×ÕÖT‘QT—HBˆÂˆ˜˜\ÙRHLËˆ˜˜\ÙP]XÚÈHLKˆ˜˜\ÙQY™[œÙHHÌ‹ˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHLKˆ˜˜\ÙTÜY™[œÙHHÍKˆ\\ÈHSÓ—ÕTTÊTWÓ“Ô“PSTWÔÖPÒPÊKˆ˜Ø]Ú˜]HHKˆ™^ZY[HŒËˆ™]–ZY[Ð]XÚÈHKˆ™]–ZY[ÔÜ]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+Kˆ˜Xš[]Y\ÈHÈP’SUWÒS•SRQUKP’SUWÑ”’TÒËP’SUWÔÐTÔÒTTˆKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔVKˆœÜXÚY\Ó˜[YHHÊ•ÖT‘QTˆŠKˆ˜ÜžRYHÔ–WÕÖT‘QT‹ˆ›˜]^[HHUSÓSÑVÕÖT‘QT‹ˆ˜Ø]YÛÜžS˜[YHHÊšYÈÜ›ˆŠKˆšZYÚHNˆÙZYÚHMLKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•H›XÚÈÜ˜œÈÚ[™HÚ][ˆ[˜Ø[›žHYÚˆ‚ˆÚ[ˆ]\È\™XÝ[™È[š\ÚX›H˜\œšY\œË—ˆ‚ˆ•H\ˆÚYœ›ÛH]È™X\™™]Z[œÈX]ˆ‚ˆ˜[™\È\ÙY[›ÜˆÚ[\ˆÛÝ[™ËˆŠKˆœÚÙ[[Û”ØØ[HHËˆœÚÙ[[Û“Ù™œÙ]H‹ˆ˜Z[™\”ØØ[HHŽ‹ˆ˜Z[™\“Ù™œÙ]HKˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÕÞ\™Y\‹ˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÕÞ\™Y\‹ˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HˆËË˜˜XÚÐ[š[RYHPÒ×ÐS’SWÓ“Ó‘Kˆœ[]HHÓ[Û”[]WÕÞ\™Y\‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÕÞ\™Y\‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÕÞ\™Y\‹ˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKLËÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+Þ\™Y\ŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÕÞ\™Y\‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÕÞ\™Y\‹ˆÔÚ[žSÝ™\ÛÜ›[]WÕÞ\™Y\‚ˆ
+Bˆ›]™[\X\›œÙ]HÕÞ\™Y\“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÕÞ\™Y\•XXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑÑS—ÎÐÔ“ÔÔ×ÑU“ÔÂˆÙ[™YˆËÔÑSRSWÔÕS•T‚‚ˆÚYˆÑSRSWÔÓQPT‘ÓBˆÔÔPÒQT×ÔÓQPT‘ÓWHBˆÂˆ˜˜\ÙRHMKˆ˜˜\ÙP]XÚÈHŒˆ˜˜\ÙQY™[œÙHHÍKˆ˜˜\ÙTÜYYHÍKˆ˜˜\ÙTÜ]XÚÈHŒˆ˜˜\ÙTÜY™[œÙHHKˆ\\ÈHSÓ—ÕTTÊTWÓ“Ô“PS
+Kˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈˆL‹ˆ™]–ZY[ÔÜYYHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÑTÕˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+KˆÚYˆÕTUQÐP’SUQTÈHÑS—Íˆ˜Xš[]Y\ÈHÈP’SUWÓÕÓ—ÕSTËP’SUWÕPÒ’PÒPS‹P’SUWÓSÓÑHKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÓÕÓ—ÕSTËP’SUWÓ“Ó‘KP’SUWÓSÓÑHKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÕÒUKˆ››Ñ›\H•QKˆœÜXÚY\Ó˜[YHHÊ”ÓQPT‘ÓHŠKˆ˜ÜžRYHÔ–WÔÓQPT‘ÓKˆ›˜]^[HHUSÓSÑVÔÓQPT‘ÓKˆ˜Ø]YÛÜžS˜[YHHÊ”Z[\ˆŠKˆšZYÚHL‹ˆÙZYÚHNˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆHÛYX\™ÛHX\šÜÈ]È\œš]ÜžH\Ú[™ÈWˆ‚ˆ™›ZY]XZÜÈÝ]œ›ÛHH\Ùˆ]×ˆ‚ˆZ[ˆX›Ý]KY™™\™[X\šÜÈYžWˆ‚ˆ\ÈÚðê[[Ûˆ]™H™Y[ˆ›Ý[™ˆŠKˆœÚÙ[[Û”ØØ[HHŽËˆœÚÙ[[Û“Ù™œÙ]HKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÛYX\™ÛKˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]H‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKLŠKˆS’SPÓQÑ”SQJLŠKˆS’SPÓQÑ”SQJKLŠKˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÒÒ•STÈˆS’SWÒÒ•ST×Õ—ÔÕ‘UÒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÛYX\™ÛKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLˆKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒÔÓQKˆœ[]HHÓ[Û”[]WÔÛYX\™ÛKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÛYX\™ÛKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÛYX\™ÛKˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊ‹ËÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+ÛYX\™ÛJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔÛYX\™ÛKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔÛYX\™ÛKˆÔÚ[žSÝ™\ÛÜ›[]WÔÛYX\™ÛBˆ
+BˆXXÚ[™Õ\HHWÒSUTUKˆ›]™[\X\›œÙ]HÔÛYX\™ÛS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÛYX\™ÛUXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÔÓQPT‘ÓB‚ˆÚYˆÑSRSWÓRSS’ÂˆÔÔPÒQT×ÓRSS’×HBˆÂˆ˜˜\ÙRHMKˆ˜˜\ÙP]XÚÈHˆ˜˜\ÙQY™[œÙHHLKˆ˜˜\ÙTÜYYHLˆ˜˜\ÙTÜ]XÚÈHˆ˜˜\ÙTÜY™[œÙHHÌˆ\\ÈHSÓ—ÕTTÊTWÓ“Ô“PS
+Kˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈMÌˆˆŒˆ™]–ZY[ÑY™[œÙHH‹ˆš][PÛÛ[[ÛˆHUSWÓSÓÓSÓ×ÓRSËˆš][T˜\™HHUSWÓSÓÓSÓ×ÓRSËˆ™Ù[™\”˜][ÈHSÓ—Ñ‘SPSKˆ™YÙÐÞXÛ\ÈHŒˆ™œšY[™Ú\HÕS‘T‘Ñ”’QS‘ÒTˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÑ’QS
+KˆÚYˆÕTUQÐP’SUQTÈHÑS—Íˆ˜Xš[]Y\ÈHÈP’SUWÕPÒ×ÑUP’SUWÔÐÔTKP’SUWÔÐTÔÒTTˆKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÕPÒ×ÑUP’SUWÓ“Ó‘KP’SUWÔÐTÔÒTTˆKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÔS’ËˆœÜXÚY\Ó˜[YHHÊ“RSS’ÈŠKˆ˜ÜžRYHÔ–WÓRSS’Ëˆ›˜]^[HHUSÓSÑVÓRSS’Ëˆ˜Ø]YÛÜžS˜[YHHÊ“Z[ÈÛÝÈŠKˆšZYÚHL‹ˆÙZYÚHÍMKˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]Ú]™\ÈÝ™\ˆš]™HØ[ÛœÈÙˆZ[ÈZ[K—ˆ‚ˆ’]ÈÝÙY]Z[È\È[š›ÞYYžHÚ[™[ˆ[™ˆ‚ˆ™Ü›ÝÛ‹]\È[ZÙKˆ[ÜHÚÈØ[‰Ýš[š×ˆ‚ˆ›Z[È\›ˆ][È[ÙÝ\[™X]][œÝXYˆŠKˆœÚÙ[[Û”ØØ[HHŽˆœÚÙ[[Û“Ù™œÙ]HKˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÓZ[[šËˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹MŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–Èˆˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKÌ
+KˆS’SPÓQÑ”SQJÌ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑWÔÓÕËˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÓZ[[šËˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈÈˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÒÔÓQKˆœ[]HHÓ[Û”[]WÓZ[[šËˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓZ[[šËˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÓZ[[šËˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈHˆˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLËÒQÕ×ÔÒV‘WÓJBˆ“ÓÕ’S•
+Z[[šÊBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓZ[[šËˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓZ[[šËˆÔÚ[žSÝ™\ÛÜ›[]WÓZ[[šÂˆ
+Bˆ›]™[\X\›œÙ]HÓZ[[šÓ]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓZ[[šÕXXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÓZ[[šÑYÙÓ[Ý™SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÓRSS’Â‚ˆÚYˆÑSRSWÔRRÓÕBˆÔÔPÒQT×ÔRRÓÕWHBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHKˆ˜˜\ÙQY™[œÙHHÍKˆ˜˜\ÙTÜYYHLMKˆ˜˜\ÙTÜ]XÚÈHLMKˆ˜˜\ÙTÜY™[œÙHHLˆ\\ÈHSÓ—ÕTTÊTWÑSPÕ’PÊKˆ˜Ø]Ú˜]HHËˆÚYˆÕTUQÑVÖRQSÈHÑS—Îˆ™^ZY[HŽLˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HŒKˆÙ[ÙBˆ™^ZY[HŒM‹ˆÙ[™Y‚ˆ™]–ZY[ÔÜYYH‹ˆ™]–ZY[ÔÜ]XÚÈHKˆ™Ù[™\”˜][ÈHSÓ—ÑÑS‘T“TÔËˆ™YÙÐÞXÛ\ÈHˆ™œšY[™Ú\HÍKˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓ“×ÑQÑÔ×ÑTÐÓÕ‘T‘Q
+KˆÚYˆÕTUQÐP’SUQTÈHÑS—ÍÂˆ˜Xš[]Y\ÈHÈP’SUWÔ‘TÔÕT‘KP’SUWÓ“Ó‘KP’SUWÒS“‘T—Ñ“ÐÕTÈKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÔ‘TÔÕT‘KP’SUWÓ“Ó‘KP’SUWÕ“ÓÐP”ÓÔˆKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÖQSÕËˆœÜXÚY\Ó˜[YHHÊ”RRÓÕHŠKˆ˜ÜžRYHÔ–WÔRRÓÕKˆ›˜]^[HHUSÓSÑVÔRRÓÕKˆ˜Ø]YÛÜžS˜[YHHÊ•[™\ˆŠKˆšZYÚHNKˆÙZYÚHMÎˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ”˜ZZÛÝH[X›ÙY\ÈHÜYYÙˆYÚš[™Ë—ˆ‚ˆ’]È›Ø\œÈÙ[™ÚØÚÈØ]™\ÈÚY\š[™×ˆ‚ˆ›ÝYÚHZ\ˆ[™Ü›Ý[™\ÈY—ˆ‚ˆ›YÚš[™È›ÛÈÙ\™HÜ˜\Ú[™ÈÝÛ‹ˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHÍKˆ˜Z[™\“Ù™œÙ]HËˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ô˜ZZÛÝKˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJJKˆS’SPÓQÑ”SQJKÍŠKˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÑ“TÒÖQSÕÈˆS’SWÕ—ÔÕ‘UÒˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ô˜ZZÛÝKˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈLˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÔÒRÑWÑ“TÒÖQSÕËˆœ[]HHÓ[Û”[]WÔ˜ZZÛÝKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔ˜ZZÛÝKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ô˜ZZÛÝKˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈˆ‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊMËÒQÕ×ÔÒV‘WÓ
+Bˆ“ÓÕ’S•
+˜ZZÛÝJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔ˜ZZÛÝKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔ˜ZZÛÝKˆÔÚ[žSÝ™\ÛÜ›[]WÔ˜ZZÛÝBˆ
+Bˆš\ÔÝX“YÙ[™\žHH•QKˆœ\™™XÝUÛÝ[HQÑS‘T–WÔT‘‘PÕÒU—ÐÓÕS•ˆ›]™[\X\›œÙ]HÔ˜ZZÛÝS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔ˜ZZÛÝUXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÔRRÓÕB‚ˆÚYˆÑSRSWÑS•RBˆÔÔPÒQT×ÑS•RWHBˆÂˆ˜˜\ÙRHLMKˆ˜˜\ÙP]XÚÈHLMKˆ˜˜\ÙQY™[œÙHHKˆ˜˜\ÙTÜYYHLˆ˜˜\ÙTÜ]XÚÈHLˆ˜˜\ÙTÜY™[œÙHHÍKˆ\\ÈHSÓ—ÕTTÊTWÑ’T‘JKˆ˜Ø]Ú˜]HHËˆÚYˆÕTUQÑVÖRQSÈHÑS—Îˆ™^ZY[HŽLˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HŒKˆÙ[ÙBˆ™^ZY[HŒMËˆÙ[™Y‚ˆ™]–ZY[ÒHKˆ™]–ZY[Ð]XÚÈH‹ˆ™Ù[™\”˜][ÈHSÓ—ÑÑS‘T“TÔËˆ™YÙÐÞXÛ\ÈHˆ™œšY[™Ú\HÍKˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓ“×ÑQÑÔ×ÑTÐÓÕ‘T‘Q
+KˆÚYˆÕTUQÐP’SUQTÈHÑS—ÍÂˆ˜Xš[]Y\ÈHÈP’SUWÔ‘TÔÕT‘KP’SUWÓ“Ó‘KP’SUWÒS“‘T—Ñ“ÐÕTÈKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÔ‘TÔÕT‘KP’SUWÓ“Ó‘KP’SUWÑ“TÒÑ’T‘HKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð”“ÕÓ‹ˆœÜXÚY\Ó˜[YHHÊ‘S•RHŠKˆ˜ÜžRYHÔ–WÑS•RKˆ›˜]^[HHUSÓSÑVÑS•RKˆ˜Ø]YÛÜžS˜[YHHÊ•›ÛØ[›ÈŠKˆšZYÚHŒKˆÙZYÚHNNˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ‘[ZH[X›ÙY\ÈH\ÜÚ[ÛˆÙˆXYÛXK—ˆ‚ˆ’]\ÈÝYÚÈ]™H™Y[ˆ›Ü›ˆ[ˆWˆ‚ˆ™\\[ÛˆÙˆH›ÛØ[›Ëˆ]›\ÝÈš\™H]ˆ‚ˆ˜ÛÛœÝ[Y\È[]]ÝXÚ\ËˆŠKˆœÚÙ[[Û”ØØ[HHNKˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHÍKˆ˜Z[™\“Ù™œÙ]HËˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ñ[ZKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–Èˆ‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKŒ
+KˆS’SPÓQÑ”SQJŒ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÑÔ“Õ×Õ’P”UKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ñ[ZKˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠHˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆˆLKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÔÒRÑWÑÓÕ×Ô‘Qˆœ[]HHÓ[Û”[]WÑ[ZKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÑ[ZKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ñ[ZKˆšXÛÛ”[[™^H‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKÒQÕ×ÔÒV‘WÓ
+Bˆ“ÓÕ’S•
+[ZJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÑ[ZKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÑ[ZKˆÔÚ[žSÝ™\ÛÜ›[]WÑ[ZBˆ
+Bˆš\ÔÝX“YÙ[™\žHH•QKˆœ\™™XÝUÛÝ[HQÑS‘T–WÔT‘‘PÕÒU—ÐÓÕS•ˆ›]™[\X\›œÙ]HÑ[ZS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÑ[ZUXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÑS•RB‚ˆÚYˆÑSRSWÔÕRPÕS‘BˆÔÔPÒQT×ÔÕRPÕS‘WHBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHÍKˆ˜˜\ÙQY™[œÙHHLMKˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHLˆ˜˜\ÙTÜY™[œÙHHLMKˆ\\ÈHSÓ—ÕTTÊTWÕÐUTŠKˆ˜Ø]Ú˜]HHËˆÚYˆÕTUQÑVÖRQSÈHÑS—Îˆ™^ZY[HŽLˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HŒKˆÙ[ÙBˆ™^ZY[HŒMKˆÙ[™Y‚ˆ™]–ZY[ÑY™[œÙHHKˆ™]–ZY[ÔÜY™[œÙHH‹ˆ™Ù[™\”˜][ÈHSÓ—ÑÑS‘T“TÔËˆ™YÙÐÞXÛ\ÈHˆ™œšY[™Ú\HÍKˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓ“×ÑQÑÔ×ÑTÐÓÕ‘T‘Q
+KˆÚYˆÕTUQÐP’SUQTÈHÑS—ÍÂˆ˜Xš[]Y\ÈHÈP’SUWÔ‘TÔÕT‘KP’SUWÓ“Ó‘KP’SUWÒS“‘T—Ñ“ÐÕTÈKˆÙ[ÙBˆ˜Xš[]Y\ÈHÈP’SUWÔ‘TÔÕT‘KP’SUWÓ“Ó‘KP’SUWÕÐUT—ÐP”ÓÔˆKˆÙ[™Y‚ˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ð“QKˆœÜXÚY\Ó˜[YHHÊ”ÕRPÕS‘HŠKˆ˜ÜžRYHÔ–WÔÕRPÕS‘Kˆ›˜]^[HHUSÓSÑVÔÕRPÕS‘Kˆ˜Ø]YÛÜžS˜[YHHÊ]\›Ü˜HŠKˆšZYÚHŒˆÙZYÚHNÌˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ”ÝZXÝ[™H[X›ÙY\ÈHÛÛ\\ÜÚ[ÛˆÙ—ˆ‚ˆ˜H\™HÜš[™ÈÙˆØ]\‹ˆ][œÈXÜ›ÜÜ×ˆ‚ˆH[™Ú]ÛY[™È[YØ[˜ÙKˆ]\ÈWˆ‚ˆœÝÙ\ˆÈ\šYžH\HØ]\‹ˆŠKˆœÚÙ[[Û”ØØ[HHŽKˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHÍKˆ˜Z[™\“Ù™œÙ]HËˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÔÝZXÝ[™Kˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆËˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJŒ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—ÔÒRÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÔÝZXÝ[™Kˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HËˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÔÒRÑWÑÓÕ×Ð“QKˆœ[]HHÓ[Û”[]WÔÝZXÝ[™KˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔÝZXÝ[™KˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÔÝZXÝ[™KˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈˆ‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊËLÒQÕ×ÔÒV‘WÖÐUWÓÓ“JBˆ“ÓÕ’S•
+ÝZXÝ[™JBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔÝZXÝ[™KˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔÝZXÝ[™KˆÔÚ[žSÝ™\ÛÜ›[]WÔÝZXÝ[™Bˆ
+Bˆš\ÔÝX“YÙ[™\žHH•QKˆœ\™™XÝUÛÝ[HQÑS‘T–WÔT‘‘PÕÒU—ÐÓÕS•ˆ›]™[\X\›œÙ]HÔÝZXÝ[™S]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔÝZXÝ[™UXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÔÕRPÕS‘B‚ˆÚYˆÑSRSWÓT•’UT‚ˆÔÔPÒQT×ÓT•’UT—HBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHˆ˜˜\ÙQY™[œÙHHLˆ˜˜\ÙTÜYYHKˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHLˆ\\ÈHSÓ—ÕTTÊTWÔ“ÐÒËTWÑÔ“ÕS‘
+Kˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—ÍJHÈŒˆËˆ™]–ZY[Ð]XÚÈHKˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHˆ™œšY[™Ú\HÍKˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓSÓ”ÕTŠKˆ˜Xš[]Y\ÈHÈP’SUWÑÕUËP’SUWÓ“Ó‘KP’SUWÔÐS‘Õ‘RSKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔ‘QS‹ˆœÜXÚY\Ó˜[YHHÊ“T•’UTˆŠKˆ˜ÜžRYHÔ–WÓT•’UT‹ˆ›˜]^[HHUSÓSÑVÓT•’UT‹ˆ˜Ø]YÛÜžS˜[YHHÊ”›ØÚÈÚÚ[ˆŠKˆšZYÚH‹ˆÙZYÚHÌŒˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆH\š]\ˆ\È›Ü›ˆY\[™\ˆHÜ›Ý[™—ˆ‚ˆ’]]\ÝX]]ÈØ^H›ÝYÚHÛÚ[X›Ý™Wˆ‚ˆ˜[™™XXÚHÝ\™˜XÙH›Üˆ]ÈÙYH]×ˆ‚ˆœ\™[ÉÈ˜XÙ\ËˆŠKˆœÚÙ[[Û”ØØ[HHÌ‹ˆœÚÙ[[Û“Ù™œÙ]HNˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ó\š]\‹ˆ™œ›ÛXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘JÌ‹
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆLˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÕ—Ò•ST×ÔÓPSˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ó\š]\‹ˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JM‹
+Kˆ˜˜XÚÔXÖSÙ™œÙ]Hˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÒRÑWÓÕËˆœ[]HHÓ[Û”[]WÓ\š]\‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓ\š]\‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ó\š]\‹ˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÑTÕˆÒQÕÊËÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+\š]\ŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓ\š]\‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓ\š]\‹ˆÔÚ[žSÝ™\ÛÜ›[]WÓ\š]\‚ˆ
+Bˆ›]™[\X\›œÙ]HÓ\š]\“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓ\š]\•XXÚX›SX\›œÙ]ˆ™YÙÓ[Ý™SX\›œÙ]HÓ\š]\‘YÙÓ[Ý™SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SÌÔPÒQT×ÔTUTŸJKˆK‚ˆÔÔPÒQT×ÔTUT—HBˆÂˆ˜˜\ÙRHÌˆ˜˜\ÙP]XÚÈHˆ˜˜\ÙQY™[œÙHHÌˆ˜˜\ÙTÜYYHLKˆ˜˜\ÙTÜ]XÚÈHKˆ˜˜\ÙTÜY™[œÙHHÌˆ\\ÈHSÓ—ÕTTÊTWÔ“ÐÒËTWÑÔ“ÕS‘
+Kˆ˜Ø]Ú˜]HHKˆ™^ZY[HMˆ™]–ZY[Ð]XÚÈH‹ˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHˆ™œšY[™Ú\HÍKˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓSÓ”ÕTŠKˆ˜Xš[]Y\ÈHÈP’SUWÔÒQÔÒÒS‹P’SUWÓ“Ó‘KP’SUWÓ“Ó‘HKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔVKˆœÜXÚY\Ó˜[YHHÊ”TUTˆŠKˆ˜ÜžRYHÔ–WÔTUT‹ˆ›˜]^[HHUSÓSÑVÔTUT‹ˆ˜Ø]YÛÜžS˜[YHHÊ’\™Ú[ŠKˆšZYÚHL‹ˆÙZYÚHMLŒˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆH\]\ˆÜ™X]\ÈHØ\È[œÚYH]È›ÙWˆ‚ˆ]]Z™XÝÈ[™\ˆÛÛ\™\ÜÚ[ÛˆÈ›Ü[ˆ‚ˆš]Ù[ˆZÙHH™]ˆ]È›ÙHØ[ˆÚ]Ý[™ˆ‚ˆ˜HÛÛ\Ú[ÛˆÚ]ÛÛYÝY[ˆŠKˆœÚÙ[[Û”ØØ[HHŽL‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Ô\]\‹ˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆLKˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJK
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÕ—ÔÒRÑHˆS’SWÒÔÒRÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Ô\]\‹ˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÒRÑKˆœ[]HHÓ[Û”[]WÔ\]\‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÔ\]\‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Ô\]\‹ˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈˆ‹ˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊËËÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+\]\ŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÔ\]\‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×ÔÔÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÔ\]\‹ˆÔÚ[žSÝ™\ÛÜ›[]WÔ\]\‚ˆ
+Bˆ›]™[\X\›œÙ]HÔ\]\“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÔ\]\•XXÚX›SX\›œÙ]ˆ™]›Û][ÛœÈHU“ÓUSÓŠÑU“×ÓU‘SMKÔPÒQT×ÕTS’UTŸJKˆK‚ˆÔÔPÒQT×ÕTS’UT—HBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHLÍˆ˜˜\ÙQY™[œÙHHLLˆ˜˜\ÙTÜYYHŒKˆ˜˜\ÙTÜ]XÚÈHMKˆ˜˜\ÙTÜY™[œÙHHLˆ\\ÈHSÓ—ÕTTÊTWÔ“ÐÒËTWÑT’ÊKˆ˜Ø]Ú˜]HHKˆÚYˆÕTUQÑVÖRQSÈHÑS—Îˆ™^ZY[HÌˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HÌˆÙ[ÙBˆ™^ZY[HŒNˆÙ[™Y‚ˆ™]–ZY[Ð]XÚÈHËˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHˆ™œšY[™Ú\HÍKˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓSÓ”ÕTŠKˆ˜Xš[]Y\ÈHÈP’SUWÔÐS‘ÔÕ‘PSKP’SUWÓ“Ó‘KP’SUWÕS“‘T•‘HKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔ‘QS‹ˆœÜXÚY\Ó˜[YHHÊ•TS’UTˆŠKˆ˜ÜžRYHÔ–WÕTS’UT‹ˆ›˜]^[HHUSÓSÑVÕTS’UT‹ˆ˜Ø]YÛÜžS˜[YHHÊ\›[ÜˆŠKˆšZYÚHŒˆÙZYÚHŒŒˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘ÊˆH\˜[š]\ˆ\ÈÛÈÝ™\Ú[Z[™ÛHÝÙ\™[ˆ‚ˆš]Ø[ˆœš[™ÈÝÛˆHÚÛH[Ý[Z[ˆÈXZÙWˆ‚ˆš]È™\Ýˆ]›Ø[\È[ˆ[Ý[Z[œÈÙYZÚ[™×ˆ‚ˆ›™]ÈÜÛ™[ÈÈšYÚˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHÍKˆ˜Z[™\“Ù™œÙ]HËˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Õ\˜[š]\‹ˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKL
+KˆS’SPÓQÑ”SQJKÌ
+KˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÒÔÒRÑHˆS’SWÕ—ÔÒRÑKˆ™œ›Û[š[Q[^HHLˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Õ\˜[š]\‹ˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆKˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÒRÑWÓÕËˆœ[]HHÓ[Û”[]WÕ\˜[š]\‹ˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÕ\˜[š]\‹ˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Õ\˜[š]\‹ˆšXÛÛ”[[™^HÑÐWÔÕSWÔÔPÒQT×ÒPÓÓ”ÈÈHˆˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKLKÒQÕ×ÔÒV‘WÓ
+Bˆ“ÓÕ’S•
+\˜[š]\ŠBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÕ\˜[š]\‹ˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÕ\˜[š]\‹ˆÔÚ[žSÝ™\ÛÜ›[]WÕ\˜[š]\‚ˆ
+Bˆ›]™[\X\›œÙ]HÕ\˜[š]\“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÕ\˜[š]\•XXÚX›SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÕ\˜[š]\‘›Ü›TÜXÚY\ÒYX›Kˆ™›Ü›PÚ[™ÙUX›HHÕ\˜[š]\‘›Ü›PÚ[™ÙUX›KˆK‚ˆÚYˆÓQQÐWÑU“ÓUSÓ”ÂˆÔÔPÒQT×ÕTS’UT—ÓQQÐWHBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHMˆ˜˜\ÙQY™[œÙHHMLˆ˜˜\ÙTÜYYHÌKˆ˜˜\ÙTÜ]XÚÈHMKˆ˜˜\ÙTÜY™[œÙHHLŒˆ\\ÈHSÓ—ÕTTÊTWÔ“ÐÒËTWÑT’ÊKˆ˜Ø]Ú˜]HHKˆ™^ZY[H
+ÕTUQÑVÖRQSÈHÑS—Î
+HÈÍLˆÌMKˆ™]–ZY[Ð]XÚÈHËˆ™Ù[™\”˜][ÈHTÑS•Ñ‘SPSJL
+Kˆ™YÙÐÞXÛ\ÈHˆ™œšY[™Ú\HÍKˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓSÓ”ÕTŠKˆ˜Xš[]Y\ÈHÈP’SUWÔÐS‘ÔÕ‘PSKP’SUWÔÐS‘ÔÕ‘PSKP’SUWÔÐS‘ÔÕ‘PSHKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔ‘QS‹ˆœÜXÚY\Ó˜[YHHÊ•TS’UTˆŠKˆÚYˆÓSÑQ’QQÓQQÐWÐÔ’QTÂˆ˜ÜžRYHÔ–WÕTS’UT—ÓQQÐKˆÙ[ÙBˆ˜ÜžRYHÔ–WÕTS’UT‹ˆÙ[™YˆËÈÓSÑQ’QQÓQQÐWÐÔ’QTÂˆ›˜]^[HHUSÓSÑVÕTS’UT‹ˆ˜Ø]YÛÜžS˜[YHHÊ\›[ÜˆŠKˆšZYÚHKˆÙZYÚHMLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ‘YHÈHÛÛÜÜØ[ÝÙ\ˆÝ\™Y[È]ˆ‚ˆ\ÈÚðê[[Û‰ÜÈ˜XÚÈÜ]šYÚÜ[‹ˆ]×ˆ‚ˆ™\ÝXÝ]™H[œÝ[˜ÝÈ\™HHÛ›H[™×ˆ‚ˆšÙY\[™È][Ýš[™ËˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHÍKˆ˜Z[™\“Ù™œÙ]HËˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×Õ\˜[š]\“YYØKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHÐ[š[\×ÔÚ[™ÛQœ˜[YTXÙRÛ\‹ˆËË™œ›Û[š[RYHS’SWÕ—ÔÔURTÒÐS‘Ð“ÕSÑKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×Õ\˜[š]\“YYØKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]Hˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÕ—ÔÒRÑWÓÕËˆœ[]HHÓ[Û”[]WÕ\˜[š]\“YYØKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÕ\˜[š]\“YYØKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—Õ\˜[š]\“YYØKˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊLKLËÒQÕ×ÔÒV‘WÖÐUWÓÓ“JBˆ“ÓÕ’S•
+\˜[š]\ŠBˆÚYˆÕ×ÐUWÓÓ“WÑ“Ô“TÂˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÕ\˜[š]\“YYØKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ñ“ÓÕˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÕ\˜[š]\“YYØKˆÔÚ[žSÝ™\ÛÜ›[]WÕ\˜[š]\“YYØBˆ
+BˆÙ[™YˆËÓÕ×ÐUWÓÓ“WÑ“Ô“TÂˆš\ÓYYØQ]›Û][ÛˆH•QKˆ›]™[\X\›œÙ]HÕ\˜[š]\“]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÕ\˜[š]\•XXÚX›SX\›œÙ]ˆ™›Ü›TÜXÚY\ÒYX›HHÕ\˜[š]\‘›Ü›TÜXÚY\ÒYX›Kˆ™›Ü›PÚ[™ÙUX›HHÕ\˜[š]\‘›Ü›PÚ[™ÙUX›Kˆœ˜[™ÛZ^™\“[ÙHHSÓ—ÔS‘ÓRV‘T—ÒS•SQˆKˆÙ[™YˆËÔÓQQÐWÑU“ÓUSÓ”ÂˆÙ[™YˆËÔÑSRSWÓT•’UT‚‚ˆÚYˆÑSRSWÓQÒPBˆÔÔPÒQT×ÓQÒPWHBˆÂˆ˜˜\ÙRHL‹ˆ˜˜\ÙP]XÚÈHLˆ˜˜\ÙQY™[œÙHHLÌˆ˜˜\ÙTÜYYHLLˆ˜˜\ÙTÜ]XÚÈHLˆ˜˜\ÙTÜY™[œÙHHMMˆ\\ÈHSÓ—ÕTTÊTWÔÖPÒPËTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHËˆÚYˆÕTUQÑVÖRQSÈHÑS—Îˆ™^ZY[HÍˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HÌ‹ˆÙ[ÙBˆ™^ZY[HŒŒˆÙ[™Y‚ˆ™]–ZY[ÔÜY™[œÙHHËˆ™Ù[™\”˜][ÈHSÓ—ÑÑS‘T“TÔËˆ™YÙÐÞXÛ\ÈHLŒˆ™œšY[™Ú\Hˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓ“×ÑQÑÔ×ÑTÐÓÕ‘T‘Q
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔ‘TÔÕT‘KP’SUWÓ“Ó‘KP’SUWÓUSTÐÐSHKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÕÒUKˆœÜXÚY\Ó˜[YHHÊ“QÒPHŠKˆ˜ÜžRYHÔ–WÓQÒPKˆ›˜]^[HHUSÓSÑVÓQÒPKˆ˜Ø]YÛÜžS˜[YHHÊ‘]š[™ÈŠKˆšZYÚHL‹ˆÙZYÚHŒMŒˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ“YÚXH\ÈÛÈÝÙ\™[]™[ˆHYÚˆ‚ˆ™›]\š[™ÈÙˆ]ÈÚ[™ÜÈØ[ˆ›ÝÈ\\ˆ‚ˆšÝ\Ù\Ëˆ\ÈH™\Ý[]ÚÛÜÙ\ÈÈ]™HÝ]ˆ‚ˆ›ÙˆÚYÚY\[™\ˆHÙXKˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHÌŒKˆ˜Z[™\“Ù™œÙ]HNKˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÓYÚXKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJJKˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJJKˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJL
+KˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJJKˆS’SPÓQÑ”SQJKJKˆS’SPÓQÑ”SQJL
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÑÔ“Õ×ÒS—ÔÕQÑTËˆ™œ›Û[š[Q[^HHŒˆ™[™[^S[Û‘[]˜][ÛˆH‹ˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÓYÚXKˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÔÒRÑWÑÓÕ×Ð“QKˆœ[]HHÓ[Û”[]WÓYÚXKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÓYÚXKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÓYÚXKˆšXÛÛ”[[™^HˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊ‹MËÒQÕ×ÔÒV‘WÓ
+Bˆ“ÓÕ’S•
+YÚXJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÓYÚXKˆÒV‘WÍˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ó“Ó‘KˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÓYÚXKˆÔÚ[žSÝ™\ÛÜ›[]WÓYÚXBˆ
+Bˆš\Ô™\ÝšXÝYYÙ[™\žHH•QKˆš\Ñœ›ÛY\˜[›™YH•QKˆœ\™™XÝUÛÝ[HQÑS‘T–WÔT‘‘PÕÒU—ÐÓÕS•ˆ›]™[\X\›œÙ]HÓYÚXS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÓYÚXUXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÓQÒPB‚ˆÚYˆÑSRSWÒ×ÓÒˆÔÔPÒQT×Ò×ÓÒHBˆÂˆ˜˜\ÙRHL‹ˆ˜˜\ÙP]XÚÈHLÌˆ˜˜\ÙQY™[œÙHHLˆ˜˜\ÙTÜYYHLˆ˜˜\ÙTÜ]XÚÈHLLˆ˜˜\ÙTÜY™[œÙHHMMˆ\\ÈHSÓ—ÕTTÊTWÑ’T‘KTWÑ“RS‘ÊKˆ˜Ø]Ú˜]HHËˆÚYˆÕTUQÑVÖRQSÈHÑS—Îˆ™^ZY[HÍˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HÌ‹ˆÙ[ÙBˆ™^ZY[HŒŒˆÙ[™Y‚ˆ™]–ZY[ÔÜY™[œÙHHËˆš][PÛÛ[[ÛˆHUSWÔÐPÔ‘QÐTÒˆš][T˜\™HHUSWÔÐPÔ‘QÐTÒˆ™Ù[™\”˜][ÈHSÓ—ÑÑS‘T“TÔËˆ™YÙÐÞXÛ\ÈHLŒˆ™œšY[™Ú\Hˆ™Ü›ÝÝ˜]HHÔ“ÕÕÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓ“×ÑQÑÔ×ÑTÐÓÕ‘T‘Q
+Kˆ˜Xš[]Y\ÈHÈP’SUWÔ‘TÔÕT‘KP’SUWÓ“Ó‘KP’SUWÔ‘QÑS‘TUÔˆKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—Ô‘QˆœÜXÚY\Ó˜[YHHÊ’ËSÒŠKˆ˜ÜžRYHÔ–WÒ×ÓÒˆ›˜]^[HHUSÓSÑVÒ×ÓÒˆ˜Ø]YÛÜžS˜[YHHÊ”˜Z[˜›ÝÈŠKˆšZYÚHÎˆÙZYÚHNNLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ’]È™X]\œËK]ÚXÚÛÝÈ[ˆÙ]™[ˆÛÛÜœ×ˆ‚ˆ™\[™[™ÈÛˆH[™ÛH]ÚXÚ^H\™Wˆ‚ˆœÝXÚÈžHYÚKX\™HÝYÚÈœš[™È›ÞK—ˆ‚ˆ’]\ÈØZYÈ]™H]H›ÛÝÙˆH˜Z[˜›ÝËˆŠKˆœÚÙ[[Û”ØØ[HHM‹ˆœÚÙ[[Û“Ù™œÙ]Hˆ˜Z[™\”ØØ[HHŒLˆ˜Z[™\“Ù™œÙ]HMËˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÒÓÚˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]Hˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKŒ
+KˆS’SPÓQÑ”SQJŒ
+Kˆ
+Kˆ™œ›Û[š[RYHS’SWÑÔ“Õ×Õ’P”UKˆ™[™[^S[Û‘[]˜][ÛˆH‹ˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÒÓÚˆ˜˜XÚÔXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈHˆ‹ˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÔÒRÑWÑÓÕ×Ô‘Qˆœ[]HHÓ[Û”[]WÒÓÚˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÒÓÚˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÒÓÚˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊKMËÒQÕ×ÔÒV‘WÓ
+Bˆ“ÓÕ’S•
+ÓÚ
+BˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÒÓÚˆÒV‘WÍˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ó“Ó‘KˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÒÓÚˆÔÚ[žSÝ™\ÛÜ›[]WÒÓÚˆ
+Bˆš\Ô™\ÝšXÝYYÙ[™\žHH•QKˆš\Ñœ›ÛY\˜[›™YH•QKˆœ\™™XÝUÛÝ[HQÑS‘T–WÔT‘‘PÕÒU—ÐÓÕS•ˆ›]™[\X\›œÙ]HÒÓÚ]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÒÓÚXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÒ×ÓÒ‚ˆÚYˆÑSRSWÐÑSP’BˆÔÔPÒQT×ÐÑSP’WHBˆÂˆ˜˜\ÙRHLˆ˜˜\ÙP]XÚÈHLˆ˜˜\ÙQY™[œÙHHLˆ˜˜\ÙTÜYYHLˆ˜˜\ÙTÜ]XÚÈHLˆ˜˜\ÙTÜY™[œÙHHLˆ\\ÈHSÓ—ÕTTÊTWÔÖPÒPËTWÑÔTÔÊKˆ˜Ø]Ú˜]HHKˆÚYˆÕTUQÑVÖRQSÈHÑS—Îˆ™^ZY[HÌˆÙ[YˆÕTUQÑVÖRQSÈHÑS—ÍBˆ™^ZY[HÌˆÙ[ÙBˆ™^ZY[HˆÙ[™Y‚ˆ™]–ZY[ÒHËˆš][PÛÛ[[ÛˆHUSWÓSWÐ‘T”–Kˆš][T˜\™HHUSWÓSWÐ‘T”–Kˆ™Ù[™\”˜][ÈHSÓ—ÑÑS‘T“TÔËˆ™YÙÐÞXÛ\ÈHLŒˆ™œšY[™Ú\HLˆ™Ü›ÝÝ˜]HHÔ“ÕÕÓQQUSWÔÓÕËˆ™YÙÑÜ›Ý\ÈHSÓ—ÑQÑ×ÑÔ“ÕTÊQÑ×ÑÔ“ÕTÓ“×ÑQÑÔ×ÑTÐÓÕ‘T‘Q
+Kˆ˜Xš[]Y\ÈHÈP’SUWÓUTSÐÕT‘KP’SUWÓ“Ó‘KP’SUWÓ“Ó‘HKˆ˜›ÙPÛÛÜˆH“ÑWÐÓÓÔ—ÑÔ‘QS‹ˆœÜXÚY\Ó˜[YHHÊÑSP’HŠKˆ˜ÜžRYHÔ–WÐÑSP’Kˆ›˜]^[HHUSÓSÑVÐÑSP’Kˆ˜Ø]YÛÜžS˜[YHHÊ•[YH˜]™[ŠKˆšZYÚH‹ˆÙZYÚHLˆ™\ØÜš\[ÛˆHÓÓTÕS‘ÔÕ’S‘Êˆ•\ÈÚðê[[ÛˆØ[YHœ›ÛHH]\™HžWˆ‚ˆ˜Ü›ÜÜÚ[™ÈÝ™\ˆ[YKˆ]\ÈÝYÚ]Û×ˆ‚ˆ›Û™È\ÈÙ[XšH\X\œËHœšYÚ[™ˆ‚ˆœÚ[š[™È]\™H]ØZ]È\ËˆŠKˆœÚÙ[[Û”ØØ[HHÎLËˆœÚÙ[[Û“Ù™œÙ]HLLˆ˜Z[™\”ØØ[HHM‹ˆ˜Z[™\“Ù™œÙ]Hˆ™œ›ÛXÈHÓ[Û‘œ›ÛX×ÐÙ[XšKˆ™œ›ÛXÔÚ^™HHSÓ—ÐÓÓÔ‘×ÔÒV‘J
+Kˆ™œ›ÛXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈMˆL‹ˆ™œ›Û[š[Qœ˜[Y\ÈHS’SWÑ”SQTÊˆS’SPÓQÑ”SQJKÌ
+KˆS’SPÓQÑ”SQJÌ
+KˆS’SPÓQÑ”SQJKÌ
+KˆS’SPÓQÑ”SQJÌ
+Kˆ
+Kˆ™œ›Û[š[RYHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈS’SWÔ’TÒS‘×ÕÓÐ“HˆS’SWÒÔÓQWÕÓÐ“Kˆ™[™[^S[Û‘[]˜][ÛˆHMKˆ˜˜XÚÔXÈHÓ[Û˜XÚÔX×ÐÙ[XšKˆ˜˜XÚÔXÔÚ^™HHÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈSÓ—ÐÓÓÔ‘×ÔÒV‘J
+HˆSÓ—ÐÓÓÔ‘×ÔÒV‘JMŠKˆ˜˜XÚÔXÖSÙ™œÙ]HÑÐWÔÕSWÔÔPÒQT×ÑÑ–ÈˆËˆ˜˜XÚÐ[š[RYHPÒ×ÐS’SWÔÒRÑWÑÓÕ×ÑÔ‘QS‹ˆœ[]HHÓ[Û”[]WÐÙ[XšKˆœÚ[žT[]HHÓ[Û”Ú[žT[]WÐÙ[XšKˆšXÛÛ”Üš]HHÓ[Û’XÛÛ—ÐÙ[XšKˆšXÛÛ”[[™^HKˆœÚÙ[[Û’[\\HHÓS—Ò•STÕTWÓ“Ó‘KˆÒQÕÊMÒQÕ×ÔÒV‘WÔÊBˆ“ÓÕ’S•
+Ù[XšJBˆÕ‘T•ÓÔ“
+ˆÔXÕX›WÐÙ[XšKˆÒV‘WÌÌžÌ‹ˆÒQÕ×ÔÒV‘WÓKˆPÒÔ×Ó“Ó‘KˆÐ[š[UX›WÑ›ÛÝÚ[™ËˆÓÝ™\ÛÜ›[]WÐÙ[XšKˆÔÚ[žSÝ™\ÛÜ›[]WÐÙ[XšBˆ
+Bˆš\Ó^]XØ[H•QKˆš\Ñœ›ÛY\˜[›™YH•QKˆœ\™™XÝUÛÝ[HQÑS‘T–WÔT‘‘PÕÒU—ÐÓÕS•ˆ›]™[\X\›œÙ]HÐÙ[XšS]™[\X\›œÙ]ˆXXÚX›SX\›œÙ]HÐÙ[XšUXXÚX›SX\›œÙ]ˆKˆÙ[™YˆËÔÑSRSWÐÑSP’B‚ˆÚY™Yˆ×ÒS•STÑS”ÑW×ÂŸNÂˆÙ[™Y‚
