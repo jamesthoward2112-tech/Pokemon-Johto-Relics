@@ -531,36 +531,23 @@ index c590402ee..24817906a 100644
  
  #undef ITEM_NAME
 diff --git a/src/data/pokemon/level_up_learnsets/gen_3.h b/src/data/pokemon/level_up_learnsets/gen_3.h
-index 38fc0a53f..288332cdb 100644
+index 38fc0a53f..494bfcf00 100644
 --- a/src/data/pokemon/level_up_learnsets/gen_3.h
 +++ b/src/data/pokemon/level_up_learnsets/gen_3.h
-@@ -20370,3 +20370,20 @@ static const struct LevelUpMove sPecharuntLevelUpLearnset[] = {
+@@ -20369,4 +20369,3 @@ static const struct LevelUpMove sPecharuntLevelUpLearnset[] = {
+     LEVEL_UP_END
  };
  #endif //P_FAMILY_PECHARUNT
- 
-+static const struct LevelUpMove sScarabubLevelUpLearnset[] = {
-+    LEVEL_UP_MOVE(1, MOVE_TACKLE), LEVEL_UP_MOVE(1, MOVE_LEER),
-+    LEVEL_UP_MOVE(5, MOVE_ENDURE), LEVEL_UP_MOVE(8, MOVE_BUG_BITE),
-+    LEVEL_UP_MOVE(11, MOVE_ARM_THRUST), LEVEL_UP_MOVE(14, MOVE_COUNTER), LEVEL_UP_END
-+};
-+static const struct LevelUpMove sSkarmetLevelUpLearnset[] = {
-+    LEVEL_UP_MOVE(1, MOVE_PECK), LEVEL_UP_MOVE(1, MOVE_LEER),
-+    LEVEL_UP_MOVE(5, MOVE_SAND_ATTACK), LEVEL_UP_MOVE(8, MOVE_METAL_CLAW),
-+    LEVEL_UP_MOVE(11, MOVE_FURY_ATTACK), LEVEL_UP_MOVE(14, MOVE_ROOST),
-+    LEVEL_UP_MOVE(17, MOVE_AIR_CUTTER), LEVEL_UP_END
-+};
-+static const struct LevelUpMove sMootinyLevelUpLearnset[] = {
-+    LEVEL_UP_MOVE(1, MOVE_TACKLE), LEVEL_UP_MOVE(1, MOVE_GROWL),
-+    LEVEL_UP_MOVE(5, MOVE_DEFENSE_CURL), LEVEL_UP_MOVE(8, MOVE_ROLLOUT),
-+    LEVEL_UP_MOVE(11, MOVE_STOMP), LEVEL_UP_MOVE(14, MOVE_HEADBUTT),
-+    LEVEL_UP_MOVE(17, MOVE_MILK_DRINK), LEVEL_UP_END
-+};
+-
 diff --git a/src/data/pokemon/level_up_learnsets_gen3.c b/src/data/pokemon/level_up_learnsets_gen3.c
-index b24871520..0fb48e1d1 100644
+index b24871520..4cfb80a2b 100644
 --- a/src/data/pokemon/level_up_learnsets_gen3.c
 +++ b/src/data/pokemon/level_up_learnsets_gen3.c
-@@ -5,6 +5,9 @@
+@@ -3,8 +3,12 @@
+ #include "constants/species.h"
+ 
  #include "level_up_learnsets/gen_3.h"
++#include "level_up_learnsets/pjr.h"
  
  const struct LevelUpMove *const gLevelUpLearnsets_Gen3[NUM_SPECIES] = {
 +    [SPECIES_SCARABUB] = sScarabubLevelUpLearnset,
@@ -654,8 +641,21 @@ index 000000000..a4aaa990a
 +    .teachableLearnset = sMiltankTeachableLearnset,
 +    .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_MILTANK}),
 +},
+diff --git a/src/pokemon.c b/src/pokemon.c
+index 2615fbd70..7ff5f11e8 100644
+--- a/src/pokemon.c
++++ b/src/pokemon.c
+@@ -2885,6 +2885,8 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
+ #include "data/pokemon/level_up_learnsets/gen_1.h" // Yellow
+ #endif
+ 
++#include "data/pokemon/level_up_learnsets/pjr.h"
++
+ #include "data/pokemon/teachable_learnsets.h"
+ #include "data/pokemon/egg_moves.h"
+ #include "data/pokemon/form_species_tables.h"
 diff --git a/src/title_screen.c b/src/title_screen.c
-index e4dac935a..07c748da5 100644
+index e4dac935a..3b308021d 100644
 --- a/src/title_screen.c
 +++ b/src/title_screen.c
 @@ -46,6 +46,10 @@ enum {
@@ -674,8 +674,8 @@ index e4dac935a..07c748da5 100644
  static const u32 sTitleScreenRayquazaTilemap[] = INCBIN_U32("graphics/title_screen/hns/rayquaza.bin.smolTM");
  static const u32 sTitleScreenLogoShineGfx[] = INCBIN_U32("graphics/title_screen/hns/logo_shine.4bpp.smol");
 +#if PJR_BUILD
-+static const u8 sPjrTitleBitmap[] = INCBIN_U8("graphics/title_screen/pjr/PJR_TitleScreen_Mode4.8bpp");
-+static const u16 sPjrTitlePalette[] = INCBIN_U16("graphics/title_screen/pjr/PJR_TitleScreen_Mode4.gbapal");
++static const ALIGNED(4) u8 sPjrTitleBitmap[] = INCBIN_U8("graphics/title_screen/pjr/PJR_TitleScreen_Mode4.8bpp");
++static const ALIGNED(4) u16 sPjrTitlePalette[] = INCBIN_U16("graphics/title_screen/pjr/PJR_TitleScreen_Mode4.gbapal");
 +#endif
  #else
  static const u32 sTitleScreenRayquazaGfx[] = INCBIN_U32("graphics/title_screen/rayquaza.4bpp.smol");
