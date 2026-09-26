@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - upcoming
+      - pjr-alpha1-intro-cleanup
   pull_request:
 
 env:
