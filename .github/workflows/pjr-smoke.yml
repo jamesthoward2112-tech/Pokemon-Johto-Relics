@@ -16,39 +16,52 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: Pokemon-Johto-Relics-Alpha1
-          run-id: 36260818362
+          run-id: 36262174583
           github-token: ${{ github.token }}
           repository: jamesthoward2112-tech/Pokemon-Johto-Relics
       - name: Install emulator and display tools
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends mgba-sdl xvfb xdotool imagemagick
-      - name: Capture title and Start response
+      - name: Capture boot, title animation, flashing prompt and Start response
         run: |
           test -s Pokemon-Johto-Relics-Alpha1.gba
-          timeout 80s xvfb-run -a -s '-screen 0 800x600x24' bash -euxc '
+          timeout 100s xvfb-run -a -s '-screen 0 800x600x24' bash -euxc '
             emulator=$(command -v mgba || find /usr/games -name mgba -type f -print -quit)
             SDL_VIDEODRIVER=x11 SDL_RENDER_DRIVER=software SDL_AUDIODRIVER=dummy LIBGL_ALWAYS_SOFTWARE=1 "$emulator" Pokemon-Johto-Relics-Alpha1.gba > emulator.log 2>&1 &
             pid=$!
             sleep 8
             win=$(xdotool search --name mGBA | head -n 1)
             xdotool getwindowname "$win"
-            timeout 8s import -window "$win" title_a.png
-            sleep 1
-            timeout 8s import -window "$win" title_b.png
+            timeout 8s import -window "$win" boot.png
             xdotool key --window "$win" Return
-            sleep 4
-            timeout 8s import -window "$win" after_start.png
+            sleep 2
+            timeout 8s import -window "$win" title_02.png
+            sleep 2
+            timeout 8s import -window "$win" title_04.png
+            sleep 2
+            timeout 8s import -window "$win" title_06.png
+            sleep 2
+            timeout 8s import -window "$win" title_08.png
+            sleep 2
+            timeout 8s import -window "$win" title_10.png
+            sleep 2
+            timeout 8s import -window "$win" title_12.png
+            xdotool key --window "$win" Return
+            sleep 1
+            timeout 8s import -window "$win" after_start_01.png
+            sleep 3
+            timeout 8s import -window "$win" after_start_04.png
             kill -9 "$pid" || true
           '
-          ls -lh title_a.png title_b.png after_start.png
+          ls -lh boot.png title_*.png after_start_*.png
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: PJR-Alpha1-title-smoke
           path: |
-            title_a.png
-            title_b.png
-            after_start.png
+            boot.png
+            title_*.png
+            after_start_*.png
             emulator.log
           if-no-files-found: error
