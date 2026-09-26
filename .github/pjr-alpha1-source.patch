@@ -292,6 +292,19 @@ index f1f88011c..bbcd0e0ba 100644
  #define VAR_SURF_MON_SLOT                                0x40FD // Added new VAR for Surfing Overworld Sprites - Holds Surfing Party Mon index
  #define VAR_FREEZE_SURF_BLOB                             0x40FE // Added new VAR for Surfing Overworld Sprites - Set on surf init to stop blob overlay being offset incorrectly
  #define VAR_UNUSED_0x40FF                                0x40FF // Unused Var
+diff --git a/src/battle_gfx_sfx_util.c b/src/battle_gfx_sfx_util.c
+index de06f1317..e936567ae 100644
+--- a/src/battle_gfx_sfx_util.c
++++ b/src/battle_gfx_sfx_util.c
+@@ -63,7 +63,7 @@ static struct CompressedSpriteSheet GetSinglesOpponentHealthbox(void)
+         return (struct CompressedSpriteSheet){ gHealthboxSinglesOpponentGfxGen3, 0x1000, TAG_HEALTHBOX_OPPONENT1_TILE };
+ }
+ 
+-static struct CompressedSpriteSheet GetSinglesPlayerHealthboxFrontier(void)
++static UNUSED struct CompressedSpriteSheet GetSinglesPlayerHealthboxFrontier(void)
+ {
+     if (UseGen4BattleUI())
+         return (struct CompressedSpriteSheet){ gHealthboxSinglesPlayerGfx_FrontierGen4, 0x1000, TAG_HEALTHBOX_PLAYER1_TILE };
 diff --git a/src/data/graphics/pokemon.h b/src/data/graphics/pokemon.h
 index 6f6046365..65e8a3016 100644
 --- a/src/data/graphics/pokemon.h
