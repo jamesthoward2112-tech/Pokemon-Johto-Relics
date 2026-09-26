@@ -45,3 +45,9 @@ A candidate build must pass:
 7. PC deposit/withdraw works normally.
 8. No mystery/question-mark party entries.
 9. Fresh-save smoke test repeated for all three starters.
+
+## Overworld follower rule
+
+- Pokémon followers are disabled in PJR.
+- The follower and big-follower options are removed from the options menu.
+- Custom Pokémon only require battle front/back sprites and party icons; no overworld follower sprite is required unless a future scripted event explicitly needs one.
