@@ -1,8 +1,7 @@
 name: PJR source repair
 
 on:
-  push:
-    branches: [master]
+  workflow_dispatch:
 
 permissions:
   contents: write

@@ -749,6 +749,8 @@ static void CB2_InitPjrTitleScreen(void)
         ResetPaletteFade();
         ResetTasks();
         ResetSpriteData();
+        // Mode 4 reserves the first 512 OBJ tiles for its bitmap page.
+        gReservedSpriteTileCount = 512;
         FreeAllSpritePalettes();
         gMain.state++;
         break;
