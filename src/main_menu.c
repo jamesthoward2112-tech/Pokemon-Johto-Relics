@@ -1675,9 +1675,10 @@ static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8 taskId)
     case 0:
         PlaySE(SE_SELECT);
 #if IS_HNS
-        // PJR: the inherited post-name blend/slide handoff can stall before
-        // CB2_NewGame after returning from the naming screen.  The sequence is
-        // cosmetic only, so fade cleanly to black and hand off to New Game.
+        // PJR: returning from the naming screen can leave the intro fade state
+        // active. Reset it before starting the final fade, otherwise Cleanup
+        // waits forever for a fade that is no longer advancing.
+        ResetPaletteFade();
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_NewGameBirchSpeech_Cleanup;
 #else
