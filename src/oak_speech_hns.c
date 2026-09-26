@@ -606,7 +606,11 @@ static void Task_NewGameHnsSpeech_ChallengeDisclaimer(u8 taskId)
     gSaveBlock3Ptr->challengeSettings.surfMusic           = savedOptions.surfMusic;
 
     // Skip the inherited HnS MODE / FEATURES / NUZLOCKE / DIFFICULTY /
-    // CHALLENGES setup screens entirely and resume the normal intro.
+    // CHALLENGES setup screens, but preserve the same fade/platform transition
+    // the challenge-menu return path normally performs before resuming.
+    gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
+    NewGameHnsSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
+    NewGameHnsSpeech_StartFadePlatformIn(taskId, 1);
     gTasks[taskId].func = Task_NewGameHnsSpeech_SlidePlatformAway2;
 }
 
