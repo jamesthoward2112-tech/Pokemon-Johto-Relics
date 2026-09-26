@@ -23,7 +23,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends mgba-sdl xvfb xdotool imagemagick
-      - name: Finish player setup and enter Johto opening
+      - name: Keep emulator focused through name confirmation
         run: |
           test -s Pokemon-Johto-Relics-Alpha1.gba
           timeout 150s xvfb-run -a -s '-screen 0 800x600x24' bash -euxc '
@@ -32,33 +32,53 @@ jobs:
             pid=$!
             sleep 26
             win=$(xdotool search --name mGBA | head -n 1)
-            xdotool windowfocus --sync "$win"
-            xdotool keydown Return; sleep 0.2; xdotool keyup Return
+
+            press() {
+              xdotool windowfocus --sync "$win"
+              xdotool keydown "$1"
+              sleep 0.2
+              xdotool keyup "$1"
+            }
+
+            shot() {
+              xdotool windowfocus --sync "$win"
+              sleep 0.5
+              timeout 8s import -window "$win" "$1"
+              xdotool windowfocus --sync "$win"
+            }
+
+            press Return
             sleep 3
-            xdotool keydown x; sleep 0.2; xdotool keyup x
+            press x
             sleep 7
             for i in $(seq 1 14); do
-              xdotool keydown x; sleep 0.2; xdotool keyup x; sleep 1.5
+              press x
+              sleep 1.5
             done
-            timeout 8s import -window "$win" name_a.png
-            xdotool keydown Return; sleep 0.2; xdotool keyup Return
+            shot name_a.png
+
+            press Return
             sleep 1
-            xdotool keydown x; sleep 0.2; xdotool keyup x
+            press x
             sleep 2
-            timeout 8s import -window "$win" after_name_00.png
-            for i in $(seq -w 1 8); do
-              xdotool keydown x; sleep 0.2; xdotool keyup x; sleep 2
-              timeout 8s import -window "$win" "after_name_$i.png"
+            shot name_confirm.png
+
+            press x
+            for i in $(seq -w 1 10); do
+              sleep 1.5
+              shot "post_confirm_$i.png"
             done
+
             kill -9 "$pid" || true
           '
-          ls -lh name_a.png after_name_*.png
+          ls -lh name_a.png name_confirm.png post_confirm_*.png
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: PJR-Alpha1-opening-smoke
           path: |
             name_a.png
-            after_name_*.png
+            name_confirm.png
+            post_confirm_*.png
             emulator.log
           if-no-files-found: error
