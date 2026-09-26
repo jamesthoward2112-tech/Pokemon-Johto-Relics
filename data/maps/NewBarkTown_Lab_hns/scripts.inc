@@ -171,7 +171,7 @@ NewBarkTown_Lab_EventScript_ChikoritaBall::
 NewBarkTown_Lab_EventScript_ChikoritaBall_Choice::
 	@callnative DisableStaticRandomizer
 	setvar VAR_STARTER_MON, 0
-	setvar PLAYER_STARTER_SPECIES, SPECIES_CHIKORITA
+	setvar PLAYER_STARTER_SPECIES, SPECIES_SCARABUB
 	showmonpic PLAYER_STARTER_SPECIES, 10, 3
 	playmoncry PLAYER_STARTER_SPECIES, CRY_MODE_NORMAL
 	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
