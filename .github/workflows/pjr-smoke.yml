@@ -11,6 +11,7 @@ permissions:
 jobs:
   title-smoke:
     runs-on: ubuntu-latest
+    timeout-minutes: 4
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -25,17 +26,17 @@ jobs:
       - name: Capture title and Start response
         run: |
           test -s Pokemon-Johto-Relics-Alpha1.gba
-          xvfb-run -a -s '-screen 0 800x600x24' bash -euc '
+          timeout 80s xvfb-run -a -s '-screen 0 800x600x24' bash -euxc '
             emulator=$(command -v mgba || find /usr/games -name mgba -type f -print -quit)
             "$emulator" Pokemon-Johto-Relics-Alpha1.gba > emulator.log 2>&1 &
             pid=$!
             sleep 8
-            import -window root title_a.png
+            timeout 8s import -window root title_a.png
             sleep 1
-            import -window root title_b.png
+            timeout 8s import -window root title_b.png
             xdotool key Return
             sleep 4
-            import -window root after_start.png
+            timeout 8s import -window root after_start.png
             kill "$pid" || true
             wait "$pid" || true
           '
