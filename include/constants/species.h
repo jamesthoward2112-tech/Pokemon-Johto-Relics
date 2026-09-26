@@ -1690,8 +1690,12 @@
 
 // Pokémon Johto Relics
 #define SPECIES_SCARABUB                                1573
+#define SPECIES_HERACURION                              1574
+#define SPECIES_SKARMET                                 1575
+#define SPECIES_SKARMADON                               1576
+#define SPECIES_MOOTINY                                 1577
 
-#define SPECIES_EGG                                     (SPECIES_SCARABUB + 1)
+#define SPECIES_EGG                                     (SPECIES_MOOTINY + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

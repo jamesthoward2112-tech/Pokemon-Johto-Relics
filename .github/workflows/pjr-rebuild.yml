@@ -1,4 +1,4 @@
-name: PJR Scarabub test
+name: PJR three-starter test
 
 on:
   push:
@@ -13,7 +13,7 @@ env:
   DEPRECATED_ERROR: 1
 
 jobs:
-  scarabub-test:
+  three-starter-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,14 +21,14 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3
-      - name: Build PJR Scarabub test
+      - name: Build PJR three-starter test
         run: |
           make hns -j4 -O
-      - name: Package Scarabub test
-        run: cp pokehns.gba PJR-Scarabub-Test.gba
+      - name: Package three-starter test
+        run: cp pokehns.gba PJR-Three-Starters-Test.gba
       - uses: actions/upload-artifact@v4
         with:
-          name: PJR-Scarabub-Test
-          path: PJR-Scarabub-Test.gba
+          name: PJR-Three-Starters-Test
+          path: PJR-Three-Starters-Test.gba
           if-no-files-found: error
           retention-days: 7
