@@ -1675,11 +1675,13 @@ static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8 taskId)
     case 0:
         PlaySE(SE_SELECT);
 #if IS_HNS
-        // PJR: the inherited post-name palette handoff can remain stuck after
-        // the naming screen. Skip that cosmetic fade and enter New Game
-        // immediately once the player confirms the name.
+        // PJR: hand straight to the overworld after name confirmation.
+        // The inherited intro cleanup path is unstable after returning from
+        // this engine's naming screen, so let CB2_NewGame own the full reset.
         ResetPaletteFade();
-        Task_NewGameBirchSpeech_Cleanup(taskId);
+        SetMainCallback2(CB2_NewGame);
+        DestroyTask(taskId);
+        return;
 #else
         gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
         NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
