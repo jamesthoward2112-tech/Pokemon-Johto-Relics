@@ -1675,12 +1675,11 @@ static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8 taskId)
     case 0:
         PlaySE(SE_SELECT);
 #if IS_HNS
-        // PJR: returning from the naming screen can leave the intro fade state
-        // active. Reset it before starting the final fade, otherwise Cleanup
-        // waits forever for a fade that is no longer advancing.
+        // PJR: the inherited post-name palette handoff can remain stuck after
+        // the naming screen. Skip that cosmetic fade and enter New Game
+        // immediately once the player confirms the name.
         ResetPaletteFade();
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_Cleanup;
+        Task_NewGameBirchSpeech_Cleanup(taskId);
 #else
         gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
         NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
