@@ -24,7 +24,8 @@ jobs:
       - name: Build Pokémon Johto Relics
         run: |
           if ! make hns -j4 -O > build.log 2>&1; then
-            rg -n -C 3 'error:|Error [0-9]|undefined reference|libpng error|Failed to|Traceback|^make:' build.log | tail -n 160 || tail -n 160 build.log
+            grep -nE -C 3 'error:|Error [0-9]|undefined reference|libpng error|Failed to|Traceback|make:' build.log | tail -n 120 || true
+            tail -n 80 build.log
             exit 1
           fi
       - name: Package Alpha 1 ROM
