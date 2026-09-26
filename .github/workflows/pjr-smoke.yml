@@ -23,10 +23,10 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends mgba-sdl xvfb xdotool imagemagick
-      - name: Continue Professor intro into player setup
+      - name: Finish player setup and enter Johto opening
         run: |
           test -s Pokemon-Johto-Relics-Alpha1.gba
-          timeout 140s xvfb-run -a -s '-screen 0 800x600x24' bash -euxc '
+          timeout 150s xvfb-run -a -s '-screen 0 800x600x24' bash -euxc '
             emulator=$(command -v mgba || find /usr/games -name mgba -type f -print -quit)
             SDL_VIDEODRIVER=x11 SDL_RENDER_DRIVER=software SDL_AUDIODRIVER=dummy LIBGL_ALWAYS_SOFTWARE=1 "$emulator" Pokemon-Johto-Relics-Alpha1.gba > emulator.log 2>&1 &
             pid=$!
@@ -37,21 +37,28 @@ jobs:
             sleep 3
             xdotool keydown x; sleep 0.2; xdotool keyup x
             sleep 7
-            for i in $(seq -w 1 14); do
-              xdotool keydown x
-              sleep 0.2
-              xdotool keyup x
-              sleep 1.8
-              timeout 8s import -window "$win" "intro_$i.png"
+            for i in $(seq 1 14); do
+              xdotool keydown x; sleep 0.2; xdotool keyup x; sleep 1.5
+            done
+            timeout 8s import -window "$win" name_a.png
+            xdotool keydown Return; sleep 0.2; xdotool keyup Return
+            sleep 1
+            xdotool keydown x; sleep 0.2; xdotool keyup x
+            sleep 2
+            timeout 8s import -window "$win" after_name_00.png
+            for i in $(seq -w 1 8); do
+              xdotool keydown x; sleep 0.2; xdotool keyup x; sleep 2
+              timeout 8s import -window "$win" "after_name_$i.png"
             done
             kill -9 "$pid" || true
           '
-          ls -lh intro_*.png
+          ls -lh name_a.png after_name_*.png
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: PJR-Alpha1-opening-smoke
           path: |
-            intro_*.png
+            name_a.png
+            after_name_*.png
             emulator.log
           if-no-files-found: error
