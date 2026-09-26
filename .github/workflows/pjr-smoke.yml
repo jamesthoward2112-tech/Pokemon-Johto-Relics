@@ -23,10 +23,10 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends mgba-sdl xvfb xdotool imagemagick
-      - name: Verify title Start and New Game transition
+      - name: Walk title into early Professor intro
         run: |
           test -s Pokemon-Johto-Relics-Alpha1.gba
-          timeout 115s xvfb-run -a -s '-screen 0 800x600x24' bash -euxc '
+          timeout 125s xvfb-run -a -s '-screen 0 800x600x24' bash -euxc '
             emulator=$(command -v mgba || find /usr/games -name mgba -type f -print -quit)
             SDL_VIDEODRIVER=x11 SDL_RENDER_DRIVER=software SDL_AUDIODRIVER=dummy LIBGL_ALWAYS_SOFTWARE=1 "$emulator" Pokemon-Johto-Relics-Alpha1.gba > emulator.log 2>&1 &
             pid=$!
@@ -41,27 +41,24 @@ jobs:
             xdotool keydown x
             sleep 0.2
             xdotool keyup x
-            sleep 2
-            timeout 8s import -window "$win" after_x_02.png
-            sleep 3
-            timeout 8s import -window "$win" after_x_05.png
-            xdotool keydown z
-            sleep 0.2
-            xdotool keyup z
-            sleep 2
-            timeout 8s import -window "$win" after_z_02.png
-            sleep 3
-            timeout 8s import -window "$win" after_z_05.png
+            sleep 7
+            timeout 8s import -window "$win" intro_00.png
+            for i in 1 2 3 4 5 6; do
+              xdotool keydown x
+              sleep 0.2
+              xdotool keyup x
+              sleep 2
+              timeout 8s import -window "$win" "intro_0$i.png"
+            done
             kill -9 "$pid" || true
           '
-          ls -lh menu.png after_x_*.png after_z_*.png
+          ls -lh menu.png intro_*.png
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: PJR-Alpha1-opening-smoke
           path: |
             menu.png
-            after_x_*.png
-            after_z_*.png
+            intro_*.png
             emulator.log
           if-no-files-found: error
