@@ -2497,68 +2497,11 @@ bool8 GetFollowerInfo(u32 *species, bool32 *shiny, bool32 *female)
     return GetMonInfo(GetFirstLiveMon(), species, shiny, female);
 }
 
-// Update following pokemon if any
+// PJR intentionally disables overworld Pokémon followers.
 void UpdateFollowingPokemon(void)
 {
-    struct ObjectEvent *objEvent = GetFollowerObject();
-    struct Sprite *sprite;
-    u32 species;
-    bool32 shiny;
-    bool32 female;
-    // Don't spawn follower if:
-    // 1. GetFollowerInfo returns FALSE
-    // 2. Map is indoors and gfx is larger than 32x32
-    // 3. flag is set
-    // 4. a follower NPC is present
-    if (OW_POKEMON_OBJECT_EVENTS == FALSE
-     || OW_FOLLOWERS_ENABLED == FALSE
-     || FlagGet(B_FLAG_FOLLOWERS_DISABLED)
-     || gSaveBlock3Ptr->challengeSettings.followerEnable == 1
-     || !GetFollowerInfo(&species, &shiny, &female)
-     || SpeciesToGraphicsInfo(species, shiny, female) == NULL
-     || (gMapHeader.mapType == MAP_TYPE_INDOOR && SpeciesToGraphicsInfo(species, shiny, female)->oam->size > ST_OAM_SIZE_2)
-     || (gSaveBlock3Ptr->challengeSettings.followerLargeEnable == 1 && SpeciesToGraphicsInfo(species, shiny, female)->height == 64)
-     || FlagGet(FLAG_TEMP_HIDE_FOLLOWER)
-     || PlayerHasFollowerNPC()
-     )
-    {
-        RemoveFollowingPokemon();
-        return;
-    }
-
-    if (objEvent == NULL)
-    {
-        // Spawn follower
-        u32 objId = gPlayerAvatar.objectEventId;
-        struct ObjectEventTemplate template =
-        {
-            .localId = OBJ_EVENT_ID_FOLLOWER,
-            .graphicsId = GetGraphicsIdForMon(species, shiny, female),
-            .flagId = 0,
-            .x = gSaveBlock1Ptr->pos.x,
-            .y = gSaveBlock1Ptr->pos.y,
-            // If player active, copy player elevation
-            .elevation = gObjectEvents[objId].active ? gObjectEvents[objId].currentElevation : 3,
-            .movementType = MOVEMENT_TYPE_FOLLOW_PLAYER,
-            // store form info in template
-            //.trainerRange_berryTreeId = (form & 0x1F) | (shiny << 5),   // ???? what?
-        };
-        if ((objId = SpawnSpecialObjectEvent(&template)) >= OBJECT_EVENTS_COUNT)
-            return;
-        objEvent = &gObjectEvents[objId];
-        objEvent->invisible = TRUE;
-    }
-    sprite = &gSprites[objEvent->spriteId];
-    // Follower appearance changed; move to player and set invisible
-    if (species != OW_SPECIES(objEvent) || shiny != OW_SHINY(objEvent) || female != OW_FEMALE(objEvent))
-    {
-        MoveObjectEventToMapCoords(objEvent,
-                                   gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.x,
-                                   gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.y);
-        FollowerSetGraphics(objEvent, species, shiny, female);
-        objEvent->invisible = TRUE;
-    }
-    sprite->data[6] = 0; // set animation data
+    // Idempotently remove any follower object that may exist in an old/test save.
+    RemoveFollowingPokemon();
 }
 
 // Remove follower object. Idempotent.
