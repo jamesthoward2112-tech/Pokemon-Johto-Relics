@@ -28,7 +28,7 @@ jobs:
           test -s Pokemon-Johto-Relics-Alpha1.gba
           timeout 80s xvfb-run -a -s '-screen 0 800x600x24' bash -euxc '
             emulator=$(command -v mgba || find /usr/games -name mgba -type f -print -quit)
-            "$emulator" Pokemon-Johto-Relics-Alpha1.gba > emulator.log 2>&1 &
+            SDL_VIDEODRIVER=x11 SDL_RENDER_DRIVER=software SDL_AUDIODRIVER=dummy LIBGL_ALWAYS_SOFTWARE=1 "$emulator" Pokemon-Johto-Relics-Alpha1.gba > emulator.log 2>&1 &
             pid=$!
             sleep 8
             win=$(xdotool search --name mGBA | head -n 1)
@@ -36,8 +36,7 @@ jobs:
             timeout 8s import -window "$win" title_a.png
             sleep 1
             timeout 8s import -window "$win" title_b.png
-            xdotool windowactivate --sync "$win"
-            xdotool key Return
+            xdotool key --window "$win" Return
             sleep 4
             timeout 8s import -window "$win" after_start.png
             kill -9 "$pid" || true
