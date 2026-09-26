@@ -285,4 +285,14 @@
 // VAR_TEMP_A used due to limited use elsewhere.
 #define VAR_TEMP_MTSILVER_RESUME_BLIZZARD_SE  VAR_TEMP_B
 
+// Pokémon Johto Relics persistent vars.
+#define VAR_PJR_DEXNAV_SPECIES      0x40DB
+#define VAR_PJR_DEXNAV_STEP_COUNTER 0x40DC
+#define VAR_PJR_STARTER_CHOICE      0x40F7
+#define VAR_PJR_SILVER_STARTER      0x40F8
+#define VAR_PJR_RELICS_PROGRESS     0x40F9
+#define VAR_PJR_CURRENT_LEAD        0x40FA
+#define VAR_PJR_ALPH_CHAMBERS       0x40FB
+#define VAR_PJR_POSTGAME_STATE      0x40FC
+
 #endif // GUARD_CONSTANTS_VARS_HNS_H
