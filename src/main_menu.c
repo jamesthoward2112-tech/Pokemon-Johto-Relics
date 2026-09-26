@@ -1674,10 +1674,18 @@ static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8 taskId)
     {
     case 0:
         PlaySE(SE_SELECT);
+#if IS_HNS
+        // PJR: the inherited post-name blend/slide handoff can stall before
+        // CB2_NewGame after returning from the naming screen.  The sequence is
+        // cosmetic only, so fade cleanly to black and hand off to New Game.
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+        gTasks[taskId].func = Task_NewGameBirchSpeech_Cleanup;
+#else
         gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
         NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
         NewGameBirchSpeech_StartFadePlatformIn(taskId, 1);
         gTasks[taskId].func = Task_NewGameBirchSpeech_SlidePlatformAway2;
+#endif
         break;
     case MENU_B_PRESSED:
     case 1:
