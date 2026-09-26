@@ -1,0 +1,53 @@
+// Pokémon Johto Relics custom species.
+// Rebuild stage 1: Scarabub only. No overworld follower data by design.
+
+[SPECIES_SCARABUB] =
+{
+    .baseHP        = 45,
+    .baseAttack    = 55,
+    .baseDefense   = 45,
+    .baseSpeed     = 50,
+    .baseSpAttack  = 30,
+    .baseSpDefense = 40,
+    .types = MON_TYPES(TYPE_BUG),
+    .catchRate = 45,
+    .expYield = 65,
+    .genderRatio = PERCENT_FEMALE(50),
+    .eggCycles = 20,
+    .friendship = STANDARD_FRIENDSHIP,
+    .growthRate = GROWTH_MEDIUM_FAST,
+    .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
+    .abilities = { ABILITY_SWARM, ABILITY_GUTS, ABILITY_BATTLE_ARMOR },
+    .bodyColor = BODY_COLOR_BLUE,
+    .speciesName = _("SCARABUB"),
+    .cryId = CRY_HERACROSS,
+    .natDexNum = NATIONAL_DEX_HERACROSS,
+    .categoryName = _("Scarab"),
+    .height = 6,
+    .weight = 120,
+    .description = COMPOUND_STRING(
+        "A young scarab POKéMON whose horn\n"
+        "hardens as its strength grows. It\n"
+        "never gives up when challenged."),
+    .pokemonScale = 256,
+    .pokemonOffset = 0,
+    .trainerScale = 256,
+    .trainerOffset = 0,
+    .frontPic = gMonFrontPic_Scarabub,
+    .frontPicSize = MON_COORDS_SIZE(64, 64),
+    .frontPicYOffset = 0,
+    .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+    .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+    .backPic = gMonBackPic_Scarabub,
+    .backPicSize = MON_COORDS_SIZE(64, 64),
+    .backPicYOffset = 0,
+    .backAnimId = BACK_ANIM_JOLT_RIGHT,
+    .palette = gMonPalette_Scarabub,
+    .shinyPalette = gMonPalette_Scarabub,
+    .iconSprite = gMonIcon_Scarabub,
+    .iconPalIndex = 3,
+    .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+    .levelUpLearnset = sScarabubLevelUpLearnset,
+    .teachableLearnset = sHeracrossTeachableLearnset,
+    .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_HERACROSS}),
+};
