@@ -43,8 +43,6 @@ enum {
     ITEM_MAIN_BATTLESCENE,
     ITEM_MAIN_BATTLESTYLE,
     ITEM_MAIN_BUTTONMODE,
-    ITEM_MAIN_FOLLOWER,
-    ITEM_MAIN_LARGE_FOLLOWER,
     ITEM_MAIN_AUTORUN,
     ITEM_MAIN_AUTORUN_SURF,
     ITEM_MAIN_FISHING,
@@ -283,14 +281,6 @@ static const u8 *const sDesc_ButtonMode[] = {
     COMPOUND_STRING("On some screens the L and R buttons\nact as left and right."),
     COMPOUND_STRING("The L button acts as another A\nbutton for one-handed play."),
 };
-static const u8 *const sDesc_Follower[] = {
-    COMPOUND_STRING("Let the first {PKMN} in your\nparty follow you."),
-    COMPOUND_STRING("Walk alone."),
-};
-static const u8 *const sDesc_LargeFollower[] = {
-    COMPOUND_STRING("Enable large {PKMN} followers.\nCan cause graphical issues."),
-    COMPOUND_STRING("Disable large {PKMN} followers.\nRecommended."),
-};
 static const u8 *const sDesc_Autorun[] = {
     COMPOUND_STRING("Run without pressing B."),
     COMPOUND_STRING("Press and hold B to run."),
@@ -393,18 +383,6 @@ static const struct OptionMenuItem sTabItems_Main[] = {
         .descriptions = sDesc_ButtonMode,
         .numChoices   = 3,
         .choiceNames  = sChoices_ButtonMode,
-    },
-    [ITEM_MAIN_FOLLOWER] = {
-        .name         = COMPOUND_STRING("FOLLOWER"),
-        .descriptions = sDesc_Follower,
-        .numChoices   = 2,
-        .choiceNames  = sChoices_OnOff,
-    },
-    [ITEM_MAIN_LARGE_FOLLOWER] = {
-        .name         = COMPOUND_STRING("BIG FOLLOWERS"),
-        .descriptions = sDesc_LargeFollower,
-        .numChoices   = 2,
-        .choiceNames  = sChoices_OnOff,
     },
     [ITEM_MAIN_AUTORUN] = {
         .name         = COMPOUND_STRING("AUTORUN"),
@@ -1072,9 +1050,10 @@ static void Task_Save(u8 taskId)
 
     // SaveBlock3 — HnS options plus
     struct ChallengeSettings *cs = &gSaveBlock3Ptr->challengeSettings;
-    cs->followerEnable     = *GetSelectionPtr(TAB_MAIN, ITEM_MAIN_FOLLOWER);
-    cs->followerLargeEnable= *GetSelectionPtr(TAB_MAIN, ITEM_MAIN_LARGE_FOLLOWER);
-    cs->autoRun            = *GetSelectionPtr(TAB_MAIN, ITEM_MAIN_AUTORUN);
+    // Pokémon followers are intentionally removed from PJR.
+    cs->followerEnable      = 1;
+    cs->followerLargeEnable = 1;
+    cs->autoRun             = *GetSelectionPtr(TAB_MAIN, ITEM_MAIN_AUTORUN);
     cs->autorunSurf        = *GetSelectionPtr(TAB_MAIN, ITEM_MAIN_AUTORUN_SURF);
     cs->fishing            = *GetSelectionPtr(TAB_MAIN, ITEM_MAIN_FISHING);
     cs->evenFasterJoy      = *GetSelectionPtr(TAB_MAIN, ITEM_MAIN_FASTER_JOY);
@@ -1184,8 +1163,9 @@ void CB2_InitOptionMenu(void)
 
         // Load SaveBlock3 HnS options
         struct ChallengeSettings *cs = &gSaveBlock3Ptr->challengeSettings;
-        *GetSelectionPtr(TAB_MAIN, ITEM_MAIN_FOLLOWER)       = cs->followerEnable;
-        *GetSelectionPtr(TAB_MAIN, ITEM_MAIN_LARGE_FOLLOWER) = cs->followerLargeEnable;
+        // Follower options are not exposed in PJR.
+        cs->followerEnable = 1;
+        cs->followerLargeEnable = 1;
         *GetSelectionPtr(TAB_MAIN, ITEM_MAIN_AUTORUN)        = cs->autoRun;
         *GetSelectionPtr(TAB_MAIN, ITEM_MAIN_AUTORUN_SURF)   = cs->autorunSurf;
         *GetSelectionPtr(TAB_MAIN, ITEM_MAIN_FISHING)        = cs->fishing;
