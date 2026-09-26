@@ -50,4 +50,4 @@
     .levelUpLearnset = sScarabubLevelUpLearnset,
     .teachableLearnset = sHeracrossTeachableLearnset,
     .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_HERACROSS}),
-};
+},
