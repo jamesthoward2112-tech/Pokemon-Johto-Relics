@@ -120,7 +120,7 @@ index 69cbc55b5..e334d8a88 100644
  // Ruby/Sapphire and Emerald do not have these asserts while Fire Red
  // still has them in the ROM. This is because the developers forgot
 diff --git a/include/constants/flags.h b/include/constants/flags.h
-index 4ccd8bcc0..c78d5a656 100644
+index 4ccd8bcc0..b42174c0a 100644
 --- a/include/constants/flags.h
 +++ b/include/constants/flags.h
 @@ -1511,9 +1511,9 @@
@@ -136,7 +136,7 @@ index 4ccd8bcc0..c78d5a656 100644
  #define FLAG_UNUSED_0x8E8                           (SYSTEM_FLAGS + 0x88) // Unused Flag
  #define FLAG_UNUSED_0x8E9                           (SYSTEM_FLAGS + 0x89) // Unused Flag
  #define FLAG_UNUSED_0x8EA                           (SYSTEM_FLAGS + 0x8A) // Unused Flag
-@@ -1538,38 +1538,38 @@
+@@ -1538,38 +1538,75 @@
  #define FLAG_UNUSED_0x8FD                           (SYSTEM_FLAGS + 0x9D) // Unused Flag
  #define FLAG_UNUSED_0x8FE                           (SYSTEM_FLAGS + 0x9E) // Unused Flag
  #define FLAG_UNUSED_0x8FF                           (SYSTEM_FLAGS + 0x9F) // Unused Flag
@@ -204,6 +204,43 @@ index 4ccd8bcc0..c78d5a656 100644
 +#define FLAG_PJR_ELM_INCUBATOR_DONE                           (SYSTEM_FLAGS + 0xBD) // Unused Flag
 +#define FLAG_PJR_KANTO_OPEN                           (SYSTEM_FLAGS + 0xBE) // Unused Flag
 +#define FLAG_PJR_MT_SILVER_OPEN                           (SYSTEM_FLAGS + 0xBF) // Unused Flag
++
++// Preserve upstream HnS names used by existing scripts/source.
++#define FLAG_UNUSED_0x8E5 FLAG_PJR_DEXNAV_SEARCHING
++#define FLAG_UNUSED_0x8E6 FLAG_PJR_DEXNAV_GET
++#define FLAG_UNUSED_0x8E7 FLAG_PJR_DEXNAV_DETECTOR_MODE
++#define FLAG_UNUSED_0x900 FLAG_PJR_STARTER_CHOSEN
++#define FLAG_UNUSED_0x901 FLAG_PJR_SILVER_STARTER_SET
++#define FLAG_UNUSED_0x902 FLAG_PJR_GOT_RELIC_JOURNAL
++#define FLAG_UNUSED_0x903 FLAG_PJR_GOT_CHIKORITA
++#define FLAG_UNUSED_0x904 FLAG_PJR_GOT_CYNDAQUIL
++#define FLAG_UNUSED_0x905 FLAG_PJR_GOT_TOTODILE
++#define FLAG_UNUSED_0x906 FLAG_PJR_ELM_EGGS_UNLOCKED
++#define FLAG_UNUSED_0x907 FLAG_PJR_GOT_ELM_EGG_1
++#define FLAG_UNUSED_0x908 FLAG_PJR_GOT_ELM_EGG_2
++#define FLAG_UNUSED_0x909 FLAG_PJR_GOT_ANCIENT_SHELL
++#define FLAG_UNUSED_0x90A FLAG_PJR_GOT_FOSSIL_BARK
++#define FLAG_UNUSED_0x90B FLAG_PJR_GOT_ANCIENT_TUSK
++#define FLAG_UNUSED_0x90C FLAG_PJR_GOT_FROST_MIRROR
++#define FLAG_UNUSED_0x90D FLAG_PJR_ALPH_INNER_UNLOCKED
++#define FLAG_UNUSED_0x90E FLAG_PJR_GOT_ANCIENT_HORN
++#define FLAG_UNUSED_0x90F FLAG_PJR_GOT_ANCIENT_PLUME
++#define FLAG_UNUSED_0x910 FLAG_PJR_GOT_ANCIENT_BELL
++#define FLAG_UNUSED_0x911 FLAG_PJR_RELICS_UNLOCKED
++#define FLAG_UNUSED_0x912 FLAG_PJR_CAUGHT_RAIKOU
++#define FLAG_UNUSED_0x913 FLAG_PJR_CAUGHT_ENTEI
++#define FLAG_UNUSED_0x914 FLAG_PJR_CAUGHT_LUGIA
++#define FLAG_UNUSED_0x915 FLAG_PJR_CAUGHT_EYE_UNOWN
++#define FLAG_UNUSED_0x916 FLAG_PJR_CAUGHT_CELEBI
++#define FLAG_UNUSED_0x917 FLAG_PJR_CAUGHT_SUICUNE
++#define FLAG_UNUSED_0x918 FLAG_PJR_ALPHORACLE_RESOLVED
++#define FLAG_UNUSED_0x919 FLAG_PJR_RED_DEFEATED
++#define FLAG_UNUSED_0x91A FLAG_PJR_GOT_RAINBOW_CREST
++#define FLAG_UNUSED_0x91B FLAG_PJR_RELIC_HO_OH_RESOLVED
++#define FLAG_UNUSED_0x91C FLAG_PJR_CHAMPION_CIRCUIT_UNLOCKED
++#define FLAG_UNUSED_0x91D FLAG_PJR_ELM_INCUBATOR_DONE
++#define FLAG_UNUSED_0x91E FLAG_PJR_KANTO_OPEN
++#define FLAG_UNUSED_0x91F FLAG_PJR_MT_SILVER_OPEN
  
  // Daily Flags
  // These flags are cleared once per day
@@ -259,7 +296,7 @@ index 98b6f3c8e..d92d8c272 100644
  #define NUM_SPECIES SPECIES_EGG
  
 diff --git a/include/constants/vars.h b/include/constants/vars.h
-index f1f88011c..bbcd0e0ba 100644
+index f1f88011c..28e333e6e 100644
 --- a/include/constants/vars.h
 +++ b/include/constants/vars.h
 @@ -239,8 +239,8 @@
@@ -273,7 +310,7 @@ index f1f88011c..bbcd0e0ba 100644
  #define VAR_GIFT_PICHU_SLOT                              0x40DD
  #define VAR_GIFT_UNUSED_1                                0x40DE // Var is written to, but never read
  #define VAR_GIFT_UNUSED_2                                0x40DF // Var is written to, but never read
-@@ -267,12 +267,12 @@
+@@ -267,12 +267,22 @@
  #define VAR_ROXANNE_CALL_STEP_COUNTER                    0x40F4
  #define VAR_SCOTT_BF_CALL_STEP_COUNTER                   0x40F5
  #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
@@ -289,6 +326,16 @@ index f1f88011c..bbcd0e0ba 100644
 +#define VAR_PJR_CURRENT_LEAD                                0x40FA // Unused Var
 +#define VAR_PJR_ALPH_CHAMBERS                                0x40FB // Unused Var
 +#define VAR_PJR_POSTGAME_STATE                                0x40FC // Unused Var
++
++// Preserve upstream HnS names used by existing scripts/source.
++#define VAR_UNUSED_0x40DB VAR_PJR_DEXNAV_SPECIES
++#define VAR_UNUSED_0x40DC VAR_PJR_DEXNAV_STEP_COUNTER
++#define VAR_UNUSED_0x40F7 VAR_PJR_STARTER_CHOICE
++#define VAR_UNUSED_0x40F8 VAR_PJR_SILVER_STARTER
++#define VAR_UNUSED_0x40F9 VAR_PJR_RELICS_PROGRESS
++#define VAR_UNUSED_0x40FA VAR_PJR_CURRENT_LEAD
++#define VAR_UNUSED_0x40FB VAR_PJR_ALPH_CHAMBERS
++#define VAR_UNUSED_0x40FC VAR_PJR_POSTGAME_STATE
  #define VAR_SURF_MON_SLOT                                0x40FD // Added new VAR for Surfing Overworld Sprites - Holds Surfing Party Mon index
  #define VAR_FREEZE_SURF_BLOB                             0x40FE // Added new VAR for Surfing Overworld Sprites - Set on surf init to stop blob overlay being offset incorrectly
  #define VAR_UNUSED_0x40FF                                0x40FF // Unused Var
