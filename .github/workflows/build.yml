@@ -22,7 +22,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3
       - name: Build Pokémon Johto Relics
-        run: make hns -j$(nproc) -O
+        run: |
+          if ! make hns -j4 -O > build.log 2>&1; then
+            rg -n -C 3 'error:|Error [0-9]|undefined reference|libpng error|Failed to|Traceback|^make:' build.log | tail -n 160 || tail -n 160 build.log
+            exit 1
+          fi
       - name: Package Alpha 1 ROM
         run: cp pokehns.gba Pokemon-Johto-Relics-Alpha1.gba
       - name: Upload Alpha 1 ROM

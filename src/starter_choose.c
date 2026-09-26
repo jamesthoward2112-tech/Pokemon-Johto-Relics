@@ -113,8 +113,12 @@ static const u8 sStarterLabelCoords[STARTER_MON_COUNT][2] =
     {8, 4},
 };
 
-#if IS_HNS
-// Must match the VAR_STARTER_MON values set in NewBarkTown_Lab_hns/scripts.inc
+#if IS_HNS && PJR_BUILD
+// These three positions match VAR_STARTER_MON in Elm's laboratory.
+#define GRASS_STARTER SPECIES_SCARABUB
+#define FIRE_STARTER  SPECIES_SKARMET
+#define WATER_STARTER SPECIES_MOOTINY
+#elif IS_HNS
 #define GRASS_STARTER SPECIES_CHIKORITA
 #define FIRE_STARTER  SPECIES_CYNDAQUIL
 #define WATER_STARTER SPECIES_TOTODILE

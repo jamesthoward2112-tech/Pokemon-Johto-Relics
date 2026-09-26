@@ -100,16 +100,8 @@ NewBarkTown_Lab_Text_ElmAideIsWaiting:
 	.string "In VIOLET CITY!$"
 
 NewBarkTown_Lab_EventScript_ElmIntro::
-	msgbox NewBarkTown_Lab_Text_ElmIntro, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, NewBarkTown_Lab_EventScript_ElmAccepted
-	goto_if_eq VAR_RESULT, NO, NewBarkTown_Lab_EventScript_ElmRefused
-	end
-
-NewBarkTown_Lab_EventScript_ElmRefused::
-	msgbox NewBarkTown_Lab_Text_ElmRefused, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, NewBarkTown_Lab_EventScript_ElmAccepted
-	goto_if_eq VAR_RESULT, NO, NewBarkTown_Lab_EventScript_ElmRefused
-	end
+	msgbox NewBarkTown_Lab_Text_ElmIntro, MSGBOX_DEFAULT
+	goto NewBarkTown_Lab_EventScript_ElmAccepted
 
 NewBarkTown_Lab_EventScript_ElmAccepted::
 	msgbox NewBarkTown_Lab_Text_ElmAccepted, MSGBOX_DEFAULT
@@ -237,6 +229,7 @@ NewBarkTown_Lab_EventScript_ChoseStarter::
 	@callnative EnableStaticRandomizer
 	hidemonpic
 	removeobject VAR_LAST_TALKED
+	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
 	msgbox NewBarkTown_Lab_Text_ChoseStarter, MSGBOX_DEFAULT
 	call_if_eq VAR_STARTER_MON, 0, NewBarkTown_Lab_EventScript_GiveStarter_Chikorita
 	call_if_eq VAR_STARTER_MON, 1, NewBarkTown_Lab_EventScript_GiveStarter_Cyndaquil
@@ -688,64 +681,43 @@ NewBarkTown_Lab_Text_ShouldntTouch:
 	.string "Probably shouldn't touch!$"
 
 NewBarkTown_Lab_Text_ElmIntro:
-	.string "ELM: {PLAYER}! There you are!\p"
-	.string "I needed to ask you a favor.\p"
-	.string "I'm conducting new POKéMON\n"
-	.string "research right now. I was\l"
-	.string "wondering if you could help\l"
-	.string "me with it, {PLAYER}.\p"
-	.string "You see…\p"
-	.string "I'm writing a paper that I\n"
-	.string "want to present at a conference.\p"
-	.string "But there are some things I\n"
-	.string "don't quite understand yet.\p"
-	.string "So!\p"
-	.string "I'd like you to raise a\n"
-	.string "POKéMON that I recently caught.$"
+	.string "ELM: {PLAYER}! Good timing!\p"
+	.string "PROF. OAK sent me his notes\n"
+	.string "from KANTO. The relic activity\l"
+	.string "didn't stop there.\p"
+	.string "Johto's old sites are showing\n"
+	.string "the same Resonance.\p"
+	.string "Some POKéMON are behaving\n"
+	.string "differently, too. I want you\l"
+	.string "to help me study them.$"
 
 NewBarkTown_Lab_Text_ElmAccepted:
-	.string "Thanks, {PLAYER}!\n"
-	.string "You're a great help!$"
-
-NewBarkTown_Lab_Text_ElmRefused:
-	.string "But… Please, I need your\n"
-	.string "help!$"
+	.string "First, I'll show you three\n"
+	.string "POKéMON from my research.$"
 
 NewBarkTown_Lab_Text_ElmResearchAmbitions:
-	.string "When I announce my findings,\n"
-	.string "I'm sure we'll delve deeper\p"
-	.string "into the many mysteries of\n"
-	.string "POKéMON.\p"
-	.string "You can count on it!$"
+	.string "Their reactions near the ruins\n"
+	.string "could tell us what Resonance\l"
+	.string "does to POKéMON.$"
 
 NewBarkTown_Lab_Text_ElmGotAnEmail:
-	.string "Oh, hey! I got an e-mail!\p"
-	.string "… … … … … … … …\n"
-	.string "Hm… Uh-huh…\p"
-	.string "Okay…$"
+	.string "Oh! A message from\n"
+	.string "MR. POKéMON...\p"
+	.string "He found something unusual.$"
 
 NewBarkTown_Lab_Text_ElmMissionFromMrPokemon:
-	.string "Hey, listen.\p"
-	.string "I have an acquaintance called\n"
-	.string "MR. POKéMON.\p"
-	.string "He keeps finding weird things and\n"
-	.string "raving about his discoveries.\p"
-	.string "Anyway, I just got an e-mail\n"
-	.string "from him saying that this\l"
-	.string "time it's real.\p"
-	.string "It is intriguing, but we're\n"
-	.string "busy with our POKéMON research...\p"
-	.string "Wait!\n"
-	.string "I know!\p"
-	.string "{PLAYER}, can you go in our\n"
-	.string "place?$"
+	.string "He lives beyond CHERRYGROVE.\n"
+	.string "Take your partner and see\l"
+	.string "what he found.\p"
+	.string "Bring it back here so I can\n"
+	.string "compare it with OAK's notes.$"
 
 NewBarkTown_Lab_Text_ElmChooseAPokemon:
-	.string "I want you to raise one of\n"
-	.string "the POKéMON contained in these BALLS.\p"
-	.string "You'll be that POKéMON's\n"
-	.string "first partner, {PLAYER}!\p"
-	.string "Go on. Pick one!$"
+	.string "These three reacted to the\n"
+	.string "Resonance in my lab.\p"
+	.string "I'll open each capsule so you\n"
+	.string "can see them. Choose the one\l"
+	.string "you'll raise, {PLAYER}.$"
 
 NewBarkTown_Lab_Text_ElmWhereGoing:
 	.string "ELM: Wait! Where are you\n"
@@ -768,8 +740,9 @@ NewBarkTown_Lab_Text_DidntChooseStarter:
 	.string "Your partner is important.$"
 
 NewBarkTown_Lab_Text_ChoseStarter:
-	.string "ELM: I think that's a great\n"
-	.string "POKéMON too!$"
+	.string "ELM: {STR_VAR_1} trusts you.\n"
+	.string "Watch how it responds near\l"
+	.string "the ancient sites.$"
 
 NewBarkTown_Lab_Text_ReceivedStarter:
 	.string "{PLAYER} received {STR_VAR_1}!$"
