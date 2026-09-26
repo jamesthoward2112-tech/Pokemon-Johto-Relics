@@ -1,0 +1,637 @@
+diff --git a/data/maps/NewBarkTown_Lab_hns/scripts.inc b/data/maps/NewBarkTown_Lab_hns/scripts.inc
+index 54e41f13a..4669816df 100644
+--- a/data/maps/NewBarkTown_Lab_hns/scripts.inc
++++ b/data/maps/NewBarkTown_Lab_hns/scripts.inc
+@@ -171,7 +171,7 @@ NewBarkTown_Lab_EventScript_ChikoritaBall::
+ NewBarkTown_Lab_EventScript_ChikoritaBall_Choice::
+ 	@callnative DisableStaticRandomizer
+ 	setvar VAR_STARTER_MON, 0
+-	setvar PLAYER_STARTER_SPECIES, SPECIES_CHIKORITA
++	setvar PLAYER_STARTER_SPECIES, SPECIES_SCARABUB
+ 	showmonpic PLAYER_STARTER_SPECIES, 10, 3
+ 	playmoncry PLAYER_STARTER_SPECIES, CRY_MODE_NORMAL
+ 	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
+@@ -193,7 +193,7 @@ NewBarkTown_Lab_EventScript_CyndaquilBall::
+ NewBarkTown_Lab_EventScript_CyndaquilBall_Choice::
+ 	@callnative DisableStaticRandomizer
+ 	setvar VAR_STARTER_MON, 1
+-	setvar PLAYER_STARTER_SPECIES, SPECIES_CYNDAQUIL
++	setvar PLAYER_STARTER_SPECIES, SPECIES_SKARMET
+ 	showmonpic PLAYER_STARTER_SPECIES, 10, 3
+ 	playmoncry PLAYER_STARTER_SPECIES, CRY_MODE_NORMAL
+ 	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
+@@ -215,7 +215,7 @@ NewBarkTown_Lab_EventScript_TotodileBall::
+ NewBarkTown_Lab_EventScript_TotodileBall_Choice::
+ 	@callnative DisableStaticRandomizer
+ 	setvar VAR_STARTER_MON, 2
+-	setvar PLAYER_STARTER_SPECIES, SPECIES_TOTODILE
++	setvar PLAYER_STARTER_SPECIES, SPECIES_MOOTINY
+ 	showmonpic PLAYER_STARTER_SPECIES, 10, 3
+ 	playmoncry PLAYER_STARTER_SPECIES, CRY_MODE_NORMAL
+ 	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
+@@ -241,11 +241,17 @@ NewBarkTown_Lab_EventScript_ChoseStarter::
+ 	call_if_eq VAR_STARTER_MON, 0, NewBarkTown_Lab_EventScript_GiveStarter_Chikorita
+ 	call_if_eq VAR_STARTER_MON, 1, NewBarkTown_Lab_EventScript_GiveStarter_Cyndaquil
+ 	call_if_eq VAR_STARTER_MON, 2, NewBarkTown_Lab_EventScript_GiveStarter_Totodile
++	call_if_eq VAR_STARTER_MON, 0, PJR_NewBark_SetStarterScarabub
++	call_if_eq VAR_STARTER_MON, 1, PJR_NewBark_SetStarterSkarmet
++	call_if_eq VAR_STARTER_MON, 2, PJR_NewBark_SetStarterMootiny
++	setflag FLAG_PJR_STARTER_CHOSEN
++	setflag FLAG_PJR_SILVER_STARTER_SET
+ 	setflag FLAG_SYS_POKEMON_GET
+ 	playfanfare MUS_OBTAIN_ITEM
+ 	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
+ 	message NewBarkTown_Lab_Text_ReceivedStarter
+ 	waitfanfare
++	call PJR_NewBark_GiveStarterKit
+ 	specialvar VAR_RESULT, IsNuzlockeNicknamingActive
+ 	goto_if_eq VAR_RESULT, TRUE, NewBarkTown_Lab_EventScript_ChoseStarter_NicknameStarter_Nuzlocke
+ 	msgbox NewBarkTown_Lab_Text_Nickname, MSGBOX_YESNO
+@@ -277,6 +283,31 @@ NewBarkTown_Lab_EventScript_GiveStarter_Shiny::
+ 	givemon PLAYER_STARTER_SPECIES, 5, ITEM_NONE, BALL_POKE, NATURE_RANDOM, NUM_ABILITY_PERSONALITY, MON_GENDER_RANDOM, 0, 0, 0, 0, 0, 0, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, SHINY_MODE_ALWAYS	
+ 	return
+ 
++
++PJR_NewBark_SetStarterScarabub::
++	setvar VAR_PJR_STARTER_CHOICE, 1
++	setvar VAR_PJR_SILVER_STARTER, 2
++	return
++
++PJR_NewBark_SetStarterSkarmet::
++	setvar VAR_PJR_STARTER_CHOICE, 2
++	setvar VAR_PJR_SILVER_STARTER, 3
++	return
++
++PJR_NewBark_SetStarterMootiny::
++	setvar VAR_PJR_STARTER_CHOICE, 3
++	setvar VAR_PJR_SILVER_STARTER, 1
++	return
++
++PJR_NewBark_GiveStarterKit::
++	giveitem ITEM_RELIC_JOURNAL
++	setflag FLAG_PJR_GOT_RELIC_JOURNAL
++	giveitem ITEM_DEXNAV
++	setflag FLAG_PJR_DEXNAV_GET
++	giveitem ITEM_POKEMON_BOX_LINK
++	setvar VAR_PJR_CURRENT_LEAD, 1
++	return
++
+ NewBarkTown_Lab_EventScript_NicknameStarter::
+ 	setvar VAR_0x8004, 0
+ 	call Common_EventScript_NameReceivedPartyMon
+diff --git a/include/config/dexnav.h b/include/config/dexnav.h
+index 7ef65ae9b..5cbc774c2 100644
+--- a/include/config/dexnav.h
++++ b/include/config/dexnav.h
+@@ -1,15 +1,15 @@
+ #ifndef GUARD_CONFIG_DEXNAV_H
+ #define GUARD_CONFIG_DEXNAV_H
+ 
+-#define DEXNAV_ENABLED                FALSE  // Whether or not DexNav is enabled. If TRUE, flags/vars below must all be non-zero
++#define DEXNAV_ENABLED                TRUE   // Whether or not DexNav is enabled. If TRUE, flags/vars below must all be non-zero
+ #define USE_DEXNAV_SEARCH_LEVELS      FALSE  /* WARNING: POSSIBLY EXCEEDS SAVEBLOCK SPACE! REQUIRES 1 BYTE PER SPECIES */
+ 
+ // Flag/var defines
+-#define DN_FLAG_SEARCHING             0 // Searching for mon
+-#define DN_FLAG_DEXNAV_GET            0 // DexNav shows in start menu
+-#define DN_FLAG_DETECTOR_MODE         0 // Allow player to find hidden mons
+-#define DN_VAR_SPECIES                0 // Registered DexNav species
+-#define DN_VAR_STEP_COUNTER           0 // Steps for finding hidden pokemon
++#define DN_FLAG_SEARCHING             FLAG_PJR_DEXNAV_SEARCHING // Searching for mon
++#define DN_FLAG_DEXNAV_GET            FLAG_PJR_DEXNAV_GET // DexNav shows in start menu
++#define DN_FLAG_DETECTOR_MODE         FLAG_PJR_DEXNAV_DETECTOR_MODE // Allow player to find hidden mons
++#define DN_VAR_SPECIES                VAR_PJR_DEXNAV_SPECIES // Registered DexNav species
++#define DN_VAR_STEP_COUNTER           VAR_PJR_DEXNAV_STEP_COUNTER // Steps for finding hidden pokemon
+ 
+ // Search parameters
+ #define DEXNAV_TIMEOUT                  15  // 15 seconds is the time out. Max of 1092 seconds allowed
+diff --git a/include/config/general.h b/include/config/general.h
+index 69cbc55b5..e334d8a88 100644
+--- a/include/config/general.h
++++ b/include/config/general.h
+@@ -1,6 +1,9 @@
+ #ifndef GUARD_CONFIG_GENERAL_H
+ #define GUARD_CONFIG_GENERAL_H
+ 
++// Pokémon Johto Relics repository build switch.
++#define PJR_BUILD TRUE
++
+ // In the Generation 3 games, Asserts were used in various debug builds.
+ // Ruby/Sapphire and Emerald do not have these asserts while Fire Red
+ // still has them in the ROM. This is because the developers forgot
+diff --git a/include/constants/flags.h b/include/constants/flags.h
+index 4ccd8bcc0..c78d5a656 100644
+--- a/include/constants/flags.h
++++ b/include/constants/flags.h
+@@ -1511,9 +1511,9 @@
+ 
+ #define FLAG_RECEIVED_POKEDEX_FROM_BIRCH            (SYSTEM_FLAGS + 0x84)
+ 
+-#define FLAG_UNUSED_0x8E5                           (SYSTEM_FLAGS + 0x85) // Unused Flag
+-#define FLAG_UNUSED_0x8E6                           (SYSTEM_FLAGS + 0x86) // Unused Flag
+-#define FLAG_UNUSED_0x8E7                           (SYSTEM_FLAGS + 0x87) // Unused Flag
++#define FLAG_PJR_DEXNAV_SEARCHING                           (SYSTEM_FLAGS + 0x85) // Unused Flag
++#define FLAG_PJR_DEXNAV_GET                           (SYSTEM_FLAGS + 0x86) // Unused Flag
++#define FLAG_PJR_DEXNAV_DETECTOR_MODE                           (SYSTEM_FLAGS + 0x87) // Unused Flag
+ #define FLAG_UNUSED_0x8E8                           (SYSTEM_FLAGS + 0x88) // Unused Flag
+ #define FLAG_UNUSED_0x8E9                           (SYSTEM_FLAGS + 0x89) // Unused Flag
+ #define FLAG_UNUSED_0x8EA                           (SYSTEM_FLAGS + 0x8A) // Unused Flag
+@@ -1538,38 +1538,38 @@
+ #define FLAG_UNUSED_0x8FD                           (SYSTEM_FLAGS + 0x9D) // Unused Flag
+ #define FLAG_UNUSED_0x8FE                           (SYSTEM_FLAGS + 0x9E) // Unused Flag
+ #define FLAG_UNUSED_0x8FF                           (SYSTEM_FLAGS + 0x9F) // Unused Flag
+-#define FLAG_UNUSED_0x900                           (SYSTEM_FLAGS + 0xA0) // Unused Flag
+-#define FLAG_UNUSED_0x901                           (SYSTEM_FLAGS + 0xA1) // Unused Flag
+-#define FLAG_UNUSED_0x902                           (SYSTEM_FLAGS + 0xA2) // Unused Flag
+-#define FLAG_UNUSED_0x903                           (SYSTEM_FLAGS + 0xA3) // Unused Flag
+-#define FLAG_UNUSED_0x904                           (SYSTEM_FLAGS + 0xA4) // Unused Flag
+-#define FLAG_UNUSED_0x905                           (SYSTEM_FLAGS + 0xA5) // Unused Flag
+-#define FLAG_UNUSED_0x906                           (SYSTEM_FLAGS + 0xA6) // Unused Flag
+-#define FLAG_UNUSED_0x907                           (SYSTEM_FLAGS + 0xA7) // Unused Flag
+-#define FLAG_UNUSED_0x908                           (SYSTEM_FLAGS + 0xA8) // Unused Flag
+-#define FLAG_UNUSED_0x909                           (SYSTEM_FLAGS + 0xA9) // Unused Flag
+-#define FLAG_UNUSED_0x90A                           (SYSTEM_FLAGS + 0xAA) // Unused Flag
+-#define FLAG_UNUSED_0x90B                           (SYSTEM_FLAGS + 0xAB) // Unused Flag
+-#define FLAG_UNUSED_0x90C                           (SYSTEM_FLAGS + 0xAC) // Unused Flag
+-#define FLAG_UNUSED_0x90D                           (SYSTEM_FLAGS + 0xAD) // Unused Flag
+-#define FLAG_UNUSED_0x90E                           (SYSTEM_FLAGS + 0xAE) // Unused Flag
+-#define FLAG_UNUSED_0x90F                           (SYSTEM_FLAGS + 0xAF) // Unused Flag
+-#define FLAG_UNUSED_0x910                           (SYSTEM_FLAGS + 0xB0) // Unused Flag
+-#define FLAG_UNUSED_0x911                           (SYSTEM_FLAGS + 0xB1) // Unused Flag
+-#define FLAG_UNUSED_0x912                           (SYSTEM_FLAGS + 0xB2) // Unused Flag
+-#define FLAG_UNUSED_0x913                           (SYSTEM_FLAGS + 0xB3) // Unused Flag
+-#define FLAG_UNUSED_0x914                           (SYSTEM_FLAGS + 0xB4) // Unused Flag
+-#define FLAG_UNUSED_0x915                           (SYSTEM_FLAGS + 0xB5) // Unused Flag
+-#define FLAG_UNUSED_0x916                           (SYSTEM_FLAGS + 0xB6) // Unused Flag
+-#define FLAG_UNUSED_0x917                           (SYSTEM_FLAGS + 0xB7) // Unused Flag
+-#define FLAG_UNUSED_0x918                           (SYSTEM_FLAGS + 0xB8) // Unused Flag
+-#define FLAG_UNUSED_0x919                           (SYSTEM_FLAGS + 0xB9) // Unused Flag
+-#define FLAG_UNUSED_0x91A                           (SYSTEM_FLAGS + 0xBA) // Unused Flag
+-#define FLAG_UNUSED_0x91B                           (SYSTEM_FLAGS + 0xBB) // Unused Flag
+-#define FLAG_UNUSED_0x91C                           (SYSTEM_FLAGS + 0xBC) // Unused Flag
+-#define FLAG_UNUSED_0x91D                           (SYSTEM_FLAGS + 0xBD) // Unused Flag
+-#define FLAG_UNUSED_0x91E                           (SYSTEM_FLAGS + 0xBE) // Unused Flag
+-#define FLAG_UNUSED_0x91F                           (SYSTEM_FLAGS + 0xBF) // Unused Flag
++#define FLAG_PJR_STARTER_CHOSEN                           (SYSTEM_FLAGS + 0xA0) // Unused Flag
++#define FLAG_PJR_SILVER_STARTER_SET                           (SYSTEM_FLAGS + 0xA1) // Unused Flag
++#define FLAG_PJR_GOT_RELIC_JOURNAL                           (SYSTEM_FLAGS + 0xA2) // Unused Flag
++#define FLAG_PJR_GOT_CHIKORITA                           (SYSTEM_FLAGS + 0xA3) // Unused Flag
++#define FLAG_PJR_GOT_CYNDAQUIL                           (SYSTEM_FLAGS + 0xA4) // Unused Flag
++#define FLAG_PJR_GOT_TOTODILE                           (SYSTEM_FLAGS + 0xA5) // Unused Flag
++#define FLAG_PJR_ELM_EGGS_UNLOCKED                           (SYSTEM_FLAGS + 0xA6) // Unused Flag
++#define FLAG_PJR_GOT_ELM_EGG_1                           (SYSTEM_FLAGS + 0xA7) // Unused Flag
++#define FLAG_PJR_GOT_ELM_EGG_2                           (SYSTEM_FLAGS + 0xA8) // Unused Flag
++#define FLAG_PJR_GOT_ANCIENT_SHELL                           (SYSTEM_FLAGS + 0xA9) // Unused Flag
++#define FLAG_PJR_GOT_FOSSIL_BARK                           (SYSTEM_FLAGS + 0xAA) // Unused Flag
++#define FLAG_PJR_GOT_ANCIENT_TUSK                           (SYSTEM_FLAGS + 0xAB) // Unused Flag
++#define FLAG_PJR_GOT_FROST_MIRROR                           (SYSTEM_FLAGS + 0xAC) // Unused Flag
++#define FLAG_PJR_ALPH_INNER_UNLOCKED                           (SYSTEM_FLAGS + 0xAD) // Unused Flag
++#define FLAG_PJR_GOT_ANCIENT_HORN                           (SYSTEM_FLAGS + 0xAE) // Unused Flag
++#define FLAG_PJR_GOT_ANCIENT_PLUME                           (SYSTEM_FLAGS + 0xAF) // Unused Flag
++#define FLAG_PJR_GOT_ANCIENT_BELL                           (SYSTEM_FLAGS + 0xB0) // Unused Flag
++#define FLAG_PJR_RELICS_UNLOCKED                           (SYSTEM_FLAGS + 0xB1) // Unused Flag
++#define FLAG_PJR_CAUGHT_RAIKOU                           (SYSTEM_FLAGS + 0xB2) // Unused Flag
++#define FLAG_PJR_CAUGHT_ENTEI                           (SYSTEM_FLAGS + 0xB3) // Unused Flag
++#define FLAG_PJR_CAUGHT_LUGIA                           (SYSTEM_FLAGS + 0xB4) // Unused Flag
++#define FLAG_PJR_CAUGHT_EYE_UNOWN                           (SYSTEM_FLAGS + 0xB5) // Unused Flag
++#define FLAG_PJR_CAUGHT_CELEBI                           (SYSTEM_FLAGS + 0xB6) // Unused Flag
++#define FLAG_PJR_CAUGHT_SUICUNE                           (SYSTEM_FLAGS + 0xB7) // Unused Flag
++#define FLAG_PJR_ALPHORACLE_RESOLVED                           (SYSTEM_FLAGS + 0xB8) // Unused Flag
++#define FLAG_PJR_RED_DEFEATED                           (SYSTEM_FLAGS + 0xB9) // Unused Flag
++#define FLAG_PJR_GOT_RAINBOW_CREST                           (SYSTEM_FLAGS + 0xBA) // Unused Flag
++#define FLAG_PJR_RELIC_HO_OH_RESOLVED                           (SYSTEM_FLAGS + 0xBB) // Unused Flag
++#define FLAG_PJR_CHAMPION_CIRCUIT_UNLOCKED                           (SYSTEM_FLAGS + 0xBC) // Unused Flag
++#define FLAG_PJR_ELM_INCUBATOR_DONE                           (SYSTEM_FLAGS + 0xBD) // Unused Flag
++#define FLAG_PJR_KANTO_OPEN                           (SYSTEM_FLAGS + 0xBE) // Unused Flag
++#define FLAG_PJR_MT_SILVER_OPEN                           (SYSTEM_FLAGS + 0xBF) // Unused Flag
+ 
+ // Daily Flags
+ // These flags are cleared once per day
+diff --git a/include/constants/items.h b/include/constants/items.h
+index f7f7703b6..3894bb478 100644
+--- a/include/constants/items.h
++++ b/include/constants/items.h
+@@ -1081,6 +1081,18 @@ enum __attribute__((packed)) Item
+     ITEM_UNUSED_BERRY_3,
+     ITEM_AZURE_FLUTE,
+ 
++    // Pokémon Johto Relics
++    ITEM_RELIC_JOURNAL = 901,
++    ITEM_ANCIENT_SHELL = 902,
++    ITEM_FOSSIL_BARK = 903,
++    ITEM_ANCIENT_TUSK = 904,
++    ITEM_FROST_MIRROR = 905,
++    ITEM_ANCIENT_HORN = 906,
++    ITEM_ANCIENT_PLUME = 907,
++    ITEM_ANCIENT_BELL = 908,
++    ITEM_ANCIENT_RAINBOW_CREST = 909,
++    ITEM_DEXNAV = 910,
++
+     ITEMS_COUNT,
+     ITEM_FIELD_ARROW = ITEMS_COUNT,
+ };
+diff --git a/include/constants/species.h b/include/constants/species.h
+index 98b6f3c8e..d92d8c272 100644
+--- a/include/constants/species.h
++++ b/include/constants/species.h
+@@ -1688,7 +1688,22 @@
+ #define SPECIES_TATSUGIRI_STRETCHY_MEGA                 1571
+ #define SPECIES_GLIMMORA_MEGA                           1572
+ 
+-#define SPECIES_EGG                                     (SPECIES_GLIMMORA_MEGA + 1)
++// Pokémon Johto Relics
++#define SPECIES_SCARABUB                                1573
++#define SPECIES_HERACURION                              1574
++#define SPECIES_SKARMET                                 1575
++#define SPECIES_SKARMADON                               1576
++#define SPECIES_MOOTINY                                 1577
++#define SPECIES_MILTITAN                                1578
++#define SPECIES_FAERANIUM                               1579
++#define SPECIES_PYROCLAST                               1580
++#define SPECIES_FERALODON                               1581
++#define SPECIES_SHUCKOLOSSE                             1582
++#define SPECIES_SUDOWARDEN                              1583
++#define SPECIES_DONPHALANX                              1584
++#define SPECIES_MYSTYNX                                 1585
++
++#define SPECIES_EGG                                     (SPECIES_MYSTYNX + 1)
+ 
+ #define NUM_SPECIES SPECIES_EGG
+ 
+diff --git a/include/constants/vars.h b/include/constants/vars.h
+index f1f88011c..bbcd0e0ba 100644
+--- a/include/constants/vars.h
++++ b/include/constants/vars.h
+@@ -239,8 +239,8 @@
+ #define VAR_SOOTOPOLIS_WALLACE_STATE                     0x40D8
+ #define VAR_HAS_TALKED_TO_SEAFLOOR_CAVERN_ENTRANCE_GRUNT 0x40D9
+ #define VAR_REGISTER_BIRCH_STATE                         0x40DA
+-#define VAR_UNUSED_0x40DB                                0x40DB // Unused Var
+-#define VAR_UNUSED_0x40DC                                0x40DC // Unused Var
++#define VAR_PJR_DEXNAV_SPECIES                                0x40DB // Unused Var
++#define VAR_PJR_DEXNAV_STEP_COUNTER                                0x40DC // Unused Var
+ #define VAR_GIFT_PICHU_SLOT                              0x40DD
+ #define VAR_GIFT_UNUSED_1                                0x40DE // Var is written to, but never read
+ #define VAR_GIFT_UNUSED_2                                0x40DF // Var is written to, but never read
+@@ -267,12 +267,12 @@
+ #define VAR_ROXANNE_CALL_STEP_COUNTER                    0x40F4
+ #define VAR_SCOTT_BF_CALL_STEP_COUNTER                   0x40F5
+ #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
+-#define VAR_UNUSED_0x40F7                                0x40F7 // Unused Var
+-#define VAR_UNUSED_0x40F8                                0x40F8 // Unused Var
+-#define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var
+-#define VAR_UNUSED_0x40FA                                0x40FA // Unused Var
+-#define VAR_UNUSED_0x40FB                                0x40FB // Unused Var
+-#define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
++#define VAR_PJR_STARTER_CHOICE                                0x40F7 // Unused Var
++#define VAR_PJR_SILVER_STARTER                                0x40F8 // Unused Var
++#define VAR_PJR_RELICS_PROGRESS                                0x40F9 // Unused Var
++#define VAR_PJR_CURRENT_LEAD                                0x40FA // Unused Var
++#define VAR_PJR_ALPH_CHAMBERS                                0x40FB // Unused Var
++#define VAR_PJR_POSTGAME_STATE                                0x40FC // Unused Var
+ #define VAR_SURF_MON_SLOT                                0x40FD // Added new VAR for Surfing Overworld Sprites - Holds Surfing Party Mon index
+ #define VAR_FREEZE_SURF_BLOB                             0x40FE // Added new VAR for Surfing Overworld Sprites - Set on surf init to stop blob overlay being offset incorrectly
+ #define VAR_UNUSED_0x40FF                                0x40FF // Unused Var
+diff --git a/src/data/graphics/pokemon.h b/src/data/graphics/pokemon.h
+index 6f6046365..65e8a3016 100644
+--- a/src/data/graphics/pokemon.h
++++ b/src/data/graphics/pokemon.h
+@@ -27552,3 +27552,17 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
+     const u16 gMonShinyPaletteModern_Elekid[] = INCBIN_U16("graphics/pokemon/elekid/shiny_modern.gbapal");
+     const u16 gMonShinyPaletteModern_Blaziken[] = INCBIN_U16("graphics/pokemon/blaziken/shiny_modern.gbapal");
+     const u16 gMonShinyPaletteModern_Regice[] = INCBIN_U16("graphics/pokemon/regice/shiny_modern.gbapal");
++
++    // Pokémon Johto Relics Alpha 1 baby starters (locked ROM-ready assets).
++    const u32 gMonFrontPic_Scarabub[] = INCBIN_U32("graphics/pokemon/scarabub/front.4bpp");
++    const u16 gMonPalette_Scarabub[] = INCBIN_U16("graphics/pokemon/scarabub/front.gbapal");
++    const u32 gMonBackPic_Scarabub[] = INCBIN_U32("graphics/pokemon/scarabub/back.4bpp");
++    const u8 gMonIcon_Scarabub[] = INCBIN_U8("graphics/pokemon/scarabub/icon.4bpp");
++    const u32 gMonFrontPic_Skarmet[] = INCBIN_U32("graphics/pokemon/skarmet/front.4bpp");
++    const u16 gMonPalette_Skarmet[] = INCBIN_U16("graphics/pokemon/skarmet/front.gbapal");
++    const u32 gMonBackPic_Skarmet[] = INCBIN_U32("graphics/pokemon/skarmet/back.4bpp");
++    const u8 gMonIcon_Skarmet[] = INCBIN_U8("graphics/pokemon/skarmet/icon.4bpp");
++    const u32 gMonFrontPic_Mootiny[] = INCBIN_U32("graphics/pokemon/mootiny/front.4bpp");
++    const u16 gMonPalette_Mootiny[] = INCBIN_U16("graphics/pokemon/mootiny/front.gbapal");
++    const u32 gMonBackPic_Mootiny[] = INCBIN_U32("graphics/pokemon/mootiny/back.4bpp");
++    const u8 gMonIcon_Mootiny[] = INCBIN_U8("graphics/pokemon/mootiny/icon.4bpp");
+diff --git a/src/data/items.h b/src/data/items.h
+index c590402ee..24817906a 100644
+--- a/src/data/items.h
++++ b/src/data/items.h
+@@ -16474,6 +16474,86 @@ const struct ItemInfo gItemsInfo[] =
+         .iconPic = gItemIcon_AzureFlute,
+         .iconPalette = gItemIconPalette_AzureFlute,
+     },
++    [ITEM_RELIC_JOURNAL] =
++    {
++        .name = ITEM_NAME("RELIC JOURNAL"), .price = 0,
++        .description = COMPOUND_STRING("A journal that\nrecords Relic and\nResonance leads."),
++        .importance = 1, .pocket = POCKET_KEY_ITEMS, .type = ITEM_USE_BAG_MENU,
++        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
++        .iconPic = gItemIcon_FameChecker, .iconPalette = gItemIconPalette_FameChecker,
++    },
++    [ITEM_ANCIENT_SHELL] =
++    {
++        .name = ITEM_NAME("ANCIENT SHELL"), .price = 0,
++        .description = COMPOUND_STRING("A Relic catalyst\nwith an ancient\nstone resonance."),
++        .pocket = POCKET_ITEMS, .type = ITEM_USE_BAG_MENU,
++        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
++        .iconPic = gItemIcon_QuestionMark, .iconPalette = gItemIconPalette_QuestionMark,
++    },
++    [ITEM_FOSSIL_BARK] =
++    {
++        .name = ITEM_NAME("FOSSIL BARK"), .price = 0,
++        .description = COMPOUND_STRING("Petrified bark\ncarrying ancient\nResonance."),
++        .pocket = POCKET_ITEMS, .type = ITEM_USE_BAG_MENU,
++        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
++        .iconPic = gItemIcon_QuestionMark, .iconPalette = gItemIconPalette_QuestionMark,
++    },
++    [ITEM_ANCIENT_TUSK] =
++    {
++        .name = ITEM_NAME("ANCIENT TUSK"), .price = 0,
++        .description = COMPOUND_STRING("A weathered tusk\nused as a Relic\ncatalyst."),
++        .pocket = POCKET_ITEMS, .type = ITEM_USE_BAG_MENU,
++        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
++        .iconPic = gItemIcon_QuestionMark, .iconPalette = gItemIconPalette_QuestionMark,
++    },
++    [ITEM_FROST_MIRROR] =
++    {
++        .name = ITEM_NAME("FROST MIRROR"), .price = 0,
++        .description = COMPOUND_STRING("An icy mirror\nthat resonates with\nancient power."),
++        .pocket = POCKET_ITEMS, .type = ITEM_USE_BAG_MENU,
++        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
++        .iconPic = gItemIcon_QuestionMark, .iconPalette = gItemIconPalette_QuestionMark,
++    },
++    [ITEM_ANCIENT_HORN] =
++    {
++        .name = ITEM_NAME("ANCIENT HORN"), .price = 0,
++        .description = COMPOUND_STRING("A horn-shaped\nRelic catalyst from\nthe Alph chambers."),
++        .pocket = POCKET_ITEMS, .type = ITEM_USE_BAG_MENU,
++        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
++        .iconPic = gItemIcon_QuestionMark, .iconPalette = gItemIconPalette_QuestionMark,
++    },
++    [ITEM_ANCIENT_PLUME] =
++    {
++        .name = ITEM_NAME("ANCIENT PLUME"), .price = 0,
++        .description = COMPOUND_STRING("A metallic plume\nfrom the sealed\nAlph chambers."),
++        .pocket = POCKET_ITEMS, .type = ITEM_USE_BAG_MENU,
++        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
++        .iconPic = gItemIcon_QuestionMark, .iconPalette = gItemIconPalette_QuestionMark,
++    },
++    [ITEM_ANCIENT_BELL] =
++    {
++        .name = ITEM_NAME("ANCIENT BELL"), .price = 0,
++        .description = COMPOUND_STRING("An old bell whose\ntone carries a deep\nResonance."),
++        .pocket = POCKET_ITEMS, .type = ITEM_USE_BAG_MENU,
++        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
++        .iconPic = gItemIcon_QuestionMark, .iconPalette = gItemIconPalette_QuestionMark,
++    },
++    [ITEM_ANCIENT_RAINBOW_CREST] =
++    {
++        .name = ITEM_NAME("RAINBOW CREST"), .price = 0,
++        .description = COMPOUND_STRING("An ancient crest\nthat answers to the\nRainbow Guardian."),
++        .importance = 1, .pocket = POCKET_KEY_ITEMS, .type = ITEM_USE_BAG_MENU,
++        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
++        .iconPic = gItemIcon_QuestionMark, .iconPalette = gItemIconPalette_QuestionMark,
++    },
++    [ITEM_DEXNAV] =
++    {
++        .name = ITEM_NAME("DEXNAV"), .price = 0,
++        .description = COMPOUND_STRING("A field scanner for\nnearby Pokemon\nhabitats."),
++        .importance = 1, .pocket = POCKET_KEY_ITEMS, .type = ITEM_USE_BAG_MENU,
++        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
++        .iconPic = gItemIcon_PokeRadar, .iconPalette = gItemIconPalette_PokeRadar,
++    },
+ };
+ 
+ #undef ITEM_NAME
+diff --git a/src/data/pokemon/level_up_learnsets/gen_3.h b/src/data/pokemon/level_up_learnsets/gen_3.h
+index 38fc0a53f..288332cdb 100644
+--- a/src/data/pokemon/level_up_learnsets/gen_3.h
++++ b/src/data/pokemon/level_up_learnsets/gen_3.h
+@@ -20370,3 +20370,20 @@ static const struct LevelUpMove sPecharuntLevelUpLearnset[] = {
+ };
+ #endif //P_FAMILY_PECHARUNT
+ 
++static const struct LevelUpMove sScarabubLevelUpLearnset[] = {
++    LEVEL_UP_MOVE(1, MOVE_TACKLE), LEVEL_UP_MOVE(1, MOVE_LEER),
++    LEVEL_UP_MOVE(5, MOVE_ENDURE), LEVEL_UP_MOVE(8, MOVE_BUG_BITE),
++    LEVEL_UP_MOVE(11, MOVE_ARM_THRUST), LEVEL_UP_MOVE(14, MOVE_COUNTER), LEVEL_UP_END
++};
++static const struct LevelUpMove sSkarmetLevelUpLearnset[] = {
++    LEVEL_UP_MOVE(1, MOVE_PECK), LEVEL_UP_MOVE(1, MOVE_LEER),
++    LEVEL_UP_MOVE(5, MOVE_SAND_ATTACK), LEVEL_UP_MOVE(8, MOVE_METAL_CLAW),
++    LEVEL_UP_MOVE(11, MOVE_FURY_ATTACK), LEVEL_UP_MOVE(14, MOVE_ROOST),
++    LEVEL_UP_MOVE(17, MOVE_AIR_CUTTER), LEVEL_UP_END
++};
++static const struct LevelUpMove sMootinyLevelUpLearnset[] = {
++    LEVEL_UP_MOVE(1, MOVE_TACKLE), LEVEL_UP_MOVE(1, MOVE_GROWL),
++    LEVEL_UP_MOVE(5, MOVE_DEFENSE_CURL), LEVEL_UP_MOVE(8, MOVE_ROLLOUT),
++    LEVEL_UP_MOVE(11, MOVE_STOMP), LEVEL_UP_MOVE(14, MOVE_HEADBUTT),
++    LEVEL_UP_MOVE(17, MOVE_MILK_DRINK), LEVEL_UP_END
++};
+diff --git a/src/data/pokemon/level_up_learnsets_gen3.c b/src/data/pokemon/level_up_learnsets_gen3.c
+index b24871520..0fb48e1d1 100644
+--- a/src/data/pokemon/level_up_learnsets_gen3.c
++++ b/src/data/pokemon/level_up_learnsets_gen3.c
+@@ -5,6 +5,9 @@
+ #include "level_up_learnsets/gen_3.h"
+ 
+ const struct LevelUpMove *const gLevelUpLearnsets_Gen3[NUM_SPECIES] = {
++    [SPECIES_SCARABUB] = sScarabubLevelUpLearnset,
++    [SPECIES_SKARMET] = sSkarmetLevelUpLearnset,
++    [SPECIES_MOOTINY] = sMootinyLevelUpLearnset,
+ #if P_FAMILY_BULBASAUR
+     [SPECIES_BULBASAUR] = sBulbasaurLevelUpLearnset,
+     [SPECIES_IVYSAUR] = sIvysaurLevelUpLearnset,
+diff --git a/src/data/pokemon/species_info.h b/src/data/pokemon/species_info.h
+index 766aaf71d..2ea8adada 100644
+--- a/src/data/pokemon/species_info.h
++++ b/src/data/pokemon/species_info.h
+@@ -161,6 +161,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+     #include "species_info/gen_7_families.h"
+     #include "species_info/gen_8_families.h"
+     #include "species_info/gen_9_families.h"
++    #include "species_info/pjr_families.h"
+ 
+     [SPECIES_EGG] =
+     {
+diff --git a/src/data/pokemon/species_info/pjr_families.h b/src/data/pokemon/species_info/pjr_families.h
+new file mode 100644
+index 000000000..a4aaa990a
+--- /dev/null
++++ b/src/data/pokemon/species_info/pjr_families.h
+@@ -0,0 +1,67 @@
++// Pokémon Johto Relics Alpha 1 species.
++// ALPHA_TEMP: baby base stats are placeholders until the canonical balance pass.
++[SPECIES_SCARABUB] =
++{
++    .baseHP = 45, .baseAttack = 55, .baseDefense = 45, .baseSpeed = 50,
++    .baseSpAttack = 30, .baseSpDefense = 40, .types = MON_TYPES(TYPE_BUG),
++    .catchRate = 45, .expYield = 65, .genderRatio = PERCENT_FEMALE(50),
++    .eggCycles = 20, .friendship = STANDARD_FRIENDSHIP,
++    .growthRate = GROWTH_MEDIUM_FAST, .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
++    .abilities = {ABILITY_SWARM, ABILITY_GUTS, ABILITY_BATTLE_ARMOR},
++    .bodyColor = BODY_COLOR_BLUE, .speciesName = _("SCARABUB"),
++    .cryId = CRY_HERACROSS, .natDexNum = NATIONAL_DEX_HERACROSS,
++    .categoryName = _("Scarab"), .height = 6, .weight = 120,
++    .description = COMPOUND_STRING("A young scarab Pokemon whose horn\nwill harden as its strength grows.\nIt never gives up when challenged."),
++    .frontPic = gMonFrontPic_Scarabub, .frontPicSize = MON_COORDS_SIZE(64, 64),
++    .frontPicYOffset = 0, .frontAnimFrames = sAnims_SingleFramePlaceHolder,
++    .backPic = gMonBackPic_Scarabub, .backPicSize = MON_COORDS_SIZE(64, 64),
++    .backPicYOffset = 0, .palette = gMonPalette_Scarabub,
++    .shinyPalette = gMonPalette_Scarabub, .iconSprite = gMonIcon_Scarabub,
++    .iconPalIndex = 0, .levelUpLearnset = sScarabubLevelUpLearnset,
++    .teachableLearnset = sHeracrossTeachableLearnset,
++    .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_HERACROSS}),
++},
++
++[SPECIES_SKARMET] =
++{
++    .baseHP = 45, .baseAttack = 40, .baseDefense = 65, .baseSpeed = 45,
++    .baseSpAttack = 30, .baseSpDefense = 50, .types = MON_TYPES(TYPE_STEEL, TYPE_FLYING),
++    .catchRate = 45, .expYield = 65, .genderRatio = PERCENT_FEMALE(50),
++    .eggCycles = 25, .friendship = STANDARD_FRIENDSHIP, .growthRate = GROWTH_SLOW,
++    .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
++    .abilities = {ABILITY_KEEN_EYE, ABILITY_STURDY, ABILITY_WEAK_ARMOR},
++    .bodyColor = BODY_COLOR_GRAY, .speciesName = _("SKARMET"),
++    .cryId = CRY_SKARMORY, .natDexNum = NATIONAL_DEX_SKARMORY,
++    .categoryName = _("Armor Chick"), .height = 5, .weight = 95,
++    .description = COMPOUND_STRING("Its soft metal feathers sharpen with\nevery flight. It trains against rocky\nwinds before its armor fully forms."),
++    .frontPic = gMonFrontPic_Skarmet, .frontPicSize = MON_COORDS_SIZE(64, 64),
++    .frontPicYOffset = 0, .frontAnimFrames = sAnims_SingleFramePlaceHolder,
++    .backPic = gMonBackPic_Skarmet, .backPicSize = MON_COORDS_SIZE(64, 64),
++    .backPicYOffset = 0, .palette = gMonPalette_Skarmet,
++    .shinyPalette = gMonPalette_Skarmet, .iconSprite = gMonIcon_Skarmet,
++    .iconPalIndex = 0, .levelUpLearnset = sSkarmetLevelUpLearnset,
++    .teachableLearnset = sSkarmoryTeachableLearnset,
++    .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_SKARMORY}),
++},
++
++[SPECIES_MOOTINY] =
++{
++    .baseHP = 55, .baseAttack = 45, .baseDefense = 50, .baseSpeed = 40,
++    .baseSpAttack = 35, .baseSpDefense = 50, .types = MON_TYPES(TYPE_NORMAL),
++    .catchRate = 45, .expYield = 65, .genderRatio = MON_FEMALE,
++    .eggCycles = 20, .friendship = STANDARD_FRIENDSHIP, .growthRate = GROWTH_SLOW,
++    .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
++    .abilities = {ABILITY_THICK_FAT, ABILITY_SCRAPPY, ABILITY_SAP_SIPPER},
++    .bodyColor = BODY_COLOR_PINK, .speciesName = _("MOOTINY"),
++    .cryId = CRY_MILTANK, .natDexNum = NATIONAL_DEX_MILTANK,
++    .categoryName = _("Calf"), .height = 6, .weight = 180,
++    .description = COMPOUND_STRING("This spirited calf rolls into danger\nwithout hesitation. Rich milk and\nancient energy fuel its growth."),
++    .frontPic = gMonFrontPic_Mootiny, .frontPicSize = MON_COORDS_SIZE(64, 64),
++    .frontPicYOffset = 0, .frontAnimFrames = sAnims_SingleFramePlaceHolder,
++    .backPic = gMonBackPic_Mootiny, .backPicSize = MON_COORDS_SIZE(64, 64),
++    .backPicYOffset = 0, .palette = gMonPalette_Mootiny,
++    .shinyPalette = gMonPalette_Mootiny, .iconSprite = gMonIcon_Mootiny,
++    .iconPalIndex = 0, .levelUpLearnset = sMootinyLevelUpLearnset,
++    .teachableLearnset = sMiltankTeachableLearnset,
++    .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_MILTANK}),
++},
+diff --git a/src/title_screen.c b/src/title_screen.c
+index e4dac935a..07c748da5 100644
+--- a/src/title_screen.c
++++ b/src/title_screen.c
+@@ -46,6 +46,10 @@ enum {
+ #define A_B_START_SELECT (A_BUTTON | B_BUTTON | START_BUTTON | SELECT_BUTTON)
+ 
+ static void MainCB2(void);
++#if IS_HNS && PJR_BUILD
++static void CB2_InitPjrTitleScreen(void);
++static void Task_PjrTitleScreenInput(u8 taskId);
++#endif
+ static void Task_TitleScreenPhase1(u8);
+ static void Task_TitleScreenPhase2(u8);
+ static void Task_TitleScreenPhase3(u8);
+@@ -68,6 +72,10 @@ static const u16 sUnusedUnknownPal[] = INCBIN_U16("graphics/title_screen/unused.
+ static const u32 sTitleScreenRayquazaGfx[] = INCBIN_U32("graphics/title_screen/hns/rayquaza.4bpp.smol");
+ static const u32 sTitleScreenRayquazaTilemap[] = INCBIN_U32("graphics/title_screen/hns/rayquaza.bin.smolTM");
+ static const u32 sTitleScreenLogoShineGfx[] = INCBIN_U32("graphics/title_screen/hns/logo_shine.4bpp.smol");
++#if PJR_BUILD
++static const u8 sPjrTitleBitmap[] = INCBIN_U8("graphics/title_screen/pjr/PJR_TitleScreen_Mode4.8bpp");
++static const u16 sPjrTitlePalette[] = INCBIN_U16("graphics/title_screen/pjr/PJR_TitleScreen_Mode4.gbapal");
++#endif
+ #else
+ static const u32 sTitleScreenRayquazaGfx[] = INCBIN_U32("graphics/title_screen/rayquaza.4bpp.smol");
+ static const u32 sTitleScreenRayquazaTilemap[] = INCBIN_U32("graphics/title_screen/rayquaza.bin.smolTM");
+@@ -583,6 +591,10 @@ void CB2_InitTitleScreen(void)
+         CB2_InitTitleScreenFrlg();
+         return;
+     }
++#if IS_HNS && PJR_BUILD
++    CB2_InitPjrTitleScreen();
++    return;
++#endif
+     switch (gMain.state)
+     {
+     default:
+@@ -692,6 +704,68 @@ void CB2_InitTitleScreen(void)
+     }
+ }
+ 
++#if IS_HNS && PJR_BUILD
++static void CB2_InitPjrTitleScreen(void)
++{
++    switch (gMain.state)
++    {
++    case 0:
++        SetVBlankCallback(NULL);
++        ScanlineEffect_Stop();
++        SetGpuReg(REG_OFFSET_DISPCNT, 0);
++        DmaFill16(3, 0, (void *)VRAM, VRAM_SIZE);
++        DmaFill32(3, 0, (void *)OAM, OAM_SIZE);
++        DmaFill16(3, 0, (void *)PLTT, PLTT_SIZE);
++        ResetPaletteFade();
++        ResetTasks();
++        ResetSpriteData();
++        FreeAllSpritePalettes();
++        gMain.state++;
++        break;
++    case 1:
++        DmaCopy16(3, sPjrTitleBitmap, (void *)VRAM, sizeof(sPjrTitleBitmap));
++        LoadPalette(sPjrTitlePalette, BG_PLTT_ID(0), sizeof(sPjrTitlePalette));
++        LoadCompressedSpriteSheet(&sSpriteSheet_PressStart[0]);
++        LoadSpritePalette(&sSpritePalette_PressStart[0]);
++        CreatePressStartBanner(START_BANNER_X, 138);
++        CreateTask(Task_PjrTitleScreenInput, 0);
++        SetGpuReg(REG_OFFSET_BG2PA, 0x100);
++        SetGpuReg(REG_OFFSET_BG2PB, 0);
++        SetGpuReg(REG_OFFSET_BG2PC, 0);
++        SetGpuReg(REG_OFFSET_BG2PD, 0x100);
++        SetGpuReg(REG_OFFSET_BG2X_L, 0);
++        SetGpuReg(REG_OFFSET_BG2X_H, 0);
++        SetGpuReg(REG_OFFSET_BG2Y_L, 0);
++        SetGpuReg(REG_OFFSET_BG2Y_H, 0);
++        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_4 | DISPCNT_OBJ_1D_MAP
++                                            | DISPCNT_BG2_ON | DISPCNT_OBJ_ON);
++        EnableInterrupts(INTR_FLAG_VBLANK);
++        m4aSongNumStart(MUS_HG_TITLE, FlagGet(FLAG_SYS_GBS_ENABLED));
++        SetVBlankCallback(VBlankCB);
++        SetMainCallback2(MainCB2);
++        gMain.state++;
++        break;
++    }
++}
++
++static void Task_PjrTitleScreenInput(u8 taskId)
++{
++    if (JOY_NEW(A_BUTTON) || JOY_NEW(START_BUTTON))
++    {
++        FadeOutBGM(4);
++        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_WHITEALPHA);
++        SetMainCallback2(CB2_GoToMainMenu);
++        DestroyTask(taskId);
++    }
++    else if (JOY_HELD(CLEAR_SAVE_BUTTON_COMBO) == CLEAR_SAVE_BUTTON_COMBO)
++        SetMainCallback2(CB2_GoToClearSaveDataScreen);
++    else if (JOY_HELD(RESET_RTC_BUTTON_COMBO) == RESET_RTC_BUTTON_COMBO && CanResetRTC())
++        SetMainCallback2(CB2_GoToResetRtcScreen);
++    else if (JOY_HELD(BERRY_UPDATE_BUTTON_COMBO) == BERRY_UPDATE_BUTTON_COMBO)
++        SetMainCallback2(CB2_GoToBerryFixScreen);
++}
++#endif
++
+ static void MainCB2(void)
+ {
+     RunTasks();
