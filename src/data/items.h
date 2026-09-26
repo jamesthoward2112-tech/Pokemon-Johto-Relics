@@ -16474,6 +16474,86 @@ const struct ItemInfo gItemsInfo[] =
         .iconPic = gItemIcon_AzureFlute,
         .iconPalette = gItemIconPalette_AzureFlute,
     },
+    [ITEM_RELIC_JOURNAL] =
+    {
+        .name = ITEM_NAME("RELIC JOURNAL"), .price = 0,
+        .description = COMPOUND_STRING("A journal that\nrecords Relic and\nResonance leads."),
+        .importance = 1, .pocket = POCKET_KEY_ITEMS, .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_FameChecker, .iconPalette = gItemIconPalette_FameChecker,
+    },
+    [ITEM_ANCIENT_SHELL] =
+    {
+        .name = ITEM_NAME("ANCIENT SHELL"), .price = 0,
+        .description = COMPOUND_STRING("A Relic catalyst\nwith an ancient\nstone resonance."),
+        .pocket = POCKET_ITEMS, .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark, .iconPalette = gItemIconPalette_QuestionMark,
+    },
+    [ITEM_FOSSIL_BARK] =
+    {
+        .name = ITEM_NAME("FOSSIL BARK"), .price = 0,
+        .description = COMPOUND_STRING("Petrified bark\ncarrying ancient\nResonance."),
+        .pocket = POCKET_ITEMS, .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark, .iconPalette = gItemIconPalette_QuestionMark,
+    },
+    [ITEM_ANCIENT_TUSK] =
+    {
+        .name = ITEM_NAME("ANCIENT TUSK"), .price = 0,
+        .description = COMPOUND_STRING("A weathered tusk\nused as a Relic\ncatalyst."),
+        .pocket = POCKET_ITEMS, .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark, .iconPalette = gItemIconPalette_QuestionMark,
+    },
+    [ITEM_FROST_MIRROR] =
+    {
+        .name = ITEM_NAME("FROST MIRROR"), .price = 0,
+        .description = COMPOUND_STRING("An icy mirror\nthat resonates with\nancient power."),
+        .pocket = POCKET_ITEMS, .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark, .iconPalette = gItemIconPalette_QuestionMark,
+    },
+    [ITEM_ANCIENT_HORN] =
+    {
+        .name = ITEM_NAME("ANCIENT HORN"), .price = 0,
+        .description = COMPOUND_STRING("A horn-shaped\nRelic catalyst from\nthe Alph chambers."),
+        .pocket = POCKET_ITEMS, .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark, .iconPalette = gItemIconPalette_QuestionMark,
+    },
+    [ITEM_ANCIENT_PLUME] =
+    {
+        .name = ITEM_NAME("ANCIENT PLUME"), .price = 0,
+        .description = COMPOUND_STRING("A metallic plume\nfrom the sealed\nAlph chambers."),
+        .pocket = POCKET_ITEMS, .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark, .iconPalette = gItemIconPalette_QuestionMark,
+    },
+    [ITEM_ANCIENT_BELL] =
+    {
+        .name = ITEM_NAME("ANCIENT BELL"), .price = 0,
+        .description = COMPOUND_STRING("An old bell whose\ntone carries a deep\nResonance."),
+        .pocket = POCKET_ITEMS, .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark, .iconPalette = gItemIconPalette_QuestionMark,
+    },
+    [ITEM_ANCIENT_RAINBOW_CREST] =
+    {
+        .name = ITEM_NAME("RAINBOW CREST"), .price = 0,
+        .description = COMPOUND_STRING("An ancient crest\nthat answers to the\nRainbow Guardian."),
+        .importance = 1, .pocket = POCKET_KEY_ITEMS, .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark, .iconPalette = gItemIconPalette_QuestionMark,
+    },
+    [ITEM_DEXNAV] =
+    {
+        .name = ITEM_NAME("DEXNAV"), .price = 0,
+        .description = COMPOUND_STRING("A field scanner for\nnearby Pokemon\nhabitats."),
+        .importance = 1, .pocket = POCKET_KEY_ITEMS, .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_PokeRadar, .iconPalette = gItemIconPalette_PokeRadar,
+    },
 };
 
 #undef ITEM_NAME

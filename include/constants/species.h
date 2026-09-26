@@ -1688,7 +1688,22 @@
 #define SPECIES_TATSUGIRI_STRETCHY_MEGA                 1571
 #define SPECIES_GLIMMORA_MEGA                           1572
 
-#define SPECIES_EGG                                     (SPECIES_GLIMMORA_MEGA + 1)
+// Pokémon Johto Relics
+#define SPECIES_SCARABUB                                1573
+#define SPECIES_HERACURION                              1574
+#define SPECIES_SKARMET                                 1575
+#define SPECIES_SKARMADON                               1576
+#define SPECIES_MOOTINY                                 1577
+#define SPECIES_MILTITAN                                1578
+#define SPECIES_FAERANIUM                               1579
+#define SPECIES_PYROCLAST                               1580
+#define SPECIES_FERALODON                               1581
+#define SPECIES_SHUCKOLOSSE                             1582
+#define SPECIES_SUDOWARDEN                              1583
+#define SPECIES_DONPHALANX                              1584
+#define SPECIES_MYSTYNX                                 1585
+
+#define SPECIES_EGG                                     (SPECIES_MYSTYNX + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 
