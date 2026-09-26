@@ -31,12 +31,13 @@ jobs:
             "$emulator" Pokemon-Johto-Relics-Alpha1.gba > emulator.log 2>&1 &
             pid=$!
             sleep 8
-            timeout 8s import -window root title_a.png
+            xdotool search --name . getwindowname || true
+            timeout 8s import -screen -window root title_a.png
             sleep 1
-            timeout 8s import -window root title_b.png
+            timeout 8s import -screen -window root title_b.png
             xdotool key Return
             sleep 4
-            timeout 8s import -window root after_start.png
+            timeout 8s import -screen -window root after_start.png
             kill -9 "$pid" || true
           '
           ls -lh title_a.png title_b.png after_start.png
@@ -48,4 +49,5 @@ jobs:
             title_a.png
             title_b.png
             after_start.png
+            emulator.log
           if-no-files-found: error
