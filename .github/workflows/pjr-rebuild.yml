@@ -1,0 +1,34 @@
+name: PJR clean rebuild
+
+on:
+  push:
+    branches: [pjr-rebuild]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  UNUSED_ERROR: 0
+  DEPRECATED_ERROR: 1
+
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3
+      - name: Build clean HnS baseline
+        run: |
+          make hns -j4 -O
+      - name: Package baseline
+        run: cp pokehns.gba PJR-Rebuild-Baseline.gba
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PJR-Rebuild-Baseline
+          path: PJR-Rebuild-Baseline.gba
+          if-no-files-found: error
+          retention-days: 7
