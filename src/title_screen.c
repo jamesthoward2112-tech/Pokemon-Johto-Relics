@@ -73,8 +73,8 @@ static const u32 sTitleScreenRayquazaGfx[] = INCBIN_U32("graphics/title_screen/h
 static const u32 sTitleScreenRayquazaTilemap[] = INCBIN_U32("graphics/title_screen/hns/rayquaza.bin.smolTM");
 static const u32 sTitleScreenLogoShineGfx[] = INCBIN_U32("graphics/title_screen/hns/logo_shine.4bpp.smol");
 #if PJR_BUILD
-static const u8 sPjrTitleBitmap[] = INCBIN_U8("graphics/title_screen/pjr/PJR_TitleScreen_Mode4.8bpp");
-static const u16 sPjrTitlePalette[] = INCBIN_U16("graphics/title_screen/pjr/PJR_TitleScreen_Mode4.gbapal");
+static const ALIGNED(4) u8 sPjrTitleBitmap[] = INCBIN_U8("graphics/title_screen/pjr/PJR_TitleScreen_Mode4.8bpp");
+static const ALIGNED(4) u16 sPjrTitlePalette[] = INCBIN_U16("graphics/title_screen/pjr/PJR_TitleScreen_Mode4.gbapal");
 #endif
 #else
 static const u32 sTitleScreenRayquazaGfx[] = INCBIN_U32("graphics/title_screen/rayquaza.4bpp.smol");

@@ -3,6 +3,7 @@
 #include "constants/species.h"
 
 #include "level_up_learnsets/gen_3.h"
+#include "level_up_learnsets/pjr.h"
 
 const struct LevelUpMove *const gLevelUpLearnsets_Gen3[NUM_SPECIES] = {
     [SPECIES_SCARABUB] = sScarabubLevelUpLearnset,
