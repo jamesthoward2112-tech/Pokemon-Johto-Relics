@@ -273,6 +273,16 @@
 #define VAR_PJR_CURRENT_LEAD                                0x40FA // Unused Var
 #define VAR_PJR_ALPH_CHAMBERS                                0x40FB // Unused Var
 #define VAR_PJR_POSTGAME_STATE                                0x40FC // Unused Var
+
+// Preserve upstream HnS names used by existing scripts/source.
+#define VAR_UNUSED_0x40DB VAR_PJR_DEXNAV_SPECIES
+#define VAR_UNUSED_0x40DC VAR_PJR_DEXNAV_STEP_COUNTER
+#define VAR_UNUSED_0x40F7 VAR_PJR_STARTER_CHOICE
+#define VAR_UNUSED_0x40F8 VAR_PJR_SILVER_STARTER
+#define VAR_UNUSED_0x40F9 VAR_PJR_RELICS_PROGRESS
+#define VAR_UNUSED_0x40FA VAR_PJR_CURRENT_LEAD
+#define VAR_UNUSED_0x40FB VAR_PJR_ALPH_CHAMBERS
+#define VAR_UNUSED_0x40FC VAR_PJR_POSTGAME_STATE
 #define VAR_SURF_MON_SLOT                                0x40FD // Added new VAR for Surfing Overworld Sprites - Holds Surfing Party Mon index
 #define VAR_FREEZE_SURF_BLOB                             0x40FE // Added new VAR for Surfing Overworld Sprites - Set on surf init to stop blob overlay being offset incorrectly
 #define VAR_UNUSED_0x40FF                                0x40FF // Unused Var
