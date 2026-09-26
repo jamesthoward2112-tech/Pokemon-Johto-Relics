@@ -23,38 +23,43 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends mgba-sdl xvfb xdotool imagemagick
-      - name: Verify title prompt flash and Start transition
+      - name: Verify title prompt flash and focused Start transition
         run: |
           test -s Pokemon-Johto-Relics-Alpha1.gba
-          timeout 100s xvfb-run -a -s '-screen 0 800x600x24' bash -euxc '
+          timeout 110s xvfb-run -a -s '-screen 0 800x600x24' bash -euxc '
             emulator=$(command -v mgba || find /usr/games -name mgba -type f -print -quit)
             SDL_VIDEODRIVER=x11 SDL_RENDER_DRIVER=software SDL_AUDIODRIVER=dummy LIBGL_ALWAYS_SOFTWARE=1 "$emulator" Pokemon-Johto-Relics-Alpha1.gba > emulator.log 2>&1 &
             pid=$!
-            sleep 8
+            sleep 26
             win=$(xdotool search --name mGBA | head -n 1)
-            xdotool key --window "$win" Return
-            sleep 12
-            xdotool key --window "$win" Return
-            sleep 4
-            timeout 8s import -window "$win" title_prompt_a.png
+            timeout 8s import -window "$win" title_0.png
+            sleep 0.4
+            timeout 8s import -window "$win" title_1.png
+            sleep 0.4
+            timeout 8s import -window "$win" title_2.png
+            sleep 0.4
+            timeout 8s import -window "$win" title_3.png
+            sleep 0.4
+            timeout 8s import -window "$win" title_4.png
+            xdotool windowfocus --sync "$win"
+            xdotool keydown Return
+            sleep 0.2
+            xdotool keyup Return
             sleep 1
-            timeout 8s import -window "$win" title_prompt_b.png
-            sleep 1
-            timeout 8s import -window "$win" title_prompt_c.png
-            xdotool key --window "$win" Return
-            sleep 1
-            timeout 8s import -window "$win" after_title_start_01.png
+            timeout 8s import -window "$win" after_start_01.png
+            sleep 2
+            timeout 8s import -window "$win" after_start_03.png
             sleep 3
-            timeout 8s import -window "$win" after_title_start_04.png
+            timeout 8s import -window "$win" after_start_06.png
             kill -9 "$pid" || true
           '
-          ls -lh title_prompt_*.png after_title_start_*.png
+          ls -lh title_*.png after_start_*.png
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: PJR-Alpha1-title-smoke
           path: |
-            title_prompt_*.png
-            after_title_start_*.png
+            title_*.png
+            after_start_*.png
             emulator.log
           if-no-files-found: error
