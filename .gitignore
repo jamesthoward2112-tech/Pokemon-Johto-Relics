@@ -70,3 +70,10 @@ src/data/trainers_hns.h
 tools/poryscript
 porymap.user.json
 tools/mid2gbs/.venv
+
+# PJR local/CI output
+build.log
+emulator.log
+after_confirm_12s.png
+after_continue.png
+Pokemon-Johto-Relics-*.zip

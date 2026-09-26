@@ -36,7 +36,7 @@ jobs:
           name: Pokemon-Johto-Relics-Alpha1
           path: Pokemon-Johto-Relics-Alpha1.gba
           if-no-files-found: error
-
+          retention-days: 14
 
   opening-smoke:
     needs: build-hns
@@ -105,3 +105,4 @@ jobs:
             after_continue.png
             emulator.log
           if-no-files-found: error
+          retention-days: 7
