@@ -23024,4 +23024,160 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .ignoresProtect = TRUE,
         .battleAnimScript = gBattleAnimMove_GMaxRapidFlow,
     },
+    // Pokémon Infinity moves ported for Pokémon Johto Relics.
+    [MOVE_PRESSURIZE] =
+    {
+        .name = COMPOUND_STRING("PRESSURIZE"),
+        .description = COMPOUND_STRING(
+            "Compresses its rocky body to\n"
+            "sharply raise Sp. Def."),
+        .effect = EFFECT_SPECIAL_DEFENSE_UP_2,
+        .power = 0,
+        .type = TYPE_ROCK,
+        .accuracy = 0,
+        .pp = 20,
+        .target = TARGET_USER,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .snatchAffected = TRUE,
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .battleAnimScript = gBattleAnimMove_Amnesia,
+    },
+
+    [MOVE_VENOM_SWIPE] =
+    {
+        .name = COMPOUND_STRING("VENOM SWIPE"),
+        .description = COMPOUND_STRING(
+            "Slashes the target with a\n"
+            "venom-coated strike."),
+        .effect = EFFECT_HIT,
+        .power = 100,
+        .type = TYPE_POISON,
+        .accuracy = 90,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .battleAnimScript = gBattleAnimMove_PoisonJab,
+    },
+
+    [MOVE_VANISH] =
+    {
+        .name = COMPOUND_STRING("VANISH"),
+        .description = COMPOUND_STRING(
+            "Becomes nearly invisible to\n"
+            "sharply raise evasiveness."),
+        .effect = EFFECT_EVASION_UP_2,
+        .power = 0,
+        .type = TYPE_GHOST,
+        .accuracy = 0,
+        .pp = 5,
+        .target = TARGET_USER,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .snatchAffected = TRUE,
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .battleAnimScript = gBattleAnimMove_DoubleTeam,
+    },
+
+    [MOVE_BONE_SWEEP] =
+    {
+        .name = COMPOUND_STRING("BONE SWEEP"),
+        .description = COMPOUND_STRING(
+            "Sweeps a huge bone across\n"
+            "both opposing Pokémon."),
+        .effect = EFFECT_HIT,
+        .power = 90,
+        .type = TYPE_GROUND,
+        .accuracy = 100,
+        .pp = 15,
+        .target = TARGET_BOTH,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .battleAnimScript = gBattleAnimMove_Bonemerang,
+    },
+
+    [MOVE_BRAIN_FREEZE] =
+    {
+        .name = COMPOUND_STRING("BRAIN FREEZE"),
+        .description = COMPOUND_STRING(
+            "Cryokinesis strikes the foe.\n"
+            "It may freeze the target."),
+        .effect = EFFECT_HIT,
+        .power = 85,
+        .type = TYPE_PSYCHIC,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_FREEZE,
+            .chance = 10,
+        }),
+        .battleAnimScript = gBattleAnimMove_Psybeam,
+    },
+
+    [MOVE_KABLOW] =
+    {
+        .name = COMPOUND_STRING("KABLOW!"),
+        .description = COMPOUND_STRING(
+            "The user detonates violently,\n"
+            "scattering hazardous shrapnel."),
+        .effect = EFFECT_CEASELESS_EDGE,
+        .power = 170,
+        .type = TYPE_STEEL,
+        .accuracy = 100,
+        .pp = 5,
+        .target = TARGET_FOES_AND_ALLY,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .explosion = TRUE,
+        .parentalBondBanned = TRUE,
+        .dampBanned = TRUE,
+        .battleAnimScript = gBattleAnimMove_Explosion,
+    },
+
+    [MOVE_COSMIC_RAY] =
+    {
+        .name = COMPOUND_STRING("COSMIC RAY"),
+        .description = COMPOUND_STRING(
+            "A concentrated astral beam.\n"
+            "It may make the foe flinch."),
+        .effect = EFFECT_HIT,
+        .power = 95,
+        .type = TYPE_FAIRY,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .pulseMove = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_FLINCH,
+            .chance = 15,
+        }),
+        .battleAnimScript = gBattleAnimMove_Moonblast,
+    },
+
+    [MOVE_DEJA_VU] =
+    {
+        .name = COMPOUND_STRING("DÉJÀ-VU"),
+        .description = COMPOUND_STRING(
+            "A psychic echo strikes with\n"
+            "an attack that never misses."),
+        .effect = EFFECT_HIT,
+        .power = 105,
+        .type = TYPE_PSYCHIC,
+        .accuracy = 0,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .battleAnimScript = gBattleAnimMove_FutureSight,
+    },
+
 };
