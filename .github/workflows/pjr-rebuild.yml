@@ -21,6 +21,22 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3
+      - name: Install PJR Infinity donor assets
+        run: |
+          cat assets/pjr_infinity/parts/*.txt | base64 -d > /tmp/pjr-infinity-assets.zip
+          python3 - <<'PY'
+          import pathlib, shutil, zipfile
+          src = pathlib.Path('/tmp/pjr-infinity-assets')
+          with zipfile.ZipFile('/tmp/pjr-infinity-assets.zip') as zf:
+              zf.extractall(src)
+          for species_dir in src.iterdir():
+              if not species_dir.is_dir():
+                  continue
+              dst = pathlib.Path('graphics/pokemon') / species_dir.name
+              dst.mkdir(parents=True, exist_ok=True)
+              for name in ('front.png', 'back.png', 'icon.png'):
+                  shutil.copy2(species_dir / name, dst / name)
+          PY
       - name: Build PJR three-starter test
         run: |
           make hns -j4 -O
