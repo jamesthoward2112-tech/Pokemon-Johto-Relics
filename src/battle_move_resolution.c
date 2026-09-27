@@ -3181,9 +3181,30 @@ static enum MoveEndResult MoveEndMoveBlock(void)
         }
         break;
     case EFFECT_CEASELESS_EDGE:
-        if (gSideTimers[side].spikesAmount < 3
+        // Infinity's Kablow! detonates the user, then leaves one layer each
+        // of Spikes and Toxic Spikes. Handle it directly because the normal
+        // Ceaseless Edge path requires the attacker to remain alive.
+        if (gCurrentMove == MOVE_KABLOW
          && IsBattlerTurnDamaged(gBattlerTarget, INCLUDING_SUBSTITUTES)
-         && IsBattlerAlive(gBattlerAttacker))
+         && !gBattleStruct->isSkyBattle)
+        {
+            if (gSideTimers[side].spikesAmount < 3)
+            {
+                if (gSideTimers[side].spikesAmount == 0)
+                    PushHazardTypeToQueue(side, HAZARDS_SPIKES);
+                gSideTimers[side].spikesAmount++;
+            }
+
+            if (gSideTimers[side].toxicSpikesAmount < 2)
+            {
+                if (gSideTimers[side].toxicSpikesAmount == 0)
+                    PushHazardTypeToQueue(side, HAZARDS_TOXIC_SPIKES);
+                gSideTimers[side].toxicSpikesAmount++;
+            }
+        }
+        else if (gSideTimers[side].spikesAmount < 3
+              && IsBattlerTurnDamaged(gBattlerTarget, INCLUDING_SUBSTITUTES)
+              && IsBattlerAlive(gBattlerAttacker))
         {
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SPIKESSCATTERED;
             BattleScriptPush(gBattlescriptCurrInstr + 1);
