@@ -1,14 +1,17 @@
 gText_Oak_Welcome::
 	.string "Welcome to the world\n"
-	.string "of POKéMON! I'm OAK.$"
+	.string "of POKéMON! I'm OAK.\p"
+	.string "$"
 
 gText_Oak_Pokemon::
 	.string "This is an UNOWN.\n"
-	.string "It senses Resonance.$"
+	.string "It senses Resonance.\p"
+	.string "$"
 
 gText_Oak_MainSpeech::
 	.string "Old relics are stirring\n"
-	.string "across JOHTO's ruins.$"
+	.string "across JOHTO's ruins.\p"
+	.string "$"
 
 gText_Oak_AndYouAre::
 	.string "And you are?$"
@@ -34,8 +37,10 @@ gText_Oak_SoItsPlayer::
 
 gText_Oak_YourePlayer::
 	.string "{PLAYER}{KUN}!\n"
-	.string "Your journey begins.$"
+	.string "Your journey begins.\p"
+	.string "$"
 
 gText_Oak_AreYouReady::
 	.string "Explore ancient JOHTO.\n"
-	.string "Your adventure begins!$"
+	.string "Your adventure begins!\p"
+	.string "$"
