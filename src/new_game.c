@@ -1,5 +1,6 @@
 #include "global.h"
 #include "new_game.h"
+#include "challenge_menu.h"
 #include "random.h"
 #include "config/randomizer.h"
 #include "pokemon.h"
@@ -116,6 +117,7 @@ static void SetDefaultOptions(void)
 
 void SetDefaultChallengeSettings(void)
 {
+    gSaveblock3.challengeSettings.tx_Challenges_OneTypeChallenge = ONE_TYPE_OFF;
     // PJR deliberately has no overworld Pokémon followers. Many custom species
     // do not have overworld sprites, so keep both follower options disabled.
     gSaveblock3.challengeSettings.followerEnable = 1;
@@ -239,6 +241,10 @@ void NewGameInitData(void)
     gSaveBlock1Ptr->saveVersion = SAVE_VERSION;
     SetDefaultChallengeSettings();
     gSaveBlock3Ptr->challengeSettings = savedChallenge;
+    // The PJR intro skips the challenge menu, so its zero-filled type value
+    // must not override the normal-game default above.
+    if (!IsOneTypeChallengeActive())
+        gSaveBlock3Ptr->challengeSettings.tx_Challenges_OneTypeChallenge = ONE_TYPE_OFF;
     ClearAllMail();
     gSaveBlock2Ptr->specialSaveWarpFlags = 0;
     gSaveBlock2Ptr->gcnLinkFlags = 0;

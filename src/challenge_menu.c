@@ -1117,7 +1117,6 @@ static const u8 *const sDesc_EvoLimit[] = {
     COMPOUND_STRING("{PKMN} can NOT evolve at all!"),
 };
 #define NUM_ONE_TYPE_CHOICES 20
-#define ONE_TYPE_OFF 31
 #define EVO_LINE_TYPE_SEARCH_DEPTH 4 // deepest evolution chain worth walking
 
 static const u8 sText_Desc_OneType[] = _("Allow only one {PKMN} type the\nplayer can capture and use.");
@@ -2343,7 +2342,7 @@ bool32 HMsOverwriteOptionActive(void)
             || cs->tx_Challenges_Mirror
             || cs->tx_Random_Moves
             || cs->tx_Challenges_PartyLimit != 0
-            || cs->tx_Challenges_OneTypeChallenge != ONE_TYPE_OFF);
+            || IsOneTypeChallengeActive());
 }
 
 u8 GetMaxPartySize(void)
@@ -2432,7 +2431,11 @@ bool8 IsPokecenterChallengeActivated(void)
 
 bool8 IsOneTypeChallengeActive(void)
 {
-    return gSaveBlock3Ptr->challengeSettings.tx_Challenges_OneTypeChallenge != ONE_TYPE_OFF;
+    u8 type = gSaveBlock3Ptr->challengeSettings.tx_Challenges_OneTypeChallenge;
+
+    // Zero-filled/legacy saves use TYPE_NONE. Only real selectable types
+    // activate a challenge; unset, OFF, and invalid values allow normal play.
+    return type >= TYPE_NORMAL && type <= TYPE_FAIRY && type != TYPE_MYSTERY;
 }
 
 // Returns TRUE if the species has the given type, or if any species it can

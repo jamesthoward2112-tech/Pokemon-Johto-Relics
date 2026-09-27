@@ -397,16 +397,8 @@ NewBarkTown_Lab_EventScript_PoliceEpisode::
 	waitmovement 0
 	setflag FLAG_HIDE_LAB_POLICEMAN
 	turnobject LOCALID_COP DIR_WEST
-	msgbox NewBarkTown_Lab_Text_Officer1, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, NewBarkTown_Lab_EventScript_PoliceYes
-	goto_if_eq VAR_RESULT, NO, NewBarkTown_Lab_EventScript_PoliceNo
-	end
-
-NewBarkTown_Lab_EventScript_PoliceNo::
-	msgbox NewBarkTown_Lab_Text_OfficerNo, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, NewBarkTown_Lab_EventScript_PoliceYes
-	goto_if_eq VAR_RESULT, NO, NewBarkTown_Lab_EventScript_PoliceNo
-	end
+	msgbox NewBarkTown_Lab_Text_Officer1, MSGBOX_DEFAULT
+	goto NewBarkTown_Lab_EventScript_PoliceYes
 
 NewBarkTown_Lab_EventScript_PoliceYes::
 	closemessage
@@ -1013,8 +1005,7 @@ NewBarkTown_Lab_Text_Officer1:
 	.string "What?\p"
 	.string "You battled a trainer like\n"
 	.string "that?\p"
-	.string "Did you happen to get his\n"
-	.string "name?$"
+	.string "What was his name?$"
 
 NewBarkTown_Lab_Text_Officer2_1:
 	.string "OK! So {RIVAL} was his name?$"
@@ -1022,9 +1013,6 @@ NewBarkTown_Lab_Text_Officer2_1:
 NewBarkTown_Lab_Text_Officer2:
 	.string "Thanks for helping my\n"
 	.string "investigation!$"
-
-NewBarkTown_Lab_Text_OfficerNo:
-	.string "Surely you got his name?!$"
 
 NewBarkTown_Lab_Text_Elm_CallMe:
 	.string "Ah, {PLAYER}!\p"

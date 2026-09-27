@@ -174,9 +174,10 @@ EventScript_AccessFakeHallOfFame::
 	end
 
 EventScript_AccessPokemonBoxLink::
+	lockall
 	playse SE_PC_LOGIN
-	msgbox gText_StorageSystemOpened, MSGBOX_DEFAULT
 	special ShowPokemonStorageSystemPC
 	waitstate
-	goto EventScript_TurnOffPC
+	@ Remote access must never run the physical PC metatile effect.
+	goto EventScript_TurnOffFakePC
 	end

@@ -49,16 +49,23 @@ jobs:
               dst = pathlib.Path('graphics/pokemon') / species_dir.name
               dst.mkdir(parents=True, exist_ok=True)
               for name in ('front.png', 'back.png', 'icon.png'):
+                  # Keep Run44 battle graphics, but use the approved repo icons.
+                  if name == 'icon.png' and species_dir.name in ('skarmet', 'mootiny'):
+                      continue
                   shutil.copy2(species_dir / name, dst / name)
           PY
       - name: Build PJR three-starter test
         run: |
           make hns -j4 -O
       - name: Package three-starter test
-        run: cp pokehns.gba PJR-Three-Starters-Test.gba
+        run: |
+          cp pokehns.gba PJR-Run${{ github.run_number }}-Focused-Fixes.gba
+          arm-none-eabi-nm -n pokehns.elf > PJR-Run${{ github.run_number }}-Focused-Fixes.sym
       - uses: actions/upload-artifact@v4
         with:
-          name: PJR-Three-Starters-Test
-          path: PJR-Three-Starters-Test.gba
+          name: PJR-Run${{ github.run_number }}-Focused-Fixes
+          path: |
+            PJR-Run${{ github.run_number }}-Focused-Fixes.gba
+            PJR-Run${{ github.run_number }}-Focused-Fixes.sym
           if-no-files-found: error
           retention-days: 7
