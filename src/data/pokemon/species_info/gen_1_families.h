@@ -14306,6 +14306,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sMarowakLevelUpLearnset,
         .teachableLearnset = sMarowakTeachableLearnset,
         .formSpeciesIdTable = sMarowakFormSpeciesIdTable,
+        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_TERATHWACK, CONDITIONS({IF_HOLD_ITEM, ITEM_THICK_CLUB})}),
     },
 
 #if P_ALOLAN_FORMS
@@ -17368,6 +17369,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         .levelUpLearnset = sJynxLevelUpLearnset,
         .teachableLearnset = sJynxTeachableLearnset,
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_DAWN_STONE, SPECIES_MYSTYNX}),
     },
 #endif //P_FAMILY_JYNX
 
@@ -18868,6 +18870,13 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
                                 {EVO_LEVEL, 0, SPECIES_ESPEON, CONDITIONS({IF_MIN_FRIENDSHIP, FRIENDSHIP_EVO_THRESHOLD}, {IF_NOT_TIME, TIME_NIGHT})},
                                 {EVO_LEVEL, 0, SPECIES_UMBREON, CONDITIONS({IF_MIN_FRIENDSHIP, FRIENDSHIP_EVO_THRESHOLD}, {IF_TIME, TIME_NIGHT})}
                             #endif
+                                ,{EVO_LEVEL, 0, SPECIES_CHAMPEON, CONDITIONS({IF_TIME, TIME_DAY}, {IF_HOLD_ITEM, ITEM_EXPERT_BELT})},
+                                {EVO_LEVEL, 0, SPECIES_LEPIDEON, CONDITIONS({IF_TIME, TIME_DAY}, {IF_HOLD_ITEM, ITEM_SILVER_POWDER})},
+                                {EVO_LEVEL, 0, SPECIES_SPHYNXEON, CONDITIONS({IF_TIME, TIME_DAY}, {IF_HOLD_ITEM, ITEM_SOFT_SAND})},
+                                {EVO_LEVEL, 0, SPECIES_GUARDEON, CONDITIONS({IF_TIME, TIME_NIGHT}, {IF_HOLD_ITEM, ITEM_METAL_COAT})},
+                                {EVO_LEVEL, 0, SPECIES_OBSIDEON, CONDITIONS({IF_TIME, TIME_NIGHT}, {IF_HOLD_ITEM, ITEM_HARD_STONE})},
+                                {EVO_LEVEL, 0, SPECIES_TOXEON, CONDITIONS({IF_TIME, TIME_NIGHT}, {IF_HOLD_ITEM, ITEM_POISON_BARB})},
+                                {EVO_ITEM, ITEM_DUSK_STONE, SPECIES_OMEON}
                             ),
     },
 
