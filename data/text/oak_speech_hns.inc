@@ -1,29 +1,22 @@
 gText_Oak_Welcome::
-	.string "Hi! Sorry to keep you waiting!\p"
-	.string "Welcome to the world of POKéMON!\p"
-	.string "My name is OAK.\p"
-	.string "People call me the POKéMON\n"
-	.string "PROFESSOR.\p"
-	.string "$"
+	.string "Welcome back to the world of\n"
+	.string "POKéMON! I'm PROF. OAK.\p"
+	.string "My work in KANTO uncovered\n"
+	.string "signs of ancient relics.$"
 
 gText_Oak_Pokemon::
-	.string "This is what we call a “POKéMON.”\p"
-	.string "\n"
-	.string "$"
+	.string "This UNOWN has been drawn\n"
+	.string "to the strange activity.$"
 
 gText_Oak_MainSpeech::
-	.string "This world is widely inhabited by\n"
-	.string "creatures known as POKéMON.\p"
-	.string "People and POKéMON live together,\n"
-	.string "by supporting each other.\p"
-	.string "Some people play with POKéMON,\n"
-	.string "some battle with them. \p"
-	.string "But we don't know everything about\n"
-	.string "POKéMON yet. \p"
-	.string "There are still many mysteries\n"
-	.string "to solve. That's why I study\l"
-	.string "POKéMON every day.\p"
-	.string "$"
+	.string "The Resonance I found didn't\n"
+	.string "end in KANTO. It leads to\l"
+	.string "JOHTO's ruins and symbols.\p"
+	.string "Even the POKéMON there seem\n"
+	.string "connected. PROF. ELM is\l"
+	.string "studying them now.\p"
+	.string "He needs someone he can trust\n"
+	.string "to help him in JOHTO.$"
 
 gText_Oak_AndYouAre::
 	.string "And you are?$"

@@ -46,6 +46,11 @@ enum {
 #define A_B_START_SELECT (A_BUTTON | B_BUTTON | START_BUTTON | SELECT_BUTTON)
 
 static void MainCB2(void);
+#if IS_HNS
+static void CB2_InitPjrTitleScreen(void);
+static void Task_PjrTitleScreenInput(u8 taskId);
+static void LoadPjrTitlePaletteBrightened(void);
+#endif
 static void Task_TitleScreenPhase1(u8);
 static void Task_TitleScreenPhase2(u8);
 static void Task_TitleScreenPhase3(u8);
@@ -68,6 +73,10 @@ static const u16 sUnusedUnknownPal[] = INCBIN_U16("graphics/title_screen/unused.
 static const u32 sTitleScreenRayquazaGfx[] = INCBIN_U32("graphics/title_screen/hns/rayquaza.4bpp.smol");
 static const u32 sTitleScreenRayquazaTilemap[] = INCBIN_U32("graphics/title_screen/hns/rayquaza.bin.smolTM");
 static const u32 sTitleScreenLogoShineGfx[] = INCBIN_U32("graphics/title_screen/hns/logo_shine.4bpp.smol");
+#if 1 /* PJR rebuild title */
+static const ALIGNED(4) u8 sPjrTitleBitmap[] = INCBIN_U8("graphics/title_screen/pjr/PJR_TitleScreen_Mode4.8bpp");
+static const ALIGNED(4) u16 sPjrTitlePalette[] = INCBIN_U16("graphics/title_screen/pjr/PJR_TitleScreen_Mode4.gbapal");
+#endif
 #else
 static const u32 sTitleScreenRayquazaGfx[] = INCBIN_U32("graphics/title_screen/rayquaza.4bpp.smol");
 static const u32 sTitleScreenRayquazaTilemap[] = INCBIN_U32("graphics/title_screen/rayquaza.bin.smolTM");
@@ -583,6 +592,10 @@ void CB2_InitTitleScreen(void)
         CB2_InitTitleScreenFrlg();
         return;
     }
+#if IS_HNS
+    CB2_InitPjrTitleScreen();
+    return;
+#endif
     switch (gMain.state)
     {
     default:
@@ -624,6 +637,9 @@ void CB2_InitTitleScreen(void)
         ScanlineEffect_Stop();
         ResetTasks();
         ResetSpriteData();
+        // Bitmap video modes reserve the first 512 OBJ tile indices.
+        // Start dynamic sprite allocation at tile 512 so PRESS START is visible.
+        gReservedSpriteTileCount = 512;
         FreeAllSpritePalettes();
         gReservedSpritePaletteCount = 9;
         LoadCompressedSpriteSheet(&sSpriteSheet_EmeraldVersion[0]);
@@ -691,6 +707,97 @@ void CB2_InitTitleScreen(void)
         break;
     }
 }
+
+#if IS_HNS
+static void LoadPjrTitlePaletteBrightened(void)
+{
+    u16 palette[ARRAY_COUNT(sPjrTitlePalette)];
+    u32 i;
+
+    for (i = 0; i < ARRAY_COUNT(sPjrTitlePalette); i++)
+    {
+        u16 color = sPjrTitlePalette[i];
+        u32 r = color & 31;
+        u32 g = (color >> 5) & 31;
+        u32 b = (color >> 10) & 31;
+
+        // Lift each non-black channel by 20%, capped to the GBA's 5-bit range.
+        r = (r * 6 + 2) / 5;
+        g = (g * 6 + 2) / 5;
+        b = (b * 6 + 2) / 5;
+        if (r > 31) r = 31;
+        if (g > 31) g = 31;
+        if (b > 31) b = 31;
+
+        palette[i] = r | (g << 5) | (b << 10);
+    }
+
+    LoadPalette(palette, BG_PLTT_ID(0), sizeof(palette));
+}
+
+static void CB2_InitPjrTitleScreen(void)
+{
+    switch (gMain.state)
+    {
+    case 0:
+        SetVBlankCallback(NULL);
+        ScanlineEffect_Stop();
+        SetGpuReg(REG_OFFSET_DISPCNT, 0);
+        DmaFill16(3, 0, (void *)VRAM, VRAM_SIZE);
+        DmaFill32(3, 0, (void *)OAM, OAM_SIZE);
+        DmaFill16(3, 0, (void *)PLTT, PLTT_SIZE);
+        ResetPaletteFade();
+        ResetTasks();
+        ResetSpriteData();
+        // Mode 4 reserves the first 512 OBJ tiles for its bitmap page.
+        gReservedSpriteTileCount = 512;
+        FreeAllSpritePalettes();
+        gMain.state++;
+        break;
+    case 1:
+        DmaCopy16(3, sPjrTitleBitmap, (void *)VRAM, sizeof(sPjrTitleBitmap));
+        LoadPjrTitlePaletteBrightened();
+        LoadCompressedSpriteSheet(&sSpriteSheet_PressStart[0]);
+        LoadSpritePalette(&sSpritePalette_PressStart[0]);
+        CreatePressStartBanner(START_BANNER_X, 138);
+        CreateTask(Task_PjrTitleScreenInput, 0);
+        SetGpuReg(REG_OFFSET_BG2CNT, BGCNT_PRIORITY(3));
+        SetGpuReg(REG_OFFSET_BG2PA, 0x100);
+        SetGpuReg(REG_OFFSET_BG2PB, 0);
+        SetGpuReg(REG_OFFSET_BG2PC, 0);
+        SetGpuReg(REG_OFFSET_BG2PD, 0x100);
+        SetGpuReg(REG_OFFSET_BG2X_L, 0);
+        SetGpuReg(REG_OFFSET_BG2X_H, 0);
+        SetGpuReg(REG_OFFSET_BG2Y_L, 0);
+        SetGpuReg(REG_OFFSET_BG2Y_H, 0);
+        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_4 | DISPCNT_OBJ_1D_MAP
+                                            | DISPCNT_BG2_ON | DISPCNT_OBJ_ON);
+        EnableInterrupts(INTR_FLAG_VBLANK);
+        m4aSongNumStart(MUS_HG_TITLE, FlagGet(FLAG_SYS_GBS_ENABLED));
+        SetVBlankCallback(VBlankCB);
+        SetMainCallback2(MainCB2);
+        gMain.state++;
+        break;
+    }
+}
+
+static void Task_PjrTitleScreenInput(u8 taskId)
+{
+    if (JOY_NEW(A_BUTTON) || JOY_NEW(START_BUTTON))
+    {
+        FadeOutBGM(4);
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_WHITEALPHA);
+        SetMainCallback2(CB2_GoToMainMenu);
+        DestroyTask(taskId);
+    }
+    else if (JOY_HELD(CLEAR_SAVE_BUTTON_COMBO) == CLEAR_SAVE_BUTTON_COMBO)
+        SetMainCallback2(CB2_GoToClearSaveDataScreen);
+    else if (JOY_HELD(RESET_RTC_BUTTON_COMBO) == RESET_RTC_BUTTON_COMBO && CanResetRTC())
+        SetMainCallback2(CB2_GoToResetRtcScreen);
+    else if (JOY_HELD(BERRY_UPDATE_BUTTON_COMBO) == BERRY_UPDATE_BUTTON_COMBO)
+        SetMainCallback2(CB2_GoToBerryFixScreen);
+}
+#endif
 
 static void MainCB2(void)
 {

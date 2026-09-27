@@ -100,16 +100,8 @@ NewBarkTown_Lab_Text_ElmAideIsWaiting:
 	.string "In VIOLET CITY!$"
 
 NewBarkTown_Lab_EventScript_ElmIntro::
-	msgbox NewBarkTown_Lab_Text_ElmIntro, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, NewBarkTown_Lab_EventScript_ElmAccepted
-	goto_if_eq VAR_RESULT, NO, NewBarkTown_Lab_EventScript_ElmRefused
-	end
-
-NewBarkTown_Lab_EventScript_ElmRefused::
-	msgbox NewBarkTown_Lab_Text_ElmRefused, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, NewBarkTown_Lab_EventScript_ElmAccepted
-	goto_if_eq VAR_RESULT, NO, NewBarkTown_Lab_EventScript_ElmRefused
-	end
+	msgbox NewBarkTown_Lab_Text_ElmIntro, MSGBOX_DEFAULT
+	goto NewBarkTown_Lab_EventScript_ElmAccepted
 
 NewBarkTown_Lab_EventScript_ElmAccepted::
 	msgbox NewBarkTown_Lab_Text_ElmAccepted, MSGBOX_DEFAULT
@@ -242,6 +234,13 @@ NewBarkTown_Lab_EventScript_ChoseStarter::
 	call_if_eq VAR_STARTER_MON, 1, NewBarkTown_Lab_EventScript_GiveStarter_Cyndaquil
 	call_if_eq VAR_STARTER_MON, 2, NewBarkTown_Lab_EventScript_GiveStarter_Totodile
 	setflag FLAG_SYS_POKEMON_GET
+	@ PJR: Elm has already given the assignment; no second conversation is required.
+	setvar VAR_NEWBARKTOWN_LABSTATE, 2
+	setvar VAR_NEWBARK_TOWN_STATE, 3
+	setflag FLAG_ENABLE_PROF_BIRCH_MATCH_CALL
+	setflag FLAG_ENABLE_CONDITION
+	clearflag FLAG_RECEIVED_FIRST_BALLS
+	clearflag FLAG_RECEIVED_FIRST_POTION
 	playfanfare MUS_OBTAIN_ITEM
 	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
 	message NewBarkTown_Lab_Text_ReceivedStarter
@@ -350,8 +349,9 @@ NewBarkTown_Lab_EventScript_TriggerAideGivePotion::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	msgbox NewBarkTown_Lab_Text_AideGivePotion, MSGBOX_DEFAULT
 	closemessage
-	giveitem ITEM_POTION
+	giveitem ITEM_DEXNAV
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setflag FLAG_PJR_DEXNAV_GET
 	setflag FLAG_RECEIVED_FIRST_POTION
 	setvar VAR_NEWBARKTOWN_LABSTATE, 3
 	applymovement LOCALID_AIDE1, NewBarkTown_Lab_Movement_Aide1LeavePlayer
@@ -496,7 +496,7 @@ NewBarkTown_Lab_EventScript_TriggerAideGiveBalls::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	msgbox NewBarkTown_Lab_Text_AideGiveBalls, MSGBOX_DEFAULT
 	closemessage
-	giveitem ITEM_POKE_BALL, 5
+	giveitem ITEM_POKEMON_BOX_LINK
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_FIRST_BALLS
 	setvar VAR_NEWBARKTOWN_LABSTATE, 6
@@ -656,35 +656,22 @@ NewBarkTown_Lab_Text_ShouldntTouch:
 	.string "Probably shouldn't touch!$"
 
 NewBarkTown_Lab_Text_ElmIntro:
-	.string "ELM: {PLAYER}! There you are!\p"
-	.string "I needed to ask you a favor.\p"
-	.string "I'm conducting new POKéMON\n"
-	.string "research right now. I was\l"
-	.string "wondering if you could help\l"
-	.string "me with it, {PLAYER}.\p"
-	.string "You see…\p"
-	.string "I'm writing a paper that I\n"
-	.string "want to present at a conference.\p"
-	.string "But there are some things I\n"
-	.string "don't quite understand yet.\p"
-	.string "So!\p"
-	.string "I'd like you to raise a\n"
-	.string "POKéMON that I recently caught.$"
+	.string "ELM: {PLAYER}! Good timing!\p"
+	.string "OAK's KANTO notes describe a\n"
+	.string "strange ancient Resonance.\p"
+	.string "Now the same energy is waking\n"
+	.string "up around JOHTO's ruins.\p"
+	.string "You're going to help me find\n"
+	.string "out why."
 
 NewBarkTown_Lab_Text_ElmAccepted:
-	.string "Thanks, {PLAYER}!\n"
-	.string "You're a great help!$"
-
-NewBarkTown_Lab_Text_ElmRefused:
-	.string "But… Please, I need your\n"
-	.string "help!$"
+	.string "I've prepared three POKéMON\n"
+	.string "for your fieldwork."
 
 NewBarkTown_Lab_Text_ElmResearchAmbitions:
-	.string "When I announce my findings,\n"
-	.string "I'm sure we'll delve deeper\p"
-	.string "into the many mysteries of\n"
-	.string "POKéMON.\p"
-	.string "You can count on it!$"
+	.string "Each reacted to the Resonance.\n"
+	.string "Their growth may tell us what\l"
+	.string "the relic energy is doing."
 
 NewBarkTown_Lab_Text_ElmGotAnEmail:
 	.string "Oh, hey! I got an e-mail!\p"
@@ -693,27 +680,15 @@ NewBarkTown_Lab_Text_ElmGotAnEmail:
 	.string "Okay…$"
 
 NewBarkTown_Lab_Text_ElmMissionFromMrPokemon:
-	.string "Hey, listen.\p"
-	.string "I have an acquaintance called\n"
-	.string "MR. POKéMON.\p"
-	.string "He keeps finding weird things and\n"
-	.string "raving about his discoveries.\p"
-	.string "Anyway, I just got an e-mail\n"
-	.string "from him saying that this\l"
-	.string "time it's real.\p"
-	.string "It is intriguing, but we're\n"
-	.string "busy with our POKéMON research...\p"
-	.string "Wait!\n"
-	.string "I know!\p"
-	.string "{PLAYER}, can you go in our\n"
-	.string "place?$"
+	.string "MR. POKéMON found something\n"
+	.string "unusual beyond CHERRYGROVE.\p"
+	.string "Take your partner there, then\n"
+	.string "bring his find back to me."
 
 NewBarkTown_Lab_Text_ElmChooseAPokemon:
-	.string "I want you to raise one of\n"
-	.string "the POKéMON contained in these BALLS.\p"
-	.string "You'll be that POKéMON's\n"
-	.string "first partner, {PLAYER}!\p"
-	.string "Go on. Pick one!$"
+	.string "Check the three POKéMON here,\n"
+	.string "then choose the one you'll\l"
+	.string "take with you, {PLAYER}."
 
 NewBarkTown_Lab_Text_ElmWhereGoing:
 	.string "ELM: Wait! Where are you\n"
@@ -736,8 +711,10 @@ NewBarkTown_Lab_Text_DidntChooseStarter:
 	.string "Your partner is important.$"
 
 NewBarkTown_Lab_Text_ChoseStarter:
-	.string "ELM: I think that's a great\n"
-	.string "POKéMON too!$"
+	.string "ELM: Good. {STR_VAR_1} is your\n"
+	.string "partner now.\p"
+	.string "Watch how it reacts near the\n"
+	.string "ancient sites."
 
 NewBarkTown_Lab_Text_ReceivedStarter:
 	.string "{PLAYER} received {STR_VAR_1}!$"
@@ -971,8 +948,11 @@ NewBarkTown_Lab_Text_LabMonEgg:
 	.string "studied by PROF.ELM.$"
 
 NewBarkTown_Lab_Text_AideGivePotion:
-	.string "{PLAYER}, I want you to have\n"
-	.string "this for your errand.$"
+	.string "ELM asked me to give you this\n"
+	.string "DEXNAV for the fieldwork.\p"
+	.string "It scans nearby habitats for\n"
+	.string "POKéMON. It should help with\l"
+	.string "the relic research."
 
 NewBarkTown_Lab_Text_AideAlwaysBusy:
 	.string "There are only three of us, so\n"
@@ -997,9 +977,10 @@ NewBarkTown_Lab_Text_AideTheftTestimony:
 	.string "bad person turns bad itself.$"
 
 NewBarkTown_Lab_Text_AideGiveBalls:
-	.string "{PLAYER}!\p"
-	.string "Use these on your POKéDEX\n"
-	.string "quest!$"
+	.string "{PLAYER}! ELM upgraded your\n"
+	.string "field kit while you were away.\p"
+	.string "This REMOTE PC links straight\n"
+	.string "to POKéMON Storage."
 
 NewBarkTown_Lab_Text_AideExplainBalls:
 	.string "To add to your POKéDEX, you\n"
