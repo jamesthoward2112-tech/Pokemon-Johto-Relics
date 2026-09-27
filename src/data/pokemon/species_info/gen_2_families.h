@@ -1159,6 +1159,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sNoctowlLevelUpLearnset,
         .teachableLearnset = sNoctowlTeachableLearnset,
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_DUSK_STONE, SPECIES_GRIMFOWL}),
     },
 #endif //P_FAMILY_HOOTHOOT
 
@@ -3259,6 +3260,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sSunfloraLevelUpLearnset,
         .teachableLearnset = sSunfloraTeachableLearnset,
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_FIRE_STONE, SPECIES_SUNFLORID}),
     },
 #endif //P_FAMILY_SUNKERN
 
@@ -5235,6 +5237,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sQwilfishTeachableLearnset,
         .eggMoveLearnset = sQwilfishEggMoveLearnset,
         .formSpeciesIdTable = sQwilfishFormSpeciesIdTable,
+        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_KABLOWFISH, CONDITIONS({IF_HOLD_ITEM, ITEM_METAL_COAT})}),
     },
 
 #if P_HISUIAN_FORMS
@@ -7122,6 +7125,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .levelUpLearnset = sDelibirdLevelUpLearnset,
         .teachableLearnset = sDelibirdTeachableLearnset,
         .eggMoveLearnset = sDelibirdEggMoveLearnset,
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_SHINY_STONE, SPECIES_JOLLIBIRD}),
     },
 #endif //P_FAMILY_DELIBIRD
 
