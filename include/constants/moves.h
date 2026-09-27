@@ -906,8 +906,17 @@ enum __attribute__((packed)) Move
     MOVES_COUNT_GEN9,
 
     // Add any custom moves here, not further down!
+    // Pokémon Infinity moves used by PJR donor species.
+    MOVE_PRESSURIZE = MOVES_COUNT_GEN9,
+    MOVE_VENOM_SWIPE,
+    MOVE_VANISH,
+    MOVE_BONE_SWEEP,
+    MOVE_BRAIN_FREEZE,
+    MOVE_KABLOW,
+    MOVE_COSMIC_RAY,
+    MOVE_DEJA_VU,
 
-    MOVES_COUNT = MOVES_COUNT_GEN9,
+    MOVES_COUNT,
 
     // Z Moves
     FIRST_Z_MOVE = MOVES_COUNT,
