@@ -23,7 +23,21 @@ jobs:
           sudo apt-get install -y --no-install-recommends binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3
       - name: Install PJR Infinity donor assets
         run: |
-          cat assets/pjr_infinity/parts/*.txt | base64 -d > /tmp/pjr-infinity-assets.zip
+          cat \
+            assets/pjr_infinity/parts/part00.txt \
+            assets/pjr_infinity/parts/part01.txt \
+            assets/pjr_infinity/parts/part02.txt \
+            assets/pjr_infinity/fixed/part030.txt \
+            assets/pjr_infinity/fixed/part031.txt \
+            assets/pjr_infinity/fixed/part032.txt \
+            assets/pjr_infinity/fixed/part0330.txt \
+            assets/pjr_infinity/fixed/part0331.txt \
+            assets/pjr_infinity/fixed/part0332.txt \
+            assets/pjr_infinity/fixed/part0333.txt \
+            assets/pjr_infinity/parts/part04.txt \
+            assets/pjr_infinity/parts/part05.txt \
+            assets/pjr_infinity/parts/part06.txt \
+            | base64 -d > /tmp/pjr-infinity-assets.zip
           python3 - <<'PY'
           import pathlib, shutil, zipfile
           src = pathlib.Path('/tmp/pjr-infinity-assets')
