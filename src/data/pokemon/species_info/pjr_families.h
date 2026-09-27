@@ -235,7 +235,7 @@
     .backPic = gMonBackPic_Champeon, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Champeon, .shinyPalette = gMonPalette_Champeon,
     .iconSprite = gMonIcon_Champeon, .iconPalIndex = 3, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sChampeonLevelUpLearnset, .teachableLearnset = sEeveeTeachableLearnset,
+    .levelUpLearnset = sChampeonLevelUpLearnset, .teachableLearnset = sChampeonInfinityTeachableLearnset,
 },
 
 [SPECIES_LEPIDEON] =
@@ -258,7 +258,7 @@
     .backPic = gMonBackPic_Lepideon, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Lepideon, .shinyPalette = gMonPalette_Lepideon,
     .iconSprite = gMonIcon_Lepideon, .iconPalIndex = 2, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sLepideonLevelUpLearnset, .teachableLearnset = sEeveeTeachableLearnset,
+    .levelUpLearnset = sLepideonLevelUpLearnset, .teachableLearnset = sLepideonInfinityTeachableLearnset,
 },
 
 [SPECIES_GUARDEON] =
@@ -281,7 +281,7 @@
     .backPic = gMonBackPic_Guardeon, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Guardeon, .shinyPalette = gMonPalette_Guardeon,
     .iconSprite = gMonIcon_Guardeon, .iconPalIndex = 3, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sGuardeonLevelUpLearnset, .teachableLearnset = sEeveeTeachableLearnset,
+    .levelUpLearnset = sGuardeonLevelUpLearnset, .teachableLearnset = sGuardeonInfinityTeachableLearnset,
 },
 
 [SPECIES_OBSIDEON] =
@@ -304,7 +304,7 @@
     .backPic = gMonBackPic_Obsideon, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Obsideon, .shinyPalette = gMonPalette_Obsideon,
     .iconSprite = gMonIcon_Obsideon, .iconPalIndex = 3, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sObsideonLevelUpLearnset, .teachableLearnset = sEeveeTeachableLearnset,
+    .levelUpLearnset = sObsideonLevelUpLearnset, .teachableLearnset = sObsideonInfinityTeachableLearnset,
 },
 
 [SPECIES_TOXEON] =
@@ -327,7 +327,7 @@
     .backPic = gMonBackPic_Toxeon, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Toxeon, .shinyPalette = gMonPalette_Toxeon,
     .iconSprite = gMonIcon_Toxeon, .iconPalIndex = 2, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sToxeonLevelUpLearnset, .teachableLearnset = sEeveeTeachableLearnset,
+    .levelUpLearnset = sToxeonLevelUpLearnset, .teachableLearnset = sToxeonInfinityTeachableLearnset,
 },
 
 [SPECIES_SPHYNXEON] =
@@ -350,7 +350,7 @@
     .backPic = gMonBackPic_Sphynxeon, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Sphynxeon, .shinyPalette = gMonPalette_Sphynxeon,
     .iconSprite = gMonIcon_Sphynxeon, .iconPalIndex = 0, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sSphynxeonLevelUpLearnset, .teachableLearnset = sEeveeTeachableLearnset,
+    .levelUpLearnset = sSphynxeonLevelUpLearnset, .teachableLearnset = sSphynxeonInfinityTeachableLearnset,
 },
 
 [SPECIES_OMEON] =
@@ -373,7 +373,7 @@
     .backPic = gMonBackPic_Omeon, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Omeon, .shinyPalette = gMonPalette_Omeon,
     .iconSprite = gMonIcon_Omeon, .iconPalIndex = 2, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sOmeonLevelUpLearnset, .teachableLearnset = sEeveeTeachableLearnset,
+    .levelUpLearnset = sOmeonLevelUpLearnset, .teachableLearnset = sOmeonInfinityTeachableLearnset,
 },
 
 [SPECIES_JOLLIBIRD] =
@@ -396,7 +396,7 @@
     .backPic = gMonBackPic_Jollibird, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Jollibird, .shinyPalette = gMonPalette_Jollibird,
     .iconSprite = gMonIcon_Jollibird, .iconPalIndex = 5, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sJollibirdLevelUpLearnset, .teachableLearnset = sDelibirdTeachableLearnset,
+    .levelUpLearnset = sJollibirdLevelUpLearnset, .teachableLearnset = sJollibirdInfinityTeachableLearnset,
 },
 
 [SPECIES_GRIMFOWL] =
@@ -419,7 +419,7 @@
     .backPic = gMonBackPic_Grimfowl, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Grimfowl, .shinyPalette = gMonPalette_Grimfowl,
     .iconSprite = gMonIcon_Grimfowl, .iconPalIndex = 0, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sGrimfowlLevelUpLearnset, .teachableLearnset = sNoctowlTeachableLearnset,
+    .levelUpLearnset = sGrimfowlLevelUpLearnset, .teachableLearnset = sGrimfowlInfinityTeachableLearnset,
 },
 
 [SPECIES_KABLOWFISH] =
@@ -442,7 +442,7 @@
     .backPic = gMonBackPic_Kablowfish, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Kablowfish, .shinyPalette = gMonPalette_Kablowfish,
     .iconSprite = gMonIcon_Kablowfish, .iconPalIndex = 0, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sKablowfishLevelUpLearnset, .teachableLearnset = sQwilfishTeachableLearnset,
+    .levelUpLearnset = sKablowfishLevelUpLearnset, .teachableLearnset = sKablowfishInfinityTeachableLearnset,
 },
 
 [SPECIES_MYSTYNX] =
@@ -465,7 +465,7 @@
     .backPic = gMonBackPic_Mystynx, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Mystynx, .shinyPalette = gMonPalette_Mystynx,
     .iconSprite = gMonIcon_Mystynx, .iconPalIndex = 2, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sMystynxLevelUpLearnset, .teachableLearnset = sJynxTeachableLearnset,
+    .levelUpLearnset = sMystynxLevelUpLearnset, .teachableLearnset = sMystynxInfinityTeachableLearnset,
 },
 
 [SPECIES_SUNFLORID] =
@@ -488,7 +488,7 @@
     .backPic = gMonBackPic_Sunflorid, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Sunflorid, .shinyPalette = gMonPalette_Sunflorid,
     .iconSprite = gMonIcon_Sunflorid, .iconPalIndex = 1, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sSunfloridLevelUpLearnset, .teachableLearnset = sSunfloraTeachableLearnset,
+    .levelUpLearnset = sSunfloridLevelUpLearnset, .teachableLearnset = sSunfloridInfinityTeachableLearnset,
 },
 
 [SPECIES_TERATHWACK] =
@@ -511,7 +511,7 @@
     .backPic = gMonBackPic_Terathwack, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Terathwack, .shinyPalette = gMonPalette_Terathwack,
     .iconSprite = gMonIcon_Terathwack, .iconPalIndex = 0, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sTerathwackLevelUpLearnset, .teachableLearnset = sMarowakTeachableLearnset,
+    .levelUpLearnset = sTerathwackLevelUpLearnset, .teachableLearnset = sTerathwackInfinityTeachableLearnset,
 },
 
 [SPECIES_ALPHORACLE] =
@@ -534,5 +534,5 @@
     .backPic = gMonBackPic_Alphoracle, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Alphoracle, .shinyPalette = gMonPalette_Alphoracle,
     .iconSprite = gMonIcon_Alphoracle, .iconPalIndex = 4, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sAlphoracleLevelUpLearnset, .teachableLearnset = sMewTeachableLearnset,
+    .levelUpLearnset = sAlphoracleLevelUpLearnset, .teachableLearnset = sAlphoracleInfinityTeachableLearnset,
 },
