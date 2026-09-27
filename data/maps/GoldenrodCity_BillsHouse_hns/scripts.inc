@@ -44,6 +44,15 @@ GoldenrodCity_BillsHouse_EventScript_Bill_Eevee::
 	givenamedmon 3
 	call Common_EventScript_GiftMonNamed
 
+	@ PJR Eevee resonance kit: one catalyst for each newly discovered branch.
+	giveitem ITEM_EXPERT_BELT
+	giveitem ITEM_SILVER_POWDER
+	giveitem ITEM_SOFT_SAND
+	giveitem ITEM_METAL_COAT
+	giveitem ITEM_HARD_STONE
+	giveitem ITEM_POISON_BARB
+	giveitem ITEM_DUSK_STONE
+
     
 
 	setflag FLAG_GOT_EEVEE
@@ -79,8 +88,15 @@ BillHouse_Text_ReceivedEevee:
     .string "{PLAYER} received EEVEE!$"
 
 BillHouse_Text_EeveeMayEvolve:
-    .string "BILL: PROF.ELM claims EEVEE may\n"
-    .string "evolve in new and unknown ways.$"
+    .string "BILL: PROF.ELM was right-EVEE's\n"
+    .string "genes react to unusual catalysts.\p"
+    .string "In DAYLIGHT, level it holding an\n"
+    .string "EXPERT BELT, SILVER POWDER, or\n"
+    .string "SOFT SAND.\p"
+    .string "At NIGHT, try a METAL COAT, HARD\n"
+    .string "STONE, or POISON BARB instead.\p"
+    .string "A DUSK STONE can trigger one more\n"
+    .string "strange evolution. Experiment!$"
 
 BillHouse_Text_PartyFull:
     .string "Whoa, wait. You can't carry any\n"
