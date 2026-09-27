@@ -128,7 +128,7 @@
     .palette = gMonPalette_Skarmet,
     .shinyPalette = gMonPalette_Skarmet,
     .iconSprite = gMonIcon_Skarmet,
-    .iconPalIndex = 0,
+    .iconPalIndex = 2,
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sSkarmetLevelUpLearnset,
     .teachableLearnset = sSkarmoryTeachableLearnset,
