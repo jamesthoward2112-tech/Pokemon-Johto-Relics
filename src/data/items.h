@@ -16474,22 +16474,6 @@ const struct ItemInfo gItemsInfo[] =
         .iconPic = gItemIcon_AzureFlute,
         .iconPalette = gItemIconPalette_AzureFlute,
     },
-    [ITEM_DEXNAV] =
-    {
-        .name = ITEM_NAME("DEXNAV"),
-        .price = 0,
-        .description = COMPOUND_STRING(
-            "A field scanner for\n"
-            "nearby POKéMON\n"
-            "habitats."),
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_PokeRadar,
-        .iconPalette = gItemIconPalette_PokeRadar,
-    },
-
 };
 
 #undef ITEM_NAME

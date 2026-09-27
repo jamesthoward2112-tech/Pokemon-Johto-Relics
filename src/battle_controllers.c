@@ -2215,8 +2215,22 @@ static void Controller_WaitForTrainerPic(enum BattlerId battler)
 
 void Controller_WaitForString(enum BattlerId battler)
 {
+    u16 stringId = *(u16 *)(&gBattleResources->bufferA[battler][2]);
+    bool32 pjrAutoAdvance = (stringId == STRINGID_GOTAWAYSAFELY)
+                         || (stringId == STRINGID_INTROMSG
+                          && !(gBattleTypeFlags & BATTLE_TYPE_TRAINER));
+
+    // Match the proven PHR path: show these messages normally but do not
+    // require an A/B acknowledgement before the battle state can advance.
+    if (pjrAutoAdvance)
+        gTextFlags.autoScroll = TRUE;
+
     if (!IsTextPrinterActiveOnWindow(B_WIN_MSG))
+    {
+        if (pjrAutoAdvance)
+            gTextFlags.autoScroll = FALSE;
         BtlController_Complete(battler);
+    }
 }
 
 static void Controller_WaitForPartyStatusSummary(enum BattlerId battler)

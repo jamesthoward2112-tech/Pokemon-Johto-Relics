@@ -366,9 +366,9 @@ NewBarkTown_Lab_EventScript_TriggerAideGivePotion::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	msgbox NewBarkTown_Lab_Text_AideGivePotion, MSGBOX_DEFAULT
 	closemessage
-	giveitem ITEM_DEXNAV
+	giveitem ITEM_POKE_BALL, 20
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag 0x8E6
+	setflag FLAG_PJR_DEXNAV_GET
 	setflag FLAG_RECEIVED_FIRST_POTION
 	setvar VAR_NEWBARKTOWN_LABSTATE, 3
 	applymovement LOCALID_AIDE1, NewBarkTown_Lab_Movement_Aide1LeavePlayer
@@ -964,11 +964,10 @@ NewBarkTown_Lab_Text_LabMonEgg:
 	.string "studied by PROF.ELM.$"
 
 NewBarkTown_Lab_Text_AideGivePotion:
-	.string "ELM asked me to give you this\n"
-	.string "DEXNAV for the fieldwork.\p"
-	.string "It scans nearby habitats for\n"
-	.string "POKéMON. It should help with\l"
-	.string "the relic research."
+	.string "ELM asked me to help with\n"
+	.string "your field research.\p"
+	.string "Take these 20 POKé BALLS.\n"
+	.string "DEXNAV is on the START menu.$"
 
 NewBarkTown_Lab_Text_AideAlwaysBusy:
 	.string "There are only three of us, so\n"
@@ -993,10 +992,10 @@ NewBarkTown_Lab_Text_AideTheftTestimony:
 	.string "bad person turns bad itself.$"
 
 NewBarkTown_Lab_Text_AideGiveBalls:
-	.string "{PLAYER}! ELM upgraded your\n"
-	.string "field kit while you were away.\p"
-	.string "This REMOTE PC links straight\n"
-	.string "to POKéMON Storage."
+	.string "{PLAYER}! ELM upgraded\n"
+	.string "your field kit.\p"
+	.string "This REMOTE PC links to\n"
+	.string "POKéMON Storage.$"
 
 NewBarkTown_Lab_Text_AideExplainBalls:
 	.string "To add to your POKéDEX, you\n"

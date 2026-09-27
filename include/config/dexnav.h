@@ -1,7 +1,7 @@
 #ifndef GUARD_CONFIG_DEXNAV_H
 #define GUARD_CONFIG_DEXNAV_H
 
-#define DEXNAV_ENABLED                TRUE   // PJR: enabled after Elm's aide gives the DexNav
+#define DEXNAV_ENABLED                TRUE   // PJR: Start-menu DexNav unlocked by Elm's aide; no bag Key Item.
 #define USE_DEXNAV_SEARCH_LEVELS      FALSE  /* WARNING: POSSIBLY EXCEEDS SAVEBLOCK SPACE! REQUIRES 1 BYTE PER SPECIES */
 
 // Flag/var defines

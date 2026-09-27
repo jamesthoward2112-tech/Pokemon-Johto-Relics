@@ -88,15 +88,16 @@ BillHouse_Text_ReceivedEevee:
     .string "{PLAYER} received EEVEE!$"
 
 BillHouse_Text_EeveeMayEvolve:
-    .string "BILL: PROF.ELM was right-EVEE's\n"
-    .string "genes react to unusual catalysts.\p"
-    .string "In DAYLIGHT, level it holding an\n"
-    .string "EXPERT BELT, SILVER POWDER, or\n"
-    .string "SOFT SAND.\p"
-    .string "At NIGHT, try a METAL COAT, HARD\n"
-    .string "STONE, or POISON BARB instead.\p"
-    .string "A DUSK STONE can trigger one more\n"
-    .string "strange evolution. Experiment!$"
+    .string "BILL: PROF.ELM was right.\n"
+    .string "EEVEE reacts to rare items.\p"
+    .string "In DAYLIGHT, level it while\n"
+    .string "holding an EXPERT BELT.\p"
+    .string "SILVER POWDER or SOFT SAND\n"
+    .string "work the same way.\p"
+    .string "At NIGHT, try METAL COAT,\n"
+    .string "HARD STONE, or POISON BARB.\p"
+    .string "A DUSK STONE can trigger\n"
+    .string "one more strange evolution.$"
 
 BillHouse_Text_PartyFull:
     .string "Whoa, wait. You can't carry any\n"

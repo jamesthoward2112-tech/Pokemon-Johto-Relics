@@ -8,6 +8,9 @@
 #include "data.h"
 #include "constants/pokemon_icon.h"
 
+extern const u16 gMonPalette_Skarmet[];
+extern const u16 gMonPalette_Mootiny[];
+
 struct MonIconSpriteTemplate
 {
     const struct OamData *oam;
@@ -29,6 +32,8 @@ const struct SpritePalette gMonIconPaletteTable[] =
     { gMonIconPalettes[3], POKE_ICON_BASE_PAL_TAG + 3 },
     { gMonIconPalettes[4], POKE_ICON_BASE_PAL_TAG + 4 },
     { gMonIconPalettes[5], POKE_ICON_BASE_PAL_TAG + 5 },
+    { gMonPalette_Skarmet,  POKE_ICON_BASE_PAL_TAG + 6 },
+    { gMonPalette_Mootiny,  POKE_ICON_BASE_PAL_TAG + 7 },
 };
 
 static const struct OamData sMonIconOamData =
