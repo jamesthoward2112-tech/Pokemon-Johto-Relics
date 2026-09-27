@@ -4,7 +4,7 @@
 - Infinity donor species use Pokémon Infinity level-up data as the authority wherever the move exists in the PJR engine.
 - Eeveelutions learn their type-defining Infinity evolution move at level 0 (immediately on evolution), then follow Infinity's level progression.
 - Infinity-only moves are ported rather than silently substituted.
-- Pressurize has no recoverable public effect text in the available Infinity game/wiki data. PJR adapts it as Rock status, 20 PP, sharply raises Sp. Def (+2). This is explicitly a PJR adaptation.
+- Pressurize was recovered from the uploaded InfinityData battle data: Rock status, 20 PP, targets the user and sharply raises Sp. Def (+2). This is now an exact donor port, not a PJR guess.
 - Alphoracle keeps the PJR identity/type but uses Oculeus's level progression. Cosmic Ray becomes Fairy in PJR because the engine has no Cosmic type.
 - Future PJR-original species are banked below so their learnsets are already decided when their species data is installed.
 
@@ -25,12 +25,12 @@
 - Alphoracle: Oculeus progression: Lv1 Hidden Power/Substitute/Psystrike/Lock-On, 20 Glare, 40 Ominous Wind, 60 Future Sight, 80 Cosmic Ray, 100 Déjà-vu.
 
 ## Ported Infinity-only moves
-- Pressurize — Rock status, 20 PP; PJR adaptation: +2 Sp. Def.
-- Venom Swipe — Poison physical, 100 BP, 90 Acc, 10 PP.
+- Pressurize — exact Infinity effect: Rock status, 20 PP; sharply raises the user's Sp. Def (+2).
+- Venom Swipe — Poison physical, 100 BP, 90 Acc, 10 PP; 30% poison chance.
 - Vanish — Ghost status, 5 PP; +2 Evasion.
 - Bone Sweep — Ground physical, 90 BP, 100 Acc, 15 PP; hits both foes.
 - Brain Freeze — Psychic special, 85 BP, 100 Acc, 10 PP; 10% freeze.
-- Kablow! — Steel physical, 170 BP, 100 Acc, 5 PP; user detonates. PJR uses explosion semantics plus the engine's damaging-Spikes effect. Exact dual Spikes + Toxic Spikes follow-up is a battle-effect refinement, not a learnset blocker.
+- Kablow! — Steel physical, 170 BP, 100 Acc, 5 PP; user detonates and, after a successful damaging hit, lays one layer each of Spikes and Toxic Spikes. The PJR battle-resolution hook now reproduces the dual-hazard effect.
 - Cosmic Ray — PJR Fairy special, 95 BP, 100 Acc, 10 PP; 15% flinch; pulse move.
 - Déjà-vu — Psychic special, 105 BP, never misses, 10 PP.
 
@@ -186,7 +186,7 @@ Evolution move: Siege Tusk.
 
 PJR move proposal for Siege Tusk: Ground physical, 95 BP / 100 Acc / 10 PP; sets Stealth Rock on the opposing side after a successful hit. Banked pending species implementation.
 
-### Sudowoodo Relic evolution — Rock/Grass, name TBD
+### Sudowarden — Rock/Grass
 - 0 Wood Hammer
 - 1 Rock Throw, Mimic, Flail
 - 19 Low Kick
@@ -241,7 +241,66 @@ Relic Gengar, Crobat, Houndoom, Kingdra, Tyranitar and Scizor are forms/variants
 - Relic Tyranitar: Stone Edge / Crunch / Earthquake / Dragon Dance, with Iron Head and Superpower available.
 - Relic Scizor: Bullet Punch / X-Scissor / Iron Head / Swords Dance, with Roost and U-turn available.
 
-## Remaining data work after learnsets
-- Exact TM/tutor compatibility pass for donor species (level-up data is the priority and is implemented first).
-- Exact dual-hazard secondary effect for Kablow! if desired beyond the current explosion + Spikes engine mapping.
-- Species implementation for the banked future PJR-original evolutions/forms.
+## Unown / RELICS moveset audit
+
+### Regular Unown — major PJR buff
+Regular Unown keeps Hidden Power as its identity but no longer has a one-move learnset:
+- 1 Hidden Power
+- 5 Confusion
+- 10 Swift
+- 15 Ancient Power
+- 20 Psybeam
+- 25 Ominous Wind
+- 30 Power Gem
+- 35 Cosmic Power
+- 40 Shadow Ball
+- 45 Dazzling Gleam
+- 50 Psychic
+- 55 Calm Mind
+- 60 Future Sight
+- 65 Stored Power
+
+This is paired with the already locked PJR Wonder Guard redesign.
+
+### Eye Unown — RELICS encounter
+The special Eye form is a stronger late-game expression of the same line:
+- 1 Hidden Power, Confusion
+- 20 Ancient Power
+- 30 Ominous Wind
+- 40 Power Gem
+- 50 Psychic
+- 60 Future Sight
+- 65 Psystrike
+- 70 Dazzling Gleam
+- 75 Cosmic Power
+- 80 Stored Power
+
+### Relic Ho-Oh
+Relic Ho-Oh keeps Ho-Oh's core identity and adds Fairy/Relic coverage:
+- 1 Sacred Fire
+- 11 Safeguard
+- 22 Gust
+- 33 Recover
+- 44 Fire Blast
+- 55 Sunny Day
+- 66 Brave Bird
+- 72 Dazzling Gleam
+- 77 Whirlwind
+- 80 Moonblast
+- 85 Phoenix Hymn
+- 88 Ancient Power
+- 99 Future Sight
+
+## Exact donor TM compatibility
+The uploaded InfinityData `tm.dat` was decoded directly and is now wired into the PJR donor species instead of borrowing parent TM lists. All compatible moves that exist in PJR are retained. The only omitted Infinity-only machine moves are:
+- Obsideon: Cinder Breath.
+- Alphoracle/Oculeus: Fae-n-Grush, Cinder Breath, Flash Flood, Brainstorm.
+
+Drakeon's Shining Victory TM/HM donor set is also audited and banked alongside its level-up progression.
+
+## Remaining implementation work after the moveset audit
+- Install the banked PJR-original species/forms themselves where they are still placeholders or not yet allocated in the live species table.
+- Implement the dedicated PJR signature-move battle code/species hooks for Relic evolutions that are not yet present as playable species.
+- Decide separately whether to import Infinity's five omitted machine-only custom moves; they are not required for any current level-up learnset.
+
+The moveset audit itself is complete.
