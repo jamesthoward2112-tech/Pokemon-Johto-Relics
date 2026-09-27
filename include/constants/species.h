@@ -1695,22 +1695,21 @@
 #define SPECIES_SKARMADON                               1576
 #define SPECIES_MOOTINY                                 1577
 
-// 1578-1588 remain reserved for the previously locked PJR custom roster.
-// Infinity donor additions are appended after that reserved block.
-#define SPECIES_CHAMPEON                                1589
-#define SPECIES_LEPIDEON                                1590
-#define SPECIES_GUARDEON                                1591
-#define SPECIES_OBSIDEON                                1592
-#define SPECIES_TOXEON                                  1593
-#define SPECIES_SPHYNXEON                               1594
-#define SPECIES_OMEON                                   1595
-#define SPECIES_JOLLIBIRD                               1596
-#define SPECIES_GRIMFOWL                                1597
-#define SPECIES_KABLOWFISH                              1598
-#define SPECIES_MYSTYNX                                 1599
-#define SPECIES_SUNFLORID                               1600
-#define SPECIES_TERATHWACK                              1601
-#define SPECIES_ALPHORACLE                              1602
+// Infinity donor additions approved for PJR.
+#define SPECIES_CHAMPEON                                1578
+#define SPECIES_LEPIDEON                                1579
+#define SPECIES_GUARDEON                                1580
+#define SPECIES_OBSIDEON                                1581
+#define SPECIES_TOXEON                                  1582
+#define SPECIES_SPHYNXEON                               1583
+#define SPECIES_OMEON                                   1584
+#define SPECIES_JOLLIBIRD                               1585
+#define SPECIES_GRIMFOWL                                1586
+#define SPECIES_KABLOWFISH                              1587
+#define SPECIES_MYSTYNX                                 1588
+#define SPECIES_SUNFLORID                               1589
+#define SPECIES_TERATHWACK                              1590
+#define SPECIES_ALPHORACLE                              1591
 
 #define SPECIES_EGG                                     (SPECIES_ALPHORACLE + 1)
 
