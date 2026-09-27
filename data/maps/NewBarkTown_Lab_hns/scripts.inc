@@ -368,7 +368,7 @@ NewBarkTown_Lab_EventScript_TriggerAideGivePotion::
 	closemessage
 	giveitem ITEM_POKE_BALL, 20
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_PJR_DEXNAV_GET
+	setflag 0x8E6 @ PJR DexNav Start-menu unlock flag
 	setflag FLAG_RECEIVED_FIRST_POTION
 	setvar VAR_NEWBARKTOWN_LABSTATE, 3
 	applymovement LOCALID_AIDE1, NewBarkTown_Lab_Movement_Aide1LeavePlayer
