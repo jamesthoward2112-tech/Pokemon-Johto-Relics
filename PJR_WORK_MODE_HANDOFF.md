@@ -1,34 +1,26 @@
-# PJR Work Mode Handoff
+# PJR Housekeeping Handoff
 
-- Branch: `pjr-rebuild`
-- Baseline: latest accepted three-starter rebuild lineage; no restart or rollback
-- Build workflow: `.github/workflows/pjr-rebuild.yml`
+- Known-good ROM commit: `fda8635819be1bd2d776734102c02cdc64b57a1a`
+- Active/known-good branch: `pjr-rebuild`
+- Successful build: workflow run `36334344408`
+- Preserved artifact: `PJR-Three-Starters-Test` (artifact `10936407682`)
+- Build workflow: `.github/workflows/pjr-rebuild.yml` — GitHub-hosted `ubuntu-latest`
+- Runner status: no self-hosted runner is registered to this repository; no runner cleanup was required
 
-## Completed in this integration line
+## Cleanup completed
 
-- Approved PJR title screen restored with flashing `PRESS START`.
-- Challenge/Nuzlocke setup removed from the opening flow.
-- Oak and Elm relic-story dialogue shortened and aligned with the real three-ball sequence.
-- Scarabub, Skarmet, and Mootiny remain direct level-5 party gifts.
-- Player can leave Elm's lab immediately after choosing a starter.
-- First aide gift changed from Potion to functional DexNav; Remote PC staged for the later Violet City aide event.
-- Followers remain disabled.
-- Infinity donor species, graphics, level-up learnsets, and required signature moves integrated for the queued PJR species.
-- `Pressurize` verified from the supplied Infinity PBS: Rock/status, 20 PP, sharply raises the user's Special Defense.
-- `Kablow!` now detonates the user and places one layer each of Spikes and Toxic Spikes.
-- Normal Unown changed from Levitate to Wonder Guard and given a full Psychic/coverage level-up learnset.
+- Confirmed the known-good commit, successful run, and ROM artifact remain recoverable.
+- Confirmed the PJR workflow is the only push build targeting `pjr-rebuild`.
+- Added ignore rules for editor backups, rejected patches, temporary patches, and temporary files.
+- Removed no source, donor assets, workflows, artifacts, or branches.
+- Disk reclaimed: not applicable; GitHub-hosted runners are ephemeral.
 
-## Not completed
+## Branches deliberately retained
 
-- Full emulator-driven opening regression test for all three starter choices.
-- Large-mart evolution-item stock pass, including final Drakeon availability verification.
-- Any Infinity mechanic requiring broad engine recreation beyond the moves actually used by PJR species.
+- `pjr-alpha1-intro-cleanup`, `pjr-moveset-audit`, and `pjr-moveset-merge` contain unique/divergent commits.
+- `pjr-infinity-evolutions` is merged/superseded, but was retained conservatively rather than deleting history during housekeeping.
+- Non-PJR upstream/feature branches were left untouched.
 
-## Build status
+## Next development task
 
-- The branch push invokes the repository workflow, which installs the ARM toolchain and uploads `PJR-Three-Starters-Test.gba`.
-- If CI fails, the exact compiler/workflow error from that run is the next blocker to fix.
-
-## Next unfinished task
-
-Verify the large-mart evolution-item inventory and Drakeon's locked Dragon Fang evolution condition after the next successful ROM has passed the opening-flow playtest.
+Playtest the known-good ROM's title/Oak/Elm opening and confirm dialogue does not overlap; record any real regressions before the next gameplay patch.
