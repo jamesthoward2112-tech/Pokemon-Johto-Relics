@@ -40,6 +40,9 @@ VioletCity_Gym_EventScript_Falkner::
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 1
 	call Common_EventScript_SetGymTrainers_hns
+	addmoney 10000
+	msgbox VioletGym_Text_Falkner_MoneyReward, MSGBOX_DEFAULT
+	giveitem ITEM_SHARP_BEAK
 	giveitem ITEM_TM_ROOST
 	msgbox VioletGym_Text_Falkner_TMExplain, MSGBOX_DEFAULT
 	setvar VAR_VIOLET_CITY_STATE, 3
@@ -82,6 +85,12 @@ VioletGym_Text_Falkner_BadgeExplain:
 	.string "FLASH, if they can learn it,\l"
 	.string "anytime.\p"
 	.string "Here--take this too.$"
+
+VioletGym_Text_Falkner_MoneyReward:
+	.string "You also earned $10,000 for\n"
+	.string "winning this GYM battle!\p"
+	.string "Take this SHARP BEAK too. It\n"
+	.string "boosts FLYING-type moves.$"
 
 VioletGym_Text_Falkner_TMExplain:
 	.string "By using a TM, a POKéMON will\n"
