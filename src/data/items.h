@@ -16474,6 +16474,38 @@ const struct ItemInfo gItemsInfo[] =
         .iconPic = gItemIcon_AzureFlute,
         .iconPalette = gItemIconPalette_AzureFlute,
     },
+
+#define PJR_CATALYST_ITEM(item, itemName, itemDescription) \
+    [item] = \
+    { \
+        .name = ITEM_NAME(itemName), \
+        .price = 0, \
+        .description = COMPOUND_STRING(itemDescription), \
+        .pocket = POCKET_ITEMS, \
+        .sortType = ITEM_TYPE_EVOLUTION_ITEM, \
+        .type = ITEM_USE_BAG_MENU, \
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse, \
+        .flingPower = 30, \
+        .iconPic = gItemIcon_LinkingCord, \
+        .iconPalette = gItemIconPalette_LinkingCord, \
+    }
+
+    PJR_CATALYST_ITEM(ITEM_ANCIENT_SHELL, "ANCIENT SHELL",
+        "A fossil-like shell\nthat resonates with\nShuckle.") ,
+    PJR_CATALYST_ITEM(ITEM_FOSSIL_BARK, "FOSSIL BARK",
+        "Petrified bark that\nresonates with\nSudowoodo.") ,
+    PJR_CATALYST_ITEM(ITEM_ANCIENT_TUSK, "ANCIENT TUSK",
+        "A weathered tusk that\nresonates with\nDonphan.") ,
+    PJR_CATALYST_ITEM(ITEM_FROST_MIRROR, "FROST MIRROR",
+        "An icy mirror that\nresonates with\nJynx.") ,
+    PJR_CATALYST_ITEM(ITEM_ANCIENT_HORN, "ANCIENT HORN",
+        "An Alph relic that\nresonates with\nHeracross.") ,
+    PJR_CATALYST_ITEM(ITEM_ANCIENT_PLUME, "ANCIENT PLUME",
+        "An Alph relic that\nresonates with\nSkarmory.") ,
+    PJR_CATALYST_ITEM(ITEM_ANCIENT_BELL, "ANCIENT BELL",
+        "An Alph relic that\nresonates with\nMiltank.") ,
+
+#undef PJR_CATALYST_ITEM
 };
 
 #undef ITEM_NAME

@@ -33,6 +33,27 @@ static const struct LevelUpMove sMootinyLevelUpLearnset[] =
     LEVEL_UP_END
 };
 
+static const struct LevelUpMove sPinsirexLevelUpLearnset[] =
+{
+    LEVEL_UP_MOVE(0, MOVE_AERIAL_ACE),
+    LEVEL_UP_MOVE(1, MOVE_VISE_GRIP),
+    LEVEL_UP_MOVE(1, MOVE_HARDEN),
+    LEVEL_UP_MOVE(4, MOVE_FOCUS_ENERGY),
+    LEVEL_UP_MOVE(8, MOVE_BIND),
+    LEVEL_UP_MOVE(12, MOVE_SEISMIC_TOSS),
+    LEVEL_UP_MOVE(16, MOVE_BUG_BITE),
+    LEVEL_UP_MOVE(20, MOVE_STORM_THROW),
+    LEVEL_UP_MOVE(24, MOVE_DOUBLE_HIT),
+    LEVEL_UP_MOVE(28, MOVE_VITAL_THROW),
+    LEVEL_UP_MOVE(32, MOVE_X_SCISSOR),
+    LEVEL_UP_MOVE(36, MOVE_STRENGTH),
+    LEVEL_UP_MOVE(40, MOVE_SWORDS_DANCE),
+    LEVEL_UP_MOVE(44, MOVE_SUBMISSION),
+    LEVEL_UP_MOVE(48, MOVE_GUILLOTINE),
+    LEVEL_UP_MOVE(52, MOVE_SUPERPOWER),
+    LEVEL_UP_END
+};
+
 
 // Pokémon Infinity donor learnsets. Level 0 is the move offered immediately on evolution.
 static const struct LevelUpMove sChampeonLevelUpLearnset[] =

@@ -36587,7 +36587,7 @@
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_PIDGEY"
+                "species": "SPECIES_EEVEE"
               },
               {
                 "min_level": 2,
@@ -36686,7 +36686,7 @@
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_HOOTHOOT"
+                "species": "SPECIES_EEVEE"
               },
               {
                 "min_level": 2,
@@ -40488,7 +40488,7 @@
               {
                 "min_level": 14,
                 "max_level": 14,
-                "species": "SPECIES_SNUBBULL"
+                "species": "SPECIES_EEVEE"
               },
               {
                 "min_level": 13,
@@ -40672,7 +40672,7 @@
               {
                 "min_level": 14,
                 "max_level": 14,
-                "species": "SPECIES_ABRA"
+                "species": "SPECIES_EEVEE"
               },
               {
                 "min_level": 13,

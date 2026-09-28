@@ -1710,8 +1710,9 @@
 #define SPECIES_SUNFLORID                               1589
 #define SPECIES_TERATHWACK                              1590
 #define SPECIES_ALPHORACLE                              1591
+#define SPECIES_PINSIREX                                1592
 
-#define SPECIES_EGG                                     (SPECIES_ALPHORACLE + 1)
+#define SPECIES_EGG                                     (SPECIES_PINSIREX + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

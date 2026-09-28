@@ -1081,6 +1081,16 @@ enum __attribute__((packed)) Item
     ITEM_UNUSED_BERRY_3,
     ITEM_AZURE_FLUTE,
 
+    // PJR story evolution catalysts. These are intentionally not ordinary
+    // shop stock until the postgame shop script unlocks them.
+    ITEM_ANCIENT_SHELL,
+    ITEM_FOSSIL_BARK,
+    ITEM_ANCIENT_TUSK,
+    ITEM_FROST_MIRROR,
+    ITEM_ANCIENT_HORN,
+    ITEM_ANCIENT_PLUME,
+    ITEM_ANCIENT_BELL,
+
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,
 };

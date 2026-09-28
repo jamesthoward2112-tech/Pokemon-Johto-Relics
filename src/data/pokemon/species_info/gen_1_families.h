@@ -14306,7 +14306,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sMarowakLevelUpLearnset,
         .teachableLearnset = sMarowakTeachableLearnset,
         .formSpeciesIdTable = sMarowakFormSpeciesIdTable,
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_TERATHWACK, CONDITIONS({IF_HOLD_ITEM, ITEM_THICK_CLUB})}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_TERATHWACK, CONDITIONS({IF_HOLD_ITEM, ITEM_THICK_CLUB})}),
     },
 
 #if P_ALOLAN_FORMS
@@ -17369,7 +17369,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         .levelUpLearnset = sJynxLevelUpLearnset,
         .teachableLearnset = sJynxTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_ITEM, ITEM_DAWN_STONE, SPECIES_MYSTYNX}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_MYSTYNX, CONDITIONS({IF_HOLD_ITEM, ITEM_FROST_MIRROR})}),
     },
 #endif //P_FAMILY_JYNX
 
@@ -17899,6 +17899,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .eggMoveLearnset = sPinsirEggMoveLearnset,
         .formSpeciesIdTable = sPinsirFormSpeciesIdTable,
         .formChangeTable = sPinsirFormChangeTable,
+        .evolutions = EVOLUTION({EVO_LEVEL, 42, SPECIES_PINSIREX}),
     },
 
 #if P_MEGA_EVOLUTIONS

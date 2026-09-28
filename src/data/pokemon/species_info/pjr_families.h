@@ -536,3 +536,33 @@
     .iconSprite = gMonIcon_Alphoracle, .iconPalIndex = 4, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sAlphoracleLevelUpLearnset, .teachableLearnset = sMewTeachableLearnset,
 },
+
+[SPECIES_PINSIREX] =
+{
+    .baseHP = 80, .baseAttack = 135, .baseDefense = 100,
+    .baseSpeed = 110, .baseSpAttack = 45, .baseSpDefense = 80,
+    .types = MON_TYPES(TYPE_BUG, TYPE_FLYING),
+    .catchRate = 45, .expYield = 210,
+    .genderRatio = PERCENT_FEMALE(50),
+    .eggCycles = 25, .friendship = STANDARD_FRIENDSHIP,
+    .growthRate = GROWTH_SLOW,
+    .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
+    .abilities = { ABILITY_AERILATE, ABILITY_MOLD_BREAKER, ABILITY_HYPER_CUTTER },
+    .bodyColor = BODY_COLOR_BROWN,
+    .speciesName = _("PINSIREX"), .cryId = CRY_PINSIR, .natDexNum = NATIONAL_DEX_PINSIR,
+    .categoryName = _("Relic Stag"), .height = 17, .weight = 590,
+    .description = COMPOUND_STRING(
+        "Ancient power has awakened its wings.\n"
+        "It dives at high speed before locking\n"
+        "its mighty horns around its foe."),
+    .pokemonScale = 256, .pokemonOffset = 2, .trainerScale = 257, .trainerOffset = 0,
+    .frontPic = gMonFrontPic_PinsirMega, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 5,
+    .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+    .backPic = gMonBackPic_PinsirMega, .backPicSize = MON_COORDS_SIZE(64, 56), .backPicYOffset = 6,
+    .backAnimId = BACK_ANIM_V_SHAKE_LOW,
+    .palette = gMonPalette_PinsirMega, .shinyPalette = gMonShinyPalette_PinsirMega,
+    .iconSprite = gMonIcon_PinsirMega, .iconPalIndex = 2,
+    .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+    .levelUpLearnset = sPinsirexLevelUpLearnset,
+    .teachableLearnset = sPinsirTeachableLearnset,
+},

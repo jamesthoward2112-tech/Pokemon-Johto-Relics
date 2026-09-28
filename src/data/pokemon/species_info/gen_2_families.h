@@ -5237,7 +5237,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sQwilfishTeachableLearnset,
         .eggMoveLearnset = sQwilfishEggMoveLearnset,
         .formSpeciesIdTable = sQwilfishFormSpeciesIdTable,
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_KABLOWFISH, CONDITIONS({IF_HOLD_ITEM, ITEM_METAL_COAT})}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_KABLOWFISH, CONDITIONS({IF_HOLD_ITEM, ITEM_METAL_COAT})}),
     },
 
 #if P_HISUIAN_FORMS
