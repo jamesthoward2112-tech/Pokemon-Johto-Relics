@@ -1306,6 +1306,11 @@
 #define FLAG_PJR_GYM_REWARD_PRYCE                   (SYS_FLAGS + 0x64)
 #define FLAG_PJR_GYM_REWARD_CLAIR                   (SYS_FLAGS + 0x65)
 
+// PJR starter gifts: permanent claim flags, also hide the gifted overworld mon.
+#define FLAG_PJR_GOT_CHIKORITA                     (SYS_FLAGS + 0x66)
+#define FLAG_PJR_GOT_CYNDAQUIL                     (SYS_FLAGS + 0x67)
+#define FLAG_PJR_GOT_TOTODILE                      (SYS_FLAGS + 0x68)
+
 // Visited / World Map flags
 #define FLAG_VISITED_NEWBARK_TOWN                   (SYS_FLAGS + 0x90)
 #define FLAG_VISITED_CHERRYGROVE_CITY               (SYS_FLAGS + 0x91)

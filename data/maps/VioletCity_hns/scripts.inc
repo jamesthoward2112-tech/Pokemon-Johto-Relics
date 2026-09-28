@@ -494,4 +494,66 @@ VioletCity_Text_Kimono_Girl3:
 VioletCity_Text_Kimono_Girl4:
 .string "I am counting on you.$"
 
+@ PJR: available on arrival, including on saves that already visited this town.
+@ Only a successful handoff claims the gift; a full PC leaves it retryable.
+VioletCity_EventScript_PJRGiftChikorita::
+	lock
+	faceplayer
+	goto_if_set FLAG_PJR_GOT_CHIKORITA, VioletCity_EventScript_PJRGiftChikorita_After
+	msgbox VioletCity_EventScript_PJRGiftChikorita_Text_Offer, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, VioletCity_EventScript_PJRGiftChikorita_Declined
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CHIKORITA
+	bufferspeciesname STR_VAR_1, SPECIES_CHIKORITA
+	givemon SPECIES_CHIKORITA, 12
+	goto_if_eq VAR_RESULT, MON_CANT_GIVE, VioletCity_EventScript_PJRGiftChikorita_NoRoom
+	setflag FLAG_PJR_GOT_CHIKORITA
+	removeobject LOCALID_PJR_GIFT_CHIKORITA
+	call Common_EventScript_GiftMon
+	goto VioletCity_EventScript_PJRGiftChikorita_After
 
+VioletCity_EventScript_PJRGiftChikorita_After::
+	msgbox VioletCity_EventScript_PJRGiftChikorita_Text_After, MSGBOX_DEFAULT
+	release
+	end
+
+VioletCity_EventScript_PJRGiftChikorita_Declined::
+	msgbox VioletCity_EventScript_PJRGiftChikorita_Text_Declined, MSGBOX_DEFAULT
+	release
+	end
+
+VioletCity_EventScript_PJRGiftChikorita_NoRoom::
+	msgbox VioletCity_EventScript_PJRGiftChikorita_Text_NoRoom, MSGBOX_DEFAULT
+	release
+	end
+
+VioletCity_EventScript_PJRGiftChikoritaMon::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_CHIKORITA, CRY_MODE_NORMAL
+	msgbox VioletCity_EventScript_PJRGiftChikorita_Text_Mon, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+VioletCity_EventScript_PJRGiftChikorita_Text_Offer:
+	.string "I'm one of PROF. ELM's aides.\n"
+	.string "This CHIKORITA needs a partner.\p"
+	.string "Would you take it with you?$"
+
+VioletCity_EventScript_PJRGiftChikorita_Text_After:
+	.string "Take good care of CHIKORITA!\n"
+	.string "It is yours to raise.$"
+
+VioletCity_EventScript_PJRGiftChikorita_Text_Declined:
+	.string "We'll wait here until you're\n"
+	.string "ready to take CHIKORITA.$"
+
+VioletCity_EventScript_PJRGiftChikorita_Text_NoRoom:
+	.string "Your party and PC are full.\p"
+	.string "Make room, then come back.\n"
+	.string "I'll keep CHIKORITA for you.$"
+
+VioletCity_EventScript_PJRGiftChikorita_Text_Mon:
+	.string "CHIKORITA is waiting for a\n"
+	.string "TRAINER. Talk to ELM's aide!$"
