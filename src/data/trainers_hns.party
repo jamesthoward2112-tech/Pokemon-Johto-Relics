@@ -7200,6 +7200,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Quick Attack
 - Sand Attack
 - Roost
+
 === TRAINER_FALKNER_2_HNS ===
 Name: FALKNER
 Class: Leader Hns
@@ -7301,6 +7302,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Fury Cutter
 - U Turn
 - Pursuit
+
 === TRAINER_BUGSY_2_HNS ===
 Name: BUGSY
 Class: Leader Hns
@@ -7402,6 +7404,7 @@ IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 - Attract
 - Stomp
 - Milk Drink
+
 === TRAINER_WHITNEY_2_HNS ===
 Name: WHITNEY
 Class: Leader Hns
@@ -7617,6 +7620,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Earthquake
 - Ancient Power
 - Ice Fang
+
 === TRAINER_PRYCE_2_HNS ===
 Name: PRYCE
 Class: Leader Hns
