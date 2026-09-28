@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 env:
   UNUSED_ERROR: 0
@@ -17,15 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Apply staged PJR content patch
-        run: |
-          git apply pjr-content.patch
-          git rm pjr-content.patch
-          git config user.name "Codex"
-          git config user.email "codex@openai.com"
-          git add include src
-          git commit -m "PJR: add catalyst framework, Pinsirex and Eevee access [skip ci]"
-          git push origin HEAD:pjr-rebuild
       - name: Install toolchain
         run: |
           sudo apt-get update
