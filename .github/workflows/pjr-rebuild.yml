@@ -21,10 +21,9 @@ jobs:
         run: |
           git apply pjr-content.patch
           git rm pjr-content.patch
-          git checkout HEAD^ -- .github/workflows/pjr-rebuild.yml
           git config user.name "Codex"
           git config user.email "codex@openai.com"
-          git add include src .github/workflows/pjr-rebuild.yml
+          git add include src
           git commit -m "PJR: add catalyst framework, Pinsirex and Eevee access [skip ci]"
           git push origin HEAD:pjr-rebuild
       - name: Install toolchain
