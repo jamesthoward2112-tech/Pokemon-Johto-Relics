@@ -23191,7 +23191,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .pp = 10,
         .target = TARGET_SELECTED,
         .category = DAMAGE_CATEGORY_PHYSICAL,
-        .contact = TRUE,
+        .makesContact = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_FLINCH, .chance = 20, }),
         .battleAnimScript = gBattleAnimMove_Megahorn,
     },
@@ -23222,7 +23222,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .pp = 10,
         .target = TARGET_SELECTED,
         .category = DAMAGE_CATEGORY_PHYSICAL,
-        .contact = TRUE,
+        .makesContact = TRUE,
         .battleAnimScript = gBattleAnimMove_RapidSpin,
     },
 
