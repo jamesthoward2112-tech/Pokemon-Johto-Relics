@@ -566,7 +566,7 @@
     .teachableLearnset = sPinsirTeachableLearnset,
 },
 
-#define PJR_FINAL_SPECIES(species, hp, atk, def, spa, spd, spe, type1, type2, ability1, ability2, hidden, name, cry, natdex, category, color, front, back, palette, shiny, icon, levelMoves, teachMoves) \
+#define PJR_FINAL_SPECIES(species, hp, atk, def, spa, spd, spe, type1, type2, ability1, ability2, hidden, name, cry, natdex, category, color, front, back, pal, shiny, icon, levelMoves, teachMoves) \
 [species] = { \
     .baseHP = hp, .baseAttack = atk, .baseDefense = def, .baseSpAttack = spa, .baseSpDefense = spd, .baseSpeed = spe, \
     .types = MON_TYPES(type1, type2), .catchRate = 45, .expYield = 220, .genderRatio = PERCENT_FEMALE(50), \
@@ -578,7 +578,7 @@
     .frontPic = front, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 2, \
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH, \
     .backPic = back, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 6, .backAnimId = BACK_ANIM_NONE, \
-    .palette = palette, .shinyPalette = shiny, .iconSprite = icon, .iconPalIndex = 0, \
+    .palette = pal, .shinyPalette = shiny, .iconSprite = icon, .iconPalIndex = 0, \
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE, .levelUpLearnset = levelMoves, .teachableLearnset = teachMoves, \
 }
 
@@ -624,7 +624,7 @@ PJR_FINAL_SPECIES(SPECIES_DRAKEON, 75, 130, 85, 65, 80, 110, TYPE_DRAGON, TYPE_D
 
 PJR_FINAL_SPECIES(SPECIES_GHOULBAT, 95, 110, 90, 80, 95, 130, TYPE_GHOST, TYPE_FLYING,
     ABILITY_INFILTRATOR, ABILITY_PRESSURE, ABILITY_CURSED_BODY, "GHOULBAT", CRY_CROBAT,
-    NATIONAL_DEX_CROBAT, "Cavern Wraith", BODY_COLOR_PURPLE, gMonFrontPic_Ghoulbat, gMonBackPic_Ghoulbat,
+    NATIONAL_DEX_CROBAT, "Wraith", BODY_COLOR_PURPLE, gMonFrontPic_Ghoulbat, gMonBackPic_Ghoulbat,
     gMonPalette_Ghoulbat, gMonShinyPalette_Ghoulbat, gMonIcon_Ghoulbat, sGhoulbatLevelUpLearnset, sCrobatTeachableLearnset),
 
 #undef PJR_FINAL_SPECIES
