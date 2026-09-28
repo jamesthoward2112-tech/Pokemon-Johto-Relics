@@ -1711,8 +1711,17 @@
 #define SPECIES_TERATHWACK                              1590
 #define SPECIES_ALPHORACLE                              1591
 #define SPECIES_PINSIREX                                1592
+#define SPECIES_MILTITAN                                1593
+#define SPECIES_SHUCKOLOSSE                             1594
+#define SPECIES_SUDOWARDEN                              1595
+#define SPECIES_DONPHALANX                              1596
+#define SPECIES_FAERANIUM                               1597
+#define SPECIES_PYROCLAST                               1598
+#define SPECIES_FERALODON                               1599
+#define SPECIES_DRAKEON                                 1600
+#define SPECIES_GHOULBAT                                1601
 
-#define SPECIES_EGG                                     (SPECIES_PINSIREX + 1)
+#define SPECIES_EGG                                     (SPECIES_GHOULBAT + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

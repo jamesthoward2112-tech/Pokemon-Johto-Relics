@@ -95,3 +95,70 @@ const u32 gMonBackPic_PinsirMega[] = INCBIN_U32("graphics/pokemon/pinsir/mega/ba
 const u16 gMonShinyPalette_PinsirMega[] = INCBIN_U16("graphics/pokemon/pinsir/mega/shiny.gbapal");
 const u8 gMonIcon_PinsirMega[] = INCBIN_U8("graphics/pokemon/pinsir/mega/icon.4bpp");
 #endif
+
+// Permanent PJR evolutions reuse approved donor/mega art without enabling Mega Evolution.
+const u32 gMonFrontPic_Heracurion[] = INCBIN_U32("graphics/pokemon/heracross/mega/front.4bpp.smol");
+const u16 gMonPalette_Heracurion[] = INCBIN_U16("graphics/pokemon/heracross/mega/normal.gbapal");
+const u16 gMonShinyPalette_Heracurion[] = INCBIN_U16("graphics/pokemon/heracross/mega/shiny.gbapal");
+const u32 gMonBackPic_Heracurion[] = INCBIN_U32("graphics/pokemon/heracross/mega/back.4bpp.smol");
+const u8 gMonIcon_Heracurion[] = INCBIN_U8("graphics/pokemon/heracross/mega/icon.4bpp");
+
+const u32 gMonFrontPic_Skarmadon[] = INCBIN_U32("graphics/pokemon/skarmory/mega/front.4bpp.smol");
+const u16 gMonPalette_Skarmadon[] = INCBIN_U16("graphics/pokemon/skarmory/mega/normal.gbapal");
+const u16 gMonShinyPalette_Skarmadon[] = INCBIN_U16("graphics/pokemon/skarmory/mega/shiny.gbapal");
+const u32 gMonBackPic_Skarmadon[] = INCBIN_U32("graphics/pokemon/skarmory/mega/back.4bpp.smol");
+const u8 gMonIcon_Skarmadon[] = INCBIN_U8("graphics/pokemon/skarmory/mega/icon.4bpp");
+
+const u32 gMonFrontPic_Miltitan[] = INCBIN_U32("graphics/pokemon/miltank/anim_front.4bpp.smol");
+const u16 gMonPalette_Miltitan[] = INCBIN_U16("graphics/pokemon/miltank/normal.gbapal");
+const u16 gMonShinyPalette_Miltitan[] = INCBIN_U16("graphics/pokemon/miltank/shiny.gbapal");
+const u32 gMonBackPic_Miltitan[] = INCBIN_U32("graphics/pokemon/miltank/back.4bpp.smol");
+const u8 gMonIcon_Miltitan[] = INCBIN_U8("graphics/pokemon/miltank/icon.4bpp");
+
+const u32 gMonFrontPic_Shuckolosse[] = INCBIN_U32("graphics/pokemon/shuckle/anim_front.4bpp.smol");
+const u16 gMonPalette_Shuckolosse[] = INCBIN_U16("graphics/pokemon/shuckle/normal.gbapal");
+const u16 gMonShinyPalette_Shuckolosse[] = INCBIN_U16("graphics/pokemon/shuckle/shiny.gbapal");
+const u32 gMonBackPic_Shuckolosse[] = INCBIN_U32("graphics/pokemon/shuckle/back.4bpp.smol");
+const u8 gMonIcon_Shuckolosse[] = INCBIN_U8("graphics/pokemon/shuckle/icon.4bpp");
+
+const u32 gMonFrontPic_Sudowarden[] = INCBIN_U32("graphics/pokemon/sudowoodo/anim_front.4bpp.smol");
+const u16 gMonPalette_Sudowarden[] = INCBIN_U16("graphics/pokemon/sudowoodo/normal.gbapal");
+const u16 gMonShinyPalette_Sudowarden[] = INCBIN_U16("graphics/pokemon/sudowoodo/shiny.gbapal");
+const u32 gMonBackPic_Sudowarden[] = INCBIN_U32("graphics/pokemon/sudowoodo/back.4bpp.smol");
+const u8 gMonIcon_Sudowarden[] = INCBIN_U8("graphics/pokemon/sudowoodo/icon.4bpp");
+
+const u32 gMonFrontPic_Donphalanx[] = INCBIN_U32("graphics/pokemon/donphan/anim_front.4bpp.smol");
+const u16 gMonPalette_Donphalanx[] = INCBIN_U16("graphics/pokemon/donphan/normal.gbapal");
+const u16 gMonShinyPalette_Donphalanx[] = INCBIN_U16("graphics/pokemon/donphan/shiny.gbapal");
+const u32 gMonBackPic_Donphalanx[] = INCBIN_U32("graphics/pokemon/donphan/back.4bpp.smol");
+const u8 gMonIcon_Donphalanx[] = INCBIN_U8("graphics/pokemon/donphan/icon.4bpp");
+
+const u32 gMonFrontPic_Faeranium[] = INCBIN_U32("graphics/pokemon/meganium/mega/front.4bpp.smol");
+const u16 gMonPalette_Faeranium[] = INCBIN_U16("graphics/pokemon/meganium/mega/normal.gbapal");
+const u16 gMonShinyPalette_Faeranium[] = INCBIN_U16("graphics/pokemon/meganium/mega/shiny.gbapal");
+const u32 gMonBackPic_Faeranium[] = INCBIN_U32("graphics/pokemon/meganium/mega/back.4bpp.smol");
+const u8 gMonIcon_Faeranium[] = INCBIN_U8("graphics/pokemon/meganium/mega/icon.4bpp");
+
+const u32 gMonFrontPic_Pyroclast[] = INCBIN_U32("graphics/pokemon/typhlosion/hisui/front.4bpp.smol");
+const u16 gMonPalette_Pyroclast[] = INCBIN_U16("graphics/pokemon/typhlosion/hisui/normal.gbapal");
+const u16 gMonShinyPalette_Pyroclast[] = INCBIN_U16("graphics/pokemon/typhlosion/hisui/shiny.gbapal");
+const u32 gMonBackPic_Pyroclast[] = INCBIN_U32("graphics/pokemon/typhlosion/hisui/back.4bpp.smol");
+const u8 gMonIcon_Pyroclast[] = INCBIN_U8("graphics/pokemon/typhlosion/hisui/icon.4bpp");
+
+const u32 gMonFrontPic_Feralodon[] = INCBIN_U32("graphics/pokemon/feraligatr/mega/front.4bpp.smol");
+const u16 gMonPalette_Feralodon[] = INCBIN_U16("graphics/pokemon/feraligatr/mega/normal.gbapal");
+const u16 gMonShinyPalette_Feralodon[] = INCBIN_U16("graphics/pokemon/feraligatr/mega/shiny.gbapal");
+const u32 gMonBackPic_Feralodon[] = INCBIN_U32("graphics/pokemon/feraligatr/mega/back.4bpp.smol");
+const u8 gMonIcon_Feralodon[] = INCBIN_U8("graphics/pokemon/feraligatr/mega/icon.4bpp");
+
+const u32 gMonFrontPic_Drakeon[] = INCBIN_U32("graphics/pokemon/dragonair/anim_front.4bpp.smol");
+const u16 gMonPalette_Drakeon[] = INCBIN_U16("graphics/pokemon/dragonair/normal.gbapal");
+const u16 gMonShinyPalette_Drakeon[] = INCBIN_U16("graphics/pokemon/dragonair/shiny.gbapal");
+const u32 gMonBackPic_Drakeon[] = INCBIN_U32("graphics/pokemon/dragonair/back.4bpp.smol");
+const u8 gMonIcon_Drakeon[] = INCBIN_U8("graphics/pokemon/dragonair/icon.4bpp");
+
+const u32 gMonFrontPic_Ghoulbat[] = INCBIN_U32("graphics/pokemon/crobat/anim_front.4bpp.smol");
+const u16 gMonPalette_Ghoulbat[] = INCBIN_U16("graphics/pokemon/crobat/normal.gbapal");
+const u16 gMonShinyPalette_Ghoulbat[] = INCBIN_U16("graphics/pokemon/crobat/shiny.gbapal");
+const u32 gMonBackPic_Ghoulbat[] = INCBIN_U32("graphics/pokemon/crobat/back.4bpp.smol");
+const u8 gMonIcon_Ghoulbat[] = INCBIN_U8("graphics/pokemon/crobat/icon.4bpp");

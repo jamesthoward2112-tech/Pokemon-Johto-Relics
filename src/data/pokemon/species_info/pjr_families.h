@@ -59,29 +59,28 @@
  */
 [SPECIES_HERACURION] =
 {
+    .baseHP = 95, .baseAttack = 140, .baseDefense = 110,
+    .baseSpeed = 75, .baseSpAttack = 45, .baseSpDefense = 85,
+    .types = MON_TYPES(TYPE_BUG, TYPE_FIGHTING),
+    .catchRate = 45, .expYield = 220, .genderRatio = PERCENT_FEMALE(50),
+    .eggCycles = 25, .friendship = STANDARD_FRIENDSHIP, .growthRate = GROWTH_SLOW,
+    .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
+    .abilities = { ABILITY_MOXIE, ABILITY_GUTS, ABILITY_BATTLE_ARMOR }, .bodyColor = BODY_COLOR_BLUE,
     .speciesName = _("HERACURION"),
     .cryId = CRY_HERACROSS,
-    .natDexNum = NATIONAL_DEX_NONE,
-    .categoryName = _("Reserved"),
-    .description = gFallbackPokedexText,
-    .pokemonScale = 256,
-    .trainerScale = 256,
-    .frontPic = gMonFrontPic_CircledQuestionMark,
-    .frontPicSize = MON_COORDS_SIZE(40, 40),
-    .frontPicYOffset = 12,
+    .natDexNum = NATIONAL_DEX_HERACROSS,
+    .categoryName = _("Relic Horn"), .height = 18, .weight = 625,
+    .description = COMPOUND_STRING("Its ancient horn can pierce stone.\nIt stands firm while protecting\nweaker Pokémon."),
+    .pokemonScale = 256, .trainerScale = 256,
+    .frontPic = gMonFrontPic_Heracurion, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 3,
     .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-    .backPic = gMonBackPic_CircledQuestionMark,
-    .backPicSize = MON_COORDS_SIZE(40, 40),
-    .backPicYOffset = 12,
-    .backAnimId = BACK_ANIM_NONE,
-    .palette = gMonPalette_CircledQuestionMark,
-    .shinyPalette = gMonShinyPalette_CircledQuestionMark,
-    .iconSprite = gMonIcon_QuestionMark,
-    .iconPalIndex = 0,
+    .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+    .backPic = gMonBackPic_Heracurion, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 6,
+    .backAnimId = BACK_ANIM_V_SHAKE_LOW,
+    .palette = gMonPalette_Heracurion, .shinyPalette = gMonShinyPalette_Heracurion,
+    .iconSprite = gMonIcon_Heracurion, .iconPalIndex = 0,
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sNoneLevelUpLearnset,
-    .teachableLearnset = sNoneTeachableLearnset,
-    .randomizerMode = MON_RANDOMIZER_INVALID,
+    .levelUpLearnset = sHeracurionLevelUpLearnset, .teachableLearnset = sHeracrossTeachableLearnset,
 },
 
 [SPECIES_SKARMET] =
@@ -137,29 +136,29 @@
 
 [SPECIES_SKARMADON] =
 {
+    .baseHP = 80, .baseAttack = 125, .baseDefense = 140,
+    .baseSpeed = 85, .baseSpAttack = 45, .baseSpDefense = 80,
+    .types = MON_TYPES(TYPE_STEEL, TYPE_FLYING),
+    .catchRate = 45, .expYield = 220, .genderRatio = PERCENT_FEMALE(50),
+    .eggCycles = 25, .friendship = STANDARD_FRIENDSHIP, .growthRate = GROWTH_SLOW,
+    .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
+    .abilities = { ABILITY_STURDY, ABILITY_KEEN_EYE, ABILITY_BATTLE_ARMOR }, .bodyColor = BODY_COLOR_GRAY,
     .speciesName = _("SKARMADON"),
     .cryId = CRY_SKARMORY,
-    .natDexNum = NATIONAL_DEX_NONE,
-    .categoryName = _("Reserved"),
-    .description = gFallbackPokedexText,
-    .pokemonScale = 256,
-    .trainerScale = 256,
-    .frontPic = gMonFrontPic_CircledQuestionMark,
-    .frontPicSize = MON_COORDS_SIZE(40, 40),
-    .frontPicYOffset = 12,
+    .natDexNum = NATIONAL_DEX_SKARMORY,
+    .categoryName = _("Relic Armor"), .height = 20, .weight = 610,
+    .description = COMPOUND_STRING("Its relic-plated wings ring like\nforged steel. It rides violent winds\nwithout yielding."),
+    .pokemonScale = 256, .trainerScale = 256,
+    .frontPic = gMonFrontPic_Skarmadon, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 2,
     .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-    .backPic = gMonBackPic_CircledQuestionMark,
-    .backPicSize = MON_COORDS_SIZE(40, 40),
-    .backPicYOffset = 12,
-    .backAnimId = BACK_ANIM_NONE,
-    .palette = gMonPalette_CircledQuestionMark,
-    .shinyPalette = gMonShinyPalette_CircledQuestionMark,
-    .iconSprite = gMonIcon_QuestionMark,
+    .frontAnimId = ANIM_V_STRETCH,
+    .backPic = gMonBackPic_Skarmadon, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 6,
+    .backAnimId = BACK_ANIM_H_SHAKE,
+    .palette = gMonPalette_Skarmadon, .shinyPalette = gMonShinyPalette_Skarmadon,
+    .iconSprite = gMonIcon_Skarmadon,
     .iconPalIndex = 0,
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sNoneLevelUpLearnset,
-    .teachableLearnset = sNoneTeachableLearnset,
-    .randomizerMode = MON_RANDOMIZER_INVALID,
+    .levelUpLearnset = sSkarmadonLevelUpLearnset, .teachableLearnset = sSkarmoryTeachableLearnset,
 },
 
 [SPECIES_MOOTINY] =
@@ -566,3 +565,66 @@
     .levelUpLearnset = sPinsirexLevelUpLearnset,
     .teachableLearnset = sPinsirTeachableLearnset,
 },
+
+#define PJR_FINAL_SPECIES(species, hp, atk, def, spa, spd, spe, type1, type2, ability1, ability2, hidden, name, cry, natdex, category, color, front, back, palette, shiny, icon, levelMoves, teachMoves) \
+[species] = { \
+    .baseHP = hp, .baseAttack = atk, .baseDefense = def, .baseSpAttack = spa, .baseSpDefense = spd, .baseSpeed = spe, \
+    .types = MON_TYPES(type1, type2), .catchRate = 45, .expYield = 220, .genderRatio = PERCENT_FEMALE(50), \
+    .eggCycles = 25, .friendship = STANDARD_FRIENDSHIP, .growthRate = GROWTH_SLOW, \
+    .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD), .abilities = { ability1, ability2, hidden }, .bodyColor = color, \
+    .speciesName = _(name), .cryId = cry, .natDexNum = natdex, .categoryName = _(category), .height = 16, .weight = 600, \
+    .description = COMPOUND_STRING("Relic energy awakened this final form.\nIts ancient strength protects JOHTO\nand all who travel beside it."), \
+    .pokemonScale = 256, .trainerScale = 256, \
+    .frontPic = front, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 2, \
+    .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH, \
+    .backPic = back, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 6, .backAnimId = BACK_ANIM_NONE, \
+    .palette = palette, .shinyPalette = shiny, .iconSprite = icon, .iconPalIndex = 0, \
+    .pokemonJumpType = PKMN_JUMP_TYPE_NONE, .levelUpLearnset = levelMoves, .teachableLearnset = teachMoves, \
+}
+
+PJR_FINAL_SPECIES(SPECIES_MILTITAN, 110, 120, 105, 45, 100, 75, TYPE_NORMAL, TYPE_FAIRY,
+    ABILITY_THICK_FAT, ABILITY_SCRAPPY, ABILITY_SAP_SIPPER, "MILTITAN", CRY_MILTANK,
+    NATIONAL_DEX_MILTANK, "Relic Cow", BODY_COLOR_PINK, gMonFrontPic_Miltitan, gMonBackPic_Miltitan,
+    gMonPalette_Miltitan, gMonShinyPalette_Miltitan, gMonIcon_Miltitan, sMiltitanLevelUpLearnset, sMiltankTeachableLearnset),
+
+PJR_FINAL_SPECIES(SPECIES_SHUCKOLOSSE, 40, 30, 230, 30, 230, 20, TYPE_BUG, TYPE_ROCK,
+    ABILITY_STURDY, ABILITY_GLUTTONY, ABILITY_CONTRARY, "SHUCKOLOSSE", CRY_SHUCKLE,
+    NATIONAL_DEX_SHUCKLE, "Bastion", BODY_COLOR_YELLOW, gMonFrontPic_Shuckolosse, gMonBackPic_Shuckolosse,
+    gMonPalette_Shuckolosse, gMonShinyPalette_Shuckolosse, gMonIcon_Shuckolosse, sShuckleLevelUpLearnset, sShuckleTeachableLearnset),
+
+PJR_FINAL_SPECIES(SPECIES_SUDOWARDEN, 90, 125, 145, 40, 95, 40, TYPE_ROCK, TYPE_GRASS,
+    ABILITY_STURDY, ABILITY_ROCK_HEAD, ABILITY_SAP_SIPPER, "SUDOWARDEN", CRY_SUDOWOODO,
+    NATIONAL_DEX_SUDOWOODO, "Ancient Tree", BODY_COLOR_BROWN, gMonFrontPic_Sudowarden, gMonBackPic_Sudowarden,
+    gMonPalette_Sudowarden, gMonShinyPalette_Sudowarden, gMonIcon_Sudowarden, sSudowoodoLevelUpLearnset, sSudowoodoTeachableLearnset),
+
+PJR_FINAL_SPECIES(SPECIES_DONPHALANX, 110, 140, 135, 60, 85, 60, TYPE_GROUND, TYPE_DARK,
+    ABILITY_STAMINA, ABILITY_INTIMIDATE, ABILITY_SAND_RUSH, "DONPHALANX", CRY_DONPHAN,
+    NATIONAL_DEX_DONPHAN, "War Tusk", BODY_COLOR_GRAY, gMonFrontPic_Donphalanx, gMonBackPic_Donphalanx,
+    gMonPalette_Donphalanx, gMonShinyPalette_Donphalanx, gMonIcon_Donphalanx, sDonphanLevelUpLearnset, sDonphanTeachableLearnset),
+
+PJR_FINAL_SPECIES(SPECIES_FAERANIUM, 100, 85, 115, 105, 120, 65, TYPE_GRASS, TYPE_FAIRY,
+    ABILITY_OVERGROW, ABILITY_FLOWER_VEIL, ABILITY_GRASSY_SURGE, "FAERANIUM", CRY_MEGANIUM,
+    NATIONAL_DEX_MEGANIUM, "Bloom Relic", BODY_COLOR_GREEN, gMonFrontPic_Faeranium, gMonBackPic_Faeranium,
+    gMonPalette_Faeranium, gMonShinyPalette_Faeranium, gMonIcon_Faeranium, sMeganiumLevelUpLearnset, sMeganiumTeachableLearnset),
+
+PJR_FINAL_SPECIES(SPECIES_PYROCLAST, 85, 95, 85, 130, 90, 105, TYPE_FIRE, TYPE_GHOST,
+    ABILITY_BLAZE, ABILITY_FLASH_FIRE, ABILITY_CURSED_BODY, "PYROCLAST", CRY_TYPHLOSION,
+    NATIONAL_DEX_TYPHLOSION, "Cinder Relic", BODY_COLOR_RED, gMonFrontPic_Pyroclast, gMonBackPic_Pyroclast,
+    gMonPalette_Pyroclast, gMonShinyPalette_Pyroclast, gMonIcon_Pyroclast, sTyphlosionLevelUpLearnset, sTyphlosionTeachableLearnset),
+
+PJR_FINAL_SPECIES(SPECIES_FERALODON, 105, 135, 105, 70, 85, 80, TYPE_WATER, TYPE_DRAGON,
+    ABILITY_TORRENT, ABILITY_INTIMIDATE, ABILITY_SHEER_FORCE, "FERALODON", CRY_FERALIGATR,
+    NATIONAL_DEX_FERALIGATR, "Tidal Relic", BODY_COLOR_BLUE, gMonFrontPic_Feralodon, gMonBackPic_Feralodon,
+    gMonPalette_Feralodon, gMonShinyPalette_Feralodon, gMonIcon_Feralodon, sFeraligatrLevelUpLearnset, sFeraligatrTeachableLearnset),
+
+PJR_FINAL_SPECIES(SPECIES_DRAKEON, 75, 130, 85, 65, 80, 110, TYPE_DRAGON, TYPE_DRAGON,
+    ABILITY_INTIMIDATE, ABILITY_NONE, ABILITY_MULTISCALE, "DRAKEON", CRY_EEVEE,
+    NATIONAL_DEX_EEVEE, "Wyvern", BODY_COLOR_BLUE, gMonFrontPic_Drakeon, gMonBackPic_Drakeon,
+    gMonPalette_Drakeon, gMonShinyPalette_Drakeon, gMonIcon_Drakeon, sDrakeonLevelUpLearnset, sEeveeTeachableLearnset),
+
+PJR_FINAL_SPECIES(SPECIES_GHOULBAT, 95, 110, 90, 80, 95, 130, TYPE_GHOST, TYPE_FLYING,
+    ABILITY_INFILTRATOR, ABILITY_PRESSURE, ABILITY_CURSED_BODY, "GHOULBAT", CRY_CROBAT,
+    NATIONAL_DEX_CROBAT, "Cavern Wraith", BODY_COLOR_PURPLE, gMonFrontPic_Ghoulbat, gMonBackPic_Ghoulbat,
+    gMonPalette_Ghoulbat, gMonShinyPalette_Ghoulbat, gMonIcon_Ghoulbat, sGhoulbatLevelUpLearnset, sCrobatTeachableLearnset),
+
+#undef PJR_FINAL_SPECIES

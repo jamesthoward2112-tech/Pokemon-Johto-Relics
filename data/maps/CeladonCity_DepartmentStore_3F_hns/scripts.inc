@@ -26,6 +26,13 @@ CeladonDept3_EventScript_Clerk::
 
 	.align 2
 CeladonDept3_Pokemart:
+	.2byte ITEM_ANCIENT_SHELL
+	.2byte ITEM_FOSSIL_BARK
+	.2byte ITEM_ANCIENT_TUSK
+	.2byte ITEM_FROST_MIRROR
+	.2byte ITEM_ANCIENT_HORN
+	.2byte ITEM_ANCIENT_PLUME
+	.2byte ITEM_ANCIENT_BELL
 	.2byte ITEM_TM_SAFEGUARD
 	.2byte ITEM_TM_CAPTIVATE
 	.2byte ITEM_TM_STEALTH_ROCK
@@ -65,4 +72,3 @@ CeladonDeptStore3F_Text_SuperNerd:
 CeladonDeptStore3F_Text_Directory:
 	.string "3F: TM SHOP\p"
 	.string "Make Your POKéMON Stronger!$"
-

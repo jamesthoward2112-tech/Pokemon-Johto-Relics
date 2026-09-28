@@ -428,3 +428,58 @@ static const struct LevelUpMove sAlphoracleLevelUpLearnset[] =
     LEVEL_UP_MOVE(100, MOVE_DEJA_VU),
     LEVEL_UP_END
 };
+
+static const struct LevelUpMove sHeracurionLevelUpLearnset[] =
+{
+    LEVEL_UP_MOVE(0, MOVE_STAG_STAB),
+    LEVEL_UP_MOVE(1, MOVE_ARM_THRUST),
+    LEVEL_UP_MOVE(1, MOVE_MEGAHORN),
+    LEVEL_UP_MOVE(1, MOVE_CLOSE_COMBAT),
+    LEVEL_UP_MOVE(45, MOVE_BULK_UP),
+    LEVEL_UP_MOVE(55, MOVE_REVERSAL),
+    LEVEL_UP_END
+};
+
+static const struct LevelUpMove sSkarmadonLevelUpLearnset[] =
+{
+    LEVEL_UP_MOVE(0, MOVE_IRON_TEMPEST),
+    LEVEL_UP_MOVE(1, MOVE_STEEL_WING),
+    LEVEL_UP_MOVE(1, MOVE_AIR_SLASH),
+    LEVEL_UP_MOVE(1, MOVE_SPIKES),
+    LEVEL_UP_MOVE(48, MOVE_IRON_HEAD),
+    LEVEL_UP_MOVE(56, MOVE_BRAVE_BIRD),
+    LEVEL_UP_END
+};
+
+static const struct LevelUpMove sMiltitanLevelUpLearnset[] =
+{
+    LEVEL_UP_MOVE(0, MOVE_TAILSPIN),
+    LEVEL_UP_MOVE(1, MOVE_DEFENSE_CURL),
+    LEVEL_UP_MOVE(1, MOVE_ROLLOUT),
+    LEVEL_UP_MOVE(1, MOVE_MILK_DRINK),
+    LEVEL_UP_MOVE(48, MOVE_PLAY_ROUGH),
+    LEVEL_UP_MOVE(56, MOVE_DOUBLE_EDGE),
+    LEVEL_UP_END
+};
+
+static const struct LevelUpMove sDrakeonLevelUpLearnset[] =
+{
+    LEVEL_UP_MOVE(0, MOVE_DRAGON_CLAW),
+    LEVEL_UP_MOVE(1, MOVE_TACKLE),
+    LEVEL_UP_MOVE(1, MOVE_BITE),
+    LEVEL_UP_MOVE(25, MOVE_DRAGON_CLAW),
+    LEVEL_UP_MOVE(35, MOVE_DRAGON_DANCE),
+    LEVEL_UP_MOVE(45, MOVE_DRAGON_RUSH),
+    LEVEL_UP_MOVE(55, MOVE_OUTRAGE),
+    LEVEL_UP_END
+};
+
+static const struct LevelUpMove sGhoulbatLevelUpLearnset[] =
+{
+    LEVEL_UP_MOVE(0, MOVE_SHADOW_BONE),
+    LEVEL_UP_MOVE(1, MOVE_CROSS_POISON),
+    LEVEL_UP_MOVE(1, MOVE_AIR_SLASH),
+    LEVEL_UP_MOVE(50, MOVE_SHADOW_BONE),
+    LEVEL_UP_MOVE(60, MOVE_BRAVE_BIRD),
+    LEVEL_UP_END
+};

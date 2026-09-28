@@ -6415,6 +6415,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         .levelUpLearnset = sCrobatLevelUpLearnset,
         .teachableLearnset = sCrobatTeachableLearnset,
+        .evolutions = EVOLUTION({EVO_LEVEL, 50, SPECIES_GHOULBAT, CONDITIONS({IF_TIME, TIME_NIGHT})}),
     },
 #endif //P_GEN_2_CROSS_EVOS
 #endif //P_FAMILY_ZUBAT
@@ -18877,6 +18878,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
                                 {EVO_LEVEL, 0, SPECIES_GUARDEON, CONDITIONS({IF_TIME, TIME_NIGHT}, {IF_HOLD_ITEM, ITEM_METAL_COAT})},
                                 {EVO_LEVEL, 0, SPECIES_OBSIDEON, CONDITIONS({IF_TIME, TIME_NIGHT}, {IF_HOLD_ITEM, ITEM_HARD_STONE})},
                                 {EVO_LEVEL, 0, SPECIES_TOXEON, CONDITIONS({IF_TIME, TIME_NIGHT}, {IF_HOLD_ITEM, ITEM_POISON_BARB})},
+                                {EVO_LEVEL, 25, SPECIES_DRAKEON, CONDITIONS({IF_HOLD_ITEM, ITEM_DRAGON_FANG})},
                                 {EVO_ITEM, ITEM_DUSK_STONE, SPECIES_OMEON}
                             ),
     },

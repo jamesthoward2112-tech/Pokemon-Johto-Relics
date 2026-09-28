@@ -915,6 +915,9 @@ enum __attribute__((packed)) Move
     MOVE_KABLOW,
     MOVE_COSMIC_RAY,
     MOVE_DEJA_VU,
+    MOVE_STAG_STAB,
+    MOVE_IRON_TEMPEST,
+    MOVE_TAILSPIN,
 
     MOVES_COUNT,
 

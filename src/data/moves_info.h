@@ -23180,4 +23180,50 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_FutureSight,
     },
 
+    [MOVE_STAG_STAB] =
+    {
+        .name = COMPOUND_STRING("STAG STAB"),
+        .description = COMPOUND_STRING("A brutal horn thrust that may\nmake the target flinch."),
+        .effect = EFFECT_HIT,
+        .power = 85,
+        .type = TYPE_FIGHTING,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .contact = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_FLINCH, .chance = 20, }),
+        .battleAnimScript = gBattleAnimMove_Megahorn,
+    },
+
+    [MOVE_IRON_TEMPEST] =
+    {
+        .name = COMPOUND_STRING("IRON TEMPEST"),
+        .description = COMPOUND_STRING("Metal wings carve the foe. It\nmay lower the target's Speed."),
+        .effect = EFFECT_HIT,
+        .power = 85,
+        .type = TYPE_STEEL,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_SPD_MINUS_1, .chance = 20, }),
+        .battleAnimScript = gBattleAnimMove_SteelWing,
+    },
+
+    [MOVE_TAILSPIN] =
+    {
+        .name = COMPOUND_STRING("TAILSPIN"),
+        .description = COMPOUND_STRING("A spinning tail strike that\nraises the user's Speed."),
+        .effect = EFFECT_RAPID_SPIN,
+        .power = 30,
+        .type = TYPE_NORMAL,
+        .accuracy = 95,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .contact = TRUE,
+        .battleAnimScript = gBattleAnimMove_RapidSpin,
+    },
+
 };
