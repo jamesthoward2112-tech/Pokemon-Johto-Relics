@@ -62,6 +62,7 @@ CianwoodGym_EventScript_ChuckVictory::
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 5
 	call Common_EventScript_SetGymTrainers_hns
+	call CianwoodGym_EventScript_PJRReward
 	giveitem ITEM_TM_FOCUS_PUNCH
 	msgbox CianwoodGym_Text_ChuckTMSpeech, MSGBOX_DEFAULT
 	setvar VAR_GETFLY, 1
@@ -114,7 +115,22 @@ CianwoodGym_EventScript_Chuck_Battle3::
 	trainerbattle_no_intro TRAINER_CHUCK_1_3_HNS, CianwoodGym_Text_ChuckIntro2
 	goto CianwoodGym_EventScript_ChuckVictory
 
+CianwoodGym_EventScript_PJRReward::
+	goto_if_set FLAG_PJR_GYM_REWARD_CHUCK, CianwoodGym_EventScript_PJRRewardDone
+	giveitem ITEM_BLACK_BELT
+	goto_if_eq VAR_RESULT, FALSE, CianwoodGym_EventScript_PJRRewardDone
+	addmoney 10000
+	setflag FLAG_PJR_GYM_REWARD_CHUCK
+	msgbox CianwoodGym_Text_PJRPrizeMoney, MSGBOX_DEFAULT
+CianwoodGym_EventScript_PJRRewardDone::
+	return
+
+CianwoodGym_Text_PJRPrizeMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money.$"
+
 CianwoodGym_EventScript_Chuck_Defeated::
+	call CianwoodGym_EventScript_PJRReward
 	msgbox CianwoodGym_Text_ChuckAfter, MSGBOX_DEFAULT
 	closemessage
 	release

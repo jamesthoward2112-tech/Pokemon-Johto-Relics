@@ -237,6 +237,7 @@ OlivineCity_Gym_EventScript_JasmineVictory::
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 6
 	call Common_EventScript_SetGymTrainers_hns
+	call OlivineCity_Gym_EventScript_PJRReward
 	giveitem ITEM_TM_IRON_TAIL
 	msgbox OlivineCity_Gym_Text_JasmineIronTailSpeech, MSGBOX_DEFAULT
 	setvar VAR_OLIVINE_CITY_STATE, 8
@@ -266,7 +267,22 @@ OlivineCity_Gym_EventScript_Jasmine_Battle3::
 	trainerbattle_no_intro TRAINER_JASMINE_1_3_HNS, OlivineCity_Gym_Text_JasmineBetterTrainer
 	goto OlivineCity_Gym_EventScript_JasmineVictory
 
+OlivineCity_Gym_EventScript_PJRReward::
+	goto_if_set FLAG_PJR_GYM_REWARD_JASMINE, OlivineCity_Gym_EventScript_PJRRewardDone
+	giveitem ITEM_METAL_COAT
+	goto_if_eq VAR_RESULT, FALSE, OlivineCity_Gym_EventScript_PJRRewardDone
+	addmoney 10000
+	setflag FLAG_PJR_GYM_REWARD_JASMINE
+	msgbox OlivineCity_Gym_Text_PJRPrizeMoney, MSGBOX_DEFAULT
+OlivineCity_Gym_EventScript_PJRRewardDone::
+	return
+
+OlivineCity_Gym_Text_PJRPrizeMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money.$"
+
 OlivineCity_Gym_EventScript_Jasmine_Defeated::
+	call OlivineCity_Gym_EventScript_PJRReward
 	goto_if_unset FLAG_HIDE_DOJO_JASMINE, OlivineCity_Gym_EventScript_Jasmine_Trade
 	msgbox OlivineCity_Gym_Text_JasmineGoodLuck, MSGBOX_DEFAULT
 	closemessage

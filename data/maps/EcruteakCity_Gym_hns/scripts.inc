@@ -49,6 +49,7 @@ EcruteakCity_Gym_EventScript_Morty::
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 4
 	call Common_EventScript_SetGymTrainers_hns
+	call EcruteakCity_Gym_EventScript_PJRReward
 	giveitem ITEM_TM_SHADOW_BALL
 	msgbox MortyText_ShadowBallSpeech, MSGBOX_DEFAULT
 	setvar VAR_ECRUTEAK_CITY_STATE, 4
@@ -56,7 +57,22 @@ EcruteakCity_Gym_EventScript_Morty::
 	release
 	end
 
+EcruteakCity_Gym_EventScript_PJRReward::
+	goto_if_set FLAG_PJR_GYM_REWARD_MORTY, EcruteakCity_Gym_EventScript_PJRRewardDone
+	giveitem ITEM_SPELL_TAG
+	goto_if_eq VAR_RESULT, FALSE, EcruteakCity_Gym_EventScript_PJRRewardDone
+	addmoney 10000
+	setflag FLAG_PJR_GYM_REWARD_MORTY
+	msgbox MortyText_PJRPrizeMoney, MSGBOX_DEFAULT
+EcruteakCity_Gym_EventScript_PJRRewardDone::
+	return
+
+MortyText_PJRPrizeMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money.$"
+
 EcruteakCity_Gym_EventScript_Morty_Defeated::
+	call EcruteakCity_Gym_EventScript_PJRReward
 	msgbox MortyFightDoneText, MSGBOX_DEFAULT
 	closemessage
 	release

@@ -40,9 +40,7 @@ VioletCity_Gym_EventScript_Falkner::
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 1
 	call Common_EventScript_SetGymTrainers_hns
-	addmoney 10000
-	msgbox VioletGym_Text_Falkner_MoneyReward, MSGBOX_DEFAULT
-	giveitem ITEM_SHARP_BEAK
+	call VioletCity_Gym_EventScript_PJRReward
 	giveitem ITEM_TM_ROOST
 	msgbox VioletGym_Text_Falkner_TMExplain, MSGBOX_DEFAULT
 	setvar VAR_VIOLET_CITY_STATE, 3
@@ -52,6 +50,7 @@ VioletCity_Gym_EventScript_Falkner::
 	end
 
 VioletCity_Gym_EventScript_Falkner_Defeated::
+	call VioletCity_Gym_EventScript_PJRReward
 	msgbox VioletGym_Text_Falkner_AfterFight, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -85,6 +84,20 @@ VioletGym_Text_Falkner_BadgeExplain:
 	.string "FLASH, if they can learn it,\l"
 	.string "anytime.\p"
 	.string "Here--take this too.$"
+
+VioletCity_Gym_EventScript_PJRReward::
+	goto_if_set FLAG_PJR_GYM_REWARD_FALKNER, VioletCity_Gym_EventScript_PJRRewardDone
+	giveitem ITEM_SHARP_BEAK
+	goto_if_eq VAR_RESULT, FALSE, VioletCity_Gym_EventScript_PJRRewardDone
+	addmoney 10000
+	setflag FLAG_PJR_GYM_REWARD_FALKNER
+	msgbox VioletGym_Text_PJRPrizeMoney, MSGBOX_DEFAULT
+VioletCity_Gym_EventScript_PJRRewardDone::
+	return
+
+VioletGym_Text_PJRPrizeMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money.$"
 
 VioletGym_Text_Falkner_MoneyReward:
 	.string "You also earned 10,000 for\n"

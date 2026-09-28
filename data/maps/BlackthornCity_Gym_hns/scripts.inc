@@ -209,18 +209,35 @@ BlackthornGym_EventScript_Clair::
 	setflag FLAG_DEFEATED_BLACKTHORN_GYM
 	setvar VAR_0x8008, 8
 	call Common_EventScript_SetGymTrainers_hns
+	call BlackthornGym_EventScript_PJRReward
 	setvar VAR_BLACKTHORN_CITY_STATE, 2
 	closemessage
 	release
 	end
 
+BlackthornGym_EventScript_PJRReward::
+	goto_if_set FLAG_PJR_GYM_REWARD_CLAIR, BlackthornGym_EventScript_PJRRewardDone
+	giveitem ITEM_DRAGON_FANG
+	goto_if_eq VAR_RESULT, FALSE, BlackthornGym_EventScript_PJRRewardDone
+	addmoney 10000
+	setflag FLAG_PJR_GYM_REWARD_CLAIR
+	msgbox BlackthornGym_Text_PJRPrizeMoney, MSGBOX_DEFAULT
+BlackthornGym_EventScript_PJRRewardDone::
+	return
+
+BlackthornGym_Text_PJRPrizeMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money.$"
+
 BlackthornGym_EventScript_ClairDuringChallenge::
+	call BlackthornGym_EventScript_PJRReward
 	msgbox BlackthornGym_Text_ClairText_TooMuchToExpect, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
 
 BlackthornGym_EventScript_Clair_Defeated::
+	call BlackthornGym_EventScript_PJRReward
 	msgbox BlackthornGym_Text_ClairText_League, MSGBOX_DEFAULT
 	closemessage
 	release

@@ -74,6 +74,7 @@ GoldenrodCity_Gym_EventScript_WhitneyBadge::
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 3
 	call Common_EventScript_SetGymTrainers_hns
+	call GoldenrodCity_Gym_EventScript_PJRReward
 	giveitem ITEM_TM_ATTRACT
 	msgbox GoldenrodCity_Gym_Text_WhitneyAttract, MSGBOX_DEFAULT
 	setvar VAR_GOLDENROD_CITY_STATE, 5
@@ -81,9 +82,24 @@ GoldenrodCity_Gym_EventScript_WhitneyBadge::
 	release
 	end
 
+GoldenrodCity_Gym_EventScript_PJRReward::
+	goto_if_set FLAG_PJR_GYM_REWARD_WHITNEY, GoldenrodCity_Gym_EventScript_PJRRewardDone
+	giveitem ITEM_SILK_SCARF
+	goto_if_eq VAR_RESULT, FALSE, GoldenrodCity_Gym_EventScript_PJRRewardDone
+	addmoney 10000
+	setflag FLAG_PJR_GYM_REWARD_WHITNEY
+	msgbox GoldenrodCity_Gym_Text_PJRPrizeMoney, MSGBOX_DEFAULT
+GoldenrodCity_Gym_EventScript_PJRRewardDone::
+	return
+
+GoldenrodCity_Gym_Text_PJRPrizeMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money.$"
+
 GoldenrodCity_Gym_EventScript_WhitneyDefeated::
 	lock
 	faceplayer
+	call GoldenrodCity_Gym_EventScript_PJRReward
 	msgbox GoldenrodCity_Gym_Text_WhitneyGoodCry, MSGBOX_DEFAULT
 	closemessage
 	release

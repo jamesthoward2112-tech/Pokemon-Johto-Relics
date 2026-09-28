@@ -537,6 +537,7 @@ AzaleaTown_Gym_EventScript_Bugsy::
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 2
 	call Common_EventScript_SetGymTrainers_hns
+	call AzaleaTown_Gym_EventScript_PJRReward
 	giveitem ITEM_TM_U_TURN
 	msgbox AzaleaTown_Gym_Text_FuryCutterSpeech, MSGBOX_DEFAULT
 	setvar VAR_AZALEA_TOWN_STATE, 5
@@ -548,7 +549,22 @@ AzaleaTown_Gym_EventScript_Bugsy::
 	release
 	end
 
+AzaleaTown_Gym_EventScript_PJRReward::
+	goto_if_set FLAG_PJR_GYM_REWARD_BUGSY, AzaleaTown_Gym_EventScript_PJRRewardDone
+	giveitem ITEM_SILVER_POWDER
+	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_Gym_EventScript_PJRRewardDone
+	addmoney 10000
+	setflag FLAG_PJR_GYM_REWARD_BUGSY
+	msgbox AzaleaTown_Gym_Text_PJRPrizeMoney, MSGBOX_DEFAULT
+AzaleaTown_Gym_EventScript_PJRRewardDone::
+	return
+
+AzaleaTown_Gym_Text_PJRPrizeMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money.$"
+
 AzaleaTown_Gym_EventScript_Bugsy_Defeated::
+	call AzaleaTown_Gym_EventScript_PJRReward
 	msgbox AzaleaTown_Gym_Text_BugsyAdvice, MSGBOX_DEFAULT
 	closemessage
 	release

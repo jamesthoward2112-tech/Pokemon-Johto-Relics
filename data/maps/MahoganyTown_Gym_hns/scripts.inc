@@ -83,6 +83,7 @@ MahoganyTown_Gym_EventScript_PryceVictory::
     addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 7
 	call Common_EventScript_SetGymTrainers_hns
+	call MahoganyTown_Gym_EventScript_PJRReward
 	giveitem ITEM_TM_HAIL
 	msgbox MahoganyTown_Gym_Text_HailSpeech, MSGBOX_DEFAULT
 	setvar VAR_MAHOGANY_TOWN_STATE, 15
@@ -116,7 +117,22 @@ MahoganyTown_Gym_EventScript_Pryce_Battle3::
 	trainerbattle_no_intro TRAINER_PRYCE_1_3_HNS, MahoganyTown_Gym_Text_PryceImpressed
 	goto MahoganyTown_Gym_EventScript_PryceVictory
 
+MahoganyTown_Gym_EventScript_PJRReward::
+	goto_if_set FLAG_PJR_GYM_REWARD_PRYCE, MahoganyTown_Gym_EventScript_PJRRewardDone
+	giveitem ITEM_NEVER_MELT_ICE
+	goto_if_eq VAR_RESULT, FALSE, MahoganyTown_Gym_EventScript_PJRRewardDone
+	addmoney 10000
+	setflag FLAG_PJR_GYM_REWARD_PRYCE
+	msgbox MahoganyTown_Gym_Text_PJRPrizeMoney, MSGBOX_DEFAULT
+MahoganyTown_Gym_EventScript_PJRRewardDone::
+	return
+
+MahoganyTown_Gym_Text_PJRPrizeMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money.$"
+
 MahoganyTown_Gym_EventScript_Pryce_Defeated::
+	call MahoganyTown_Gym_EventScript_PJRReward
 	msgbox MahoganyTown_Gym_Text_CherishPokemon, MSGBOX_DEFAULT
 	closemessage
 	release
