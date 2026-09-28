@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 env:
   UNUSED_ERROR: 0
@@ -17,6 +17,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Apply PJR finish patch
+        run: |
+          git apply pjr-finish.patch
+          git rm pjr-finish.patch
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "PJR: complete core relic evolution roster [skip ci]"
+          git push origin HEAD:pjr-rebuild
       - name: Install toolchain
         run: |
           sudo apt-get update
@@ -49,7 +58,6 @@ jobs:
               dst = pathlib.Path('graphics/pokemon') / species_dir.name
               dst.mkdir(parents=True, exist_ok=True)
               for name in ('front.png', 'back.png', 'icon.png'):
-                  # Keep Run44 battle graphics, but use the approved repo icons.
                   if name == 'icon.png' and species_dir.name in ('skarmet', 'mootiny'):
                       continue
                   shutil.copy2(species_dir / name, dst / name)
