@@ -430,7 +430,8 @@ NewBarkTown_Lab_EventScript_PoliceYes::
 	msgbox NewBarkTown_Lab_Text_ElmAfterTheft4, MSGBOX_DEFAULT
 	closemessage
 	setvar VAR_NEWBARKTOWN_LABSTATE, 5
-	setvar VAR_NEWBARK_TOWN_STATE, 4
+	setvar VAR_NEWBARK_TOWN_STATE, 5
+	clearflag FLAG_HIDE_ROUTE_30_NPCS
 	setflag FLAG_HIDE_MOMS_FRIEND
 	clearflag FLAG_HIDE_MOMS_FRIEND2
 	setflag FLAG_ADVENTURE_STARTED
@@ -719,9 +720,7 @@ NewBarkTown_Lab_Text_DidntChooseStarter:
 
 NewBarkTown_Lab_Text_ChoseStarter:
 	.string "{STR_VAR_1} is now\n"
-	.string "your partner.\p"
-	.string "Watch it near JOHTO's\n"
-	.string "ancient ruins.$"
+	.string "your partner.$"
 
 NewBarkTown_Lab_Text_ReceivedStarter:
 	.string "{PLAYER} received\n"
@@ -816,8 +815,7 @@ NewBarkTown_Lab_Text_ElmAfterTheft4:
 	.string "one in VIOLET CITY.\p"
 	.string "…{PLAYER}. The road to the\n"
 	.string "championship will be a long one.\p"
-	.string "Before you leave, make sure\n"
-	.string "that you talk to your mom.$"
+	.string "Good luck out there!$"
 
 NewBarkTown_Lab_Text_ElmStudyingEgg:
 	.string "ELM: Don't give up!\n"

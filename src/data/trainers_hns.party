@@ -7175,21 +7175,31 @@ Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
 Mugshot: Light Blue
+Items: Potion
 
-Pidgey
-Level: 8
+Hoothoot
+Level: 9
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Tackle
-- Sand Attack
-- Quick Attack
-
-Noctowl @ Sitrus Berry
-Level: 11
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Tackle
-- Mud Slap
 - Peck
+- Hypnosis
+- Reflect
+- Tackle
 
+Natu
+Level: 10
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Peck
+- Confusion
+- Night Shade
+- Leer
+
+Pidgeotto @ Sitrus Berry
+Level: 12
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Gust
+- Quick Attack
+- Sand Attack
+- Roost
 === TRAINER_FALKNER_2_HNS ===
 Name: FALKNER
 Class: Leader Hns
@@ -7276,14 +7286,21 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Supersonic
 - Reflect
 
+Spinarak
+Level: 15
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Poison Sting
+- String Shot
+- Scary Face
+- Night Shade
+
 Scyther @ Berry Juice
 Level: 16
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Quick Attack
 - Fury Cutter
-- U Turn 
+- U Turn
 - Pursuit
-
 === TRAINER_BUGSY_2_HNS ===
 Name: BUGSY
 Class: Leader Hns
@@ -7347,7 +7364,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 Name: WHITNEY
 Class: Leader Hns
 Pic: Leader Whitney Hns
-Gender: Male
+Gender: Female
 Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
@@ -7370,6 +7387,14 @@ IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 - Lick
 - Mud Slap
 
+Aipom
+Level: 20
+IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+- Fake Out
+- Swift
+- Sand Attack
+- Fury Swipes
+
 Miltank @ Sitrus Berry
 Level: 21
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
@@ -7377,12 +7402,11 @@ IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 - Attract
 - Stomp
 - Milk Drink
-
 === TRAINER_WHITNEY_2_HNS ===
 Name: WHITNEY
 Class: Leader Hns
 Pic: Leader Whitney Hns
-Gender: Male
+Gender: Female
 Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
@@ -7578,6 +7602,14 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Rain Dance
 - Lovely Kiss
 
+Delibird
+Level: 32
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Icy Wind
+- Aerial Ace
+- Present
+- Ice Shard
+
 Piloswine @ Sitrus Berry
 Level: 33
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
@@ -7585,7 +7617,6 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Earthquake
 - Ancient Power
 - Ice Fang
-
 === TRAINER_PRYCE_2_HNS ===
 Name: PRYCE
 Class: Leader Hns
@@ -7751,7 +7782,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 Name: JASMINE
 Class: Leader Hns
 Pic: Leader Jasmine Hns
-Gender: Male
+Gender: Female
 Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
@@ -7802,7 +7833,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 Name: JASMINE
 Class: Leader Hns
 Pic: Leader Jasmine Hns
-Gender: Male
+Gender: Female
 Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
@@ -7861,7 +7892,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 Name: JASMINE
 Class: Leader Hns
 Pic: Leader Jasmine Hns
-Gender: Male
+Gender: Female
 Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
@@ -7912,7 +7943,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 Name: JASMINE
 Class: Leader Hns
 Pic: Leader Jasmine Hns
-Gender: Male
+Gender: Female
 Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
@@ -8167,7 +8198,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 Name: CLAIR
 Class: Leader Hns
 Pic: Leader Clair Hns
-Gender: Male
+Gender: Female
 Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
@@ -8218,7 +8249,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 Name: CLAIR
 Class: Leader Hns
 Pic: Leader Clair Hns
-Gender: Male
+Gender: Female
 Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
@@ -9398,7 +9429,7 @@ Level: 75
 Name: CLAIR
 Class: Leader Hns
 Pic: Leader Clair Hns
-Gender: Male
+Gender: Female
 Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
@@ -14697,7 +14728,7 @@ Level: 69
 Name: WHITNEY
 Class: Leader Hns
 Pic: Leader Whitney Hns
-Gender: Male
+Gender: Female
 Music: Hg Boy 1
 Double Battle: No
 AI: Smart Trainer / Prediction
@@ -14881,7 +14912,7 @@ Level: 71
 Name: JASMINE
 Class: Leader Hns
 Pic: Leader Jasmine Hns
-Gender: Male
+Gender: Female
 Music: Hg Boy 1
 Double Battle: No
 AI: Smart Trainer / Prediction
@@ -15007,7 +15038,7 @@ IVs: 0 Atk
 Name: CLAIR
 Class: Leader Hns
 Pic: Leader Clair Hns
-Gender: Male
+Gender: Female
 Music: Hg Boy 1
 Double Battle: No
 AI: Smart Trainer / Prediction

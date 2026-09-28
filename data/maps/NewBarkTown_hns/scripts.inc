@@ -102,7 +102,7 @@ NewBarkTown_EventScript_Wooper::
 NewBarkTown_EventScript_LeaveTrigger::
 	lock
 	call_if_eq VAR_NEWBARK_TOWN_STATE, 2, NewBarkTown_EventScript_LeaveTriggersState2
-	call_if_eq VAR_NEWBARK_TOWN_STATE, 4, NewBarkTown_EventScript_LeaveTriggersState4
+	goto_if_eq VAR_NEWBARK_TOWN_STATE, 4, NewBarkTown_EventScript_LeaveTriggersState4
 	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Movement_PlayerStepBack
 	waitmovement 0
 	release
@@ -120,15 +120,10 @@ NewBarkTown_EventScript_LeaveTriggersState2::
 	return
 
 NewBarkTown_EventScript_LeaveTriggersState4::
-	playse SE_PIN
-	applymovement LOCALID_LASS, Common_Movement_ExclamationMark
-	delay 55
-	waitmovement LOCALID_LASS
-	applymovement LOCALID_LASS, NewBarkTown_Movement_FaceDown
-	waitmovement 0
-	msgbox NewBarkTown_Text_LassState4, MSGBOX_DEFAULT
-	closemessage
-	return 
+	clearflag FLAG_HIDE_ROUTE_30_NPCS
+	setvar VAR_NEWBARK_TOWN_STATE, 5
+	release
+	end 
 
 
 
@@ -254,9 +249,8 @@ NewBarkTown_Text_LassState3:
 	.string "I wish I had one!$"
 
 NewBarkTown_Text_LassState4:
-	.string "Hi, {PLAYER}! Leaving again?\p"
-	.string "You should tell your mom if\n"
-	.string "you are leaving.$"
+	.string "Hi, {PLAYER}! Heading out?\p"
+	.string "Good luck on your adventure!$"
 
 NewBarkTown_Text_LassState5:
 	.string "Call your mom on your POKéGEAR\n"
