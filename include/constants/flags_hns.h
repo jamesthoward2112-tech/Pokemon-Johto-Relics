@@ -1295,6 +1295,17 @@
 #define FLAG_SYS_PYRAMID_SILVER                     (SYS_FLAGS + 0x5C)
 #define FLAG_SYS_PYRAMID_GOLD                       (SYS_FLAGS + 0x5D)
 
+// PJR one-time Johto Gym reward tracking.
+// 0x5E-0x65 are unused HnS system-flag slots before the visited-map range.
+#define FLAG_PJR_GYM_REWARD_FALKNER                 (SYS_FLAGS + 0x5E)
+#define FLAG_PJR_GYM_REWARD_BUGSY                   (SYS_FLAGS + 0x5F)
+#define FLAG_PJR_GYM_REWARD_WHITNEY                 (SYS_FLAGS + 0x60)
+#define FLAG_PJR_GYM_REWARD_MORTY                   (SYS_FLAGS + 0x61)
+#define FLAG_PJR_GYM_REWARD_CHUCK                   (SYS_FLAGS + 0x62)
+#define FLAG_PJR_GYM_REWARD_JASMINE                 (SYS_FLAGS + 0x63)
+#define FLAG_PJR_GYM_REWARD_PRYCE                   (SYS_FLAGS + 0x64)
+#define FLAG_PJR_GYM_REWARD_CLAIR                   (SYS_FLAGS + 0x65)
+
 // Visited / World Map flags
 #define FLAG_VISITED_NEWBARK_TOWN                   (SYS_FLAGS + 0x90)
 #define FLAG_VISITED_CHERRYGROVE_CITY               (SYS_FLAGS + 0x91)
