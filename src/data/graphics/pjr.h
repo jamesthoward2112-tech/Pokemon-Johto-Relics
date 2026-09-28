@@ -86,3 +86,12 @@ const u32 gMonFrontPic_Alphoracle[] = INCBIN_U32("graphics/pokemon/alphoracle/fr
 const u16 gMonPalette_Alphoracle[] = INCBIN_U16("graphics/pokemon/alphoracle/front.gbapal");
 const u32 gMonBackPic_Alphoracle[] = INCBIN_U32("graphics/pokemon/alphoracle/back.4bpp.smol");
 const u8 gMonIcon_Alphoracle[] = INCBIN_U8("graphics/pokemon/alphoracle/icon.4bpp");
+
+
+#if !P_MEGA_EVOLUTIONS
+const u32 gMonFrontPic_PinsirMega[] = INCBIN_U32("graphics/pokemon/pinsir/mega/front.4bpp.smol");
+const u16 gMonPalette_PinsirMega[] = INCBIN_U16("graphics/pokemon/pinsir/mega/normal.gbapal");
+const u32 gMonBackPic_PinsirMega[] = INCBIN_U32("graphics/pokemon/pinsir/mega/back.4bpp.smol");
+const u16 gMonShinyPalette_PinsirMega[] = INCBIN_U16("graphics/pokemon/pinsir/mega/shiny.gbapal");
+const u8 gMonIcon_PinsirMega[] = INCBIN_U8("graphics/pokemon/pinsir/mega/icon.4bpp");
+#endif
