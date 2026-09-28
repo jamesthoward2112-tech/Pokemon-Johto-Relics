@@ -87,7 +87,7 @@ VioletGym_Text_Falkner_BadgeExplain:
 	.string "Here--take this too.$"
 
 VioletGym_Text_Falkner_MoneyReward:
-	.string "You also earned $10,000 for\n"
+	.string "You also earned 10,000 for\n"
 	.string "winning this GYM battle!\p"
 	.string "Take this SHARP BEAK too. It\n"
 	.string "boosts FLYING-type moves.$"
