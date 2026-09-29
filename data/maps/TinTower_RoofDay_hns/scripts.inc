@@ -208,10 +208,15 @@ TinTower_RoofDay_EventScript_HoOhPostgame::
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	setvar VAR_LAST_TALKED, LOCALID_HO_OH
 	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, TinTower_RoofDay_EventScript_CaughtRelicHoOh
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, TinTower_RoofDay_EventScript_RanFromHoOh
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, TinTower_RoofDay_EventScript_RanFromHoOh
-	call_if_eq VAR_RESULT, B_OUTCOME_WON, TinTower_RoofDay_EventScript_HoohFlewAway
-	call_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, TinTower_RoofDay_EventScript_CaughtHooh
+	msgbox TinTower_RoofDay_Text_RelicHoOhRetry, MSGBOX_DEFAULT
+	releaseall
+	end
+
+TinTower_RoofDay_EventScript_CaughtRelicHoOh::
+	call TinTower_RoofDay_EventScript_CaughtHooh
 	setvar VAR_COMPLETED_HO_OH, 3
 	releaseall
 	end
@@ -284,6 +289,11 @@ TinTower_RoofDay_EventScript_Kuni::
 TinTower_RoofDay_EventScript_KuniAfter::
 	msgbox TinTower_RoofDay_Text_Kimono_After, MSGBOX_NPC
 	end
+
+TinTower_RoofDay_Text_RelicHoOhRetry:
+	.string "The ancient HO-OH rises again.\p"
+	.string "Its resonance will remain here\n"
+	.string "until you form a true bond.$"
 
 TinTower_RoofDay_Text_Kimono_AfterNotCaught:
 	.string "You have not only made HO-OH\n"

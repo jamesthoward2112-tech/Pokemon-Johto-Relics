@@ -1315,6 +1315,15 @@
 #define FLAG_PJR_GOT_STARTER_EGG_A                 (SYS_FLAGS + 0x69)
 #define FLAG_PJR_GOT_STARTER_EGG_B                 (SYS_FLAGS + 0x6A)
 
+/* PJR post-League RELICS progression. Keep these below the visited-map range. */
+#define FLAG_PJR_RELIC_RAIKOU                       (SYS_FLAGS + 0x6B)
+#define FLAG_PJR_RELIC_ENTEI                        (SYS_FLAGS + 0x6C)
+#define FLAG_PJR_RELIC_LUGIA                        (SYS_FLAGS + 0x6D)
+#define FLAG_PJR_RELIC_UNOWN_I                      (SYS_FLAGS + 0x6E)
+#define FLAG_PJR_RELIC_CELEBI                       (SYS_FLAGS + 0x6F)
+#define FLAG_PJR_RELIC_SUICUNE                      (SYS_FLAGS + 0x70)
+#define FLAG_PJR_RELIC_ALPHORACLE                   (SYS_FLAGS + 0x71)
+
 // Visited / World Map flags
 #define FLAG_VISITED_NEWBARK_TOWN                   (SYS_FLAGS + 0x90)
 #define FLAG_VISITED_CHERRYGROVE_CITY               (SYS_FLAGS + 0x91)
