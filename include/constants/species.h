@@ -1728,8 +1728,7 @@
 #define SPECIES_KHANG                                   1605
 #define SPECIES_NOLAX                                   1606
 #define SPECIES_NOXICHU                                 1607
-#define SPECIES_UNOWN_EYE                               1608
-#define SPECIES_HO_OH_RELIC                             1609
+#define SPECIES_HO_OH_RELIC                             1608
 
 #define SPECIES_EGG                                     (SPECIES_HO_OH_RELIC + 1)
 

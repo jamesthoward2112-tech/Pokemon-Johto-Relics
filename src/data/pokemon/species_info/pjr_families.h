@@ -677,31 +677,6 @@ PJR_RED_SPECIES(SPECIES_NOXICHU, 70, 110, 70, 110, 80, 125, TYPE_ELECTRIC, TYPE_
 
 #undef PJR_RED_SPECIES
 
-[SPECIES_UNOWN_EYE] =
-{
-    .baseHP = 114, .baseAttack = 171, .baseDefense = 114,
-    .baseSpAttack = 171, .baseSpDefense = 114, .baseSpeed = 114,
-    .types = MON_TYPES(TYPE_DARK, TYPE_POISON),
-    .catchRate = 3, .expYield = 300, .genderRatio = MON_GENDERLESS,
-    .eggCycles = 120, .friendship = 0, .growthRate = GROWTH_SLOW,
-    .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-    .abilities = { ABILITY_DARK_AURA, ABILITY_NONE, ABILITY_NONE },
-    .bodyColor = BODY_COLOR_BLACK,
-    .speciesName = _("EYE UNOWN"), .cryId = CRY_UNOWN,
-    .natDexNum = NATIONAL_DEX_UNOWN, .categoryName = _("Eye Symbol"),
-    .height = 20, .weight = 990,
-    .description = COMPOUND_STRING("The awakened Eye watches the Relic\nnetwork. Its gaze bends the symbols\nof ALPH around a single will."),
-    .pokemonScale = 256, .trainerScale = 256,
-    .frontPic = gMonFrontPic_UnownEye, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 0,
-    .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_ZIGZAG_FAST, .enemyMonElevation = 0,
-    .backPic = gMonBackPic_UnownEye, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0,
-    .backAnimId = BACK_ANIM_SHRINK_GROW_VIBRATE,
-    .palette = gMonPalette_UnownEye, .shinyPalette = gMonShinyPalette_UnownEye,
-    .iconSprite = gMonIcon_UnownEye, .iconPalIndex = 0,
-    .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sUnownEyeLevelUpLearnset,
-},
-
 [SPECIES_HO_OH_RELIC] =
 {
     .baseHP = 106, .baseAttack = 70, .baseDefense = 120,
@@ -713,7 +688,7 @@ PJR_RED_SPECIES(SPECIES_NOXICHU, 70, 110, 70, 110, 80, 125, TYPE_ELECTRIC, TYPE_
     .abilities = { ABILITY_SACRED_REBIRTH, ABILITY_NONE, ABILITY_NONE },
     .bodyColor = BODY_COLOR_YELLOW,
     .speciesName = _("RELIC HO-OH"), .cryId = CRY_HO_OH,
-    .natDexNum = NATIONAL_DEX_HO_OH, .categoryName = _("Relic Rainbow"),
+    .natDexNum = NATIONAL_DEX_HO_OH, .categoryName = _("Rainbow"),
     .height = 38, .weight = 1990,
     .description = COMPOUND_STRING("The awakened rainbow carries JOHTO's\noldest Resonance. Its hymn rekindles\nlife in the heart of battle."),
     .pokemonScale = 256, .trainerScale = 610, .trainerOffset = 17,
@@ -726,4 +701,4 @@ PJR_RED_SPECIES(SPECIES_NOXICHU, 70, 110, 70, 110, 80, 125, TYPE_ELECTRIC, TYPE_
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sRelicHoOhLevelUpLearnset,
     .teachableLearnset = sHoOhTeachableLearnset,
-};
+},
