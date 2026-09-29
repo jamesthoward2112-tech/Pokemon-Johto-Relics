@@ -435,6 +435,8 @@ NewBarkTown_Lab_EventScript_PoliceYes::
 	setflag FLAG_HIDE_MOMS_FRIEND
 	clearflag FLAG_HIDE_MOMS_FRIEND2
 	setflag FLAG_ADVENTURE_STARTED
+	@ PJR Alpha: the Route 30 roadblock clears here; Mum is no longer a progression gate.
+	setflag FLAG_MOM_VISITED
 	setflag FLAG_START_NUZLOCKE
 	setflag FLAG_EXP_SHARE_ENABLED
 	removeitem ITEM_MYSTERY_EGG

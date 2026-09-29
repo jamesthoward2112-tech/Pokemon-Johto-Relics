@@ -460,7 +460,7 @@ AzaleaTown_EventScript_PJRGiftCyndaquil::
 	goto_if_eq VAR_RESULT, NO, AzaleaTown_EventScript_PJRGiftCyndaquil_Declined
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CYNDAQUIL
 	bufferspeciesname STR_VAR_1, SPECIES_CYNDAQUIL
-	givemon SPECIES_CYNDAQUIL, 20
+	givemon SPECIES_CYNDAQUIL, 15
 	goto_if_eq VAR_RESULT, MON_CANT_GIVE, AzaleaTown_EventScript_PJRGiftCyndaquil_NoRoom
 	setflag FLAG_PJR_GOT_CYNDAQUIL
 	removeobject LOCALID_PJR_GIFT_CYNDAQUIL
