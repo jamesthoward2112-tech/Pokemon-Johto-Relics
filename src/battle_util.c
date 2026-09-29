@@ -6394,6 +6394,21 @@ static inline u32 CalcMoveBasePower(struct BattleContext *ctx)
     u32 moveEffect = GetMoveEffect(move);
     u32 weight, hpFraction, speed;
 
+    if (move == MOVE_TAILSPIN)
+    {
+        switch (min(gBattleMons[battlerAtk].volatiles.metronomeItemCounter, 4))
+        {
+        case 0: basePower = 30; break;
+        case 1: basePower = 60; break;
+        case 2: basePower = 120; break;
+        case 3: basePower = 180; break;
+        default: basePower = 240; break;
+        }
+
+        if (gBattleMons[battlerAtk].volatiles.defenseCurl)
+            basePower = min(basePower * 2, 240);
+    }
+
     if (GetActiveGimmick(battlerAtk) == GIMMICK_Z_MOVE)
         return GetZMovePower(gCurrentMove);
 

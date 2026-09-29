@@ -69,6 +69,7 @@
 #include "constants/item_effects.h"
 #include "constants/items.h"
 #include "constants/layouts.h"
+#include "constants/map_types.h"
 #include "constants/moves.h"
 #include "constants/opponents.h"
 #include "constants/party_menu.h"
@@ -6905,6 +6906,10 @@ bool32 DoesMonMeetAdditionalConditions(struct Pokemon *mon, const struct Evoluti
             break;
         case IF_IN_MAPSEC:
             if (gMapHeader.regionMapSectionId == params[i].arg1)
+                currentCondition = TRUE;
+            break;
+        case IF_IN_CAVE:
+            if (gMapHeader.mapType == MAP_TYPE_UNDERGROUND)
                 currentCondition = TRUE;
             break;
         case IF_KNOWS_MOVE:

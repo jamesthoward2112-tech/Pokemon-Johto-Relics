@@ -5019,6 +5019,14 @@ BattleScript_RapidSpinAway::
 	rapidspinfree
 	return
 
+BattleScript_TailspinSpeedUp::
+	statbuffchange BS_ATTACKER, STAT_CHANGE_ALLOW_PTR, BattleScript_TailspinSpeedUpEnd
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_CHANGE, BattleScript_TailspinSpeedUpEnd
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_TailspinSpeedUpEnd:
+	return
+
 BattleScript_WrapFree::
 	printstring STRINGID_PKMNGOTFREE
 	waitmessage B_WAIT_TIME_LONG
