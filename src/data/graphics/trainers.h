@@ -599,6 +599,12 @@ const u16 gTrainerPalette_RocketGruntFHns[] = INCBIN_U16("graphics/trainers/pale
 const u32 gTrainerFrontPic_RocketGruntMHns[] = INCBIN_U32("graphics/trainers/front_pics/rocket_grunt_m_hns.4bpp.smol");
 const u16 gTrainerPalette_RocketGruntMHns[] = INCBIN_U16("graphics/trainers/palettes/rocket_grunt_m_hns.gbapal");
 
+const u32 gTrainerFrontPic_JessieHns[] = INCBIN_U32("graphics/trainers/front_pics/jessie_hns.4bpp.smol");
+const u16 gTrainerPalette_JessieHns[] = INCBIN_U16("graphics/trainers/palettes/jessie_hns.gbapal");
+
+const u32 gTrainerFrontPic_JamesHns[] = INCBIN_U32("graphics/trainers/front_pics/james_hns.4bpp.smol");
+const u16 gTrainerPalette_JamesHns[] = INCBIN_U16("graphics/trainers/palettes/james_hns.gbapal");
+
 const u32 gTrainerFrontPic_RunningTriathleteFHns[] = INCBIN_U32("graphics/trainers/front_pics/running_triathlete_f_hns.4bpp.smol");
 const u16 gTrainerPalette_RunningTriathleteFHns[] = INCBIN_U16("graphics/trainers/palettes/running_triathlete_f_hns.gbapal");
 
@@ -874,6 +880,8 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_FRONT_RED_HNS, gTrainerFrontPic_RedHns, gTrainerPalette_RedHns),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_ROCKET_GRUNT_F_HNS, gTrainerFrontPic_RocketGruntFHns, gTrainerPalette_RocketGruntFHns),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_ROCKET_GRUNT_M_HNS, gTrainerFrontPic_RocketGruntMHns, gTrainerPalette_RocketGruntMHns),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_JESSIE_HNS, gTrainerFrontPic_JessieHns, gTrainerPalette_JessieHns),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_JAMES_HNS, gTrainerFrontPic_JamesHns, gTrainerPalette_JamesHns),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_RUNNING_TRIATHLETE_F_HNS, gTrainerFrontPic_RunningTriathleteFHns, gTrainerPalette_RunningTriathleteFHns),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_RUNNING_TRIATHLETE_FE_HNS, gTrainerFrontPic_RunningTriathleteFeHns, gTrainerPalette_RunningTriathleteFeHns),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_SAGE_HNS, gTrainerFrontPic_SageHns, gTrainerPalette_SageHns),

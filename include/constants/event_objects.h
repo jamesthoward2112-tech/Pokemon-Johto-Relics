@@ -583,7 +583,9 @@
 #define OBJ_EVENT_GFX_SKIER_F_HNS               545
 #define OBJ_EVENT_GFX_SKIER_M_HNS               546
 #define OBJ_EVENT_GFX_ALOLA_OAK_HNS             547
-#define NUM_OBJ_EVENT_GFX                        548
+#define OBJ_EVENT_GFX_JESSIE_HNS                548
+#define OBJ_EVENT_GFX_JAMES_HNS                 549
+#define NUM_OBJ_EVENT_GFX                        550
 
 
 // These are dynamic object gfx ids.
@@ -779,6 +781,8 @@
 #define OBJ_EVENT_PAL_TAG_KRIS_HNS                0x119A
 #define OBJ_EVENT_PAL_TAG_KRIS_REFLECTION_HNS     0x119B
 #define OBJ_EVENT_PAL_TAG_ALOLA_OAK_HNS           0x119C
+#define OBJ_EVENT_PAL_TAG_JESSIE_HNS              0x119D
+#define OBJ_EVENT_PAL_TAG_JAMES_HNS               0x119E
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla
