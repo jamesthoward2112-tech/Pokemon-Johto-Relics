@@ -10368,56 +10368,62 @@ Pic: Red Hns
 Gender: Male
 Music: Hg Champion
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer / Prediction
 Items: Full Restore / Full Restore
 
-Pikachu-Starter @ Light Ball
-Level: 93
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Thunderbolt
-- Surf
-- Iron Tail
-- Double Team
-
-Snorlax @ Leftovers
-Level: 77
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Belly Drum
-- Curse
-- Heavy Slam
-- Earthquake
-
-Charizard @ Charcoal
-Level: 79
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Fire Blast
-- Aerial Ace
-- Outrage
-- Steel Wing
-
-Venusaur @ Miracle Seed
-Level: 79
+Edensaur @ Black Sludge
+Level: 80
+Ability: Grassy Surge
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Petal Blizzard
-- Double Edge
-- Sleep Powder
-- Leech Seed
+- Sludge Bomb
+- Earth Power
+- Synthesis
 
-Blastoise @ Quick Claw
-Level: 79
+Charaxis @ Sharp Beak
+Level: 81
+Ability: Gale Wings
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Flame Charge
+- Aerial Ace
+- U-turn
+- Roost
+
+Fortotoise @ Leftovers
+Level: 81
+Ability: Sturdy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Surf
+- Flash Cannon
 - Ice Beam
-- Hydro Pump
-- Skull Bash
-- Earthquake
+- Body Press
 
-Espeon @ Sitrus Berry
-Level: 80
+Khang @ Silk Scarf
+Level: 82
+Ability: Parental Bond
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Psychic
-- Shadow Ball
-- Hidden Power
-- Morning Sun
+- Return
+- Drain Punch
+- Crunch
+- Fake Out
+
+Nolax @ Choice Band
+Level: 83
+Ability: Insomnia
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Extreme Speed
+- Double Edge
+- Earthquake
+- Crunch
+
+Noxichu @ Scope Lens
+Level: 85
+Ability: Infiltrator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Night Slash
+- Thunderbolt
+- Zing Zap
+- Sucker Punch
 
 === TRAINER_EUSINE_HNS ===
 Name: EUSINE

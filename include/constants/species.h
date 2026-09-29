@@ -1721,7 +1721,15 @@
 #define SPECIES_DRAKEON                                 1600
 #define SPECIES_GHOULBAT                                1601
 
-#define SPECIES_EGG                                     (SPECIES_GHOULBAT + 1)
+// PKR Relic champion forms reserved for Red in PJR.
+#define SPECIES_EDENSAUR                                1602
+#define SPECIES_CHARAXIS                                1603
+#define SPECIES_FORTOTOISE                              1604
+#define SPECIES_KHANG                                   1605
+#define SPECIES_NOLAX                                   1606
+#define SPECIES_NOXICHU                                 1607
+
+#define SPECIES_EGG                                     (SPECIES_NOXICHU + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

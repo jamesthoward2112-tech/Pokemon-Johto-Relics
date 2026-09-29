@@ -628,3 +628,51 @@ PJR_FINAL_SPECIES(SPECIES_GHOULBAT, 95, 110, 90, 80, 95, 130, TYPE_GHOST, TYPE_F
     gMonPalette_Ghoulbat, gMonShinyPalette_Ghoulbat, gMonIcon_Ghoulbat, sGhoulbatLevelUpLearnset, sCrobatTeachableLearnset),
 
 #undef PJR_FINAL_SPECIES
+
+#define PJR_RED_SPECIES(species, hp, atk, def, spa, spd, spe, type1, type2, ability, name, cry, natdex, color, front, back, pal, shiny, icon, levelMoves, teachMoves) \
+[species] = { \
+    .baseHP = hp, .baseAttack = atk, .baseDefense = def, .baseSpAttack = spa, .baseSpDefense = spd, .baseSpeed = spe, \
+    .types = MON_TYPES(type1, type2), .catchRate = 45, .expYield = 250, .genderRatio = PERCENT_FEMALE(50), \
+    .eggCycles = 25, .friendship = STANDARD_FRIENDSHIP, .growthRate = GROWTH_MEDIUM_SLOW, \
+    .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD), .abilities = { ability, ABILITY_NONE, ABILITY_NONE }, .bodyColor = color, \
+    .speciesName = _(name), .cryId = cry, .natDexNum = natdex, .categoryName = _("Relic"), .height = 16, .weight = 600, \
+    .description = COMPOUND_STRING("A champion of KANTO's Relic age.\nIts Resonance has been refined through\ncountless battles beside RED."), \
+    .pokemonScale = 256, .trainerScale = 256, \
+    .frontPic = front, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 2, \
+    .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH, \
+    .backPic = back, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 6, .backAnimId = BACK_ANIM_NONE, \
+    .palette = pal, .shinyPalette = shiny, .iconSprite = icon, .iconPalIndex = 0, \
+    .pokemonJumpType = PKMN_JUMP_TYPE_NONE, .levelUpLearnset = levelMoves, .teachableLearnset = teachMoves, \
+}
+
+PJR_RED_SPECIES(SPECIES_EDENSAUR, 95, 80, 110, 135, 105, 55, TYPE_GRASS, TYPE_POISON,
+    ABILITY_GRASSY_SURGE, "EDENSAUR", CRY_VENUSAUR, NATIONAL_DEX_VENUSAUR, BODY_COLOR_GREEN,
+    gMonFrontPic_Edensaur, gMonBackPic_Edensaur, gMonPalette_Venusaur, gMonShinyPalette_Venusaur, gMonIcon_Venusaur,
+    sVenusaurLevelUpLearnset, sVenusaurTeachableLearnset),
+
+PJR_RED_SPECIES(SPECIES_CHARAXIS, 80, 120, 85, 90, 80, 125, TYPE_FIRE, TYPE_FLYING,
+    ABILITY_GALE_WINGS, "CHARAXIS", CRY_CHARIZARD, NATIONAL_DEX_CHARIZARD, BODY_COLOR_RED,
+    gMonFrontPic_Charaxis, gMonBackPic_Charaxis, gMonPalette_Charizard, gMonShinyPalette_Charizard, gMonIcon_Charizard,
+    sCharizardLevelUpLearnset, sCharizardTeachableLearnset),
+
+PJR_RED_SPECIES(SPECIES_FORTOTOISE, 95, 80, 155, 100, 105, 50, TYPE_WATER, TYPE_STEEL,
+    ABILITY_STURDY, "FORTOTOISE", CRY_BLASTOISE, NATIONAL_DEX_BLASTOISE, BODY_COLOR_BLUE,
+    gMonFrontPic_Fortotoise, gMonBackPic_Fortotoise, gMonPalette_Blastoise, gMonShinyPalette_Blastoise, gMonIcon_Blastoise,
+    sBlastoiseLevelUpLearnset, sBlastoiseTeachableLearnset),
+
+PJR_RED_SPECIES(SPECIES_KHANG, 105, 105, 95, 50, 90, 110, TYPE_NORMAL, TYPE_NORMAL,
+    ABILITY_PARENTAL_BOND, "KHANG", CRY_KANGASKHAN, NATIONAL_DEX_KANGASKHAN, BODY_COLOR_BROWN,
+    gMonFrontPic_Khang, gMonBackPic_Khang, gMonPalette_Kangaskhan, gMonShinyPalette_Kangaskhan, gMonIcon_Kangaskhan,
+    sKangaskhanLevelUpLearnset, sKangaskhanTeachableLearnset),
+
+PJR_RED_SPECIES(SPECIES_NOLAX, 100, 130, 80, 45, 90, 130, TYPE_NORMAL, TYPE_NORMAL,
+    ABILITY_INSOMNIA, "NOLAX", CRY_SNORLAX, NATIONAL_DEX_SNORLAX, BODY_COLOR_BLUE,
+    gMonFrontPic_Nolax, gMonBackPic_Nolax, gMonPalette_Snorlax, gMonShinyPalette_Snorlax, gMonIcon_Snorlax,
+    sSnorlaxLevelUpLearnset, sSnorlaxTeachableLearnset),
+
+PJR_RED_SPECIES(SPECIES_NOXICHU, 70, 110, 70, 110, 80, 125, TYPE_ELECTRIC, TYPE_DARK,
+    ABILITY_INFILTRATOR, "NOXICHU", CRY_PIKACHU, NATIONAL_DEX_PIKACHU, BODY_COLOR_YELLOW,
+    gMonFrontPic_Noxichu, gMonBackPic_Noxichu, gMonPalette_Pikachu, gMonShinyPalette_Pikachu, gMonIcon_Pikachu,
+    sPikachuLevelUpLearnset, sPikachuTeachableLearnset),
+
+#undef PJR_RED_SPECIES

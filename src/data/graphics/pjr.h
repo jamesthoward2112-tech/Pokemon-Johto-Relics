@@ -162,3 +162,17 @@ const u16 gMonPalette_Ghoulbat[] = INCBIN_U16("graphics/pokemon/crobat/normal.gb
 const u16 gMonShinyPalette_Ghoulbat[] = INCBIN_U16("graphics/pokemon/crobat/shiny.gbapal");
 const u32 gMonBackPic_Ghoulbat[] = INCBIN_U32("graphics/pokemon/crobat/back.4bpp.smol");
 const u8 gMonIcon_Ghoulbat[] = INCBIN_U8("graphics/pokemon/crobat/icon.4bpp");
+
+// PKR Relic champion forms used by Red at Mt. Silver.
+const u32 gMonFrontPic_Edensaur[] = INCBIN_U32("graphics/pokemon/edensaur/front.4bpp.smol");
+const u32 gMonBackPic_Edensaur[] = INCBIN_U32("graphics/pokemon/edensaur/back.4bpp.smol");
+const u32 gMonFrontPic_Charaxis[] = INCBIN_U32("graphics/pokemon/charaxis/front.4bpp.smol");
+const u32 gMonBackPic_Charaxis[] = INCBIN_U32("graphics/pokemon/charaxis/back.4bpp.smol");
+const u32 gMonFrontPic_Fortotoise[] = INCBIN_U32("graphics/pokemon/fortotoise/front.4bpp.smol");
+const u32 gMonBackPic_Fortotoise[] = INCBIN_U32("graphics/pokemon/fortotoise/back.4bpp.smol");
+const u32 gMonFrontPic_Khang[] = INCBIN_U32("graphics/pokemon/khang/front.4bpp.smol");
+const u32 gMonBackPic_Khang[] = INCBIN_U32("graphics/pokemon/khang/back.4bpp.smol");
+const u32 gMonFrontPic_Nolax[] = INCBIN_U32("graphics/pokemon/nolax/front.4bpp.smol");
+const u32 gMonBackPic_Nolax[] = INCBIN_U32("graphics/pokemon/nolax/back.4bpp.smol");
+const u32 gMonFrontPic_Noxichu[] = INCBIN_U32("graphics/pokemon/noxichu/front.4bpp.smol");
+const u32 gMonBackPic_Noxichu[] = INCBIN_U32("graphics/pokemon/noxichu/back.4bpp.smol");
