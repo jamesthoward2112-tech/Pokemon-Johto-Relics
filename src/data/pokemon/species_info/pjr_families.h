@@ -662,17 +662,17 @@ PJR_RED_SPECIES(SPECIES_FORTOTOISE, 95, 80, 155, 100, 105, 50, TYPE_WATER, TYPE_
 
 PJR_RED_SPECIES(SPECIES_KHANG, 105, 105, 95, 50, 90, 110, TYPE_NORMAL, TYPE_NORMAL,
     ABILITY_PARENTAL_BOND, "KHANG", CRY_KANGASKHAN, NATIONAL_DEX_KANGASKHAN, BODY_COLOR_BROWN,
-    gMonFrontPic_Khang, gMonBackPic_Khang, gMonPalette_Kangaskhan, gMonShinyPalette_Kangaskhan, gMonIcon_Kangaskhan,
+    gMonFrontPic_Khang, gMonBackPic_Khang, gMonPalette_Khang, gMonShinyPalette_Khang, gMonIcon_Kangaskhan,
     sKangaskhanLevelUpLearnset, sKangaskhanTeachableLearnset),
 
 PJR_RED_SPECIES(SPECIES_NOLAX, 100, 130, 80, 45, 90, 130, TYPE_NORMAL, TYPE_NORMAL,
     ABILITY_INSOMNIA, "NOLAX", CRY_SNORLAX, NATIONAL_DEX_SNORLAX, BODY_COLOR_BLUE,
-    gMonFrontPic_Nolax, gMonBackPic_Nolax, gMonPalette_Snorlax, gMonShinyPalette_Snorlax, gMonIcon_Snorlax,
+    gMonFrontPic_Nolax, gMonBackPic_Nolax, gMonPalette_Nolax, gMonShinyPalette_Nolax, gMonIcon_Snorlax,
     sSnorlaxLevelUpLearnset, sSnorlaxTeachableLearnset),
 
 PJR_RED_SPECIES(SPECIES_NOXICHU, 70, 110, 70, 110, 80, 125, TYPE_ELECTRIC, TYPE_DARK,
     ABILITY_INFILTRATOR, "NOXICHU", CRY_PIKACHU, NATIONAL_DEX_PIKACHU, BODY_COLOR_YELLOW,
-    gMonFrontPic_Noxichu, gMonBackPic_Noxichu, gMonPalette_Pikachu, gMonShinyPalette_Pikachu, gMonIcon_Pikachu,
+    gMonFrontPic_Noxichu, gMonBackPic_Noxichu, gMonPalette_Noxichu, gMonShinyPalette_Noxichu, gMonIcon_Pikachu,
     sPikachuLevelUpLearnset, sPikachuTeachableLearnset),
 
 #undef PJR_RED_SPECIES

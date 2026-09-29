@@ -167,7 +167,15 @@ const u8 gMonIcon_Ghoulbat[] = INCBIN_U8("graphics/pokemon/crobat/icon.4bpp");
 // Edensaur, Charaxis and Fortotoise reuse Mega Venusaur, Mega Charizard Y and Mega Blastoise graphics directly.
 const u32 gMonFrontPic_Khang[] = INCBIN_U32("graphics/pokemon/khang/front.4bpp.smol");
 const u32 gMonBackPic_Khang[] = INCBIN_U32("graphics/pokemon/khang/back.4bpp.smol");
+const u16 gMonPalette_Khang[] = INCBIN_U16("graphics/pokemon/khang/normal.gbapal");
+const u16 gMonShinyPalette_Khang[] = INCBIN_U16("graphics/pokemon/khang/shiny.gbapal");
+
 const u32 gMonFrontPic_Nolax[] = INCBIN_U32("graphics/pokemon/nolax/front.4bpp.smol");
 const u32 gMonBackPic_Nolax[] = INCBIN_U32("graphics/pokemon/nolax/back.4bpp.smol");
+const u16 gMonPalette_Nolax[] = INCBIN_U16("graphics/pokemon/nolax/normal.gbapal");
+const u16 gMonShinyPalette_Nolax[] = INCBIN_U16("graphics/pokemon/nolax/shiny.gbapal");
+
 const u32 gMonFrontPic_Noxichu[] = INCBIN_U32("graphics/pokemon/noxichu/front.4bpp.smol");
 const u32 gMonBackPic_Noxichu[] = INCBIN_U32("graphics/pokemon/noxichu/back.4bpp.smol");
+const u16 gMonPalette_Noxichu[] = INCBIN_U16("graphics/pokemon/noxichu/normal.gbapal");
+const u16 gMonShinyPalette_Noxichu[] = INCBIN_U16("graphics/pokemon/noxichu/shiny.gbapal");
