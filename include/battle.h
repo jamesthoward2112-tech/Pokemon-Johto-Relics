@@ -507,7 +507,9 @@ struct BattlerState
     u16 switchIn:1;
     u16 fainted:1;
     u16 isFirstTurn:2;
-    u16 padding:12;
+    u16 ancientBastionHitUsed:1;
+    u16 cinderVeilHitUsed:1;
+    u16 padding:10;
 };
 
 struct PartyState
@@ -518,11 +520,13 @@ struct PartyState
     u32 battleBondBoost:1;
     u32 transformZeroToHero:1;
     u32 supersweetSyrup:1;
+    u32 ancientBloomUsed:1;
+    u32 tidalRoarUsed:1;
     u32 timesGotHit:5;
     u32 changedSpecies:11; // For forms when multiple mons can change into the same pokemon.
     u32 sentOut:1;
     u32 isKnockedOff:1;
-    u32 padding:8;
+    u32 padding:6;
     u16 usedHeldItem;
 };
 

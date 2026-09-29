@@ -3430,6 +3430,34 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 effect++;
             }
             break;
+        case ABILITY_ANCIENT_BASTION:
+            if (shouldAbilityTrigger)
+            {
+                gBattleStruct->battlerState[battler].ancientBastionHitUsed = FALSE;
+                SaveBattlerAttacker(gBattlerAttacker);
+                SaveBattlerTarget(gBattlerTarget);
+                gBattlerAttacker = battler;
+                gBattlerTarget = BATTLE_OPPOSITE(battler);
+                BattleScriptCall(BattleScript_AncientBastionActivates);
+                effect++;
+            }
+            break;
+        case ABILITY_CINDER_VEIL:
+            if (shouldAbilityTrigger)
+                gBattleStruct->battlerState[battler].cinderVeilHitUsed = FALSE;
+            break;
+        case ABILITY_TIDAL_ROAR:
+            if (shouldAbilityTrigger
+             && !GetBattlerPartyState(battler)->tidalRoarUsed
+             && !IsOpposingSideEmpty(battler))
+            {
+                GetBattlerPartyState(battler)->tidalRoarUsed = TRUE;
+                SaveBattlerAttacker(gBattlerAttacker);
+                gBattlerAttacker = battler;
+                BattleScriptCall(BattleScript_TidalRoarActivates);
+                effect++;
+            }
+            break;
         case ABILITY_MISTY_SURGE:
             if (!shouldAbilityTrigger)
                 break;
@@ -3862,6 +3890,27 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 effect++;
             }
             break;
+        case ABILITY_ANCIENT_BLOOM:
+            if (!GetBattlerPartyState(battler)->ancientBloomUsed
+             && IsBattlerTurnDamaged(battler, EXCLUDING_SUBSTITUTES)
+             && IsBattlerAlive(battler)
+             && HadMoreThanHalfHpNowDoesnt(battler))
+            {
+                bool32 terrainChanged;
+
+                GetBattlerPartyState(battler)->ancientBloomUsed = TRUE;
+                SetHealAmount(battler, max(1, GetNonDynamaxMaxHP(battler) / 3));
+                terrainChanged = TryChangeBattleTerrain(battler, STATUS_FIELD_GRASSY_TERRAIN);
+                if (terrainChanged)
+                    gFieldTimers.terrainTimer = 5;
+                gBattleCommunication[MULTISTRING_CHOOSER] = terrainChanged;
+                SaveBattlerAttacker(gBattlerAttacker);
+                gBattlerAttacker = battler;
+                gBattleScripting.battler = battler;
+                BattleScriptCall(BattleScript_AncientBloomActivates);
+                effect++;
+            }
+            break;
         case ABILITY_BERSERK:
             if (IsBattlerTurnDamaged(battler, EXCLUDING_SUBSTITUTES)
              && IsBattlerAlive(battler)
@@ -4194,6 +4243,22 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
              && IsBattlerTurnDamaged(gBattlerTarget, EXCLUDING_SUBSTITUTES)
              && CanBeBurned(gBattlerTarget, gBattlerAttacker, GetBattlerAbility(gBattlerAttacker))
              && (GetConfig(B_ABILITY_TRIGGER_CHANCE) >= GEN_4 ? RandomPercentage(RNG_FLAME_BODY, 30) : RandomChance(RNG_FLAME_BODY, 1, 3)))
+            {
+                gEffectBattler = gBattlerAttacker;
+                gBattleScripting.battler = gBattlerTarget;
+                gBattleScripting.moveEffect = MOVE_EFFECT_BURN;
+                PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
+                BattleScriptCall(BattleScript_AbilityStatusEffect);
+                effect++;
+            }
+            break;
+        case ABILITY_CINDER_VEIL:
+            if (IsBattlerAlive(gBattlerAttacker)
+             && !gBattleStruct->unableToUseMove
+             && !CanBattlerAvoidContactEffects(gBattlerAttacker, gBattlerTarget, GetBattlerAbility(gBattlerAttacker), GetBattlerHoldEffect(gBattlerAttacker), move)
+             && IsBattlerTurnDamaged(gBattlerTarget, EXCLUDING_SUBSTITUTES)
+             && CanBeBurned(gBattlerTarget, gBattlerAttacker, GetBattlerAbility(gBattlerAttacker))
+             && RandomPercentage(RNG_FLAME_BODY, 20))
             {
                 gEffectBattler = gBattlerAttacker;
                 gBattleScripting.battler = gBattlerTarget;
@@ -7584,6 +7649,26 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(struct BattleContext *ctx)
 
     switch (ctx->abilityDef)
     {
+    case ABILITY_ANCIENT_BASTION:
+        if (!gBattleStruct->battlerState[ctx->battlerDef].ancientBastionHitUsed
+         && GetMovePower(ctx->move) != 0)
+        {
+            modifier = UQ_4_12(0.5);
+            recordAbility = TRUE;
+            if (ctx->updateFlags)
+                gBattleStruct->battlerState[ctx->battlerDef].ancientBastionHitUsed = TRUE;
+        }
+        break;
+    case ABILITY_CINDER_VEIL:
+        if (!gBattleStruct->battlerState[ctx->battlerDef].cinderVeilHitUsed
+         && GetMovePower(ctx->move) != 0)
+        {
+            modifier = UQ_4_12(0.5);
+            recordAbility = TRUE;
+            if (ctx->updateFlags)
+                gBattleStruct->battlerState[ctx->battlerDef].cinderVeilHitUsed = TRUE;
+        }
+        break;
     case ABILITY_MULTISCALE:
     case ABILITY_SHADOW_SHIELD:
         if (IsBattlerAtMaxHp(ctx->battlerDef))

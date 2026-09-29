@@ -6388,6 +6388,65 @@ BattleScript_HospitalityActivates::
 	datahpupdate BS_EFFECT_BATTLER, PASSIVE_HP_UPDATE
 	return
 
+BattleScript_AncientBastionActivates::
+	call BattleScript_AbilityPopUpScripting
+	setstealthrock BattleScript_AncientBastionTrySpikes
+	printfromtable gDmgHazardsStringIds
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_AncientBastionEnd
+BattleScript_AncientBastionTrySpikes:
+	trysetspikes BattleScript_AncientBastionEnd
+	printfromtable gDmgHazardsStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_AncientBastionEnd:
+	restoretarget
+	restoreattacker
+	return
+
+BattleScript_AncientBloomActivates::
+	call BattleScript_AbilityPopUpScripting
+	playanimation BS_ATTACKER, B_ANIM_SIMPLE_HEAL
+	healthbarupdate BS_ATTACKER, PASSIVE_HP_UPDATE
+	datahpupdate BS_ATTACKER, PASSIVE_HP_UPDATE
+	printstring STRINGID_PKMNSXRESTOREDHPALITTLE2
+	waitmessage B_WAIT_TIME_LONG
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, FALSE, BattleScript_AncientBloomEnd
+	printstring STRINGID_TERRAINBECOMESGRASSY
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_SCRIPTING, B_ANIM_RESTORE_BG
+	call BattleScript_ActivateTerrainEffects
+BattleScript_AncientBloomEnd:
+	restoreattacker
+	return
+
+BattleScript_TidalRoarActivates::
+	savetarget
+	call BattleScript_AbilityPopUpScripting
+	setbyte gBattlerTarget, 0
+BattleScript_TidalRoarLoop:
+	jumpiftargetally BattleScript_TidalRoarLoopIncrement
+	jumpifabsent BS_TARGET, BattleScript_TidalRoarLoopIncrement
+	jumpifvolatile BS_TARGET, VOLATILE_SUBSTITUTE, BattleScript_TidalRoarLoopIncrement
+	setstatchanger STAT_ATK, 1, TRUE
+	statbuffchange BS_TARGET, STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_TidalRoarTrySpAtk, BIT_SPATK
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_CHANGE, BattleScript_TidalRoarTrySpAtk
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_TidalRoarTrySpAtk:
+	setstatchanger STAT_SPATK, 1, TRUE
+	statbuffchange BS_TARGET, STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_TidalRoarLoopIncrement
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_CHANGE, BattleScript_TidalRoarLoopIncrement
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_TidalRoarLoopIncrement:
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_TidalRoarLoop
+	destroyabilitypopup
+	restoretarget
+	restoreattacker
+	pause B_WAIT_TIME_MED
+	return
+
 BattleScript_AttackWeakenedByStrongWinds::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_ATTACKWEAKENEDBSTRONGWINDS
