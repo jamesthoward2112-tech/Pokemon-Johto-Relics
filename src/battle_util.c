@@ -3458,6 +3458,14 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 effect++;
             }
             break;
+        case ABILITY_FIRST_VOICE:
+            if (shouldAbilityTrigger)
+            {
+                gSideTimers[GetBattlerSide(battler)].pjrResonanceTimer = 5;
+                RecordAbilityBattle(battler, ABILITY_FIRST_VOICE);
+                gLastUsedAbility = ABILITY_FIRST_VOICE;
+            }
+            break;
         case ABILITY_MISTY_SURGE:
             if (!shouldAbilityTrigger)
                 break;
@@ -6394,6 +6402,15 @@ static inline u32 CalcMoveBasePower(struct BattleContext *ctx)
     u32 moveEffect = GetMoveEffect(move);
     u32 weight, hpFraction, speed;
 
+    if (move == MOVE_GLYPHIC_CHORUS && ctx->updateFlags)
+    {
+        for (u32 stat = STAT_ATK; stat < NUM_BATTLE_STATS; stat++)
+        {
+            if (gBattleMons[battlerAtk].statStages[stat] < DEFAULT_STAT_STAGE)
+                gBattleMons[battlerAtk].statStages[stat] = DEFAULT_STAT_STAGE;
+        }
+    }
+
     if (move == MOVE_TAILSPIN)
     {
         switch (min(gBattleMons[battlerAtk].volatiles.metronomeItemCounter, 4))
@@ -7842,6 +7859,12 @@ static inline uq4_12_t GetOtherModifiers(struct BattleContext *ctx)
         DAMAGE_MULTIPLY_MODIFIER(GetDefenderItemsModifier(ctx));
         DAMAGE_MULTIPLY_MODIFIER(GetAttackerItemsModifier(ctx->battlerAtk, ctx->typeEffectivenessModifier, ctx->holdEffectAtk));
     }
+
+    if (gSideTimers[GetBattlerSide(ctx->battlerAtk)].pjrResonanceTimer > 0
+     && GetMovePower(ctx->move) != 0
+     && (ctx->moveType == TYPE_PSYCHIC || ctx->moveType == TYPE_FAIRY))
+        DAMAGE_MULTIPLY_MODIFIER(UQ_4_12(1.2));
+
     return finalModifier;
 }
 
@@ -8282,6 +8305,18 @@ s32 GetAdjustedDamage(struct BattleContext *ctx, s32 damage)
     else if (GetMoveEffect(ctx->move) == EFFECT_FALSE_SWIPE)
     {
         enduredHit = TRUE;
+    }
+    else if (ctx->abilityDef == ABILITY_SACRED_REBIRTH
+          && !gBattleStruct->pjrSacredRebirthUsed[ctx->battlerDef]
+          && gBattleMons[ctx->battlerDef].hp > 1
+          && GetMovePower(ctx->move) != 0)
+    {
+        enduredHit = TRUE;
+        gBattleStruct->pjrSacredRebirthUsed[ctx->battlerDef] = TRUE;
+        gBattleStruct->pjrSacredRebirthPending[ctx->battlerDef] = TRUE;
+        RecordAbilityBattle(ctx->battlerDef, ABILITY_SACRED_REBIRTH);
+        gLastUsedAbility = ABILITY_SACRED_REBIRTH;
+        gBattleStruct->moveResultFlags[ctx->battlerDef] |= MOVE_RESULT_FOE_ENDURED;
     }
     else if (GetConfig(B_STURDY) >= GEN_5 && gSaveBlock3Ptr->challengeSettings.tx_Mode_Sturdy == 1 && ctx->abilityDef == ABILITY_STURDY && IsBattlerAtMaxHp(ctx->battlerDef))
     {

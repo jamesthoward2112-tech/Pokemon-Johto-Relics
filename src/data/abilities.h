@@ -2462,4 +2462,18 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .aiRating = 8,
     },
 
+    [ABILITY_FIRST_VOICE] =
+    {
+        .name = _("FIRST VOICE"),
+        .description = COMPOUND_STRING("Creates 5-turn Resonance."),
+        .aiRating = 9,
+    },
+
+    [ABILITY_SACRED_REBIRTH] =
+    {
+        .name = _("SACRED REBIRTH"),
+        .description = COMPOUND_STRING("Survives one KO hit and revives."),
+        .aiRating = 10,
+    },
+
 };

@@ -1827,6 +1827,28 @@ static void MoveDamageDataHpUpdate(enum BattlerId battler, u32 scriptBattler, co
             gProtectStructs[battler].revengeDoubled |= 1u << gBattlerAttacker;
 
         }
+
+        if (gBattleStruct->pjrSacredRebirthPending[battler] && gBattleMons[battler].hp > 0)
+        {
+            u32 heal = max(1, gBattleMons[battler].maxHP / 4);
+            gBattleMons[battler].hp = min(gBattleMons[battler].maxHP, gBattleMons[battler].hp + heal);
+            if (gBattleMons[battler].statStages[STAT_SPEED] < MAX_STAT_STAGE)
+                gBattleMons[battler].statStages[STAT_SPEED]++;
+            gBattleStruct->pjrSacredRebirthPending[battler] = FALSE;
+        }
+
+        if (gCurrentMove == MOVE_PHOENIX_HYMN
+         && gBattleStruct->moveDamage[battler] > 0
+         && IsBattlerAlive(gBattlerAttacker)
+         && gBattleMons[gBattlerAttacker].hp < gBattleMons[gBattlerAttacker].maxHP)
+        {
+            u32 heal = max(1, gBattleMons[gBattlerAttacker].maxHP / 4);
+            gBattleMons[gBattlerAttacker].hp = min(gBattleMons[gBattlerAttacker].maxHP, gBattleMons[gBattlerAttacker].hp + heal);
+            BtlController_EmitSetMonData(gBattlerAttacker, B_COMM_TO_CONTROLLER, REQUEST_HP_BATTLE, 0,
+                                         sizeof(gBattleMons[gBattlerAttacker].hp), &gBattleMons[gBattlerAttacker].hp);
+            MarkBattlerForControllerExec(gBattlerAttacker);
+        }
+
         // Send updated HP
         BtlController_EmitSetMonData(battler, B_COMM_TO_CONTROLLER, REQUEST_HP_BATTLE, 0, sizeof(gBattleMons[battler].hp), &gBattleMons[battler].hp);
         MarkBattlerForControllerExec(battler);
@@ -7818,6 +7840,12 @@ static u32 ChangeStatBuffs(enum BattlerId battler, s8 statValue, enum Stat statI
                     gSpecialStatuses[battler].statLowered = TRUE;
                 }
             }
+            return STAT_CHANGE_DIDNT_WORK;
+        }
+        else if (gSideTimers[GetBattlerSide(battler)].pjrResonanceTimer > 0
+              && gBattlerAttacker != battler
+              && !IsBattlerAlly(gBattlerAttacker, battler))
+        {
             return STAT_CHANGE_DIDNT_WORK;
         }
         else if ((battlerHoldEffect == HOLD_EFFECT_CLEAR_AMULET || CanAbilityPreventStatLoss(battlerAbility))

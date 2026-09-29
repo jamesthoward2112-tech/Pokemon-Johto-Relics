@@ -198,3 +198,15 @@ const u32 gMonFrontPic_Noxichu[] = INCBIN_U32("graphics/pokemon/noxichu/front.4b
 const u32 gMonBackPic_Noxichu[] = INCBIN_U32("graphics/pokemon/noxichu/back.4bpp.smol");
 const u16 gMonPalette_Noxichu[] = INCBIN_U16("graphics/pokemon/noxichu/normal.gbapal");
 const u16 gMonShinyPalette_Noxichu[] = INCBIN_U16("graphics/pokemon/noxichu/shiny.gbapal");
+
+const u32 gMonFrontPic_UnownEye[] = INCBIN_U32("graphics/pokemon/unown_eye/front.4bpp.smol");
+const u32 gMonBackPic_UnownEye[] = INCBIN_U32("graphics/pokemon/unown_eye/back.4bpp.smol");
+const u16 gMonPalette_UnownEye[] = INCBIN_U16("graphics/pokemon/unown_eye/front.gbapal");
+const u16 gMonShinyPalette_UnownEye[] = INCBIN_U16("graphics/pokemon/unown_eye/shiny_front.gbapal");
+const u8 gMonIcon_UnownEye[] = INCBIN_U8("graphics/pokemon/unown_eye/icon.4bpp");
+
+const u32 gMonFrontPic_HoOhRelic[] = INCBIN_U32("graphics/pokemon/ho_oh_relic/front.4bpp.smol");
+const u32 gMonBackPic_HoOhRelic[] = INCBIN_U32("graphics/pokemon/ho_oh_relic/back.4bpp.smol");
+const u16 gMonPalette_HoOhRelic[] = INCBIN_U16("graphics/pokemon/ho_oh_relic/front.gbapal");
+const u16 gMonShinyPalette_HoOhRelic[] = INCBIN_U16("graphics/pokemon/ho_oh_relic/shiny_front.gbapal");
+const u8 gMonIcon_HoOhRelic[] = INCBIN_U8("graphics/pokemon/ho_oh_relic/icon.4bpp");

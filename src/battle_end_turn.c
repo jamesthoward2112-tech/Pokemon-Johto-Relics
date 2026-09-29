@@ -1060,6 +1060,9 @@ static bool32 HandleEndTurnSecondEventBlock(enum BattlerId battler)
         gBattleStruct->eventState.endTurnBlock++;
         break;
     case SECOND_EVENT_BLOCK_AURORA_VEIL:
+        if (gSideTimers[side].pjrResonanceTimer > 0)
+            --gSideTimers[side].pjrResonanceTimer;
+
         if (gSideTimers[side].auroraVeilTimer > 0 && --gSideTimers[side].auroraVeilTimer == 0)
         {
             gBattlerAttacker = GetBattlerSideForMessage(side);

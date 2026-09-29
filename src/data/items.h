@@ -16505,6 +16505,22 @@ const struct ItemInfo gItemsInfo[] =
     PJR_CATALYST_ITEM(ITEM_ANCIENT_BELL, "ANCIENT BELL",
         "An Alph relic that\nresonates with\nMiltank.") ,
 
+    [ITEM_ANCIENT_RAINBOW_CREST] =
+    {
+        .name = ITEM_NAME("ANCIENT CREST"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "The Ancient Rainbow\n"
+            "Crest. It resonates\n"
+            "with Relic Ho-Oh."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_RainbowWing,
+        .iconPalette = gItemIconPalette_RainbowWing,
+    },
+
 #undef PJR_CATALYST_ITEM
 };
 

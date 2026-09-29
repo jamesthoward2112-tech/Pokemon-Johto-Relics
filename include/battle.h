@@ -151,6 +151,7 @@ struct SideTimer
     u16 rainbowTimer;
     u16 seaOfFireTimer;
     u16 swampTimer;
+    u16 pjrResonanceTimer;
 };
 
 struct FieldTimer
@@ -710,6 +711,8 @@ struct BattleStruct
     u8 preAttackEffectHappened:1;
     u8 magicCoatActive:1;
     u8 magicBounceActive:1;
+    u8 pjrSacredRebirthUsed[MAX_BATTLERS_COUNT];
+    u8 pjrSacredRebirthPending[MAX_BATTLERS_COUNT];
     u8 moveBouncer;
     u8 dancerSavedAttacker:3;
     u8 dancerSavedTarget:3;

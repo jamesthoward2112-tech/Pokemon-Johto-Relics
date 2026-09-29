@@ -918,6 +918,8 @@ enum __attribute__((packed)) Move
     MOVE_STAG_STAB,
     MOVE_IRON_TEMPEST,
     MOVE_TAILSPIN,
+    MOVE_GLYPHIC_CHORUS,
+    MOVE_PHOENIX_HYMN,
 
     MOVES_COUNT,
 

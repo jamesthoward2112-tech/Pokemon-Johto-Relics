@@ -23226,4 +23226,34 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_RapidSpin,
     },
 
+    [MOVE_GLYPHIC_CHORUS] =
+    {
+        .name = COMPOUND_STRING("GLYPHIC CHORUS"),
+        .description = COMPOUND_STRING("An ancient chorus clears\nweakness before striking."),
+        .effect = EFFECT_HIT,
+        .power = 100,
+        .type = TYPE_PSYCHIC,
+        .accuracy = 100,
+        .pp = 5,
+        .target = TARGET_SELECTED,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .soundMove = TRUE,
+        .battleAnimScript = gBattleAnimMove_Psychic,
+    },
+
+    [MOVE_PHOENIX_HYMN] =
+    {
+        .name = COMPOUND_STRING("PHOENIX HYMN"),
+        .description = COMPOUND_STRING("A sacred flame-song that\nrestores one quarter max HP."),
+        .effect = EFFECT_HIT,
+        .power = 105,
+        .type = TYPE_FIRE,
+        .accuracy = 100,
+        .pp = 5,
+        .target = TARGET_SELECTED,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .soundMove = TRUE,
+        .battleAnimScript = gBattleAnimMove_SacredFire,
+    },
+
 };
