@@ -16479,7 +16479,7 @@ const struct ItemInfo gItemsInfo[] =
     [item] = \
     { \
         .name = ITEM_NAME(itemName), \
-        .price = 0, \
+        .price = 5000, \
         .description = COMPOUND_STRING(itemDescription), \
         .pocket = POCKET_ITEMS, \
         .sortType = ITEM_TYPE_EVOLUTION_ITEM, \

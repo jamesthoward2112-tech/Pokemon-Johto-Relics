@@ -483,7 +483,69 @@ NewBarkTown_Lab_EventScript_ElmKimono::
 NewBarkTown_Lab_EventScript_ElmLeague::
 	lock
 	faceplayer
+	goto_if_unset FLAG_PJR_GOT_STARTER_EGG_A, NewBarkTown_Lab_EventScript_ElmStarterEggFirst
+	goto_if_unset FLAG_PJR_GOT_STARTER_EGG_B, NewBarkTown_Lab_EventScript_ElmStarterEggSecond
+	msgbox NewBarkTown_Lab_Text_StarterEggsAfter, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+NewBarkTown_Lab_EventScript_ElmStarterEggFirst::
 	msgbox NewBarkTown_Lab_Text_League, MSGBOX_DEFAULT
+	goto_if_eq VAR_STARTER_MON, 0, NewBarkTown_Lab_EventScript_GiveEggSkarmetFirst
+	goto_if_eq VAR_STARTER_MON, 1, NewBarkTown_Lab_EventScript_GiveEggMootinyFirst
+	goto NewBarkTown_Lab_EventScript_GiveEggScarabubFirst
+
+NewBarkTown_Lab_EventScript_GiveEggSkarmetFirst::
+	bufferspeciesname STR_VAR_1, SPECIES_SKARMET
+	giveegg SPECIES_SKARMET
+	goto NewBarkTown_Lab_EventScript_StarterEggFirstResult
+
+NewBarkTown_Lab_EventScript_GiveEggMootinyFirst::
+	bufferspeciesname STR_VAR_1, SPECIES_MOOTINY
+	giveegg SPECIES_MOOTINY
+	goto NewBarkTown_Lab_EventScript_StarterEggFirstResult
+
+NewBarkTown_Lab_EventScript_GiveEggScarabubFirst::
+	bufferspeciesname STR_VAR_1, SPECIES_SCARABUB
+	giveegg SPECIES_SCARABUB
+
+NewBarkTown_Lab_EventScript_StarterEggFirstResult::
+	goto_if_eq VAR_RESULT, MON_CANT_GIVE, NewBarkTown_Lab_EventScript_StarterEggNoRoom
+	setflag FLAG_PJR_GOT_STARTER_EGG_A
+	msgbox NewBarkTown_Lab_Text_StarterEggReceived, MSGBOX_DEFAULT
+	goto NewBarkTown_Lab_EventScript_ElmStarterEggSecond
+
+NewBarkTown_Lab_EventScript_ElmStarterEggSecond::
+	goto_if_eq VAR_STARTER_MON, 0, NewBarkTown_Lab_EventScript_GiveEggMootinySecond
+	goto_if_eq VAR_STARTER_MON, 1, NewBarkTown_Lab_EventScript_GiveEggScarabubSecond
+	goto NewBarkTown_Lab_EventScript_GiveEggSkarmetSecond
+
+NewBarkTown_Lab_EventScript_GiveEggMootinySecond::
+	bufferspeciesname STR_VAR_1, SPECIES_MOOTINY
+	giveegg SPECIES_MOOTINY
+	goto NewBarkTown_Lab_EventScript_StarterEggSecondResult
+
+NewBarkTown_Lab_EventScript_GiveEggScarabubSecond::
+	bufferspeciesname STR_VAR_1, SPECIES_SCARABUB
+	giveegg SPECIES_SCARABUB
+	goto NewBarkTown_Lab_EventScript_StarterEggSecondResult
+
+NewBarkTown_Lab_EventScript_GiveEggSkarmetSecond::
+	bufferspeciesname STR_VAR_1, SPECIES_SKARMET
+	giveegg SPECIES_SKARMET
+
+NewBarkTown_Lab_EventScript_StarterEggSecondResult::
+	goto_if_eq VAR_RESULT, MON_CANT_GIVE, NewBarkTown_Lab_EventScript_StarterEggNoRoom
+	setflag FLAG_PJR_GOT_STARTER_EGG_B
+	msgbox NewBarkTown_Lab_Text_StarterEggReceived, MSGBOX_DEFAULT
+	msgbox NewBarkTown_Lab_Text_StarterEggsComplete, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+NewBarkTown_Lab_EventScript_StarterEggNoRoom::
+	msgbox NewBarkTown_Lab_Text_StarterEggNoRoom, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
@@ -911,6 +973,28 @@ NewBarkTown_Lab_Text_KimonoWaiting:
 	.string "PROF.ELM: The KIMONO\n"
 	.string "GIRLS are waiting for you at\l"
 	.string "the ECRUTEAK DANCE THEATER.$"
+
+NewBarkTown_Lab_Text_StarterEggReceived:
+	.string "ELM entrusted you with the\n"
+	.string "{STR_VAR_1} EGG.$"
+
+NewBarkTown_Lab_Text_StarterEggsComplete:
+	.string "Those are the two partners you\n"
+	.string "didn't choose at the start.\p"
+	.string "Their EGGS should hatch quickly.\n"
+	.string "Raise them well!$"
+
+NewBarkTown_Lab_Text_StarterEggNoRoom:
+	.string "I need somewhere safe to send\n"
+	.string "that EGG.\p"
+	.string "Make room in your party or PC,\n"
+	.string "then come back.$"
+
+NewBarkTown_Lab_Text_StarterEggsAfter:
+	.string "How are those three young partners\n"
+	.string "getting on?\p"
+	.string "They each carry a different piece\n"
+	.string "of JOHTO's ancient story.$"
 
 NewBarkTown_Lab_Text_League:
 	.string "PROF.ELM: Hahaha...\n"

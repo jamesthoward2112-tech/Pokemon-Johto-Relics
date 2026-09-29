@@ -1311,6 +1311,10 @@
 #define FLAG_PJR_GOT_CYNDAQUIL                     (SYS_FLAGS + 0x67)
 #define FLAG_PJR_GOT_TOTODILE                      (SYS_FLAGS + 0x68)
 
+// PJR post-League recovery: the two baby starters not chosen in New Bark.
+#define FLAG_PJR_GOT_STARTER_EGG_A                 (SYS_FLAGS + 0x69)
+#define FLAG_PJR_GOT_STARTER_EGG_B                 (SYS_FLAGS + 0x6A)
+
 // Visited / World Map flags
 #define FLAG_VISITED_NEWBARK_TOWN                   (SYS_FLAGS + 0x90)
 #define FLAG_VISITED_CHERRYGROVE_CITY               (SYS_FLAGS + 0x91)
