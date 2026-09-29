@@ -14,17 +14,17 @@ The previous Alpha 1 on `master` is reference-only. Do not copy its opening/star
 ## Elm / starter rules
 
 - Elm's dialogue must describe what actually happens on screen.
-- Do not mention capsules opening unless a real capsule-opening presentation is implemented and tested.
-- For the rebuild, use the normal three-ball table interaction first. Add presentation effects only after the underlying starter path is solid.
+- The normal three-ball table interaction is the canonical PJR starter sequence for Alpha; no alternate capsule sequence is required.
 - The selected starter must be created directly into party slot 0 when the party is empty.
 - A starter selection is not accepted unless its front sprite, back sprite, party icon, summary screen, PC storage icon, cry, name, typing and moves all render correctly.
 - Test all three starters independently from a fresh save.
 
-## Key-item rules
+## Utility / progression rules
 
-- Do not dump Relic Journal, DexNav and Remote PC/Box Link on the player immediately after choosing a starter.
-- Introduce utility key items deliberately at appropriate story beats, one at a time, with each feature tested before the next is enabled.
-- The starter flow must not depend on Remote PC.
+- DexNav may be enabled during the New Bark opening as currently implemented.
+- A separate Remote PC item is not required when Box Link functionality is available.
+- Relic Journal progression is represented by the Alpha Ruins Lab RELICS sequence; no separate Relic Journal starter item is required.
+- The starter flow must not depend on storage access.
 
 ## Asset rules
 
