@@ -7,3 +7,7 @@
 ## Controls / battle QoL
 
 - [ ] Restore PJR's L = last-used Ball behaviour permanently. Current source has B_LAST_USED_BALL_BUTTON = L_BUTTON, but the L=A Button Mode overrides it and the battle code deliberately disables the last-ball shortcut in that mode. For PJR, L must always remain the last-ball control in battle; remove/disable the conflicting L=A mode or otherwise prevent it from stealing L. Keep R reserved for fast Run.
+
+## Balance / gifts
+
+- [ ] Gift Cyndaquil in Azalea: reduce its gift level from Lv20 to Lv15. Lv20 is too high for the point it is obtained.
