@@ -1,4 +1,4 @@
-name: PJR three-starter test
+name: PJR Alpha build
 
 on:
   push:
@@ -54,18 +54,22 @@ jobs:
                       continue
                   shutil.copy2(species_dir / name, dst / name)
           PY
-      - name: Build PJR three-starter test
+      - name: Build PJR Alpha
         run: |
           make hns -j4 -O
-      - name: Package three-starter test
+      - name: Package PJR Alpha
         run: |
-          cp pokehns.gba PJR-Run${{ github.run_number }}-Focused-Fixes.gba
-          arm-none-eabi-nm -n pokehns.elf > PJR-Run${{ github.run_number }}-Focused-Fixes.sym
+          cp pokehns.gba PJR-Alpha.gba
+          arm-none-eabi-nm -n pokehns.elf > PJR-Alpha.sym
+          sha256sum PJR-Alpha.gba > PJR-Alpha-SHA256.txt
+          printf "%s\n" "$GITHUB_SHA" > PJR-Alpha-Commit.txt
       - uses: actions/upload-artifact@v4
         with:
-          name: PJR-Run${{ github.run_number }}-Focused-Fixes
+          name: PJR-Alpha
           path: |
-            PJR-Run${{ github.run_number }}-Focused-Fixes.gba
-            PJR-Run${{ github.run_number }}-Focused-Fixes.sym
+            PJR-Alpha.gba
+            PJR-Alpha.sym
+            PJR-Alpha-SHA256.txt
+            PJR-Alpha-Commit.txt
           if-no-files-found: error
-          retention-days: 7
+          retention-days: 14
