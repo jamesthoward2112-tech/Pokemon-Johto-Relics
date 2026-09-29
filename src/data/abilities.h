@@ -2432,4 +2432,34 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .cantBeSwapped = TRUE,
         .cantBeTraced = TRUE,
     },
+
+    // Pokémon Johto Relics
+    [ABILITY_ANCIENT_BASTION] =
+    {
+        .name = _("ANCIENT BASTION"),
+        .description = COMPOUND_STRING("Halves first hit; sets hazards."),
+        .aiRating = 9,
+    },
+
+    [ABILITY_ANCIENT_BLOOM] =
+    {
+        .name = _("ANCIENT BLOOM"),
+        .description = COMPOUND_STRING("Heals and grows Grassy Terrain."),
+        .aiRating = 8,
+    },
+
+    [ABILITY_CINDER_VEIL] =
+    {
+        .name = _("CINDER VEIL"),
+        .description = COMPOUND_STRING("Softens first hit; burns contact."),
+        .aiRating = 8,
+    },
+
+    [ABILITY_TIDAL_ROAR] =
+    {
+        .name = _("TIDAL ROAR"),
+        .description = COMPOUND_STRING("Lowers foes' Atk and Sp. Atk."),
+        .aiRating = 8,
+    },
+
 };

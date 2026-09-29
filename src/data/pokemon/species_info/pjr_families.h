@@ -588,7 +588,7 @@ PJR_FINAL_SPECIES(SPECIES_MILTITAN, 110, 120, 105, 45, 100, 75, TYPE_NORMAL, TYP
     gMonPalette_Miltitan, gMonShinyPalette_Miltitan, gMonIcon_Miltitan, sMiltitanLevelUpLearnset, sMiltankTeachableLearnset),
 
 PJR_FINAL_SPECIES(SPECIES_SHUCKOLOSSE, 40, 30, 230, 30, 230, 20, TYPE_BUG, TYPE_ROCK,
-    ABILITY_STURDY, ABILITY_GLUTTONY, ABILITY_CONTRARY, "SHUCKOLOSSE", CRY_SHUCKLE,
+    ABILITY_ANCIENT_BASTION, ABILITY_NONE, ABILITY_NONE, "SHUCKOLOSSE", CRY_SHUCKLE,
     NATIONAL_DEX_SHUCKLE, "Bastion", BODY_COLOR_YELLOW, gMonFrontPic_Shuckolosse, gMonBackPic_Shuckolosse,
     gMonPalette_Shuckolosse, gMonShinyPalette_Shuckolosse, gMonIcon_Shuckolosse, sShuckleLevelUpLearnset, sShuckleTeachableLearnset),
 
@@ -603,17 +603,17 @@ PJR_FINAL_SPECIES(SPECIES_DONPHALANX, 110, 140, 135, 60, 85, 60, TYPE_GROUND, TY
     gMonPalette_Donphalanx, gMonShinyPalette_Donphalanx, gMonIcon_Donphalanx, sDonphanLevelUpLearnset, sDonphanTeachableLearnset),
 
 PJR_FINAL_SPECIES(SPECIES_FAERANIUM, 100, 85, 115, 105, 120, 65, TYPE_GRASS, TYPE_FAIRY,
-    ABILITY_OVERGROW, ABILITY_FLOWER_VEIL, ABILITY_GRASSY_SURGE, "FAERANIUM", CRY_MEGANIUM,
+    ABILITY_ANCIENT_BLOOM, ABILITY_NONE, ABILITY_NONE, "FAERANIUM", CRY_MEGANIUM,
     NATIONAL_DEX_MEGANIUM, "Bloom Relic", BODY_COLOR_GREEN, gMonFrontPic_Faeranium, gMonBackPic_Faeranium,
     gMonPalette_Faeranium, gMonShinyPalette_Faeranium, gMonIcon_Faeranium, sMeganiumLevelUpLearnset, sMeganiumTeachableLearnset),
 
 PJR_FINAL_SPECIES(SPECIES_PYROCLAST, 85, 95, 85, 130, 90, 105, TYPE_FIRE, TYPE_GHOST,
-    ABILITY_BLAZE, ABILITY_FLASH_FIRE, ABILITY_CURSED_BODY, "PYROCLAST", CRY_TYPHLOSION,
+    ABILITY_CINDER_VEIL, ABILITY_NONE, ABILITY_NONE, "PYROCLAST", CRY_TYPHLOSION,
     NATIONAL_DEX_TYPHLOSION, "Cinder Relic", BODY_COLOR_RED, gMonFrontPic_Pyroclast, gMonBackPic_Pyroclast,
     gMonPalette_Pyroclast, gMonShinyPalette_Pyroclast, gMonIcon_Pyroclast, sTyphlosionLevelUpLearnset, sTyphlosionTeachableLearnset),
 
 PJR_FINAL_SPECIES(SPECIES_FERALODON, 105, 135, 105, 70, 85, 80, TYPE_WATER, TYPE_DRAGON,
-    ABILITY_TORRENT, ABILITY_INTIMIDATE, ABILITY_SHEER_FORCE, "FERALODON", CRY_FERALIGATR,
+    ABILITY_TIDAL_ROAR, ABILITY_NONE, ABILITY_NONE, "FERALODON", CRY_FERALIGATR,
     NATIONAL_DEX_FERALIGATR, "Tidal Relic", BODY_COLOR_BLUE, gMonFrontPic_Feralodon, gMonBackPic_Feralodon,
     gMonPalette_Feralodon, gMonShinyPalette_Feralodon, gMonIcon_Feralodon, sFeraligatrLevelUpLearnset, sFeraligatrTeachableLearnset),
 
