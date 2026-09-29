@@ -647,17 +647,17 @@ PJR_FINAL_SPECIES(SPECIES_GHOULBAT, 95, 110, 90, 80, 95, 130, TYPE_GHOST, TYPE_F
 
 PJR_RED_SPECIES(SPECIES_EDENSAUR, 95, 80, 110, 135, 105, 55, TYPE_GRASS, TYPE_POISON,
     ABILITY_GRASSY_SURGE, "EDENSAUR", CRY_VENUSAUR, NATIONAL_DEX_VENUSAUR, BODY_COLOR_GREEN,
-    gMonFrontPic_VenusaurMega, gMonBackPic_VenusaurMega, gMonPalette_VenusaurMega, gMonShinyPalette_VenusaurMega, gMonIcon_VenusaurMega,
+    gMonFrontPic_Edensaur, gMonBackPic_Edensaur, gMonPalette_Edensaur, gMonShinyPalette_Edensaur, gMonIcon_Edensaur,
     sVenusaurLevelUpLearnset, sVenusaurTeachableLearnset),
 
 PJR_RED_SPECIES(SPECIES_CHARAXIS, 80, 120, 85, 90, 80, 125, TYPE_FIRE, TYPE_FLYING,
     ABILITY_GALE_WINGS, "CHARAXIS", CRY_CHARIZARD, NATIONAL_DEX_CHARIZARD, BODY_COLOR_RED,
-    gMonFrontPic_CharizardMegaY, gMonBackPic_CharizardMegaY, gMonPalette_CharizardMegaY, gMonShinyPalette_CharizardMegaY, gMonIcon_CharizardMegaY,
+    gMonFrontPic_Charaxis, gMonBackPic_Charaxis, gMonPalette_Charaxis, gMonShinyPalette_Charaxis, gMonIcon_Charaxis,
     sCharizardLevelUpLearnset, sCharizardTeachableLearnset),
 
 PJR_RED_SPECIES(SPECIES_FORTOTOISE, 95, 80, 155, 100, 105, 50, TYPE_WATER, TYPE_STEEL,
     ABILITY_STURDY, "FORTOTOISE", CRY_BLASTOISE, NATIONAL_DEX_BLASTOISE, BODY_COLOR_BLUE,
-    gMonFrontPic_BlastoiseMega, gMonBackPic_BlastoiseMega, gMonPalette_BlastoiseMega, gMonShinyPalette_BlastoiseMega, gMonIcon_BlastoiseMega,
+    gMonFrontPic_Fortotoise, gMonBackPic_Fortotoise, gMonPalette_Fortotoise, gMonShinyPalette_Fortotoise, gMonIcon_Fortotoise,
     sBlastoiseLevelUpLearnset, sBlastoiseTeachableLearnset),
 
 PJR_RED_SPECIES(SPECIES_KHANG, 105, 105, 95, 50, 90, 110, TYPE_NORMAL, TYPE_NORMAL,

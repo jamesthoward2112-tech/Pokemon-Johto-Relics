@@ -164,7 +164,26 @@ const u32 gMonBackPic_Ghoulbat[] = INCBIN_U32("graphics/pokemon/crobat/back.4bpp
 const u8 gMonIcon_Ghoulbat[] = INCBIN_U8("graphics/pokemon/crobat/icon.4bpp");
 
 // PKR Relic champion forms used by Red at Mt. Silver.
-// Edensaur, Charaxis and Fortotoise reuse Mega Venusaur, Mega Charizard Y and Mega Blastoise graphics directly.
+// Edensaur, Charaxis and Fortotoise reuse the Mega Venusaur, Mega Charizard Y and Mega Blastoise art assets
+// without enabling the game's Mega Evolution feature.
+const u32 gMonFrontPic_Edensaur[] = INCBIN_U32("graphics/pokemon/venusaur/mega/front.4bpp.smol");
+const u32 gMonBackPic_Edensaur[] = INCBIN_U32("graphics/pokemon/venusaur/mega/back.4bpp.smol");
+const u16 gMonPalette_Edensaur[] = INCBIN_U16("graphics/pokemon/venusaur/mega/normal.gbapal");
+const u16 gMonShinyPalette_Edensaur[] = INCBIN_U16("graphics/pokemon/venusaur/mega/shiny.gbapal");
+const u8 gMonIcon_Edensaur[] = INCBIN_U8("graphics/pokemon/venusaur/mega/icon.4bpp");
+
+const u32 gMonFrontPic_Charaxis[] = INCBIN_U32("graphics/pokemon/charizard/mega_y/front.4bpp.smol");
+const u32 gMonBackPic_Charaxis[] = INCBIN_U32("graphics/pokemon/charizard/mega_y/back.4bpp.smol");
+const u16 gMonPalette_Charaxis[] = INCBIN_U16("graphics/pokemon/charizard/mega_y/normal.gbapal");
+const u16 gMonShinyPalette_Charaxis[] = INCBIN_U16("graphics/pokemon/charizard/mega_y/shiny.gbapal");
+const u8 gMonIcon_Charaxis[] = INCBIN_U8("graphics/pokemon/charizard/mega_y/icon.4bpp");
+
+const u32 gMonFrontPic_Fortotoise[] = INCBIN_U32("graphics/pokemon/blastoise/mega/front.4bpp.smol");
+const u32 gMonBackPic_Fortotoise[] = INCBIN_U32("graphics/pokemon/blastoise/mega/back.4bpp.smol");
+const u16 gMonPalette_Fortotoise[] = INCBIN_U16("graphics/pokemon/blastoise/mega/normal.gbapal");
+const u16 gMonShinyPalette_Fortotoise[] = INCBIN_U16("graphics/pokemon/blastoise/mega/shiny.gbapal");
+const u8 gMonIcon_Fortotoise[] = INCBIN_U8("graphics/pokemon/blastoise/mega/icon.4bpp");
+
 const u32 gMonFrontPic_Khang[] = INCBIN_U32("graphics/pokemon/khang/front.4bpp.smol");
 const u32 gMonBackPic_Khang[] = INCBIN_U32("graphics/pokemon/khang/back.4bpp.smol");
 const u16 gMonPalette_Khang[] = INCBIN_U16("graphics/pokemon/khang/normal.gbapal");
