@@ -6880,6 +6880,9 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 dept
                     GetMapName(gStringVar2, Overworld_GetMapHeaderByGroupAndId(evolutions[i].params[j].arg1 >> 8, evolutions[i].params[j].arg1 & 0xFF)->regionMapSectionId, 0);
                     StringAppend(gStringVar4, gStringVar2);
                     break;
+                case IF_IN_CAVE:
+                    StringAppend(gStringVar4, COMPOUND_STRING("in a cave"));
+                    break;
                 case IF_KNOWS_MOVE:
                     StringAppend(gStringVar4, COMPOUND_STRING("knows "));
                     StringAppend(gStringVar4, GetMoveName(evolutions[i].params[j].arg1));
