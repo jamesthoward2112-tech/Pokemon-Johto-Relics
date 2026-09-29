@@ -164,12 +164,7 @@ const u32 gMonBackPic_Ghoulbat[] = INCBIN_U32("graphics/pokemon/crobat/back.4bpp
 const u8 gMonIcon_Ghoulbat[] = INCBIN_U8("graphics/pokemon/crobat/icon.4bpp");
 
 // PKR Relic champion forms used by Red at Mt. Silver.
-const u32 gMonFrontPic_Edensaur[] = INCBIN_U32("graphics/pokemon/edensaur/front.4bpp.smol");
-const u32 gMonBackPic_Edensaur[] = INCBIN_U32("graphics/pokemon/edensaur/back.4bpp.smol");
-const u32 gMonFrontPic_Charaxis[] = INCBIN_U32("graphics/pokemon/charaxis/front.4bpp.smol");
-const u32 gMonBackPic_Charaxis[] = INCBIN_U32("graphics/pokemon/charaxis/back.4bpp.smol");
-const u32 gMonFrontPic_Fortotoise[] = INCBIN_U32("graphics/pokemon/fortotoise/front.4bpp.smol");
-const u32 gMonBackPic_Fortotoise[] = INCBIN_U32("graphics/pokemon/fortotoise/back.4bpp.smol");
+// Edensaur, Charaxis and Fortotoise reuse Mega Venusaur, Mega Charizard Y and Mega Blastoise graphics directly.
 const u32 gMonFrontPic_Khang[] = INCBIN_U32("graphics/pokemon/khang/front.4bpp.smol");
 const u32 gMonBackPic_Khang[] = INCBIN_U32("graphics/pokemon/khang/back.4bpp.smol");
 const u32 gMonFrontPic_Nolax[] = INCBIN_U32("graphics/pokemon/nolax/front.4bpp.smol");
