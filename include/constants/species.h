@@ -1728,9 +1728,7 @@
 #define SPECIES_KHANG                                   1605
 #define SPECIES_NOLAX                                   1606
 #define SPECIES_NOXICHU                                 1607
-#define SPECIES_HO_OH_RELIC                             1608
-
-#define SPECIES_EGG                                     (SPECIES_HO_OH_RELIC + 1)
+#define SPECIES_EGG                                     (SPECIES_NOXICHU + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

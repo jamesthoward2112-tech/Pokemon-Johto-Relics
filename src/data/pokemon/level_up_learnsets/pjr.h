@@ -430,15 +430,6 @@ static const struct LevelUpMove sAlphoracleLevelUpLearnset[] =
     LEVEL_UP_END
 };
 
-static const struct LevelUpMove sUnownEyeLevelUpLearnset[] =
-{
-    LEVEL_UP_MOVE(1, MOVE_HIDDEN_POWER),
-    LEVEL_UP_MOVE(30, MOVE_PSYCHIC),
-    LEVEL_UP_MOVE(40, MOVE_DARK_PULSE),
-    LEVEL_UP_MOVE(50, MOVE_SLUDGE_BOMB),
-    LEVEL_UP_MOVE(60, MOVE_POWER_GEM),
-    LEVEL_UP_END
-};
 
 static const struct LevelUpMove sRelicHoOhLevelUpLearnset[] =
 {

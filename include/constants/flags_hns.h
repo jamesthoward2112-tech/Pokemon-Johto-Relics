@@ -1323,6 +1323,9 @@
 #define FLAG_PJR_RELIC_CELEBI                       (SYS_FLAGS + 0x6F)
 #define FLAG_PJR_RELIC_SUICUNE                      (SYS_FLAGS + 0x70)
 #define FLAG_PJR_RELIC_ALPHORACLE                   (SYS_FLAGS + 0x71)
+#define FLAG_PJR_RED_DEFEATED                       (SYS_FLAGS + 0x72)
+#define FLAG_PJR_GOT_RAINBOW_CREST                  (SYS_FLAGS + 0x73)
+#define FLAG_PJR_RELIC_HO_OH                        (SYS_FLAGS + 0x74)
 
 // Visited / World Map flags
 #define FLAG_VISITED_NEWBARK_TOWN                   (SYS_FLAGS + 0x90)

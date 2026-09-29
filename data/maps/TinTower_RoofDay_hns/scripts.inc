@@ -29,8 +29,14 @@ TinTower_RoofDay_MapScript_HoohPostStoryGone::
 
 TinTower_RoofDay_MapScript_HoohPostStoryEncounter::
 	setflag FLAG_HIDE_TIN_TOWER_KIMONO_GIRLS
+	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, TinTower_RoofDay_MapScript_RelicHoOhLocked
+	goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, TinTower_RoofDay_MapScript_RelicHoOhLocked
 	clearflag FLAG_HIDE_HO_OH
 	setobjectxyperm LOCALID_HO_OH, 10, 6
+	end
+
+TinTower_RoofDay_MapScript_RelicHoOhLocked::
+	setflag FLAG_HIDE_HO_OH
 	end
 
 TinTower_RoofDay_EventScript_TalkToKimono::
@@ -197,11 +203,15 @@ TinTower_RoofDay_EventScript_HoOh::
 	end
 
 TinTower_RoofDay_EventScript_HoOhPostgame::
+	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, TinTower_RoofDay_EventScript_RelicHoOhNeedsAlphoracle
+	goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, TinTower_RoofDay_EventScript_RelicHoOhNeedsCrest
+	checkitem ITEM_ANCIENT_RAINBOW_CREST
+	goto_if_eq VAR_RESULT, FALSE, TinTower_RoofDay_EventScript_RelicHoOhNeedsCrest
 	playmoncry SPECIES_HO_OH, CRY_MODE_ENCOUNTER
 	delay 30
 	waitmoncry
 	playbgm MUS_HG_VS_HO_OH, 0
-	seteventmon SPECIES_HO_OH, 70
+	seteventmon SPECIES_HO_OH, 85
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
@@ -215,8 +225,24 @@ TinTower_RoofDay_EventScript_HoOhPostgame::
 	releaseall
 	end
 
+TinTower_RoofDay_EventScript_RelicHoOhNeedsAlphoracle::
+	msgbox TinTower_RoofDay_Text_RelicHoOhNeedsAlphoracle, MSGBOX_DEFAULT
+	releaseall
+	end
+
+TinTower_RoofDay_EventScript_RelicHoOhNeedsCrest::
+	msgbox TinTower_RoofDay_Text_RelicHoOhNeedsCrest, MSGBOX_DEFAULT
+	releaseall
+	end
+
 TinTower_RoofDay_EventScript_CaughtRelicHoOh::
-	call TinTower_RoofDay_EventScript_CaughtHooh
+	setflag FLAG_PJR_RELIC_HO_OH
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject LOCALID_HO_OH
+	setweather WEATHER_NONE
+	doweather
+	setflag FLAG_HIDE_HO_OH
+	fadescreenswapbuffers FADE_FROM_BLACK
 	setvar VAR_COMPLETED_HO_OH, 3
 	releaseall
 	end
@@ -289,6 +315,16 @@ TinTower_RoofDay_EventScript_Kuni::
 TinTower_RoofDay_EventScript_KuniAfter::
 	msgbox TinTower_RoofDay_Text_Kimono_After, MSGBOX_NPC
 	end
+
+TinTower_RoofDay_Text_RelicHoOhNeedsAlphoracle:
+	.string "The rainbow resonance is incomplete.\p"
+	.string "The FIRST VOICE must awaken at the\n"
+	.string "RUINS OF ALPH first.$"
+
+TinTower_RoofDay_Text_RelicHoOhNeedsCrest:
+	.string "HO-OH watches in silence.\p"
+	.string "Only the ANCIENT RAINBOW CREST\n"
+	.string "can complete this resonance.$"
 
 TinTower_RoofDay_Text_RelicHoOhRetry:
 	.string "The ancient HO-OH rises again.\p"

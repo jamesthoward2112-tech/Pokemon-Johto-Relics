@@ -55,6 +55,13 @@ MtSilver_SummitDay_EventScript_RedOnDefeat::
 	delay 180
 	fadescreenspeed FADE_TO_BLACK, 24
 	setflag FLAG_DEFEATED_RED
+	setflag FLAG_PJR_RED_DEFEATED
+	goto_if_set FLAG_PJR_GOT_RAINBOW_CREST, MtSilver_SummitDay_EventScript_AfterCrest
+	giveitem ITEM_ANCIENT_RAINBOW_CREST
+	setflag FLAG_PJR_GOT_RAINBOW_CREST
+	msgbox MtSilver_SummitDay_Text_Crest, MSGBOX_DEFAULT
+MtSilver_SummitDay_EventScript_AfterCrest:
+	call_if_set FLAG_PJR_RELIC_ALPHORACLE, MtSilver_SummitDay_EventScript_UnlockRelicHoOh
 	setflag FLAG_END_NUZLOCKE
 	clearflag FLAG_HIDE_MTSILVER_RED
 	special GameClear
@@ -66,7 +73,17 @@ MtSilver_SummitDay_Text_Red:
 	.string ".........................\n"
 	.string ".........................$"
 
+MtSilver_SummitDay_EventScript_UnlockRelicHoOh::
+	setvar VAR_COMPLETED_HO_OH, 4
+	clearflag FLAG_HIDE_HO_OH
+	return
+
 MtSilver_SummitDay_Text_RedBeaten:
 	.string "...!$"
+
+MtSilver_SummitDay_Text_Crest:
+	.string "RED leaves behind the ANCIENT\n"
+	.string "RAINBOW CREST.\p"
+	.string "Its light points toward BELL TOWER.$"
 
 
