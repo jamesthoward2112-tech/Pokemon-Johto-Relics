@@ -11,3 +11,7 @@
 ## Balance / gifts
 
 - [ ] Gift Cyndaquil in Azalea: reduce its gift level from Lv20 to Lv15. Lv20 is too high for the point it is obtained.
+
+## Rocket / trainer presentation
+
+- [ ] Jessie & James presentation/battles: every Jessie & James encounter must be a DOUBLE BATTLE, using a combined/double trainer battle sprite and a combined/double overworld sprite. They should always appear and fight as a pair, never as separate single trainers.
