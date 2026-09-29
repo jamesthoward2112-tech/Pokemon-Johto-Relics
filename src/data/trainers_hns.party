@@ -2299,19 +2299,27 @@ Level: 35
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_9_HNS ===
-Name: JAMES
+Name: JESSIE&J
 Class: Team Rocket Hns
 Pic: James Hns
 Gender: Male
 Music: Rocket
-Double Battle: No
+Double Battle: Yes
 AI: Basic Trainer
 
 Weezing
 Level: 39
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 
+Arbok
+Level: 39
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+
 Victreebel
+Level: 39
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+
+Wobbuffet
 Level: 39
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 
@@ -2324,19 +2332,27 @@ Level: 40
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 
 === TRAINER_GRUNT_10_HNS ===
-Name: JAMES
+Name: JESSIE&J
 Class: Team Rocket Hns
 Pic: James Hns
 Gender: Male
 Music: Rocket
-Double Battle: No
+Double Battle: Yes
 AI: Check Bad Move
 
 Weezing
 Level: 36
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
+Arbok
+Level: 36
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
 Victreebel
+Level: 36
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Wobbuffet
 Level: 36
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
@@ -2515,15 +2531,19 @@ Level: 37
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_21_HNS ===
-Name: JAMES
+Name: JESSIE&J
 Class: Team Rocket Hns
 Pic: James Hns
 Gender: Male
 Music: Rocket
-Double Battle: No
+Double Battle: Yes
 AI: Check Bad Move
 
 Koffing
+Level: 13
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Ekans
 Level: 13
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -2531,17 +2551,29 @@ Bellsprout
 Level: 14
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
+Meowth
+Level: 14
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
 === TRAINER_GRUNT_22_HNS ===
-Name: JESSIE
+Name: JESSIE&J
 Class: Team Rocket Hns
-Pic: Jessie Hns
-Gender: Female
+Pic: James Hns
+Gender: Male
 Music: Rocket
-Double Battle: No
+Double Battle: Yes
 AI: Check Bad Move
+
+Koffing
+Level: 13
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Ekans
 Level: 13
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Bellsprout
+Level: 14
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Meowth
@@ -2633,15 +2665,23 @@ Level: 35
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_27_HNS ===
-Name: JESSIE
+Name: JESSIE&J
 Class: Team Rocket Hns
-Pic: Jessie Hns
-Gender: Female
+Pic: James Hns
+Gender: Male
 Music: Rocket
-Double Battle: No
+Double Battle: Yes
 AI: Check Bad Move
 
+Weezing
+Level: 36
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
 Arbok
+Level: 36
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Victreebel
 Level: 36
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
@@ -2658,15 +2698,23 @@ Level: 37
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_GRUNT_28_HNS ===
-Name: JESSIE
+Name: JESSIE&J
 Class: Team Rocket Hns
-Pic: Jessie Hns
-Gender: Female
+Pic: James Hns
+Gender: Male
 Music: Rocket
-Double Battle: No
+Double Battle: Yes
 AI: Basic Trainer
 
+Weezing
+Level: 39
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+
 Arbok
+Level: 39
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+
+Victreebel
 Level: 39
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 

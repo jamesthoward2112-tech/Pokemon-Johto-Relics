@@ -4229,15 +4229,15 @@ static const struct SpriteFrameImage sPicTable_Jessie_hns[] = {
 };
 
 static const struct SpriteFrameImage sPicTable_James_hns[] = {
-    overworld_frame(gObjectEventPic_James_hns, 4, 4, 0),
-    overworld_frame(gObjectEventPic_James_hns, 4, 4, 1),
-    overworld_frame(gObjectEventPic_James_hns, 4, 4, 2),
-    overworld_frame(gObjectEventPic_James_hns, 4, 4, 3),
-    overworld_frame(gObjectEventPic_James_hns, 4, 4, 4),
-    overworld_frame(gObjectEventPic_James_hns, 4, 4, 5),
-    overworld_frame(gObjectEventPic_James_hns, 4, 4, 6),
-    overworld_frame(gObjectEventPic_James_hns, 4, 4, 7),
-    overworld_frame(gObjectEventPic_James_hns, 4, 4, 8),
+    overworld_frame(gObjectEventPic_James_hns, 8, 4, 0),
+    overworld_frame(gObjectEventPic_James_hns, 8, 4, 1),
+    overworld_frame(gObjectEventPic_James_hns, 8, 4, 2),
+    overworld_frame(gObjectEventPic_James_hns, 8, 4, 3),
+    overworld_frame(gObjectEventPic_James_hns, 8, 4, 4),
+    overworld_frame(gObjectEventPic_James_hns, 8, 4, 5),
+    overworld_frame(gObjectEventPic_James_hns, 8, 4, 6),
+    overworld_frame(gObjectEventPic_James_hns, 8, 4, 7),
+    overworld_frame(gObjectEventPic_James_hns, 8, 4, 8),
 };
 
 static const struct SpriteFrameImage sPicTable_Bill_hns[] = {

@@ -24,13 +24,13 @@ SlowpokeWell_B1F_EventScript_Kurt::
 	end
 
 SlowpokeWell_B1F_EventScript_Grunt21::
-	trainerbattle_single TRAINER_GRUNT_21_HNS, SlowpokeWell_B1F_Text_GruntM29Seen, SlowpokeWell_B1F_Text_GruntM29Beaten
-	msgbox SlowpokeWell_B1F_Text_GruntM29After, MSGBOX_AUTOCLOSE
+	trainerbattle_double TRAINER_GRUNT_21_HNS, SlowpokeWell_B1F_Text_JessieJamesSeen, SlowpokeWell_B1F_Text_JessieJamesBeaten, SlowpokeWell_B1F_Text_JessieJamesNeedTwo
+	msgbox SlowpokeWell_B1F_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
 	end
 
 SlowpokeWell_B1F_EventScript_Grunt22F::
-	trainerbattle_single TRAINER_GRUNT_22_HNS, SlowpokeWell_B1F_Text_GruntF1Seen, SlowpokeWell_B1F_Text_GruntF1Beaten
-	msgbox SlowpokeWell_B1F_Text_GruntF1After, MSGBOX_AUTOCLOSE
+	trainerbattle_double TRAINER_GRUNT_21_HNS, SlowpokeWell_B1F_Text_JessieJamesSeen, SlowpokeWell_B1F_Text_JessieJamesBeaten, SlowpokeWell_B1F_Text_JessieJamesNeedTwo
+	msgbox SlowpokeWell_B1F_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
 	end
 
 SlowpokeWell_B1F_EventScript_Eto::
@@ -181,3 +181,19 @@ SlowpokeWell_B1F_Text_SlowpokeMail:
 
 SlowpokeWell_B1F_Text_TaillessSlowpoke:
 	.string "A SLOWPOKE with its TAIL cut off…$"
+
+SlowpokeWell_B1F_Text_JessieJamesSeen:
+	.string "JESSIE: Hold it, twerp!\p"
+	.string "JAMES: We're handling this one\n"
+	.string "together!$"
+
+SlowpokeWell_B1F_Text_JessieJamesBeaten:
+	.string "JESSIE & JAMES: Not again!$"
+
+SlowpokeWell_B1F_Text_JessieJamesAfter:
+	.string "JAMES: We'll be back.\p"
+	.string "JESSIE: Count on it!$"
+
+SlowpokeWell_B1F_Text_JessieJamesNeedTwo:
+	.string "Bring at least two {PKMN} if you\n"
+	.string "want to face both of us!$"

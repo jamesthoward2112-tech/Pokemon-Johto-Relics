@@ -480,8 +480,8 @@ GoldenrodCity_UndergroundSwitches_Movement_SilverLeaveBot:
 	step_end	
 
 GoldenrodCity_UndergroundSwitches_EventScript_Grunt10::
-    trainerbattle_single TRAINER_GRUNT_10_HNS, GoldenrodUnderground_Text_GruntM11Seen, GoldenrodUnderground_Text_GruntM11Beaten
-	msgbox GoldenrodUnderground_Text_GruntM11After, MSGBOX_AUTOCLOSE
+    trainerbattle_double TRAINER_GRUNT_10_HNS, GoldenrodUnderground_Text_JessieJamesSeen, GoldenrodUnderground_Text_JessieJamesBeaten, GoldenrodUnderground_Text_JessieJamesNeedTwo
+	msgbox GoldenrodUnderground_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
 	end
 
 GoldenrodCity_UndergroundSwitches_EventScript_Grunt20::
@@ -505,8 +505,8 @@ GoldenrodCity_UndergroundSwitches_EventScript_Grunt11::
 	end
 
 GoldenrodCity_UndergroundSwitches_EventScript_Grunt27::
-    trainerbattle_single TRAINER_GRUNT_27_HNS, GoldenrodUnderground_Text_GruntF3Seen, GoldenrodUnderground_Text_GruntF3Beaten
-	msgbox GoldenrodUnderground_Text_GruntF3After, MSGBOX_AUTOCLOSE
+    trainerbattle_double TRAINER_GRUNT_10_HNS, GoldenrodUnderground_Text_JessieJamesSeen, GoldenrodUnderground_Text_JessieJamesBeaten, GoldenrodUnderground_Text_JessieJamesNeedTwo
+	msgbox GoldenrodUnderground_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
 	end
 
 GoldenrodCity_UndergroundSwitches_EventScript_Item_Revive::
@@ -649,3 +649,18 @@ GoldenrodUnderground_Text_Switch2Off:
 
 GoldenrodUnderground_Text_Switch3Off:
     .string "SWITCH 3 deactivated.$"
+
+GoldenrodUnderground_Text_JessieJamesSeen:
+    .string "JESSIE: You again?\p"
+    .string "JAMES: Then you'll face both of us!$"
+
+GoldenrodUnderground_Text_JessieJamesBeaten:
+    .string "JESSIE & JAMES: Not again!$"
+
+GoldenrodUnderground_Text_JessieJamesAfter:
+    .string "JAMES: The switches are yours.\p"
+    .string "JESSIE: For now!$"
+
+GoldenrodUnderground_Text_JessieJamesNeedTwo:
+    .string "Bring at least two {PKMN} if you\n"
+    .string "want to face both of us!$"

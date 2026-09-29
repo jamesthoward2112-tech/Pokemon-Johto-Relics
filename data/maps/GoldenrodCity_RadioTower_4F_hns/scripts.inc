@@ -16,13 +16,13 @@ GoldenrodCity_RadioTower_4F4_EventScript_Sign2::
 	end
 
 GoldenrodRaidoTower4_EventScript_Grunt28::
-	trainerbattle_single TRAINER_GRUNT_28_HNS, GoldenrodCity_RadioTower_4F4_Text_GruntF4Seen, GoldenrodCity_RadioTower_4F4_Text_GruntF4Beaten
-	msgbox GoldenrodCity_RadioTower_4F4_Text_GruntF4After, MSGBOX_AUTOCLOSE
+	trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen, GoldenrodCity_RadioTower_4F4_Text_JessieJamesBeaten, GoldenrodCity_RadioTower_4F4_Text_JessieJamesNeedTwo
+	msgbox GoldenrodCity_RadioTower_4F4_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
 	end
 
 GoldenrodRaidoTower4_EventScript_Grunt9::
-	trainerbattle_single TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_GruntM10Seen, GoldenrodCity_RadioTower_4F4_Text_GruntM10Beaten
-	msgbox GoldenrodCity_RadioTower_4F4_Text_GruntM10After, MSGBOX_AUTOCLOSE
+	trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen, GoldenrodCity_RadioTower_4F4_Text_JessieJamesBeaten, GoldenrodCity_RadioTower_4F4_Text_JessieJamesNeedTwo
+	msgbox GoldenrodCity_RadioTower_4F4_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
 	end
 
 GoldenrodRaidoTower4_EventScript_Proton::
@@ -186,3 +186,20 @@ GoldenrodCity_RadioTower_4F4_Text_ProductionSign:
 
 GoldenrodCity_RadioTower_4F4_Text_Studio2Sign:
 	.string "4F STUDIO 2$"
+
+GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen:
+	.string "JESSIE: This tower belongs to\n"
+	.string "TEAM ROCKET!\p"
+	.string "JAMES: And we're guarding it\n"
+	.string "together!$"
+
+GoldenrodCity_RadioTower_4F4_Text_JessieJamesBeaten:
+	.string "JESSIE & JAMES: Not again!$"
+
+GoldenrodCity_RadioTower_4F4_Text_JessieJamesAfter:
+	.string "JESSIE: Keep moving, twerp.\p"
+	.string "JAMES: We'll meet again!$"
+
+GoldenrodCity_RadioTower_4F4_Text_JessieJamesNeedTwo:
+	.string "Bring at least two {PKMN} if you\n"
+	.string "want to face both of us!$"
