@@ -13,6 +13,7 @@
 #include "link.h"
 #include "constants/game_stat.h"
 #include "constants/rematches.h"
+#include "constants/opponents.h"
 #include "event_data.h"
 
 static u16 CalculateChecksum(void *, u16);
@@ -978,6 +979,18 @@ u8 LoadGameSave(u8 saveType)
         VarSet(VAR_ROUTE28_SCIENTIST, 0);
         gSaveBlock1Ptr->saveVersion = 5;
     }
+
+#ifdef POKEMON_HNS
+    // PJR Alpha migration 6: replay the first Jessie & James encounter once
+    // with the new paired double-battle presentation. This is a one-time
+    // rollback for existing Alpha saves, not a repeatable rematch.
+    if (gSaveBlock1Ptr->saveVersion < 6)
+    {
+        FlagClear(TRAINER_FLAGS_START + TRAINER_GRUNT_21_HNS);
+        FlagClear(TRAINER_FLAGS_START + TRAINER_GRUNT_22_HNS);
+        gSaveBlock1Ptr->saveVersion = 6;
+    }
+#endif
 
     // Add version migration steps here:
     // if (gSaveBlock1Ptr->saveVersion < 1)
