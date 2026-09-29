@@ -14,8 +14,4 @@
 
 ## Rocket / trainer presentation
 
-- [ ] Jessie & James presentation/battles: every Jessie & James encounter must be a DOUBLE BATTLE, using a combined/double trainer battle sprite and a combined/double overworld sprite. They should always appear and fight as a pair, never as separate single trainers.
-
-## Jessie & James
-
-- [ ] Jessie & James presentation/battles: every Jessie & James encounter must be a DOUBLE BATTLE, using a combined Jessie+James trainer battle sprite and a combined Jessie+James overworld sprite/event rather than two separate single-trainer objects. Apply consistently to Slowpoke Well, Goldenrod Underground and Radio Tower (and any future Jessie & James encounters).
+- [ ] Jessie & James presentation/battles: every Jessie & James encounter must be a DOUBLE BATTLE, using a combined Jessie+James trainer battle sprite and a combined Jessie+James overworld sprite/event rather than two separate single-trainer objects. They should always appear and fight as a pair, never separately. Apply consistently to Slowpoke Well, Goldenrod Underground and Radio Tower (and any future Jessie & James encounters).
