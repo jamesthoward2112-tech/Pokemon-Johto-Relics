@@ -1,9 +1,17 @@
 GoldenrodCity_UndergroundSwitches_hns_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, GoldenrodUnderground1_JessieJamesTransition
 	map_script MAP_SCRIPT_ON_LOAD, GoldenrodUnderground1_OnLoad
 	.byte 0
 
+GoldenrodUnderground1_JessieJamesTransition::
+	setflag FLAG_TEMP_1
+	setvar VAR_TEMP_3, 0
+	end
+
 GoldenrodUnderground1_OnLoad::
+	setflag FLAG_TEMP_1
 	call_if_unset FLAG_PJR_JESSIE_JAMES_2_DEFEATED, GoldenrodUnderground1_JessieJamesLoad_ResetTrainer
+	call_if_set FLAG_PJR_JESSIE_JAMES_2_DEFEATED, GoldenrodUnderground1_JessieJamesLoad_MarkDone
 	setvar VAR_TEMP_0, 0
 	call_if_set FLAG_COMPLETED_SWITCHES, GoldenrodUnderground1_ClearTheWay
 	clearflag FLAG_GOLDENROD_SWITCH_1
@@ -14,6 +22,11 @@ GoldenrodUnderground1_OnLoad::
 
 GoldenrodUnderground1_JessieJamesLoad_ResetTrainer::
 	cleartrainerflag TRAINER_GRUNT_10_HNS
+	setvar VAR_TEMP_3, 0
+	return
+
+GoldenrodUnderground1_JessieJamesLoad_MarkDone::
+	setvar VAR_TEMP_3, 1
 	return
 
 GoldenrodUnderground1_ClearTheWay::
@@ -484,18 +497,68 @@ GoldenrodCity_UndergroundSwitches_Movement_SilverLeaveBot:
 	face_right
 	step_end	
 
-GoldenrodCity_UndergroundSwitches_EventScript_FaceJessieJames::
-	applymovement LOCALID_UNDERGROUND_JAMES, Common_Movement_FacePlayer
-	applymovement LOCALID_UNDERGROUND_JESSIE, Common_Movement_FacePlayer
+GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesTrigger::
+	goto_if_set FLAG_PJR_JESSIE_JAMES_2_DEFEATED, GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesAlreadyDefeated
+	lockall
+	clearflag FLAG_TEMP_1
+	setobjectxy LOCALID_UNDERGROUND_JESSIE, 22, 3
+	setobjectxy LOCALID_UNDERGROUND_JAMES, 23, 3
+	addobject LOCALID_UNDERGROUND_JESSIE
+	addobject LOCALID_UNDERGROUND_JAMES
+	applymovement LOCALID_UNDERGROUND_JESSIE, GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunIn
+	applymovement LOCALID_UNDERGROUND_JAMES, GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunIn
 	waitmovementall
-	return
+	applymovement LOCALID_UNDERGROUND_JESSIE, Common_Movement_FacePlayer
+	applymovement LOCALID_UNDERGROUND_JAMES, Common_Movement_FacePlayer
+	waitmovementall
+	setvar VAR_TEMP_3, 1
+	releaseall
+	setvar VAR_LAST_TALKED, LOCALID_UNDERGROUND_JAMES
+	goto GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesBattle
 
-GoldenrodCity_UndergroundSwitches_EventScript_Grunt10::
-	call GoldenrodCity_UndergroundSwitches_EventScript_FaceJessieJames
-    trainerbattle_double TRAINER_GRUNT_10_HNS, GoldenrodUnderground_Text_JessieJamesSeen, GoldenrodUnderground_Text_JessieJamesBeaten, GoldenrodUnderground_Text_JessieJamesNeedTwo
+GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesInteract::
+	goto_if_set FLAG_PJR_JESSIE_JAMES_2_DEFEATED, GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesAlreadyDefeated
+	setvar VAR_TEMP_3, 1
+	setvar VAR_LAST_TALKED, LOCALID_UNDERGROUND_JAMES
+	goto GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesBattle
+
+GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesBattle::
+	trainerbattle_double TRAINER_GRUNT_10_HNS, GoldenrodUnderground_Text_JessieJamesSeen, GoldenrodUnderground_Text_JessieJamesBeaten, GoldenrodUnderground_Text_JessieJamesNeedTwo
+	lockall
 	setflag FLAG_PJR_JESSIE_JAMES_2_DEFEATED
-	msgbox GoldenrodUnderground_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
+	msgbox GoldenrodUnderground_Text_JessieJamesAfter, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_UNDERGROUND_JESSIE, DIR_EAST
+	turnobject LOCALID_UNDERGROUND_JAMES, DIR_EAST
+	delay 8
+	applymovement LOCALID_UNDERGROUND_JESSIE, GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunOut
+	applymovement LOCALID_UNDERGROUND_JAMES, GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunOut
+	waitmovementall
+	removeobject LOCALID_UNDERGROUND_JESSIE
+	removeobject LOCALID_UNDERGROUND_JAMES
+	setflag FLAG_TEMP_1
+	setvar VAR_TEMP_3, 1
+	releaseall
 	end
+
+GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesAlreadyDefeated::
+	setflag FLAG_TEMP_1
+	removeobject LOCALID_UNDERGROUND_JESSIE
+	removeobject LOCALID_UNDERGROUND_JAMES
+	setvar VAR_TEMP_3, 1
+	end
+
+GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunIn:
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	step_end
+
+GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunOut:
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	step_end
 
 GoldenrodCity_UndergroundSwitches_EventScript_Grunt20::
     trainerbattle_single TRAINER_GRUNT_20_HNS, GoldenrodUnderground_Text_GruntM25Seen, GoldenrodUnderground_Text_GruntM25Beaten
@@ -518,11 +581,7 @@ GoldenrodCity_UndergroundSwitches_EventScript_Grunt11::
 	end
 
 GoldenrodCity_UndergroundSwitches_EventScript_Grunt27::
-	call GoldenrodCity_UndergroundSwitches_EventScript_FaceJessieJames
-    trainerbattle_double TRAINER_GRUNT_10_HNS, GoldenrodUnderground_Text_JessieJamesSeen, GoldenrodUnderground_Text_JessieJamesBeaten, GoldenrodUnderground_Text_JessieJamesNeedTwo
-	setflag FLAG_PJR_JESSIE_JAMES_2_DEFEATED
-	msgbox GoldenrodUnderground_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
-	end
+	goto GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesInteract
 
 GoldenrodCity_UndergroundSwitches_EventScript_Item_Revive::
 	finditem ITEM_MAX_REVIVE
