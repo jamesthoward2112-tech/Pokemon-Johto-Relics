@@ -7157,10 +7157,17 @@ u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
             if (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_NONE)
                 continue;
 
-            // PJR: Dragon Fang reserves Eevee for Drakeon, even before level 25.
-            // This prevents high friendship from diverting it into Espeon/Umbreon.
+            // PJR: a custom held-item Eeveelution catalyst reserves Eevee for
+            // that branch. If its time/level requirement is not met yet, Eevee stays
+            // Eevee instead of friendship falling through to Espeon/Umbreon.
             if (species == SPECIES_EEVEE
-             && heldItem == ITEM_DRAGON_FANG
+             && (heldItem == ITEM_EXPERT_BELT
+              || heldItem == ITEM_SILVER_POWDER
+              || heldItem == ITEM_SOFT_SAND
+              || heldItem == ITEM_METAL_COAT
+              || heldItem == ITEM_HARD_STONE
+              || heldItem == ITEM_POISON_BARB
+              || heldItem == ITEM_DRAGON_FANG)
              && (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_ESPEON
               || SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_UMBREON))
                 continue;
