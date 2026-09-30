@@ -35,6 +35,8 @@ GoldenrodRaidoTower4_EventScript_Grunt28::
 	trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen, GoldenrodCity_RadioTower_4F4_Text_JessieJamesBeaten, GoldenrodCity_RadioTower_4F4_Text_JessieJamesNeedTwo
 	setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED
 	msgbox GoldenrodCity_RadioTower_4F4_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
+	removeobject LOCALID_RADIO4F_JAMES
+	removeobject LOCALID_RADIO4F_JESSIE
 	end
 
 GoldenrodRaidoTower4_EventScript_Grunt9::
@@ -42,6 +44,8 @@ GoldenrodRaidoTower4_EventScript_Grunt9::
 	trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen, GoldenrodCity_RadioTower_4F4_Text_JessieJamesBeaten, GoldenrodCity_RadioTower_4F4_Text_JessieJamesNeedTwo
 	setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED
 	msgbox GoldenrodCity_RadioTower_4F4_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
+	removeobject LOCALID_RADIO4F_JAMES
+	removeobject LOCALID_RADIO4F_JESSIE
 	end
 
 GoldenrodRaidoTower4_EventScript_Proton::
