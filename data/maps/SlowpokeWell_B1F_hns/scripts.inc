@@ -44,12 +44,14 @@ SlowpokeWell_B1F_EventScript_JessieJamesTrigger::
 	clearflag FLAG_TEMP_1
 	addobject 10
 	addobject 11
+	setobjectxy 10, 28, 8
+	setobjectxy 11, 27, 8
 	applymovement 10, SlowpokeWell_B1F_Movement_JessieJamesRunIn
 	applymovement 11, SlowpokeWell_B1F_Movement_JessieJamesRunIn
-	waitmovement 0
+	waitmovementall
 	applymovement 10, Common_Movement_FacePlayer
 	applymovement 11, Common_Movement_FacePlayer
-	waitmovement 0
+	waitmovementall
 	setvar VAR_TEMP_0, 1
 	releaseall
 	setvar VAR_LAST_TALKED, 10
@@ -68,9 +70,12 @@ SlowpokeWell_B1F_EventScript_JessieJamesBattle::
 SlowpokeWell_B1F_EventScript_JessieJamesAfterBattle::
 	msgbox SlowpokeWell_B1F_Text_JessieJamesAfter, MSGBOX_DEFAULT
 	closemessage
+	turnobject 10, DIR_NORTH
+	turnobject 11, DIR_NORTH
+	delay 8
 	applymovement 10, SlowpokeWell_B1F_Movement_JessieJamesRunOut
 	applymovement 11, SlowpokeWell_B1F_Movement_JessieJamesRunOut
-	waitmovement 0
+	waitmovementall
 	removeobject 10
 	removeobject 11
 	setflag FLAG_PJR_JESSIE_JAMES_1_DEFEATED
