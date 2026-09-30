@@ -484,7 +484,14 @@ GoldenrodCity_UndergroundSwitches_Movement_SilverLeaveBot:
 	face_right
 	step_end	
 
+GoldenrodCity_UndergroundSwitches_EventScript_FaceJessieJames::
+	applymovement LOCALID_UNDERGROUND_JAMES, Common_Movement_FacePlayer
+	applymovement LOCALID_UNDERGROUND_JESSIE, Common_Movement_FacePlayer
+	waitmovementall
+	return
+
 GoldenrodCity_UndergroundSwitches_EventScript_Grunt10::
+	call GoldenrodCity_UndergroundSwitches_EventScript_FaceJessieJames
     trainerbattle_double TRAINER_GRUNT_10_HNS, GoldenrodUnderground_Text_JessieJamesSeen, GoldenrodUnderground_Text_JessieJamesBeaten, GoldenrodUnderground_Text_JessieJamesNeedTwo
 	setflag FLAG_PJR_JESSIE_JAMES_2_DEFEATED
 	msgbox GoldenrodUnderground_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
@@ -511,6 +518,7 @@ GoldenrodCity_UndergroundSwitches_EventScript_Grunt11::
 	end
 
 GoldenrodCity_UndergroundSwitches_EventScript_Grunt27::
+	call GoldenrodCity_UndergroundSwitches_EventScript_FaceJessieJames
     trainerbattle_double TRAINER_GRUNT_10_HNS, GoldenrodUnderground_Text_JessieJamesSeen, GoldenrodUnderground_Text_JessieJamesBeaten, GoldenrodUnderground_Text_JessieJamesNeedTwo
 	setflag FLAG_PJR_JESSIE_JAMES_2_DEFEATED
 	msgbox GoldenrodUnderground_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE

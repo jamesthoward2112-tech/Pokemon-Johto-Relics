@@ -28,6 +28,7 @@
       "flag": "FLAG_HIDE_GOLDENROD_ROCKETS"
     },
     {
+      "local_id": "LOCALID_RADIO4F_JAMES",
       "graphics_id": "OBJ_EVENT_GFX_JAMES_HNS",
       "x": 15,
       "y": 11,
@@ -67,11 +68,12 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_RADIO4F_JESSIE",
       "graphics_id": "OBJ_EVENT_GFX_JESSIE_HNS",
       "x": 14,
       "y": 11,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_SEE_ALL_DIRECTIONS",
