@@ -480,7 +480,7 @@ GoldenrodCity_UndergroundSwitches_Movement_SilverLeaveBot:
 	step_end	
 
 GoldenrodCity_UndergroundSwitches_EventScript_Grunt10::
-    trainerbattle_double TRAINER_JESSIE_JAMES_2_HNS, GoldenrodUnderground_Text_JessieJamesSeen, GoldenrodUnderground_Text_JessieJamesBeaten, GoldenrodUnderground_Text_JessieJamesNeedTwo
+    trainerbattle_double TRAINER_GRUNT_10_HNS, GoldenrodUnderground_Text_JessieJamesSeen, GoldenrodUnderground_Text_JessieJamesBeaten, GoldenrodUnderground_Text_JessieJamesNeedTwo
 	msgbox GoldenrodUnderground_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -505,7 +505,7 @@ GoldenrodCity_UndergroundSwitches_EventScript_Grunt11::
 	end
 
 GoldenrodCity_UndergroundSwitches_EventScript_Grunt27::
-    trainerbattle_double TRAINER_JESSIE_JAMES_2_HNS, GoldenrodUnderground_Text_JessieJamesSeen, GoldenrodUnderground_Text_JessieJamesBeaten, GoldenrodUnderground_Text_JessieJamesNeedTwo
+    trainerbattle_double TRAINER_GRUNT_10_HNS, GoldenrodUnderground_Text_JessieJamesSeen, GoldenrodUnderground_Text_JessieJamesBeaten, GoldenrodUnderground_Text_JessieJamesNeedTwo
 	msgbox GoldenrodUnderground_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
 	end
 

@@ -15,6 +15,14 @@ PKNAVGFXDIR := graphics/pokenav
 PKNAVOPTIONSGFXDIR := graphics/pokenav/options
 WALLPAPERGFXDIR := graphics/pokemon_storage/wallpapers
 OBJEVENTGFXDIR := graphics/object_events
+
+# Jessie & James use 9-frame 16x32 overworld sheets. Force 2x4-tile metaframes
+# so gbagfx stores each frame contiguously for overworld_frame(..., 2, 4, n).
+$(OBJEVENTGFXDIR)/pics/people/rockets/jessie_hns.4bpp: $(OBJEVENTGFXDIR)/pics/people/rockets/jessie_hns.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/pics/people/rockets/james_hns.4bpp: $(OBJEVENTGFXDIR)/pics/people/rockets/james_hns.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
 MISCGFXDIR := graphics/misc
 JPCONTESTGFXDIR := graphics/contest/japanese
 POKEDEXGFXDIR := graphics/pokedex
