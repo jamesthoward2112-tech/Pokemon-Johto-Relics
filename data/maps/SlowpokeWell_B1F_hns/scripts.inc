@@ -1,6 +1,12 @@
 SlowpokeWell_B1F_hns_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, SlowpokeWell_B1F_EventScript_JessieJamesTransition
 	map_script MAP_SCRIPT_ON_LOAD, SlowpokeWell_B1F_EventScript_JessieJamesLoad
 	.byte 0
+
+SlowpokeWell_B1F_EventScript_JessieJamesTransition::
+	setflag FLAG_TEMP_1
+	setvar VAR_TEMP_0, 0
+	end
 
 SlowpokeWell_B1F_EventScript_JessieJamesLoad::
 	call_if_unset FLAG_PJR_JESSIE_JAMES_1_DEFEATED, SlowpokeWell_B1F_EventScript_JessieJamesLoad_ResetTrainer
@@ -35,52 +41,40 @@ SlowpokeWell_B1F_EventScript_Kurt::
 SlowpokeWell_B1F_EventScript_JessieJamesTrigger::
 	goto_if_set FLAG_PJR_JESSIE_JAMES_1_DEFEATED, SlowpokeWell_B1F_EventScript_JessieJamesAlreadyDefeated
 	lockall
-	applymovement 10, SlowpokeWell_B1F_Movement_JessieJamesApproach
-	applymovement 11, SlowpokeWell_B1F_Movement_JessieJamesApproach
+	clearflag FLAG_TEMP_1
+	addobject 10
+	addobject 11
+	applymovement 10, SlowpokeWell_B1F_Movement_JessieJamesRunIn
+	applymovement 11, SlowpokeWell_B1F_Movement_JessieJamesRunIn
 	waitmovement 0
 	applymovement 10, Common_Movement_FacePlayer
 	applymovement 11, Common_Movement_FacePlayer
 	waitmovement 0
+	setvar VAR_TEMP_0, 1
 	releaseall
 	setvar VAR_LAST_TALKED, 10
 	goto SlowpokeWell_B1F_EventScript_JessieJamesBattle
 
 SlowpokeWell_B1F_EventScript_JessieJamesInteract::
 	goto_if_set FLAG_PJR_JESSIE_JAMES_1_DEFEATED, SlowpokeWell_B1F_EventScript_JessieJamesAlreadyDefeated
-	lockall
-	applymovement 10, Common_Movement_FacePlayer
-	applymovement 11, Common_Movement_FacePlayer
-	waitmovement 0
-	releaseall
+	setvar VAR_TEMP_0, 1
 	setvar VAR_LAST_TALKED, 10
 	goto SlowpokeWell_B1F_EventScript_JessieJamesBattle
 
 SlowpokeWell_B1F_EventScript_JessieJamesBattle::
-	trainerbattle_double TRAINER_GRUNT_21_HNS, SlowpokeWell_B1F_Text_JessieJamesSeen, SlowpokeWell_B1F_Text_JessieJamesBeaten, SlowpokeWell_B1F_Text_JessieJamesNeedTwo
-	lockall
+	trainerbattle_double TRAINER_GRUNT_21_HNS, SlowpokeWell_B1F_Text_JessieJamesSeen, SlowpokeWell_B1F_Text_JessieJamesBeaten, SlowpokeWell_B1F_Text_JessieJamesNeedTwo, SlowpokeWell_B1F_EventScript_JessieJamesAfterBattle
+	goto SlowpokeWell_B1F_EventScript_JessieJamesAfterBattle
+
+SlowpokeWell_B1F_EventScript_JessieJamesAfterBattle::
 	msgbox SlowpokeWell_B1F_Text_JessieJamesAfter, MSGBOX_DEFAULT
 	closemessage
-	getplayerxy VAR_TEMP_1, VAR_TEMP_2
-	goto_if_eq VAR_TEMP_1, 28, SlowpokeWell_B1F_EventScript_JessieJamesPlayerTwoLeft
-	goto_if_eq VAR_TEMP_1, 27, SlowpokeWell_B1F_EventScript_JessieJamesPlayerOneLeft
-	goto SlowpokeWell_B1F_EventScript_JessieJamesExit
-
-SlowpokeWell_B1F_EventScript_JessieJamesPlayerTwoLeft::
-	applymovement OBJ_EVENT_ID_PLAYER, SlowpokeWell_B1F_Movement_PlayerTwoLeft
-	waitmovement 0
-	goto SlowpokeWell_B1F_EventScript_JessieJamesExit
-
-SlowpokeWell_B1F_EventScript_JessieJamesPlayerOneLeft::
-	applymovement OBJ_EVENT_ID_PLAYER, SlowpokeWell_B1F_Movement_PlayerOneLeft
-	waitmovement 0
-
-SlowpokeWell_B1F_EventScript_JessieJamesExit::
-	applymovement 10, SlowpokeWell_B1F_Movement_JessieJamesExit
-	applymovement 11, SlowpokeWell_B1F_Movement_JessieJamesExit
+	applymovement 10, SlowpokeWell_B1F_Movement_JessieJamesRunOut
+	applymovement 11, SlowpokeWell_B1F_Movement_JessieJamesRunOut
 	waitmovement 0
 	removeobject 10
 	removeobject 11
 	setflag FLAG_PJR_JESSIE_JAMES_1_DEFEATED
+	setflag FLAG_TEMP_1
 	setvar VAR_TEMP_0, 1
 	releaseall
 	end
@@ -127,28 +121,24 @@ SlowpokeWell_B1F_EventScript_Proton::
 	waitstate
 	end
 
-SlowpokeWell_B1F_Movement_JessieJamesApproach:
-	walk_down
+SlowpokeWell_B1F_Movement_JessieJamesRunIn:
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
 	step_end
 
-SlowpokeWell_B1F_Movement_JessieJamesExit:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-SlowpokeWell_B1F_Movement_PlayerOneLeft:
-	walk_left
-	step_end
-
-SlowpokeWell_B1F_Movement_PlayerTwoLeft:
-	walk_left
-	walk_left
+SlowpokeWell_B1F_Movement_JessieJamesRunOut:
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
 	step_end
 
 SlowpokeWell_B1F_Movement_Kurt:
