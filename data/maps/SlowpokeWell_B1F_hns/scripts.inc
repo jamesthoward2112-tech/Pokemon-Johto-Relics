@@ -10,10 +10,22 @@ SlowpokeWell_B1F_EventScript_JessieJamesTransition::
 
 SlowpokeWell_B1F_EventScript_JessieJamesLoad::
 	call_if_unset FLAG_PJR_JESSIE_JAMES_1_DEFEATED, SlowpokeWell_B1F_EventScript_JessieJamesLoad_ResetTrainer
+	call_if_set FLAG_PJR_JESSIE_JAMES_1_DEFEATED, SlowpokeWell_B1F_EventScript_LegacyRocketRescue
 	end
 
 SlowpokeWell_B1F_EventScript_JessieJamesLoad_ResetTrainer::
 	cleartrainerflag TRAINER_GRUNT_21_HNS
+	return
+
+SlowpokeWell_B1F_EventScript_LegacyRocketRescue::
+	goto_if_set FLAG_HIDE_SLOWPOKE_WELL_KURT, SlowpokeWell_B1F_EventScript_LegacyRocketRescueDone
+	goto_if_unset FLAG_HIDE_AZALEA_TOWN_ROCKETS, SlowpokeWell_B1F_EventScript_LegacyRocketRescueDone
+	clearflag FLAG_HIDE_AZALEA_TOWN_ROCKETS
+	cleartrainerflag TRAINER_ETO_HNS
+	cleartrainerflag TRAINER_PROTON_1_HNS
+	addobject 12
+	addobject 13
+SlowpokeWell_B1F_EventScript_LegacyRocketRescueDone::
 	return
 
 SlowpokeWell_B1F_EventScript_Item_Super_Potion_1::
@@ -119,9 +131,11 @@ SlowpokeWell_B1F_EventScript_Proton::
 	fadescreen FADE_TO_BLACK
 	setflag FLAG_HIDE_SLOWPOKE_WELL_KURT
 	setflag FLAG_HIDE_KURT_1
+	goto_if_ge VAR_AZALEA_TOWN_STATE, 3, SlowpokeWell_B1F_EventScript_ProtonKeepLaterProgress
 	clearflag FLAG_HIDE_KURT_2
 	clearflag FLAG_HIDE_AZALEA_TOWN_SLOWPOKE
 	setvar VAR_AZALEA_TOWN_STATE, 3
+SlowpokeWell_B1F_EventScript_ProtonKeepLaterProgress::
 	warp MAP_AZALEA_TOWN_KURTS_HOUSE_HNS, 15, 4
 	waitstate
 	end
