@@ -122,23 +122,21 @@ SlowpokeWell_B1F_EventScript_Proton::
 	end
 
 SlowpokeWell_B1F_Movement_JessieJamesRunIn:
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
 	step_end
 
 SlowpokeWell_B1F_Movement_JessieJamesRunOut:
-	walk_faster_down
-	walk_faster_down
-	walk_faster_down
-	walk_faster_down
-	walk_faster_down
-	walk_faster_down
-	walk_faster_down
-	walk_faster_down
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
 	step_end
 
 SlowpokeWell_B1F_Movement_Kurt:
