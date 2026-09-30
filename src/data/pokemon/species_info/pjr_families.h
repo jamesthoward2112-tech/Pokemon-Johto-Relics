@@ -617,7 +617,7 @@ PJR_FINAL_SPECIES(SPECIES_FERALODON, 105, 135, 105, 70, 85, 80, TYPE_WATER, TYPE
     NATIONAL_DEX_FERALIGATR, "Tidal Relic", BODY_COLOR_BLUE, gMonFrontPic_Feralodon, gMonBackPic_Feralodon,
     gMonPalette_Feralodon, gMonShinyPalette_Feralodon, gMonIcon_Feralodon, sFeraligatrLevelUpLearnset, sFeraligatrTeachableLearnset),
 
-PJR_FINAL_SPECIES(SPECIES_DRAKEON, 75, 130, 85, 65, 80, 110, TYPE_DRAGON, TYPE_DRAGON,
+PJR_FINAL_SPECIES(SPECIES_DRAKEON, 75, 130, 85, 110, 65, 80, TYPE_DRAGON, TYPE_DRAGON,
     ABILITY_INTIMIDATE, ABILITY_NONE, ABILITY_MULTISCALE, "DRAKEON", CRY_EEVEE,
     NATIONAL_DEX_EEVEE, "Wyvern", BODY_COLOR_BLUE, gMonFrontPic_Drakeon, gMonBackPic_Drakeon,
     gMonPalette_Drakeon, gMonShinyPalette_Drakeon, gMonIcon_Drakeon, sDrakeonLevelUpLearnset, sEeveeTeachableLearnset),

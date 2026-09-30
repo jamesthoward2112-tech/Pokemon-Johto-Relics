@@ -7113,6 +7113,7 @@ u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
     u32 species = GetMonData(mon, MON_DATA_SPECIES, 0);
     u32 heldItem = GetMonData(mon, MON_DATA_HELD_ITEM, 0);
     u32 level = GetMonData(mon, MON_DATA_LEVEL, 0);
+    u32 eeveeReservedTarget = SPECIES_NONE;
     enum HoldEffect holdEffect;
     const struct Evolution *evolutions;
 
@@ -7131,6 +7132,38 @@ u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
 
     if (evolutions == NULL)
         return SPECIES_NONE;
+
+    // PJR: custom held-item Eeveelution catalysts reserve the whole level-up
+    // evolution route. This prevents friendship and location evolutions from
+    // hijacking the intended branch; unmet time/level requirements leave Eevee
+    // unevolved until the correct conditions are met.
+    if (species == SPECIES_EEVEE)
+    {
+        switch (heldItem)
+        {
+        case ITEM_EXPERT_BELT:
+            eeveeReservedTarget = SPECIES_CHAMPEON;
+            break;
+        case ITEM_SILVER_POWDER:
+            eeveeReservedTarget = SPECIES_LEPIDEON;
+            break;
+        case ITEM_SOFT_SAND:
+            eeveeReservedTarget = SPECIES_SPHYNXEON;
+            break;
+        case ITEM_METAL_COAT:
+            eeveeReservedTarget = SPECIES_GUARDEON;
+            break;
+        case ITEM_HARD_STONE:
+            eeveeReservedTarget = SPECIES_OBSIDEON;
+            break;
+        case ITEM_POISON_BARB:
+            eeveeReservedTarget = SPECIES_TOXEON;
+            break;
+        case ITEM_DRAGON_FANG:
+            eeveeReservedTarget = SPECIES_DRAKEON;
+            break;
+        }
+    }
 
     if (heldItem == ITEM_ENIGMA_BERRY_E_READER)
     #if FREE_ENIGMA_BERRY == FALSE
@@ -7157,19 +7190,8 @@ u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
             if (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_NONE)
                 continue;
 
-            // PJR: a custom held-item Eeveelution catalyst reserves Eevee for
-            // that branch. If its time/level requirement is not met yet, Eevee stays
-            // Eevee instead of friendship falling through to Espeon/Umbreon.
-            if (species == SPECIES_EEVEE
-             && (heldItem == ITEM_EXPERT_BELT
-              || heldItem == ITEM_SILVER_POWDER
-              || heldItem == ITEM_SOFT_SAND
-              || heldItem == ITEM_METAL_COAT
-              || heldItem == ITEM_HARD_STONE
-              || heldItem == ITEM_POISON_BARB
-              || heldItem == ITEM_DRAGON_FANG)
-             && (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_ESPEON
-              || SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_UMBREON))
+            if (eeveeReservedTarget != SPECIES_NONE
+             && SanitizeSpeciesId(evolutions[i].targetSpecies) != eeveeReservedTarget)
                 continue;
 
             // Check main primary evolution method

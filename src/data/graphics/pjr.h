@@ -151,11 +151,11 @@ const u16 gMonShinyPalette_Feralodon[] = INCBIN_U16("graphics/pokemon/feraligatr
 const u32 gMonBackPic_Feralodon[] = INCBIN_U32("graphics/pokemon/feraligatr/mega/back.4bpp.smol");
 const u8 gMonIcon_Feralodon[] = INCBIN_U8("graphics/pokemon/feraligatr/mega/icon.4bpp");
 
-const u32 gMonFrontPic_Drakeon[] = INCBIN_U32("graphics/pokemon/dragonair/anim_front.4bpp.smol");
-const u16 gMonPalette_Drakeon[] = INCBIN_U16("graphics/pokemon/dragonair/normal.gbapal");
-const u16 gMonShinyPalette_Drakeon[] = INCBIN_U16("graphics/pokemon/dragonair/shiny.gbapal");
-const u32 gMonBackPic_Drakeon[] = INCBIN_U32("graphics/pokemon/dragonair/back.4bpp.smol");
-const u8 gMonIcon_Drakeon[] = INCBIN_U8("graphics/pokemon/dragonair/icon.4bpp");
+const u32 gMonFrontPic_Drakeon[] = INCBIN_U32("graphics/pokemon/drakeon/front.4bpp.smol");
+const u16 gMonPalette_Drakeon[] = INCBIN_U16("graphics/pokemon/drakeon/front.gbapal");
+const u16 gMonShinyPalette_Drakeon[] = INCBIN_U16("graphics/pokemon/drakeon/shiny.gbapal");
+const u32 gMonBackPic_Drakeon[] = INCBIN_U32("graphics/pokemon/drakeon/back.4bpp.smol");
+const u8 gMonIcon_Drakeon[] = INCBIN_U8("graphics/pokemon/drakeon/icon.4bpp");
 
 const u32 gMonFrontPic_Ghoulbat[] = INCBIN_U32("graphics/pokemon/crobat/anim_front.4bpp.smol");
 const u16 gMonPalette_Ghoulbat[] = INCBIN_U16("graphics/pokemon/crobat/normal.gbapal");
