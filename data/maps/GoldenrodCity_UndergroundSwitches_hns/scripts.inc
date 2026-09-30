@@ -3,6 +3,7 @@ GoldenrodCity_UndergroundSwitches_hns_MapScripts::
 	.byte 0
 
 GoldenrodUnderground1_OnLoad::
+	call_if_unset FLAG_PJR_JESSIE_JAMES_2_DEFEATED, GoldenrodUnderground1_JessieJamesLoad_ResetTrainer
 	setvar VAR_TEMP_0, 0
 	call_if_set FLAG_COMPLETED_SWITCHES, GoldenrodUnderground1_ClearTheWay
 	clearflag FLAG_GOLDENROD_SWITCH_1
@@ -10,6 +11,10 @@ GoldenrodUnderground1_OnLoad::
 	clearflag FLAG_GOLDENROD_SWITCH_3
 	clearflag FLAG_GOLDENROD_SWITCH_ORDER
 	end
+
+GoldenrodUnderground1_JessieJamesLoad_ResetTrainer::
+	cleartrainerflag TRAINER_GRUNT_10_HNS
+	return
 
 GoldenrodUnderground1_ClearTheWay::
 	call GoldenrodCity_UndergroundSwitches_EventScript_CreateWall1
@@ -481,6 +486,7 @@ GoldenrodCity_UndergroundSwitches_Movement_SilverLeaveBot:
 
 GoldenrodCity_UndergroundSwitches_EventScript_Grunt10::
     trainerbattle_double TRAINER_GRUNT_10_HNS, GoldenrodUnderground_Text_JessieJamesSeen, GoldenrodUnderground_Text_JessieJamesBeaten, GoldenrodUnderground_Text_JessieJamesNeedTwo
+	setflag FLAG_PJR_JESSIE_JAMES_2_DEFEATED
 	msgbox GoldenrodUnderground_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -506,6 +512,7 @@ GoldenrodCity_UndergroundSwitches_EventScript_Grunt11::
 
 GoldenrodCity_UndergroundSwitches_EventScript_Grunt27::
     trainerbattle_double TRAINER_GRUNT_10_HNS, GoldenrodUnderground_Text_JessieJamesSeen, GoldenrodUnderground_Text_JessieJamesBeaten, GoldenrodUnderground_Text_JessieJamesNeedTwo
+	setflag FLAG_PJR_JESSIE_JAMES_2_DEFEATED
 	msgbox GoldenrodUnderground_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
 	end
 

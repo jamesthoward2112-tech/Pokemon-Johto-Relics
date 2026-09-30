@@ -1,5 +1,14 @@
 GoldenrodCity_RadioTower_4F_hns_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesLoad
 	.byte 0
+
+GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesLoad::
+	call_if_unset FLAG_PJR_JESSIE_JAMES_3_DEFEATED, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesLoad_ResetTrainer
+	end
+
+GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesLoad_ResetTrainer::
+	cleartrainerflag TRAINER_GRUNT_9_HNS
+	return
 
 GoldenrodCity_RadioTower_4F4_EventScript_Sign1::
 	lock
@@ -17,11 +26,13 @@ GoldenrodCity_RadioTower_4F4_EventScript_Sign2::
 
 GoldenrodRaidoTower4_EventScript_Grunt28::
 	trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen, GoldenrodCity_RadioTower_4F4_Text_JessieJamesBeaten, GoldenrodCity_RadioTower_4F4_Text_JessieJamesNeedTwo
+	setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED
 	msgbox GoldenrodCity_RadioTower_4F4_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
 	end
 
 GoldenrodRaidoTower4_EventScript_Grunt9::
 	trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen, GoldenrodCity_RadioTower_4F4_Text_JessieJamesBeaten, GoldenrodCity_RadioTower_4F4_Text_JessieJamesNeedTwo
+	setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED
 	msgbox GoldenrodCity_RadioTower_4F4_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
 	end
 

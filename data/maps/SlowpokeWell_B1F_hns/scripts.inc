@@ -1,5 +1,14 @@
 SlowpokeWell_B1F_hns_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, SlowpokeWell_B1F_EventScript_JessieJamesLoad
 	.byte 0
+
+SlowpokeWell_B1F_EventScript_JessieJamesLoad::
+	call_if_unset FLAG_PJR_JESSIE_JAMES_1_DEFEATED, SlowpokeWell_B1F_EventScript_JessieJamesLoad_ResetTrainer
+	end
+
+SlowpokeWell_B1F_EventScript_JessieJamesLoad_ResetTrainer::
+	cleartrainerflag TRAINER_GRUNT_21_HNS
+	return
 
 SlowpokeWell_B1F_EventScript_Item_Super_Potion_1::
 	finditem ITEM_SUPER_POTION
@@ -25,11 +34,13 @@ SlowpokeWell_B1F_EventScript_Kurt::
 
 SlowpokeWell_B1F_EventScript_Grunt21::
 	trainerbattle_double TRAINER_GRUNT_21_HNS, SlowpokeWell_B1F_Text_JessieJamesSeen, SlowpokeWell_B1F_Text_JessieJamesBeaten, SlowpokeWell_B1F_Text_JessieJamesNeedTwo
+	setflag FLAG_PJR_JESSIE_JAMES_1_DEFEATED
 	msgbox SlowpokeWell_B1F_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
 	end
 
 SlowpokeWell_B1F_EventScript_Grunt22F::
 	trainerbattle_double TRAINER_GRUNT_21_HNS, SlowpokeWell_B1F_Text_JessieJamesSeen, SlowpokeWell_B1F_Text_JessieJamesBeaten, SlowpokeWell_B1F_Text_JessieJamesNeedTwo
+	setflag FLAG_PJR_JESSIE_JAMES_1_DEFEATED
 	msgbox SlowpokeWell_B1F_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
 	end
 
