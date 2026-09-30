@@ -18868,7 +18868,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 
                               #endif
                             #endif
-                                ,{EVO_LEVEL, 0, SPECIES_CHAMPEON, CONDITIONS({IF_TIME, TIME_DAY}, {IF_HOLD_ITEM, ITEM_EXPERT_BELT})},
+                                {EVO_LEVEL, 0, SPECIES_CHAMPEON, CONDITIONS({IF_TIME, TIME_DAY}, {IF_HOLD_ITEM, ITEM_EXPERT_BELT})},
                                 {EVO_LEVEL, 0, SPECIES_LEPIDEON, CONDITIONS({IF_TIME, TIME_DAY}, {IF_HOLD_ITEM, ITEM_SILVER_POWDER})},
                                 {EVO_LEVEL, 0, SPECIES_SPHYNXEON, CONDITIONS({IF_TIME, TIME_DAY}, {IF_HOLD_ITEM, ITEM_SOFT_SAND})},
                                 {EVO_LEVEL, 0, SPECIES_GUARDEON, CONDITIONS({IF_TIME, TIME_NIGHT}, {IF_HOLD_ITEM, ITEM_METAL_COAT})},
