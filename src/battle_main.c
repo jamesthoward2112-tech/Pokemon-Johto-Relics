@@ -3797,8 +3797,25 @@ static void DoBattleIntro(void)
     case BATTLE_INTRO_STATE_INTRO_TEXT:
         if (!IsBattlerMarkedForControllerExec(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)))
         {
-            PrepareStringBattle(STRINGID_INTROMSG, GetBattlerAtPosition(B_POSITION_PLAYER_LEFT));
-            gBattleStruct->eventState.battleIntro++;
+            // PJR QoL: ordinary random encounters do not stop on
+            // "Wild X appeared!". Special/tutorial/legendary encounters keep it.
+            if (!(gBattleTypeFlags & (BATTLE_TYPE_TRAINER
+                                   | BATTLE_TYPE_FIRST_BATTLE
+                                   | BATTLE_TYPE_CATCH_TUTORIAL
+                                   | BATTLE_TYPE_LEGENDARY
+                                   | BATTLE_TYPE_GHOST
+                                   | BATTLE_TYPE_RAID
+                                   | BATTLE_TYPE_RECORDED
+                                   | BATTLE_TYPE_RECORDED_LINK
+                                   | BATTLE_TYPE_LINK)))
+            {
+                gBattleStruct->eventState.battleIntro = BATTLE_INTRO_STATE_QUICK_RUN;
+            }
+            else
+            {
+                PrepareStringBattle(STRINGID_INTROMSG, GetBattlerAtPosition(B_POSITION_PLAYER_LEFT));
+                gBattleStruct->eventState.battleIntro++;
+            }
         }
         break;
     case BATTLE_INTRO_STATE_WAIT_FOR_INTRO_TEXT:
@@ -3824,15 +3841,18 @@ static void DoBattleIntro(void)
         if (!gBattleControllerExecFlags)
         {
             u8 runType = gSaveblock3.challengeSettings.runType;
-            bool32 runPressed = FALSE;
+            bool32 pjrRRunPressed = JOY_HELD(R_BUTTON);
+            bool32 runPressed = pjrRRunPressed;
             if (runType == 1)
-                runPressed = (JOY_HELD(R_BUTTON) && JOY_HELD(L_BUTTON));
+                runPressed |= (JOY_HELD(R_BUTTON) && JOY_HELD(L_BUTTON));
             else if (runType == 3)
-                runPressed = JOY_HELD(B_BUTTON);
+                runPressed |= JOY_HELD(B_BUTTON);
 
             if (runPressed)
             {
                 battler = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
+                if (pjrRRunPressed)
+                    gBattleStruct->pjrQuickRun = TRUE;
                 if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
                 {
                     // The player has no battler in a Safari battle (its gBattleMons entry is
@@ -3850,6 +3870,7 @@ static void DoBattleIntro(void)
                     gBattleMainFunc = HandleEndTurn_RanFromBattle;
                     return;
                 }
+                gBattleStruct->pjrQuickRun = FALSE;
                 PrepareStringBattle(STRINGID_CANTESCAPE, battler);
             }
             if (B_FAST_INTRO_PKMN_TEXT == TRUE)
@@ -5772,17 +5793,24 @@ static void HandleEndTurn_RanFromBattle(void)
     }
     else
     {
-        switch (gProtectStructs[gBattlerAttacker].fleeType)
+        if (gBattleStruct->pjrQuickRun)
         {
-        default:
-            gBattlescriptCurrInstr = BattleScript_GotAwaySafely;
-            break;
-        case FLEE_ITEM:
-            gBattlescriptCurrInstr = BattleScript_SmokeBallEscape;
-            break;
-        case FLEE_ABILITY:
-            gBattlescriptCurrInstr = BattleScript_RanAwayUsingMonAbility;
-            break;
+            gBattlescriptCurrInstr = BattleScript_PJRQuickRun;
+        }
+        else
+        {
+            switch (gProtectStructs[gBattlerAttacker].fleeType)
+            {
+            default:
+                gBattlescriptCurrInstr = BattleScript_GotAwaySafely;
+                break;
+            case FLEE_ITEM:
+                gBattlescriptCurrInstr = BattleScript_SmokeBallEscape;
+                break;
+            case FLEE_ABILITY:
+                gBattlescriptCurrInstr = BattleScript_RanAwayUsingMonAbility;
+                break;
+            }
         }
     }
 

@@ -305,6 +305,7 @@ static void HandleInputChooseAction(enum BattlerId battler)
     // The normal battle engine still decides whether escape is allowed/succeeds.
     if (JOY_NEW(R_BUTTON) && !(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
     {
+        gBattleStruct->pjrQuickRun = TRUE;
         PlaySE(SE_SELECT);
         TryHideLastUsedBall();
         BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_RUN, 0);

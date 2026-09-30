@@ -716,7 +716,8 @@ struct BattleStruct
     u8 moveBouncer;
     u8 dancerSavedAttacker:3;
     u8 dancerSavedTarget:3;
-    u8 padding:2;
+    u8 pjrQuickRun:1; // R-button escape: suppress normal success text.
+    u8 padding:1;
 };
 
 struct AiBattleData

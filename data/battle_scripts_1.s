@@ -4325,6 +4325,9 @@ BattleScript_RanAwayUsingMonAbility::
 	waitmessage B_WAIT_TIME_LONG
 	end2
 
+BattleScript_PJRQuickRun::
+	end2
+
 BattleScript_GotAwaySafely::
 	printstring STRINGID_GOTAWAYSAFELY
 	waitmessage B_WAIT_TIME_LONG
