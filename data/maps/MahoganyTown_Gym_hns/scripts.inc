@@ -88,7 +88,8 @@ MahoganyTown_Gym_EventScript_PryceVictory::
 	msgbox MahoganyTown_Gym_Text_HailSpeech, MSGBOX_DEFAULT
 	setvar VAR_MAHOGANY_TOWN_STATE, 15
     setrespawn HEAL_LOCATION_MAHOGANY_TOWN_HNS
-    call_if_eq VAR_NUM_BADGES, 7, MahoganyTown_Gym_EventScript_SetupElmRocketCall
+    @ Radio Tower takeover depends on Rocket HQ completion, not badge order.
+    call_if_eq VAR_ELECTRODES_FAINTED, 4, MahoganyTown_Gym_EventScript_SetupElmRocketCall
 	closemessage
 	release
 	end

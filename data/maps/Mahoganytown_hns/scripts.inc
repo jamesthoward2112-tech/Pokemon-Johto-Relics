@@ -5,7 +5,13 @@ Mahoganytown_hns_MapScripts::
 
 Mahoganytown_OnLoad::
 	call_if_ge VAR_MAHOGANY_TOWN_STATE, 13, MahoganyTown_EventScript_FixTree
+	@ Repair saves made by builds where beating Pryce before badge 7 failed to arm the takeover.
+	call_if_eq VAR_MAHOGANY_TOWN_STATE, 15, MahoganyTown_EventScript_RepairRocketTakeoverTrigger
 	end
+
+MahoganyTown_EventScript_RepairRocketTakeoverTrigger::
+	setvar VAR_TRIGGER_ELM_ROCKET_CALL, 1
+	return
 
 MahoganyTown_EventScript_FixTree::
 	setmetatile 18, 8, 0x378, FALSE
