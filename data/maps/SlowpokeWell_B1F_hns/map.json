@@ -139,23 +139,23 @@
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_SEE_ALL_DIRECTIONS",
-      "trainer_sight_or_berry_tree_id": "1",
-      "script": "SlowpokeWell_B1F_EventScript_Grunt21",
-      "flag": "FLAG_HIDE_AZALEA_TOWN_ROCKETS"
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SlowpokeWell_B1F_EventScript_JessieJamesInteract",
+      "flag": "FLAG_PJR_JESSIE_JAMES_1_DEFEATED"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_JESSIE_HNS",
       "x": 27,
       "y": 8,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_SEE_ALL_DIRECTIONS",
-      "trainer_sight_or_berry_tree_id": "1",
-      "script": "SlowpokeWell_B1F_EventScript_Grunt22F",
-      "flag": "FLAG_HIDE_AZALEA_TOWN_ROCKETS"
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SlowpokeWell_B1F_EventScript_JessieJamesInteract",
+      "flag": "FLAG_PJR_JESSIE_JAMES_1_DEFEATED"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PROTON_HNS",
@@ -383,7 +383,35 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "SlowpokeWell_B1F_EventScript_JessieJamesTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 27,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "SlowpokeWell_B1F_EventScript_JessieJamesTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "SlowpokeWell_B1F_EventScript_JessieJamesTrigger"
+    }
+  ],
   "bg_events": [],
   "game_version": "hns",
   "region": "REGION_JOHTO"

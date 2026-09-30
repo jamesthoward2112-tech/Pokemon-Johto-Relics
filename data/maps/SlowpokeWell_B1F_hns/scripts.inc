@@ -32,16 +32,61 @@ SlowpokeWell_B1F_EventScript_Kurt::
 	closemessage
 	end
 
-SlowpokeWell_B1F_EventScript_Grunt21::
+SlowpokeWell_B1F_EventScript_JessieJamesTrigger::
+	goto_if_set FLAG_PJR_JESSIE_JAMES_1_DEFEATED, SlowpokeWell_B1F_EventScript_JessieJamesAlreadyDefeated
+	lockall
+	applymovement 10, SlowpokeWell_B1F_Movement_JessieJamesApproach
+	applymovement 11, SlowpokeWell_B1F_Movement_JessieJamesApproach
+	waitmovement 0
+	applymovement 10, Common_Movement_FacePlayer
+	applymovement 11, Common_Movement_FacePlayer
+	waitmovement 0
+	releaseall
+	setvar VAR_LAST_TALKED, 10
+	goto SlowpokeWell_B1F_EventScript_JessieJamesBattle
+
+SlowpokeWell_B1F_EventScript_JessieJamesInteract::
+	goto_if_set FLAG_PJR_JESSIE_JAMES_1_DEFEATED, SlowpokeWell_B1F_EventScript_JessieJamesAlreadyDefeated
+	lockall
+	applymovement 10, Common_Movement_FacePlayer
+	applymovement 11, Common_Movement_FacePlayer
+	waitmovement 0
+	releaseall
+	setvar VAR_LAST_TALKED, 10
+	goto SlowpokeWell_B1F_EventScript_JessieJamesBattle
+
+SlowpokeWell_B1F_EventScript_JessieJamesBattle::
 	trainerbattle_double TRAINER_GRUNT_21_HNS, SlowpokeWell_B1F_Text_JessieJamesSeen, SlowpokeWell_B1F_Text_JessieJamesBeaten, SlowpokeWell_B1F_Text_JessieJamesNeedTwo
+	lockall
+	msgbox SlowpokeWell_B1F_Text_JessieJamesAfter, MSGBOX_DEFAULT
+	closemessage
+	getplayerxy VAR_TEMP_1, VAR_TEMP_2
+	goto_if_eq VAR_TEMP_1, 28, SlowpokeWell_B1F_EventScript_JessieJamesPlayerTwoLeft
+	goto_if_eq VAR_TEMP_1, 27, SlowpokeWell_B1F_EventScript_JessieJamesPlayerOneLeft
+	goto SlowpokeWell_B1F_EventScript_JessieJamesExit
+
+SlowpokeWell_B1F_EventScript_JessieJamesPlayerTwoLeft::
+	applymovement OBJ_EVENT_ID_PLAYER, SlowpokeWell_B1F_Movement_PlayerTwoLeft
+	waitmovement 0
+	goto SlowpokeWell_B1F_EventScript_JessieJamesExit
+
+SlowpokeWell_B1F_EventScript_JessieJamesPlayerOneLeft::
+	applymovement OBJ_EVENT_ID_PLAYER, SlowpokeWell_B1F_Movement_PlayerOneLeft
+	waitmovement 0
+
+SlowpokeWell_B1F_EventScript_JessieJamesExit::
+	applymovement 10, SlowpokeWell_B1F_Movement_JessieJamesExit
+	applymovement 11, SlowpokeWell_B1F_Movement_JessieJamesExit
+	waitmovement 0
+	removeobject 10
+	removeobject 11
 	setflag FLAG_PJR_JESSIE_JAMES_1_DEFEATED
-	msgbox SlowpokeWell_B1F_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
+	setvar VAR_TEMP_0, 1
+	releaseall
 	end
 
-SlowpokeWell_B1F_EventScript_Grunt22F::
-	trainerbattle_double TRAINER_GRUNT_21_HNS, SlowpokeWell_B1F_Text_JessieJamesSeen, SlowpokeWell_B1F_Text_JessieJamesBeaten, SlowpokeWell_B1F_Text_JessieJamesNeedTwo
-	setflag FLAG_PJR_JESSIE_JAMES_1_DEFEATED
-	msgbox SlowpokeWell_B1F_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
+SlowpokeWell_B1F_EventScript_JessieJamesAlreadyDefeated::
+	setvar VAR_TEMP_0, 1
 	end
 
 SlowpokeWell_B1F_EventScript_Eto::
@@ -81,6 +126,30 @@ SlowpokeWell_B1F_EventScript_Proton::
 	warp MAP_AZALEA_TOWN_KURTS_HOUSE_HNS, 15, 4
 	waitstate
 	end
+
+SlowpokeWell_B1F_Movement_JessieJamesApproach:
+	walk_down
+	step_end
+
+SlowpokeWell_B1F_Movement_JessieJamesExit:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+SlowpokeWell_B1F_Movement_PlayerOneLeft:
+	walk_left
+	step_end
+
+SlowpokeWell_B1F_Movement_PlayerTwoLeft:
+	walk_left
+	walk_left
+	step_end
 
 SlowpokeWell_B1F_Movement_Kurt:
 	walk_left
