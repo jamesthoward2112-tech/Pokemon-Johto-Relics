@@ -482,7 +482,7 @@ GoldenrodCity_EventScript_PJRGiftTotodile::
 	goto_if_eq VAR_RESULT, NO, GoldenrodCity_EventScript_PJRGiftTotodile_Declined
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TOTODILE
 	bufferspeciesname STR_VAR_1, SPECIES_TOTODILE
-	givemon SPECIES_TOTODILE, 25
+	givemon SPECIES_TOTODILE, 20
 	goto_if_eq VAR_RESULT, MON_CANT_GIVE, GoldenrodCity_EventScript_PJRGiftTotodile_NoRoom
 	setflag FLAG_PJR_GOT_TOTODILE
 	removeobject LOCALID_PJR_GIFT_TOTODILE

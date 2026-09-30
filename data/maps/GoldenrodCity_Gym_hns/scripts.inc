@@ -75,8 +75,8 @@ GoldenrodCity_Gym_EventScript_WhitneyBadge::
 	setvar VAR_0x8008, 3
 	call Common_EventScript_SetGymTrainers_hns
 	call GoldenrodCity_Gym_EventScript_PJRReward
-	giveitem ITEM_TM_ATTRACT
-	msgbox GoldenrodCity_Gym_Text_WhitneyAttract, MSGBOX_DEFAULT
+	giveitem ITEM_TM_RETURN
+	msgbox GoldenrodCity_Gym_Text_WhitneyReturn, MSGBOX_DEFAULT
 	setvar VAR_GOLDENROD_CITY_STATE, 5
 	closemessage
 	release
@@ -84,7 +84,7 @@ GoldenrodCity_Gym_EventScript_WhitneyBadge::
 
 GoldenrodCity_Gym_EventScript_PJRReward::
 	goto_if_set FLAG_PJR_GYM_REWARD_WHITNEY, GoldenrodCity_Gym_EventScript_PJRRewardDone
-	giveitem ITEM_SILK_SCARF
+	giveitem ITEM_EVIOLITE
 	goto_if_eq VAR_RESULT, FALSE, GoldenrodCity_Gym_EventScript_PJRRewardDone
 	addmoney 10000
 	setflag FLAG_PJR_GYM_REWARD_WHITNEY
@@ -173,11 +173,11 @@ GoldenrodCity_Gym_Text_WhitneyPlainBadge:
 	.string "DEFENSE.\p"
     .string "Oh, you can have this too!$"
 
-GoldenrodCity_Gym_Text_WhitneyAttract:
-    .string "It's ATTRACT! It makes full use of a\n"
-    .string "POKéMON's charm.\p"
-    .string "Isn't it just perfect for a cutie\n"
-    .string "like me?$"
+GoldenrodCity_Gym_Text_WhitneyReturn:
+    .string "It's RETURN! The closer you are to\n"
+    .string "your POKéMON, the stronger it gets.\p"
+    .string "Treat them well and they'll give it\n"
+    .string "everything they've got!$"
 
 GoldenrodCity_Gym_Text_WhitneyGoodCry:
     .string "Ah, that was a good cry!$"
