@@ -53,7 +53,35 @@ GoldenrodCity_RadioTower_5F_EventScript_Petrel2::
 GoldenrodCity_RadioTower_5F_EventScript_Director::
 	lock
 	faceplayer
+	goto_if_eq VAR_LUGIA_OR_HOOH, 0, GoldenrodCity_RadioTower_5F_EventScript_RecoverMissedWing
 	msgbox GoldenrodCity_RadioTower_5F_Text_DirectorIntro, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+GoldenrodCity_RadioTower_5F_EventScript_ChooseWing::
+	msgbox GoldenrodCity_RadioTower_5F_Text_ChooseWing, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, GoldenrodCity_RadioTower_5F_EventScript_ChooseSilverWing
+	setvar VAR_LUGIA_OR_HOOH, 2
+	return
+
+GoldenrodCity_RadioTower_5F_EventScript_ChooseSilverWing::
+	setvar VAR_LUGIA_OR_HOOH, 1
+	return
+
+GoldenrodCity_RadioTower_5F_EventScript_RecoverMissedWing::
+	msgbox GoldenrodCity_RadioTower_5F_Text_DirectorForgotWing, MSGBOX_DEFAULT
+	call GoldenrodCity_RadioTower_5F_EventScript_ChooseWing
+	goto_if_eq VAR_LUGIA_OR_HOOH, 1, GoldenrodCity_RadioTower_5F_EventScript_RecoverSilverWing
+	giveitem ITEM_RAINBOW_WING
+	msgbox GoldenrodCity_RadioTower_5F_Text_RecoveredRainbowWing, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+GoldenrodCity_RadioTower_5F_EventScript_RecoverSilverWing::
+	giveitem ITEM_SILVER_WING
+	msgbox GoldenrodCity_RadioTower_5F_Text_RecoveredSilverWing, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
@@ -174,6 +202,7 @@ GoldenrodCity_RadioTower_5F_EventScript_Archer::
 	end
 
 GoldenrodCity_RadioTower_5F_EventScript_WingTop::
+	call_if_eq VAR_LUGIA_OR_HOOH, 0, GoldenrodCity_RadioTower_5F_EventScript_ChooseWing
 	applymovement LOCALID_DIRECTOR_STUDIO, GoldenrodCity_RadioTower_5F_Movement_WalkToPlayerTop
 	waitmovement 0
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
@@ -187,6 +216,7 @@ GoldenrodCity_RadioTower_5F_EventScript_WingTop::
 	end
 
 GoldenrodCity_RadioTower_5F_EventScript_WingMid::
+	call_if_eq VAR_LUGIA_OR_HOOH, 0, GoldenrodCity_RadioTower_5F_EventScript_ChooseWing
 	applymovement LOCALID_DIRECTOR_STUDIO, GoldenrodCity_RadioTower_5F_Movement_WalkToPlayerMid
 	waitmovement 0
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
@@ -200,6 +230,7 @@ GoldenrodCity_RadioTower_5F_EventScript_WingMid::
 	end
 
 GoldenrodCity_RadioTower_5F_EventScript_WingBot::
+	call_if_eq VAR_LUGIA_OR_HOOH, 0, GoldenrodCity_RadioTower_5F_EventScript_ChooseWing
 	applymovement LOCALID_DIRECTOR_STUDIO, GoldenrodCity_RadioTower_5F_Movement_WalkToPlayerBot
 	waitmovement 0
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
@@ -418,6 +449,28 @@ GoldenrodCity_RadioTower_5F_Text_DirectorFakeout:
 	.string "This is what they call FAKE OUT.\p"
 	.string "I really must go back to my OFFICE\n"
 	.string "this time. See ya!$"
+
+GoldenrodCity_RadioTower_5F_Text_DirectorForgotWing:
+	.string "DIRECTOR: {PLAYER}! Wait!\p"
+	.string "I just realized I never gave you\n"
+	.string "your reward for saving us.\p"
+	.string "Let's fix that right now.$"
+
+GoldenrodCity_RadioTower_5F_Text_ChooseWing:
+	.string "The SILVER WING is tied to LUGIA\n"
+	.string "at the WHIRL ISLANDS.\p"
+	.string "Would you like the SILVER WING?\p"
+	.string "Choose NO for the RAINBOW WING.$"
+
+GoldenrodCity_RadioTower_5F_Text_RecoveredSilverWing:
+	.string "DIRECTOR: There you are!\p"
+	.string "That SILVER WING may lead you to\n"
+	.string "LUGIA at the WHIRL ISLANDS.$"
+
+GoldenrodCity_RadioTower_5F_Text_RecoveredRainbowWing:
+	.string "DIRECTOR: There you are!\p"
+	.string "That RAINBOW WING may lead you to\n"
+	.string "HO-OH at the TIN TOWER.$"
 
 GoldenrodCity_RadioTower_5F_Text_DirectorIntro:
 	.string "DIRECTOR: Hello, {PLAYER}!\p"
