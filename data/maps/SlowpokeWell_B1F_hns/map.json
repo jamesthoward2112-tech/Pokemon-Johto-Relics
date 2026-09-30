@@ -139,8 +139,8 @@
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 4,
       "movement_range_y": 4,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "4",
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "SlowpokeWell_B1F_EventScript_Grunt21",
       "flag": "FLAG_HIDE_AZALEA_TOWN_ROCKETS"
     },
