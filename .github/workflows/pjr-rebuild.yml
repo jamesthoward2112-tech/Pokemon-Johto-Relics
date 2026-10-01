@@ -2,7 +2,7 @@ name: PJR Alpha build
 
 on:
   push:
-    branches: [pjr-rebuild]
+    branches: [pjr-rebuild, pjr-rock-shop-ecruteak]
   workflow_dispatch:
 
 permissions:
