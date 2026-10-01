@@ -34,3 +34,10 @@ The generic Emerald/FireRed/LeafGreen CI is intentionally restricted to `master`
 Exact Azul Agua donor tile sources used by the Ecruteak Rock Shop are stored under `assets/pjr_azul_agua/` and are hash-checked before every PJR Alpha build:
 - building tiles SHA-256: `19d1988dc7426e0be5957918de876e7a500ae327cc99bf53ef55d172d6a0f240`
 - rock-shop tiles SHA-256: `5dac0833356b45617e3321e3686a15460a4f88d3f631cd1697071802f21bcc6a`
+
+## Current housekeeping state — 1 October 2026
+
+- The Ecruteak Rock Shop feature was validated by PJR Alpha Run 143 and merged into `pjr-rebuild`.
+- Canonical `pjr-rebuild` validation then succeeded as PJR Alpha Run 144.
+- The feature branch is now historical; the dedicated Alpha workflow no longer builds it.
+- The inherited repository default branch remains upstream-oriented, so `PJR_ACTIVE_BRANCH.md` on that branch points tooling to `pjr-rebuild`.
