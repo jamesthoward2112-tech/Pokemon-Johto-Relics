@@ -2,11 +2,13 @@ name: PJR Alpha build
 
 on:
   push:
-    branches: [pjr-rebuild, pjr-rock-shop-ecruteak]
+    branches: [pjr-rebuild]
+  pull_request:
+    branches: [pjr-rebuild]
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 env:
   UNUSED_ERROR: 0
