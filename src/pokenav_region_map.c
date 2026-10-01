@@ -200,8 +200,6 @@ static bool32 CanFlyFromPokeGearRegionMap(void)
 
 u32 PokenavCallback_Init_RegionMap(void)
 {
-    RepairPokeGearFlyVisitFlags();
-
     struct Pokenav_RegionMapMenu *state = AllocSubstruct(POKENAV_SUBSTRUCT_REGION_MAP_STATE, sizeof(struct Pokenav_RegionMapMenu));
     if (!state)
         return FALSE;

@@ -140,22 +140,22 @@ const u16 gMonShinyPalette_Donphalanx[] = INCBIN_U16("graphics/pokemon/donphan/s
 const u32 gMonBackPic_Donphalanx[] = INCBIN_U32("graphics/pokemon/donphan/back.4bpp.smol");
 const u8 gMonIcon_Donphalanx[] = INCBIN_U8("graphics/pokemon/donphan/icon.4bpp");
 
-const u32 gMonFrontPic_Faeranium[] = INCBIN_U32("graphics/pokemon/meganium/mega/front.4bpp.smol");
-const u16 gMonPalette_Faeranium[] = INCBIN_U16("graphics/pokemon/meganium/mega/normal.gbapal");
-const u16 gMonShinyPalette_Faeranium[] = INCBIN_U16("graphics/pokemon/meganium/mega/shiny.gbapal");
-const u32 gMonBackPic_Faeranium[] = INCBIN_U32("graphics/pokemon/meganium/mega/back.4bpp.smol");
+const u32 gMonFrontPic_Faeranium[] = INCBIN_U32("graphics/pokemon/pjr/faeranium/front.4bpp.smol");
+const u16 gMonPalette_Faeranium[] = INCBIN_U16("graphics/pokemon/pjr/faeranium/normal.gbapal");
+const u16 gMonShinyPalette_Faeranium[] = INCBIN_U16("graphics/pokemon/pjr/faeranium/shiny.gbapal");
+const u32 gMonBackPic_Faeranium[] = INCBIN_U32("graphics/pokemon/pjr/faeranium/back.4bpp.smol");
 const u8 gMonIcon_Faeranium[] = INCBIN_U8("graphics/pokemon/meganium/mega/icon.4bpp");
 
-const u32 gMonFrontPic_Pyroclast[] = INCBIN_U32("graphics/pokemon/typhlosion/hisui/front.4bpp.smol");
-const u16 gMonPalette_Pyroclast[] = INCBIN_U16("graphics/pokemon/typhlosion/hisui/normal.gbapal");
-const u16 gMonShinyPalette_Pyroclast[] = INCBIN_U16("graphics/pokemon/typhlosion/hisui/shiny.gbapal");
-const u32 gMonBackPic_Pyroclast[] = INCBIN_U32("graphics/pokemon/typhlosion/hisui/back.4bpp.smol");
+const u32 gMonFrontPic_Pyroclast[] = INCBIN_U32("graphics/pokemon/pjr/pyroclast/front.4bpp.smol");
+const u16 gMonPalette_Pyroclast[] = INCBIN_U16("graphics/pokemon/pjr/pyroclast/normal.gbapal");
+const u16 gMonShinyPalette_Pyroclast[] = INCBIN_U16("graphics/pokemon/pjr/pyroclast/shiny.gbapal");
+const u32 gMonBackPic_Pyroclast[] = INCBIN_U32("graphics/pokemon/pjr/pyroclast/back.4bpp.smol");
 const u8 gMonIcon_Pyroclast[] = INCBIN_U8("graphics/pokemon/typhlosion/hisui/icon.4bpp");
 
-const u32 gMonFrontPic_Feralodon[] = INCBIN_U32("graphics/pokemon/feraligatr/mega/front.4bpp.smol");
-const u16 gMonPalette_Feralodon[] = INCBIN_U16("graphics/pokemon/feraligatr/mega/normal.gbapal");
-const u16 gMonShinyPalette_Feralodon[] = INCBIN_U16("graphics/pokemon/feraligatr/mega/shiny.gbapal");
-const u32 gMonBackPic_Feralodon[] = INCBIN_U32("graphics/pokemon/feraligatr/mega/back.4bpp.smol");
+const u32 gMonFrontPic_Feralodon[] = INCBIN_U32("graphics/pokemon/pjr/feralodon/front.4bpp.smol");
+const u16 gMonPalette_Feralodon[] = INCBIN_U16("graphics/pokemon/pjr/feralodon/normal.gbapal");
+const u16 gMonShinyPalette_Feralodon[] = INCBIN_U16("graphics/pokemon/pjr/feralodon/shiny.gbapal");
+const u32 gMonBackPic_Feralodon[] = INCBIN_U32("graphics/pokemon/pjr/feralodon/back.4bpp.smol");
 const u8 gMonIcon_Feralodon[] = INCBIN_U8("graphics/pokemon/feraligatr/mega/icon.4bpp");
 
 const u32 gMonFrontPic_Drakeon[] = INCBIN_U32("graphics/pokemon/drakeon/front.4bpp.smol");
