@@ -131,3 +131,5 @@
     - [Release Schedule and Process](team_procedures/schedule.md)
     - [Merge Checklist](team_procedures/merge_checklist.md)
     - [Scope Guidelines](team_procedures/scope.md)
+
+- [PJR Branch Policy](./PJR_BRANCH_POLICY.md)
