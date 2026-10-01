@@ -56,7 +56,7 @@ EcruteakCity_RockShop_Advanced:
 	pokemartlistend
 
 EcruteakCity_RockShop_Text_Collector:
-	.string "These stones have been gathered\\n"
-	.string "from all across JOHTO.\\p"
-	.string "Some seem to react strangely near\\n"
+	.string "These stones have been gathered\n"
+	.string "from all across JOHTO.\p"
+	.string "Some seem to react strangely near\n"
 	.string "ECRUTEAK's old towers...$"
