@@ -93,6 +93,11 @@ jobs:
                       continue
                   shutil.copy2(species_dir / name, dst / name)
           PY
+      - name: Repair Azul Agua PNG CRCs
+        run: |
+          python3 tools/pjr_repair_png_crc.py \
+            data/tilesets/primary/azul_agua_building_hns/tiles.png \
+            data/tilesets/secondary/azul_agua_rock_shop_hns/tiles.png
       - name: Build PJR Alpha
         run: |
           make hns -j4 -O

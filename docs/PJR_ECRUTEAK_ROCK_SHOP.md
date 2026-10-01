@@ -33,3 +33,6 @@ Source/provenance: Azul Agua / Water Blue Beta 1.4 ML by gameboy_cl. Keep donor 
 
 ### Exact donor tile graphics
 The HnS wrapper now compiles the exact indexed 16-colour tile PNGs extracted from Azul Agua rather than the repository's vanilla FireRed tile PNGs. FireRed metatile structures are retained only for index/behaviour compatibility.
+
+### Build-note: donor PNG CRC repair
+The extracted donor tile PNG data is preserved exactly. The dedicated PJR Alpha workflow runs `tools/pjr_repair_png_crc.py` before `make hns` to recalculate PNG chunk CRC fields that were damaged by the binary transport path. This changes CRC metadata only, not the donor pixel/chunk data.
