@@ -4182,7 +4182,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .abilities = { ABILITY_WONDER_GUARD, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
-        .speciesName = _("UNOWN"),
+        .speciesName = _("I-UNOWN"),
         .cryId = CRY_UNOWN,
         .natDexNum = NATIONAL_DEX_UNOWN,
         .categoryName = _("Symbol"),
@@ -4220,7 +4220,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
             gShinyOverworldPalette_Unown,
         )
         .teachingType = TM_ILLITERATE,
-        .levelUpLearnset = sUnownLevelUpLearnset,
+        .levelUpLearnset = sUnownEyeLevelUpLearnset,
         .teachableLearnset = sUnownTeachableLearnset,
         .formSpeciesIdTable = sUnownFormSpeciesIdTable,
         .randomizerMode = MON_RANDOMIZER_INVALID,

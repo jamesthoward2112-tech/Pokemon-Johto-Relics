@@ -23060,6 +23060,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_POISON,
+            .chance = 30,
+        }),
         .battleAnimScript = gBattleAnimMove_PoisonJab,
     },
 
@@ -23254,6 +23258,108 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_SPECIAL,
         .soundMove = TRUE,
         .battleAnimScript = gBattleAnimMove_SacredFire,
+    },
+
+
+    [MOVE_FORTRESS_CRUSH] =
+    {
+        .name = COMPOUND_STRING("FORTRESS CRUSH"),
+        .description = COMPOUND_STRING(
+            "Crushes with hardened armor.\n"
+            "Uses the user's Defense."),
+        .effect = EFFECT_BODY_PRESS,
+        .power = 90,
+        .type = TYPE_ROCK,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .battleAnimScript = gBattleAnimMove_BodyPress,
+    },
+
+    [MOVE_SIEGE_TUSK] =
+    {
+        .name = COMPOUND_STRING("SIEGE TUSK"),
+        .description = COMPOUND_STRING(
+            "A crushing tusk charge that\n"
+            "scatters pointed stones."),
+        .effect = EFFECT_STONE_AXE,
+        .power = 95,
+        .type = TYPE_GROUND,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .sheerForceOverride = TRUE,
+        }),
+        .battleAnimScript = gBattleAnimMove_StoneAxe,
+    },
+
+    [MOVE_ETERNAL_BLOOM] =
+    {
+        .name = COMPOUND_STRING("ETERNAL BLOOM"),
+        .description = COMPOUND_STRING(
+            "Drains life with ancient light.\n"
+            "Heals half the damage dealt."),
+        .effect = EFFECT_ABSORB,
+        .power = 90,
+        .type = TYPE_FAIRY,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .argument = { .absorbPercentage = 50 },
+        .healingMove = B_HEAL_BLOCKING >= GEN_6,
+        .battleAnimScript = gBattleAnimMove_Moonblast,
+    },
+
+    [MOVE_MAGMA_RIFT] =
+    {
+        .name = COMPOUND_STRING("MAGMA RIFT"),
+        .description = COMPOUND_STRING(
+            "Rips open a burning fissure.\n"
+            "It may burn the target."),
+        .effect = EFFECT_HIT,
+        .power = 100,
+        .type = TYPE_GROUND,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_BURN,
+            .chance = 20,
+        }),
+        .battleAnimScript = gBattleAnimMove_EarthPower,
+    },
+
+    [MOVE_DEATH_ROLL] =
+    {
+        .name = COMPOUND_STRING("DEATH ROLL"),
+        .description = COMPOUND_STRING(
+            "A savage rolling bite that\n"
+            "may make the target flinch."),
+        .effect = EFFECT_HIT,
+        .power = 95,
+        .type = TYPE_WATER,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .bitingMove = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_FLINCH,
+            .chance = 20,
+        }),
+        .battleAnimScript = gBattleAnimMove_AquaTail,
     },
 
 };
