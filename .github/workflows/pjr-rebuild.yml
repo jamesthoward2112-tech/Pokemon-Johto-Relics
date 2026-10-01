@@ -17,12 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Reconstruct clean Azul Agua rock PNG
+      - name: Restore exact Azul Agua donor tiles
         run: |
-          cat tools/pjr/azul_agua_rock_shop_tiles/part*.b64 | tr -d '\n' | base64 -d > data/tilesets/secondary/azul_agua_rock_shop_hns/tiles.png
-      - name: Restore exact Azul Agua Rock Shop tiles
-        run: |
+          base64 -d assets/pjr_azul_agua/building_tiles.png.b64 > data/tilesets/primary/azul_agua_building_hns/tiles.png
           base64 -d assets/pjr_azul_agua/rock_shop_tiles.png.b64 > data/tilesets/secondary/azul_agua_rock_shop_hns/tiles.png
+          echo "19d1988dc7426e0be5957918de876e7a500ae327cc99bf53ef55d172d6a0f240  data/tilesets/primary/azul_agua_building_hns/tiles.png" | sha256sum -c -
           echo "5dac0833356b45617e3321e3686a15460a4f88d3f631cd1697071802f21bcc6a  data/tilesets/secondary/azul_agua_rock_shop_hns/tiles.png" | sha256sum -c -
       - name: Install toolchain
         run: |
