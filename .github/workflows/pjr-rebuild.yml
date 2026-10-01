@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 env:
   UNUSED_ERROR: 0
@@ -17,6 +17,45 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Repair Azul Agua donor PNG CRCs
+        run: |
+          python3 - <<'PY'
+          import pathlib, struct, zlib
+
+          paths = [
+              pathlib.Path("data/tilesets/primary/azul_agua_building_hns/tiles.png"),
+              pathlib.Path("data/tilesets/secondary/azul_agua_rock_shop_hns/tiles.png"),
+          ]
+
+          for path in paths:
+              data = bytearray(path.read_bytes())
+              if data[:8] != b"\x89PNG\r\n\x1a\n":
+                  raise SystemExit(f"{path}: not a PNG")
+              pos = 8
+              while pos < len(data):
+                  length = struct.unpack(">I", data[pos:pos + 4])[0]
+                  kind = bytes(data[pos + 4:pos + 8])
+                  payload_end = pos + 8 + length
+                  crc_pos = payload_end
+                  if crc_pos + 4 > len(data):
+                      raise SystemExit(f"{path}: truncated {kind!r} chunk")
+                  crc = zlib.crc32(data[pos + 4:payload_end]) & 0xFFFFFFFF
+                  data[crc_pos:crc_pos + 4] = struct.pack(">I", crc)
+                  pos = crc_pos + 4
+                  if kind == b"IEND":
+                      break
+              path.write_bytes(data)
+              print(f"CRC-normalized {path}")
+          PY
+      - name: Persist repaired Azul Agua PNGs
+        run: |
+          if ! git diff --quiet --             data/tilesets/primary/azul_agua_building_hns/tiles.png             data/tilesets/secondary/azul_agua_rock_shop_hns/tiles.png; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add               data/tilesets/primary/azul_agua_building_hns/tiles.png               data/tilesets/secondary/azul_agua_rock_shop_hns/tiles.png
+            git commit -m "PJR: normalize Azul Agua donor PNG CRCs"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
       - name: Install toolchain
         run: |
           sudo apt-get update
