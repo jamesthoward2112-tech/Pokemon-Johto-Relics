@@ -197,6 +197,15 @@ static void FieldUpdateRegionMap(void)
                 PrintTitleWindowText();
                 break;
         case MAP_INPUT_A_BUTTON:
+                if (sFieldRegionMapHandler->regionMap.mapSecType == MAPSECTYPE_CITY_CANFLY
+                    && CanFlyFromFieldRegionMap())
+                {
+                    PlaySE(SE_SELECT);
+                    SetFlyDestination(&sFieldRegionMapHandler->regionMap);
+                    gSkipShowMonAnim = TRUE;
+                    ReturnToFieldFromFlyMapSelect();
+                }
+                break;
         case MAP_INPUT_B_BUTTON:
                 sFieldRegionMapHandler->state++;
                 break;
@@ -244,7 +253,7 @@ static void PrintRegionMapSecName(void)
 
 static void PrintTitleWindowText(void)
 {
-    static const u8 FlyPromptText[] = _("{R_BUTTON} FLY");
+    static const u8 FlyPromptText[] = _("{A_BUTTON} FLY");
     const u8 *region;
     if (IS_HNS)
         region = gText_Johto;
