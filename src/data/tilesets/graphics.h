@@ -4099,12 +4099,12 @@ const u16 gTilesetPalettes_JohtoBikeShop_Hns[][16] =
  */
 const u32 gTilesetTiles_AzulAguaBuilding_Hns[] =
     INCBIN_U32("data/tilesets/primary/building_frlg/tiles.4bpp.fastSmol");
-const u16 gTilesetPalettes_AzulAguaBuilding_Hns[][16] =
+const u16 gTilesetPalettes_AzulAguaBuilding_Hns[] =
     INCBIN_U16("data/tilesets/primary/azul_agua_building_hns/palettes.gbapal");
 
 const u32 gTilesetTiles_AzulAguaRockShop_Hns[] =
     INCBIN_U32("data/tilesets/secondary/pewter_gym_frlg/tiles.4bpp.fastSmol");
-const u16 gTilesetPalettes_AzulAguaRockShop_Hns[][16] =
+const u16 gTilesetPalettes_AzulAguaRockShop_Hns[] =
     INCBIN_U16("data/tilesets/secondary/azul_agua_rock_shop_hns/palettes.gbapal");
 
 const u32 gTilesetTiles_JohtoMart_Hns[] = INCBIN_U32("data/tilesets/secondary/johto_mart_hns/tiles.4bpp.fastSmol");
