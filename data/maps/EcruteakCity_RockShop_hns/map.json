@@ -16,10 +16,10 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE_HNS",
-      "x": 6,
+      "x": 2,
       "y": 3,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -29,9 +29,9 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_OLD_MAN_HNS",
-      "x": 3,
-      "y": 8,
-      "elevation": 3,
+      "x": 7,
+      "y": 5,
+      "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
@@ -43,9 +43,9 @@
   ],
   "warp_events": [
     {
-      "x": 6,
-      "y": 15,
-      "elevation": 3,
+      "x": 4,
+      "y": 7,
+      "elevation": 0,
       "dest_map": "MAP_ECRUTEAK_CITY_HNS",
       "dest_warp_id": "14"
     }
