@@ -43,7 +43,7 @@
     .backPicYOffset = 8,
     .backAnimId = BACK_ANIM_JOLT_RIGHT,
     .palette = gMonPalette_Scarabub,
-    .shinyPalette = gMonPalette_Scarabub,
+    .shinyPalette = gMonShinyPalette_Scarabub,
     .iconSprite = gMonIcon_Scarabub,
     .iconPalIndex = 3,
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
@@ -78,7 +78,7 @@
     .backPic = gMonBackPic_Heracurion, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 6,
     .backAnimId = BACK_ANIM_V_SHAKE_LOW,
     .palette = gMonPalette_Heracurion, .shinyPalette = gMonShinyPalette_Heracurion,
-    .iconSprite = gMonIcon_Heracurion, .iconPalIndex = 0,
+    .iconSprite = gMonIcon_Heracurion, .iconPalIndex = 3,
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sHeracurionLevelUpLearnset, .teachableLearnset = sHeracrossTeachableLearnset,
 },
@@ -125,9 +125,9 @@
     .backPicYOffset = 8,
     .backAnimId = BACK_ANIM_JOLT_RIGHT,
     .palette = gMonPalette_Skarmet,
-    .shinyPalette = gMonPalette_Skarmet,
+    .shinyPalette = gMonShinyPalette_Skarmet,
     .iconSprite = gMonIcon_Skarmet,
-    .iconPalIndex = 0,
+    .iconPalIndex = 3,
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sSkarmetLevelUpLearnset,
     .teachableLearnset = sSkarmoryTeachableLearnset,
@@ -156,7 +156,7 @@
     .backAnimId = BACK_ANIM_H_SHAKE,
     .palette = gMonPalette_Skarmadon, .shinyPalette = gMonShinyPalette_Skarmadon,
     .iconSprite = gMonIcon_Skarmadon,
-    .iconPalIndex = 0,
+    .iconPalIndex = 2,
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sSkarmadonLevelUpLearnset, .teachableLearnset = sSkarmoryTeachableLearnset,
 },
@@ -203,7 +203,7 @@
     .backPicYOffset = 8,
     .backAnimId = BACK_ANIM_H_SLIDE,
     .palette = gMonPalette_Mootiny,
-    .shinyPalette = gMonPalette_Mootiny,
+    .shinyPalette = gMonShinyPalette_Mootiny,
     .iconSprite = gMonIcon_Mootiny,
     .iconPalIndex = 2,
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
@@ -462,7 +462,7 @@
     .frontPic = gMonFrontPic_Mystynx, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 0,
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH,
     .backPic = gMonBackPic_Mystynx, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
-    .palette = gMonPalette_Mystynx, .shinyPalette = gMonPalette_Mystynx,
+    .palette = gMonPalette_Mystynx, .shinyPalette = gMonShinyPalette_Mystynx,
     .iconSprite = gMonIcon_Mystynx, .iconPalIndex = 2, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sMystynxLevelUpLearnset, .teachableLearnset = sMystynxInfinityTeachableLearnset,
 },
@@ -597,7 +597,7 @@
     .teachableLearnset = sPinsirTeachableLearnset,
 },
 
-#define PJR_FINAL_SPECIES(species, hp, atk, def, spa, spd, spe, type1, type2, ability1, ability2, hidden, name, cry, natdex, category, color, front, back, pal, shiny, icon, levelMoves, teachMoves) \
+#define PJR_FINAL_SPECIES(species, hp, atk, def, spa, spd, spe, type1, type2, ability1, ability2, hidden, name, cry, natdex, category, color, front, back, pal, shiny, icon, iconPal, levelMoves, teachMoves) \
 [species] = { \
     .baseHP = hp, .baseAttack = atk, .baseDefense = def, .baseSpAttack = spa, .baseSpDefense = spd, .baseSpeed = spe, \
     .types = MON_TYPES(type1, type2), .catchRate = 45, .expYield = 220, .genderRatio = PERCENT_FEMALE(50), \
@@ -609,54 +609,54 @@
     .frontPic = front, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 2, \
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH, \
     .backPic = back, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 6, .backAnimId = BACK_ANIM_NONE, \
-    .palette = pal, .shinyPalette = shiny, .iconSprite = icon, .iconPalIndex = 0, \
+    .palette = pal, .shinyPalette = shiny, .iconSprite = icon, .iconPalIndex = iconPal, \
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE, .levelUpLearnset = levelMoves, .teachableLearnset = teachMoves, \
 }
 
 PJR_FINAL_SPECIES(SPECIES_MILTITAN, 110, 120, 105, 45, 100, 75, TYPE_NORMAL, TYPE_FAIRY,
     ABILITY_THICK_FAT, ABILITY_SCRAPPY, ABILITY_SAP_SIPPER, "MILTITAN", CRY_MILTANK,
     NATIONAL_DEX_MILTANK, "Relic Cow", BODY_COLOR_PINK, gMonFrontPic_Miltitan, gMonBackPic_Miltitan,
-    gMonPalette_Miltitan, gMonShinyPalette_Miltitan, gMonIcon_Miltitan, sMiltitanLevelUpLearnset, sMiltankTeachableLearnset),
+    gMonPalette_Miltitan, gMonShinyPalette_Miltitan, gMonIcon_Miltitan, 0, sMiltitanLevelUpLearnset, sMiltankTeachableLearnset),
 
 PJR_FINAL_SPECIES(SPECIES_SHUCKOLOSSE, 40, 30, 230, 30, 230, 20, TYPE_BUG, TYPE_ROCK,
     ABILITY_ANCIENT_BASTION, ABILITY_NONE, ABILITY_NONE, "SHUCKOLOSSE", CRY_SHUCKLE,
     NATIONAL_DEX_SHUCKLE, "Bastion", BODY_COLOR_YELLOW, gMonFrontPic_Shuckolosse, gMonBackPic_Shuckolosse,
-    gMonPalette_Shuckolosse, gMonShinyPalette_Shuckolosse, gMonIcon_Shuckolosse, sShuckolosseLevelUpLearnset, sShuckleTeachableLearnset),
+    gMonPalette_Shuckolosse, gMonShinyPalette_Shuckolosse, gMonIcon_Shuckolosse, 1, sShuckolosseLevelUpLearnset, sShuckleTeachableLearnset),
 
 PJR_FINAL_SPECIES(SPECIES_SUDOWARDEN, 90, 125, 145, 40, 95, 40, TYPE_ROCK, TYPE_GRASS,
     ABILITY_STURDY, ABILITY_ROCK_HEAD, ABILITY_SAP_SIPPER, "SUDOWARDEN", CRY_SUDOWOODO,
     NATIONAL_DEX_SUDOWOODO, "Ancient Tree", BODY_COLOR_BROWN, gMonFrontPic_Sudowarden, gMonBackPic_Sudowarden,
-    gMonPalette_Sudowarden, gMonShinyPalette_Sudowarden, gMonIcon_Sudowarden, sSudowardenLevelUpLearnset, sSudowoodoTeachableLearnset),
+    gMonPalette_Sudowarden, gMonShinyPalette_Sudowarden, gMonIcon_Sudowarden, 1, sSudowardenLevelUpLearnset, sSudowoodoTeachableLearnset),
 
 PJR_FINAL_SPECIES(SPECIES_DONPHALANX, 110, 140, 135, 60, 85, 60, TYPE_GROUND, TYPE_DARK,
     ABILITY_STAMINA, ABILITY_INTIMIDATE, ABILITY_SAND_RUSH, "DONPHALANX", CRY_DONPHAN,
     NATIONAL_DEX_DONPHAN, "War Tusk", BODY_COLOR_GRAY, gMonFrontPic_Donphalanx, gMonBackPic_Donphalanx,
-    gMonPalette_Donphalanx, gMonShinyPalette_Donphalanx, gMonIcon_Donphalanx, sDonphalanxLevelUpLearnset, sDonphanTeachableLearnset),
+    gMonPalette_Donphalanx, gMonShinyPalette_Donphalanx, gMonIcon_Donphalanx, 2, sDonphalanxLevelUpLearnset, sDonphanTeachableLearnset),
 
 PJR_FINAL_SPECIES(SPECIES_FAERANIUM, 100, 85, 115, 105, 120, 65, TYPE_GRASS, TYPE_FAIRY,
     ABILITY_ANCIENT_BLOOM, ABILITY_NONE, ABILITY_NONE, "FAERANIUM", CRY_MEGANIUM,
     NATIONAL_DEX_MEGANIUM, "Bloom Relic", BODY_COLOR_GREEN, gMonFrontPic_Faeranium, gMonBackPic_Faeranium,
-    gMonPalette_Faeranium, gMonShinyPalette_Faeranium, gMonIcon_Faeranium, sFaeraniumLevelUpLearnset, sMeganiumTeachableLearnset),
+    gMonPalette_Faeranium, gMonShinyPalette_Faeranium, gMonIcon_Faeranium, 1, sFaeraniumLevelUpLearnset, sMeganiumTeachableLearnset),
 
 PJR_FINAL_SPECIES(SPECIES_PYROCLAST, 85, 95, 85, 130, 90, 105, TYPE_FIRE, TYPE_GHOST,
     ABILITY_CINDER_VEIL, ABILITY_NONE, ABILITY_NONE, "PYROCLAST", CRY_TYPHLOSION,
     NATIONAL_DEX_TYPHLOSION, "Cinder Relic", BODY_COLOR_RED, gMonFrontPic_Pyroclast, gMonBackPic_Pyroclast,
-    gMonPalette_Pyroclast, gMonShinyPalette_Pyroclast, gMonIcon_Pyroclast, sPyroclastLevelUpLearnset, sTyphlosionTeachableLearnset),
+    gMonPalette_Pyroclast, gMonShinyPalette_Pyroclast, gMonIcon_Pyroclast, 1, sPyroclastLevelUpLearnset, sTyphlosionTeachableLearnset),
 
 PJR_FINAL_SPECIES(SPECIES_FERALODON, 105, 135, 105, 70, 85, 80, TYPE_WATER, TYPE_DRAGON,
     ABILITY_TIDAL_ROAR, ABILITY_NONE, ABILITY_NONE, "FERALODON", CRY_FERALIGATR,
     NATIONAL_DEX_FERALIGATR, "Tidal Relic", BODY_COLOR_BLUE, gMonFrontPic_Feralodon, gMonBackPic_Feralodon,
-    gMonPalette_Feralodon, gMonShinyPalette_Feralodon, gMonIcon_Feralodon, sFeralodonLevelUpLearnset, sFeraligatrTeachableLearnset),
+    gMonPalette_Feralodon, gMonShinyPalette_Feralodon, gMonIcon_Feralodon, 3, sFeralodonLevelUpLearnset, sFeraligatrTeachableLearnset),
 
 PJR_FINAL_SPECIES(SPECIES_DRAKEON, 75, 130, 85, 110, 65, 80, TYPE_DRAGON, TYPE_DRAGON,
     ABILITY_INTIMIDATE, ABILITY_NONE, ABILITY_MULTISCALE, "DRAKEON", CRY_EEVEE,
     NATIONAL_DEX_EEVEE, "Wyvern", BODY_COLOR_BLUE, gMonFrontPic_Drakeon, gMonBackPic_Drakeon,
-    gMonPalette_Drakeon, gMonShinyPalette_Drakeon, gMonIcon_Drakeon, sDrakeonLevelUpLearnset, sEeveeTeachableLearnset),
+    gMonPalette_Drakeon, gMonShinyPalette_Drakeon, gMonIcon_Drakeon, 0, sDrakeonLevelUpLearnset, sEeveeTeachableLearnset),
 
 PJR_FINAL_SPECIES(SPECIES_GHOULBAT, 95, 110, 90, 80, 95, 130, TYPE_GHOST, TYPE_FLYING,
     ABILITY_INFILTRATOR, ABILITY_PRESSURE, ABILITY_CURSED_BODY, "GHOULBAT", CRY_CROBAT,
     NATIONAL_DEX_CROBAT, "Wraith", BODY_COLOR_PURPLE, gMonFrontPic_Ghoulbat, gMonBackPic_Ghoulbat,
-    gMonPalette_Ghoulbat, gMonShinyPalette_Ghoulbat, gMonIcon_Ghoulbat, sGhoulbatLevelUpLearnset, sCrobatTeachableLearnset),
+    gMonPalette_Ghoulbat, gMonShinyPalette_Ghoulbat, gMonIcon_Ghoulbat, 0, sGhoulbatLevelUpLearnset, sCrobatTeachableLearnset),
 
 #undef PJR_FINAL_SPECIES
 
