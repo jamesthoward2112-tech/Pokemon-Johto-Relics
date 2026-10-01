@@ -109,13 +109,11 @@ void FieldInitRegionMap(MainCallback callback)
 
 static bool32 CanFlyFromFieldRegionMap(void)
 {
-    if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) != TRUE)
-        return FALSE;
-
     if (IS_HNS)
         return FlagGet(FLAG_BADGE05_GET) && CheckBagHasItem(ITEM_HM02, 1);
 
-    return FlagGet(OW_FLAG_POKE_RIDER);
+    return FlagGet(OW_FLAG_POKE_RIDER)
+        && Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE;
 }
 
 static void MCB2_InitRegionMapRegisters(void)
