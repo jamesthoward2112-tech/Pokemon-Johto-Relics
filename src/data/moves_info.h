@@ -23218,8 +23218,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     [MOVE_TAILSPIN] =
     {
         .name = COMPOUND_STRING("TAILSPIN"),
-        .description = COMPOUND_STRING("A spinning tail strike that\nraises the user's Speed."),
-        .effect = EFFECT_RAPID_SPIN,
+        .description = COMPOUND_STRING("A spinning tail strike that\ngets stronger and raises Speed."),
+        .effect = EFFECT_ROLLOUT,
         .power = 30,
         .type = TYPE_NORMAL,
         .accuracy = 95,
@@ -23227,7 +23227,14 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
-        .battleAnimScript = gBattleAnimMove_RapidSpin,
+        .instructBanned = TRUE,
+        .parentalBondBanned = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_SPD_PLUS_1,
+            .self = TRUE,
+            .chance = 100,
+        }),
+        .battleAnimScript = gBattleAnimMove_Rollout,
     },
 
     [MOVE_GLYPHIC_CHORUS] =
