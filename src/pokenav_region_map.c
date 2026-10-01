@@ -4,6 +4,7 @@
 #include "landmark.h"
 #include "event_data.h"
 #include "field_effect.h"
+#include "item.h"
 #include "main.h"
 #include "menu.h"
 #include "overworld.h"
