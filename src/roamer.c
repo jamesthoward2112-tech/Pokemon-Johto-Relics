@@ -331,12 +331,8 @@ bool8 TryAddRoamer(u16 species, u8 level, u8 locationTableId)
 #if IS_HNS
 void InitRoamer(void)
 {
+    // PJR: Raikou, Entei, and Suicune are Relic encounter Pokémon, not roamers.
     DeactivateRoamersByLocationTable(ROAMER_LOC_TABLE_JOHTO);
-    GetSetPokedexFlag(SpeciesToNationalPokedexNum(SPECIES_ENTEI), FLAG_SET_SEEN);
-    GetSetPokedexFlag(SpeciesToNationalPokedexNum(SPECIES_RAIKOU), FLAG_SET_SEEN);
-    GetSetPokedexFlag(SpeciesToNationalPokedexNum(SPECIES_SUICUNE), FLAG_SET_SEEN);
-    TryAddRoamer(SPECIES_RAIKOU, 40, ROAMER_LOC_TABLE_JOHTO);
-    TryAddRoamer(SPECIES_ENTEI, 40, ROAMER_LOC_TABLE_JOHTO);
 }
 
 void InitKantoRoamers(void)
@@ -444,6 +440,15 @@ void RoamerMove(u32 roamerIndex)
 
 bool8 IsRoamerAt(u32 roamerIndex, u8 mapGroup, u8 mapNum)
 {
+#if IS_HNS
+    // Also suppress beasts already stored as roamers in older PJR save files.
+    if (ROAMER(roamerIndex)->locationTableId == ROAMER_LOC_TABLE_JOHTO
+        && (ROAMER(roamerIndex)->species == SPECIES_RAIKOU
+            || ROAMER(roamerIndex)->species == SPECIES_ENTEI
+            || ROAMER(roamerIndex)->species == SPECIES_SUICUNE))
+        return FALSE;
+#endif
+
     if (ROAMER(roamerIndex)->active && mapGroup == sRoamerLocation[roamerIndex][MAP_GRP] && mapNum == sRoamerLocation[roamerIndex][MAP_NUM])
         return TRUE;
     else
