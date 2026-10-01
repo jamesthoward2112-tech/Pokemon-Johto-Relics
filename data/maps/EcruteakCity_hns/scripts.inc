@@ -256,6 +256,20 @@ EcruteakCity_EventScript_GymSign::
 	release
 	end
 
+EcruteakCity_EventScript_RockShopSign::
+	lock
+	msgbox EcruteakCity_Text_RockShopSign, MSGBOX_SIGN
+	closemessage
+	release
+	end
+
+EcruteakCity_EventScript_RockShopDecoration::
+	lock
+	msgbox EcruteakCity_Text_RockShopDecoration, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
 EcruteakCity_EventScript_Eevee::
 	lock
 	faceplayer
@@ -376,6 +390,14 @@ EcruteakCity_Text_GymSign:
 
 EcruteakCity_Text_DanceTheaterSign:
 	.string "ECRUTEAK DANCE THEATER$"
+
+EcruteakCity_Text_RockShopSign:
+	.string "THE ROCK SHOP\p"
+	.string "Evolution stones from across JOHTO.$"
+
+EcruteakCity_Text_RockShopDecoration:
+	.string "Smooth stones are stacked neatly\n"
+	.string "beside the shop.$"
 
 EcruteakCity_Text_BurnedTowerSign:
 	.string "BURNED TOWER\p"
