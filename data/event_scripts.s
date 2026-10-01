@@ -1990,6 +1990,7 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/GoldenrodCity_DepartmentStoreElevator_hns/scripts.inc"
 	.include "data/maps/EcruteakCity_PokemonCenter_hns/scripts.inc"
 	.include "data/maps/EcruteakCity_Mart_hns/scripts.inc"
+	.include "data/maps/EcruteakCity_RockShop_hns/scripts.inc"
 	.include "data/maps/EcruteakCity_Theater_hns/scripts.inc"
 	.include "data/maps/EcruteakCity_House1_hns/scripts.inc"
 	.include "data/maps/EcruteakCity_House2_hns/scripts.inc"
