@@ -41,7 +41,6 @@
 #include "constants/event_objects.h"
 #include "constants/field_poison.h"
 #include "constants/metatile_behaviors.h"
-#include "constants/maps.h"
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
 
@@ -75,7 +74,6 @@ static const u8 *GetCoordEventScriptAtPosition(struct MapHeader *, u16, u16, u8)
 static const struct BgEvent *GetBackgroundEventAtPosition(struct MapHeader *, u16, u16, u8);
 static bool8 TryStartCoordEventScript(struct MapPosition *);
 static bool8 TryStartWarpEventScript(struct MapPosition *, u16);
-static bool8 IsIcePathBoulderHolePosition(s16 x, s16 y);
 static bool8 TryStartMiscWalkingScripts(u16);
 static bool8 TryStartStepCountScript(u16);
 static void UpdateFriendshipStepCounter(void);
@@ -1001,41 +999,11 @@ static bool8 TryArrowWarp(struct MapPosition *position, u16 metatileBehavior, en
     return FALSE;
 }
 
-static bool8 IsIcePathBoulderHolePosition(s16 x, s16 y)
-{
-#if IS_HNS
-    u8 i;
-
-    if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(MAP_ICE_PATH_B1F_HNS)
-     || gSaveBlock1Ptr->location.mapNum != MAP_NUM(MAP_ICE_PATH_B1F_HNS))
-        return FALSE;
-
-    x -= MAP_OFFSET;
-    y -= MAP_OFFSET;
-
-    for (i = 0; i < gMapHeader.events->warpCount; i++)
-    {
-        const struct WarpEvent *warp = &gMapHeader.events->warps[i];
-
-        if (warp->x == x
-         && warp->y == y
-         && warp->mapGroup == MAP_GROUP(MAP_ICE_PATH_B2F_HNS)
-         && warp->mapNum == MAP_NUM(MAP_ICE_PATH_B2F_HNS)
-         && warp->warpId >= 2
-         && warp->warpId <= 5)
-            return TRUE;
-    }
-#endif
-    return FALSE;
-}
-
 static bool8 TryStartWarpEventScript(struct MapPosition *position, u16 metatileBehavior)
 {
     s8 warpEventId = GetWarpEventAtMapPosition(&gMapHeader, position);
-    bool8 isIcePathBoulderHole = IsIcePathBoulderHolePosition(position->x, position->y);
 
-    if (warpEventId != WARP_ID_NONE
-     && (IsWarpMetatileBehavior(metatileBehavior) == TRUE || isIcePathBoulderHole))
+    if (warpEventId != WARP_ID_NONE && IsWarpMetatileBehavior(metatileBehavior) == TRUE)
     {
         StoreInitialPlayerAvatarState();
         SetupWarp(&gMapHeader, warpEventId, position);
@@ -1064,7 +1032,7 @@ static bool8 TryStartWarpEventScript(struct MapPosition *position, u16 metatileB
             DoSpinExitWarp();
             return TRUE;
         }
-        if (MetatileBehavior_IsMtPyreHole(metatileBehavior) == TRUE || isIcePathBoulderHole)
+        if (MetatileBehavior_IsMtPyreHole(metatileBehavior) == TRUE)
         {
             ScriptContext_SetupScript(EventScript_FallDownHoleMtPyre);
             return TRUE;
@@ -1465,8 +1433,7 @@ u16 GetBoulderRevealFlagByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
 
 void HandleBoulderFallThroughHole(struct ObjectEvent * object)
 {
-    if (MapGridGetMetatileBehaviorAt(object->currentCoords.x, object->currentCoords.y) == MB_MT_PYRE_HOLE
-     || IsIcePathBoulderHolePosition(object->currentCoords.x, object->currentCoords.y))
+    if (MapGridGetMetatileBehaviorAt(object->currentCoords.x, object->currentCoords.y) == MB_MT_PYRE_HOLE)
     {
         PlaySE(SE_FALL);
         RemoveObjectEventByLocalIdAndMap(object->localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);

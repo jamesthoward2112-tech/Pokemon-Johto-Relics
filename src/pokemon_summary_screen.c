@@ -1966,7 +1966,30 @@ static void Task_HandleInput(u8 taskId)
         }
         else if (JOY_NEW(START_BUTTON))
         {
-            if (sMonSummaryScreen->currPageIndex == PSS_PAGE_SKILLS)
+            if (ShouldShowMoveRelearner()
+             && (sMonSummaryScreen->currPageIndex == PSS_PAGE_BATTLE_MOVES
+              || sMonSummaryScreen->currPageIndex == PSS_PAGE_CONTEST_MOVES))
+            {
+                sMonSummaryScreen->callback = CB2_InitLearnMove;
+                if (sMonSummaryScreen->isBoxMon)
+                {
+                    gRelearnMode = (sMonSummaryScreen->currPageIndex == PSS_PAGE_BATTLE_MOVES)
+                                 ? RELEARN_MODE_BOX_PSS_PAGE_BATTLE_MOVES
+                                 : RELEARN_MODE_BOX_PSS_PAGE_CONTEST_MOVES;
+                    gSpecialVar_0x8004 = PC_MON_CHOSEN;
+                    gSpecialVar_MonBoxPos = sMonSummaryScreen->curMonIndex;
+                    gSpecialVar_MonBoxId = StorageGetCurrentBox();
+                }
+                else
+                {
+                    gRelearnMode = sMonSummaryScreen->currPageIndex;
+                    gSpecialVar_0x8004 = sMonSummaryScreen->curMonIndex;
+                }
+                StopPokemonAnimations();
+                PlaySE(SE_SELECT);
+                BeginCloseSummaryScreen(taskId);
+            }
+            else if (sMonSummaryScreen->currPageIndex == PSS_PAGE_SKILLS)
             {
                 ShowMonSkillsInfo(taskId, SUMMARY_SKILLS_MODE_STATS);
                 sMonSummaryScreen->skillsPageMode = SUMMARY_SKILLS_MODE_STATS;
