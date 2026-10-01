@@ -30,3 +30,6 @@ Create a dedicated Rock Shop in Ecruteak City, inspired by the Rock Shop present
 - Secondary Pewter/Brock tiles: 0x8AF388; palettes: 0x8B06D8
 
 Source/provenance: Azul Agua / Water Blue Beta 1.4 ML by gameboy_cl. Keep donor credit in final release documentation.
+
+### Exact donor tile graphics
+The HnS wrapper now compiles the exact indexed 16-colour tile PNGs extracted from Azul Agua rather than the repository's vanilla FireRed tile PNGs. FireRed metatile structures are retained only for index/behaviour compatibility.

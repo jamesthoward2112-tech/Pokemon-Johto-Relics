@@ -2165,7 +2165,7 @@ const u16 gTilesetPalettes_GameCorner[][16] =
     INCBIN_U16("data/tilesets/secondary/game_corner_frlg/palettes/15.gbapal"),
 };
 
-const u32 gTilesetTiles_PewterGym[] = INCBIN_U32("data/tilesets/secondary/pewter_gym_frlg/tiles.4bpp.fastSmol");
+const u32 gTilesetTiles_PewterGym[] = INCBIN_U32("data/tilesets/secondary/azul_agua_rock_shop_hns/tiles.4bpp.fastSmol");
 
 const u16 gTilesetPalettes_PewterGym[][16] =
 {
@@ -4098,7 +4098,7 @@ const u16 gTilesetPalettes_JohtoBikeShop_Hns[][16] =
  * FireRed-compatible source tile indices are reused so the donor map remains valid.
  */
 const u32 gTilesetTiles_AzulAguaBuilding_Hns[] =
-    INCBIN_U32("data/tilesets/primary/building_frlg/tiles.4bpp.fastSmol");
+    INCBIN_U32("data/tilesets/primary/azul_agua_building_hns/tiles.4bpp.fastSmol");
 const u16 gTilesetPalettes_AzulAguaBuilding_Hns[] =
     INCBIN_U16("data/tilesets/primary/azul_agua_building_hns/palettes.gbapal");
 
