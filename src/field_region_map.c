@@ -4,6 +4,7 @@
 #include "field_effect.h"
 #include "gpu_regs.h"
 #include "international_string_util.h"
+#include "item.h"
 #include "main.h"
 #include "malloc.h"
 #include "menu.h"
@@ -15,6 +16,7 @@
 #include "text.h"
 #include "text_window.h"
 #include "window.h"
+#include "constants/items.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
@@ -51,6 +53,7 @@ static void MCB2_FieldUpdateRegionMap(void);
 static void FieldUpdateRegionMap(void);
 static void PrintRegionMapSecName();
 static void PrintTitleWindowText();
+static bool32 CanFlyFromFieldRegionMap(void);
 
 static const struct BgTemplate sFieldRegionMapBgTemplates[] = {
     {
@@ -104,6 +107,17 @@ void FieldInitRegionMap(MainCallback callback)
     SetMainCallback2(MCB2_InitRegionMapRegisters);
 }
 
+static bool32 CanFlyFromFieldRegionMap(void)
+{
+    if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) != TRUE)
+        return FALSE;
+
+    if (IS_HNS)
+        return FlagGet(FLAG_BADGE05_GET) && CheckBagHasItem(ITEM_HM02, 1);
+
+    return FlagGet(OW_FLAG_POKE_RIDER);
+}
+
 static void MCB2_InitRegionMapRegisters(void)
 {
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
@@ -154,12 +168,10 @@ static void FieldUpdateRegionMap(void)
         sFieldRegionMapHandler->state++;
         break;
     case 1:
-#if !IS_HNS
         DrawStdFrameWithCustomTileAndPalette(WIN_TITLE, FALSE, 0x27, 0xd);
         FillWindowPixelBuffer(WIN_TITLE, PIXEL_FILL(1));
         PrintTitleWindowText();
         ScheduleBgCopyTilemapToVram(0);
-#endif
         DrawStdFrameWithCustomTileAndPalette(WIN_MAPSEC_NAME, FALSE, 0x27, 0xd);
         PrintRegionMapSecName();
         BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
@@ -182,9 +194,7 @@ static void FieldUpdateRegionMap(void)
         {
         case MAP_INPUT_MOVE_END:
                 PrintRegionMapSecName();
-#if !IS_HNS
                 PrintTitleWindowText();
-#endif
                 break;
         case MAP_INPUT_A_BUTTON:
         case MAP_INPUT_B_BUTTON:
@@ -192,7 +202,7 @@ static void FieldUpdateRegionMap(void)
                 break;
         case MAP_INPUT_R_BUTTON:
                 if (sFieldRegionMapHandler->regionMap.mapSecType == MAPSECTYPE_CITY_CANFLY
-                    && FlagGet(OW_FLAG_POKE_RIDER) && Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
+                    && CanFlyFromFieldRegionMap())
                 {
                     PlaySE(SE_SELECT);
                     SetFlyDestination(&sFieldRegionMapHandler->regionMap);
@@ -248,7 +258,7 @@ static void PrintTitleWindowText(void)
     FillWindowPixelBuffer(WIN_TITLE, PIXEL_FILL(1));
 
     if (sFieldRegionMapHandler->regionMap.mapSecType == MAPSECTYPE_CITY_CANFLY
-        && FlagGet(OW_FLAG_POKE_RIDER) && Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
+        && CanFlyFromFieldRegionMap())
     {
         AddTextPrinterParameterized(WIN_TITLE, FONT_NORMAL, FlyPromptText, flyOffset, 1, 0, NULL);
         ScheduleBgCopyTilemapToVram(WIN_TITLE);
