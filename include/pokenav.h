@@ -368,6 +368,7 @@ u32 GetPokenavMode(void);
 bool32 CanViewRibbonsMenu(void);
 void SetPokenavVBlankCallback(void);
 void SetVBlankCallback_(IntrCallback callback);
+void RequestPokenavFlyExit(void);
 
 // pokenav_list.c
 bool32 CreatePokenavList(const struct BgTemplate *bgTemplate, struct PokenavListTemplate *listTemplate, s32 tileOffset);

@@ -53,6 +53,7 @@ struct CityMapEntry
 static u32 HandleRegionMapInput(struct Pokenav_RegionMapMenu *);
 static u32 HandleRegionMapInputZoomDisabled(struct Pokenav_RegionMapMenu *);
 static u32 GetExitRegionMapMenuId(struct Pokenav_RegionMapMenu *);
+static u32 GetFlyExitRegionMapMenuId(struct Pokenav_RegionMapMenu *);
 static u32 LoopedTask_OpenRegionMap(s32);
 static u32 LoopedTask_DecompressCityMaps(s32);
 static bool32 GetCurrentLoopedTaskActive(void);
@@ -198,6 +199,8 @@ static bool32 CanFlyFromPokeGearRegionMap(void)
 
 u32 PokenavCallback_Init_RegionMap(void)
 {
+    RepairPokeGearFlyVisitFlags();
+
     struct Pokenav_RegionMapMenu *state = AllocSubstruct(POKENAV_SUBSTRUCT_REGION_MAP_STATE, sizeof(struct Pokenav_RegionMapMenu));
     if (!state)
         return FALSE;
@@ -273,6 +276,11 @@ static u32 HandleRegionMapInputZoomDisabled(struct Pokenav_RegionMapMenu *state)
 static u32 GetExitRegionMapMenuId(struct Pokenav_RegionMapMenu *state)
 {
     return POKENAV_MAIN_MENU_CURSOR_ON_MAP;
+}
+
+static u32 GetFlyExitRegionMapMenuId(struct Pokenav_RegionMapMenu *state)
+{
+    return POKENAV_MENU_FUNC_EXIT;
 }
 
 bool32 GetZoomDisabled(void)
@@ -528,13 +536,20 @@ static u32 LoopedTask_TreatAsPokeNavFlyMap(s32 taskState)
     switch (taskState)
     {
     case 0:
+    {
+        struct RegionMap *regionMap = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP);
+        struct Pokenav_RegionMapMenu *menu = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_STATE);
+
         PlaySE(SE_SELECT);
-        struct RegionMap* regionMap = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP);
         SetFlyDestination(regionMap);
         gSkipShowMonAnim = TRUE;
-        ReturnToFieldFromFlyMapSelect();
 
+        // Exit through the normal PokeGear shutdown path so all map/menu
+        // resources are released before the field Fly callback takes over.
+        RequestPokenavFlyExit();
+        menu->callback = GetFlyExitRegionMapMenuId;
         return LT_FINISH;
+    }
     }
 
     return LT_FINISH;
