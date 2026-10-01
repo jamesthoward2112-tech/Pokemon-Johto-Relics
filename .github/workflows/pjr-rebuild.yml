@@ -17,6 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Reconstruct clean Azul Agua rock PNG
+        run: |
+          cat tools/pjr/azul_agua_rock_shop_tiles/part*.b64 | tr -d '\n' | base64 -d > data/tilesets/secondary/azul_agua_rock_shop_hns/tiles.png
       - name: Repair Azul Agua donor PNG CRCs
         run: |
           python3 - <<'PY'
