@@ -13,6 +13,20 @@ Create a dedicated Rock Shop in Ecruteak City, inspired by the Rock Shop present
 - After the Fog Badge: Shiny, Dusk and Dawn Stones are added.
 
 ## Azul Agua donor pass
-The visual pass must use the retained Azul Agua donor asset bank (raw/compressed 4bpp tilesets, palettes, manifests and preview sheets). Reconstruct compatible PJR metatiles/palettes rather than copying opaque map scripts or economy logic.
+- Source of truth: retained **Azul Agua / Water Blue Beta 1.4 ML** ROM.
+- Uses the donor Pewter/Brock map geometry (13×17), including the real main exit at (6,15).
+- Uses palette banks extracted directly from the donor ROM for both the indoor-building and Pewter/Brock sets.
+- PJR's FireRed-compatible building/Pewter tile and metatile structures are deliberately wrapped into the HnS build so the donor map block indices stay valid.
+- Clerk position uses Brock's donor-map coordinate (6,3); the collector uses a donor trainer coordinate (3,8).
 
-Source/provenance: Azul Agua / Water Blue Beta 1.4 ML, by gameboy_cl. Keep donor credit in final release documentation if graphics are imported.
+### Donor ROM trace
+- Map-bank table: ~0xA0BD04
+- Indoor Pewter bank: group 6
+- Pewter Gym map header: 0xA0A47C
+- Layout: 0x98EAA8
+- Blockdata: 0x98E8EC
+- Border: 0x98E8E4
+- Primary building tiles: 0x89DAC8; palettes: 0x89FE50
+- Secondary Pewter/Brock tiles: 0x8AF388; palettes: 0x8B06D8
+
+Source/provenance: Azul Agua / Water Blue Beta 1.4 ML by gameboy_cl. Keep donor credit in final release documentation.

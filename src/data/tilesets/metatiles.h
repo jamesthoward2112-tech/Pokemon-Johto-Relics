@@ -565,6 +565,18 @@ const u16 gMetatileAttributes_IndigoPlateau_Hns[] = INCBIN_U16("data/tilesets/se
 const u16 gMetatiles_JohtoBikeShop_Hns[] = INCBIN_U16("data/tilesets/secondary/johto_bike_shop_hns/metatiles.bin");
 const u16 gMetatileAttributes_JohtoBikeShop_Hns[] = INCBIN_U16("data/tilesets/secondary/johto_bike_shop_hns/metatile_attributes.bin");
 
+
+/* PJR: Azul Agua donor-compatible FireRed metatile structures. */
+const u16 gMetatiles_AzulAguaBuilding_Hns[] =
+    INCBIN_U16("data/tilesets/primary/building_frlg/metatiles.bin");
+const u16 gMetatileAttributes_AzulAguaBuilding_Hns[] =
+    INCBIN_U16("data/tilesets/primary/building_frlg/metatile_attributes.bin");
+
+const u16 gMetatiles_AzulAguaRockShop_Hns[] =
+    INCBIN_U16("data/tilesets/secondary/pewter_gym_frlg/metatiles.bin");
+const u16 gMetatileAttributes_AzulAguaRockShop_Hns[] =
+    INCBIN_U16("data/tilesets/secondary/pewter_gym_frlg/metatile_attributes.bin");
+
 const u16 gMetatiles_JohtoMart_Hns[] = INCBIN_U16("data/tilesets/secondary/johto_mart_hns/metatiles.bin");
 const u16 gMetatileAttributes_JohtoMart_Hns[] = INCBIN_U16("data/tilesets/secondary/johto_mart_hns/metatile_attributes.bin");
 
