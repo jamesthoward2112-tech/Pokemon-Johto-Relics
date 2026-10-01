@@ -19,6 +19,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/region_map_sections.h"
+#include "constants/items.h"
 
 #define GFXTAG_CITY_ZOOM 6
 #define PALTAG_CITY_ZOOM 11
@@ -77,6 +78,7 @@ static u32 LoopedTask_RegionMapZoomOut(s32);
 static u32 LoopedTask_RegionMapZoomIn(s32);
 static u32 LoopedTask_ExitRegionMap(s32);
 static u32 LoopedTask_TreatAsPokeNavFlyMap(s32);
+static bool32 CanFlyFromPokeGearRegionMap(void);
 
 extern const u16 gRegionMapCityZoomTiles_Pal[];
 extern const u32 gRegionMapCityZoomText_Gfx[];
@@ -184,6 +186,18 @@ static const struct SpriteTemplate sCityZoomTextSpriteTemplate =
     .callback = SpriteCB_CityZoomText,
 };
 
+static bool32 CanFlyFromPokeGearRegionMap(void)
+{
+    if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) != TRUE)
+        return FALSE;
+
+#if IS_HNS
+    return FlagGet(FLAG_BADGE05_GET) && CheckBagHasItem(ITEM_HM02, 1);
+#else
+    return FlagGet(OW_FLAG_POKE_RIDER);
+#endif
+}
+
 u32 PokenavCallback_Init_RegionMap(void)
 {
     struct Pokenav_RegionMapMenu *state = AllocSubstruct(POKENAV_SUBSTRUCT_REGION_MAP_STATE, sizeof(struct Pokenav_RegionMapMenu));
@@ -224,19 +238,23 @@ static u32 HandleRegionMapInput(struct Pokenav_RegionMapMenu *state)
     case MAP_INPUT_MOVE_END:
         return POKENAV_MAP_FUNC_CURSOR_MOVED;
     case MAP_INPUT_A_BUTTON:
-#if !IS_HNS
+#if IS_HNS
+        if (regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY
+            && CanFlyFromPokeGearRegionMap())
+            return POKENAV_MAP_FUNC_FLY;
+        break;
+#else
         if (!IsRegionMapZoomed())
             return POKENAV_MAP_FUNC_ZOOM_IN;
         return POKENAV_MAP_FUNC_ZOOM_OUT;
-#else
-        break;
 #endif
     case MAP_INPUT_B_BUTTON:
         state->callback = GetExitRegionMapMenuId;
         return POKENAV_MAP_FUNC_EXIT;
     case MAP_INPUT_R_BUTTON:
-        if (regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY && FlagGet(OW_FLAG_POKE_RIDER)
-        && Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
+        // Keep R as a fallback on HNS, but A is the primary direct-Fly button.
+        if (regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY
+            && CanFlyFromPokeGearRegionMap())
             return POKENAV_MAP_FUNC_FLY;
     }
 
@@ -789,8 +807,8 @@ void UpdateRegionMapHelpBarText(void)
 {
     struct RegionMap* regionMap = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP);
 
-    if (regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY && FlagGet(OW_FLAG_POKE_RIDER)
-        && Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
+    if (regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY
+        && CanFlyFromPokeGearRegionMap())
     {
         if (IsRegionMapZoomed())
             PrintHelpBarText(HELPBAR_MAP_ZOOMED_IN_CANFLY);
