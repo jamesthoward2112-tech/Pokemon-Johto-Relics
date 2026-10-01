@@ -490,27 +490,58 @@
     .levelUpLearnset = sSunfloridLevelUpLearnset, .teachableLearnset = sSunfloridInfinityTeachableLearnset,
 },
 
-[SPECIES_TERATHWACK] =
+[SPECIES_OSTEODIAN] =
 {
-    .baseHP = 100, .baseAttack = 135, .baseDefense = 113,
-    .baseSpeed = 77, .baseSpAttack = 60, .baseSpDefense = 80,
-    .types = MON_TYPES(TYPE_NORMAL, TYPE_GROUND),
-    .catchRate = 45, .expYield = 184,
+    .baseHP = 105, .baseAttack = 95, .baseDefense = 145,
+    .baseSpeed = 60, .baseSpAttack = 60, .baseSpDefense = 95,
+    .types = MON_TYPES(TYPE_GROUND),
+    .catchRate = 45, .expYield = 220,
     .genderRatio = PERCENT_FEMALE(50),
     .eggCycles = 20, .friendship = STANDARD_FRIENDSHIP,
     .growthRate = GROWTH_MEDIUM_FAST,
     .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER),
-    .abilities = { ABILITY_ROCK_HEAD, ABILITY_SCRAPPY, ABILITY_BATTLE_ARMOR }, .bodyColor = BODY_COLOR_BROWN,
-    .speciesName = _("TERATHWACK"), .cryId = CRY_MAROWAK, .natDexNum = NATIONAL_DEX_MAROWAK,
-    .categoryName = _("Bone Savage"), .height = 26, .weight = 1230,
-    .description = COMPOUND_STRING("A rare evolution awakened by unusual\n" "conditions in JOHTO. Its altered form\n" "draws out a new kind of strength."),
+    .abilities = { ABILITY_ROCK_HEAD, ABILITY_SCRAPPY, ABILITY_BATTLE_ARMOR },
+    .bodyColor = BODY_COLOR_BROWN,
+    .speciesName = _("OSTEODIAN"), .cryId = CRY_MAROWAK, .natDexNum = NATIONAL_DEX_MAROWAK,
+    .categoryName = _("Guardian"), .height = 20, .weight = 860,
+    .description = COMPOUND_STRING(
+        "Its ancient skeleton has hardened into\n"
+        "natural armor. It stands guard over\n"
+        "weaker Pokémon without retreating."),
     .pokemonScale = 256, .pokemonOffset = 0, .trainerScale = 256, .trainerOffset = 0,
-    .frontPic = gMonFrontPic_Terathwack, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 0,
+    .frontPic = gMonFrontPic_Osteodian, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 0,
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH,
-    .backPic = gMonBackPic_Terathwack, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
-    .palette = gMonPalette_Terathwack, .shinyPalette = gMonPalette_Terathwack,
-    .iconSprite = gMonIcon_Terathwack, .iconPalIndex = 0, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sTerathwackLevelUpLearnset, .teachableLearnset = sTerathwackInfinityTeachableLearnset,
+    .backPic = gMonBackPic_Osteodian, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
+    .palette = gMonPalette_Osteodian, .shinyPalette = gMonShinyPalette_Osteodian,
+    .iconSprite = gMonIcon_Osteodian, .iconPalIndex = 0, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+    .levelUpLearnset = sMarowakLevelUpLearnset, .teachableLearnset = sMarowakTeachableLearnset,
+},
+
+[SPECIES_MAROGHOST] =
+{
+    .baseHP = 100, .baseAttack = 140, .baseDefense = 120,
+    .baseSpeed = 70, .baseSpAttack = 50, .baseSpDefense = 90,
+    .types = MON_TYPES(TYPE_GROUND, TYPE_GHOST),
+    .catchRate = 45, .expYield = 220,
+    .genderRatio = PERCENT_FEMALE(50),
+    .eggCycles = 20, .friendship = STANDARD_FRIENDSHIP,
+    .growthRate = GROWTH_MEDIUM_FAST,
+    .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER),
+    .abilities = { ABILITY_ROCK_HEAD, ABILITY_CURSED_BODY, ABILITY_BATTLE_ARMOR },
+    .bodyColor = BODY_COLOR_PURPLE,
+    .speciesName = _("MAROGHOST"), .cryId = CRY_MAROWAK, .natDexNum = NATIONAL_DEX_MAROWAK,
+    .categoryName = _("Bone Wraith"), .height = 16, .weight = 600,
+    .description = COMPOUND_STRING(
+        "A spectral force clings to its bone club.\n"
+        "It stalks the dark in silence and strikes\n"
+        "with terrifying physical strength."),
+    .pokemonScale = 256, .pokemonOffset = 0, .trainerScale = 256, .trainerOffset = 0,
+    .frontPic = gMonFrontPic_Maroghost, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 0,
+    .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+    .backPic = gMonBackPic_Maroghost, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
+    .palette = gMonPalette_Maroghost, .shinyPalette = gMonShinyPalette_Maroghost,
+    .iconSprite = gMonIcon_Maroghost, .iconPalIndex = 2, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+    .levelUpLearnset = sMarowakLevelUpLearnset, .teachableLearnset = sMarowakTeachableLearnset,
 },
 
 [SPECIES_ALPHORACLE] =

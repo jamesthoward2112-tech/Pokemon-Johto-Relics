@@ -77,10 +77,17 @@ const u16 gMonPalette_Sunflorid[] = INCBIN_U16("graphics/pokemon/sunflorid/front
 const u32 gMonBackPic_Sunflorid[] = INCBIN_U32("graphics/pokemon/sunflorid/back.4bpp.smol");
 const u8 gMonIcon_Sunflorid[] = INCBIN_U8("graphics/pokemon/sunflorid/icon.4bpp");
 
-const u32 gMonFrontPic_Terathwack[] = INCBIN_U32("graphics/pokemon/terathwack/front.4bpp.smol");
-const u16 gMonPalette_Terathwack[] = INCBIN_U16("graphics/pokemon/terathwack/front.gbapal");
-const u32 gMonBackPic_Terathwack[] = INCBIN_U32("graphics/pokemon/terathwack/back.4bpp.smol");
-const u8 gMonIcon_Terathwack[] = INCBIN_U8("graphics/pokemon/terathwack/icon.4bpp");
+const u32 gMonFrontPic_Osteodian[] = INCBIN_U32("graphics/pokemon/osteodian/front.4bpp.smol");
+const u16 gMonPalette_Osteodian[] = INCBIN_U16("graphics/pokemon/osteodian/front.gbapal");
+const u16 gMonShinyPalette_Osteodian[] = INCBIN_U16("graphics/pokemon/osteodian/shiny.gbapal");
+const u32 gMonBackPic_Osteodian[] = INCBIN_U32("graphics/pokemon/osteodian/back.4bpp.smol");
+const u8 gMonIcon_Osteodian[] = INCBIN_U8("graphics/pokemon/osteodian/icon.4bpp");
+
+const u32 gMonFrontPic_Maroghost[] = INCBIN_U32("graphics/pokemon/maroghost/front.4bpp.smol");
+const u16 gMonPalette_Maroghost[] = INCBIN_U16("graphics/pokemon/maroghost/front.gbapal");
+const u16 gMonShinyPalette_Maroghost[] = INCBIN_U16("graphics/pokemon/maroghost/shiny.gbapal");
+const u32 gMonBackPic_Maroghost[] = INCBIN_U32("graphics/pokemon/maroghost/back.4bpp.smol");
+const u8 gMonIcon_Maroghost[] = INCBIN_U8("graphics/pokemon/maroghost/icon.4bpp");
 
 const u32 gMonFrontPic_Alphoracle[] = INCBIN_U32("graphics/pokemon/alphoracle/front.4bpp.smol");
 const u16 gMonPalette_Alphoracle[] = INCBIN_U16("graphics/pokemon/alphoracle/front.gbapal");

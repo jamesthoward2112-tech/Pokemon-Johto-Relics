@@ -1708,7 +1708,7 @@
 #define SPECIES_KABLOWFISH                              1587
 #define SPECIES_MYSTYNX                                 1588
 #define SPECIES_SUNFLORID                               1589
-#define SPECIES_TERATHWACK                              1590
+#define SPECIES_OSTEODIAN                               1590
 #define SPECIES_ALPHORACLE                              1591
 #define SPECIES_PINSIREX                                1592
 #define SPECIES_MILTITAN                                1593
@@ -1728,7 +1728,8 @@
 #define SPECIES_KHANG                                   1605
 #define SPECIES_NOLAX                                   1606
 #define SPECIES_NOXICHU                                 1607
-#define SPECIES_EGG                                     (SPECIES_NOXICHU + 1)
+#define SPECIES_MAROGHOST                               1608
+#define SPECIES_EGG                                     (SPECIES_MAROGHOST + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 
