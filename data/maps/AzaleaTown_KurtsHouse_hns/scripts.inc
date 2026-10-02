@@ -283,24 +283,23 @@ KurtsHouse_Text_KurtMakingBallsMustWait:
 	.string "is on his way!$"
 
 KurtsHouse_Text_KurtHonoredToMakeBalls:
-	.string "KURT: Hi, {PLAYER}!\p"
-	.string "You handled yourself like a\n"
-	.string "real hero at the WELL.\p"
-	.string "I like your style!\p"
-	.string "I would be honored to make\n"
-	.string "BALLS for a trainer like you.\p"
-	.string "This is all I have now, \n"
-	.string "but take it.$"
+	.string "KURT: {PLAYER}! You handled\n"
+	.string "yourself like a pro!\p"
+	.string "One ROCKET dropped a shard\n"
+	.string "etched like ALPH stone.\p"
+	.string "It gives off a faint hum.\n"
+	.string "I'm keeping it to study.\p"
+	.string "Here! Take this FAST BALL.$"
 
 KurtsHouse_Text_KurtBallsFromApricorns:
-	.string "KURT: I make BALLS from BERRIES.\p"
-	.string "Collect them from trees and bring\n"
-	.string "'em to me.\p"
-	.string "I'll make POKé BALLS out of them.$"
+	.string "APRICORNS feel different near\n"
+	.string "that old shard.\p"
+	.string "Ancient materials remember more\n"
+	.string "than we give them credit for.$"
 
 KurtsHouse_Text_KurtAskYouHaveAnApricorn:
-	.string "KURT: You have BERRIES for me?\p"
-	.string "Fine! I'll turn them into POKé BALLS.$"
+	.string "That ALPH shard still hums.\p"
+	.string "Anyway! Got an APRICORN for me?$"
 
 KurtsHouse_Text_KurtThatsALetdown:
 	.string "KURT: I don't see any {STR_VAR_1}s!$"
@@ -378,8 +377,9 @@ KurtsHouse_Text_GranddaughterSound:
 	.string "ILEX FOREST????$"
 
 KurtsHouse_Text_Forest:
-	.string "Did you check ILEX FOREST yet?\n"
-	.string "It sounds very restless.$"
+	.string "ILEX FOREST answered with the\n"
+	.string "same faint hum as that shard.\p"
+	.string "Old JOHTO is waking up.$"
 
 KurtsHouse_Text_Slowpoke:
 	.string "SLOWPOKE: … Yawn?$"
@@ -388,5 +388,6 @@ KurtsHouse_Text_OakPhoto:
 	.string "…A young PROF. OAK?$"
 
 KurtsHouse_Text_CelebiStatue:
-	.string "It's a statue of the forest's\n"
-	.string "protector.$"
+	.string "A carved CELEBI watches the room.\p"
+	.string "The wood hums faintly, almost\n"
+	.string "like the stones at ALPH.$"

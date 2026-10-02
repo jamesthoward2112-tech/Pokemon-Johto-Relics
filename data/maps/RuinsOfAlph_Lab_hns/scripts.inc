@@ -245,18 +245,21 @@ RuinsOfAlph_Lab_Text_RelicsComplete:
 
 RuinsOfAlph_Lab_Text_Scientist1:
 	.string "The RUINS are about 1500 years old.\p"
-	.string "But it's not known why they were\n"
-	.string "built--or by whom.$"
+	.string "But new instruments detect a pulse\n"
+	.string "coming from deep below.\p"
+	.string "We named that energy RESONANCE.$"
 
 RuinsOfAlph_Lab_Text_Scientist2:
-	.string "There are odd patterns drawn on\n"
-	.string "on the walls of the RUINS.\p"
-	.string "They must be the keys for\n"
-	.string "unraveling the RUINS' mystery.$"
+	.string "The wall patterns are more than\n"
+	.string "decoration.\p"
+	.string "Some repeat whenever unusual\n"
+	.string "POKéMON react to RESONANCE.\p"
+	.string "They may be a record, not a code.$"
 
 RuinsOfAlph_Lab_Text_Fossils:
-	.string "Fossils found within the RUINS.\n"
-	.string "Maybe there are more somewhere...$"
+	.string "Fossils found within the RUINS.\p"
+	.string "Even this ancient stone gives off\n"
+	.string "a faint RESONANCE reading.$"
 
 
 RuinsOfAlph_Lab_EventScript_FossilScientist::
