@@ -6,6 +6,36 @@ TinTower_OnTransition::
 	setescapewarp MAP_BELLCHIME_TRAIL_HNS, 35, 42
 	end
 
+TinTower_1F_EventScript_RelicShortcut::
+	lock
+	goto_if_unset FLAG_PJR_RELIC_HO_OH_UNLOCKED, TinTower_1F_EventScript_RelicShortcutDormant
+	msgbox TinTower_1F_Text_RelicShortcutPrompt, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, TinTower_1F_EventScript_RelicShortcutCancel
+	closemessage
+	warp MAP_TIN_TOWER_ROOF_DAY_HNS, 10, 13
+	waitstate
+	end
+
+TinTower_1F_EventScript_RelicShortcutDormant::
+	msgbox TinTower_1F_Text_RelicShortcutDormant, MSGBOX_DEFAULT
+	release
+	end
+
+TinTower_1F_EventScript_RelicShortcutCancel::
+	closemessage
+	release
+	end
+
+TinTower_1F_Text_RelicShortcutPrompt:
+	.string "The RELIC JOURNAL resonates with the\n"
+	.string "tower's central beam.\p"
+	.string "Travel directly to BELL TOWER ROOF?$"
+
+TinTower_1F_Text_RelicShortcutDormant:
+	.string "The tower beam is quiet.\p"
+	.string "Something ancient may awaken it later.$"
+
+
 TinTower_1F_EventScript_SageA::
 	lock
 	faceplayer
