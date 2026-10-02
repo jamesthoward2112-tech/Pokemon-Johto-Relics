@@ -104,15 +104,26 @@ NewBarkTown_Lab_EventScript_ElmRelicsIntro::
 	end
 
 NewBarkTown_Lab_EventScript_ElmRelicsCheckFinal::
-	goto_if_set FLAG_PJR_RELIC_ELM_FINAL_BRIEF, NewBarkTown_Lab_EventScript_ElmNormalState
+	goto_if_set FLAG_PJR_RELIC_ELM_FINAL_BRIEF, NewBarkTown_Lab_EventScript_ElmRelicsAfterBrief
 	goto_if_unset FLAG_PJR_RELIC_SUICUNE, NewBarkTown_Lab_EventScript_ElmNormalState
 	msgbox NewBarkTown_Lab_Text_RelicFinal1, MSGBOX_DEFAULT
 	msgbox NewBarkTown_Lab_Text_RelicFinal2, MSGBOX_DEFAULT
 	setflag FLAG_PJR_RELIC_ELM_FINAL_BRIEF
-	setflag FLAG_PJR_RELIC_HO_OH_UNLOCKED
-	setvar VAR_COMPLETED_HO_OH, 4
-	clearflag FLAG_HIDE_HO_OH
+	closemessage
+	release
+	end
+
+NewBarkTown_Lab_EventScript_ElmRelicsAfterBrief::
+	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, NewBarkTown_Lab_EventScript_ElmNormalState
+	goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, NewBarkTown_Lab_EventScript_ElmRelicsNeedCrest
+	call PJR_RelicQuest_TryUnlockHoOh
 	msgbox NewBarkTown_Lab_Text_RelicFinalUnlock, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+NewBarkTown_Lab_EventScript_ElmRelicsNeedCrest::
+	msgbox NewBarkTown_Lab_Text_RelicNeedCrest, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
@@ -157,15 +168,21 @@ NewBarkTown_Lab_Text_RelicFinal1:
 
 NewBarkTown_Lab_Text_RelicFinal2:
 	.string "This is no normal HO-OH anymore.\p"
-	.string "The combined Resonance has changed it--\n"
-	.string "ancient, RELIC-like, immensely stronger.\p"
-	.string "The seventh symbol in your Journal is\n"
-	.string "pointing toward BELL TOWER.$"
+	.string "The Resonance has changed it--ancient,\n"
+	.string "RELIC-like, immensely stronger.\p"
+	.string "But the seventh symbol is incomplete.\n"
+	.string "It points back to the deepest ALPH chamber.\p"
+	.string "Something called the FIRST VOICE waits there.$"
+
+NewBarkTown_Lab_Text_RelicNeedCrest:
+	.string "ELM: The FIRST VOICE has answered.\p"
+	.string "Your Journal is still missing one key.\n"
+	.string "Its signal points to MT. SILVER.$"
 
 NewBarkTown_Lab_Text_RelicFinalUnlock:
-	.string "ELM: The path is open now.\p"
-	.string "Go to BELL TOWER. Whatever has awakened\n"
-	.string "there is the end of this mystery.$"
+	.string "ELM: Now both keys are resonating.\p"
+	.string "BELL TOWER has awakened.\n"
+	.string "That's where this ends.$"
 
 NewBarkTown_Lab_EventScript_ElmAideIsWaiting::
 	msgbox NewBarkTown_Lab_Text_ElmAideIsWaiting, MSGBOX_DEFAULT
