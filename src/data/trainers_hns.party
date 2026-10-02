@@ -8886,13 +8886,13 @@ AI: Basic Trainer
 Mugshot: Pink
 Items: Full Restore / Full Restore
 
-Girafarig
+Alakazam Relic
 Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Zen Headbutt
-- Nasty Plot
-- Agility
-- Baton Pass
+- Psychic
+- Shadow Ball
+- Calm Mind
+- Recover
 
 Slowking Relic
 Level: 49
@@ -9004,7 +9004,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Dizzy Punch
 - Thunder Punch
 
-Heracross
+Heracurion
 Level: 52
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Close Combat
@@ -9130,7 +9130,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Leech Seed
 - Substitute
 
-Honchkrow @ Sharp Beak
+Grimfowl @ Sharp Beak
 Level: 53
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Air Slash
@@ -9216,11 +9216,11 @@ AI: Basic Trainer
 Mugshot: Purple
 Items: Full Restore / Full Restore
 
-Ariados @ Kings Rock
+Beedrill Relic @ Kings Rock
 Level: 50
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Megahorn
-- Giga Drain
+- Poison Jab
 - Double Team
 - Toxic
 
@@ -9326,7 +9326,7 @@ AI: Basic Trainer
 Items: Full Restore / Full Restore
 Mugshot: Blue
 
-Gyarados @ Leftovers
+Gyarados Relic @ Leftovers
 Level: 54
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Waterfall
@@ -9334,7 +9334,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Hyper Beam
 - Earthquake
 
-Dragonite @ Sitrus Berry
+Dragonair @ Sitrus Berry
 Level: 55
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Blizzard
@@ -9342,15 +9342,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Thunder
 - Extreme Speed
 
-Charizard @ Charcoal
-Level: 54
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Flamethrower
-- Wing Attack
-- Double Team
-- Steel Wing
-
-Dragonite
+Drakeon
 Level: 55
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Bounce
@@ -9366,7 +9358,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Hyper Beam
 - Earthquake
 
-Dragonite @ Sitrus Berry
+Dragonite Relic @ Sitrus Berry
 Level: 56
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Thunder
