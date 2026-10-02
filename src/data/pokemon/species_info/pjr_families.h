@@ -707,3 +707,75 @@ PJR_RED_SPECIES(SPECIES_NOXICHU, 70, 110, 70, 110, 80, 125, TYPE_ELECTRIC, TYPE_
     sPikachuLevelUpLearnset, sPikachuTeachableLearnset),
 
 #undef PJR_RED_SPECIES
+
+// Trainer-only first-clear Elite Four visual forms.
+// These are intentionally not obtainable and are excluded from randomizer pools.
+#define PJR_E4_VISUAL_FORM(species, hp, atk, def, spa, spd, spe, type1, type2, ability1, ability2, hidden, name, cry, natdex, color, front, pal, shiny, icon, iconPal, levelMoves, teachMoves) \
+[species] = { \
+    .baseHP = hp, .baseAttack = atk, .baseDefense = def, .baseSpAttack = spa, .baseSpDefense = spd, .baseSpeed = spe, \
+    .types = MON_TYPES(type1, type2), .catchRate = 45, .expYield = 220, .genderRatio = PERCENT_FEMALE(50), \
+    .eggCycles = 20, .friendship = STANDARD_FRIENDSHIP, .growthRate = GROWTH_MEDIUM_FAST, \
+    .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD), .abilities = { ability1, ability2, hidden }, .bodyColor = color, \
+    .speciesName = _(name), .cryId = cry, .natDexNum = natdex, .categoryName = _("Relic Form"), .height = 16, .weight = 600, \
+    .description = COMPOUND_STRING("An Elite trainer's partner carrying\\nPJR Relic styling while retaining its\\noriginal battle identity."), \
+    .pokemonScale = 256, .pokemonOffset = 0, .trainerScale = 256, .trainerOffset = 0, \
+    .frontPic = front, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 0, \
+    .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH, \
+    .backPic = front, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE, \
+    .palette = pal, .shinyPalette = shiny, .iconSprite = icon, .iconPalIndex = iconPal, \
+    .pokemonJumpType = PKMN_JUMP_TYPE_NONE, .levelUpLearnset = levelMoves, .teachableLearnset = teachMoves, \
+    .randomizerMode = MON_RANDOMIZER_INVALID, \
+}
+
+PJR_E4_VISUAL_FORM(SPECIES_ALAKAZAM_RELIC, 55, 50, 45, 135, 95, 120, TYPE_PSYCHIC, TYPE_PSYCHIC,
+    ABILITY_SYNCHRONIZE, ABILITY_INNER_FOCUS, ABILITY_MAGIC_GUARD, "ALAKAZAM", CRY_ALAKAZAM,
+    NATIONAL_DEX_ALAKAZAM, BODY_COLOR_BROWN, gMonFrontPic_AlakazamRelic, gMonPalette_AlakazamRelic,
+    gMonShinyPalette_AlakazamRelic, gMonIcon_Alakazam, 2, sAlakazamLevelUpLearnset, sAlakazamTeachableLearnset),
+
+PJR_E4_VISUAL_FORM(SPECIES_SLOWKING_RELIC, 95, 75, 80, 100, 110, 30, TYPE_WATER, TYPE_PSYCHIC,
+    ABILITY_OBLIVIOUS, ABILITY_OWN_TEMPO, ABILITY_REGENERATOR, "SLOWKING", CRY_SLOWKING,
+    NATIONAL_DEX_SLOWKING, BODY_COLOR_PINK, gMonFrontPic_SlowkingRelic, gMonPalette_SlowkingRelic,
+    gMonShinyPalette_SlowkingRelic, gMonIcon_Slowking, 0, sSlowkingLevelUpLearnset, sSlowkingTeachableLearnset),
+
+PJR_E4_VISUAL_FORM(SPECIES_BEEDRILL_RELIC, 65, 90, 40, 45, 80, 75, TYPE_BUG, TYPE_POISON,
+    ABILITY_SWARM, ABILITY_NONE, ABILITY_SNIPER, "BEEDRILL", CRY_BEEDRILL,
+    NATIONAL_DEX_BEEDRILL, BODY_COLOR_YELLOW, gMonFrontPic_BeedrillRelic, gMonPalette_BeedrillRelic,
+    gMonShinyPalette_BeedrillRelic, gMonIcon_Beedrill, 2, sBeedrillLevelUpLearnset, sBeedrillTeachableLearnset),
+
+PJR_E4_VISUAL_FORM(SPECIES_CROBAT_RELIC, 85, 90, 80, 70, 80, 130, TYPE_POISON, TYPE_FLYING,
+    ABILITY_INNER_FOCUS, ABILITY_NONE, ABILITY_INFILTRATOR, "CROBAT", CRY_CROBAT,
+    NATIONAL_DEX_CROBAT, BODY_COLOR_PURPLE, gMonFrontPic_CrobatRelic, gMonPalette_CrobatRelic,
+    gMonShinyPalette_CrobatRelic, gMonIcon_Crobat, 2, sCrobatLevelUpLearnset, sCrobatTeachableLearnset),
+
+PJR_E4_VISUAL_FORM(SPECIES_HITMONCHAN_RELIC, 50, 105, 79, 35, 110, 76, TYPE_FIGHTING, TYPE_FIGHTING,
+    ABILITY_KEEN_EYE, ABILITY_IRON_FIST, ABILITY_INNER_FOCUS, "HITMONCHAN", CRY_HITMONCHAN,
+    NATIONAL_DEX_HITMONCHAN, BODY_COLOR_BROWN, gMonFrontPic_HitmonchanRelic, gMonPalette_HitmonchanRelic,
+    gMonShinyPalette_HitmonchanRelic, gMonIcon_Hitmonchan, 2, sHitmonchanLevelUpLearnset, sHitmonchanTeachableLearnset),
+
+PJR_E4_VISUAL_FORM(SPECIES_HITMONLEE_RELIC, 50, 120, 53, 35, 110, 87, TYPE_FIGHTING, TYPE_FIGHTING,
+    ABILITY_LIMBER, ABILITY_RECKLESS, ABILITY_UNBURDEN, "HITMONLEE", CRY_HITMONLEE,
+    NATIONAL_DEX_HITMONLEE, BODY_COLOR_BROWN, gMonFrontPic_HitmonleeRelic, gMonPalette_HitmonleeRelic,
+    gMonShinyPalette_HitmonleeRelic, gMonIcon_Hitmonlee, 2, sHitmonleeLevelUpLearnset, sHitmonleeTeachableLearnset),
+
+PJR_E4_VISUAL_FORM(SPECIES_MACHAMP_RELIC, 90, 130, 80, 65, 85, 55, TYPE_FIGHTING, TYPE_FIGHTING,
+    ABILITY_GUTS, ABILITY_NO_GUARD, ABILITY_STEADFAST, "MACHAMP", CRY_MACHAMP,
+    NATIONAL_DEX_MACHAMP, BODY_COLOR_GRAY, gMonFrontPic_MachampRelic, gMonPalette_MachampRelic,
+    gMonShinyPalette_MachampRelic, gMonIcon_Machamp, 0, sMachampLevelUpLearnset, sMachampTeachableLearnset),
+
+PJR_E4_VISUAL_FORM(SPECIES_HOUNDOOM_RELIC, 75, 90, 50, 110, 80, 95, TYPE_DARK, TYPE_FIRE,
+    ABILITY_EARLY_BIRD, ABILITY_FLASH_FIRE, ABILITY_UNNERVE, "HOUNDOOM", CRY_HOUNDOOM,
+    NATIONAL_DEX_HOUNDOOM, BODY_COLOR_BLACK, gMonFrontPic_HoundoomRelic, gMonPalette_HoundoomRelic,
+    gMonShinyPalette_HoundoomRelic, gMonIcon_Houndoom, 0, sHoundoomLevelUpLearnset, sHoundoomTeachableLearnset),
+
+PJR_E4_VISUAL_FORM(SPECIES_GYARADOS_RELIC, 95, 125, 79, 60, 100, 81, TYPE_WATER, TYPE_FLYING,
+    ABILITY_INTIMIDATE, ABILITY_NONE, ABILITY_MOXIE, "GYARADOS", CRY_GYARADOS,
+    NATIONAL_DEX_GYARADOS, BODY_COLOR_BLUE, gMonFrontPic_GyaradosRelic, gMonPalette_GyaradosRelic,
+    gMonShinyPalette_GyaradosRelic, gMonIcon_Gyarados, 0, sGyaradosLevelUpLearnset, sGyaradosTeachableLearnset),
+
+PJR_E4_VISUAL_FORM(SPECIES_DRAGONITE_RELIC, 91, 134, 95, 100, 100, 80, TYPE_DRAGON, TYPE_FLYING,
+    ABILITY_INNER_FOCUS, ABILITY_NONE, ABILITY_MULTISCALE, "DRAGONITE", CRY_DRAGONITE,
+    NATIONAL_DEX_DRAGONITE, BODY_COLOR_BROWN, gMonFrontPic_DragoniteRelic, gMonPalette_DragoniteRelic,
+    gMonShinyPalette_DragoniteRelic, gMonIcon_Dragonite, 2, sDragoniteLevelUpLearnset, sDragoniteTeachableLearnset),
+
+#undef PJR_E4_VISUAL_FORM
+

@@ -6994,7 +6994,7 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Blue
 
-Gyarados
+Gyarados Relic
 Level: 56
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Hyper Beam
@@ -7010,13 +7010,13 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Dragon Rage
 - Outrage
 
-Dragonair
+Drakeon
 Level: 54
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Hyper Beam
-- Safeguard
+- Dragon Claw
+- Crunch
 - Thunder Wave
-- Outrage
+- Agility
 
 Aerodactyl
 Level: 58
@@ -7026,7 +7026,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Wing Attack
 - Scary Face
 
-Dragonite @ Sitrus Berry
+Dragonite Relic @ Sitrus Berry
 Level: 60
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Hyper Beam
