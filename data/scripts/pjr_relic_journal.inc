@@ -291,3 +291,5 @@ PJR_RelicQuest_TryUnlockHoOh::
 	clearflag FLAG_HIDE_HO_OH
 PJR_RelicQuest_TryUnlockHoOh_Return::
 	return
+
+@ PJR RELICS world-encounter quest implementation checkpoint.
