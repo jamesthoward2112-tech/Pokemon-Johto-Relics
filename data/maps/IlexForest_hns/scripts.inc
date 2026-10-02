@@ -7,7 +7,20 @@ IlexForest_OnTransition:
 	call_if_eq VAR_ILEX_FOREST_FARFETCHD, 1, IlexForest_EventScript_ReenterWhenFarfetchdLeaving
 	call_if_eq VAR_ILEX_FOREST_FARFETCHD, 2, IlexForest_EventScript_ReenterDuringCutScene
 	callnative SetTimeBasedEncounters
-	end	
+	call IlexForest_EventScript_PJRRelicVisibility
+	end
+
+IlexForest_EventScript_PJRRelicVisibility::
+	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, IlexForest_EventScript_HidePJRCelebi
+	goto_if_unset FLAG_PJR_RELIC_UNOWN_I, IlexForest_EventScript_HidePJRCelebi
+	goto_if_set FLAG_PJR_RELIC_CELEBI, IlexForest_EventScript_HidePJRCelebi
+	removeobject LOCALID_ILEX_FOREST_CELEBI
+	removeobject LOCALID_ILEX_FOREST_SECOND_CELEBI
+	return
+
+IlexForest_EventScript_HidePJRCelebi::
+	removeobject LOCALID_PJR_RELIC_CELEBI
+	return	
 
 IlexForest_EventScript_ReenterWhenFarfetchdLeaving::
 	setobjectxyperm LOCALID_ILEX_FOREST_FARFETCHD_1, 33, 51
@@ -247,6 +260,7 @@ IlexForest_EventScript_PJRRelicCelebi::
 
 IlexForest_EventScript_PJRRelicCelebiCaught::
 	setflag FLAG_PJR_RELIC_CELEBI
+	removeobject LOCALID_PJR_RELIC_CELEBI
 	msgbox IlexForest_Text_PJRRelicCelebiCaught, MSGBOX_DEFAULT
 	release
 	end
