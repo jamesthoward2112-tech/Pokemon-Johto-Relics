@@ -269,8 +269,7 @@ BurnedTower_B1F_Text_RelicRaikou:
 
 BurnedTower_B1F_Text_RelicRaikouCaught:
 	.string "The R mark burns into the Journal.\p"
-	.string "A new inscription points toward\n"
-	.string "MT. MORTAR.$"
+	.string "NEXT DESTINATION:\nMT. MORTAR 2F.$"
 
 BurnedTower_B1F_Text_RelicSuicune:
 	.string "The RELIC JOURNAL flashes S.\p"
@@ -279,8 +278,8 @@ BurnedTower_B1F_Text_RelicSuicune:
 
 BurnedTower_B1F_Text_RelicSuicuneCaught:
 	.string "The S mark joins the other five.\p"
-	.string "All six RELICS resonate as one.\n"
-	.string "Something deep beneath ALPH answers.$"
+	.string "All six RELICS resonate as one.\p"
+	.string "NEXT DESTINATION:\nRUINS OF ALPH\lDEEPEST CHAMBER.$"
 
 BurnedTower_B1F_Text_RelicRetry:
 	.string "The Resonance remains.\p"
