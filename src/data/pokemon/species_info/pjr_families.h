@@ -672,7 +672,7 @@ PJR_FINAL_SPECIES(SPECIES_GHOULBAT, 95, 110, 90, 80, 95, 130, TYPE_GHOST, TYPE_F
     .abilities = { ABILITY_SACRED_REBIRTH, ABILITY_SACRED_REBIRTH, ABILITY_SACRED_REBIRTH },
     .bodyColor = BODY_COLOR_YELLOW,
     .speciesName = _("RELIC HO-OH"), .cryId = CRY_HO_OH, .natDexNum = NATIONAL_DEX_HO_OH,
-    .categoryName = _("Rainbow Relic"), .height = 38, .weight = 1990,
+    .categoryName = _("Relic"), .height = 38, .weight = 1990,
     .description = COMPOUND_STRING(
         "An ancient Ho-Oh awakened by Relic\n"
         "Resonance. Its sacred flame refuses\n"
