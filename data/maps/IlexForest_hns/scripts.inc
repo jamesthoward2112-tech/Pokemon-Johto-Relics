@@ -258,8 +258,7 @@ IlexForest_Text_PJRRelicCelebi:
 
 IlexForest_Text_PJRRelicCelebiCaught:
 	.string "The C mark appears in the Journal.\p"
-	.string "The final inscription returns to\n"
-	.string "the place where the three awoke.$"
+	.string "NEXT DESTINATION:\nBURNED TOWER B1F\lECRUTEAK CITY.$"
 
 IlexForest_Text_PJRRelicRetry:
 	.string "Time folds back around the shrine.\p"
