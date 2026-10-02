@@ -169,6 +169,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_PJR_RELIC_ENTEI",
+      "graphics_id": "OBJ_EVENT_GFX_MON_BASE+SPECIES_ENTEI",
+      "x": 17,
+      "y": 30,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MtMortar_2F_EventScript_RelicEntei",
+      "flag": "FLAG_PJR_RELIC_ENTEI"
     }
   ],
   "warp_events": [
@@ -204,14 +218,6 @@
       "elevation": 0,
       "item": "ITEM_HP_UP",
       "flag": "FLAG_HIDDEN_ITEM_MTMORTAR_2F_HP_UP"
-    },
-    {
-      "type": "sign",
-      "x": 17,
-      "y": 30,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "MtMortar_2F_EventScript_RelicEntei"
     }
   ],
   "game_version": "hns",
