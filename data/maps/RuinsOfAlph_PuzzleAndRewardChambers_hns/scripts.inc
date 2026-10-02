@@ -71,6 +71,116 @@ RuinsOfAlph_PuzzleAndRewardChambers_MapScript_StatueDescription::
 	msgbox RuinsOfAlph_PuzzleAndRewardChambers_Text_Statue, MSGBOX_DEFAULT
 	release
 	end
+RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRDeepStatue::
+	lock
+	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRDeepStatueStandard
+	goto_if_set FLAG_PJR_RELIC_SIX_RESONANCE, RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRAlphoracleGate
+	goto_if_unset FLAG_PJR_RELIC_LUGIA, RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRDeepStatueStandard
+	goto_if_set FLAG_PJR_RELIC_UNOWN_I, RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRDeepStatueResolved
+	goto RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRUnownI
+
+RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRAlphoracleGate::
+	goto_if_set FLAG_PJR_RELIC_ALPHORACLE, RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRDeepStatueResolved
+	goto RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRAlphoracle
+
+RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRUnownI::
+	setflag FLAG_PJR_RELIC_FOUND_UNOWN_I
+	msgbox RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRUnownI, MSGBOX_DEFAULT
+	playmoncry SPECIES_UNOWN_I, CRY_MODE_ENCOUNTER
+	delay 30
+	waitmoncry
+	seteventmon SPECIES_UNOWN_I, 65
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRUnownICaught
+	msgbox RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRRelicRetry, MSGBOX_DEFAULT
+	release
+	end
+
+RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRUnownICaught::
+	setflag FLAG_PJR_RELIC_UNOWN_I
+	msgbox RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRUnownICaught, MSGBOX_DEFAULT
+	release
+	end
+
+RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRAlphoracle::
+	msgbox RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRAlphoracle, MSGBOX_DEFAULT
+	playmoncry SPECIES_ALPHORACLE, CRY_MODE_ENCOUNTER
+	delay 30
+	waitmoncry
+	playbgm MUS_HG_VS_LUGIA, 0
+	seteventmon SPECIES_ALPHORACLE, 75
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRAlphoracleCaught
+	msgbox RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRAlphoracleRetry, MSGBOX_DEFAULT
+	release
+	end
+
+RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRAlphoracleCaught::
+	setflag FLAG_PJR_RELIC_ALPHORACLE
+	call PJR_RelicQuest_TryUnlockHoOh
+	goto_if_set FLAG_PJR_RELIC_HO_OH_UNLOCKED, RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRAlphoracleReady
+	msgbox RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRAlphoracleNeedsCrest, MSGBOX_DEFAULT
+	release
+	end
+
+RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRAlphoracleReady::
+	msgbox RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRAlphoracleReady, MSGBOX_DEFAULT
+	release
+	end
+
+RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRDeepStatueStandard::
+	msgbox RuinsOfAlph_PuzzleAndRewardChambers_Text_Statue, MSGBOX_DEFAULT
+	release
+	end
+
+RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRDeepStatueResolved::
+	call PJR_RelicQuest_TryUnlockHoOh
+	msgbox RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRDeepResolved, MSGBOX_DEFAULT
+	release
+	end
+
+RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRUnownI:
+	.string "The RELIC JOURNAL flashes I.\p"
+	.string "A single eye opens in the ancient text.\n"
+	.string "I-UNOWN answers the hidden chamber!$"
+
+RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRUnownICaught:
+	.string "The I mark is recorded.\p"
+	.string "The next inscription bends toward\n"
+	.string "the old shrine in ILEX FOREST.$"
+
+RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRRelicRetry:
+	.string "The Eye remains in the written stone.\p"
+	.string "I-UNOWN will return until it is captured.$"
+
+RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRAlphoracle:
+	.string "All six marks ignite at once.\p"
+	.string "The oldest inscription speaks first.\n"
+	.string "ALPHORACLE, the FIRST VOICE, awakens!$"
+
+RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRAlphoracleRetry:
+	.string "The FIRST VOICE remains in the chamber.\p"
+	.string "ALPHORACLE will wait until it is captured.$"
+
+RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRAlphoracleNeedsCrest:
+	.string "The FIRST VOICE accepts your bond.\p"
+	.string "One key is still missing.\n"
+	.string "The Journal points toward MT. SILVER.$"
+
+RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRAlphoracleReady:
+	.string "The FIRST VOICE accepts your bond.\p"
+	.string "The ANCIENT RAINBOW CREST answers.\n"
+	.string "A vast Resonance wakes at BELL TOWER.$"
+
+RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRDeepResolved:
+	.string "The ancient statue is silent now.\n"
+	.string "Its message has already been answered.$"
+
+
 RuinsOfAlph_PuzzleAndRewardChambers_MapScript_UnownText::
 	lock
 	msgbox RuinsOfAlph_PuzzleAndRewardChambers_Text_UnownText, MSGBOX_DEFAULT
