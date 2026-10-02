@@ -150,8 +150,7 @@ RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRUnownI:
 
 RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRUnownICaught:
 	.string "The I mark is recorded.\p"
-	.string "The next inscription bends toward\n"
-	.string "the old shrine in ILEX FOREST.$"
+	.string "NEXT DESTINATION:\nILEX FOREST SHRINE.$"
 
 RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRRelicRetry:
 	.string "The Eye remains in the written stone.\p"
@@ -167,14 +166,16 @@ RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRAlphoracleRetry:
 	.string "ALPHORACLE will wait until it is captured.$"
 
 RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRAlphoracleNeedsCrest:
-	.string "The FIRST VOICE accepts your bond.\p"
-	.string "One key is still missing.\n"
-	.string "The Journal points toward MT. SILVER.$"
+	.string "FIRST VOICE: ANSWERED\p"
+	.string "CURRENT OBJECTIVE:\nObtain the ANCIENT RAINBOW CREST.\p"
+	.string "NEXT DESTINATION:\nMT. SILVER SUMMIT\lDEFEAT RED.\p"
+	.string "The MT. SILVER entrance now offers\na direct route to the summit.$"
 
 RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRAlphoracleReady:
-	.string "The FIRST VOICE accepts your bond.\p"
-	.string "The ANCIENT RAINBOW CREST answers.\n"
-	.string "A vast Resonance wakes at BELL TOWER.$"
+	.string "FIRST VOICE: ANSWERED\p"
+	.string "RAINBOW CREST: RESONATING\p"
+	.string "NEXT DESTINATION:\nBELL TOWER ROOF\lECRUTEAK CITY.\p"
+	.string "Use the glowing beam on BELL TOWER\n1F for a direct ascent.$"
 
 RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRDeepResolved:
 	.string "The ancient statue is silent now.\n"
