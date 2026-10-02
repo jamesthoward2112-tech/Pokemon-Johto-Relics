@@ -8886,45 +8886,45 @@ AI: Basic Trainer
 Mugshot: Pink
 Items: Full Restore / Full Restore
 
-Girafarig
+Sphynxeon
 Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Zen Headbutt
-- Nasty Plot
+- Earthquake
+- Psychic
 - Agility
 - Baton Pass
 
-Slowking
+Guardeon
 Level: 49
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Amnesia
-- Fire Punch
-- Surf
+- Iron Head
 - Psychic
+- Reflect
+- Shadow Ball
 
-Espeon
+Omeon
 Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Psychic
 - Shadow Ball
 - Reflect
-- Headbutt
+- Confuse Ray
 
-Slowbro @ Quick Claw
+Obsideon @ Quick Claw
 Level: 49
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Curse
-- Rock Smash
+- Rock Slide
+- Earthquake
 - Body Slam
-- Zen Headbutt
+- Curse
 
-Xatu @ Twisted Spoon
+Mystynx @ Twisted Spoon
 Level: 50
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Air Slash
-- Recover
-- Confuse Ray
+- Ice Beam
 - Psychic
+- Lovely Kiss
+- Shadow Ball
 
 === TRAINER_WILL_2_HNS ===
 Name: WILL
@@ -8996,45 +8996,45 @@ AI: Basic Trainer
 Mugshot: Orange
 Items: Full Restore / Full Restore
 
-Hitmonchan @ Scope Lens
+Champeon @ Scope Lens
 Level: 53
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Close Combat
-- Pursuit
-- Dizzy Punch
 - Thunder Punch
+- Ice Punch
+- Stone Edge
 
-Heracross
+Miltitan
 Level: 52
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Body Slam
+- Earthquake
+- Rock Slide
+- Zen Headbutt
+
+Donphalanx @ Silk Scarf
+Level: 53
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Earthquake
+- Crunch
+- Stone Edge
+- Body Slam
+
+Sudowarden
+Level: 53
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Rock Slide
+- Earthquake
+- Wood Hammer
+- Hammer Arm
+
+Heracurion @ Black Belt
+Level: 54
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Close Combat
 - Megahorn
-- Take Down
-- Earthquake
-
-Hitmonlee @ Silk Scarf
-Level: 53
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Blaze Kick
-- Meditate
-- Reversal
-- Hi Jump Kick
-
-Steelix
-Level: 53
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Crunch
 - Earthquake
 - Stone Edge
-- Iron Tail
-
-Machamp @ Black Belt
-Level: 54
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rock Slide
-- Fire Punch
-- Vital Throw
-- Cross Chop
 
 === TRAINER_BRUNO_2_HNS ===
 Name: BRUNO
@@ -9106,31 +9106,31 @@ AI: Basic Trainer
 Mugshot: Yellow
 Items: Full Restore / Full Restore
 
-Umbreon @ Sitrus Berry
+Omeon @ Sitrus Berry
 Level: 54
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Faint Attack
+- Shadow Ball
 - Double Team
 - Baton Pass
 - Moonlight
 
-Gengar
+Maroghost
 Level: 53
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Shadow Ball
+- Earthquake
 - Hypnosis
-- Dream Eater
 - Confuse Ray
 
-Vileplume @ Leftovers
+Pyroclast @ Leftovers
 Level: 53
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Sleep Powder
-- Giga Drain
-- Leech Seed
+- Flamethrower
+- Shadow Ball
+- Will-O-Wisp
 - Substitute
 
-Honchkrow @ Sharp Beak
+Grimfowl @ Sharp Beak
 Level: 53
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Air Slash
@@ -9138,13 +9138,13 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Steel Wing
 - Haze
 
-Houndoom @ Black Glasses
+Donphalanx @ Black Glasses
 Level: 55
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Flamethrower
 - Crunch
+- Earthquake
+- Stone Edge
 - Iron Tail
-- Reversal
 
 === TRAINER_KAREN_2_HNS ===
 Name: KAREN
@@ -9216,7 +9216,7 @@ AI: Basic Trainer
 Mugshot: Purple
 Items: Full Restore / Full Restore
 
-Ariados @ Kings Rock
+Lepideon @ Kings Rock
 Level: 50
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Megahorn
@@ -9224,7 +9224,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Double Team
 - Toxic
 
-Qwilfish
+Kablowfish
 Level: 51
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Aqua Tail
@@ -9232,28 +9232,28 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Protect
 - Poison Jab
 
-Muk @ Leftovers
+Toxeon @ Leftovers
 Level: 50
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Minimize
-- Fire Blast
-- Gunk Shot
+- Signal Beam
+- Poison Fang
 - Toxic
+- Double Team
 
-Venomoth
+Pinsirex
 Level: 51
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Leech Life
-- Psychic
-- Poison Fang
-- Sleep Powder
+- Aerial Ace
+- Stone Edge
+- Double Team
 
-Crobat @ Bright Powder
+Ghoulbat @ Bright Powder
 Level: 52
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Double Team
+- Air Slash
+- Shadow Ball
 - Toxic
-- Bite
 - Confuse Ray
 
 === TRAINER_KOGA_2_HNS ===
