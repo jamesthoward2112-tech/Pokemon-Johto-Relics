@@ -34,10 +34,10 @@ RuinsOfAlph_Lab_Text_ScientistRelicResearch:
 
 RuinsOfAlph_Lab_Text_ScientistRelicsSix:
 	.string "All SIX signals are stable!\p"
-	.string "The ALPH network is resonating toward\n"
-	.string "one seventh point.\p"
-	.string "Whatever comes next is not one of the\n"
-	.string "six RELICS.$"
+	.string "The ALPH network is answering from\n"
+	.string "the deepest ancient chamber.\p"
+	.string "The inscriptions call it the FIRST VOICE.\n"
+	.string "Whatever waits there is not a seventh RELIC.$"
 
 RuinsOfAlph_Lab_EventScript_Scientist2::
 	lock
