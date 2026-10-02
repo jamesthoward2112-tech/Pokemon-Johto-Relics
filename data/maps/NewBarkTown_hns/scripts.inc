@@ -11,7 +11,7 @@ NewBarkTown_OnFrame::
 NewBarkTown_EventScript_ElmCallAfterLeague::
 	lock
 	setspeaker NewBarkTown_Text_ElmName
-	pokenavcall BlackthornCity_Text_ElmCall
+	pokenavcall NewBarkTown_Text_ElmRelicCall
 	waitmessage
 	delay 30
 	setvar VAR_NEWBARK_TOWN_STATE, 7
@@ -21,6 +21,13 @@ NewBarkTown_EventScript_ElmCallAfterLeague::
 
 NewBarkTown_Text_ElmName:
 	.string "PROF.ELM$"
+
+NewBarkTown_Text_ElmRelicCall:
+	.string "{PLAYER}! It's ELM.\p"
+	.string "The readings around HO-OH changed\n"
+	.string "right after your LEAGUE battle.\p"
+	.string "Please come back to my LAB.\n"
+	.string "I need to show you something.$"
 
 NewBarkTown_OnTransition::
 	goto_if_eq VAR_NEWBARK_TOWN_STATE, 2, NewBarkTown_Set_TalkToElm

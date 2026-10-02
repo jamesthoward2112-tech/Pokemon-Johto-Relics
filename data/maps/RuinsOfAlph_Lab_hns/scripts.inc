@@ -9,15 +9,9 @@ RuinsOfAlph_Lab_OnTransition:
 RuinsOfAlph_Lab_EventScript_Scientist1::
 	lock
 	faceplayer
-	goto_if_unset FLAG_IS_CHAMPION, RuinsOfAlph_Lab_EventScript_Scientist1Standard
-	goto_if_unset FLAG_PJR_RELIC_RAIKOU, RuinsOfAlph_Lab_EventScript_RelicRaikou
-	goto_if_unset FLAG_PJR_RELIC_ENTEI, RuinsOfAlph_Lab_EventScript_RelicEntei
-	goto_if_unset FLAG_PJR_RELIC_LUGIA, RuinsOfAlph_Lab_EventScript_RelicLugia
-	goto_if_unset FLAG_PJR_RELIC_UNOWN_I, RuinsOfAlph_Lab_EventScript_RelicUnownI
-	goto_if_unset FLAG_PJR_RELIC_CELEBI, RuinsOfAlph_Lab_EventScript_RelicCelebi
-	goto_if_unset FLAG_PJR_RELIC_SUICUNE, RuinsOfAlph_Lab_EventScript_RelicSuicune
-	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, RuinsOfAlph_Lab_EventScript_RelicAlphoracle
-	msgbox RuinsOfAlph_Lab_Text_RelicsComplete, MSGBOX_DEFAULT
+	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, RuinsOfAlph_Lab_EventScript_Scientist1Standard
+	goto_if_set FLAG_PJR_RELIC_SUICUNE, RuinsOfAlph_Lab_EventScript_ScientistRelicsSix
+	msgbox RuinsOfAlph_Lab_Text_ScientistRelicResearch, MSGBOX_DEFAULT
 	release
 	end
 
@@ -26,142 +20,25 @@ RuinsOfAlph_Lab_EventScript_Scientist1Standard::
 	release
 	end
 
-RuinsOfAlph_Lab_EventScript_RelicRaikou::
-	msgbox RuinsOfAlph_Lab_Text_RelicRaikou, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_RelicDecline
-	seteventmon SPECIES_RAIKOU, 65
-	playmoncry SPECIES_RAIKOU, CRY_MODE_ENCOUNTER
-	waitmoncry
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, RuinsOfAlph_Lab_EventScript_RelicRaikouCaught
-	goto RuinsOfAlph_Lab_EventScript_RelicRetry
-
-RuinsOfAlph_Lab_EventScript_RelicRaikouCaught::
-	setflag FLAG_PJR_RELIC_RAIKOU
-	goto RuinsOfAlph_Lab_EventScript_RelicRecorded
-
-RuinsOfAlph_Lab_EventScript_RelicEntei::
-	msgbox RuinsOfAlph_Lab_Text_RelicEntei, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_RelicDecline
-	seteventmon SPECIES_ENTEI, 66
-	playmoncry SPECIES_ENTEI, CRY_MODE_ENCOUNTER
-	waitmoncry
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, RuinsOfAlph_Lab_EventScript_RelicEnteiCaught
-	goto RuinsOfAlph_Lab_EventScript_RelicRetry
-
-RuinsOfAlph_Lab_EventScript_RelicEnteiCaught::
-	setflag FLAG_PJR_RELIC_ENTEI
-	goto RuinsOfAlph_Lab_EventScript_RelicRecorded
-
-RuinsOfAlph_Lab_EventScript_RelicLugia::
-	msgbox RuinsOfAlph_Lab_Text_RelicLugia, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_RelicDecline
-	seteventmon SPECIES_LUGIA, 68
-	playmoncry SPECIES_LUGIA, CRY_MODE_ENCOUNTER
-	waitmoncry
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, RuinsOfAlph_Lab_EventScript_RelicLugiaCaught
-	goto RuinsOfAlph_Lab_EventScript_RelicRetry
-
-RuinsOfAlph_Lab_EventScript_RelicLugiaCaught::
-	setflag FLAG_PJR_RELIC_LUGIA
-	goto RuinsOfAlph_Lab_EventScript_RelicRecorded
-
-RuinsOfAlph_Lab_EventScript_RelicUnownI::
-	msgbox RuinsOfAlph_Lab_Text_RelicUnownI, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_RelicDecline
-	seteventmon SPECIES_UNOWN_I, 65
-	playmoncry SPECIES_UNOWN_I, CRY_MODE_ENCOUNTER
-	waitmoncry
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, RuinsOfAlph_Lab_EventScript_RelicUnownICaught
-	goto RuinsOfAlph_Lab_EventScript_RelicRetry
-
-RuinsOfAlph_Lab_EventScript_RelicUnownICaught::
-	setflag FLAG_PJR_RELIC_UNOWN_I
-	goto RuinsOfAlph_Lab_EventScript_RelicRecorded
-
-RuinsOfAlph_Lab_EventScript_RelicCelebi::
-	msgbox RuinsOfAlph_Lab_Text_RelicCelebi, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_RelicDecline
-	seteventmon SPECIES_CELEBI, 67
-	playmoncry SPECIES_CELEBI, CRY_MODE_ENCOUNTER
-	waitmoncry
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, RuinsOfAlph_Lab_EventScript_RelicCelebiCaught
-	goto RuinsOfAlph_Lab_EventScript_RelicRetry
-
-RuinsOfAlph_Lab_EventScript_RelicCelebiCaught::
-	setflag FLAG_PJR_RELIC_CELEBI
-	goto RuinsOfAlph_Lab_EventScript_RelicRecorded
-
-RuinsOfAlph_Lab_EventScript_RelicSuicune::
-	msgbox RuinsOfAlph_Lab_Text_RelicSuicune, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_RelicDecline
-	seteventmon SPECIES_SUICUNE, 69
-	playmoncry SPECIES_SUICUNE, CRY_MODE_ENCOUNTER
-	waitmoncry
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, RuinsOfAlph_Lab_EventScript_RelicSuicuneCaught
-	goto RuinsOfAlph_Lab_EventScript_RelicRetry
-
-RuinsOfAlph_Lab_EventScript_RelicSuicuneCaught::
-	setflag FLAG_PJR_RELIC_SUICUNE
-	goto RuinsOfAlph_Lab_EventScript_RelicRecorded
-
-RuinsOfAlph_Lab_EventScript_RelicAlphoracle::
-	msgbox RuinsOfAlph_Lab_Text_RelicAlphoracle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_RelicDecline
-	seteventmon SPECIES_ALPHORACLE, 75
-	playmoncry SPECIES_ALPHORACLE, CRY_MODE_ENCOUNTER
-	waitmoncry
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, RuinsOfAlph_Lab_EventScript_RelicAlphoracleCaught
-	goto RuinsOfAlph_Lab_EventScript_RelicRetry
-
-RuinsOfAlph_Lab_EventScript_RelicAlphoracleCaught::
-	setflag FLAG_PJR_RELIC_ALPHORACLE
-	goto_if_set FLAG_PJR_GOT_RAINBOW_CREST, RuinsOfAlph_Lab_EventScript_UnlockRelicHoOh
-	msgbox RuinsOfAlph_Lab_Text_AlphoracleCaughtNeedsCrest, MSGBOX_DEFAULT
+RuinsOfAlph_Lab_EventScript_ScientistRelicsSix::
+	msgbox RuinsOfAlph_Lab_Text_ScientistRelicsSix, MSGBOX_DEFAULT
 	release
 	end
 
-RuinsOfAlph_Lab_EventScript_UnlockRelicHoOh::
-	setvar VAR_COMPLETED_HO_OH, 4
-	clearflag FLAG_HIDE_HO_OH
-	msgbox RuinsOfAlph_Lab_Text_AlphoracleCaught, MSGBOX_DEFAULT
-	release
-	end
+RuinsOfAlph_Lab_Text_ScientistRelicResearch:
+	.string "ELM shared your RELIC JOURNAL data.\p"
+	.string "The signals form an ordered network,\n"
+	.string "not six independent legends.\p"
+	.string "Follow the inscriptions. The RUINS are\n"
+	.string "revealing them one at a time.$"
 
-RuinsOfAlph_Lab_EventScript_RelicRecorded::
-	msgbox RuinsOfAlph_Lab_Text_RelicRecorded, MSGBOX_DEFAULT
-	release
-	end
+RuinsOfAlph_Lab_Text_ScientistRelicsSix:
+	.string "All SIX signals are stable!\p"
+	.string "The ALPH network is resonating toward\n"
+	.string "one seventh point.\p"
+	.string "Whatever comes next is not one of the\n"
+	.string "six RELICS.$"
 
-RuinsOfAlph_Lab_EventScript_RelicRetry::
-	msgbox RuinsOfAlph_Lab_Text_RelicRetry, MSGBOX_DEFAULT
-	release
-	end
-
-RuinsOfAlph_Lab_EventScript_RelicDecline::
-	msgbox RuinsOfAlph_Lab_Text_RelicDecline, MSGBOX_DEFAULT
-	release
-	end
 RuinsOfAlph_Lab_EventScript_Scientist2::
 	lock
 	faceplayer

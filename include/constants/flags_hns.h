@@ -1328,6 +1328,18 @@
 #define FLAG_PJR_RELIC_HO_OH                        (SYS_FLAGS + 0x74)
 #define FLAG_PJR_GYM_REWARD_CLAIR_TM                (SYS_FLAGS + 0x75)
 
+// PJR RELICS quest state. Existing capture flags remain canonical.
+#define FLAG_PJR_GOT_RELIC_JOURNAL                   (SYS_FLAGS + 0x76)
+#define FLAG_PJR_RELIC_FOUND_RAIKOU                  (SYS_FLAGS + 0x77)
+#define FLAG_PJR_RELIC_FOUND_ENTEI                   (SYS_FLAGS + 0x78)
+#define FLAG_PJR_RELIC_FOUND_LUGIA                   (SYS_FLAGS + 0x79)
+#define FLAG_PJR_RELIC_FOUND_UNOWN_I                 (SYS_FLAGS + 0x7A)
+#define FLAG_PJR_RELIC_FOUND_CELEBI                  (SYS_FLAGS + 0x7B)
+#define FLAG_PJR_RELIC_FOUND_SUICUNE                 (SYS_FLAGS + 0x7C)
+#define FLAG_PJR_RELIC_SIX_RESONANCE                 (SYS_FLAGS + 0x7D)
+#define FLAG_PJR_RELIC_ELM_FINAL_BRIEF               (SYS_FLAGS + 0x7E)
+#define FLAG_PJR_RELIC_HO_OH_UNLOCKED                (SYS_FLAGS + 0x7F)
+
 // Visited / World Map flags
 #define FLAG_VISITED_NEWBARK_TOWN                   (SYS_FLAGS + 0x90)
 #define FLAG_VISITED_CHERRYGROVE_CITY               (SYS_FLAGS + 0x91)

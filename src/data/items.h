@@ -16521,6 +16521,22 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_RainbowWing,
     },
 
+    [ITEM_RELIC_JOURNAL] =
+    {
+        .name = ITEM_NAME("RELIC JOURNAL"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "ELM's record of six\n"
+            "ancient RELICS and\n"
+            "their Resonance."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_RelicJournal,
+        .iconPic = gItemIcon_FameChecker,
+        .iconPalette = gItemIconPalette_FameChecker,
+    },
+
 #undef PJR_CATALYST_ITEM
 };
 

@@ -67,6 +67,10 @@ NewBarkTown_EventScript_Aide2Testimony::
 NewBarkTown_Lab_EventScript_Elm::
 	lock
 	faceplayer
+	goto_if_unset FLAG_IS_CHAMPION, NewBarkTown_Lab_EventScript_ElmNormalState
+	goto_if_set FLAG_PJR_RELIC_SIX_RESONANCE, NewBarkTown_Lab_EventScript_ElmRelicsCheckFinal
+	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, NewBarkTown_Lab_EventScript_ElmRelicsIntro
+NewBarkTown_Lab_EventScript_ElmNormalState::
 	goto_if_set FLAG_HIDE_NEWBARKTOWN_LAB_AIDE, NewBarkTown_Lab_EventScript_ElmAideIsWaiting
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 7, NewBarkTown_Lab_EventScript_ElmMasterBall
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 8, NewBarkTown_Lab_EventScript_ElmKimono
@@ -86,6 +90,82 @@ NewBarkTown_Lab_EventScript_Elm_AfterEggCheck:
 	goto_if_set FLAG_SYS_POKEMON_GET, NewBarkTown_Lab_EventScript_MrPokemon
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 1, NewBarkTown_Lab_EventScript_ElmChoosePokemon
 	end
+
+NewBarkTown_Lab_EventScript_ElmRelicsIntro::
+	msgbox NewBarkTown_Lab_Text_RelicIntro1, MSGBOX_DEFAULT
+	msgbox NewBarkTown_Lab_Text_RelicIntro2, MSGBOX_DEFAULT
+	msgbox NewBarkTown_Lab_Text_RelicIntro3, MSGBOX_DEFAULT
+	giveitem ITEM_RELIC_JOURNAL
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setflag FLAG_PJR_GOT_RELIC_JOURNAL
+	msgbox NewBarkTown_Lab_Text_RelicJournalReceived, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+NewBarkTown_Lab_EventScript_ElmRelicsCheckFinal::
+	goto_if_set FLAG_PJR_RELIC_ELM_FINAL_BRIEF, NewBarkTown_Lab_EventScript_ElmNormalState
+	goto_if_unset FLAG_PJR_RELIC_SUICUNE, NewBarkTown_Lab_EventScript_ElmNormalState
+	msgbox NewBarkTown_Lab_Text_RelicFinal1, MSGBOX_DEFAULT
+	msgbox NewBarkTown_Lab_Text_RelicFinal2, MSGBOX_DEFAULT
+	setflag FLAG_PJR_RELIC_ELM_FINAL_BRIEF
+	setflag FLAG_PJR_RELIC_HO_OH_UNLOCKED
+	setvar VAR_COMPLETED_HO_OH, 4
+	clearflag FLAG_HIDE_HO_OH
+	msgbox NewBarkTown_Lab_Text_RelicFinalUnlock, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+NewBarkTown_Lab_Text_RelicIntro1:
+	.string "{PLAYER}... I've been analysing the\n"
+	.string "readings surrounding HO-OH.\p"
+	.string "At first I thought they were only\n"
+	.string "unusual energy fluctuations.\p"
+	.string "I was wrong. This is no ordinary\n"
+	.string "phenomenon.$"
+
+NewBarkTown_Lab_Text_RelicIntro2:
+	.string "Something is happening to HO-OH.\p"
+	.string "The Resonance across JOHTO seems to\n"
+	.string "be waking something ancient within it.\p"
+	.string "Its power could become far greater\n"
+	.string "than anything ever recorded.\p"
+	.string "Different. Ancient. RELIC-like.$"
+
+NewBarkTown_Lab_Text_RelicIntro3:
+	.string "But there's more. I've detected SIX\n"
+	.string "other sources of that Resonance.\p"
+	.string "Six ancient powers. Six RELICS.\n"
+	.string "Some readings even reach beyond JOHTO.\p"
+	.string "The records say they must awaken in\n"
+	.string "a particular order, but give only clues.\p"
+	.string "I've copied everything into this.$"
+
+NewBarkTown_Lab_Text_RelicJournalReceived:
+	.string "{PLAYER} received the RELIC JOURNAL!\p"
+	.string "ELM: Whenever you find a RELIC, the\n"
+	.string "Journal should react to its energy.\p"
+	.string "Each capture may decipher the next clue.\n"
+	.string "Find all six. I think they're the key.$"
+
+NewBarkTown_Lab_Text_RelicFinal1:
+	.string "ELM: {PLAYER}! The six signals have\n"
+	.string "synchronised perfectly.\p"
+	.string "The readings around HO-OH just surged\n"
+	.string "off every scale in the LAB.$"
+
+NewBarkTown_Lab_Text_RelicFinal2:
+	.string "This is no normal HO-OH anymore.\p"
+	.string "The combined Resonance has changed it--\n"
+	.string "ancient, RELIC-like, immensely stronger.\p"
+	.string "The seventh symbol in your Journal is\n"
+	.string "pointing toward BELL TOWER.$"
+
+NewBarkTown_Lab_Text_RelicFinalUnlock:
+	.string "ELM: The path is open now.\p"
+	.string "Go to BELL TOWER. Whatever has awakened\n"
+	.string "there is the end of this mystery.$"
 
 NewBarkTown_Lab_EventScript_ElmAideIsWaiting::
 	msgbox NewBarkTown_Lab_Text_ElmAideIsWaiting, MSGBOX_DEFAULT
