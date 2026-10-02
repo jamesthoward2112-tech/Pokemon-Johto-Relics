@@ -211,7 +211,7 @@ TinTower_RoofDay_EventScript_HoOhPostgame::
 	delay 30
 	waitmoncry
 	playbgm MUS_HG_VS_HO_OH, 0
-	seteventmon SPECIES_HO_OH, 85
+	seteventmon SPECIES_RELIC_HO_OH, 85
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
