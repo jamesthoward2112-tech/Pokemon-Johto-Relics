@@ -311,15 +311,17 @@ EcruteakCity_Text_UnusedMissingDaughter:
 	.string "Oh, what should I do…?$"
 
 EcruteakCity_Text_Gramps1:
-	.string "ECRUTEAK used to have two towers:\n"
-	.string "one each in the east and west.$"
+	.string "ECRUTEAK used to have two TOWERS.\p"
+	.string "The oldest foundation stones look\n"
+	.string "much like those at ALPH.\p"
+	.string "Maybe our history began before\n"
+	.string "this city had a name.$"
 
 EcruteakCity_Text_Gramps2:
-	.string "Ah, child. Have you learned to\n"
-	.string "dance like the KIMONO GIRLS?\p"
-	.string "If you go to their DANCE THEATER,\n"
-	.string "an odd old man will give you\l"
-	.string "something nice, I hear.$"
+	.string "The TOWERS have always hummed\n"
+	.string "during certain nights.\p"
+	.string "We called it an omen.\n"
+	.string "Researchers call it RESONANCE.$"
 
 EcruteakCity_Text_Lass1:
 	.string "I'm going to practice at the DANCE\n"
@@ -332,8 +334,9 @@ EcruteakCity_Text_Lass2:
 	.string "I hear there are ghosts in it now.$"
 
 EcruteakCity_Text_Lass2_ReleasedBeasts:
-	.string "Three big POKéMON ran off in different\n"
-	.string "directions. What were they?$"
+	.string "When those three beasts escaped,\n"
+	.string "the whole city seemed to hum!\p"
+	.string "Even the bells rang by themselves.$"
 
 EcruteakCity_Text_Fisher:
 	.string "I heard a rumor about OLIVINE\n"
@@ -353,21 +356,15 @@ EcruteakCity_Text_Youngster:
 	.string "LAKE OF RAGE. I'd like to see that.$"
 
 EcruteakCity_Text_Gramps3:
-	.string "In the distant past…\p"
-	.string "This tower burned in a fire. Three\n"
-	.string "nameless POKéMON perished in it.\p"
-	.string "A rainbow-colored POKéMON descended\n"
-	.string "from the sky and resurrected them…\p"
-	.string "It's a legend that has been passed\n"
-	.string "down by ECRUTEAK GYM LEADERS.\p"
-	.string "Me?\p"
-	.string "I was a trainer way back when.\n"
-	.string "Hohoho!$"
+	.string "Three POKéMON died in the fire.\n"
+	.string "HO-OH brought them back.\p"
+	.string "Some SAGES now wonder if that was\n"
+	.string "the purest RESONANCE ever seen.$"
 
 EcruteakCity_Text_SageGym:
-	.string "Gym Leader MORTY is not here right\n"
-	.string "now. You may find him at the\l"
-	.string "BURNED TOWER.$"
+	.string "MORTY studies spirits and legend.\p"
+	.string "Lately he speaks of a link between\n"
+	.string "the TOWERS, ALPH and RESONANCE.$"
 
 EcruteakCity_Text_Sign:
 	.string "ECRUTEAK CITY\n"
@@ -380,8 +377,8 @@ EcruteakCity_Text_TinTowerSign:
 	.string "roost here.$"
 
 EcruteakCity_Text_OfficeSign:
-	.string "Barrier Station to TIN TOWER\p"
-	.string "No Trespassing by the Unworthy.$"
+	.string "ECRUTEAK HISTORY OFFICE\p"
+	.string "TOWER RECORDS - ALPH COMPARISONS$"
 
 EcruteakCity_Text_GymSign:
 	.string "ECRUTEAK CITY POKéMON GYM\n"
@@ -393,11 +390,12 @@ EcruteakCity_Text_DanceTheaterSign:
 
 EcruteakCity_Text_RockShopSign:
 	.string "THE ROCK SHOP\p"
-	.string "Evolution stones from across JOHTO.$"
+	.string "FOSSILS - STONES - JOHTO CURIOS$"
 
 EcruteakCity_Text_RockShopDecoration:
-	.string "Smooth stones are stacked neatly\n"
-	.string "beside the shop.$"
+	.string "A display label reads:\p"
+	.string "ALPH STRATA - NOT FOR SALE.\p"
+	.string "The stone gives off a faint hum.$"
 
 EcruteakCity_Text_BurnedTowerSign:
 	.string "BURNED TOWER\p"

@@ -49,15 +49,13 @@ BurnedTower_Movement_Eusine2:
 
 
 BurnedTower_1FEusineIntroText:
-	.string "EUSINE: My name's EUSINE.\p"
-	.string "I'm on the trail of a POKéMON\n"
-	.string "called SUICUNE.\p"
-	.string "And you are...?\p"
-	.string "{PLAYER}? Glad to meet you!\p"
-	.string "I heard SUICUNE might be in\n"
-	.string "this BURNED TOWER, so I came\l"
-	.string "to check it out.\p"
-	.string "But where exactly could it be?$"
+	.string "EUSINE: My name's EUSINE.\n"
+	.string "I'm chasing SUICUNE.\p"
+	.string "Lately this old floor carries a\n"
+	.string "pulse I can feel in my bones.\p"
+	.string "Researchers at ALPH report the\n"
+	.string "same thing.\p"
+	.string "Maybe SUICUNE hears it too.$"
 
 BurnedTower_1F_EventScript_Item_HpUp::
 	finditem ITEM_HP_UP
@@ -84,19 +82,17 @@ BurnedTower_1F_EventScript_Morty::
 	end
 
 BurnedTower_1FEusineText:
-	.string "EUSINE: I heard SUICUNE might\n"
-	.string "be in this BURNED TOWER, so I\l"
-	.string "came to check it out.\p"
-	.string "But where exactly could it be?$"
+	.string "That pulse again...\p"
+	.string "SUICUNE and the RUINS are linked\n"
+	.string "somehow. I know it.$"
 
 BurnedTower_1FMortyText:
-	.string "MORTY: ECRUTEAK's GYM LEADER\n"
-	.string "has to study what are said to\l"
-	.string "be the legendary POKéMON--\l"
-	.string "SUICUNE, ENTEI and RAIKOU.\p"
-	.string "EUSINE is here, so I've\n"
-	.string "decided to investigate the\l"
-	.string "TOWER with him.$"
+	.string "MORTY: ECRUTEAK's oldest records\n"
+	.string "call it the city's hidden song.\p"
+	.string "ALPH researchers use a newer\n"
+	.string "word: RESONANCE.\p"
+	.string "HO-OH, the beasts, the TOWERS...\n"
+	.string "I think they all hear it.$"
 
 BurnedTower_1F_EventScript_Silver::
 	lock
@@ -201,10 +197,10 @@ BurnedTower_Text_NardSeen:
 BurnedTower_Text_NardBeaten:
 	.string "Thanks for such a heated battle!$"
 BurnedTower_Text_NardAfter:
-	.string "The reason this tower's burned is\n"
-	.string "that it was hit by lightning.\p"
-	.string "The fire I'm breathing is tiny\n"
-	.string "in comparison...$"
+	.string "The fire isn't the oldest story\n"
+	.string "in this TOWER.\p"
+	.string "Some stones below bear marks\n"
+	.string "just like the RUINS OF ALPH.$"
 
 BurnedTower_Text_RichardoSeen:
 	.string "I'm practicing my stealing in the\n"
@@ -213,5 +209,7 @@ BurnedTower_Text_RichardoSeen:
 BurnedTower_Text_RichardoBeaten:
 	.string "Pfffffffffffffff.$"
 BurnedTower_Text_RichardoAfter:
-	.string "Maybe a life of crime isn't for\n"
-	.string "me...$"
+	.string "Stand still. Feel that low hum\n"
+	.string "under the floor?\p"
+	.string "Old-timers say it wasn't here\n"
+	.string "years ago.$"
