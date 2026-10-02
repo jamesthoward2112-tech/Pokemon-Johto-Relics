@@ -28,11 +28,17 @@ PJR_RelicJournal_Count5::
 	msgbox PJR_RelicJournal_Text_Count5, MSGBOX_YESNO
 	goto PJR_RelicJournal_AfterMain
 PJR_RelicJournal_Count6::
-	goto_if_set FLAG_PJR_RELIC_HO_OH_UNLOCKED, PJR_RelicJournal_Count6Unlocked
-	msgbox PJR_RelicJournal_Text_Count6, MSGBOX_YESNO
-	goto PJR_RelicJournal_AfterMain
-PJR_RelicJournal_Count6Unlocked::
+	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, PJR_RelicJournal_Count6NeedFirstVoice
+	goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, PJR_RelicJournal_Count6NeedCrest
+	call PJR_RelicQuest_TryUnlockHoOh
 	msgbox PJR_RelicJournal_Text_Count6Unlocked, MSGBOX_YESNO
+	goto PJR_RelicJournal_AfterMain
+PJR_RelicJournal_Count6NeedFirstVoice::
+	msgbox PJR_RelicJournal_Text_Count6NeedFirstVoice, MSGBOX_YESNO
+	goto PJR_RelicJournal_AfterMain
+PJR_RelicJournal_Count6NeedCrest::
+	msgbox PJR_RelicJournal_Text_Count6NeedCrest, MSGBOX_YESNO
+	goto PJR_RelicJournal_AfterMain
 
 PJR_RelicJournal_AfterMain::
 	goto_if_eq VAR_RESULT, NO, PJR_RelicJournal_Close
@@ -178,16 +184,23 @@ PJR_RelicJournal_Text_Count5:
 	.string "Return beneath the burned tower.\l"
 	.string "Pure water remembers the three.\p"
 	.string "View all six records?$"
-PJR_RelicJournal_Text_Count6:
+PJR_RelicJournal_Text_Count6NeedFirstVoice:
 	.string "RELIC JOURNAL\nRELICS: 6 / 6\p"
-	.string "The six inscriptions are glowing.\n"
-	.string "A seventh symbol has appeared.\p"
-	.string "PROF.ELM must see this.\p"
+	.string "The six marks now form one voice.\p"
+	.string "Return to the deepest ALPH chamber.\n"
+	.string "The FIRST VOICE is waiting there.\p"
+	.string "View all six records?$"
+PJR_RelicJournal_Text_Count6NeedCrest:
+	.string "RELIC JOURNAL\nRELICS: 6 / 6\p"
+	.string "The FIRST VOICE has answered.\p"
+	.string "One key remains. The signal points\n"
+	.string "toward the summit of MT. SILVER.\p"
 	.string "View all six records?$"
 PJR_RelicJournal_Text_Count6Unlocked:
 	.string "RELIC JOURNAL\nRELICS: 6 / 6\p"
-	.string "The seventh symbol points toward\n"
-	.string "BELL TOWER. A vast presence is awake.\p"
+	.string "FIRST VOICE: ANSWERED\n"
+	.string "RAINBOW CREST: RESONATING\p"
+	.string "BELL TOWER has awakened.\p"
 	.string "View all six records?$"
 PJR_RelicJournal_Text_Complete:
 	.string "RELIC JOURNAL\nRELICS: 6 / 6\p"
@@ -269,3 +282,12 @@ PJR_RelicJournal_Text_Entry6Found:
 PJR_RelicJournal_Text_Entry6Caught:
 	.string "06  CAPTURED\nSUICUNE - SACRED SPRING\p"
 	.string "All six marks now resonate as one.$"
+
+PJR_RelicQuest_TryUnlockHoOh::
+	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, PJR_RelicQuest_TryUnlockHoOh_Return
+	goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, PJR_RelicQuest_TryUnlockHoOh_Return
+	setflag FLAG_PJR_RELIC_HO_OH_UNLOCKED
+	setvar VAR_COMPLETED_HO_OH, 4
+	clearflag FLAG_HIDE_HO_OH
+PJR_RelicQuest_TryUnlockHoOh_Return::
+	return
