@@ -6915,13 +6915,13 @@ Double Battle: No
 AI: Basic Trainer
 Mugshot: Yellow
 
-Toxeon
+Guardeon
 Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Venom Swipe
-- Crunch
-- Thunder Fang
-- Punishment
+- Flash Cannon
+- Dragon Pulse
+- Kings Shield
+- Extrasensory
 
 === TRAINER_ZUKI_HNS ===
 Name: ZUKI
