@@ -251,8 +251,8 @@ WhirlIslands_LugiaChamber_Text_PJRRelicLugia:
 
 WhirlIslands_LugiaChamber_Text_PJRRelicLugiaCaught:
 	.string "The L mark settles into the Journal.\p"
-	.string "The next inscription points back\n"
-	.string "toward a hidden chamber in ALPH.$"
+	.string "NEXT DESTINATION:\nRUINS OF ALPH\lDEEPEST CHAMBER.\p"
+	.string "Inspect the ancient statue.$"
 
 WhirlIslands_LugiaChamber_Text_PJRRelicRetry:
 	.string "The abyssal Resonance remains.\p"
