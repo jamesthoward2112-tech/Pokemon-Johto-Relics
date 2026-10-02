@@ -8886,13 +8886,13 @@ AI: Basic Trainer
 Mugshot: Pink
 Items: Full Restore / Full Restore
 
-Alakazam Relic
+Girafarig
 Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Psychic
-- Shadow Ball
-- Calm Mind
-- Recover
+- Zen Headbutt
+- Nasty Plot
+- Agility
+- Baton Pass
 
 Slowking Relic
 Level: 49
@@ -9004,7 +9004,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Dizzy Punch
 - Thunder Punch
 
-Heracurion
+Heracross
 Level: 52
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Close Combat
@@ -9130,7 +9130,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Leech Seed
 - Substitute
 
-Grimfowl @ Sharp Beak
+Honchkrow @ Sharp Beak
 Level: 53
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Air Slash
@@ -9216,11 +9216,11 @@ AI: Basic Trainer
 Mugshot: Purple
 Items: Full Restore / Full Restore
 
-Beedrill Relic @ Kings Rock
+Ariados @ Kings Rock
 Level: 50
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Megahorn
-- Poison Jab
+- Giga Drain
 - Double Team
 - Toxic
 
