@@ -59,9 +59,13 @@ MtSilver_SummitDay_EventScript_RedOnDefeat::
 	goto_if_set FLAG_PJR_GOT_RAINBOW_CREST, MtSilver_SummitDay_EventScript_AfterCrest
 	giveitem ITEM_ANCIENT_RAINBOW_CREST
 	setflag FLAG_PJR_GOT_RAINBOW_CREST
-	msgbox MtSilver_SummitDay_Text_Crest, MSGBOX_DEFAULT
+	goto_if_set FLAG_PJR_RELIC_ALPHORACLE, MtSilver_SummitDay_EventScript_CrestReady
+	msgbox MtSilver_SummitDay_Text_CrestNeedsFirstVoice, MSGBOX_DEFAULT
+	goto MtSilver_SummitDay_EventScript_AfterCrest
+MtSilver_SummitDay_EventScript_CrestReady:
+	msgbox MtSilver_SummitDay_Text_CrestReady, MSGBOX_DEFAULT
 MtSilver_SummitDay_EventScript_AfterCrest:
-	call_if_set FLAG_PJR_RELIC_ALPHORACLE, MtSilver_SummitDay_EventScript_UnlockRelicHoOh
+	call PJR_RelicQuest_TryUnlockHoOh
 	setflag FLAG_END_NUZLOCKE
 	clearflag FLAG_HIDE_MTSILVER_RED
 	special GameClear
@@ -73,17 +77,19 @@ MtSilver_SummitDay_Text_Red:
 	.string ".........................\n"
 	.string ".........................$"
 
-MtSilver_SummitDay_EventScript_UnlockRelicHoOh::
-	setvar VAR_COMPLETED_HO_OH, 4
-	clearflag FLAG_HIDE_HO_OH
-	return
-
 MtSilver_SummitDay_Text_RedBeaten:
 	.string "...!$"
 
-MtSilver_SummitDay_Text_Crest:
+MtSilver_SummitDay_Text_CrestNeedsFirstVoice:
 	.string "RED leaves behind the ANCIENT\n"
 	.string "RAINBOW CREST.\p"
-	.string "Its light points toward BELL TOWER.$"
+	.string "The Journal reacts, but the rainbow\n"
+	.string "is waiting for the FIRST VOICE.$"
+
+MtSilver_SummitDay_Text_CrestReady:
+	.string "RED leaves behind the ANCIENT\n"
+	.string "RAINBOW CREST.\p"
+	.string "It answers the FIRST VOICE.\n"
+	.string "A signal erupts from BELL TOWER.$"
 
 
