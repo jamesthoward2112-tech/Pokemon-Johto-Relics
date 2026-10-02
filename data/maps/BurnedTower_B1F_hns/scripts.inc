@@ -6,7 +6,25 @@ BurnedTower_B1F_hns_MapScripts::
 
 BurnedTower_B1F_OnTransition: 
 	callnative SetTimeBasedEncounters
+	call BurnedTower_B1F_EventScript_PJRRelicVisibility
 	end
+
+BurnedTower_B1F_EventScript_PJRRelicVisibility::
+	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, BurnedTower_B1F_EventScript_HidePJRRaikou
+	goto_if_set FLAG_PJR_RELIC_RAIKOU, BurnedTower_B1F_EventScript_HidePJRRaikou
+	goto BurnedTower_B1F_EventScript_CheckPJRSuicune
+
+BurnedTower_B1F_EventScript_HidePJRRaikou::
+	removeobject LOCALID_PJR_RELIC_RAIKOU
+
+BurnedTower_B1F_EventScript_CheckPJRSuicune::
+	goto_if_unset FLAG_PJR_RELIC_CELEBI, BurnedTower_B1F_EventScript_HidePJRSuicune
+	goto_if_set FLAG_PJR_RELIC_SUICUNE, BurnedTower_B1F_EventScript_HidePJRSuicune
+	return
+
+BurnedTower_B1F_EventScript_HidePJRSuicune::
+	removeobject LOCALID_PJR_RELIC_SUICUNE
+	return
 
 BurnedTower_B1F_OnFrame::
 	map_script_2 VAR_ECRUTEAK_CITY_STATE, 3, BurnedTower_B1F_EventScript_ReleaseBeasts
@@ -222,6 +240,7 @@ BurnedTower_B1F_EventScript_RelicRaikou::
 
 BurnedTower_B1F_EventScript_RelicRaikouCaught::
 	setflag FLAG_PJR_RELIC_RAIKOU
+	removeobject LOCALID_PJR_RELIC_RAIKOU
 	msgbox BurnedTower_B1F_Text_RelicRaikouCaught, MSGBOX_DEFAULT
 	release
 	end
@@ -247,6 +266,7 @@ BurnedTower_B1F_EventScript_RelicSuicune::
 
 BurnedTower_B1F_EventScript_RelicSuicuneCaught::
 	setflag FLAG_PJR_RELIC_SUICUNE
+	removeobject LOCALID_PJR_RELIC_SUICUNE
 	setflag FLAG_PJR_RELIC_SIX_RESONANCE
 	msgbox BurnedTower_B1F_Text_RelicSuicuneCaught, MSGBOX_DEFAULT
 	release
