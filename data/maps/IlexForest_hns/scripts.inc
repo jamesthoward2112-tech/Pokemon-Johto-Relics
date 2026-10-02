@@ -219,11 +219,51 @@ IlexForest_EventScript_BugcatcherWayne::
 
 IlexForest_EventScript_Shrine::
 	lock
+	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, IlexForest_EventScript_ShrineStandard
+	goto_if_unset FLAG_PJR_RELIC_UNOWN_I, IlexForest_EventScript_ShrineStandard
+	goto_if_set FLAG_PJR_RELIC_CELEBI, IlexForest_EventScript_ShrineStandard
+	goto IlexForest_EventScript_PJRRelicCelebi
+IlexForest_EventScript_ShrineStandard::
 	goto_if_eq VAR_AZALEA_TOWN_STATE, 9, IlexForest_EventScript_Celebi_Event
 	msgbox IlexForest_Text_Shrine, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
+
+IlexForest_EventScript_PJRRelicCelebi::
+	setflag FLAG_PJR_RELIC_FOUND_CELEBI
+	msgbox IlexForest_Text_PJRRelicCelebi, MSGBOX_DEFAULT
+	playmoncry SPECIES_CELEBI, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	seteventmon SPECIES_CELEBI, 67
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, IlexForest_EventScript_PJRRelicCelebiCaught
+	msgbox IlexForest_Text_PJRRelicRetry, MSGBOX_DEFAULT
+	release
+	end
+
+IlexForest_EventScript_PJRRelicCelebiCaught::
+	setflag FLAG_PJR_RELIC_CELEBI
+	msgbox IlexForest_Text_PJRRelicCelebiCaught, MSGBOX_DEFAULT
+	release
+	end
+
+IlexForest_Text_PJRRelicCelebi:
+	.string "The RELIC JOURNAL flashes C.\p"
+	.string "For one instant, the forest goes still.\n"
+	.string "CELEBI answers across time!$"
+
+IlexForest_Text_PJRRelicCelebiCaught:
+	.string "The C mark appears in the Journal.\p"
+	.string "The final inscription returns to\n"
+	.string "the place where the three awoke.$"
+
+IlexForest_Text_PJRRelicRetry:
+	.string "Time folds back around the shrine.\p"
+	.string "CELEBI will return until it is captured.$"
 
 IlexForest_EventScript_Celebi_Event::
 	msgbox IlexForest_Text_ShrineCelebiEvent, MSGBOX_YESNO
