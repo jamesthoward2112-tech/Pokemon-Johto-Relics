@@ -7,6 +7,62 @@ MtMortar_2F_OnTransition:
 	callnative SetTimeBasedEncounters
 	end
 
+MtMortar_2F_EventScript_RelicEntei::
+	lock
+	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, MtMortar_2F_EventScript_RelicStoneSilent
+	goto_if_unset FLAG_PJR_RELIC_RAIKOU, MtMortar_2F_EventScript_RelicStoneSilent
+	goto_if_set FLAG_PJR_RELIC_ENTEI, MtMortar_2F_EventScript_RelicStoneResolved
+	setflag FLAG_PJR_RELIC_FOUND_ENTEI
+	msgbox MtMortar_2F_Text_RelicEntei, MSGBOX_DEFAULT
+	playmoncry SPECIES_ENTEI, CRY_MODE_ENCOUNTER
+	delay 30
+	waitmoncry
+	seteventmon SPECIES_ENTEI, 66
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, MtMortar_2F_EventScript_RelicEnteiCaught
+	msgbox MtMortar_2F_Text_RelicRetry, MSGBOX_DEFAULT
+	release
+	end
+
+MtMortar_2F_EventScript_RelicEnteiCaught::
+	setflag FLAG_PJR_RELIC_ENTEI
+	msgbox MtMortar_2F_Text_RelicEnteiCaught, MSGBOX_DEFAULT
+	release
+	end
+
+MtMortar_2F_EventScript_RelicStoneSilent::
+	msgbox MtMortar_2F_Text_RelicStoneSilent, MSGBOX_DEFAULT
+	release
+	end
+
+MtMortar_2F_EventScript_RelicStoneResolved::
+	msgbox MtMortar_2F_Text_RelicStoneResolved, MSGBOX_DEFAULT
+	release
+	end
+
+MtMortar_2F_Text_RelicEntei:
+	.string "The RELIC JOURNAL flashes E.\p"
+	.string "Heat surges through the mountain.\n"
+	.string "ENTEI answers the Resonance!$"
+
+MtMortar_2F_Text_RelicEnteiCaught:
+	.string "The E mark burns into the Journal.\p"
+	.string "The next inscription speaks of\n"
+	.string "the deepest tide below four islands.$"
+
+MtMortar_2F_Text_RelicRetry:
+	.string "The volcanic Resonance remains.\p"
+	.string "ENTEI will return until it is captured.$"
+
+MtMortar_2F_Text_RelicStoneSilent:
+	.string "The stone is warm, but quiet.$"
+
+MtMortar_2F_Text_RelicStoneResolved:
+	.string "The Resonance here has gone still.$"
+
+
 MtMortar_2F_EventScript_Item_Iron::
     finditem ITEM_IRON
     end
