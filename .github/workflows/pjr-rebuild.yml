@@ -2,9 +2,9 @@ name: PJR Alpha build
 
 on:
   push:
-    branches: [pjr-rebuild]
+    branches: [pjr-rebuild, pjr-recovery-run182]
   pull_request:
-    branches: [pjr-rebuild]
+    branches: [pjr-rebuild, pjr-recovery-run182]
   workflow_dispatch:
 
 permissions:

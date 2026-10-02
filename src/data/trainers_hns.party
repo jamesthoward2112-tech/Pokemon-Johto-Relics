@@ -8886,15 +8886,15 @@ AI: Basic Trainer
 Mugshot: Pink
 Items: Full Restore / Full Restore
 
-Girafarig
+Alakazam Relic
 Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Zen Headbutt
-- Nasty Plot
-- Agility
-- Baton Pass
+- Psychic
+- Shadow Ball
+- Calm Mind
+- Recover
 
-Slowking
+Slowking Relic
 Level: 49
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Amnesia
@@ -8996,7 +8996,7 @@ AI: Basic Trainer
 Mugshot: Orange
 Items: Full Restore / Full Restore
 
-Hitmonchan @ Scope Lens
+Hitmonchan Relic @ Scope Lens
 Level: 53
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Close Combat
@@ -9004,7 +9004,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Dizzy Punch
 - Thunder Punch
 
-Heracross
+Heracurion
 Level: 52
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Close Combat
@@ -9012,7 +9012,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Take Down
 - Earthquake
 
-Hitmonlee @ Silk Scarf
+Hitmonlee Relic @ Silk Scarf
 Level: 53
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Blaze Kick
@@ -9028,7 +9028,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Stone Edge
 - Iron Tail
 
-Machamp @ Black Belt
+Machamp Relic @ Black Belt
 Level: 54
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Rock Slide
@@ -9130,7 +9130,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Leech Seed
 - Substitute
 
-Honchkrow @ Sharp Beak
+Grimfowl @ Sharp Beak
 Level: 53
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Air Slash
@@ -9138,7 +9138,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Steel Wing
 - Haze
 
-Houndoom @ Black Glasses
+Houndoom Relic @ Black Glasses
 Level: 55
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Flamethrower
@@ -9216,11 +9216,11 @@ AI: Basic Trainer
 Mugshot: Purple
 Items: Full Restore / Full Restore
 
-Ariados @ Kings Rock
+Beedrill Relic @ Kings Rock
 Level: 50
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Megahorn
-- Giga Drain
+- Poison Jab
 - Double Team
 - Toxic
 
@@ -9248,7 +9248,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Poison Fang
 - Sleep Powder
 
-Crobat @ Bright Powder
+Crobat Relic @ Bright Powder
 Level: 52
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Double Team
