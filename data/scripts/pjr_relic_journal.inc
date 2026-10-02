@@ -174,7 +174,7 @@ PJR_RelicJournal_Text_Count3:
 	.string "RELIC JOURNAL\nRELICS: 3 / 6\p"
 	.string "CURRENT OBJECTIVE:\nFind the fourth RELIC.\p"
 	.string "NEXT DESTINATION:\nRUINS OF ALPH\lDEEPEST CHAMBER\p"
-	.string "Inspect the ancient statue in the\nPuzzle/Reward Chamber.\p"
+	.string "Talk to the LAB scientist for a direct\nroute. Inspect the ancient statue.\p"
 	.string "View all six records?$"
 PJR_RelicJournal_Text_Count4:
 	.string "RELIC JOURNAL\nRELICS: 4 / 6\p"
@@ -192,21 +192,21 @@ PJR_RelicJournal_Text_Count6NeedFirstVoice:
 	.string "RELIC JOURNAL\nRELICS: 6 / 6\p"
 	.string "CURRENT OBJECTIVE:\nFind the FIRST VOICE.\p"
 	.string "NEXT DESTINATION:\nRUINS OF ALPH\lDEEPEST CHAMBER\p"
-	.string "Hint: All six RELICS are resonating.\nSomething beneath ALPH has answered.\p"
+	.string "Talk to the LAB scientist for a direct\nroute to the ancient statue.\p"
 	.string "View all six records?$"
 PJR_RelicJournal_Text_Count6NeedFirstVoiceWithCrest:
 	.string "RELIC JOURNAL\nRELICS: 6 / 6\p"
 	.string "ANCIENT RAINBOW CREST: OBTAINED\p"
 	.string "CURRENT OBJECTIVE:\nFind the FIRST VOICE.\p"
 	.string "NEXT DESTINATION:\nRUINS OF ALPH\lDEEPEST CHAMBER\p"
-	.string "Hint: The Crest reacts to the oldest\nchamber beneath ALPH.\p"
+	.string "Talk to the LAB scientist for a direct\nroute to the ancient statue.\p"
 	.string "View all six records?$"
 PJR_RelicJournal_Text_Count6NeedCrest:
 	.string "RELIC JOURNAL\nRELICS: 6 / 6\p"
 	.string "FIRST VOICE: ANSWERED\p"
 	.string "CURRENT OBJECTIVE:\nObtain the ANCIENT RAINBOW CREST.\p"
 	.string "NEXT DESTINATION:\nMT. SILVER SUMMIT\lDEFEAT RED\p"
-	.string "Hint: The Journal points toward\nthe highest peak.\p"
+	.string "Use the MT. SILVER entrance sign for\na direct route to the summit.\p"
 	.string "View all six records?$"
 PJR_RelicJournal_Text_Count6Unlocked:
 	.string "RELIC JOURNAL\nRELICS: 6 / 6\p"
@@ -214,7 +214,7 @@ PJR_RelicJournal_Text_Count6Unlocked:
 	.string "RAINBOW CREST: RESONATING\p"
 	.string "CURRENT OBJECTIVE:\nFace the final awakening.\p"
 	.string "NEXT DESTINATION:\nBELL TOWER ROOF\lECRUTEAK CITY\p"
-	.string "Hint: A vast rainbow Resonance is\npouring from BELL TOWER.\p"
+	.string "Use the glowing beam on BELL TOWER\n1F for a direct ascent.\p"
 	.string "View all six records?$"
 PJR_RelicJournal_Text_Complete:
 	.string "RELIC JOURNAL\nRELICS: 6 / 6\p"
