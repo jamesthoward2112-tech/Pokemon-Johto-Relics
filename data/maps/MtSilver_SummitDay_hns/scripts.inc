@@ -81,15 +81,14 @@ MtSilver_SummitDay_Text_RedBeaten:
 	.string "...!$"
 
 MtSilver_SummitDay_Text_CrestNeedsFirstVoice:
-	.string "RED leaves behind the ANCIENT\n"
-	.string "RAINBOW CREST.\p"
-	.string "The Journal reacts, but the rainbow\n"
-	.string "is waiting for the FIRST VOICE.$"
+	.string "ANCIENT RAINBOW CREST: OBTAINED\p"
+	.string "CURRENT OBJECTIVE:\nFind the FIRST VOICE.\p"
+	.string "NEXT DESTINATION:\nRUINS OF ALPH\lDEEPEST CHAMBER.$"
 
 MtSilver_SummitDay_Text_CrestReady:
-	.string "RED leaves behind the ANCIENT\n"
-	.string "RAINBOW CREST.\p"
-	.string "It answers the FIRST VOICE.\n"
-	.string "A signal erupts from BELL TOWER.$"
+	.string "ANCIENT RAINBOW CREST: RESONATING\p"
+	.string "FIRST VOICE: ANSWERED\p"
+	.string "NEXT DESTINATION:\nBELL TOWER ROOF\lECRUTEAK CITY.\p"
+	.string "Use the glowing beam on BELL TOWER\n1F for a direct ascent.$"
 
 
