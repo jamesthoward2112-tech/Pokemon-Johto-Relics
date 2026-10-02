@@ -34,7 +34,11 @@ PJR_RelicJournal_Count6::
 	msgbox PJR_RelicJournal_Text_Count6Unlocked, MSGBOX_YESNO
 	goto PJR_RelicJournal_AfterMain
 PJR_RelicJournal_Count6NeedFirstVoice::
+	goto_if_set FLAG_PJR_GOT_RAINBOW_CREST, PJR_RelicJournal_Count6NeedFirstVoiceWithCrest
 	msgbox PJR_RelicJournal_Text_Count6NeedFirstVoice, MSGBOX_YESNO
+	goto PJR_RelicJournal_AfterMain
+PJR_RelicJournal_Count6NeedFirstVoiceWithCrest::
+	msgbox PJR_RelicJournal_Text_Count6NeedFirstVoiceWithCrest, MSGBOX_YESNO
 	goto PJR_RelicJournal_AfterMain
 PJR_RelicJournal_Count6NeedCrest::
 	msgbox PJR_RelicJournal_Text_Count6NeedCrest, MSGBOX_YESNO
@@ -150,138 +154,145 @@ PJR_RelicJournal_Close::
 
 PJR_RelicJournal_Text_Count0:
 	.string "RELIC JOURNAL\nRELICS: 0 / 6\p"
-	.string "FIRST INSCRIPTION:\n"
-	.string "Where three sleepers fled from flame,\l"
-	.string "thunder returns to broken stone.\p"
+	.string "CURRENT OBJECTIVE:\nFind the first RELIC.\p"
+	.string "NEXT DESTINATION:\nBURNED TOWER B1F\lECRUTEAK CITY\p"
+	.string "Hint: Thunder stirs beneath the\nruined tower.\p"
 	.string "View all six records?$"
 PJR_RelicJournal_Text_Count1:
 	.string "RELIC JOURNAL\nRELICS: 1 / 6\p"
-	.string "NEW INSCRIPTION:\n"
-	.string "Seek the mountain whose heart burns\l"
-	.string "behind the lone fighter.\p"
+	.string "CURRENT OBJECTIVE:\nFind the second RELIC.\p"
+	.string "NEXT DESTINATION:\nMT. MORTAR 2F\p"
+	.string "Hint: Violent heat is building\ndeep inside MT. MORTAR.\p"
 	.string "View all six records?$"
 PJR_RelicJournal_Text_Count2:
 	.string "RELIC JOURNAL\nRELICS: 2 / 6\p"
-	.string "NEW INSCRIPTION:\n"
-	.string "Below four islands, the deepest tide\l"
-	.string "guards the third answer.\p"
+	.string "CURRENT OBJECTIVE:\nFind the third RELIC.\p"
+	.string "NEXT DESTINATION:\nWHIRL ISLANDS\lLUGIA CHAMBER\p"
+	.string "Hint: The signal comes from the\ndeepest chamber below the islands.\p"
 	.string "View all six records?$"
 PJR_RelicJournal_Text_Count3:
 	.string "RELIC JOURNAL\nRELICS: 3 / 6\p"
-	.string "NEW INSCRIPTION:\n"
-	.string "Return to ALPH. One eye watches\l"
-	.string "from a chamber of written stone.\p"
+	.string "CURRENT OBJECTIVE:\nFind the fourth RELIC.\p"
+	.string "NEXT DESTINATION:\nRUINS OF ALPH\lDEEPEST CHAMBER\p"
+	.string "Inspect the ancient statue in the\nPuzzle/Reward Chamber.\p"
 	.string "View all six records?$"
 PJR_RelicJournal_Text_Count4:
 	.string "RELIC JOURNAL\nRELICS: 4 / 6\p"
-	.string "NEW INSCRIPTION:\n"
-	.string "Where forest time gathers at a shrine,\l"
-	.string "the fifth waits between moments.\p"
+	.string "CURRENT OBJECTIVE:\nFind the fifth RELIC.\p"
+	.string "NEXT DESTINATION:\nILEX FOREST SHRINE\p"
+	.string "Hint: The forest shrine is reacting\nto the Resonance.\p"
 	.string "View all six records?$"
 PJR_RelicJournal_Text_Count5:
 	.string "RELIC JOURNAL\nRELICS: 5 / 6\p"
-	.string "FINAL INSCRIPTION:\n"
-	.string "Return beneath the burned tower.\l"
-	.string "Pure water remembers the three.\p"
+	.string "CURRENT OBJECTIVE:\nFind the final RELIC.\p"
+	.string "NEXT DESTINATION:\nBURNED TOWER B1F\lECRUTEAK CITY\p"
+	.string "Hint: The final signal has returned\nto where the chain began.\p"
 	.string "View all six records?$"
 PJR_RelicJournal_Text_Count6NeedFirstVoice:
 	.string "RELIC JOURNAL\nRELICS: 6 / 6\p"
-	.string "The six marks now form one voice.\p"
-	.string "Return to the deepest ALPH chamber.\n"
-	.string "The FIRST VOICE is waiting there.\p"
+	.string "CURRENT OBJECTIVE:\nFind the FIRST VOICE.\p"
+	.string "NEXT DESTINATION:\nRUINS OF ALPH\lDEEPEST CHAMBER\p"
+	.string "Hint: All six RELICS are resonating.\nSomething beneath ALPH has answered.\p"
+	.string "View all six records?$"
+PJR_RelicJournal_Text_Count6NeedFirstVoiceWithCrest:
+	.string "RELIC JOURNAL\nRELICS: 6 / 6\p"
+	.string "ANCIENT RAINBOW CREST: OBTAINED\p"
+	.string "CURRENT OBJECTIVE:\nFind the FIRST VOICE.\p"
+	.string "NEXT DESTINATION:\nRUINS OF ALPH\lDEEPEST CHAMBER\p"
+	.string "Hint: The Crest reacts to the oldest\nchamber beneath ALPH.\p"
 	.string "View all six records?$"
 PJR_RelicJournal_Text_Count6NeedCrest:
 	.string "RELIC JOURNAL\nRELICS: 6 / 6\p"
-	.string "The FIRST VOICE has answered.\p"
-	.string "One key remains. The signal points\n"
-	.string "toward the summit of MT. SILVER.\p"
+	.string "FIRST VOICE: ANSWERED\p"
+	.string "CURRENT OBJECTIVE:\nObtain the ANCIENT RAINBOW CREST.\p"
+	.string "NEXT DESTINATION:\nMT. SILVER SUMMIT\lDEFEAT RED\p"
+	.string "Hint: The Journal points toward\nthe highest peak.\p"
 	.string "View all six records?$"
 PJR_RelicJournal_Text_Count6Unlocked:
 	.string "RELIC JOURNAL\nRELICS: 6 / 6\p"
 	.string "FIRST VOICE: ANSWERED\n"
 	.string "RAINBOW CREST: RESONATING\p"
-	.string "BELL TOWER has awakened.\p"
+	.string "CURRENT OBJECTIVE:\nFace the final awakening.\p"
+	.string "NEXT DESTINATION:\nBELL TOWER ROOF\lECRUTEAK CITY\p"
+	.string "Hint: A vast rainbow Resonance is\npouring from BELL TOWER.\p"
 	.string "View all six records?$"
 PJR_RelicJournal_Text_Complete:
 	.string "RELIC JOURNAL\nRELICS: 6 / 6\p"
-	.string "SEVENTH SYMBOL: RESOLVED\n"
+	.string "FIRST VOICE: ANSWERED\n"
+	.string "RAINBOW CREST: RESOLVED\p"
 	.string "RELIC HO-OH: CAPTURED\p"
 	.string "The ancient network is complete.$"
 
 PJR_RelicJournal_Text_Entry1Unknown:
 	.string "01  UNDISCOVERED\nPOKéMON: ???\p"
-	.string "Clue: three sleepers fled from flame.\n"
-	.string "Thunder returns to broken stone.$"
+	.string "NEXT: BURNED TOWER B1F\nECRUTEAK CITY.$"
 PJR_RelicJournal_Text_Entry1Found:
 	.string "01  LOCATION DISCOVERED\nPOKéMON: ???\p"
 	.string "BURNED TOWER B1F\nRelic Resonance detected.$"
 PJR_RelicJournal_Text_Entry1Caught:
 	.string "01  CAPTURED\nRAIKOU - BURNED TOWER B1F\p"
-	.string "Its thunder mark deciphers the next path.$"
+	.string "NEXT: MT. MORTAR 2F.$"
 
 PJR_RelicJournal_Text_EntrySealed02:
 	.string "02  UNDISCOVERED\nPOKéMON: ???\pThe text is unreadable.$"
 PJR_RelicJournal_Text_Entry2Unknown:
 	.string "02  UNDISCOVERED\nPOKéMON: ???\p"
-	.string "Clue: a mountain heart burns behind\n"
-	.string "the lone fighter.$"
+	.string "NEXT: MT. MORTAR 2F.$"
 PJR_RelicJournal_Text_Entry2Found:
 	.string "02  LOCATION DISCOVERED\nPOKéMON: ???\p"
-	.string "MT. MORTAR - DEEP CHAMBER\nRelic Resonance detected.$"
+	.string "MT. MORTAR 2F\nRelic Resonance detected.$"
 PJR_RelicJournal_Text_Entry2Caught:
-	.string "02  CAPTURED\nENTEI - MT. MORTAR\p"
-	.string "Its volcanic mark reveals the sea.$"
+	.string "02  CAPTURED\nENTEI - MT. MORTAR 2F\p"
+	.string "NEXT: WHIRL ISLANDS\nLUGIA CHAMBER.$"
 
 PJR_RelicJournal_Text_EntrySealed03:
 	.string "03  UNDISCOVERED\nPOKéMON: ???\pThe text is unreadable.$"
 PJR_RelicJournal_Text_Entry3Unknown:
 	.string "03  UNDISCOVERED\nPOKéMON: ???\p"
-	.string "Clue: below four islands, the deepest\n"
-	.string "tide guards the answer.$"
+	.string "NEXT: WHIRL ISLANDS\nLUGIA CHAMBER.$"
 PJR_RelicJournal_Text_Entry3Found:
 	.string "03  LOCATION DISCOVERED\nPOKéMON: ???\p"
-	.string "WHIRL ISLANDS - DEEPEST CHAMBER\nRelic Resonance detected.$"
+	.string "WHIRL ISLANDS - LUGIA CHAMBER\nRelic Resonance detected.$"
 PJR_RelicJournal_Text_Entry3Caught:
 	.string "03  CAPTURED\nLUGIA - WHIRL ISLANDS\p"
-	.string "Its abyssal mark points back to ALPH.$"
+	.string "NEXT: RUINS OF ALPH\nDEEPEST CHAMBER.$"
 
 PJR_RelicJournal_Text_EntrySealed04:
 	.string "04  UNDISCOVERED\nPOKéMON: ???\pThe text is unreadable.$"
 PJR_RelicJournal_Text_Entry4Unknown:
 	.string "04  UNDISCOVERED\nPOKéMON: ???\p"
-	.string "Clue: one eye watches from a chamber\n"
-	.string "of written stone.$"
+	.string "NEXT: RUINS OF ALPH\nDEEPEST CHAMBER.\p"
+	.string "Inspect the ancient statue.$"
 PJR_RelicJournal_Text_Entry4Found:
 	.string "04  LOCATION DISCOVERED\nPOKéMON: ???\p"
-	.string "RUINS OF ALPH - HIDDEN CHAMBER\nThe Journal burns with light.$"
+	.string "RUINS OF ALPH - DEEPEST CHAMBER\nThe Journal burns with light.$"
 PJR_RelicJournal_Text_Entry4Caught:
 	.string "04  CAPTURED\nI-UNOWN - RUINS OF ALPH\p"
-	.string "The Eye mark bends the clue toward time.$"
+	.string "NEXT: ILEX FOREST SHRINE.$"
 
 PJR_RelicJournal_Text_EntrySealed05:
 	.string "05  UNDISCOVERED\nPOKéMON: ???\pThe text is unreadable.$"
 PJR_RelicJournal_Text_Entry5Unknown:
 	.string "05  UNDISCOVERED\nPOKéMON: ???\p"
-	.string "Clue: forest time gathers at an old shrine.$"
+	.string "NEXT: ILEX FOREST SHRINE.$"
 PJR_RelicJournal_Text_Entry5Found:
 	.string "05  LOCATION DISCOVERED\nPOKéMON: ???\p"
 	.string "ILEX FOREST SHRINE\nRelic Resonance detected.$"
 PJR_RelicJournal_Text_Entry5Caught:
 	.string "05  CAPTURED\nCELEBI - ILEX FOREST SHRINE\p"
-	.string "Its time mark reveals the final text.$"
+	.string "NEXT: BURNED TOWER B1F\nECRUTEAK CITY.$"
 
 PJR_RelicJournal_Text_EntrySealed06:
 	.string "06  UNDISCOVERED\nPOKéMON: ???\pThe text is unreadable.$"
 PJR_RelicJournal_Text_Entry6Unknown:
 	.string "06  UNDISCOVERED\nPOKéMON: ???\p"
-	.string "Clue: beneath the burned tower, pure\n"
-	.string "water remembers the three.$"
+	.string "NEXT: BURNED TOWER B1F\nECRUTEAK CITY.$"
 PJR_RelicJournal_Text_Entry6Found:
 	.string "06  LOCATION DISCOVERED\nPOKéMON: ???\p"
-	.string "BURNED TOWER - SACRED SPRING\nFinal Resonance detected.$"
+	.string "BURNED TOWER B1F\nFinal Resonance detected.$"
 PJR_RelicJournal_Text_Entry6Caught:
-	.string "06  CAPTURED\nSUICUNE - SACRED SPRING\p"
-	.string "All six marks now resonate as one.$"
+	.string "06  CAPTURED\nSUICUNE - BURNED TOWER B1F\p"
+	.string "NEXT: RUINS OF ALPH\nDEEPEST CHAMBER.$"
 
 PJR_RelicQuest_TryUnlockHoOh::
 	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, PJR_RelicQuest_TryUnlockHoOh_Return
