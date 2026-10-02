@@ -1,6 +1,17 @@
 RuinsOfAlph_PuzzleAndRewardChambers_hns_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, RuinsOfAlph_PuzzleAndRewardChambers_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, RuinsOfAlph_PuzzleAndRewardChambers_OnTransition
 	.byte 0
+
+RuinsOfAlph_PuzzleAndRewardChambers_OnTransition::
+	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, RuinsOfAlph_PuzzleAndRewardChambers_HidePJRUnownI
+	goto_if_unset FLAG_PJR_RELIC_LUGIA, RuinsOfAlph_PuzzleAndRewardChambers_HidePJRUnownI
+	goto_if_set FLAG_PJR_RELIC_UNOWN_I, RuinsOfAlph_PuzzleAndRewardChambers_HidePJRUnownI
+	end
+
+RuinsOfAlph_PuzzleAndRewardChambers_HidePJRUnownI::
+	removeobject LOCALID_PJR_RELIC_UNOWN_I
+	end
 
 RuinsOfAlph_PuzzleAndRewardChambers_OnLoad::
 	call_if_set FLAG_COMPLETED_KABUTO_PUZZLE, RuinsOfAlph_PuzzleAndRewardChambers_MapScript_KabutoHole
@@ -100,6 +111,7 @@ RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRUnownI::
 
 RuinsOfAlph_PuzzleAndRewardChambers_EventScript_PJRUnownICaught::
 	setflag FLAG_PJR_RELIC_UNOWN_I
+	removeobject LOCALID_PJR_RELIC_UNOWN_I
 	msgbox RuinsOfAlph_PuzzleAndRewardChambers_Text_PJRUnownICaught, MSGBOX_DEFAULT
 	release
 	end
