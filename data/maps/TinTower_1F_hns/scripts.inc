@@ -53,51 +53,45 @@ TinTower_1F_EventScript_SageC_Hooh::
 
 
 TinTower_1F_Sage1_Text:
-	.string "According to legend…\n"
-	.string "When the souls of POKéMON and humans\p"
-	.string "commune, from the heavens descends a\n"
-	.string "POKéMON of rainbow colors…\p"
-	.string "Could it mean the legendary POKéMON\n"
-	.string "are testing us humans?$"
+	.string "According to the oldest scrolls,\n"
+	.string "HO-OH answers when JOHTO's\n"
+	.string "hidden current awakens.\p"
+	.string "Some of those marks match ALPH.\n"
+	.string "We now call it RESONANCE.$"
 
 TinTower_1F_Sage2_Text:
-	.string "When the BRASS TOWER burned down,\n"
-	.string "three nameless POKéMON were said\l"
-	.string "to have perished. It was tragic.\p"
-	.string "However…\p"
-	.string "A rainbow-colored POKéMON…\n"
-	.string "In other words…\p"
-	.string "HO-OH descended from the sky and\n"
-	.string "gave new life to the three POKéMON.\p"
-	.string "They are…\n"
-	.string "SUICUNE, ENTEI and RAIKOU.\p"
-	.string "That is what they say.$"
+	.string "When the BRASS TOWER burned,\n"
+	.string "three POKéMON lost their lives.\p"
+	.string "HO-OH restored them with a power\n"
+	.string "our records could not explain.\p"
+	.string "ALPH scholars think it was pure,\n"
+	.string "natural RESONANCE.$"
 
 TinTower_1F_Sage3_Text:
-	.string "The two TOWERS are said to have been\n"
-	.string "built to foster friendship and\p"
-	.string "hope between POKéMON and people.\n"
-	.string "That was 700 years ago, but the ideal\p"
-	.string "still remains important today.$"
+	.string "The two TOWERS stand on older\n"
+	.string "foundations.\p"
+	.string "Stonework beneath them resembles\n"
+	.string "the RUINS OF ALPH.\p"
+	.string "ECRUTEAK may be only one part\n"
+	.string "of a much older network.$"
 
 TinTower_1F_Sage4_Text1:
 	.string "HO-OH appears to have descended\n"
 	.string "upon this, the TIN TOWER!$"
 
 TinTower_1F_Sage4_Text2:
-	.string "The legendary POKéMON are said\n"
-	.string "to embody three powers…\p"
-	.string "The lightning that struck the TOWER.\n"
-	.string "The fire that burned the TOWER.\p"
-	.string "And the rain that put out the fire…$"
+	.string "The legendary beasts embody\n"
+	.string "lightning, fire and rain.\p"
+	.string "UNOWN react to the same old pulse.\p"
+	.string "Different legends...\n"
+	.string "one RESONANCE.$"
 
 TinTower_1F_Sage6_Text2:
-	.string "Of the legendary POKéMON, SUICUNE\n"
-	.string "is said to be the closest to HO-OH.\p"
-	.string "I hear there may also be a link to\n"
-	.string "POKéMON known as UNOWN.\p"
-	.string "The POKéMON UNOWN must be sharing a\n"
-	.string "cooperative bond with SUICUNE.$"
+	.string "Of the legendary POKéMON,\n"
+	.string "SUICUNE is closest to HO-OH.\p"
+	.string "Old records show UNOWN glyphs\n"
+	.string "beside drawings of the beasts.\p"
+	.string "The connection predates ECRUTEAK.$"
 
 TinTower_1F_EusineHoOh_Text:
 	.string "I knew it.\p"

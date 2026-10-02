@@ -39,13 +39,9 @@ PewterCity_Museum_1F_EventScript_Bones::
 	end
 
 PewterCity_Museum_1F_Text_Recptionist:
-	.string "Welcome!\p"
-	.string "Just to let you know, all the large\n"
-	.string "specimens have been taken to the\l"
-	.string "other museums for display.\p"
-	.string "So for now, admission is free of\n"
-	.string "charge!\p"
-	.string "Please go ahead.$"
+	.string "Welcome to the PEWTER MUSEUM!\p"
+	.string "Our newest exhibit covers JOHTO's\n"
+	.string "RELIC and RESONANCE research.$"
 
 PewterCity_Museum_1F_Text_FossilWoman:
 	.string "You must be a strong trainer.\p"
@@ -56,10 +52,11 @@ PewterCity_Museum_1F_Text_FossilWoman:
 	.string "Go ahead and take them if you like.$"
 
 PewterCity_Museum_1F_Text_FossilWomanAfter:
-	.string "We often share research with the\n"
+	.string "We work closely with the\n"
 	.string "RUINS OF ALPH researchers.\p"
-	.string "We even share fossils with them\n"
-	.string "through the PC!$"
+	.string "Some fossils carry the same faint\n"
+	.string "RESONANCE as their old stones.\p"
+	.string "Nobody knows why yet.$"
 
 PewterCity_Museum_1F_Text_Oldman:
 	.string "I should be grateful for my long\n"
@@ -68,5 +65,6 @@ PewterCity_Museum_1F_Text_Oldman:
 	.string "see the bones of a dragon!$"
 
 PewterCity_Museum_1F_Text_Bones:
-	.string "Bones of an ancient dragon\n"
-	.string "POKéMON.$"
+	.string "Bones of an ancient dragon.\p"
+	.string "A note reads: Faint RESONANCE\n"
+	.string "detected. Compare with ALPH.$"
