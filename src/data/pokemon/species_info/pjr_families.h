@@ -717,7 +717,7 @@ PJR_RED_SPECIES(SPECIES_NOXICHU, 70, 110, 70, 110, 80, 125, TYPE_ELECTRIC, TYPE_
     .eggCycles = 20, .friendship = STANDARD_FRIENDSHIP, .growthRate = GROWTH_MEDIUM_FAST, \
     .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD), .abilities = { ability1, ability2, hidden }, .bodyColor = color, \
     .speciesName = _(name), .cryId = cry, .natDexNum = natdex, .categoryName = _("Relic Form"), .height = 16, .weight = 600, \
-    .description = COMPOUND_STRING("An Elite trainer's partner carrying\\nPJR Relic styling while retaining its\\noriginal battle identity."), \
+    .description = COMPOUND_STRING("An Elite trainer partner with PJR Relic styling."), \
     .pokemonScale = 256, .pokemonOffset = 0, .trainerScale = 256, .trainerOffset = 0, \
     .frontPic = front, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 0, \
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH, \
