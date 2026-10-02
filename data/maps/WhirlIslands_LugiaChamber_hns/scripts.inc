@@ -3,9 +3,20 @@ WhirlIslands_LugiaChamber_hns_MapScripts::
 	.byte 0
 
 WhirlIslands_LugiaChamber_OnTransition:
+	goto_if_set FLAG_PJR_RELIC_LUGIA, WhirlIslands_LugiaChamber_MapScript_LugiaPostStoryGone
+	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, WhirlIslands_LugiaChamber_MapScript_StandardTransition
+	goto_if_unset FLAG_PJR_RELIC_ENTEI, WhirlIslands_LugiaChamber_MapScript_StandardTransition
+	goto_if_ge VAR_COMPLETED_LUGIA, 3, WhirlIslands_LugiaChamber_MapScript_PJRRelicLugia
+WhirlIslands_LugiaChamber_MapScript_StandardTransition::
 	goto_if_eq VAR_COMPLETED_LUGIA, 2, WhirlIslands_LugiaChamber_MapScript_LugiaStory
 	goto_if_eq VAR_COMPLETED_LUGIA, 3, WhirlIslands_LugiaChamber_MapScript_LugiaPostStoryGone
 	goto_if_eq VAR_COMPLETED_LUGIA, 4, WhirlIslands_LugiaChamber_MapScript_LugiaPostStoryEncounter
+	end
+
+WhirlIslands_LugiaChamber_MapScript_PJRRelicLugia::
+	setflag FLAG_HIDE_WHIRL_ISLANDS_KIMONO_GIRLS
+	clearflag FLAG_HIDE_LUGIA
+	setobjectxyperm LOCALID_LUGIA, 29, 12
 	end
 
 WhirlIslands_LugiaChamber_MapScript_LugiaStory::
@@ -171,6 +182,11 @@ WhirlIslands_LugiaChamber_EventScript_TalkToKimono::
 
 WhirlIslands_LugiaChamber_EventScript_Lugia::
 	lockall
+	goto_if_set FLAG_PJR_RELIC_LUGIA, WhirlIslands_LugiaChamber_EventScript_RanFromLugia
+	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, WhirlIslands_LugiaChamber_EventScript_LugiaStandard
+	goto_if_unset FLAG_PJR_RELIC_ENTEI, WhirlIslands_LugiaChamber_EventScript_LugiaStandard
+	goto_if_ge VAR_COMPLETED_LUGIA, 3, WhirlIslands_LugiaChamber_EventScript_PJRRelicLugia
+WhirlIslands_LugiaChamber_EventScript_LugiaStandard::
 	goto_if_eq VAR_COMPLETED_LUGIA, 4, WhirlIslands_LugiaChamber_EventScript_LugiaPostgame
 	waitse
 	playmoncry SPECIES_LUGIA, CRY_MODE_ENCOUNTER
@@ -198,6 +214,50 @@ WhirlIslands_LugiaChamber_EventScript_Lugia::
 	setvar VAR_COMPLETED_LUGIA, 3
 	releaseall
 	end
+
+WhirlIslands_LugiaChamber_EventScript_PJRRelicLugia::
+	setflag FLAG_PJR_RELIC_FOUND_LUGIA
+	msgbox WhirlIslands_LugiaChamber_Text_PJRRelicLugia, MSGBOX_DEFAULT
+	playmoncry SPECIES_LUGIA, CRY_MODE_ENCOUNTER
+	delay 30
+	waitmoncry
+	playbgm MUS_HG_VS_LUGIA, 0
+	seteventmon SPECIES_LUGIA, 68
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_LAST_TALKED, LOCALID_LUGIA
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, WhirlIslands_LugiaChamber_EventScript_PJRRelicLugiaCaught
+	msgbox WhirlIslands_LugiaChamber_Text_PJRRelicRetry, MSGBOX_DEFAULT
+	releaseall
+	end
+
+WhirlIslands_LugiaChamber_EventScript_PJRRelicLugiaCaught::
+	setflag FLAG_PJR_RELIC_LUGIA
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject LOCALID_LUGIA
+	setflag FLAG_HIDE_LUGIA
+	fadescreenswapbuffers FADE_FROM_BLACK
+	msgbox WhirlIslands_LugiaChamber_Text_PJRRelicLugiaCaught, MSGBOX_DEFAULT
+	releaseall
+	end
+
+WhirlIslands_LugiaChamber_Text_PJRRelicLugia:
+	.string "The RELIC JOURNAL flashes L.\p"
+	.string "The deepest tide begins to turn.\n"
+	.string "LUGIA answers the Resonance!$"
+
+WhirlIslands_LugiaChamber_Text_PJRRelicLugiaCaught:
+	.string "The L mark settles into the Journal.\p"
+	.string "The next inscription points back\n"
+	.string "toward a hidden chamber in ALPH.$"
+
+WhirlIslands_LugiaChamber_Text_PJRRelicRetry:
+	.string "The abyssal Resonance remains.\p"
+	.string "LUGIA will return until it is captured.$"
+
 
 WhirlIslands_LugiaChamber_EventScript_LugiaPostgame::
 	playmoncry SPECIES_LUGIA, CRY_MODE_ENCOUNTER
