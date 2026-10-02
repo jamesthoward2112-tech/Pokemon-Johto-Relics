@@ -4,27 +4,32 @@ BurnedTower_B1F_hns_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, SetTimeEncounters
 	.byte 0
 
-BurnedTower_B1F_OnTransition: 
+BurnedTower_B1F_OnTransition:
 	callnative SetTimeBasedEncounters
-	call BurnedTower_B1F_EventScript_PJRRelicVisibility
+	call BurnedTower_B1F_EventScript_PJRRelicEntry
 	end
 
-BurnedTower_B1F_EventScript_PJRRelicVisibility::
-	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, BurnedTower_B1F_EventScript_HidePJRBoth
-	goto_if_unset FLAG_PJR_RELIC_RAIKOU, BurnedTower_B1F_EventScript_HidePJRSuicune
-	goto_if_unset FLAG_PJR_RELIC_ENTEI, BurnedTower_B1F_EventScript_HidePJRSuicune
-	goto_if_unset FLAG_PJR_RELIC_LUGIA, BurnedTower_B1F_EventScript_HidePJRSuicune
-	goto_if_unset FLAG_PJR_RELIC_UNOWN_I, BurnedTower_B1F_EventScript_HidePJRSuicune
-	goto_if_unset FLAG_PJR_RELIC_CELEBI, BurnedTower_B1F_EventScript_HidePJRSuicune
+BurnedTower_B1F_EventScript_PJRRelicEntry::
+	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, BurnedTower_B1F_EventScript_PJRRelicEntryReturn
+	goto_if_unset FLAG_PJR_RELIC_RAIKOU, BurnedTower_B1F_EventScript_PJRRelicEntryRaikou
+	goto_if_unset FLAG_PJR_RELIC_ENTEI, BurnedTower_B1F_EventScript_PJRRelicEntryReturn
+	goto_if_unset FLAG_PJR_RELIC_LUGIA, BurnedTower_B1F_EventScript_PJRRelicEntryReturn
+	goto_if_unset FLAG_PJR_RELIC_UNOWN_I, BurnedTower_B1F_EventScript_PJRRelicEntryReturn
+	goto_if_unset FLAG_PJR_RELIC_CELEBI, BurnedTower_B1F_EventScript_PJRRelicEntryReturn
+	goto_if_unset FLAG_PJR_RELIC_SUICUNE, BurnedTower_B1F_EventScript_PJRRelicEntrySuicune
+	goto BurnedTower_B1F_EventScript_PJRRelicEntryReturn
+
+BurnedTower_B1F_EventScript_PJRRelicEntryRaikou::
+	setflag FLAG_PJR_RELIC_FOUND_RAIKOU
+	msgbox BurnedTower_B1F_Text_RelicRaikouEntry, MSGBOX_DEFAULT
 	return
 
-BurnedTower_B1F_EventScript_HidePJRBoth::
-	removeobject LOCALID_PJR_RELIC_RAIKOU
-	removeobject LOCALID_PJR_RELIC_SUICUNE
+BurnedTower_B1F_EventScript_PJRRelicEntrySuicune::
+	setflag FLAG_PJR_RELIC_FOUND_SUICUNE
+	msgbox BurnedTower_B1F_Text_RelicSuicuneEntry, MSGBOX_DEFAULT
 	return
 
-BurnedTower_B1F_EventScript_HidePJRSuicune::
-	removeobject LOCALID_PJR_RELIC_SUICUNE
+BurnedTower_B1F_EventScript_PJRRelicEntryReturn::
 	return
 
 BurnedTower_B1F_OnFrame::
@@ -221,10 +226,18 @@ BurnedTowerB1FEusineText:
 	.string "Farewell!$"
 
 
-BurnedTower_B1F_EventScript_RelicRaikou::
+BurnedTower_B1F_EventScript_RelicStone::
 	lock
 	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, BurnedTower_B1F_EventScript_RelicStoneSilent
-	goto_if_set FLAG_PJR_RELIC_RAIKOU, BurnedTower_B1F_EventScript_RelicStoneResolved
+	goto_if_unset FLAG_PJR_RELIC_RAIKOU, BurnedTower_B1F_EventScript_RelicRaikou
+	goto_if_unset FLAG_PJR_RELIC_ENTEI, BurnedTower_B1F_EventScript_RelicStoneResolved
+	goto_if_unset FLAG_PJR_RELIC_LUGIA, BurnedTower_B1F_EventScript_RelicStoneResolved
+	goto_if_unset FLAG_PJR_RELIC_UNOWN_I, BurnedTower_B1F_EventScript_RelicStoneResolved
+	goto_if_unset FLAG_PJR_RELIC_CELEBI, BurnedTower_B1F_EventScript_RelicStoneResolved
+	goto_if_unset FLAG_PJR_RELIC_SUICUNE, BurnedTower_B1F_EventScript_RelicSuicune
+	goto BurnedTower_B1F_EventScript_RelicStoneResolved
+
+BurnedTower_B1F_EventScript_RelicRaikou::
 	setflag FLAG_PJR_RELIC_FOUND_RAIKOU
 	msgbox BurnedTower_B1F_Text_RelicRaikou, MSGBOX_DEFAULT
 	playmoncry SPECIES_RAIKOU, CRY_MODE_ENCOUNTER
@@ -241,20 +254,11 @@ BurnedTower_B1F_EventScript_RelicRaikou::
 
 BurnedTower_B1F_EventScript_RelicRaikouCaught::
 	setflag FLAG_PJR_RELIC_RAIKOU
-	removeobject LOCALID_PJR_RELIC_RAIKOU
 	msgbox BurnedTower_B1F_Text_RelicRaikouCaught, MSGBOX_DEFAULT
 	release
 	end
 
 BurnedTower_B1F_EventScript_RelicSuicune::
-	lock
-	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, BurnedTower_B1F_EventScript_RelicStoneSilent
-	goto_if_unset FLAG_PJR_RELIC_RAIKOU, BurnedTower_B1F_EventScript_RelicStoneSilent
-	goto_if_unset FLAG_PJR_RELIC_ENTEI, BurnedTower_B1F_EventScript_RelicStoneSilent
-	goto_if_unset FLAG_PJR_RELIC_LUGIA, BurnedTower_B1F_EventScript_RelicStoneSilent
-	goto_if_unset FLAG_PJR_RELIC_UNOWN_I, BurnedTower_B1F_EventScript_RelicStoneSilent
-	goto_if_unset FLAG_PJR_RELIC_CELEBI, BurnedTower_B1F_EventScript_RelicStoneSilent
-	goto_if_set FLAG_PJR_RELIC_SUICUNE, BurnedTower_B1F_EventScript_RelicStoneResolved
 	setflag FLAG_PJR_RELIC_FOUND_SUICUNE
 	msgbox BurnedTower_B1F_Text_RelicSuicune, MSGBOX_DEFAULT
 	playmoncry SPECIES_SUICUNE, CRY_MODE_ENCOUNTER
@@ -271,7 +275,6 @@ BurnedTower_B1F_EventScript_RelicSuicune::
 
 BurnedTower_B1F_EventScript_RelicSuicuneCaught::
 	setflag FLAG_PJR_RELIC_SUICUNE
-	removeobject LOCALID_PJR_RELIC_SUICUNE
 	setflag FLAG_PJR_RELIC_SIX_RESONANCE
 	msgbox BurnedTower_B1F_Text_RelicSuicuneCaught, MSGBOX_DEFAULT
 	release
@@ -287,8 +290,13 @@ BurnedTower_B1F_EventScript_RelicStoneResolved::
 	release
 	end
 
+BurnedTower_B1F_Text_RelicRaikouEntry:
+	.string "The RELIC JOURNAL flashes R.$"
+
 BurnedTower_B1F_Text_RelicRaikou:
-	.string "The RELIC JOURNAL flashes R.\p"
+	.string "A lightning-shaped R is carved into\n"
+	.string "the ancient stone.\p"
+	.string "Electricity races through the cracks!\p"
 	.string "Thunder rolls through the broken stone.\n"
 	.string "RAIKOU answers the Resonance!$"
 
@@ -296,9 +304,13 @@ BurnedTower_B1F_Text_RelicRaikouCaught:
 	.string "The R mark burns into the Journal.\p"
 	.string "NEXT DESTINATION:\nMT. MORTAR 2F.$"
 
+BurnedTower_B1F_Text_RelicSuicuneEntry:
+	.string "The RELIC JOURNAL flashes S.$"
+
 BurnedTower_B1F_Text_RelicSuicune:
-	.string "The RELIC JOURNAL flashes S.\p"
-	.string "Clear water gathers beneath the ruins.\n"
+	.string "The ancient stone is wet to the touch.\p"
+	.string "A clear S glimmers across its surface.\p"
+	.string "Water gathers beneath the ruins.\n"
 	.string "SUICUNE answers the final mark!$"
 
 BurnedTower_B1F_Text_RelicSuicuneCaught:
@@ -312,10 +324,12 @@ BurnedTower_B1F_Text_RelicRetry:
 	.string "the RELIC is captured.$"
 
 BurnedTower_B1F_Text_RelicStoneSilent:
-	.string "The old stone is silent.$"
+	.string "It is an ancient carved stone.\n"
+	.string "The RELIC JOURNAL does not react.$"
 
 BurnedTower_B1F_Text_RelicStoneResolved:
-	.string "The Resonance here has gone still.$"
+	.string "The carved mark is dark.\n"
+	.string "The Resonance has moved on.$"
 
 
 BurnedTower_B1F_EventScript_Item_Taunt::
