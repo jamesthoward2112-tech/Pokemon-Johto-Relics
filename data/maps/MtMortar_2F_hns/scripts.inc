@@ -5,7 +5,18 @@ MtMortar_2F_hns_MapScripts::
 
 MtMortar_2F_OnTransition: 
 	callnative SetTimeBasedEncounters
+	call MtMortar_2F_EventScript_PJRRelicVisibility
 	end
+
+MtMortar_2F_EventScript_PJRRelicVisibility::
+	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, MtMortar_2F_EventScript_HidePJREntei
+	goto_if_unset FLAG_PJR_RELIC_RAIKOU, MtMortar_2F_EventScript_HidePJREntei
+	goto_if_set FLAG_PJR_RELIC_ENTEI, MtMortar_2F_EventScript_HidePJREntei
+	return
+
+MtMortar_2F_EventScript_HidePJREntei::
+	removeobject LOCALID_PJR_RELIC_ENTEI
+	return
 
 MtMortar_2F_EventScript_RelicEntei::
 	lock
@@ -28,6 +39,7 @@ MtMortar_2F_EventScript_RelicEntei::
 
 MtMortar_2F_EventScript_RelicEnteiCaught::
 	setflag FLAG_PJR_RELIC_ENTEI
+	removeobject LOCALID_PJR_RELIC_ENTEI
 	msgbox MtMortar_2F_Text_RelicEnteiCaught, MSGBOX_DEFAULT
 	release
 	end
