@@ -49,8 +49,7 @@ MtMortar_2F_Text_RelicEntei:
 
 MtMortar_2F_Text_RelicEnteiCaught:
 	.string "The E mark burns into the Journal.\p"
-	.string "The next inscription speaks of\n"
-	.string "the deepest tide below four islands.$"
+	.string "NEXT DESTINATION:\nWHIRL ISLANDS\lLUGIA CHAMBER.$"
 
 MtMortar_2F_Text_RelicRetry:
 	.string "The volcanic Resonance remains.\p"
