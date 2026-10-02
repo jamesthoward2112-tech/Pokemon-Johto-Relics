@@ -11,6 +11,16 @@ RuinsOfAlph_Lab_EventScript_Scientist1::
 	faceplayer
 	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, RuinsOfAlph_Lab_EventScript_Scientist1Standard
 	goto_if_set FLAG_PJR_RELIC_SUICUNE, RuinsOfAlph_Lab_EventScript_ScientistRelicsSix
+	goto_if_set FLAG_PJR_RELIC_LUGIA, RuinsOfAlph_Lab_EventScript_ScientistCheckUnownShortcut
+	msgbox RuinsOfAlph_Lab_Text_ScientistRelicResearch, MSGBOX_DEFAULT
+	release
+	end
+
+RuinsOfAlph_Lab_EventScript_ScientistCheckUnownShortcut::
+	goto_if_set FLAG_PJR_RELIC_UNOWN_I, RuinsOfAlph_Lab_EventScript_ScientistRelicResearchOnly
+	goto RuinsOfAlph_Lab_EventScript_DeepChamberShortcut
+
+RuinsOfAlph_Lab_EventScript_ScientistRelicResearchOnly::
 	msgbox RuinsOfAlph_Lab_Text_ScientistRelicResearch, MSGBOX_DEFAULT
 	release
 	end
@@ -21,7 +31,27 @@ RuinsOfAlph_Lab_EventScript_Scientist1Standard::
 	end
 
 RuinsOfAlph_Lab_EventScript_ScientistRelicsSix::
+	goto_if_set FLAG_PJR_RELIC_ALPHORACLE, RuinsOfAlph_Lab_EventScript_ScientistRelicsSixDone
 	msgbox RuinsOfAlph_Lab_Text_ScientistRelicsSix, MSGBOX_DEFAULT
+	goto RuinsOfAlph_Lab_EventScript_DeepChamberShortcutPrompt
+
+RuinsOfAlph_Lab_EventScript_ScientistRelicsSixDone::
+	msgbox RuinsOfAlph_Lab_Text_ScientistRelicsSix, MSGBOX_DEFAULT
+	release
+	end
+
+RuinsOfAlph_Lab_EventScript_DeepChamberShortcut::
+	msgbox RuinsOfAlph_Lab_Text_DeepChamberShortcutIntro, MSGBOX_DEFAULT
+RuinsOfAlph_Lab_EventScript_DeepChamberShortcutPrompt::
+	msgbox RuinsOfAlph_Lab_Text_DeepChamberShortcutPrompt, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_DeepChamberShortcutCancel
+	closemessage
+	warp MAP_RUINS_OF_ALPH_PUZZLE_AND_REWARD_CHAMBERS_HNS, 22, 54
+	waitstate
+	end
+
+RuinsOfAlph_Lab_EventScript_DeepChamberShortcutCancel::
+	closemessage
 	release
 	end
 
@@ -38,6 +68,16 @@ RuinsOfAlph_Lab_Text_ScientistRelicsSix:
 	.string "the deepest ancient chamber.\p"
 	.string "The inscriptions call it the FIRST VOICE.\n"
 	.string "Whatever waits there is not a seventh RELIC.$"
+
+RuinsOfAlph_Lab_Text_DeepChamberShortcutIntro:
+	.string "The Journal is pulling toward the\n"
+	.string "DEEPEST CHAMBER.\p"
+	.string "You don't need to solve the old route\n"
+	.string "again.$"
+
+RuinsOfAlph_Lab_Text_DeepChamberShortcutPrompt:
+	.string "Follow the Resonance directly to the\n"
+	.string "RUINS OF ALPH DEEPEST CHAMBER?$"
 
 RuinsOfAlph_Lab_EventScript_Scientist2::
 	lock
