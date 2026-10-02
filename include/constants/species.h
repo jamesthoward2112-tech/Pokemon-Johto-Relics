@@ -1729,7 +1729,8 @@
 #define SPECIES_NOLAX                                   1606
 #define SPECIES_NOXICHU                                 1607
 #define SPECIES_MAROGHOST                               1608
-#define SPECIES_EGG                                     (SPECIES_MAROGHOST + 1)
+#define SPECIES_RELIC_HO_OH                             1609
+#define SPECIES_EGG                                     (SPECIES_RELIC_HO_OH + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

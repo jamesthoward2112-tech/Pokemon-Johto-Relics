@@ -2437,7 +2437,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_ANCIENT_BASTION] =
     {
         .name = _("ANCIENT BASTION"),
-        .description = COMPOUND_STRING("Halves first hit; sets hazards."),
+        .description = COMPOUND_STRING("Physical hits scatter stones\nup to three times."),
         .aiRating = 9,
     },
 

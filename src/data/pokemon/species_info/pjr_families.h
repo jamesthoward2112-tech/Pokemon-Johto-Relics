@@ -658,6 +658,52 @@ PJR_FINAL_SPECIES(SPECIES_GHOULBAT, 95, 110, 90, 80, 95, 130, TYPE_GHOST, TYPE_F
     NATIONAL_DEX_CROBAT, "Wraith", BODY_COLOR_PURPLE, gMonFrontPic_Ghoulbat, gMonBackPic_Ghoulbat,
     gMonPalette_Ghoulbat, gMonShinyPalette_Ghoulbat, gMonIcon_Ghoulbat, 0, sGhoulbatLevelUpLearnset, sCrobatTeachableLearnset),
 
+[SPECIES_RELIC_HO_OH] =
+{
+    .baseHP = 106, .baseAttack = 100, .baseDefense = 100,
+    .baseSpeed = 114, .baseSpAttack = 140, .baseSpDefense = 140,
+    .types = MON_TYPES(TYPE_FIRE, TYPE_FAIRY),
+    .catchRate = 3, .expYield = 340,
+    .evYield_SpDefense = 3,
+    .itemCommon = ITEM_SACRED_ASH, .itemRare = ITEM_SACRED_ASH,
+    .genderRatio = MON_GENDERLESS, .eggCycles = 120, .friendship = 0,
+    .growthRate = GROWTH_SLOW,
+    .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+    .abilities = { ABILITY_SACRED_REBIRTH, ABILITY_SACRED_REBIRTH, ABILITY_SACRED_REBIRTH },
+    .bodyColor = BODY_COLOR_YELLOW,
+    .speciesName = _("RELIC HO-OH"), .cryId = CRY_HO_OH, .natDexNum = NATIONAL_DEX_HO_OH,
+    .categoryName = _("Relic"), .height = 38, .weight = 1990,
+    .description = COMPOUND_STRING(
+        "An ancient Ho-Oh awakened by Relic\n"
+        "Resonance. Its sacred flame refuses\n"
+        "to be extinguished."),
+    .pokemonScale = 256, .pokemonOffset = 0, .trainerScale = 610, .trainerOffset = 17,
+    .frontPic = gMonFrontPic_HoOhRelic, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 0,
+    .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_GROW_VIBRATE,
+    .enemyMonElevation = 6,
+    .backPic = gMonBackPic_HoOhRelic, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 1,
+    .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
+    .palette = gMonPalette_HoOhRelic, .shinyPalette = gMonShinyPalette_HoOhRelic,
+    .iconSprite = gMonIcon_HoOhRelic, .iconPalIndex = 1,
+    .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+    SHADOW(1, 17, SHADOW_SIZE_L)
+    FOOTPRINT(HoOh)
+    OVERWORLD(
+        sPicTable_HoOh,
+        SIZE_64x64,
+        SHADOW_SIZE_M,
+        TRACKS_NONE,
+        sAnimTable_Following,
+        gOverworldPalette_HoOh,
+        gShinyOverworldPalette_HoOh
+    )
+    .isRestrictedLegendary = TRUE,
+    .isFrontierBanned = TRUE,
+    .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
+    .levelUpLearnset = sRelicHoOhLevelUpLearnset,
+    .teachableLearnset = sHoOhTeachableLearnset,
+},
+
 #undef PJR_FINAL_SPECIES
 
 #define PJR_RED_SPECIES(species, hp, atk, def, spa, spd, spe, type1, type2, ability, name, cry, natdex, color, front, back, pal, shiny, icon, levelMoves, teachMoves) \

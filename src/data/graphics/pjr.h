@@ -108,11 +108,11 @@ const u8 gMonIcon_PinsirMega[] = INCBIN_U8("graphics/pokemon/pinsir/mega/icon.4b
 #endif
 
 // Locked PJR core sprite assets. These are installed from the validated Library package.
-const u32 gMonFrontPic_Heracurion[] = INCBIN_U32("graphics/pokemon/pjr_locked/heracurion/front.4bpp.smol");
-const u16 gMonPalette_Heracurion[] = INCBIN_U16("graphics/pokemon/pjr_locked/heracurion/normal.gbapal");
-const u16 gMonShinyPalette_Heracurion[] = INCBIN_U16("graphics/pokemon/pjr_locked/heracurion/shiny.gbapal");
-const u32 gMonBackPic_Heracurion[] = INCBIN_U32("graphics/pokemon/pjr_locked/heracurion/back.4bpp.smol");
-const u8 gMonIcon_Heracurion[] = INCBIN_U8("graphics/pokemon/pjr_locked/heracurion/icon.4bpp");
+const u32 gMonFrontPic_Heracurion[] = INCBIN_U32("graphics/pokemon/heracross/mega/front.4bpp.smol");
+const u16 gMonPalette_Heracurion[] = INCBIN_U16("graphics/pokemon/heracross/mega/normal.gbapal");
+const u16 gMonShinyPalette_Heracurion[] = INCBIN_U16("graphics/pokemon/heracross/mega/shiny.gbapal");
+const u32 gMonBackPic_Heracurion[] = INCBIN_U32("graphics/pokemon/heracross/mega/back.4bpp.smol");
+const u8 gMonIcon_Heracurion[] = INCBIN_U8("graphics/pokemon/heracross/mega/icon.4bpp");
 
 const u32 gMonFrontPic_Skarmadon[] = INCBIN_U32("graphics/pokemon/pjr_locked/skarmadon/front.4bpp.smol");
 const u16 gMonPalette_Skarmadon[] = INCBIN_U16("graphics/pokemon/pjr_locked/skarmadon/normal.gbapal");

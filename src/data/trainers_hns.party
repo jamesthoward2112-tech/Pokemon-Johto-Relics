@@ -6897,13 +6897,13 @@ Double Battle: No
 AI: Basic Trainer
 Mugshot: Pink
 
-Espeon
+Lepideon
 Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Psychic
-- Psych Up
-- Swift
-- Last Resort
+- Signal Beam
+- Air Slash
+- Sleep Powder
+- Charge Beam
 
 === TRAINER_SAYO_HNS ===
 Name: SAYO
@@ -6915,13 +6915,13 @@ Double Battle: No
 AI: Basic Trainer
 Mugshot: Yellow
 
-Jolteon
+Guardeon
 Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Thunderbolt
-- Double Team
-- Thunder Wave
-- Last Resort
+- Flash Cannon
+- Dragon Pulse
+- Kings Shield
+- Extrasensory
 
 === TRAINER_ZUKI_HNS ===
 Name: ZUKI
@@ -6933,13 +6933,13 @@ Double Battle: No
 AI: Basic Trainer
 Mugshot: Purple
 
-Umbreon
+Omeon
 Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Dark Pulse
+- Shadow Claw
+- Knock Off
+- Will O Wisp
 - Confuse Ray
-- Shadow Ball
-- Last Resort
 
 === TRAINER_KUNI_HNS ===
 Name: KUNI
@@ -6951,13 +6951,13 @@ Double Battle: No
 AI: Basic Trainer
 Mugshot: Light Blue
 
-Vaporeon
+Drakeon
 Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Surf
-- Quick Attack
-- Aurora Beam
-- Last Resort
+- Dragon Rush
+- Iron Head
+- Crunch
+- Dragon Dance
 
 === TRAINER_MIKI_HNS ===
 Name: MIKI
@@ -6969,13 +6969,13 @@ Double Battle: No
 AI: Basic Trainer
 Mugshot: Dark Red
 
-Flareon
+Champeon
 Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Fire Blast
-- Quick Attack
-- Will O Wisp
-- Last Resort
+- Jump Kick
+- Mega Kick
+- Swords Dance
+- Low Sweep
 
 === TRAINER_AMY_AND_MAY_HNS ===
 Name: AMY&MAY
