@@ -212,10 +212,8 @@ SproutTower_Text_SageLi_FlashExplain:
 	.string "need the BADGE from VIOLET's GYM.$"
 
 SproutTower_Text_SageLi_AfterBattle:
-	.string "Your bond is strong.\p"
-	.string "The old SAGES say a true bond\n"
-	.string "can wake power sleeping in JOHTO.\p"
-	.string "Some call it RESONANCE.$"
+	.string "I hope you learn and grow from\n"
+	.string "your journey.$"
 
 SproutTower_Text_SageJin_Seen:
 	.string "I train to find enlightenment\n"
@@ -225,9 +223,11 @@ SproutTower_Text_SageJin_Beaten:
 	.string "My training is incomplete…$"
 
 SproutTower_Text_SageJin_AfterBattle:
-	.string "At night, the TOWER hums.\p"
-	.string "Some elders say the same sound\n"
-	.string "can be heard near ALPH.$"
+	.string "As POKéMON grow stronger,\n"
+	.string "so does the trainer.\p"
+	.string "No, wait. As the trainer\n"
+	.string "grows stronger, so do the\l"
+	.string "POKéMON.$"
 
 SproutTower_Text_SageTroy_Seen:
 	.string "Let me see how much you trust\n"
@@ -237,10 +237,7 @@ SproutTower_Text_SageTroy_Beaten:
 	.string "Yes, your trust is real!$"
 
 SproutTower_Text_SageTroy_AfterBattle:
-	.string "You and your POKéMON move\n"
-	.string "as one.\p"
-	.string "That is how old stories describe\n"
-	.string "RESONANCE.$"
+	.string "It is not far to the ELDER.$"
 
 SproutTower_Text_SageNeal_Seen:
 	.string "The ELDER's HM lights even\n"
@@ -250,11 +247,9 @@ SproutTower_Text_SageNeal_Beaten:
 	.string "It is my head that is bright!$"
 
 SproutTower_Text_SageNeal_AfterBattle:
-	.string "Light reveals old things.\p"
-	.string "The RUINS near VIOLET may reveal\n"
-	.string "more than stone.$"
+	.string "Let there be light on your\n"
+	.string "journey.$"
 
 SproutTower_Text_3F_Painting:
-	.string "An old painting of BELLSPROUT.\p"
-	.string "Faint marks beneath it resemble\n"
-	.string "the glyphs of ALPH.$"
+	.string "It's a powerful painting of a\n"
+	.string "BELLSPROUT.$"

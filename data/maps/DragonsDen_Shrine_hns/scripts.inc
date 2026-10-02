@@ -176,13 +176,14 @@ DragonsDen_Shrine_EventScript_ElderQuizFinish::
 
 
 DragonsDen_Shrine_Text_ElderGreeting:
-	.string "Welcome. Our clan is older than\n"
-	.string "BLACKTHORN's walls.\p"
-	.string "The first elders wrote of a current\n"
-	.string "beneath JOHTO that dragons heard.\p"
-	.string "Today scholars call it RESONANCE.\p"
-	.string "Now, let me test your bond with\n"
-	.string "POKéMON.$"
+    .string "Hm… Good to see you here.\p"
+    .string "No need to explain why you came.\n"
+    .string "CLAIR sent you here, didn't she?\p"
+    .string "That girl is a handful…\n"
+    .string "I am sorry, but I must test you.\p"
+    .string "Not to worry, you are to answer\n"
+    .string "only a few questions.\l"
+    .string "Ready?$"
 
 DragonsDen_Shrine_Text_Question1:
     .string "What are POKéMON to you?$"
@@ -212,10 +213,14 @@ DragonsDen_Shrine_Text_RightAnswer:
     .string "Oh, I understand…$"
 
 DragonsDen_Shrine_Text_PassedTest:
-	.string "Hm... I see.\p"
-	.string "You understand POKéMON and trust.\p"
-	.string "That same harmony lies at the\n"
-	.string "heart of our oldest RELIC texts.$"
+    .string "Hm… I see…\p"
+    .string "You care deeply for POKéMON.\p"
+    .string "Very commendable.\p"
+    .string "That conviction is what is\n"
+    .string "important!\p"
+    .string "{PLAYER}, don't lose that belief.\p"
+    .string "It will see you through at the\n"
+    .string "POKéMON LEAGUE.$"
 
 DragonsDen_Shrine_EventScript_ClairEnter::
 	clearflag FLAG_HIDE_DRAGONS_DEN_SHRINE_CLAIR
@@ -396,15 +401,16 @@ DragonsDen_Shrine_EventScript_Elder3::
 	end
 
 DragonsDen_Shrine_Text_Elder2:
-	.string "This shrine predates BLACKTHORN.\p"
-	.string "Its oldest markings resemble ALPH,\n"
-	.string "but the symbols are dragons.$"
+    .string "It's been quite some time since a\n"
+    .string "trainer has gained our MASTER's\l"
+    .string "rare approval.\p"
+    .string "In fact, not since Master LANCE.$"
 
 DragonsDen_Shrine_Text_Elder3:
-	.string "TEAM ROCKET tried to force the\n"
-	.string "old power.\p"
-	.string "Dragons teach the opposite lesson:\n"
-	.string "true strength answers trust.$"
+    .string "You know young Master LANCE?\p"
+    .string "He looks so much like our MASTER\n"
+    .string "did in his youth.\p"
+    .string "It's in their blood.$"
 
 DragonsDen_Shrine_EventScript_ElderChooseDratini::
 	goto_if_eq VAR_DRAGONS_DEN_QUIZ, 0, DragonsDen_Shrine_EventScript_ElderGiveSpecialDratini
@@ -451,10 +457,10 @@ DragonsDen_Shrine_Text_TakeThisDratini:
     .string "have recognized your worth.$"
 
 DragonsDen_Shrine_Text_SymbolicDragon:
-	.string "This DRATINI symbolizes our oldest\n"
-	.string "belief.\p"
-	.string "Power awakened by trust lasts.\n"
-	.string "Power forced into life does not.$"
+    .string "Dragon POKéMON are symbolic of our\n"
+    .string "clan.\p"
+    .string "You have shown that you can be\n"
+    .string "entrusted with one.$"
 
 DragonsDen_Shrine_Text_ClairsGrandfather:
     .string "CLAIR appears to have learned an\n"

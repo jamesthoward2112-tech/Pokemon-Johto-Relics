@@ -141,10 +141,14 @@ GoldenrodCity_RadioTower_5F_Text_FakeDirectorWin:
 	.string "OK, OK. I'll tell you where he is.$"
 
 GoldenrodCity_RadioTower_5F_Text_FakeDirectorAfter:
-	.string "The real DIRECTOR is locked away.\p"
-	.string "ARCHER only needs this TOWER to\n"
-	.string "amplify an ancient frequency.\p"
-	.string "He keeps muttering about ALPH.$"
+	.string "The boss stashed the DIRECTOR in\n"
+	.string "the UNDERGROUND WAREHOUSE.\p"
+	.string "It's at the far end of the UNDER-\n"
+	.string "GROUND.\p"
+	.string "I am a nice guy, I will give you\n"
+	.string "the BASEMENT KEY to get to the\l"
+	.string "UNDERGROUND WAREHOUSE.\p"
+	.string "But I doubt you'll get that far.$"
 
 GoldenrodCity_RadioTower_5F_Text_FakeDirectorAfter2:
 	.string "The boss stashed the DIRECTOR in\n"
@@ -361,37 +365,41 @@ GoldenrodCity_RadioTower_5F_Text_ExecutiveF1Beaten:
 	.string "I'm so sorry GIOVANNI…$"
 
 GoldenrodCity_RadioTower_5F_Text_ExecutiveF1After:
-	.string "We turned old ALPH whispers into\n"
-	.string "a broadcast.\p"
-	.string "Even if I lose, the TOWER is\n"
-	.string "already tuned.$"
+	.string "{PLAYER}, isn't it?\p"
+	.string "A brat like you won't appreciate\n"
+	.string "the magnificence of TEAM ROCKET.\p"
+	.string "That's too bad. I really admire\n"
+	.string "your power.$"
 
 GoldenrodCity_RadioTower_5F_Text_RocketBossSeen:
-	.string "ARCHER: At LAKE OF RAGE we proved\n"
-	.string "RESONANCE can be forced.\p"
-	.string "This TOWER is the amplifier.\n"
-	.string "ALPH is the target.\p"
-	.string "When the buried network answers,\n"
-	.string "TEAM ROCKET will own its power!$"
+	.string "Oh? You managed to get this far?\p"
+	.string "You must be quite the trainer.\p"
+	.string "We intend to take over this RADIO\n"
+	.string "STATION and announce our comeback.\p"
+	.string "That should bring our boss GIOVANNI\n"
+	.string "back from his solitary training.\p"
+	.string "We are going to regain our former\n"
+	.string "glory...\p"
+	.string "I won't allow you to interfere with\n"
+	.string "our meticulous plans!$"
 
 GoldenrodCity_RadioTower_5F_Text_RocketBossBeaten:
 	.string "No! Forgive me, GIOVANNI!$"
 
 GoldenrodCity_RadioTower_5F_Text_RocketBossAfter:
-	.string "ARCHER: No...\n"
-	.string "the signal has already left!\p"
-	.string "The RUINS are answering...\n"
-	.string "without us?\p"
-	.string "TEAM ROCKET...\n"
-	.string "disbanded again.$"
+	.string "How could this be?\p"
+	.string "Our dreams have come to naught.\p"
+	.string "I wasn't up to the task after all.\p"
+	.string "Like GIOVANNI did before me, I will\n"
+	.string "disband TEAM ROCKET here today.\p"
+	.string "Farewell.$"
 
 GoldenrodCity_RadioTower_5F_Text_DirectorThanks:
-	.string "DIRECTOR: Thank you, {PLAYER}!\p"
-	.string "Our instruments caught one last\n"
-	.string "pulse after ROCKET vanished.\p"
-	.string "It travelled toward the\n"
-	.string "RUINS OF ALPH.\p"
-	.string "Whatever they woke is still there.$"
+	.string "DIRECTOR: {PLAYER}, thank you!\p"
+	.string "Your courageous actions have saved\n"
+	.string "POKéMON nationwide.\p"
+	.string "I know it's not much, but please\n"
+	.string "take this.$"
 
 GoldenrodCity_RadioTower_5F_Text_DirectorClearWingExplanation:
 	.string "There used to be a tower right here\n"
@@ -424,11 +432,17 @@ GoldenrodCity_RadioTower_5F_Text_DirectorTidalWingExplanation:
 	.string "OK, I better go to my OFFICE.$"
 
 GoldenrodCity_RadioTower_5F_Text_DirectorLegendary:
-	.string "DIRECTOR: One more thing...\p"
-	.string "This old WING began vibrating\n"
-	.string "during ROCKET's broadcast.\p"
-	.string "ECRUTEAK's legends and ALPH may\n"
-	.string "be part of the same story.$"
+	.string "Ah!\p"
+	.string "That reminds me…\p"
+	.string "That wing I gave you... I think\n"
+	.string "it's related to the LEGENDARY\l"
+	.string "POKéMON.\p"
+	.string "But! The LEGENDARY POKéMON won't\n"
+	.string "appear with just that wing...\p"
+	.string "Apparently there is something else\n"
+	.string "you need... Or something like that.\p"
+	.string "I wonder what it was...\p"
+	.string "I can't remember.$"
 
 GoldenrodCity_RadioTower_5F_Text_DirectorFakeout:
 	.string "Are you expecting something?\n"

@@ -4,7 +4,6 @@
 #include "main.h"
 #include "overworld.h"
 #include "field_weather.h"
-#include "field_effect.h"
 #include "palette.h"
 #include "pokemon_storage_system.h"
 #include "pokenav.h"
@@ -228,7 +227,6 @@ const struct PokenavCallbacks PokenavMenuCallbacks[17] =
 
 EWRAM_DATA u8 gNextLoopedTaskId = 0;
 EWRAM_DATA struct PokenavResources *gPokenavResources = NULL;
-static bool8 sPokenavFlyExitPending = FALSE;
 
 // code
 u32 CreateLoopedTask(LoopedTask loopedTask, u32 priority)
@@ -400,8 +398,6 @@ static void InitPokenavResources(struct PokenavResources *resources)
 {
     int i;
 
-    sPokenavFlyExitPending = FALSE;
-
     for (i = 0; i < POKENAV_SUBSTRUCT_COUNT; i++)
         resources->substructPtrs[i] = NULL;
 
@@ -483,11 +479,6 @@ static void Task_Pokenav(u8 taskId)
         menuId = GetCurrentMenuCB();
         if (menuId == POKENAV_MENU_FUNC_EXIT)
         {
-            if (sPokenavFlyExitPending)
-            {
-                PokenavMenuCallbacks[gPokenavResources->currentMenuIndex].free2();
-                PokenavMenuCallbacks[gPokenavResources->currentMenuIndex].free1();
-            }
             ShutdownPokenav();
             tState = 5;
         }
@@ -521,15 +512,9 @@ static void Task_Pokenav(u8 taskId)
         {
             bool32 calledFromScript = (gPokenavResources->mode != POKENAV_MODE_NORMAL);
 
-            bool8 flyExit = sPokenavFlyExitPending;
-
             FreeMenuHandlerSubstruct1();
             FreePokenavResources();
-            sPokenavFlyExitPending = FALSE;
-
-            if (flyExit)
-                ReturnToFieldFromFlyMapSelect();
-            else if (calledFromScript)
+            if (calledFromScript)
                 SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
             else
                 SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
@@ -624,9 +609,4 @@ u32 GetSelectedConditionSearch(void)
 bool32 CanViewRibbonsMenu(void)
 {
     return gPokenavResources->hasAnyRibbons;
-}
-
-void RequestPokenavFlyExit(void)
-{
-    sPokenavFlyExitPending = TRUE;
 }

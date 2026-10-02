@@ -242,13 +242,10 @@ LakeOfRage_Text_Dragonite:
 	.string "DRAGONITE: Gyafooha!$"
 
 LakeOfRage_Text_LanceForcedToEvolve:
-	.string "LANCE: This is not a natural\n"
-	.string "change.\p"
-	.string "That signal is forcing POKéMON\n"
-	.string "past their normal limits.\p"
-	.string "ALPH researchers described a\n"
-	.string "similar energy to me.\p"
-	.string "They call it RESONANCE.$"
+    .string "This lake is full of GYARADOS\n"
+    .string "but nothing else…\p"
+    .string "So the MAGIKARP are being forced\n"
+    .string "to evolve…$"
 
 LakeOfRage_Text_LanceIntro1:
     .string "Did you come here because of\n"
@@ -270,13 +267,13 @@ LakeOfRage_Text_LanceIntro3:
     .string "us investigate?$"
 
 LakeOfRage_Text_LanceRadioSignal:
-	.string "LANCE: The signal comes from\n"
-	.string "MAHOGANY TOWN.\p"
-	.string "Its pattern matches ALPH's\n"
-	.string "readings, but twisted.\p"
-	.string "TEAM ROCKET is forcing\n"
-	.string "RESONANCE into POKéMON.\p"
-	.string "We have to shut it down.$"
+    .string "LANCE: Excellent!\p"
+    .string "It seems that the LAKE's MAGIKARP\n"
+    .string "are being forced to evolve.\p"
+    .string "A mysterious radio broadcast\n"
+    .string "coming from MAHOGANY is the cause.\p"
+    .string "We'll be waiting for you,\n"
+    .string "{PLAYER}.$"
 
 LakeOfRage_Text_LanceRefused:
     .string "Oh… Well, if you change your mind,\n"
@@ -290,26 +287,24 @@ LakeOfRage_Text_GyaradosCry:
     .string "GYARADOS: Gyashaa!$"
 
 LakeOfRage_Text_Gramps:
-	.string "The GYARADOS are angry!\p"
-	.string "The whole lake is humming.\n"
-	.string "Even the water feels wrong.$"
+    .string "The GYARADOS are angry!\p"
+    .string "It's a bad omen!$"
 
 LakeOfRage_Text_GrampsCleared:
-	.string "That awful hum has stopped.\p"
-	.string "The water feels like itself again.\n"
-	.string "Whatever ROCKET did is over.$"
+    .string "Hahah! The MAGIKARP are biting!$"
 
 LakeOfRage_Text_SuperNerd:
-	.string "This isn't ordinary radio noise.\p"
-	.string "The signal is synchronizing with\n"
-	.string "the POKéMON in the lake.\p"
-	.string "That's... not normal.$"
+    .string "I heard this lake was made by\n"
+    .string "rampaging GYARADOS.\p"
+    .string "I wonder if there is any\n"
+    .string "connection to their mass outbreak\l"
+    .string "now?$"
 
 LakeOfRage_Text_CooltrainerF:
-	.string "That red GYARADOS changed under\n"
-	.string "the signal, didn't it?\p"
-	.string "Like something ancient was being\n"
-	.string "dragged out by force.$"
+    .string "Did my eyes deceive me? I saw a\n"
+    .string "red GYARADOS in the LAKE…\p"
+    .string "But I thought GYARADOS were\n"
+    .string "usually blue?$"
 
 
 LakeOfRage_Text_FisherAndreSeen:

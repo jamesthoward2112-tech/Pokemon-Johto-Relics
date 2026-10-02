@@ -3431,18 +3431,6 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 effect++;
             }
             break;
-        case ABILITY_ANCIENT_BASTION:
-            if (shouldAbilityTrigger)
-            {
-                gBattleStruct->battlerState[battler].ancientBastionHitUsed = FALSE;
-                SaveBattlerAttacker(gBattlerAttacker);
-                SaveBattlerTarget(gBattlerTarget);
-                gBattlerAttacker = battler;
-                gBattlerTarget = BATTLE_OPPOSITE(battler);
-                BattleScriptCall(BattleScript_AncientBastionActivates);
-                effect++;
-            }
-            break;
         case ABILITY_CINDER_VEIL:
             if (shouldAbilityTrigger)
                 gBattleStruct->battlerState[battler].cinderVeilHitUsed = FALSE;
@@ -4389,6 +4377,21 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
              && IsBattlerTurnDamaged(gBattlerTarget, EXCLUDING_SUBSTITUTES))
             {
                 BattleScriptCall(BattleScript_WindPowerActivates);
+                effect++;
+            }
+            break;
+        case ABILITY_ANCIENT_BASTION:
+            if (!gBattleStruct->isSkyBattle
+             && !gBattleStruct->unableToUseMove
+             && IsBattleMovePhysical(gCurrentMove)
+             && IsBattlerTurnDamaged(gBattlerTarget, EXCLUDING_SUBSTITUTES)
+             && (gSideTimers[GetBattlerSide(gBattlerAttacker)].spikesAmount != 3))
+            {
+                SaveBattlerTarget(gBattlerTarget);
+                SaveBattlerAttacker(gBattlerAttacker);
+                gBattlerAttacker = gBattlerTarget;
+                gBattlerTarget = BATTLE_OPPOSITE(gBattlerAttacker);
+                BattleScriptCall(BattleScript_AncientBastionActivates);
                 effect++;
             }
             break;
@@ -6412,21 +6415,6 @@ static inline u32 CalcMoveBasePower(struct BattleContext *ctx)
         }
     }
 
-    if (move == MOVE_TAILSPIN)
-    {
-        switch (min(gBattleMons[battlerAtk].volatiles.metronomeItemCounter, 4))
-        {
-        case 0: basePower = 30; break;
-        case 1: basePower = 60; break;
-        case 2: basePower = 120; break;
-        case 3: basePower = 180; break;
-        default: basePower = 240; break;
-        }
-
-        if (gBattleMons[battlerAtk].volatiles.defenseCurl)
-            basePower = min(basePower * 2, 240);
-    }
-
     if (GetActiveGimmick(battlerAtk) == GIMMICK_Z_MOVE)
         return GetZMovePower(gCurrentMove);
 
@@ -7682,16 +7670,6 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(struct BattleContext *ctx)
 
     switch (ctx->abilityDef)
     {
-    case ABILITY_ANCIENT_BASTION:
-        if (!gBattleStruct->battlerState[ctx->battlerDef].ancientBastionHitUsed
-         && GetMovePower(ctx->move) != 0)
-        {
-            modifier = UQ_4_12(0.5);
-            recordAbility = TRUE;
-            if (ctx->updateFlags)
-                gBattleStruct->battlerState[ctx->battlerDef].ancientBastionHitUsed = TRUE;
-        }
-        break;
     case ABILITY_CINDER_VEIL:
         if (!gBattleStruct->battlerState[ctx->battlerDef].cinderVeilHitUsed
          && GetMovePower(ctx->move) != 0)

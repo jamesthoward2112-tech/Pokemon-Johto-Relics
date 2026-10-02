@@ -577,24 +577,36 @@ RocketHideout_B3F_Text_PetrelDisbelief:
     .string "to mimic him!$"
 
 RocketHideout_B3F_Text_PetrelReveal:
-	.string "PETREL: Surprise! TEAM ROCKET's\n"
-	.string "work goes beyond radio tricks.\p"
-	.string "We stole research from ALPH.\n"
-	.string "This base taught us how to bend\n"
-	.string "its ancient frequency.\p"
-	.string "That red GYARADOS?\n"
-	.string "Just a field test.$"
+    .string "PETREL: I am a Team Rocket\n"
+    .string "Executive!\p"
+    .string "You must be trying to sneak into\n"
+    .string "the radio-transmitter room.\p"
+    .string "Well, that's not going to happen.\n"
+    .string "That room is protected with a\l"
+    .string "special password.\p"
+    .string "The password is “Hail GIOVANNI.”\n"
+    .string "Surprised to hear it from me?\p"
+    .string "Knowing the password won't help\n"
+    .string "you though.\p"
+    .string "The door won't open unless I say\n"
+    .string "the password. It only reacts to\l"
+    .string "my voice.$"
 
 RocketHideout_B3F_Text_PetrelBeaten:
     .string "I… I couldn't do a thing…\p"
     .string "GIOVANNI, please forgive me…$"
 
 RocketHideout_B3F_Text_PetrelAfterBattle:
-	.string "Fine! Shut this place down.\p"
-	.string "ARCHER already has the clean\n"
-	.string "RESONANCE data.\p"
-	.string "At the RADIO TOWER, he can send\n"
-	.string "it across all of JOHTO.$"
+    .string "PETREL: Since disbanding Team\n"
+    .string "Rocket three years ago, our\l"
+    .string "GIOVANNI has been missing.\p"
+    .string "But we're certain he's been\n"
+    .string "waiting for the right time for\l"
+    .string "our revival... Wahahaha!\p"
+    .string "Losing to you won't change the\n"
+    .string "fact that you are unable to get\l"
+    .string "in the radio-transmitter room!\p"
+    .string "You need my voice to unlock it!$"
 
 RocketHideout_B3F_EventScript_Murkrow::
 	lock
@@ -628,9 +640,10 @@ RocketHideout_B3F_Text_GruntF5Beaten:
     .string "All right. Stop. I'll tell you.$"
 
 RocketHideout_B3F_Text_GruntF5After:
-	.string "They call this RELIC science.\p"
-	.string "I just guard the switches!\n"
-	.string "Don't ask me what answers them.$"
+    .string "The password to the boss' room\n"
+    .string "is SLOWPOKETAIL.\p"
+    .string "But it's useless unless you have\n"
+    .string "two passwords.$"
 
 RocketHideout_B3F_Text_GruntM28Seen:
     .string "Hyuck-hyuck-hyuck!\p"
@@ -647,36 +660,37 @@ RocketHideout_B3F_Text_GruntM28Beaten:
     .string "Hyuck-hyuck-hyuck! You're good!$"
 
 RocketHideout_B3F_Text_GruntM28After:
-	.string "The RADIO TOWER will make the\n"
-	.string "whole region hear our signal.\p"
-	.string "Even those creepy ALPH stones.$"
+    .string "Hyuck-hyuck-hyuck!\p"
+    .string "The password to the boss' room…\p"
+    .string "Uh…, I think it is RATICATE TAIL.$"
 
 RocketHideout_B3F_Text_ScientistRossSeen:
-	.string "I run RESONANCE research for\n"
-	.string "TEAM ROCKET.\p"
-	.string "Let's see how your team reacts\n"
-	.string "under pressure!$"
+    .string "I used to work for SILPH, but now\n"
+    .string "I run research for TEAM ROCKET.\p"
+    .string "A meddlesome child like you needs\n"
+    .string "to be punished.$"
 
 RocketHideout_B3F_Text_ScientistRossBeaten:
     .string "A mere tactical error cost me…$"
 
 RocketHideout_B3F_Text_ScientistRossAfter:
-	.string "Natural RESONANCE follows bonds.\p"
-	.string "Ours follows pressure.\n"
-	.string "It is unstable, but ARCHER\n"
-	.string "doesn't care.$"
+    .string "A radio signal that drives\n"
+    .string "POKéMON mad…\p"
+    .string "My experiment is a complete\n"
+    .string "success.\p"
+    .string "My promotion is assured. This\n"
+    .string "loss means absolutely nothing.$"
 
 RocketHideout_B3F_Text_ScientistMitchSeen:
-	.string "ALPH's signal is ancient.\p"
-	.string "We found a way to amplify it.\n"
-	.string "You're about to test the result!$"
+    .string "I don't care that POKéMON are hurt\n"
+    .string "by our experiment.$"
 
 RocketHideout_B3F_Text_ScientistMitchBeaten:
     .string "Thinking is my strong suit, not\n"
     .string "battling.$"
 
 RocketHideout_B3F_Text_ScientistMitchAfter:
-	.string "We learned how to make the\n"
-	.string "RESONANCE louder.\p"
-	.string "We never learned how to control\n"
-	.string "what might answer.$"
+    .string "If we turn up the power of our\n"
+    .string "radio signal for broadcast\l"
+    .string "nationwide…\p"
+    .string "The very thought excites me!$"

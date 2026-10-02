@@ -51,20 +51,17 @@ jobs:
           src = pathlib.Path('/tmp/pjr-infinity-assets')
           with zipfile.ZipFile('/tmp/pjr-infinity-assets.zip') as zf:
               zf.extractall(src)
+          approved_non_core = {
+              'alphoracle', 'champeon', 'guardeon', 'lepideon', 'obsideon',
+              'omeon', 'toxeon', 'sphynxeon', 'jollibird', 'grimfowl',
+              'kablowfish', 'sunflorid',
+          }
           for species_dir in src.iterdir():
-              if not species_dir.is_dir():
-                  continue
-              # Keep the locked Marowak branch sprites from the current repo.
-              # These are sourced from the latest TRE library and must not be
-              # overwritten by the older embedded Infinity donor archive.
-              if species_dir.name in ('maroghost', 'osteodian'):
+              if not species_dir.is_dir() or species_dir.name not in approved_non_core:
                   continue
               dst = pathlib.Path('graphics/pokemon') / species_dir.name
               dst.mkdir(parents=True, exist_ok=True)
               for name in ('front.png', 'back.png', 'icon.png'):
-                  # Keep Run44 battle graphics, but use the approved repo icons.
-                  if name == 'icon.png' and species_dir.name in ('skarmet', 'mootiny'):
-                      continue
                   shutil.copy2(species_dir / name, dst / name)
           PY
       - name: Build PJR Alpha

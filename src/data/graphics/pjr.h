@@ -108,11 +108,11 @@ const u8 gMonIcon_PinsirMega[] = INCBIN_U8("graphics/pokemon/pinsir/mega/icon.4b
 #endif
 
 // Locked PJR core sprite assets. These are installed from the validated Library package.
-const u32 gMonFrontPic_Heracurion[] = INCBIN_U32("graphics/pokemon/pjr_locked/heracurion/front.4bpp.smol");
-const u16 gMonPalette_Heracurion[] = INCBIN_U16("graphics/pokemon/pjr_locked/heracurion/normal.gbapal");
-const u16 gMonShinyPalette_Heracurion[] = INCBIN_U16("graphics/pokemon/pjr_locked/heracurion/shiny.gbapal");
-const u32 gMonBackPic_Heracurion[] = INCBIN_U32("graphics/pokemon/pjr_locked/heracurion/back.4bpp.smol");
-const u8 gMonIcon_Heracurion[] = INCBIN_U8("graphics/pokemon/pjr_locked/heracurion/icon.4bpp");
+const u32 gMonFrontPic_Heracurion[] = INCBIN_U32("graphics/pokemon/heracross/mega/front.4bpp.smol");
+const u16 gMonPalette_Heracurion[] = INCBIN_U16("graphics/pokemon/heracross/mega/normal.gbapal");
+const u16 gMonShinyPalette_Heracurion[] = INCBIN_U16("graphics/pokemon/heracross/mega/shiny.gbapal");
+const u32 gMonBackPic_Heracurion[] = INCBIN_U32("graphics/pokemon/heracross/mega/back.4bpp.smol");
+const u8 gMonIcon_Heracurion[] = INCBIN_U8("graphics/pokemon/heracross/mega/icon.4bpp");
 
 const u32 gMonFrontPic_Skarmadon[] = INCBIN_U32("graphics/pokemon/pjr_locked/skarmadon/front.4bpp.smol");
 const u16 gMonPalette_Skarmadon[] = INCBIN_U16("graphics/pokemon/pjr_locked/skarmadon/normal.gbapal");
@@ -223,44 +223,33 @@ const u16 gMonShinyPalette_HoOhRelic[] = INCBIN_U16("graphics/pokemon/ho_oh_reli
 const u8 gMonIcon_HoOhRelic[] = INCBIN_U8("graphics/pokemon/ho_oh_relic/icon.4bpp");
 
 // First-clear Elite Four trainer-only visual forms.
-// Native Elite Redux source assets are kept in graphics/pokemon/pjr_e4/.
 const u32 gMonFrontPic_AlakazamRelic[] = INCBIN_U32("graphics/pokemon/pjr_e4/alakazam_relic/front.4bpp.smol");
 const u16 gMonPalette_AlakazamRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/alakazam_relic/normal.gbapal");
 const u16 gMonShinyPalette_AlakazamRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/alakazam_relic/shiny.gbapal");
-
 const u32 gMonFrontPic_SlowkingRelic[] = INCBIN_U32("graphics/pokemon/pjr_e4/slowking_relic/front.4bpp.smol");
 const u16 gMonPalette_SlowkingRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/slowking_relic/normal.gbapal");
 const u16 gMonShinyPalette_SlowkingRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/slowking_relic/shiny.gbapal");
-
 const u32 gMonFrontPic_BeedrillRelic[] = INCBIN_U32("graphics/pokemon/pjr_e4/beedrill_relic/front.4bpp.smol");
 const u16 gMonPalette_BeedrillRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/beedrill_relic/normal.gbapal");
 const u16 gMonShinyPalette_BeedrillRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/beedrill_relic/shiny.gbapal");
-
 const u32 gMonFrontPic_CrobatRelic[] = INCBIN_U32("graphics/pokemon/pjr_e4/crobat_relic/front.4bpp.smol");
 const u16 gMonPalette_CrobatRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/crobat_relic/normal.gbapal");
 const u16 gMonShinyPalette_CrobatRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/crobat_relic/shiny.gbapal");
-
 const u32 gMonFrontPic_HitmonchanRelic[] = INCBIN_U32("graphics/pokemon/pjr_e4/hitmonchan_relic/front.4bpp.smol");
 const u16 gMonPalette_HitmonchanRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/hitmonchan_relic/normal.gbapal");
 const u16 gMonShinyPalette_HitmonchanRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/hitmonchan_relic/shiny.gbapal");
-
 const u32 gMonFrontPic_HitmonleeRelic[] = INCBIN_U32("graphics/pokemon/pjr_e4/hitmonlee_relic/front.4bpp.smol");
 const u16 gMonPalette_HitmonleeRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/hitmonlee_relic/normal.gbapal");
 const u16 gMonShinyPalette_HitmonleeRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/hitmonlee_relic/shiny.gbapal");
-
 const u32 gMonFrontPic_MachampRelic[] = INCBIN_U32("graphics/pokemon/pjr_e4/machamp_relic/front.4bpp.smol");
 const u16 gMonPalette_MachampRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/machamp_relic/normal.gbapal");
 const u16 gMonShinyPalette_MachampRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/machamp_relic/shiny.gbapal");
-
 const u32 gMonFrontPic_HoundoomRelic[] = INCBIN_U32("graphics/pokemon/pjr_e4/houndoom_relic/front.4bpp.smol");
 const u16 gMonPalette_HoundoomRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/houndoom_relic/normal.gbapal");
 const u16 gMonShinyPalette_HoundoomRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/houndoom_relic/shiny.gbapal");
-
 const u32 gMonFrontPic_GyaradosRelic[] = INCBIN_U32("graphics/pokemon/pjr_e4/gyarados_relic/front.4bpp.smol");
 const u16 gMonPalette_GyaradosRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/gyarados_relic/normal.gbapal");
 const u16 gMonShinyPalette_GyaradosRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/gyarados_relic/shiny.gbapal");
-
 const u32 gMonFrontPic_DragoniteRelic[] = INCBIN_U32("graphics/pokemon/pjr_e4/dragonite_relic/front.4bpp.smol");
 const u16 gMonPalette_DragoniteRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/dragonite_relic/normal.gbapal");
 const u16 gMonShinyPalette_DragoniteRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/dragonite_relic/shiny.gbapal");
-

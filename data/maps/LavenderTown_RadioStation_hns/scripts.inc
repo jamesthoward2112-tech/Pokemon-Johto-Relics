@@ -57,16 +57,18 @@ LavenderTown_RadioStation_Text_Receptionist:
 	.string "anywhere on this floor.$"
 
 LavenderTown_RadioStation_Text_Officer:
+	.string "Sorry, but you can only tour the\n"
+	.string "ground floor.\p"
 	.string "Ever since JOHTO's RADIO TOWER\n"
-	.string "incident, we monitor every band.\p"
-	.string "One low tone keeps returning.\n"
-	.string "Engineers call it the ALPH echo.$"
+	.string "was taken over by a criminal gang,\l"
+	.string "we have had to step up our\l"
+	.string "security.$"
 
 LavenderTown_RadioStation_Text_SuperNerd1:
-	.string "I'm checking strange interference\n"
-	.string "from JOHTO.\p"
-	.string "It isn't music or speech.\n"
-	.string "It repeats like a heartbeat.$"
+	.string "Many people are hard at work here\n"
+	.string "in the RADIO TOWER.\p"
+	.string "They must be doing their best to\n"
+	.string "put on good shows.$"
 
 LavenderTown_RadioStation_Text_Gentleman:
 	.string "Oh, no, no, no!\p"
@@ -78,11 +80,13 @@ LavenderTown_RadioStation_Text_Gentleman:
 	.string "I'll be ruined!$"
 
 LavenderTown_RadioStation_Text_Gentleman_ReturnedMachinePart:
-	.string "You solved the POWER PLANT issue?\p"
-	.string "Excellent! With clean power, we\n"
-	.string "can isolate that JOHTO signal.\p"
-	.string "The pattern matches reports from\n"
-	.string "the RUINS OF ALPH.$"
+	.string "Ah! So you're the {PLAYER} who\n"
+	.string "solved the POWER PLANT's problem?\p"
+	.string "Thanks to you, I never lost my\n"
+	.string "job.\p"
+	.string "I tell you, you're a real\n"
+	.string "lifesaver!\p"
+	.string "Please take this as my thanks.$"
 
 LavendertownRadioStation_Text_Upgraded_Radio:
 	.string "{PLAYER} obtained the\n"
@@ -103,11 +107,12 @@ LavenderTown_RadioStation_Text_SuperNerd2:
 	.string "one!$"
 
 LavenderTown_RadioStation_Text_SuperNerd2_GotExpnCard:
-	.string "Your RADIO can hear KANTO now!\p"
-	.string "Late at night, listen between\n"
-	.string "stations.\p"
-	.string "Sometimes JOHTO sends a low hum\n"
-	.string "and strange UNOWN-like clicks.$"
+	.string "Hey there!\p"
+	.string "I am the super MUSIC DIRECTOR!\p"
+	.string "I'm responsible for the gorgeous\n"
+	.string "melodies that go out over the air.\p"
+	.string "Don't be square. Grab your music\n"
+	.string "off the air!$"
 
 LavenderTown_RadioStation_Text_Directory:
 	.string "1F RECEPTION 2F SALES\p"
@@ -120,7 +125,8 @@ LavenderTown_RadioStation_Text_PokeFluteSign:
 	.string "CHANNEL 20$"
 
 LavenderTown_RadioStation_Text_ReferenceLibrary:
-	.string "REFERENCE LIBRARY\p"
-	.string "JOHTO TOWER INTERFERENCE\n"
-	.string "ALPH RESONANCE REPORTS$"
+	.string "Wow! A full rack of POKéMON CDs\n"
+	.string "and videos.\p"
+	.string "This must be the reference\n"
+	.string "library.$"
 

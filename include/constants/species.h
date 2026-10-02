@@ -1729,20 +1729,20 @@
 #define SPECIES_NOLAX                                   1606
 #define SPECIES_NOXICHU                                 1607
 #define SPECIES_MAROGHOST                               1608
+#define SPECIES_RELIC_HO_OH                             1609
 
 // Trainer-only visual forms for the first-clear PJR Elite Four.
-// They keep the base Pokémon's in-battle display name, stats and typing,
-// but use the approved Elite Redux donor battle art.
-#define SPECIES_ALAKAZAM_RELIC                          1609
-#define SPECIES_SLOWKING_RELIC                          1610
-#define SPECIES_BEEDRILL_RELIC                          1611
-#define SPECIES_CROBAT_RELIC                            1612
-#define SPECIES_HITMONCHAN_RELIC                        1613
-#define SPECIES_HITMONLEE_RELIC                         1614
-#define SPECIES_MACHAMP_RELIC                           1615
-#define SPECIES_HOUNDOOM_RELIC                          1616
-#define SPECIES_GYARADOS_RELIC                          1617
-#define SPECIES_DRAGONITE_RELIC                         1618
+// Kept after real Relic Ho-Oh so Run182 IDs remain intact.
+#define SPECIES_ALAKAZAM_RELIC                          1610
+#define SPECIES_SLOWKING_RELIC                          1611
+#define SPECIES_BEEDRILL_RELIC                          1612
+#define SPECIES_CROBAT_RELIC                            1613
+#define SPECIES_HITMONCHAN_RELIC                        1614
+#define SPECIES_HITMONLEE_RELIC                         1615
+#define SPECIES_MACHAMP_RELIC                           1616
+#define SPECIES_HOUNDOOM_RELIC                          1617
+#define SPECIES_GYARADOS_RELIC                          1618
+#define SPECIES_DRAGONITE_RELIC                         1619
 
 #define SPECIES_EGG                                     (SPECIES_DRAGONITE_RELIC + 1)
 

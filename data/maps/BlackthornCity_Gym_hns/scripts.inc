@@ -216,18 +216,28 @@ BlackthornGym_EventScript_Clair::
 	end
 
 BlackthornGym_EventScript_PJRReward::
-	goto_if_set FLAG_PJR_GYM_REWARD_CLAIR, BlackthornGym_EventScript_PJRRewardDone
+	goto_if_set FLAG_PJR_GYM_REWARD_CLAIR, BlackthornGym_EventScript_PJRRewardTM
 	giveitem ITEM_DRAGON_FANG
 	goto_if_eq VAR_RESULT, FALSE, BlackthornGym_EventScript_PJRRewardDone
 	addmoney 10000
 	setflag FLAG_PJR_GYM_REWARD_CLAIR
 	msgbox BlackthornGym_Text_PJRPrizeMoney, MSGBOX_DEFAULT
+BlackthornGym_EventScript_PJRRewardTM:
+	goto_if_set FLAG_PJR_GYM_REWARD_CLAIR_TM, BlackthornGym_EventScript_PJRRewardDone
+	giveitem ITEM_TM59
+	goto_if_eq VAR_RESULT, FALSE, BlackthornGym_EventScript_PJRRewardDone
+	setflag FLAG_PJR_GYM_REWARD_CLAIR_TM
+	msgbox BlackthornGym_Text_PJRDragonPulse, MSGBOX_DEFAULT
 BlackthornGym_EventScript_PJRRewardDone::
 	return
 
 BlackthornGym_Text_PJRPrizeMoney:
 	.string "You also received 10,000 in\n"
 	.string "GYM prize money.$"
+
+BlackthornGym_Text_PJRDragonPulse:
+	.string "TM59 contains DRAGON PULSE.\p"
+	.string "Make good use of it.$"
 
 BlackthornGym_EventScript_ClairDuringChallenge::
 	call BlackthornGym_EventScript_PJRReward
