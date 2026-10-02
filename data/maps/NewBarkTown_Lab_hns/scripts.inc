@@ -155,10 +155,9 @@ NewBarkTown_Lab_Text_RelicIntro3:
 
 NewBarkTown_Lab_Text_RelicJournalReceived:
 	.string "{PLAYER} received the RELIC JOURNAL!\p"
-	.string "ELM: Whenever you find a RELIC, the\n"
-	.string "Journal should react to its energy.\p"
-	.string "Each capture may decipher the next clue.\n"
-	.string "Find all six. I think they're the key.$"
+	.string "ELM: USE it from KEY ITEMS whenever\nyou need your current objective.\p"
+	.string "FIRST DESTINATION:\nBURNED TOWER B1F\lECRUTEAK CITY.\p"
+	.string "It will name every destination clearly\nas the six RELICS awaken.$"
 
 NewBarkTown_Lab_Text_RelicFinal1:
 	.string "ELM: {PLAYER}! The six signals have\n"
@@ -170,19 +169,18 @@ NewBarkTown_Lab_Text_RelicFinal2:
 	.string "This is no normal HO-OH anymore.\p"
 	.string "The Resonance has changed it--ancient,\n"
 	.string "RELIC-like, immensely stronger.\p"
-	.string "But the seventh symbol is incomplete.\n"
-	.string "It points back to the deepest ALPH chamber.\p"
-	.string "Something called the FIRST VOICE waits there.$"
+	.string "CURRENT OBJECTIVE: FIRST VOICE\p"
+	.string "NEXT DESTINATION:\nRUINS OF ALPH\lDEEPEST CHAMBER.$"
 
 NewBarkTown_Lab_Text_RelicNeedCrest:
 	.string "ELM: The FIRST VOICE has answered.\p"
-	.string "Your Journal is still missing one key.\n"
-	.string "Its signal points to MT. SILVER.$"
+	.string "NEXT DESTINATION:\nMT. SILVER SUMMIT\lDEFEAT RED.\p"
+	.string "The entrance can now take you straight\nto the summit.$"
 
 NewBarkTown_Lab_Text_RelicFinalUnlock:
 	.string "ELM: Now both keys are resonating.\p"
-	.string "BELL TOWER has awakened.\n"
-	.string "That's where this ends.$"
+	.string "NEXT DESTINATION:\nBELL TOWER ROOF\lECRUTEAK CITY.\p"
+	.string "Use the glowing beam on 1F to go\nstraight to the roof.$"
 
 NewBarkTown_Lab_EventScript_ElmAideIsWaiting::
 	msgbox NewBarkTown_Lab_Text_ElmAideIsWaiting, MSGBOX_DEFAULT
