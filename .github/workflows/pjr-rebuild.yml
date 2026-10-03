@@ -183,11 +183,27 @@ jobs:
                   stacked.alpha_composite(icon.crop((0,0,32,32)),(0,0))
                   stacked.alpha_composite(icon.crop((32,0,64,32)),(0,32))
                   icon=stacked
+              elif icon.size == (128,64):
+                  # Xenoverse form icons are two 64x64 animation frames side-by-side.
+                  # Convert each frame independently so they are not squashed together.
+                  stacked=Image.new('RGBA',(32,64),(0,0,0,0))
+                  for frame_no in range(2):
+                      frame=icon.crop((64*frame_no,0,64*(frame_no+1),64))
+                      bbox=frame.getchannel('A').getbbox()
+                      if bbox is None:
+                          raise RuntimeError(f'{species} Xenoverse icon frame {frame_no} is empty')
+                      frame=frame.crop(bbox)
+                      scale=min(30/frame.width,30/frame.height,1.0)
+                      if scale < 1:
+                          frame=frame.resize(
+                              (max(1,round(frame.width*scale)),max(1,round(frame.height*scale))),
+                              Image.Resampling.HAMMING)
+                      one=Image.new('RGBA',(32,32),(0,0,0,0))
+                      one.alpha_composite(frame,((32-frame.width)//2,(32-frame.height)//2))
+                      stacked.alpha_composite(one,(0,32*frame_no))
+                  icon=stacked
               elif icon.size != (32,64):
-                  # Xenoverse Dex icons are larger than GBA party icons.
-                  # Use the original donor pixels, remove transparent padding,
-                  # nearest-neighbour fit into one 32x32 GBA frame, then duplicate
-                  # that frame for the engine's two-frame vertical layout.
+                  # Fallback for any other oversized donor icon: convert a single frame.
                   bbox=icon.getchannel('A').getbbox()
                   if bbox is None:
                       raise RuntimeError(f'{species} donor icon is empty')
@@ -196,7 +212,7 @@ jobs:
                   if scale < 1:
                       frame=frame.resize(
                           (max(1,round(frame.width*scale)),max(1,round(frame.height*scale))),
-                          Image.Resampling.NEAREST)
+                          Image.Resampling.HAMMING)
                   one=Image.new('RGBA',(32,32),(0,0,0,0))
                   one.alpha_composite(frame,((32-frame.width)//2,(32-frame.height)//2))
                   doubled=Image.new('RGBA',(32,64),(0,0,0,0))
@@ -256,11 +272,16 @@ jobs:
                       if cb: im=im.crop(cb)
               else:
                   im=im.crop(bbox)
-              scale=min(60/im.width,60/im.height,1.0)
+              # Xenoverse battlers are ~85-100 px frames, larger than Gen III's
+              # 64x64 canvas. Nearest-neighbour reduction destroys facial/outline detail,
+              # so use a high-quality pixel-aware downsample before 16-colour indexing.
+              scale=min(62/im.width,62/im.height,1.0)
               if scale<1:
-                  im=im.resize((max(1,round(im.width*scale)),max(1,round(im.height*scale))),Image.Resampling.NEAREST)
+                  im=im.resize(
+                      (max(1,round(im.width*scale)),max(1,round(im.height*scale))),
+                      Image.Resampling.HAMMING)
               canvas=Image.new('RGBA',(64,64),(0,0,0,0))
-              canvas.alpha_composite(im,((64-im.width)//2,max(0,62-im.height)))
+              canvas.alpha_composite(im,((64-im.width)//2,max(0,63-im.height)))
               return canvas
 
           def locate_xeno_icon(form):
