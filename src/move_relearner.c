@@ -165,6 +165,7 @@ enum {
 #define TAG_LIST_ARROWS 5425
 #define GFXTAG_UI       5525
 #define PALTAG_UI       5526
+#define GFXTAG_CATEGORY_ICONS 30004
 
 struct RelearnType
 {
@@ -198,6 +199,14 @@ EWRAM_DATA enum MoveRelearnerStates gMoveRelearnerState = MOVE_RELEARNER_LEVEL_U
 EWRAM_DATA enum RelearnMode gRelearnMode = RELEARN_MODE_NONE;
 
 static const u16 sUI_Pal[] = INCBIN_U16("graphics/interface/ui_learn_move.gbapal");
+static const u32 sMoveRelearnerCategoryIcons_Gfx[] = INCBIN_U32("graphics/interface/category_icons.4bpp");
+
+static const struct SpriteSheet sMoveRelearnerCategoryIconsSpriteSheet =
+{
+    .data = (const u8 *)sMoveRelearnerCategoryIcons_Gfx,
+    .size = sizeof(sMoveRelearnerCategoryIcons_Gfx),
+    .tag = GFXTAG_CATEGORY_ICONS,
+};
 
 // The arrow sprites in this spritesheet aren't used. The scroll-arrow system provides its own
 // arrow sprites.
@@ -988,7 +997,7 @@ static void CreateUISprites(void)
     AddScrollArrows();
 
     sMoveRelearnerStruct->categoryIconSpriteId = 0xFF;
-    LoadCompressedSpriteSheet(&gSpriteSheet_CategoryIcons);
+    LoadSpriteSheet(&sMoveRelearnerCategoryIconsSpriteSheet);
     LoadSpritePalette(&gSpritePal_CategoryIcons);
 
     // These are the appeal hearts.
