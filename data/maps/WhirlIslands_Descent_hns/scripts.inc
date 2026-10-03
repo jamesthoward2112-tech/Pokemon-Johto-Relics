@@ -1,5 +1,13 @@
 WhirlIslands_Descent_hns_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, WhirlIslands_Descent_MapScript_OnTransition
 	.byte 0
+
+WhirlIslands_Descent_MapScript_OnTransition:
+	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, WhirlIslands_Descent_MapScript_OnTransition_Done
+	goto_if_unset FLAG_PJR_RELIC_ENTEI, WhirlIslands_Descent_MapScript_OnTransition_Done
+	setflag FLAG_HIDE_WHIRL_ISLANDS_TENTACRUEL
+WhirlIslands_Descent_MapScript_OnTransition_Done:
+	end
 
 WhirlIslands_Descent_EventScript_Item_Max_Revive::
 	finditem ITEM_MAX_REVIVE
