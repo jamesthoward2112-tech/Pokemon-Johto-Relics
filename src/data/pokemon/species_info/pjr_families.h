@@ -549,7 +549,7 @@
     .baseHP = 100, .baseAttack = 70, .baseDefense = 110,
     .baseSpeed = 100, .baseSpAttack = 150, .baseSpDefense = 150,
     .types = MON_TYPES(TYPE_PSYCHIC, TYPE_FAIRY),
-    .catchRate = 3, .expYield = 306,
+    .catchRate = 45, .expYield = 306,
     .genderRatio = MON_GENDERLESS,
     .eggCycles = 120, .friendship = 0,
     .growthRate = GROWTH_SLOW,
