@@ -303,11 +303,35 @@ jobs:
               print(f'Installed locked RELIC: {species} <- TRE {tre_id}_{label}')
 
           # Relic Ho-Oh is its own species, separate from normal Ho-Oh.
+          # TRE provides exact 64x64 RGBA source PNGs; convert only to the
+          # indexed PNG storage expected by gbagfx, preserving donor pixels.
           hooh=Path('graphics/pokemon/ho_oh_relic')
-          shutil.copy2(tre/'Front/1037_Ho-oh-P.png',hooh/'front.png')
-          shutil.copy2(tre/'Back/1037_Ho-oh-P.png',hooh/'back.png')
-          shutil.copy2(tre/'Shiny/Front/1037_Ho-oh-P_shiny.png',hooh/'shiny_front.png')
-          shutil.copy2(tre/'Shiny/Back/1037_Ho-oh-P_shiny.png',hooh/'shiny_back.png')
+          hfront=rgba(tre/'Front/1037_Ho-oh-P.png')
+          hback=rgba(tre/'Back/1037_Ho-oh-P.png')
+          hshiny_front=rgba(tre/'Shiny/Front/1037_Ho-oh-P_shiny.png')
+          hshiny_back=rgba(tre/'Shiny/Back/1037_Ho-oh-P_shiny.png')
+          for label,im in (('front',hfront),('back',hback),('shiny_front',hshiny_front),('shiny_back',hshiny_back)):
+              if im.size != (64,64):
+                  raise RuntimeError(f'Relic Ho-Oh {label} donor size is {im.size}, expected 64x64')
+
+          hpal=exact_palette([hfront,hback])
+          hfront_i=index_image(hfront,hpal)
+          hback_i=index_image(hback,hpal)
+          hshiny_pal=aligned_shiny_palette(
+              [hfront,hback],[hshiny_front,hshiny_back],[hfront_i,hback_i],hpal)
+
+          def repalette(indexed,palette):
+              out=indexed.copy()
+              flat=[v for rgb in palette for v in rgb]
+              out.putpalette(flat+[0]*(768-len(flat)))
+              out.info['transparency']=0
+              return out
+
+          hfront_i.save(hooh/'front.png',format='PNG',bits=4,optimize=False)
+          hback_i.save(hooh/'back.png',format='PNG',bits=4,optimize=False)
+          repalette(hfront_i,hshiny_pal).save(hooh/'shiny_front.png',format='PNG',bits=4,optimize=False)
+          repalette(hback_i,hshiny_pal).save(hooh/'shiny_back.png',format='PNG',bits=4,optimize=False)
+
           hicon=rgba(tre/'Icons/1037_Ho-oh-P.png')
           if hicon.size == (32,32):
               doubled=Image.new('RGBA',(32,64),(0,0,0,0))
@@ -315,7 +339,8 @@ jobs:
               hicon=doubled
           if hicon.size != (32,64):
               raise RuntimeError(f'Relic Ho-Oh icon has unsupported donor size {hicon.size}')
-          hicon.save(hooh/'icon.png')
+          hicon_i=index_image(hicon,exact_palette([hicon]))
+          hicon_i.save(hooh/'icon.png',format='PNG',bits=4,optimize=False)
           print('Installed locked final Relic Ho-Oh <- TRE 1037_Ho-oh-P')
 
           # I-Unown stays on its existing unown_eye asset set; do not overwrite it.
