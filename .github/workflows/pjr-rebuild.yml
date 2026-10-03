@@ -156,7 +156,14 @@ jobs:
           def write_pal(path,pal):
               path.write_text('\n'.join(['JASC-PAL','0100','16']+[f'{r} {g} {b}' for r,g,b in pal])+'\n',encoding='ascii')
 
-          def save_standard_set(species, front, back, shiny_front, shiny_back, icon, preserve_exact):
+
+          def read_icon_palette(index):
+              lines=(Path('graphics/pokemon/icon_palettes')/f'pal{index}.pal').read_text(encoding='ascii').splitlines()[3:19]
+              return [tuple(map(int,line.split())) for line in lines]
+
+          shared_icon_palettes=[read_icon_palette(i) for i in range(6)]
+
+          def save_standard_set(species, front, back, shiny_front, shiny_back, icon, preserve_exact, icon_pal_index):
               for label,im,size in (
                   ('front',front,(64,64)),('back',back,(64,64)),
                   ('shiny_front',shiny_front,(64,64)),('shiny_back',shiny_back,(64,64))):
@@ -197,7 +204,7 @@ jobs:
                       if scale < 1:
                           frame=frame.resize(
                               (max(1,round(frame.width*scale)),max(1,round(frame.height*scale))),
-                              Image.Resampling.HAMMING)
+                              Image.Resampling.NEAREST)
                       one=Image.new('RGBA',(32,32),(0,0,0,0))
                       one.alpha_composite(frame,((32-frame.width)//2,(32-frame.height)//2))
                       stacked.alpha_composite(one,(0,32*frame_no))
@@ -212,14 +219,13 @@ jobs:
                   if scale < 1:
                       frame=frame.resize(
                           (max(1,round(frame.width*scale)),max(1,round(frame.height*scale))),
-                          Image.Resampling.HAMMING)
+                          Image.Resampling.NEAREST)
                   one=Image.new('RGBA',(32,32),(0,0,0,0))
                   one.alpha_composite(frame,((32-frame.width)//2,(32-frame.height)//2))
                   doubled=Image.new('RGBA',(32,64),(0,0,0,0))
                   doubled.alpha_composite(one,(0,0)); doubled.alpha_composite(one,(0,32))
                   icon=doubled
-              icon_palette=(exact_palette if preserve_exact else quantized_palette)([icon])
-              icon_i=index_image(icon,icon_palette)
+              icon_i=index_image(icon,shared_icon_palettes[icon_pal_index])
 
               target=Path('graphics/pokemon')/species
               for name in ('anim_front.png','anim_front_gba.png'):
@@ -305,6 +311,7 @@ jobs:
                   first_xeno_frame(locate_xeno_battler(form,'BackShiny')),
                   locate_xeno_icon(form),
                   preserve_exact=False,
+                  icon_pal_index={'raikou':0,'entei':0,'suicune':0}[species],
               )
               print(f'Installed locked RELIC: {species} <- Xenoverse {form}')
 
@@ -320,6 +327,7 @@ jobs:
                   rgba(tre/f'Shiny/Back/{tre_id}_{label}_shiny.png'),
                   rgba(tre/f'Icons/{tre_id}_{label}.png'),
                   preserve_exact=True,
+                  icon_pal_index={'lugia':0,'celebi':4}[species],
               )
               print(f'Installed locked RELIC: {species} <- TRE {tre_id}_{label}')
 
@@ -360,11 +368,21 @@ jobs:
               hicon=doubled
           if hicon.size != (32,64):
               raise RuntimeError(f'Relic Ho-Oh icon has unsupported donor size {hicon.size}')
-          hicon_i=index_image(hicon,exact_palette([hicon]))
+          hicon_i=index_image(hicon,shared_icon_palettes[1])
           hicon_i.save(hooh/'icon.png',format='PNG',bits=4,optimize=False)
           print('Installed locked final Relic Ho-Oh <- TRE 1037_Ho-oh-P')
 
           # I-Unown stays on its existing unown_eye asset set; do not overwrite it.
+          # I-Unown and Alphoracle already have their locked icon art, but party/PC
+          # icons must be indexed against one of the engine's shared icon palettes.
+          # Remap pixels only; do not redraw or replace the source art.
+          for folder,pal_index in (('unown_eye',4),('alphoracle',4)):
+              ipath=Path('graphics/pokemon')/folder/'icon.png'
+              icon_rgba=rgba(ipath)
+              if icon_rgba.size != (32,64):
+                  raise RuntimeError(f'{folder} icon size is {icon_rgba.size}, expected 32x64')
+              index_image(icon_rgba,shared_icon_palettes[pal_index]).save(ipath,format='PNG',bits=4,optimize=False)
+
           PY
       - name: Verify RELICS species-to-graphics chain
         run: |
@@ -412,6 +430,12 @@ jobs:
           for needle in ('gMonFrontPic_HoOhRelic','gMonBackPic_HoOhRelic','gMonPalette_HoOhRelic','gMonShinyPalette_HoOhRelic','gMonIcon_HoOhRelic'):
               assert needle in relic, f'Relic Ho-Oh lost dedicated graphics: {needle}'
 
+          icon_pal_expect={'raikou':0,'entei':0,'lugia':0,'celebi':4,'suicune':0}
+          shared_pals={}
+          for idx in set(icon_pal_expect.values()) | {1,4}:
+              lines=(Path('graphics/pokemon/icon_palettes')/f'pal{idx}.pal').read_text().splitlines()[3:19]
+              shared_pals[idx]=[v for line in lines for v in map(int,line.split())]
+
           for species in ('raikou','entei','lugia','celebi','suicune'):
               root=Path('graphics/pokemon')/species
               expected={'anim_front_gba.png':(64,128),'back_gba.png':(64,64),'icon_gba.png':(32,64)}
@@ -420,8 +444,16 @@ jobs:
                   assert im.size==size,(species,name,im.size)
                   assert im.mode=='P',(species,name,im.mode)
                   assert len(set(im.getdata()))<=16,(species,name,len(set(im.getdata())))
+              icon=Image.open(root/'icon_gba.png')
+              assert icon.getpalette()[:48]==shared_pals[icon_pal_expect[species]], f'{species} icon is not indexed to runtime palette {icon_pal_expect[species]}'
               for name in ('normal_gba.pal','shiny_gba.pal'):
                   assert (root/name).is_file(),(species,name)
+
+          for folder,pal_index in (('unown_eye',4),('alphoracle',4),('ho_oh_relic',1)):
+              icon=Image.open(Path('graphics/pokemon')/folder/'icon.png')
+              assert icon.size==(32,64),(folder,icon.size)
+              assert icon.mode=='P',(folder,icon.mode)
+              assert icon.getpalette()[:48]==shared_pals[pal_index], f'{folder} icon is not indexed to runtime palette {pal_index}'
 
           for root in (Path('graphics/pokemon/unown_eye'),Path('graphics/pokemon/ho_oh_relic')):
               for name in ('front.png','back.png','icon.png','shiny_front.png','shiny_back.png'):

@@ -31,8 +31,14 @@ MtSilver_SummitDay_EventScript_Red::
 	faceplayer
 	msgbox MtSilver_SummitDay_Text_Red, MSGBOX_DEFAULT
 	closemessage
-	goto_if_unset FLAG_IS_KANTO_CHAMPION, MtSilver_SummitDay_EventScript_RedStandard
+	goto_if_unset FLAG_PJR_RELIC_SIX_RESONANCE, MtSilver_SummitDay_EventScript_RedNotReady
+	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, MtSilver_SummitDay_EventScript_RedNotReady
 	goto_if_ge VAR_SINJOH_STORYLINE, 13, MtSilver_SummitDay_EventScript_RedPostOBC
+	goto MtSilver_SummitDay_EventScript_RedStandard
+
+MtSilver_SummitDay_EventScript_RedNotReady::
+	releaseall
+	end
 
 MtSilver_SummitDay_EventScript_RedStandard::
 	trainerbattle_no_intro TRAINER_RED_HNS, MtSilver_SummitDay_Text_RedBeaten
@@ -53,7 +59,6 @@ MtSilver_SummitDay_EventScript_RedOnDefeat::
 	removeobject LOCALID_MTSILVER_RED
 	fadescreenswapbuffers FADE_FROM_BLACK
 	delay 180
-	fadescreenspeed FADE_TO_BLACK, 24
 	setflag FLAG_DEFEATED_RED
 	setflag FLAG_PJR_RED_DEFEATED
 	goto_if_set FLAG_PJR_GOT_RAINBOW_CREST, MtSilver_SummitDay_EventScript_AfterCrest
@@ -68,8 +73,6 @@ MtSilver_SummitDay_EventScript_AfterCrest:
 	call PJR_RelicQuest_TryUnlockHoOh
 	setflag FLAG_END_NUZLOCKE
 	clearflag FLAG_HIDE_MTSILVER_RED
-	special GameClear
-	waitstate
 	releaseall
 	end
 

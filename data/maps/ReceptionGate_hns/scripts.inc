@@ -3,11 +3,16 @@ ReceptionGate_hns_MapScripts::
 	.byte 0
 
 ReceptionGate_OnTransition::
-	goto_if_ge VAR_NEWBARK_TOWN_STATE, 6, ReceptionGate_OnTransition_PostLeague
+	goto_if_set FLAG_IS_KANTO_CHAMPION, ReceptionGate_OnTransition_KantoChampion
+	goto_if_ge VAR_NEWBARK_TOWN_STATE, 6, ReceptionGate_OnTransition_JohtoChampion
 	goto_if_unset FLAG_IS_CHAMPION, ReceptionGate_OnTransition_Done
-ReceptionGate_OnTransition_PostLeague::
-	setflag FLAG_INDIGOJUNCTION_HIDE_SILVER_GUARD
+ReceptionGate_OnTransition_JohtoChampion::
 	setflag FLAG_INDIGOJUNCTION_HIDE_KANTO_GUARD
+	clearflag FLAG_INDIGOJUNCTION_HIDE_SILVER_GUARD
+	goto ReceptionGate_OnTransition_Done
+ReceptionGate_OnTransition_KantoChampion::
+	setflag FLAG_INDIGOJUNCTION_HIDE_KANTO_GUARD
+	setflag FLAG_INDIGOJUNCTION_HIDE_SILVER_GUARD
 ReceptionGate_OnTransition_Done::
 	end
 

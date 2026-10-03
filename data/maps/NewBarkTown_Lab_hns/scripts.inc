@@ -67,7 +67,7 @@ NewBarkTown_EventScript_Aide2Testimony::
 NewBarkTown_Lab_EventScript_Elm::
 	lock
 	faceplayer
-	goto_if_unset FLAG_IS_CHAMPION, NewBarkTown_Lab_EventScript_ElmNormalState
+	goto_if_unset FLAG_IS_KANTO_CHAMPION, NewBarkTown_Lab_EventScript_ElmNormalState
 	goto_if_set FLAG_PJR_RELIC_SIX_RESONANCE, NewBarkTown_Lab_EventScript_ElmRelicsCheckFinal
 	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, NewBarkTown_Lab_EventScript_ElmRelicsIntro
 NewBarkTown_Lab_EventScript_ElmNormalState::
