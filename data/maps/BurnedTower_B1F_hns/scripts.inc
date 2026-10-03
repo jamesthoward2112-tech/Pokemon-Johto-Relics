@@ -6,27 +6,22 @@ BurnedTower_B1F_hns_MapScripts::
 
 BurnedTower_B1F_OnTransition:
 	callnative SetTimeBasedEncounters
-	call BurnedTower_B1F_EventScript_PJRRelicEntry
-	end
-
-BurnedTower_B1F_EventScript_PJRRelicEntry::
+	setvar VAR_TEMP_0, 0
 	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, BurnedTower_B1F_EventScript_PJRRelicEntryReturn
-	goto_if_unset FLAG_PJR_RELIC_RAIKOU, BurnedTower_B1F_EventScript_PJRRelicEntryRaikou
+	goto_if_unset FLAG_PJR_RELIC_RAIKOU, BurnedTower_B1F_EventScript_QueueRelicRaikouEntry
 	goto_if_unset FLAG_PJR_RELIC_ENTEI, BurnedTower_B1F_EventScript_PJRRelicEntryReturn
 	goto_if_unset FLAG_PJR_RELIC_LUGIA, BurnedTower_B1F_EventScript_PJRRelicEntryReturn
 	goto_if_unset FLAG_PJR_RELIC_UNOWN_I, BurnedTower_B1F_EventScript_PJRRelicEntryReturn
 	goto_if_unset FLAG_PJR_RELIC_CELEBI, BurnedTower_B1F_EventScript_PJRRelicEntryReturn
-	goto_if_unset FLAG_PJR_RELIC_SUICUNE, BurnedTower_B1F_EventScript_PJRRelicEntrySuicune
+	goto_if_unset FLAG_PJR_RELIC_SUICUNE, BurnedTower_B1F_EventScript_QueueRelicSuicuneEntry
 	goto BurnedTower_B1F_EventScript_PJRRelicEntryReturn
 
-BurnedTower_B1F_EventScript_PJRRelicEntryRaikou::
-	setflag FLAG_PJR_RELIC_FOUND_RAIKOU
-	msgbox BurnedTower_B1F_Text_RelicRaikouEntry, MSGBOX_DEFAULT
+BurnedTower_B1F_EventScript_QueueRelicRaikouEntry::
+	setvar VAR_TEMP_0, 1
 	return
 
-BurnedTower_B1F_EventScript_PJRRelicEntrySuicune::
-	setflag FLAG_PJR_RELIC_FOUND_SUICUNE
-	msgbox BurnedTower_B1F_Text_RelicSuicuneEntry, MSGBOX_DEFAULT
+BurnedTower_B1F_EventScript_QueueRelicSuicuneEntry::
+	setvar VAR_TEMP_0, 2
 	return
 
 BurnedTower_B1F_EventScript_PJRRelicEntryReturn::
@@ -34,7 +29,25 @@ BurnedTower_B1F_EventScript_PJRRelicEntryReturn::
 
 BurnedTower_B1F_OnFrame::
 	map_script_2 VAR_ECRUTEAK_CITY_STATE, 3, BurnedTower_B1F_EventScript_ReleaseBeasts
+	map_script_2 VAR_TEMP_0, 1, BurnedTower_B1F_EventScript_PJRRelicEntryRaikou
+	map_script_2 VAR_TEMP_0, 2, BurnedTower_B1F_EventScript_PJRRelicEntrySuicune
 	.2byte 0
+
+BurnedTower_B1F_EventScript_PJRRelicEntryRaikou::
+	setvar VAR_TEMP_0, 0
+	lock
+	setflag FLAG_PJR_RELIC_FOUND_RAIKOU
+	msgbox BurnedTower_B1F_Text_RelicRaikouEntry, MSGBOX_DEFAULT
+	release
+	end
+
+BurnedTower_B1F_EventScript_PJRRelicEntrySuicune::
+	setvar VAR_TEMP_0, 0
+	lock
+	setflag FLAG_PJR_RELIC_FOUND_SUICUNE
+	msgbox BurnedTower_B1F_Text_RelicSuicuneEntry, MSGBOX_DEFAULT
+	release
+	end
 
 BurnedTower_B1F_EventScript_ReleaseBeasts::
 	lock
