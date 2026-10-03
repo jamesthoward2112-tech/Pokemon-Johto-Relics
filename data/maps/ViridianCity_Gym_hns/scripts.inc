@@ -13,9 +13,7 @@ ViridianCity_Gym_EventScript_Blue::
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
 	msgbox ViridianCity_Gym_Text_LeaderBlue_After, MSGBOX_DEFAULT
-	msgbox ViridianCity_Gym_Text_LeaderBlue_GiveTM, MSGBOX_DEFAULT
-	giveitem ITEM_TM_EARTHQUAKE
-	msgbox ViridianCity_Gym_Text_LeaderBlue_ExplainTM, MSGBOX_DEFAULT
+	call ViridianCity_Gym_EventScript_PJRRewardTM
 	setflag FLAG_BADGE16_GET
 	setflag FLAG_DEFEATED_VIRIDIAN_GYM
 	addvar VAR_NUM_BADGES, 1
@@ -31,6 +29,7 @@ ViridianCity_Gym_EventScript_Blue::
 	end
 
 ViridianCity_Gym_EventScript_Blue_Defeated::
+	call ViridianCity_Gym_EventScript_PJRRewardTM
 	call ViridianCity_Gym_EventScript_PJRReward
 	msgbox ViridianCity_Gym_Text_LeaderBlue_Epilogue, MSGBOX_DEFAULT
 	closemessage
@@ -38,6 +37,7 @@ ViridianCity_Gym_EventScript_Blue_Defeated::
 	end
 
 ViridianCity_Gym_EventScript_BlueGotoDojo::
+	call ViridianCity_Gym_EventScript_PJRRewardTM
 	call ViridianCity_Gym_EventScript_PJRReward
 	msgbox ViridianCity_Gym_Text_BlueGotoDojo, MSGBOX_DEFAULT
 	closemessage
@@ -51,6 +51,7 @@ ViridianCity_Gym_Text_BlueGotoDojo:
 	.string "come to the FIGHTING DOJO!$"
 
 ViridianCity_Gym_EventScript_BlueAtDojo::
+	call ViridianCity_Gym_EventScript_PJRRewardTM
 	call ViridianCity_Gym_EventScript_PJRReward
 	msgbox ViridianCity_Gym_Text_LeaderBlue_Epilogue, MSGBOX_DEFAULT
 	closemessage
@@ -150,6 +151,16 @@ ViridianCity_Gym_Text_GymStatuePlayerWon::
     .string "LEADER: BLUE\p"
     .string "WINNING TRAINERS:\n"
 	.string "BLUE, RED, {PLAYER}$"
+
+ViridianCity_Gym_EventScript_PJRRewardTM::
+	goto_if_set FLAG_PJR_GYM_REWARD_BLUE_TM, ViridianCity_Gym_EventScript_PJRRewardTMDone
+	msgbox ViridianCity_Gym_Text_LeaderBlue_GiveTM, MSGBOX_DEFAULT
+	giveitem ITEM_TM_EARTHQUAKE
+	goto_if_eq VAR_RESULT, FALSE, ViridianCity_Gym_EventScript_PJRRewardTMDone
+	setflag FLAG_PJR_GYM_REWARD_BLUE_TM
+	msgbox ViridianCity_Gym_Text_LeaderBlue_ExplainTM, MSGBOX_DEFAULT
+ViridianCity_Gym_EventScript_PJRRewardTMDone::
+	return
 
 ViridianCity_Gym_EventScript_PJRReward::
 	goto_if_set FLAG_PJR_GYM_REWARD_BLUE, ViridianCity_Gym_EventScript_PJRRewardDone

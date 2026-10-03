@@ -478,6 +478,7 @@ SaffronCity_FightingDojoVIP_EventScript_Blaine_PostOBC::
 SaffronCity_FightingDojoVIP_EventScript_Blue::
 	lock
 	faceplayer
+	call ViridianCity_Gym_EventScript_PJRRewardTM
 	call ViridianCity_Gym_EventScript_PJRReward
 	msgbox SaffronCity_FightingDojoVIP_Text_Blue_Rematch, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojoVIP_EventScript_Declined
