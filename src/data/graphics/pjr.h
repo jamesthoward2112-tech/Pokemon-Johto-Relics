@@ -223,6 +223,12 @@ const u16 gMonShinyPalette_HoOhRelic[] = INCBIN_U16("graphics/pokemon/ho_oh_reli
 
 const u8 gMonIcon_HoOhRelic[] = INCBIN_U8("graphics/pokemon/ho_oh_relic/icon.4bpp");
 
+// Kanto Gym trainer-only Raichu visual. Source art is the existing Mega Raichu Y donor.
+const u32 gMonFrontPic_RaichuRelic[] = INCBIN_U32("graphics/pokemon/raichu/mega_y/front.4bpp.smol");
+const u16 gMonPalette_RaichuRelic[] = INCBIN_U16("graphics/pokemon/raichu/mega_y/normal.gbapal");
+const u16 gMonShinyPalette_RaichuRelic[] = INCBIN_U16("graphics/pokemon/raichu/mega_y/shiny.gbapal");
+const u8 gMonIcon_RaichuRelic[] = INCBIN_U8("graphics/pokemon/raichu/mega_y/icon.4bpp");
+
 // First-clear Elite Four trainer-only visual forms.
 // Native donor art is isolated in graphics/pokemon/pjr_e4 and never overwrites locked PJR sprites.
 const u32 gMonFrontPic_AlakazamRelic[] = INCBIN_U32("graphics/pokemon/pjr_e4/alakazam_relic/front.4bpp.smol");
