@@ -379,8 +379,17 @@ jobs:
           for folder,pal_index in (('unown_eye',4),('alphoracle',4)):
               ipath=Path('graphics/pokemon')/folder/'icon.png'
               icon_rgba=rgba(ipath)
+              if icon_rgba.size == (64,32):
+                  stacked=Image.new('RGBA',(32,64),(0,0,0,0))
+                  stacked.alpha_composite(icon_rgba.crop((0,0,32,32)),(0,0))
+                  stacked.alpha_composite(icon_rgba.crop((32,0,64,32)),(0,32))
+                  icon_rgba=stacked
+              elif icon_rgba.size == (32,32):
+                  doubled=Image.new('RGBA',(32,64),(0,0,0,0))
+                  doubled.alpha_composite(icon_rgba,(0,0)); doubled.alpha_composite(icon_rgba,(0,32))
+                  icon_rgba=doubled
               if icon_rgba.size != (32,64):
-                  raise RuntimeError(f'{folder} icon size is {icon_rgba.size}, expected 32x64')
+                  raise RuntimeError(f'{folder} icon size is {icon_rgba.size}, expected 32x64 after frame repack')
               index_image(icon_rgba,shared_icon_palettes[pal_index]).save(ipath,format='PNG',bits=4,optimize=False)
 
           PY
