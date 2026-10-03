@@ -7,6 +7,10 @@ BurnedTower_B1F_hns_MapScripts::
 BurnedTower_B1F_OnTransition:
 	callnative SetTimeBasedEncounters
 	setvar VAR_TEMP_0, 0
+	call BurnedTower_B1F_EventScript_QueueRelicEntry
+	end
+
+BurnedTower_B1F_EventScript_QueueRelicEntry::
 	goto_if_unset FLAG_PJR_GOT_RELIC_JOURNAL, BurnedTower_B1F_EventScript_PJRRelicEntryReturn
 	goto_if_unset FLAG_PJR_RELIC_RAIKOU, BurnedTower_B1F_EventScript_QueueRelicRaikouEntry
 	goto_if_unset FLAG_PJR_RELIC_ENTEI, BurnedTower_B1F_EventScript_PJRRelicEntryReturn
