@@ -1,5 +1,13 @@
 ReceptionGate_hns_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, ReceptionGate_OnTransition
 	.byte 0
+
+ReceptionGate_OnTransition::
+	goto_if_unset FLAG_IS_CHAMPION, ReceptionGate_OnTransition_Done
+	setflag FLAG_INDIGOJUNCTION_HIDE_SILVER_GUARD
+	setflag FLAG_INDIGOJUNCTION_HIDE_KANTO_GUARD
+ReceptionGate_OnTransition_Done::
+	end
 
 ReceptionGate_EventScript_Janine::
     lock
