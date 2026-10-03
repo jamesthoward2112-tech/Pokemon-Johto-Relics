@@ -64,91 +64,52 @@ jobs:
               for name in ('front.png', 'back.png', 'icon.png'):
                   shutil.copy2(species_dir / name, dst / name)
           PY
-      - name: Install locked RELICS legendary battle sprites
+      - name: Restore locked TRE RELICS donor source
+        run: |
+          cat \
+            assets/pjr_relics/tre_primal/parts/part00.txt \
+            assets/pjr_relics/tre_primal/parts/part01.txt \
+            assets/pjr_relics/tre_primal/parts/part02a.txt \
+            assets/pjr_relics/tre_primal/parts/part02b.txt \
+            assets/pjr_relics/tre_primal/parts/part03a.txt \
+            assets/pjr_relics/tre_primal/parts/part03b.txt \
+            | base64 -d > /tmp/pjr-relics-tre.tar.gz
+          echo "73083d435e68ec50b7b3f4fc307ff03842d6e22b36790d70fe04282b8f837dca  /tmp/pjr-relics-tre.tar.gz" | sha256sum -c -
+          rm -rf /tmp/pjr-relics-tre
+          mkdir -p /tmp/pjr-relics-tre
+          tar -xzf /tmp/pjr-relics-tre.tar.gz -C /tmp/pjr-relics-tre
+          test -f /tmp/pjr-relics-tre/Front/1037_Ho-oh-P.png
+          test -f /tmp/pjr-relics-tre/Front/1038_Lugia-P.png
+          test -f /tmp/pjr-relics-tre/Front/1039_Celebi-P.png
+      - name: Install locked RELICS sprite sets
         run: |
           rm -rf /tmp/xenoverse-source
           git clone --depth 1 https://gitlab.com/weedleteam/Xenoverse-Source.git /tmp/xenoverse-source
           python3 - <<'PY'
           from pathlib import Path
           from PIL import Image
+          import shutil
 
-          source_root = Path('/tmp/xenoverse-source')
-          mappings = {
-              'raikou': '243_2',
-              'entei': '244_2',
-              'suicune': '245_2',
-              'lugia': '249_1',
-              'celebi': '251_1',
-          }
+          xeno = Path('/tmp/xenoverse-source')
+          tre = Path('/tmp/pjr-relics-tre')
 
-          def locate(form_id, filename):
-              folders = {
-                  'Front.png': 'Front',
-                  'Back.png': 'Back',
-                  'FrontShiny.png': 'FrontShiny',
-                  'BackShiny.png': 'BackShiny',
-              }
-              folder = folders[filename]
-              exact = source_root / 'Xenoverse' / 'Graphics' / 'Battlers' / folder / f'{form_id}.png'
-              if exact.exists():
-                  return exact
-              hits = [
-                  p for p in source_root.rglob(f'{form_id}.png')
-                  if p.parent.name.lower() == folder.lower()
-              ]
-              if hits:
-                  return hits[0]
-              raise RuntimeError(f'Could not find Xenoverse battler {folder}/{form_id}.png')
+          def rgba(path):
+              return Image.open(path).convert('RGBA')
 
-          def first_frame(path):
-              im = Image.open(path).convert('RGBA')
-              alpha = im.getchannel('A')
-              bbox = alpha.getbbox()
-              if bbox is None:
-                  raise RuntimeError(f'Empty image: {path}')
-              # Xenoverse animated battlers are horizontal strips. Split on
-              # transparent columns and use the first real animation frame.
-              if im.width > im.height * 2:
-                  cols = []
-                  for x in range(im.width):
-                      has = False
-                      for y in range(im.height):
-                          if im.getpixel((x,y))[3] >= 128:
-                              has = True
-                              break
-                      cols.append(has)
-                  runs=[]
-                  start=None
-                  for x,has in enumerate(cols+[False]):
-                      if has and start is None:
-                          start=x
-                      elif not has and start is not None:
-                          runs.append((start,x))
-                          start=None
-                  if runs:
-                      x0,x1=runs[0]
-                      crop=im.crop((x0,0,x1,im.height))
-                      cb=crop.getchannel('A').getbbox()
-                      if cb:
-                          im=crop.crop(cb)
-                      else:
-                          im=crop
-                  else:
-                      im=im.crop(bbox)
-              else:
-                  im=im.crop(bbox)
+          def exact_palette(images):
+              colors=[]
+              for im in images:
+                  for r,g,b,a in im.getdata():
+                      if a < 128:
+                          continue
+                      rgb=(r,g,b)
+                      if rgb not in colors:
+                          colors.append(rgb)
+              if len(colors)>15:
+                  raise RuntimeError(f'Exact donor palette has {len(colors)} opaque colours; GBA limit is 15: {images}')
+              return [(0,0,0)] + colors + [(0,0,0)]*(15-len(colors))
 
-              max_w=max_h=60
-              scale=min(max_w/im.width,max_h/im.height,1.0)
-              if scale < 1:
-                  im=im.resize((max(1,round(im.width*scale)),max(1,round(im.height*scale))),Image.Resampling.NEAREST)
-              canvas=Image.new('RGBA',(64,64),(0,0,0,0))
-              x=(64-im.width)//2
-              y=62-im.height
-              canvas.alpha_composite(im,(x,max(0,y)))
-              return canvas
-
-          def make_palette(images):
+          def quantized_palette(images):
               pixels=[]
               for im in images:
                   pixels.extend((r,g,b) for r,g,b,a in im.getdata() if a >= 128)
@@ -160,7 +121,7 @@ jobs:
               colors=[tuple(raw[i:i+3]) for i in range(0,len(raw),3)]
               while len(colors)<15:
                   colors.append((0,0,0))
-              return [(0,0,0)]+colors[:15]
+              return [(0,0,0)] + colors[:15]
 
           def index_image(im,palette):
               out=Image.new('P',im.size,0)
@@ -195,13 +156,13 @@ jobs:
           def write_pal(path,pal):
               path.write_text('\n'.join(['JASC-PAL','0100','16']+[f'{r} {g} {b}' for r,g,b in pal])+'\n',encoding='ascii')
 
-          for species,form in mappings.items():
-              front=first_frame(locate(form,'Front.png'))
-              back=first_frame(locate(form,'Back.png'))
-              shiny_front=first_frame(locate(form,'FrontShiny.png'))
-              shiny_back=first_frame(locate(form,'BackShiny.png'))
-
-              palette=make_palette([front,back])
+          def save_standard_set(species, front, back, shiny_front, shiny_back, icon, preserve_exact):
+              for label,im,size in (
+                  ('front',front,(64,64)),('back',back,(64,64)),
+                  ('shiny_front',shiny_front,(64,64)),('shiny_back',shiny_back,(64,64))):
+                  if im.size != size:
+                      raise RuntimeError(f'{species} {label} has unexpected donor size {im.size}')
+              palette=(exact_palette if preserve_exact else quantized_palette)([front,back])
               front_i=index_image(front,palette)
               back_i=index_image(back,palette)
               shiny_palette=aligned_shiny_palette(
@@ -209,9 +170,23 @@ jobs:
 
               anim=Image.new('P',(64,128),0)
               anim.putpalette(front_i.getpalette())
-              anim.paste(front_i,(0,0))
-              anim.paste(front_i,(0,64))
+              anim.paste(front_i,(0,0)); anim.paste(front_i,(0,64))
               anim.info['transparency']=0
+
+              if icon.width == 32 and icon.height == 32:
+                  doubled=Image.new('RGBA',(32,64),(0,0,0,0))
+                  doubled.alpha_composite(icon,(0,0)); doubled.alpha_composite(icon,(0,32))
+                  icon=doubled
+              elif icon.width == 64 and icon.height == 32:
+                  # Donor contains two 32x32 icon frames side-by-side: repack vertically.
+                  stacked=Image.new('RGBA',(32,64),(0,0,0,0))
+                  stacked.alpha_composite(icon.crop((0,0,32,32)),(0,0))
+                  stacked.alpha_composite(icon.crop((32,0,64,32)),(0,32))
+                  icon=stacked
+              elif icon.size != (32,64):
+                  raise RuntimeError(f'{species} icon has unsupported donor size {icon.size}')
+              icon_palette=(exact_palette if preserve_exact else quantized_palette)([icon])
+              icon_i=index_image(icon,icon_palette)
 
               target=Path('graphics/pokemon')/species
               for name in ('anim_front.png','anim_front_gba.png'):
@@ -222,16 +197,174 @@ jobs:
                   write_pal(target/name,palette)
               for name in ('shiny.pal','shiny_gba.pal'):
                   write_pal(target/name,shiny_palette)
+              for name in ('icon.png','icon_gba.png'):
+                  icon_i.save(target/name,format='PNG',bits=4,optimize=False)
 
-              for name,size in [('anim_front_gba.png',(64,128)),('back_gba.png',(64,64))]:
+              for name,size in (
+                  ('anim_front_gba.png',(64,128)),
+                  ('back_gba.png',(64,64)),
+                  ('icon_gba.png',(32,64))):
                   check=Image.open(target/name)
                   assert check.mode == 'P', (species,name,check.mode)
                   assert check.size == size, (species,name,check.size)
                   assert len(set(check.getdata())) <= 16, (species,name,len(set(check.getdata())))
-              print(f'Installed locked RELICS sprite: {species} <- Xenoverse {form}')
 
-          # I-Unown is deliberately wired to the custom Eye-Unown graphics in
-          # gen_2_families.h. Final Relic Ho-Oh uses graphics/pokemon/ho_oh_relic.
+          def locate_xeno_battler(form, folder):
+              exact=xeno/'Xenoverse'/'Graphics'/'Battlers'/folder/f'{form}.png'
+              if exact.exists():
+                  return exact
+              hits=[p for p in xeno.rglob(f'{form}.png') if p.parent.name.lower()==folder.lower()]
+              if not hits:
+                  raise RuntimeError(f'Could not find Xenoverse {folder}/{form}.png')
+              return sorted(hits)[0]
+
+          def first_xeno_frame(path):
+              im=rgba(path)
+              bbox=im.getchannel('A').getbbox()
+              if bbox is None:
+                  raise RuntimeError(f'Empty Xenoverse image: {path}')
+              if im.width > im.height*2:
+                  cols=[any(im.getpixel((x,y))[3]>=128 for y in range(im.height)) for x in range(im.width)]
+                  runs=[]; start=None
+                  for x,has in enumerate(cols+[False]):
+                      if has and start is None: start=x
+                      elif not has and start is not None:
+                          runs.append((start,x)); start=None
+                  if not runs:
+                      im=im.crop(bbox)
+                  else:
+                      x0,x1=runs[0]
+                      im=im.crop((x0,0,x1,im.height))
+                      cb=im.getchannel('A').getbbox()
+                      if cb: im=im.crop(cb)
+              else:
+                  im=im.crop(bbox)
+              scale=min(60/im.width,60/im.height,1.0)
+              if scale<1:
+                  im=im.resize((max(1,round(im.width*scale)),max(1,round(im.height*scale))),Image.Resampling.NEAREST)
+              canvas=Image.new('RGBA',(64,64),(0,0,0,0))
+              canvas.alpha_composite(im,((64-im.width)//2,max(0,62-im.height)))
+              return canvas
+
+          def locate_xeno_icon(form):
+              hits=[
+                  p for p in xeno.rglob(f'{form}.png')
+                  if 'icon' in '/'.join(part.lower() for part in p.parts)
+                  and 'battler' not in '/'.join(part.lower() for part in p.parts)
+              ]
+              if not hits:
+                  raise RuntimeError(f'No dedicated Xenoverse icon found for locked RELIC form {form}')
+              hits=sorted(hits,key=lambda p:(0 if p.parent.name.lower() in ('icon','icons') else 1,len(p.parts),str(p)))
+              print(f'Xenoverse icon {form}: {hits[0]}')
+              return rgba(hits[0])
+
+          for species,form in {'raikou':'243_2','entei':'244_2','suicune':'245_2'}.items():
+              save_standard_set(
+                  species,
+                  first_xeno_frame(locate_xeno_battler(form,'Front')),
+                  first_xeno_frame(locate_xeno_battler(form,'Back')),
+                  first_xeno_frame(locate_xeno_battler(form,'FrontShiny')),
+                  first_xeno_frame(locate_xeno_battler(form,'BackShiny')),
+                  locate_xeno_icon(form),
+                  preserve_exact=False,
+              )
+              print(f'Installed locked RELIC: {species} <- Xenoverse {form}')
+
+          for species,tre_id,label in (
+              ('lugia','1038','Lugia-P'),
+              ('celebi','1039','Celebi-P'),
+          ):
+              save_standard_set(
+                  species,
+                  rgba(tre/f'Front/{tre_id}_{label}.png'),
+                  rgba(tre/f'Back/{tre_id}_{label}.png'),
+                  rgba(tre/f'Shiny/Front/{tre_id}_{label}_shiny.png'),
+                  rgba(tre/f'Shiny/Back/{tre_id}_{label}_shiny.png'),
+                  rgba(tre/f'Icons/{tre_id}_{label}.png'),
+                  preserve_exact=True,
+              )
+              print(f'Installed locked RELIC: {species} <- TRE {tre_id}_{label}')
+
+          # Relic Ho-Oh is its own species, separate from normal Ho-Oh.
+          hooh=Path('graphics/pokemon/ho_oh_relic')
+          shutil.copy2(tre/'Front/1037_Ho-oh-P.png',hooh/'front.png')
+          shutil.copy2(tre/'Back/1037_Ho-oh-P.png',hooh/'back.png')
+          shutil.copy2(tre/'Shiny/Front/1037_Ho-oh-P_shiny.png',hooh/'shiny_front.png')
+          shutil.copy2(tre/'Shiny/Back/1037_Ho-oh-P_shiny.png',hooh/'shiny_back.png')
+          hicon=rgba(tre/'Icons/1037_Ho-oh-P.png')
+          if hicon.size == (32,32):
+              doubled=Image.new('RGBA',(32,64),(0,0,0,0))
+              doubled.alpha_composite(hicon,(0,0)); doubled.alpha_composite(hicon,(0,32))
+              hicon=doubled
+          if hicon.size != (32,64):
+              raise RuntimeError(f'Relic Ho-Oh icon has unsupported donor size {hicon.size}')
+          hicon.save(hooh/'icon.png')
+          print('Installed locked final Relic Ho-Oh <- TRE 1037_Ho-oh-P')
+
+          # I-Unown stays on its existing unown_eye asset set; do not overwrite it.
+          PY
+      - name: Verify RELICS species-to-graphics chain
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import re
+
+          checks = {
+              'data/maps/BurnedTower_B1F_hns/scripts.inc': [
+                  'seteventmon SPECIES_RAIKOU, 65',
+                  'seteventmon SPECIES_SUICUNE, 69',
+              ],
+              'data/maps/MtMortar_2F_hns/scripts.inc': [
+                  'seteventmon SPECIES_ENTEI, 66',
+              ],
+              'data/maps/WhirlIslands_LugiaChamber_hns/scripts.inc': [
+                  'seteventmon SPECIES_LUGIA, 68',
+              ],
+              'data/maps/RuinsOfAlph_PuzzleAndRewardChambers_hns/scripts.inc': [
+                  'seteventmon SPECIES_UNOWN_I, 65',
+              ],
+              'data/maps/IlexForest_hns/scripts.inc': [
+                  'seteventmon SPECIES_CELEBI, 67',
+              ],
+              'data/maps/TinTower_RoofDay_hns/scripts.inc': [
+                  'seteventmon SPECIES_RELIC_HO_OH, 85',
+              ],
+          }
+          for file,needles in checks.items():
+              text=Path(file).read_text()
+              for needle in needles:
+                  assert needle in text, f'Missing encounter binding: {needle} in {file}'
+
+          gen2=Path('src/data/pokemon/species_info/gen_2_families.h').read_text()
+          i0=gen2.index('[SPECIES_UNOWN_I]')
+          i1=gen2.index('[SPECIES_UNOWN_J]',i0)
+          unown_i=gen2[i0:i1]
+          for needle in ('gMonFrontPic_UnownEye','gMonBackPic_UnownEye','gMonPalette_UnownEye','gMonShinyPalette_UnownEye','gMonIcon_UnownEye'):
+              assert needle in unown_i, f'I-Unown lost custom Eye graphics: {needle}'
+
+          pjr=Path('src/data/pokemon/species_info/pjr_families.h').read_text()
+          h0=pjr.index('[SPECIES_RELIC_HO_OH]')
+          relic= pjr[h0:h0+5000]
+          for needle in ('gMonFrontPic_HoOhRelic','gMonBackPic_HoOhRelic','gMonPalette_HoOhRelic','gMonShinyPalette_HoOhRelic','gMonIcon_HoOhRelic'):
+              assert needle in relic, f'Relic Ho-Oh lost dedicated graphics: {needle}'
+
+          for species in ('raikou','entei','lugia','celebi','suicune'):
+              root=Path('graphics/pokemon')/species
+              expected={'anim_front_gba.png':(64,128),'back_gba.png':(64,64),'icon_gba.png':(32,64)}
+              for name,size in expected.items():
+                  im=Image.open(root/name)
+                  assert im.size==size,(species,name,im.size)
+                  assert im.mode=='P',(species,name,im.mode)
+                  assert len(set(im.getdata()))<=16,(species,name,len(set(im.getdata())))
+              for name in ('normal_gba.pal','shiny_gba.pal'):
+                  assert (root/name).is_file(),(species,name)
+
+          for root in (Path('graphics/pokemon/unown_eye'),Path('graphics/pokemon/ho_oh_relic')):
+              for name in ('front.png','back.png','icon.png','shiny_front.png','shiny_back.png'):
+                  assert (root/name).is_file(),f'Missing {root/name}'
+
+          print('RELICS QA PASS: R -> E -> L -> I -> C -> S + final Relic Ho-Oh graphics chain verified.')
           PY
       - name: Build PJR Alpha
         run: |
