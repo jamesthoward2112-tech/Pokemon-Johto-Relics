@@ -184,7 +184,24 @@ jobs:
                   stacked.alpha_composite(icon.crop((32,0,64,32)),(0,32))
                   icon=stacked
               elif icon.size != (32,64):
-                  raise RuntimeError(f'{species} icon has unsupported donor size {icon.size}')
+                  # Xenoverse Dex icons are larger than GBA party icons.
+                  # Use the original donor pixels, remove transparent padding,
+                  # nearest-neighbour fit into one 32x32 GBA frame, then duplicate
+                  # that frame for the engine's two-frame vertical layout.
+                  bbox=icon.getchannel('A').getbbox()
+                  if bbox is None:
+                      raise RuntimeError(f'{species} donor icon is empty')
+                  frame=icon.crop(bbox)
+                  scale=min(30/frame.width,30/frame.height,1.0)
+                  if scale < 1:
+                      frame=frame.resize(
+                          (max(1,round(frame.width*scale)),max(1,round(frame.height*scale))),
+                          Image.Resampling.NEAREST)
+                  one=Image.new('RGBA',(32,32),(0,0,0,0))
+                  one.alpha_composite(frame,((32-frame.width)//2,(32-frame.height)//2))
+                  doubled=Image.new('RGBA',(32,64),(0,0,0,0))
+                  doubled.alpha_composite(one,(0,0)); doubled.alpha_composite(one,(0,32))
+                  icon=doubled
               icon_palette=(exact_palette if preserve_exact else quantized_palette)([icon])
               icon_i=index_image(icon,icon_palette)
 
