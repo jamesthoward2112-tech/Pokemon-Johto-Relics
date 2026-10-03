@@ -1,6 +1,18 @@
 CeruleanCity_Gym_hns_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, CeruleanCity_Gym_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, CeruleanCity_Gym_OnFrame
 	.byte 0
+
+@ Keep the legacy Machine Part Rocket hidden unless his actual story stage is active.
+@ This preserves the original quest while preventing a silent NULL-script NPC from appearing.
+CeruleanCity_Gym_OnTransition::
+	goto_if_eq VAR_KANTO_ROCKET_STORY_STATE, 2, CeruleanCity_Gym_ShowStoryRocket
+	setflag FLAG_HIDE_CERULEAN_GYM_ROCKET
+	end
+
+CeruleanCity_Gym_ShowStoryRocket::
+	clearflag FLAG_HIDE_CERULEAN_GYM_ROCKET
+	end
 
 CeruleanCity_Gym_OnFrame::
 	map_script_2 VAR_KANTO_ROCKET_STORY_STATE, 2,  CeruleanCity_Gym_EventScript_RocketGrunt
