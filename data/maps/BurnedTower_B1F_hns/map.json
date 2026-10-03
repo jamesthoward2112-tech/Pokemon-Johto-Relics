@@ -164,8 +164,8 @@
     {
       "local_id": "LOCALID_PJR_RELIC_RAIKOU",
       "graphics_id": "OBJ_EVENT_GFX_BIRTH_ISLAND_STONE_HNS",
-      "x": 16,
-      "y": 11,
+      "x": 18,
+      "y": 13,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -189,7 +189,7 @@
       "y": 12,
       "elevation": 0,
       "dest_map": "MAP_BURNED_TOWER_1F_HNS",
-      "dest_warp_id": "2"
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [],
