@@ -10916,7 +10916,17 @@ static u32 ComputeCaptureOdds(u32 wildMonBattler, u32 playerBattler)
     if ((gBattleTypeFlags & BATTLE_TYPE_SAFARI) && (!IS_HNS || gLastUsedItem == ITEM_SAFARI_BALL))
         catchRate = gBattleStruct->safariCatchFactor * 1275 / 100;
     else
+    {
         catchRate = gSpeciesInfo[battleMon->species].catchRate;
+
+        // PJR: legendary encounters should still reward weakening/status without
+        // turning the postgame hunt into dozens of failed Ultra Balls.
+        if ((gSpeciesInfo[battleMon->species].isRestrictedLegendary
+          || gSpeciesInfo[battleMon->species].isSubLegendary
+          || gSpeciesInfo[battleMon->species].isMythical)
+         && catchRate < 45)
+            catchRate = 45;
+    }
 
     catchRate += ball.flatBonus;
     if (catchRate <= 0)
