@@ -5,8 +5,35 @@ Route25_hns_MapScripts::
 
 Route25_MapScript_OnTransition::
 	callnative SetTimeBasedEncounters
+	call_if_set FLAG_PJR_RELIC_SUICUNE, Route25_EventScript_PJRCleanupVanillaSuicune
+	call_if_set FLAG_DEFEATED_CERULEAN_GYM, Route25_EventScript_PJRCleanupMistyDate
 	goto_if_eq VAR_SUICUNE_ENCOUNTERS, 7, Route25_EventScript_SetSuicuneSceneMid
 	end
+
+@ PJR: once Relic Suicune is caught, the inherited HGSS Suicune chain is finished.
+@ This also repairs older saves that already caught Relic Suicune before this guard existed.
+Route25_EventScript_PJRCleanupVanillaSuicune::
+	setflag FLAG_HIDE_CIANWOOD_SUICUNE
+	setflag FLAG_HIDE_CIANWOOD_EUSINE
+	setflag FLAG_HIDE_ROUTE42_SUICUNE
+	setflag FLAG_HIDE_ROUTE42_EUSINE
+	setflag FLAG_HIDE_VERMILION_EUSINE_SUICUNE
+	setflag FLAG_HIDE_ROUTE14_SUICUNE
+	setflag FLAG_HIDE_ROUTE14_EUSINE
+	setflag FLAG_HIDE_ROUTE25_SUICUNE
+	setflag FLAG_HIDE_ROUTE25_EUSINE
+	setflag FLAG_HIDE_CELADON_EUSINE
+	setvar VAR_SUICUNE_ENCOUNTERS, 8
+	return
+
+@ PJR: Misty and her date are cutscene props with NULL interaction scripts.
+@ If Misty has already been defeated, never leave those props exposed.
+Route25_EventScript_PJRCleanupMistyDate::
+	setflag FLAG_HIDE_ROUTE25_MISTY
+	goto_if_ne VAR_CERULEAN_CITY_STATE, 2, Route25_EventScript_PJRCleanupMistyDateDone
+	setvar VAR_CERULEAN_CITY_STATE, 3
+Route25_EventScript_PJRCleanupMistyDateDone::
+	return
 
 Route25_EventScript_SetSuicuneSceneMid::
 	setobjectxyperm LOCALID_ROUTE25_EUSINE, 98, 14
@@ -224,6 +251,7 @@ Route25_EventScript_Eusine::
 Route25_EventScript_Suicune::
 	lock
 	faceplayer
+	goto_if_set FLAG_PJR_RELIC_SUICUNE, Route25_EventScript_SuicuneAlreadyResolved
 	playmoncry SPECIES_SUICUNE, CRY_MODE_NORMAL
 	applymovement LOCALID_ROUTE25_SUICUNE, Route25_Movement_Suicune1
 	playse SE_LEDGE
@@ -255,6 +283,15 @@ Route25_EventScript_Suicune::
 	setflag FLAG_HIDE_ROUTE25_EUSINE
 	clearflag FLAG_HIDE_CELADON_EUSINE
 	setvar VAR_SUICUNE_ENCOUNTERS, 8
+	release
+	end
+
+Route25_EventScript_SuicuneAlreadyResolved::
+	setflag FLAG_HIDE_ROUTE25_SUICUNE
+	setflag FLAG_HIDE_ROUTE25_EUSINE
+	setvar VAR_SUICUNE_ENCOUNTERS, 8
+	removeobject LOCALID_ROUTE25_SUICUNE
+	removeobject LOCALID_ROUTE25_EUSINE
 	release
 	end
 

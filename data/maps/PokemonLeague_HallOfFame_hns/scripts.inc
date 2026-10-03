@@ -151,7 +151,13 @@ PokemonLeague_HallOfFame_EventScript_SpawnRoamers::
 	return
 
 PokemonLeague_HallOfFame_EventScript_SpawnSuicune::
+	goto_if_set FLAG_PJR_RELIC_SUICUNE, PokemonLeague_HallOfFame_EventScript_DontSpawnVanillaSuicune
 	clearflag FLAG_HIDE_ROUTE25_SUICUNE
+	return
+
+PokemonLeague_HallOfFame_EventScript_DontSpawnVanillaSuicune::
+	setflag FLAG_HIDE_ROUTE25_SUICUNE
+	setflag FLAG_HIDE_ROUTE25_EUSINE
 	return
 
 PokemonLeague_HallOfFame_EventScript_SpawnSecondCelebi::

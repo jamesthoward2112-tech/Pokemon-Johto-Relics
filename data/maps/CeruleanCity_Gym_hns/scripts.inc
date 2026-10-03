@@ -216,8 +216,15 @@ CeruleanCity_Gym_EventScript_Misty::
 	end
 
 CeruleanCity_Gym_SetSuicuneScene::
+	goto_if_set FLAG_PJR_RELIC_SUICUNE, CeruleanCity_Gym_SkipVanillaSuicuneScene
 	setvar VAR_SUICUNE_ENCOUNTERS, 6
 	clearflag FLAG_HIDE_ROUTE25_SUICUNE
+	return
+
+CeruleanCity_Gym_SkipVanillaSuicuneScene::
+	setvar VAR_SUICUNE_ENCOUNTERS, 8
+	setflag FLAG_HIDE_ROUTE25_SUICUNE
+	setflag FLAG_HIDE_ROUTE25_EUSINE
 	return
 
 CeruleanCity_Gym_EventScript_Misty_Defeated::
