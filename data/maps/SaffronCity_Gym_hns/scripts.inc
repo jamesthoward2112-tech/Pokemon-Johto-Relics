@@ -1,5 +1,21 @@
 SaffronCity_Gym_hns_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, SaffronCity_Gym_OnTransition
 	.byte 0
+
+@ PJR migration for saves made while Sabrina's reward flag overlapped DexNav's
+@ active-search flag. Preserve a claimed reward and always clear the stale search bit.
+SaffronCity_Gym_OnTransition::
+	goto_if_unset FLAG_DEFEATED_SAFFRON_GYM, SaffronCity_Gym_OnTransition_Done
+	goto_if_set FLAG_PJR_GYM_REWARD_SABRINA, SaffronCity_Gym_OnTransition_ClearLegacy
+	goto_if_set FLAG_PJR_DEXNAV_SEARCHING, SaffronCity_Gym_OnTransition_MigrateReward
+	checkitem ITEM_TWISTED_SPOON, 1
+	goto_if_eq VAR_RESULT, FALSE, SaffronCity_Gym_OnTransition_ClearLegacy
+SaffronCity_Gym_OnTransition_MigrateReward:
+	setflag FLAG_PJR_GYM_REWARD_SABRINA
+SaffronCity_Gym_OnTransition_ClearLegacy:
+	clearflag FLAG_PJR_DEXNAV_SEARCHING
+SaffronCity_Gym_OnTransition_Done:
+	end
 
 SaffronCity_Gym_EventScript_GymGuy::
 	goto_if_set FLAG_DEFEATED_SAFFRON_GYM, SaffronCity_Gym_EventScript_GymGuy2

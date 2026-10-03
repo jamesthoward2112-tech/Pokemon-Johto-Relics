@@ -952,6 +952,12 @@ bool32 TryStartDexNavSearch(void)
 {
     u16 val = VarGet(DN_VAR_SPECIES);
 
+    // A persistent/stale search flag must never imply that the heap state exists.
+    // This also safely repairs saves made by older PJR builds that accidentally
+    // reused DN_FLAG_SEARCHING for Sabrina's one-time Gym reward.
+    if (FlagGet(DN_FLAG_SEARCHING) && sDexNavSearchDataPtr == NULL)
+        FlagClear(DN_FLAG_SEARCHING);
+
     if (FlagGet(DN_FLAG_SEARCHING) && sDexNavSearchDataPtr->hiddenSearch)
     {
         RevealHiddenSearch();
@@ -971,6 +977,13 @@ void EndDexNavSearch(void)
 {
     if (!FlagGet(DN_FLAG_SEARCHING))
         return;
+
+    if (sDexNavSearchDataPtr == NULL)
+    {
+        FlagClear(DN_FLAG_SEARCHING);
+        return;
+    }
+
     RemoveDexNavWindowAndGfx();
     FieldEffectStop(&gSprites[sDexNavSearchDataPtr->fldEffSpriteId], sDexNavSearchDataPtr->fldEffId);
     FREE_AND_SET_NULL(sDexNavSearchDataPtr);
@@ -1040,6 +1053,12 @@ bool32 OnStep_DexNavSearch(void)
 {
     if (!FlagGet(DN_FLAG_SEARCHING))
         return FALSE;
+
+    if (sDexNavSearchDataPtr == NULL)
+    {
+        FlagClear(DN_FLAG_SEARCHING);
+        return FALSE;
+    }
 
     u32 frameCount = gMain.vblankCounter1 - sDexNavSearchDataPtr->startingTime;
     DexNavProximityUpdate();
