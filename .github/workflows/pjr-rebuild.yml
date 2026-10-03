@@ -28,7 +28,7 @@ jobs:
       - name: Install toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3
+          sudo apt-get install -y --no-install-recommends binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3 python3-pil git
       - name: Install PJR Infinity donor assets
         run: |
           cat \
@@ -63,6 +63,170 @@ jobs:
               dst.mkdir(parents=True, exist_ok=True)
               for name in ('front.png', 'back.png', 'icon.png'):
                   shutil.copy2(species_dir / name, dst / name)
+          PY
+      - name: Install locked RELICS legendary battle sprites
+        run: |
+          rm -rf /tmp/xenoverse-source
+          git clone --depth 1 https://gitlab.com/weedleteam/Xenoverse-Source.git /tmp/xenoverse-source
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+
+          source_root = Path('/tmp/xenoverse-source')
+          mappings = {
+              'raikou': '243_2',
+              'entei': '244_2',
+              'suicune': '245_2',
+              'lugia': '249_1',
+              'celebi': '251_1',
+          }
+
+          def locate(form_id, filename):
+              matches = [
+                  p for p in source_root.rglob(filename)
+                  if p.parent.name.lower() == form_id.lower()
+              ]
+              if not matches:
+                  matches = [
+                      p for p in source_root.rglob(filename)
+                      if form_id.lower() in '/'.join(part.lower() for part in p.parts[-5:])
+                  ]
+              if not matches:
+                  raise RuntimeError(f'Could not find {form_id}/{filename} in Xenoverse source')
+              return matches[0]
+
+          def first_frame(path):
+              im = Image.open(path).convert('RGBA')
+              alpha = im.getchannel('A')
+              bbox = alpha.getbbox()
+              if bbox is None:
+                  raise RuntimeError(f'Empty image: {path}')
+              # Xenoverse animated battlers are horizontal strips. Split on
+              # transparent columns and use the first real animation frame.
+              if im.width > im.height * 2:
+                  cols = []
+                  for x in range(im.width):
+                      has = False
+                      for y in range(im.height):
+                          if im.getpixel((x,y))[3] >= 128:
+                              has = True
+                              break
+                      cols.append(has)
+                  runs=[]
+                  start=None
+                  for x,has in enumerate(cols+[False]):
+                      if has and start is None:
+                          start=x
+                      elif not has and start is not None:
+                          runs.append((start,x))
+                          start=None
+                  if runs:
+                      x0,x1=runs[0]
+                      crop=im.crop((x0,0,x1,im.height))
+                      cb=crop.getchannel('A').getbbox()
+                      if cb:
+                          im=crop.crop(cb)
+                      else:
+                          im=crop
+                  else:
+                      im=im.crop(bbox)
+              else:
+                  im=im.crop(bbox)
+
+              max_w=max_h=60
+              scale=min(max_w/im.width,max_h/im.height,1.0)
+              if scale < 1:
+                  im=im.resize((max(1,round(im.width*scale)),max(1,round(im.height*scale))),Image.Resampling.NEAREST)
+              canvas=Image.new('RGBA',(64,64),(0,0,0,0))
+              x=(64-im.width)//2
+              y=62-im.height
+              canvas.alpha_composite(im,(x,max(0,y)))
+              return canvas
+
+          def make_palette(images):
+              pixels=[]
+              for im in images:
+                  pixels.extend((r,g,b) for r,g,b,a in im.getdata() if a >= 128)
+              strip=Image.new('RGB',(max(1,len(pixels)),1))
+              if pixels:
+                  strip.putdata(pixels)
+              q=strip.quantize(colors=15,method=Image.Quantize.MEDIANCUT)
+              raw=q.getpalette()[:45]
+              colors=[tuple(raw[i:i+3]) for i in range(0,len(raw),3)]
+              while len(colors)<15:
+                  colors.append((0,0,0))
+              return [(0,0,0)]+colors[:15]
+
+          def index_image(im,palette):
+              out=Image.new('P',im.size,0)
+              flat=[v for rgb in palette for v in rgb]
+              out.putpalette(flat+[0]*(768-len(flat)))
+              px=[]
+              for r,g,b,a in im.getdata():
+                  if a < 128:
+                      px.append(0)
+                  else:
+                      px.append(min(range(1,16),key=lambda i:
+                          (r-palette[i][0])**2+(g-palette[i][1])**2+(b-palette[i][2])**2))
+              out.putdata(px)
+              out.info['transparency']=0
+              return out
+
+          def aligned_shiny_palette(normal_pairs, shiny_pairs, indexed_pairs, normal_palette):
+              sums=[[0,0,0,0] for _ in range(16)]
+              for normal_im, shiny_im, idx_im in zip(normal_pairs, shiny_pairs, indexed_pairs):
+                  for idx,(_,_,_,na),(sr,sg,sb,sa) in zip(idx_im.getdata(),normal_im.getdata(),shiny_im.getdata()):
+                      if idx and na >= 128 and sa >= 128:
+                          sums[idx][0]+=sr; sums[idx][1]+=sg; sums[idx][2]+=sb; sums[idx][3]+=1
+              pal=[(0,0,0)]
+              for i in range(1,16):
+                  if sums[i][3]:
+                      n=sums[i][3]
+                      pal.append((sums[i][0]//n,sums[i][1]//n,sums[i][2]//n))
+                  else:
+                      pal.append(normal_palette[i])
+              return pal
+
+          def write_pal(path,pal):
+              path.write_text('\n'.join(['JASC-PAL','0100','16']+[f'{r} {g} {b}' for r,g,b in pal])+'\n',encoding='ascii')
+
+          for species,form in mappings.items():
+              front=first_frame(locate(form,'Front.png'))
+              back=first_frame(locate(form,'Back.png'))
+              shiny_front=first_frame(locate(form,'FrontShiny.png'))
+              shiny_back=first_frame(locate(form,'BackShiny.png'))
+
+              palette=make_palette([front,back])
+              front_i=index_image(front,palette)
+              back_i=index_image(back,palette)
+              shiny_palette=aligned_shiny_palette(
+                  [front,back],[shiny_front,shiny_back],[front_i,back_i],palette)
+
+              anim=Image.new('P',(64,128),0)
+              anim.putpalette(front_i.getpalette())
+              anim.paste(front_i,(0,0))
+              anim.paste(front_i,(0,64))
+              anim.info['transparency']=0
+
+              target=Path('graphics/pokemon')/species
+              for name in ('anim_front.png','anim_front_gba.png'):
+                  anim.save(target/name,format='PNG',bits=4,optimize=False)
+              for name in ('back.png','back_gba.png'):
+                  back_i.save(target/name,format='PNG',bits=4,optimize=False)
+              for name in ('normal.pal','normal_gba.pal'):
+                  write_pal(target/name,palette)
+              for name in ('shiny.pal','shiny_gba.pal'):
+                  write_pal(target/name,shiny_palette)
+
+              for name,size in [('anim_front_gba.png',(64,128)),('back_gba.png',(64,64))]:
+                  check=Image.open(target/name)
+                  assert check.mode == 'P', (species,name,check.mode)
+                  assert check.size == size, (species,name,check.size)
+                  assert len(set(check.getdata())) <= 16, (species,name,len(set(check.getdata())))
+              print(f'Installed locked RELICS sprite: {species} <- Xenoverse {form}')
+
+          # I-Unown is deliberately wired to the custom Eye-Unown graphics in
+          # gen_2_families.h. Final Relic Ho-Oh uses graphics/pokemon/ho_oh_relic.
           PY
       - name: Build PJR Alpha
         run: |
