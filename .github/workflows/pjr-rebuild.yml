@@ -82,39 +82,23 @@ jobs:
           }
 
           def locate(form_id, filename):
-              # Prefer a donor-bank-style directory if the source has one.
-              matches = [
-                  p for p in source_root.rglob(filename)
-                  if p.parent.name.lower() == form_id.lower()
+              folders = {
+                  'Front.png': 'Front',
+                  'Back.png': 'Back',
+                  'FrontShiny.png': 'FrontShiny',
+                  'BackShiny.png': 'BackShiny',
+              }
+              folder = folders[filename]
+              exact = source_root / 'Xenoverse' / 'Graphics' / 'Battlers' / folder / f'{form_id}.png'
+              if exact.exists():
+                  return exact
+              hits = [
+                  p for p in source_root.rglob(f'{form_id}.png')
+                  if p.parent.name.lower() == folder.lower()
               ]
-              if matches:
-                  return matches[0]
-
-              # Original Xenoverse uses Pokémon Essentials battler naming:
-              # <form>.png, <form>b.png, <form>s.png, <form>sb.png.
-              aliases = {
-                  'Front.png': [f'{form_id}.png'],
-                  'Back.png': [f'{form_id}b.png', f'{form_id}_b.png'],
-                  'FrontShiny.png': [f'{form_id}s.png', f'{form_id}_s.png'],
-                  'BackShiny.png': [
-                      f'{form_id}sb.png', f'{form_id}bs.png',
-                      f'{form_id}_sb.png', f'{form_id}_bs.png'
-                  ],
-              }[filename]
-              for alias in aliases:
-                  hits = list(source_root.rglob(alias))
-                  if hits:
-                      return hits[0]
-
-              # Emit useful candidates if the upstream layout changes again.
-              candidates = [
-                  str(p.relative_to(source_root))
-                  for p in source_root.rglob('*')
-                  if p.is_file() and form_id.lower() in p.name.lower()
-              ][:40]
-              raise RuntimeError(
-                  f'Could not find {form_id}/{filename}; candidates={candidates}'
-              )
+              if hits:
+                  return hits[0]
+              raise RuntimeError(f'Could not find Xenoverse battler {folder}/{form_id}.png')
 
           def first_frame(path):
               im = Image.open(path).convert('RGBA')
