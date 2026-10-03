@@ -1744,7 +1744,9 @@
 #define SPECIES_GYARADOS_RELIC                          1618
 #define SPECIES_DRAGONITE_RELIC                         1619
 
-#define SPECIES_EGG                                     (SPECIES_DRAGONITE_RELIC + 1)
+#define SPECIES_RAICHU_RELIC                            1620
+
+#define SPECIES_EGG                                     (SPECIES_RAICHU_RELIC + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

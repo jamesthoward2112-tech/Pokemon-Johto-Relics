@@ -58,6 +58,7 @@ FuchsiaCity_Gym_EventScript_Janine::
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 14
 	call Common_EventScript_SetGymTrainers_hns
+	call FuchsiaCity_Gym_EventScript_PJRReward
 	removeobject LOCALID_FUCHSIAGYM_ALICE_J
 	removeobject LOCALID_FUCHSIAGYM_CINDY_J
 	removeobject LOCALID_FUCHSIAGYM_LINDA_J
@@ -80,6 +81,7 @@ FuchsiaCity_Gym_EventScript_Janine::
 	end
 
 FuchsiaCity_Gym_EventScript_Janine_Defeated::
+	call FuchsiaCity_Gym_EventScript_PJRReward
 	msgbox FuchsiaCity_Gym_Text_Janine_ApplyMyself, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -298,3 +300,16 @@ FuchsiaCity_Gym_Text_GuideWin:
 	.string "That was a great battle, trainer\n"
 	.string "from JOHTO!$"
 
+FuchsiaCity_Gym_EventScript_PJRReward::
+	goto_if_set FLAG_PJR_GYM_REWARD_JANINE, FuchsiaCity_Gym_EventScript_PJRRewardDone
+	giveitem ITEM_POISON_BARB
+	goto_if_eq VAR_RESULT, FALSE, FuchsiaCity_Gym_EventScript_PJRRewardDone
+	addmoney 10000
+	setflag FLAG_PJR_GYM_REWARD_JANINE
+	msgbox FuchsiaCity_Gym_Text_PJRPrizeMoney, MSGBOX_DEFAULT
+FuchsiaCity_Gym_EventScript_PJRRewardDone::
+	return
+
+FuchsiaCity_Gym_Text_PJRPrizeMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money.$"

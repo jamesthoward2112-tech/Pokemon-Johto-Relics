@@ -268,6 +268,7 @@ SaffronCity_FightingDojoVIP_EventScript_Clair_PostOBC::
 SaffronCity_FightingDojoVIP_EventScript_Brock::
 	lock
 	faceplayer
+	call PewterCity_Gym_EventScript_PJRReward
 	msgbox SaffronCity_FightingDojoVIP_Text_Brock_Rematch, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojoVIP_EventScript_Declined
 	closemessage
@@ -297,6 +298,7 @@ SaffronCity_FightingDojoVIP_EventScript_Brock_PostOBC::
 SaffronCity_FightingDojoVIP_EventScript_Misty::
 	lock
 	faceplayer
+	call CeruleanCity_Gym_EventScript_PJRReward
 	msgbox SaffronCity_FightingDojoVIP_Text_Misty_Rematch, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojoVIP_EventScript_Declined
 	closemessage
@@ -326,6 +328,7 @@ SaffronCity_FightingDojoVIP_EventScript_Misty_PostOBC::
 SaffronCity_FightingDojoVIP_EventScript_Surge::
 	lock
 	faceplayer
+	call VermilionCity_Gym_EventScript_PJRReward
 	msgbox SaffronCity_FightingDojoVIP_Text_Surge_Rematch, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojoVIP_EventScript_Declined
 	closemessage
@@ -355,6 +358,7 @@ SaffronCity_FightingDojoVIP_EventScript_Surge_PostOBC::
 SaffronCity_FightingDojoVIP_EventScript_Erika::
 	lock
 	faceplayer
+	call CeladonCity_Gym_EventScript_PJRReward
 	msgbox SaffronCity_FightingDojoVIP_Text_Erika_Rematch, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojoVIP_EventScript_Declined
 	closemessage
@@ -384,6 +388,7 @@ SaffronCity_FightingDojoVIP_EventScript_Erika_PostOBC::
 SaffronCity_FightingDojoVIP_EventScript_Janine::
 	lock
 	faceplayer
+	call FuchsiaCity_Gym_EventScript_PJRReward
 	msgbox SaffronCity_FightingDojoVIP_Text_Janine_Rematch, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojoVIP_EventScript_Declined
 	closemessage
@@ -413,6 +418,7 @@ SaffronCity_FightingDojoVIP_EventScript_Janine_PostOBC::
 SaffronCity_FightingDojoVIP_EventScript_Sabrina::
 	lock
 	faceplayer
+	call SaffronCity_Gym_EventScript_PJRReward
 	msgbox SaffronCity_FightingDojoVIP_Text_Sabrina_Rematch, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojoVIP_EventScript_Declined
 	closemessage
@@ -442,6 +448,7 @@ SaffronCity_FightingDojoVIP_EventScript_Sabrina_PostOBC::
 SaffronCity_FightingDojoVIP_EventScript_Blaine::
 	lock
 	faceplayer
+	call SeafoamIslands_Gym_EventScript_PJRReward
 	msgbox SaffronCity_FightingDojoVIP_Text_Blaine_Rematch, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojoVIP_EventScript_Declined
 	closemessage
@@ -471,6 +478,7 @@ SaffronCity_FightingDojoVIP_EventScript_Blaine_PostOBC::
 SaffronCity_FightingDojoVIP_EventScript_Blue::
 	lock
 	faceplayer
+	call ViridianCity_Gym_EventScript_PJRReward
 	msgbox SaffronCity_FightingDojoVIP_Text_Blue_Rematch, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojoVIP_EventScript_Declined
 	closemessage

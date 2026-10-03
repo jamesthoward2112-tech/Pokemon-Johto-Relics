@@ -1340,6 +1340,17 @@
 #define FLAG_PJR_RELIC_ELM_FINAL_BRIEF               (SYS_FLAGS + 0x7E)
 #define FLAG_PJR_RELIC_HO_OH_UNLOCKED                (SYS_FLAGS + 0x7F)
 
+// PJR one-time Kanto Gym reward tracking.
+// 0x80-0x87 are free HnS system-flag slots below the visited-map range.
+#define FLAG_PJR_GYM_REWARD_BROCK                   (SYS_FLAGS + 0x80)
+#define FLAG_PJR_GYM_REWARD_MISTY                   (SYS_FLAGS + 0x81)
+#define FLAG_PJR_GYM_REWARD_SURGE                   (SYS_FLAGS + 0x82)
+#define FLAG_PJR_GYM_REWARD_ERIKA                   (SYS_FLAGS + 0x83)
+#define FLAG_PJR_GYM_REWARD_JANINE                  (SYS_FLAGS + 0x84)
+#define FLAG_PJR_GYM_REWARD_SABRINA                 (SYS_FLAGS + 0x85)
+#define FLAG_PJR_GYM_REWARD_BLAINE                  (SYS_FLAGS + 0x86)
+#define FLAG_PJR_GYM_REWARD_BLUE                    (SYS_FLAGS + 0x87)
+
 // Visited / World Map flags
 #define FLAG_VISITED_NEWBARK_TOWN                   (SYS_FLAGS + 0x90)
 #define FLAG_VISITED_CHERRYGROVE_CITY               (SYS_FLAGS + 0x91)

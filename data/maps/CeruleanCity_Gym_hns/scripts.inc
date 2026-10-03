@@ -193,6 +193,7 @@ CeruleanCity_Gym_EventScript_Misty::
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 10
 	call Common_EventScript_SetGymTrainers_hns
+	call CeruleanCity_Gym_EventScript_PJRReward
 	msgbox CeruleanGym_Text_Misty_GiveTM, MSGBOX_DEFAULT
 	giveitem ITEM_TM_WATER_PULSE
 	msgbox CeruleanGym_Text_Misty_ExplainTM, MSGBOX_DEFAULT
@@ -208,6 +209,7 @@ CeruleanCity_Gym_SetSuicuneScene::
 	return
 
 CeruleanCity_Gym_EventScript_Misty_Defeated::
+	call CeruleanCity_Gym_EventScript_PJRReward
 	msgbox CeruleanGym_Text_MistyFightDone, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -327,3 +329,17 @@ CeruleanGym_Text_Misty_ExplainTM:
 	.string "It's the WATER PULSE TM.\p"
 	.string "It causes damage and sometimes\n"
 	.string "causes confusion as well!$"
+
+CeruleanCity_Gym_EventScript_PJRReward::
+	goto_if_set FLAG_PJR_GYM_REWARD_MISTY, CeruleanCity_Gym_EventScript_PJRRewardDone
+	giveitem ITEM_MYSTIC_WATER
+	goto_if_eq VAR_RESULT, FALSE, CeruleanCity_Gym_EventScript_PJRRewardDone
+	addmoney 10000
+	setflag FLAG_PJR_GYM_REWARD_MISTY
+	msgbox CeruleanCity_Gym_Text_PJRPrizeMoney, MSGBOX_DEFAULT
+CeruleanCity_Gym_EventScript_PJRRewardDone::
+	return
+
+CeruleanCity_Gym_Text_PJRPrizeMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money.$"

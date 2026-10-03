@@ -25,12 +25,14 @@ PewterCity_Gym_EventScript_Brock::
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 9
 	call Common_EventScript_SetGymTrainers_hns
+	call PewterCity_Gym_EventScript_PJRReward
 	clearflag FLAG_HIDE_DIGLETT_BROCK
 	closemessage
 	release
 	end
 
 PewterCity_Gym_EventScript_Brock_Defeated::
+	call PewterCity_Gym_EventScript_PJRReward
 	goto_if_unset FLAG_HIDE_DOJO_BROCK, PewterCity_Gym_EventScript_Brock_Trade
 	msgbox PewterCity_Gym_Text_Brock_FightDone, MSGBOX_DEFAULT
 	closemessage
@@ -189,3 +191,17 @@ PewterCity_Gym_Text_BrockNotRequestedMon:
 PewterCity_Gym_Text_BrockTradeCompleted:
 	.string "BROCK: How's WOODY doing?\n"
 	.string "BONSLY are tougher than they look!$"
+
+PewterCity_Gym_EventScript_PJRReward::
+	goto_if_set FLAG_PJR_GYM_REWARD_BROCK, PewterCity_Gym_EventScript_PJRRewardDone
+	giveitem ITEM_HARD_STONE
+	goto_if_eq VAR_RESULT, FALSE, PewterCity_Gym_EventScript_PJRRewardDone
+	addmoney 10000
+	setflag FLAG_PJR_GYM_REWARD_BROCK
+	msgbox PewterCity_Gym_Text_PJRPrizeMoney, MSGBOX_DEFAULT
+PewterCity_Gym_EventScript_PJRRewardDone::
+	return
+
+PewterCity_Gym_Text_PJRPrizeMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money.$"

@@ -24,11 +24,13 @@ SeafoamIslands_Gym_EventScript_Blaine::
 	setvar VAR_0x8008, 15
 	clearflag FLAG_HIDE_SEAFOAM_GYMGUY
 	call Common_EventScript_SetGymTrainers_hns
+	call SeafoamIslands_Gym_EventScript_PJRReward
 	closemessage
 	release
 	end
 
 SeafoamIslands_Gym_EventScript_Blaine_Defeated::
+	call SeafoamIslands_Gym_EventScript_PJRReward
 	msgbox SeafoamIslands_Gym_Text_BlaineAfterBattle, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -135,3 +137,17 @@ SeafoamIslands_Gym_Text_GymGuideWin2:
 	.string "A POKéMON GYM can be anywhere as\n"
 	.string "long as the GYM LEADER is there.\p"
 	.string "There's no need for a building.$"
+
+SeafoamIslands_Gym_EventScript_PJRReward::
+	goto_if_set FLAG_PJR_GYM_REWARD_BLAINE, SeafoamIslands_Gym_EventScript_PJRRewardDone
+	giveitem ITEM_CHARCOAL
+	goto_if_eq VAR_RESULT, FALSE, SeafoamIslands_Gym_EventScript_PJRRewardDone
+	addmoney 10000
+	setflag FLAG_PJR_GYM_REWARD_BLAINE
+	msgbox SeafoamIslands_Gym_Text_PJRPrizeMoney, MSGBOX_DEFAULT
+SeafoamIslands_Gym_EventScript_PJRRewardDone::
+	return
+
+SeafoamIslands_Gym_Text_PJRPrizeMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money.$"

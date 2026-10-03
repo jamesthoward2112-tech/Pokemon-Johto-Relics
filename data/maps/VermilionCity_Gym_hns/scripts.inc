@@ -263,6 +263,7 @@ VermilionCity_Gym_EventScript_Surge::
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 11
 	call Common_EventScript_SetGymTrainers_hns
+	call VermilionCity_Gym_EventScript_PJRReward
 	checkitem ITEM_TM_SHOCK_WAVE
 	call_if_eq VAR_RESULT, TRUE, VermilionCity_Gym_EventScript_GiveThunderstone
 	call_if_eq VAR_RESULT, FALSE, VermilionCity_Gym_EventScript_GiveTM
@@ -283,6 +284,7 @@ VermilionCity_Gym_EventScript_GiveTM::
 	return
 
 VermilionCity_Gym_EventScript_Surge_Defeated::
+	call VermilionCity_Gym_EventScript_PJRReward
 	msgbox VermilionGym_Text_LtSurgePostBattle, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -434,3 +436,16 @@ VermilionCity_Gym_Text_OnlyTrashLocksWereReset::
     .string "Hey!\n"
     .string "The electric locks were reset!$"
 
+VermilionCity_Gym_EventScript_PJRReward::
+	goto_if_set FLAG_PJR_GYM_REWARD_SURGE, VermilionCity_Gym_EventScript_PJRRewardDone
+	giveitem ITEM_MAGNET
+	goto_if_eq VAR_RESULT, FALSE, VermilionCity_Gym_EventScript_PJRRewardDone
+	addmoney 10000
+	setflag FLAG_PJR_GYM_REWARD_SURGE
+	msgbox VermilionCity_Gym_Text_PJRPrizeMoney, MSGBOX_DEFAULT
+VermilionCity_Gym_EventScript_PJRRewardDone::
+	return
+
+VermilionCity_Gym_Text_PJRPrizeMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money.$"

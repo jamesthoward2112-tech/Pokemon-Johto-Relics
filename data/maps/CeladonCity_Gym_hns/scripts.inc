@@ -19,12 +19,14 @@ CeladonCity_Gym_EventScript_Erika::
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 12
 	call Common_EventScript_SetGymTrainers_hns
+	call CeladonCity_Gym_EventScript_PJRReward
 	clearflag FLAG_HIDE_FOUNTAIN_ERIKA
 	closemessage
 	release
 	end
 
 CeladonCity_Gym_EventScript_Erika_Defeated::
+	call CeladonCity_Gym_EventScript_PJRReward
 	msgbox CeladonCity_Gym_Text_ErikaAfterBattle, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -185,3 +187,17 @@ CeladonCity_Gym_Text_GymStatuePlayerWon::
     .string "LEADER: ERIKA\p"
     .string "WINNING TRAINERS:\n"
 	.string "BLUE, RED, {PLAYER}$"
+
+CeladonCity_Gym_EventScript_PJRReward::
+	goto_if_set FLAG_PJR_GYM_REWARD_ERIKA, CeladonCity_Gym_EventScript_PJRRewardDone
+	giveitem ITEM_MIRACLE_SEED
+	goto_if_eq VAR_RESULT, FALSE, CeladonCity_Gym_EventScript_PJRRewardDone
+	addmoney 10000
+	setflag FLAG_PJR_GYM_REWARD_ERIKA
+	msgbox CeladonCity_Gym_Text_PJRPrizeMoney, MSGBOX_DEFAULT
+CeladonCity_Gym_EventScript_PJRRewardDone::
+	return
+
+CeladonCity_Gym_Text_PJRPrizeMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money.$"

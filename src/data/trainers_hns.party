@@ -8387,13 +8387,13 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Surf
 - Toxic
 
-Relicanth @ Hard Stone
+Shuckolosse @ Leftovers
 Level: 66
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Hydro Pump
-- Rock Slide
-- Curse
-- Thunderbolt
+- Stone Edge
+- X Scissor
+- Toxic
+- Rest
 
 Kleavor @ Quick Claw
 Level: 66
@@ -8407,7 +8407,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 Name: MISTY
 Class: Leader Kanto Hns
 Pic: Leader Misty Hns
-Gender: Male
+Gender: Female
 Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
@@ -8438,13 +8438,13 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Acid Armor
 - Shadow Ball
 
-Milotic
-Level: 61
+Feralodon @ Dragon Fang
+Level: 62
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Hydro Pump
-- Ice Beam
-- Rest
-- Sleep Talk
+- Aqua Tail
+- Dragon Claw
+- Ice Fang
+- Crunch
 
 Lapras @ Never Melt Ice
 Level: 62
@@ -8513,10 +8513,10 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Ice Punch
 - Submission
 
-Raichu @ Magnet
+Raichu Relic @ Magnet
 Level: 60
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Thunder
+- Thunderbolt
 - Rain Dance
 - Body Slam
 - Surf
@@ -8525,7 +8525,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 Name: ERIKA
 Class: Leader Kanto Hns
 Pic: Leader Erika Hns
-Gender: Male
+Gender: Female
 Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
@@ -8548,13 +8548,13 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Toxic
 - Petal Dance
 
-Tangrowth
-Level: 60
+Faeranium @ Leftovers
+Level: 61
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Power Whip
-- Wring Out
-- Grassy Terrain
-- Tickle
+- Giga Drain
+- Moonblast
+- Earth Power
+- Synthesis
 
 Venusaur @ Leftovers
 Level: 61
@@ -8584,7 +8584,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 Name: SABRINA
 Class: Leader Kanto Hns
 Pic: Leader Sabrina Hns
-Gender: Male
+Gender: Female
 Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
@@ -8599,7 +8599,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Substitute
 - Reflect
 
-Jynx
+Mystynx
 Level: 64
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Psychic
@@ -8631,7 +8631,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Future Sight
 - Power Gem
 
-Alakazam @ Twisted Spoon
+Alakazam Relic @ Twisted Spoon
 Level: 66
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Shadow Ball
@@ -8643,7 +8643,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 Name: JANINE
 Class: Leader Kanto Hns
 Pic: Leader Janine Hns
-Gender: Male
+Gender: Female
 Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
@@ -8682,7 +8682,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Thunder
 - Superpower
 
-Crobat
+Crobat Relic
 Level: 63
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Air Slash
@@ -8725,7 +8725,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Psychic
 - Confuse Ray
 
-Houndoom @ Miracle Seed
+Houndoom Relic @ Charcoal
 Level: 66
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Fire Blast
@@ -8741,13 +8741,13 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Amnesia
 - Hypnosis
 
-Torkoal @ White Herb
+Pyroclast @ White Herb
 Level: 67
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Curse
-- Iron Defense
-- Withdraw
-- Heat Wave
+- Fire Blast
+- Shadow Ball
+- Will O Wisp
+- Sunny Day
 
 Camerupt @ Charcoal
 Level: 67
@@ -8784,7 +8784,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Air Slash
 - Feather Dance
 
-Machamp @ Scope Lens
+Machamp Relic @ Scope Lens
 Level: 67
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Cross Chop

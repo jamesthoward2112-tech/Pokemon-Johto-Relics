@@ -823,4 +823,12 @@ PJR_E4_VISUAL_FORM(SPECIES_DRAGONITE_RELIC, 91, 134, 95, 100, 100, 80, TYPE_DRAG
     NATIONAL_DEX_DRAGONITE, BODY_COLOR_BROWN, gMonFrontPic_DragoniteRelic, gMonPalette_DragoniteRelic,
     gMonShinyPalette_DragoniteRelic, gMonIcon_Dragonite, 2, sDragoniteLevelUpLearnset, sDragoniteTeachableLearnset),
 
+// Kanto Gym trainer-only visual form. Uses the existing Mega Raichu Y artwork,
+// but deliberately keeps ordinary Raichu stats so this is a visual upgrade, not
+// a hidden difficulty spike.
+PJR_E4_VISUAL_FORM(SPECIES_RAICHU_RELIC, 60, 90, 55, 90, 80, 110, TYPE_ELECTRIC, TYPE_ELECTRIC,
+    ABILITY_STATIC, ABILITY_NONE, ABILITY_LIGHTNING_ROD, "RAICHU", CRY_RAICHU,
+    NATIONAL_DEX_RAICHU, BODY_COLOR_YELLOW, gMonFrontPic_RaichuMegaY, gMonPalette_RaichuMegaY,
+    gMonShinyPalette_RaichuMegaY, gMonIcon_RaichuMegaY, 0, sRaichuLevelUpLearnset, sRaichuTeachableLearnset),
+
 #undef PJR_E4_VISUAL_FORM

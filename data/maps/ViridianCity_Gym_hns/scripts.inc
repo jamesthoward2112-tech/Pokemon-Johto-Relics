@@ -14,13 +14,14 @@ ViridianCity_Gym_EventScript_Blue::
 	call Common_EventScript_PlayGymBadgeFanfare
 	msgbox ViridianCity_Gym_Text_LeaderBlue_After, MSGBOX_DEFAULT
 	msgbox ViridianCity_Gym_Text_LeaderBlue_GiveTM, MSGBOX_DEFAULT
-	giveitem ITEM_TM_TRICK_ROOM
+	giveitem ITEM_TM_EARTHQUAKE
 	msgbox ViridianCity_Gym_Text_LeaderBlue_ExplainTM, MSGBOX_DEFAULT
 	setflag FLAG_BADGE16_GET
 	setflag FLAG_DEFEATED_VIRIDIAN_GYM
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 16
 	call Common_EventScript_SetGymTrainers_hns
+	call ViridianCity_Gym_EventScript_PJRReward
 	closemessage
 	setflag FLAG_HIDE_LEAGUE_BLACKBELT
 	setflag FLAG_HIDE_SEAFOAM_BLAINE
@@ -30,12 +31,14 @@ ViridianCity_Gym_EventScript_Blue::
 	end
 
 ViridianCity_Gym_EventScript_Blue_Defeated::
+	call ViridianCity_Gym_EventScript_PJRReward
 	msgbox ViridianCity_Gym_Text_LeaderBlue_Epilogue, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
 
 ViridianCity_Gym_EventScript_BlueGotoDojo::
+	call ViridianCity_Gym_EventScript_PJRReward
 	msgbox ViridianCity_Gym_Text_BlueGotoDojo, MSGBOX_DEFAULT
 	closemessage
 	clearflag FLAG_HIDE_DOJO_BLUE
@@ -48,6 +51,7 @@ ViridianCity_Gym_Text_BlueGotoDojo:
 	.string "come to the FIGHTING DOJO!$"
 
 ViridianCity_Gym_EventScript_BlueAtDojo::
+	call ViridianCity_Gym_EventScript_PJRReward
 	msgbox ViridianCity_Gym_Text_LeaderBlue_Epilogue, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -88,10 +92,10 @@ ViridianCity_Gym_Text_LeaderBlue_GiveTM:
 	.string "Take this with you.$"
 
 ViridianCity_Gym_Text_LeaderBlue_ExplainTM:
-	.string "That's TRICK ROOM.\p"
-	.string "All POKEMON in battle will change speed.\n"
-	.string "Slow goes first. Fast goes last.\p"
-	.string "Use it to turn a battle on its head.$"
+	.string "That's EARTHQUAKE.\p"
+	.string "It hits hard across the whole field.\n"
+	.string "A move worthy of the EARTHBADGE.\p"
+	.string "Use it well, CHAMP.$"
 
 ViridianCity_Gym_Text_LeaderBlue_Epilogue:
 	.string "BLUE: Listen, you.\p"
@@ -147,3 +151,16 @@ ViridianCity_Gym_Text_GymStatuePlayerWon::
     .string "WINNING TRAINERS:\n"
 	.string "BLUE, RED, {PLAYER}$"
 
+ViridianCity_Gym_EventScript_PJRReward::
+	goto_if_set FLAG_PJR_GYM_REWARD_BLUE, ViridianCity_Gym_EventScript_PJRRewardDone
+	giveitem ITEM_LIFE_ORB
+	goto_if_eq VAR_RESULT, FALSE, ViridianCity_Gym_EventScript_PJRRewardDone
+	addmoney 10000
+	setflag FLAG_PJR_GYM_REWARD_BLUE
+	msgbox ViridianCity_Gym_Text_PJRPrizeMoney, MSGBOX_DEFAULT
+ViridianCity_Gym_EventScript_PJRRewardDone::
+	return
+
+ViridianCity_Gym_Text_PJRPrizeMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money.$"

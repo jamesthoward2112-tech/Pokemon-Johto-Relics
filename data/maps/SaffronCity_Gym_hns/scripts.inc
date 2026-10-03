@@ -48,12 +48,14 @@ SaffronCity_Gym_EventScript_Sabrina::
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 13
 	call Common_EventScript_SetGymTrainers_hns
+	call SaffronCity_Gym_EventScript_PJRReward
 	closemessage
 	clearflag FLAG_HIDE_OLIVINE_SABRINA
 	release
 	end
 
 SaffronCity_Gym_EventScript_Sabrina_Defeated::
+	call SaffronCity_Gym_EventScript_PJRReward
 	msgbox SaffronCity_Gym_Text_SabrinaPostBattle, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -200,3 +202,17 @@ SaffronCity_Gym_Text_GymStatuePlayerWon::
     .string "LEADER: SABRINA\p"
     .string "WINNING TRAINERS:\n"
 	.string "BLUE, RED, {PLAYER}$"
+
+SaffronCity_Gym_EventScript_PJRReward::
+	goto_if_set FLAG_PJR_GYM_REWARD_SABRINA, SaffronCity_Gym_EventScript_PJRRewardDone
+	giveitem ITEM_TWISTED_SPOON
+	goto_if_eq VAR_RESULT, FALSE, SaffronCity_Gym_EventScript_PJRRewardDone
+	addmoney 10000
+	setflag FLAG_PJR_GYM_REWARD_SABRINA
+	msgbox SaffronCity_Gym_Text_PJRPrizeMoney, MSGBOX_DEFAULT
+SaffronCity_Gym_EventScript_PJRRewardDone::
+	return
+
+SaffronCity_Gym_Text_PJRPrizeMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money.$"
