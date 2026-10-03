@@ -200,3 +200,51 @@ MoveTutor_AfterChooseBoxMon::
 	special CanTeachMoveBoxMon
 	waitstate
 	return
+
+
+@ PJR: repeatable regional move tutors.
+PJR_MoveTutor_KnockOff::
+	lock
+	faceplayer
+	move_tutor MOVE_KNOCK_OFF, PJR_MoveTutor_Text_KnockOffTeach, PJR_MoveTutor_Text_WhichMon, PJR_MoveTutor_EventScript_Declined, PJR_MoveTutor_EventScript_Taught
+	end
+
+PJR_MoveTutor_ShadowClaw::
+	lock
+	faceplayer
+	move_tutor MOVE_SHADOW_CLAW, PJR_MoveTutor_Text_ShadowClawTeach, PJR_MoveTutor_Text_WhichMon, PJR_MoveTutor_EventScript_Declined, PJR_MoveTutor_EventScript_Taught
+	end
+
+PJR_MoveTutor_DrainPunch::
+	lock
+	faceplayer
+	move_tutor MOVE_DRAIN_PUNCH, PJR_MoveTutor_Text_DrainPunchTeach, PJR_MoveTutor_Text_WhichMon, PJR_MoveTutor_EventScript_Declined, PJR_MoveTutor_EventScript_Taught
+	end
+
+PJR_MoveTutor_Outrage::
+	lock
+	faceplayer
+	move_tutor MOVE_OUTRAGE, PJR_MoveTutor_Text_OutrageTeach, PJR_MoveTutor_Text_WhichMon, PJR_MoveTutor_EventScript_Declined, PJR_MoveTutor_EventScript_Taught
+	end
+
+PJR_MoveTutor_EarthPower::
+	lock
+	faceplayer
+	move_tutor MOVE_EARTH_POWER, PJR_MoveTutor_Text_EarthPowerTeach, PJR_MoveTutor_Text_WhichMon, PJR_MoveTutor_EventScript_Declined, PJR_MoveTutor_EventScript_Taught
+	end
+
+PJR_MoveTutor_Superpower::
+	lock
+	faceplayer
+	move_tutor MOVE_SUPERPOWER, PJR_MoveTutor_Text_SuperpowerTeach, PJR_MoveTutor_Text_WhichMon, PJR_MoveTutor_EventScript_Declined, PJR_MoveTutor_EventScript_Taught
+	end
+
+PJR_MoveTutor_EventScript_Declined::
+	msgbox PJR_MoveTutor_Text_Declined, MSGBOX_DEFAULT
+	release
+	end
+
+PJR_MoveTutor_EventScript_Taught::
+	msgbox PJR_MoveTutor_Text_Taught, MSGBOX_DEFAULT
+	release
+	end

@@ -2437,28 +2437,28 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_ANCIENT_BASTION] =
     {
         .name = _("ANCIENT BASTION"),
-        .description = COMPOUND_STRING("Physical hits scatter stones\nup to three times."),
+        .description = COMPOUND_STRING("Physical hits set Spikes."),
         .aiRating = 9,
     },
 
     [ABILITY_ANCIENT_BLOOM] =
     {
         .name = _("ANCIENT BLOOM"),
-        .description = COMPOUND_STRING("Heals and grows Grassy Terrain."),
+        .description = COMPOUND_STRING("Heals; sets Grassy Terrain."),
         .aiRating = 8,
     },
 
     [ABILITY_CINDER_VEIL] =
     {
         .name = _("CINDER VEIL"),
-        .description = COMPOUND_STRING("Softens first hit; burns contact."),
+        .description = COMPOUND_STRING("Halves the first hit taken."),
         .aiRating = 8,
     },
 
     [ABILITY_TIDAL_ROAR] =
     {
         .name = _("TIDAL ROAR"),
-        .description = COMPOUND_STRING("Lowers foes' Atk and Sp. Atk."),
+        .description = COMPOUND_STRING("Lowers foes' Atk & Sp. Atk."),
         .aiRating = 8,
     },
 
@@ -2472,7 +2472,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_SACRED_REBIRTH] =
     {
         .name = _("SACRED REBIRTH"),
-        .description = COMPOUND_STRING("Survives one KO hit and revives."),
+        .description = COMPOUND_STRING("Survives one KO; revives."),
         .aiRating = 10,
     },
 

@@ -255,3 +255,38 @@ MoveTutor_Text_HeadbuttDeclined:
 MoveTutor_Text_HeadbuttTaught:
 	.string "Rattle trees with HEADBUTT.\n"
 	.string "Sometimes, sleeping POKéMON fall out.$"
+
+
+@ PJR regional move tutors
+PJR_MoveTutor_Text_KnockOffTeach:
+	.string "I can teach KNOCK OFF.\p"
+	.string "Want one of your POKéMON to learn it?$"
+
+PJR_MoveTutor_Text_ShadowClawTeach:
+	.string "I can teach SHADOW CLAW.\p"
+	.string "Want one of your POKéMON to learn it?$"
+
+PJR_MoveTutor_Text_DrainPunchTeach:
+	.string "I can teach DRAIN PUNCH.\p"
+	.string "Want one of your POKéMON to learn it?$"
+
+PJR_MoveTutor_Text_OutrageTeach:
+	.string "I can teach OUTRAGE.\p"
+	.string "Want one of your POKéMON to learn it?$"
+
+PJR_MoveTutor_Text_EarthPowerTeach:
+	.string "I can teach EARTH POWER.\p"
+	.string "Want one of your POKéMON to learn it?$"
+
+PJR_MoveTutor_Text_SuperpowerTeach:
+	.string "I can teach SUPERPOWER.\p"
+	.string "Want one of your POKéMON to learn it?$"
+
+PJR_MoveTutor_Text_WhichMon:
+	.string "Which POKéMON should learn the move?$"
+
+PJR_MoveTutor_Text_Declined:
+	.string "No problem. Come back any time.$"
+
+PJR_MoveTutor_Text_Taught:
+	.string "Done! Put that move to good use.$"

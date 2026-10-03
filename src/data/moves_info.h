@@ -23341,7 +23341,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_SPECIAL,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_BURN,
-            .chance = 20,
+            .chance = 30,
         }),
         .battleAnimScript = gBattleAnimMove_EarthPower,
     },
