@@ -5,7 +5,16 @@ Route14_hns_MapScripts::
 
 Route14_OnTransition:
 	callnative SetTimeBasedEncounters
+	setflag FLAG_HIDE_ROUTE14_EUSINE
 	end
+
+Route14_EventScript_EusineIdle::
+	msgbox Route14_Text_EusineIdle, MSGBOX_DEFAULT
+	end
+
+Route14_Text_EusineIdle:
+	.string "EUSINE: SUICUNE never stays still for long.\n"
+	.string "I'll keep searching.$"
 
 Route14_TriggerSuicune_5::
 	lock
