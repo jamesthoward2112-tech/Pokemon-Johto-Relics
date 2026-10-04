@@ -4,6 +4,9 @@ ViridianCity_hns_MapScripts::
 	.byte 0
 
 ViridianCity_EventScript_CityEnter::
+	goto_if_unset FLAG_IS_CHAMPION, ViridianCity_EventScript_CityEnter_Visited
+	call Common_EventScript_PJRInitKanto
+ViridianCity_EventScript_CityEnter_Visited:
 	setflag FLAG_VISITED_VIRIDIAN_CITY
 	end
 
@@ -47,12 +50,17 @@ ViridianCity_EventScript_GrampsDoubted::
 	end
 
 VirianCity_EventScript_GymGramps::
+	goto_if_set FLAG_DEFEATED_VIRIDIAN_GYM, VirianCity_EventScript_GymGrampsDojo
 	goto_if_set FLAG_HIDE_CINNABAR_BLUE, VirianCity_EventScript_GymGrampsBlue
 	msgbox ViridianCity_Text_GrampsNearGym, MSGBOX_NPC
 	end
 
 VirianCity_EventScript_GymGrampsBlue::
 	msgbox ViridianCity_Text_GrampsNearGym_BlueReturned, MSGBOX_NPC
+	end
+
+VirianCity_EventScript_GymGrampsDojo::
+	msgbox ViridianCity_Text_GrampsNearGym_BlueDojo, MSGBOX_NPC
 	end
 
 ViridianCity_EventScript_Fisher::
@@ -102,15 +110,24 @@ ViridianCity_Text_CoffeeGramps_Doubted:
 	.string "show you a thing or two. Humph!$"
 
 ViridianCity_Text_GrampsNearGym:
-	.string "This GYM didn't have a LEADER\n"
-	.string "until recently.\p"
-	.string "A young man from PALLET became\n"
-	.string "the LEADER, but he's often away.$"
+	.string "This is KANTO's final GYM.\p"
+	.string "BLUE won't return until you've won\n"
+	.string "seven KANTO BADGES.\p"
+	.string "Just arrived from JOHTO? Head north\n"
+	.string "through VIRIDIAN FOREST.\p"
+	.string "BROCK in PEWTER CITY is the best\n"
+	.string "place to start.$"
 
 ViridianCity_Text_GrampsNearGym_BlueReturned:
-	.string "Are you going to battle the\n"
-	.string "LEADER?\p"
+	.string "Seven KANTO BADGES already?\p"
+	.string "Then BLUE is back, and VIRIDIAN is\n"
+	.string "your final KANTO challenge.\p"
 	.string "Good luck to you. You'll need it.$"
+
+ViridianCity_Text_GrampsNearGym_BlueDojo:
+	.string "You beat BLUE? Impressive!\p"
+	.string "He's moved to the FIGHTING DOJO\n"
+	.string "in SAFFRON CITY for rematches.$"
 
 ViridianCity_Text_DreamEaterFisherNew:
 	.string "…Zzzzz…\p" 

@@ -13,12 +13,15 @@ ViridianCity_Gym_OnTransition_End::
 
 ViridianCity_Gym_BlueNotDefeated::
 	setflag FLAG_HIDE_DOJO_BLUE
+	goto_if_set FLAG_HIDE_CINNABAR_BLUE, ViridianCity_Gym_OnTransition_End
+	setflag FLAG_HIDE_VIRIDIAN_BLUE
 	end
 
 ViridianCity_Gym_EventScript_Blue::
 	lock
 	faceplayer
 	goto_if_set FLAG_DEFEATED_VIRIDIAN_GYM, ViridianCity_Gym_EventScript_BlueGotoDojo
+	goto_if_unset FLAG_HIDE_CINNABAR_BLUE, ViridianCity_Gym_EventScript_BlueNotReady
 	msgbox ViridianCity_Gym_Text_LeaderBlue_Before, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_BLUE_HNS, ViridianCity_Gym_Text_LeaderBlue_Win
 	message ViridianCity_Gym_Text_ReceivedEarthBadge
@@ -41,6 +44,16 @@ ViridianCity_Gym_EventScript_Blue::
 	release
 	end
 
+ViridianCity_Gym_EventScript_BlueNotReady::
+	msgbox ViridianCity_Gym_Text_BlueNotReady, MSGBOX_DEFAULT
+	closemessage
+	fadescreenswapbuffers FADE_TO_BLACK
+	setflag FLAG_HIDE_VIRIDIAN_BLUE
+	removeobject LOCALID_VIRIDIAN_BLUE
+	fadescreenswapbuffers FADE_FROM_BLACK
+	release
+	end
+
 ViridianCity_Gym_EventScript_BlueGotoDojo::
 	msgbox ViridianCity_Gym_Text_BlueGotoDojo, MSGBOX_DEFAULT
 	closemessage
@@ -52,6 +65,12 @@ ViridianCity_Gym_EventScript_BlueGotoDojo::
 	fadescreenswapbuffers FADE_FROM_BLACK
 	release
 	end
+
+ViridianCity_Gym_Text_BlueNotReady:
+	.string "BLUE: You're early.\p"
+	.string "VIRIDIAN is KANTO's final GYM.\p"
+	.string "Beat the other seven LEADERS first.\n"
+	.string "Start with BROCK in PEWTER CITY.$"
 
 ViridianCity_Gym_Text_BlueGotoDojo:
 	.string "BLUE: Ready for a rematch?\p"
@@ -115,12 +134,15 @@ ViridianCity_Gym_EventScript_GymGuyAfter::
 
 ViridianCity_Gym_Text_Guide:
 	.string "Yo, CHAMP in making!\p"
-	.string "How's it going? Looks like you're on\n"
-	.string "a roll.\p"
-	.string "The GYM LEADER is a guy who battled\n"
-	.string "the CHAMPION three years ago.\p"
-	.string "He's no pushover.\p"
-	.string "Give it everything you've got!$"
+	.string "VIRIDIAN is KANTO's final GYM.\p"
+	.string "If you've just arrived from JOHTO,\n"
+	.string "head north to PEWTER CITY first.\p"
+	.string "A good route is PEWTER, CERULEAN,\n"
+	.string "VERMILION, SAFFRON and CELADON,\p"
+	.string "then FUCHSIA, SEAFOAM and finally\n"
+	.string "back here to VIRIDIAN.\p"
+	.string "With seven KANTO BADGES, find BLUE\n"
+	.string "on CINNABAR ISLAND.$"
 
 ViridianCity_Gym_Text_Guide_Win:
 	.string "Man, you are truly tough…\p"

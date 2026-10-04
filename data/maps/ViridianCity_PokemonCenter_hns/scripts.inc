@@ -7,7 +7,7 @@ ViridianCity_PokemonCenter_OnTransition::
 	end
 
 ViridianCity_PokemonCenter_EventScript_CooltrainerM::
-	goto_if_set FLAG_HIDE_CINNABAR_BLUE, VirianCity_EventScript_GymGrampsBlue
+	goto_if_set FLAG_HIDE_CINNABAR_BLUE, ViridianCity_PokemonCenter_EventScript_CooltrainerMBlue
 	msgbox ViridianCity_PokemonCenter_Text_1FCooltrainerM, MSGBOX_NPC
 	end
 

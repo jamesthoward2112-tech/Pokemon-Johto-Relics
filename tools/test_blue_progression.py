@@ -69,11 +69,17 @@ CINNABAR="FLAG_HIDE_CINNABAR_BLUE"
 BADGE="FLAG_BADGE16_GET"
 
 class BlueProgression(unittest.TestCase):
-    def test_unbeaten_blue_battles_even_with_stale_dojo_flag(self):
-        s=FieldScript()
+    def test_legitimately_invited_blue_battles_even_with_stale_dojo_flag(self):
+        s=FieldScript([CINNABAR,DOJO])
         s.run("ViridianCity_Gym_EventScript_Blue")
         self.assertEqual(s.battles,["TRAINER_BLUE_HNS"])
         self.assertNotIn(BADGE,s.flags)
+    def test_stale_early_blue_cannot_battle_and_is_removed(self):
+        s=FieldScript([DOJO],badges=8)
+        s.run("ViridianCity_Gym_EventScript_Blue")
+        self.assertEqual(s.battles,[])
+        self.assertIn(GYM,s.flags)
+        self.assertIn("LOCALID_VIRIDIAN_BLUE",s.removed)
     def test_cinnabar_stale_blue_sends_existing_winner_to_dojo(self):
         s=FieldScript([DEFEATED,BADGE,DOJO],badges=15)
         s.run("CinnabarIsland_EventScript_Blue")
@@ -105,6 +111,14 @@ class BlueProgression(unittest.TestCase):
         self.assertNotIn(DOJO,s.flags)
         self.assertIn("LOCALID_VIRIDIAN_BLUE",s.removed)
         self.assertEqual(s.rewards,[])
+    def test_early_unbeaten_blue_is_hidden_on_gym_entry(self):
+        s=FieldScript([DOJO],badges=8)
+        s.transition("ViridianCity_Gym_hns")
+        self.assertIn(GYM,s.flags)
+    def test_legitimate_cinnabar_invitation_keeps_blue_visible(self):
+        s=FieldScript([CINNABAR,DOJO],badges=15)
+        s.transition("ViridianCity_Gym_hns")
+        self.assertNotIn(GYM,s.flags)
     def test_already_invited_save_repairs_gym_copy_on_entry(self):
         s=FieldScript([DEFEATED,BADGE])
         s.transition("ViridianCity_Gym_hns")
@@ -115,7 +129,7 @@ class BlueProgression(unittest.TestCase):
         self.assertIn("LOCALID_VIRIDIAN_BLUE",s.removed)
         self.assertIn(GYM,s.flags)
     def test_first_win_awards_once_and_hides_cinnabar_copy(self):
-        s=FieldScript([DOJO],win=True)
+        s=FieldScript([CINNABAR,DOJO],win=True)
         s.run("ViridianCity_Gym_EventScript_Blue")
         self.assertEqual(s.battles,["TRAINER_BLUE_HNS"])
         self.assertEqual(s.rewards,["ITEM_TM_TRICK_ROOM"])
