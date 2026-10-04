@@ -1,12 +1,24 @@
 ViridianCity_Gym_hns_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, ViridianCity_Gym_OnTransition
 	.byte 0
+
+@ Repair old saves where the Dojo invitation left a second Blue in the gym.
+ViridianCity_Gym_OnTransition::
+	goto_if_unset FLAG_DEFEATED_VIRIDIAN_GYM, ViridianCity_Gym_BlueNotDefeated
+	setflag FLAG_HIDE_CINNABAR_BLUE
+	goto_if_set FLAG_HIDE_DOJO_BLUE, ViridianCity_Gym_OnTransition_End
+	setflag FLAG_HIDE_VIRIDIAN_BLUE
+ViridianCity_Gym_OnTransition_End::
+	end
+
+ViridianCity_Gym_BlueNotDefeated::
+	setflag FLAG_HIDE_DOJO_BLUE
+	end
 
 ViridianCity_Gym_EventScript_Blue::
 	lock
 	faceplayer
-	goto_if_unset FLAG_HIDE_DOJO_BLUE, ViridianCity_Gym_EventScript_BlueAtDojo
 	goto_if_set FLAG_DEFEATED_VIRIDIAN_GYM, ViridianCity_Gym_EventScript_BlueGotoDojo
-	goto_if_set FLAG_DEFEATED_VIRIDIAN_GYM, ViridianCity_Gym_EventScript_Blue_Defeated
 	msgbox ViridianCity_Gym_Text_LeaderBlue_Before, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_BLUE_HNS, ViridianCity_Gym_Text_LeaderBlue_Win
 	message ViridianCity_Gym_Text_ReceivedEarthBadge
@@ -18,6 +30,7 @@ ViridianCity_Gym_EventScript_Blue::
 	msgbox ViridianCity_Gym_Text_LeaderBlue_ExplainTM, MSGBOX_DEFAULT
 	setflag FLAG_BADGE16_GET
 	setflag FLAG_DEFEATED_VIRIDIAN_GYM
+	setflag FLAG_HIDE_CINNABAR_BLUE
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 16
 	call Common_EventScript_SetGymTrainers_hns
@@ -28,29 +41,22 @@ ViridianCity_Gym_EventScript_Blue::
 	release
 	end
 
-ViridianCity_Gym_EventScript_Blue_Defeated::
-	msgbox ViridianCity_Gym_Text_LeaderBlue_Epilogue, MSGBOX_DEFAULT
-	closemessage
-	release
-	end
-
 ViridianCity_Gym_EventScript_BlueGotoDojo::
 	msgbox ViridianCity_Gym_Text_BlueGotoDojo, MSGBOX_DEFAULT
 	closemessage
+	fadescreenswapbuffers FADE_TO_BLACK
+	setflag FLAG_HIDE_VIRIDIAN_BLUE
+	setflag FLAG_HIDE_CINNABAR_BLUE
 	clearflag FLAG_HIDE_DOJO_BLUE
+	removeobject LOCALID_VIRIDIAN_BLUE
+	fadescreenswapbuffers FADE_FROM_BLACK
 	release
 	end
 
 ViridianCity_Gym_Text_BlueGotoDojo:
-	.string "BLUE: Back for more already?\p"
-	.string "If you want another shot at me,\n"
-	.string "come to the FIGHTING DOJO!$"
-
-ViridianCity_Gym_EventScript_BlueAtDojo::
-	msgbox ViridianCity_Gym_Text_LeaderBlue_Epilogue, MSGBOX_DEFAULT
-	closemessage
-	release
-	end
+	.string "BLUE: Ready for a rematch?\p"
+	.string "Meet me at the FIGHTING DOJO\n"
+	.string "in SAFFRON CITY!$"
 
 ViridianCity_Gym_Text_LeaderBlue_Before:
 	.string "BLUE: Yo! Finally got here, huh?\p"

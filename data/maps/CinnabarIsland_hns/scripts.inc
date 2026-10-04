@@ -6,6 +6,9 @@ CinnabarIsland_hns_MapScripts::
 CinnabarIsland_OnTransition:
 	setflag FLAG_VISITED_CINNABAR_ISLAND
 	callnative SetTimeBasedEncounters
+	goto_if_unset FLAG_DEFEATED_VIRIDIAN_GYM, CinnabarIsland_OnTransition_End
+	setflag FLAG_HIDE_CINNABAR_BLUE
+CinnabarIsland_OnTransition_End:
 	end
 
 CinnabarIsland_EventScript_Blaine::
@@ -33,7 +36,8 @@ CinnabarIsland_Text_Blaine:
 CinnabarIsland_EventScript_Blue::
 	lock
 	faceplayer
-	goto_if_eq VAR_NUM_BADGES, 15, CinnabarIsland_EventScript_BlueActive
+	goto_if_set FLAG_DEFEATED_VIRIDIAN_GYM, CinnabarIsland_EventScript_BlueRematch
+	goto_if_ge VAR_NUM_BADGES, 15, CinnabarIsland_EventScript_BlueActive
 	msgbox CinnabarIsland_Text_BlueBefore, MSGBOX_NPC
 	release
 	end
@@ -48,6 +52,25 @@ CinnabarIsland_EventScript_BlueActive::
 	release
 	end
 
+
+@ Handle a Cinnabar object already loaded by an older save or save state.
+CinnabarIsland_EventScript_BlueRematch::
+	msgbox CinnabarIsland_Text_BlueRematch, MSGBOX_DEFAULT
+	closemessage
+	fadescreenswapbuffers FADE_TO_BLACK
+	setflag FLAG_HIDE_CINNABAR_BLUE
+	setflag FLAG_HIDE_VIRIDIAN_BLUE
+	clearflag FLAG_HIDE_DOJO_BLUE
+	removeobject LOCALID_CINNABAR_BLUE
+	fadescreenswapbuffers FADE_FROM_BLACK
+	release
+	end
+
+CinnabarIsland_Text_BlueRematch:
+	.string "BLUE: You already earned my\n"
+	.string "EARTHBADGE!\p"
+	.string "For a rematch, meet me at the\n"
+	.string "FIGHTING DOJO in SAFFRON CITY!$"
 
 CinnabarIsland_Text_BlueBefore:
 	.string "Who are you?\p"
