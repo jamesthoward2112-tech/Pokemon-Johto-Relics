@@ -103,7 +103,6 @@ SSAqua_1F_EventScript_LeaveBoat::
 	clearflag FLAG_HIDE_GROUDON
 	clearflag FLAG_HIDE_KYOGRE
 	clearflag FLAG_HIDE_RAYQUAZA
-	clearflag FLAG_HIDE_SEAFOAM_BLAINE
 
 	clearflag FLAG_HIDE_CELADON_FALKNER
 	clearflag FLAG_HIDE_VIRIDIAN_BUGSY

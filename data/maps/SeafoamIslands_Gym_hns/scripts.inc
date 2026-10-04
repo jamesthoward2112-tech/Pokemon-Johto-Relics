@@ -2,8 +2,15 @@ SeafoamIslands_Gym_hns_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, SeafoamIslands_Gym_OnTransition
 	.byte 0
 
-SeafoamIslands_Gym_OnTransition: 
+SeafoamIslands_Gym_OnTransition:
 	setflag FLAG_TEMP_1
+	clearflag FLAG_HIDE_SEAFOAM_GYMGUY
+	goto_if_set FLAG_DEFEATED_CINNABAR_ISLAND_GYM, SeafoamIslands_Gym_OnTransition_Defeated
+	setflag FLAG_HIDE_SEAFOAM_BLAINE
+	end
+
+SeafoamIslands_Gym_OnTransition_Defeated:
+	clearflag FLAG_HIDE_SEAFOAM_BLAINE
 	end
 
 SeafoamIslands_Gym_EventScript_Blaine::
@@ -22,11 +29,20 @@ SeafoamIslands_Gym_EventScript_Blaine::
 	setflag FLAG_DEFEATED_CINNABAR_ISLAND_GYM
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 15
+	clearflag FLAG_HIDE_SEAFOAM_BLAINE
 	clearflag FLAG_HIDE_SEAFOAM_GYMGUY
 	call Common_EventScript_SetGymTrainers_hns
+	msgbox SeafoamIslands_Gym_Text_BlaineOpenPassage, MSGBOX_DEFAULT
 	closemessage
+	applymovement LOCALID_SEAFOAM_BLAINE, SeafoamIslands_Gym_Movement_BlaineStepAside
+	waitmovement 0
 	release
 	end
+
+SeafoamIslands_Gym_Movement_BlaineStepAside:
+	walk_left
+	face_down
+	step_end
 
 SeafoamIslands_Gym_EventScript_Blaine_Defeated::
 	msgbox SeafoamIslands_Gym_Text_BlaineAfterBattle, MSGBOX_DEFAULT
@@ -35,10 +51,16 @@ SeafoamIslands_Gym_EventScript_Blaine_Defeated::
 	end
 
 SeafomIslands2_EventScript_GymGuide::
+	goto_if_unset FLAG_DEFEATED_CINNABAR_ISLAND_GYM, SeafomIslands2_EventScript_GymGuideBefore
 	goto_if_set FLAG_TEMP_2, SeafomIslands2_EventScript_GymGuide2
 	msgbox SeafoamIslands_Gym_Text_GymGuideWin, MSGBOX_NPC
 	setflag FLAG_TEMP_2
 	end
+
+SeafomIslands2_EventScript_GymGuideBefore::
+	msgbox SeafoamIslands_Gym_Text_GymGuideBefore, MSGBOX_NPC
+	end
+
 SeafomIslands2_EventScript_GymGuide2::
 	msgbox SeafoamIslands_Gym_Text_GymGuideWin2, MSGBOX_NPC
 	end
@@ -97,11 +119,19 @@ SeafoamIslands_Gym_Text_BlaineWinLoss:
 SeafoamIslands_Gym_Text_ReceivedVolcanoBadge:
 	.string "{PLAYER} received VOLCANOBADGE.$"
 
+SeafoamIslands_Gym_Text_BlaineOpenPassage:
+	.string "BLAINE: You've earned more than a\n"
+	.string "BADGE today.\p"
+	.string "There's a strange heat coming from\n"
+	.string "the passage behind me.\p"
+	.string "It isn't from my POKéMON.\p"
+	.string "Go on--take a look for yourself!$"
+
 SeafoamIslands_Gym_Text_BlaineAfterBattle:
-	.string "BLAINE: I did lose this time, but\n"
-	.string "I'm going to win the next time.\p"
-	.string "When I rebuild my CINNABAR GYM,\n"
-	.string "we'll have to have a rematch.$"
+	.string "BLAINE: That passage behind the\n"
+	.string "platform is open to you now.\p"
+	.string "Whatever is creating that heat,\n"
+	.string "you've earned the right to face it.$"
 
 SeafoamIslands_Gym_Text_BlaineFightDone:
 	.string "BLAINE: My fire POKéMON will be\n"
@@ -122,16 +152,22 @@ SeafoamIslands_Gym_Text_BlaineRematchDefeat:
 	.string "You've burned right through my\n"
 	.string "defenses.$"
 
+SeafoamIslands_Gym_Text_GymGuideBefore:
+	.string "Yo, CHAMP in making!\p"
+	.string "BLAINE lost his old CINNABAR GYM,\n"
+	.string "so he's set up here in SEAFOAM.\p"
+	.string "He's waiting on the platform ahead.\n"
+	.string "Bring something that can take HEAT!$"
+
 SeafoamIslands_Gym_Text_GymGuideWin:
-	.string "Yo!\p"
-	.string "… Huh? It's over already?\p"
-	.string "Sorry, sorry!\p"
-	.string "CINNABAR GYM was gone, so I didn't\n"
-	.string "know where to find you.\p"
-	.string "But, hey, you're plenty strong even\n"
-	.string "without my advice. I knew you'd win!$"
+	.string "Yo, CHAMP! Now THAT was a battle!\p"
+	.string "BLAINE's stepped aside, and the\n"
+	.string "passage behind him is open.\p"
+	.string "Something powerful is stirring deeper\n"
+	.string "in the cave. I'd go take a look!$"
 
 SeafoamIslands_Gym_Text_GymGuideWin2:
-	.string "A POKéMON GYM can be anywhere as\n"
-	.string "long as the GYM LEADER is there.\p"
-	.string "There's no need for a building.$"
+	.string "BLAINE may not have a building, but\n"
+	.string "SEAFOAM is his GYM now.\p"
+	.string "And you definitely earned that\n"
+	.string "VOLCANOBADGE.$"
