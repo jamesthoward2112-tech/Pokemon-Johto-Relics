@@ -1,6 +1,7 @@
 PJR Alpha latest verified ROM
-Source commit: 885f5ee5af
-SHA256: AFA086A9F59DB60D0674680BC8F73EFC0AA591A41EDDA6C314AABECEF7327044
-Built: 2026-10-04 21:52 BST
+Source commit: e49b29076d
+SHA256: 8790C22190D0A643489D2E8F056A07AC1FEB3905650C46EAE54E2AAFCB46D2B5
+Built: 2026-10-04 22:03 BST
 Size: 33554432 bytes
-Elite Four audit: first clear has custom presence across all five; standard rematch has 3+ custom per member; Lance standard and post-OBC rematches are 6/6 custom.
+Mt Silver progression: right/Kanto guard opens after first League clear; left/Mt Silver guard opens after second League clear; Reception Gate repairs existing saves on entry.
+Elite Four custom roster overhaul from 885f5ee5af retained and regression-tested.
