@@ -29,19 +29,19 @@ PalletTown_Lab_EventScript_OakBadgeCheck::
 	end
 
 PalletTown_Lab_EventScript_Oak16Badges::
-	msgbox PalletTown_Lab_Text_OakOpenMtSilver, MSGBOX_DEFAULT
+	goto_if_set FLAG_IS_KANTO_CHAMPION, PalletTown_Lab_EventScript_OakMtSilverOpen
+	msgbox PalletTown_Lab_Text_OakOpenIndigoPlateau, MSGBOX_DEFAULT
 	closemessage
-	setflag FLAG_INDIGOJUNCTION_HIDE_SILVER_GUARD
-	setvar VAR_ROUTE28_SCIENTIST, 1
-	setvar VAR_PALLETTOWN_LABSTATE, 2
-	call_if_unset FLAG_IS_KANTO_CHAMPION, PalletTown_Lab_EventScript_OakKantoLeague
 	release
 	end
 
-PalletTown_Lab_EventScript_OakKantoLeague::
-	msgbox PalletTown_Lab_Text_OakOpenIndigoPlateau, MSGBOX_DEFAULT
+PalletTown_Lab_EventScript_OakMtSilverOpen::
+	msgbox PalletTown_Lab_Text_OakOpenMtSilver, MSGBOX_DEFAULT
 	closemessage
-	return
+	setvar VAR_ROUTE28_SCIENTIST, 1
+	setvar VAR_PALLETTOWN_LABSTATE, 2
+	release
+	end
 
 PalletTown_Lab_EventScript_Oak9Badges::
 	msgbox PalletTown_Lab_Text_OakYesKantoBadges, MSGBOX_DEFAULT
@@ -104,15 +104,13 @@ PalletTown_Lab_Text_OakOpenMtSilver:
 	.string "reach MT.SILVER from there.$"
 
 PalletTown_Lab_Text_OakOpenIndigoPlateau:
-	.string "Oh, and speaking of the INDIGO\n"
-	.string "PLATEAU, now that you've earned\l"
-	.string "16 badges, the KANTO LEAGUE\l"
-	.string "will be ready to accept\l"
-	.string "your challenge once again.\p"
-	.string "But be warned, LANCE and his\n"
-	.string "ELITE FOUR won't go easy on you\l"
-	.string "this time.\p"
-	.string "Good luck, {PLAYER}!$"
+	.string "Now that you've earned all 16\n"
+	.string "BADGES, return to INDIGO PLATEAU.\p"
+	.string "Defeat LANCE and the ELITE FOUR\n"
+	.string "once more, and the restriction on\l"
+	.string "MT.SILVER will be lifted.\p"
+	.string "They won't go easy on you this\n"
+	.string "time. Good luck, {PLAYER}!$"
 
 PalletTown_Lab_Text_OakNoKantoBadges:
 	.string "OAK: Hmm? You're not collecting\n"

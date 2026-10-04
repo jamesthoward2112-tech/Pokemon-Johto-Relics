@@ -1,5 +1,26 @@
 ReceptionGate_hns_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, ReceptionGate_OnTransition
 	.byte 0
+
+@ PJR progression repair: the east/Kanto route opens after the first League clear,
+@ while the west/Mt. Silver route opens only after the rematch League clear.
+@ Running this on transition also repairs existing saves created before these gates
+@ were tied directly to the two Champion flags.
+ReceptionGate_OnTransition::
+	goto_if_unset FLAG_IS_CHAMPION, ReceptionGate_OnTransition_NotJohtoChampion
+	setflag FLAG_INDIGOJUNCTION_HIDE_KANTO_GUARD
+	goto_if_unset FLAG_IS_KANTO_CHAMPION, ReceptionGate_OnTransition_LockMtSilver
+	setflag FLAG_INDIGOJUNCTION_HIDE_SILVER_GUARD
+	end
+
+ReceptionGate_OnTransition_LockMtSilver::
+	clearflag FLAG_INDIGOJUNCTION_HIDE_SILVER_GUARD
+	end
+
+ReceptionGate_OnTransition_NotJohtoChampion::
+	clearflag FLAG_INDIGOJUNCTION_HIDE_KANTO_GUARD
+	clearflag FLAG_INDIGOJUNCTION_HIDE_SILVER_GUARD
+	end
 
 ReceptionGate_EventScript_Janine::
     lock
