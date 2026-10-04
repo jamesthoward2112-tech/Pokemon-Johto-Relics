@@ -1,5 +1,6 @@
 PJR Alpha latest verified ROM
-Source commit: e15d292d14
-SHA256: BF46619206CC428976B63B8929A8A5F57045B07E14AA6C2FCB983AE918F73BAE
-Built: 2026-10-04 20:09 BST
+Source commit: 885f5ee5af
+SHA256: AFA086A9F59DB60D0674680BC8F73EFC0AA591A41EDDA6C314AABECEF7327044
+Built: 2026-10-04 21:52 BST
 Size: 33554432 bytes
+Elite Four audit: first clear has custom presence across all five; standard rematch has 3+ custom per member; Lance standard and post-OBC rematches are 6/6 custom.
