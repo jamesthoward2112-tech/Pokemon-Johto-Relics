@@ -169,14 +169,14 @@ Mugshot: Orange
 
 Steelix @ Smooth Rock
 Level: 67
-Ability: Sand Stream
+Ability: Sturdy
 IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 0 Spe
 EVs: 252 HP / 4 Atk / 252 Def / 0 SpA / 0 SpD / 0 Spe
 Impish Nature
+- Sandstorm
 - Stealth Rock
 - Body Press
 - Heavy Slam
-- Protect
 
 Obsideon @ Clear Amulet
 Level: 68

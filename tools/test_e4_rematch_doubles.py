@@ -40,7 +40,7 @@ GIMMICKS = {
         "- Icy Wind", "Ability: Lightning Rod",
     ],
     "TRAINER_BRUNO_2_HNS": [
-        "Ability: Sand Stream", "Ability: Sand Rush", "- Stealth Rock",
+        "Ability: Sturdy", "Ability: Sand Rush", "- Sandstorm", "- Stealth Rock",
         "- Wide Guard", "- Dynamic Punch",
     ],
     "TRAINER_KAREN_2_HNS": [
