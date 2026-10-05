@@ -8932,57 +8932,74 @@ Class: Elite Four Hns
 Pic: Elite Four Will Hns
 Gender: Male
 Music: Hg Elite Four
-Double Battle: No
-AI: Basic Trainer
+Double Battle: Yes
+AI: Smart Trainer / Prediction
 Mugshot: Pink
-Items: Full Restore / Full Restore
 
-Alakazam Relic
+Slowking Relic @ Covert Cloak
 Level: 66
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Ability: Regenerator
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+EVs: 252 HP / 0 Atk / 124 Def / 0 SpA / 132 SpD / 0 Spe
+Sassy Nature
+- Trick Room
 - Psychic
-- Shadow Ball
-- Calm Mind
-- Recover
+- Scald
+- Protect
 
-Mystynx
+Mystynx @ Light Clay
 Level: 67
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Ability: Snow Warning
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 0 Atk / 0 Def / 4 SpA / 0 SpD / 252 Spe
+Timid Nature
+- Aurora Veil
 - Blizzard
-- Psychic
-- Lovely Kiss
-- Perish Song
+- Moonblast
+- Fake Out
 
 Exeggutor @ Sitrus Berry
 Level: 67
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Ancient Power
-- Sleep Powder
-- Dream Eater
-- Soft Boiled
-
-Grumpig
-Level: 67
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Teeter Dance
-- Power Gem
-- Snore
-- Rest
-
-Slowking Relic @ Quick Claw
-Level: 66
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Surf
+Ability: Harvest
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+EVs: 252 HP / 0 Atk / 0 Def / 252 SpA / 4 SpD / 0 Spe
+Quiet Nature
+- Energy Ball
 - Psychic
-- Fire Punch
-- Amnesia
+- Sleep Powder
+- Protect
 
-Xatu @ Leftovers
+Grumpig @ Mental Herb
+Level: 67
+Ability: Own Tempo
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+EVs: 252 HP / 0 Atk / 4 Def / 0 SpA / 252 SpD / 0 Spe
+Sassy Nature
+- Imprison
+- Trick Room
+- Psychic
+- Helping Hand
+
+Alakazam Relic @ Life Orb
+Level: 66
+Ability: Magic Guard
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 0 Atk / 0 Def / 252 SpA / 0 SpD / 252 Spe
+Timid Nature
+- Psychic
+- Shadow Ball
+- Dazzling Gleam
+- Protect
+
+Xatu @ Focus Sash
 Level: 68
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Future Sight
-- Air Slash
-- Confuse Ray
+Ability: Magic Bounce
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 0 Atk / 0 Def / 252 SpA / 0 SpD / 252 Spe
+Timid Nature
+- Tailwind
+- Psychic
+- Heat Wave
 - Protect
 
 === TRAINER_BRUNO_1_HNS ===
@@ -9042,58 +9059,75 @@ Class: Elite Four Hns
 Pic: Elite Four Bruno Hns
 Gender: Male
 Music: Hg Elite Four
-Double Battle: No
-AI: Basic Trainer
+Double Battle: Yes
+AI: Smart Trainer / Prediction
 Mugshot: Orange
-Items: Full Restore / Full Restore
 
-Steelix @ Quick Claw
+Steelix @ Smooth Rock
 Level: 67
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Crunch
-- Earthquake
-- Explosion
-- Iron Tail
+Ability: Sand Stream
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 0 Spe
+EVs: 252 HP / 4 Atk / 252 Def / 0 SpA / 0 SpD / 0 Spe
+Impish Nature
+- Stealth Rock
+- Body Press
+- Heavy Slam
+- Protect
 
-Poliwrath @ Scope Lens
+Obsideon @ Clear Amulet
 Level: 68
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Submission
-- Blizzard
-- Hydro Pump
-- Psychic
+Ability: Sand Rush
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 0 HP / 252 Atk / 0 Def / 0 SpA / 4 SpD / 252 Spe
+Jolly Nature
+- Rock Slide
+- Head Smash
+- Crunch
+- Protect
 
-Heracurion @ Quick Claw
+Poliwrath @ Sitrus Berry
+Level: 68
+Ability: Water Absorb
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 0 Def / 0 SpA / 4 SpD / 0 Spe
+Adamant Nature
+- Wide Guard
+- Drain Punch
+- Liquidation
+- Ice Punch
+
+Heracurion @ Life Orb
 Level: 67
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Ability: Moxie
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 0 HP / 252 Atk / 0 Def / 0 SpA / 4 SpD / 252 Spe
+Jolly Nature
 - Close Combat
 - Megahorn
-- Earthquake
-- Stone Edge
+- Rock Slide
+- Protect
 
-Hariyama
-Level: 68
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Belly Drum
-- SmellingSalt
-- Focus Punch
-- Seismic Toss
-
-Hitmonchan Relic @ Scope Lens
+Hitmonchan Relic @ Punching Glove
 Level: 67
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Close Combat
+Ability: Iron Fist
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 0 HP / 252 Atk / 0 Def / 0 SpA / 4 SpD / 252 Spe
+Adamant Nature
+- Drain Punch
 - Thunder Punch
 - Ice Punch
-- Fire Punch
+- Mach Punch
 
-Machamp Relic @ Leftovers
+Machamp Relic @ Lum Berry
 Level: 68
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Ability: No Guard
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 0 Spe
+EVs: 252 HP / 252 Atk / 0 Def / 0 SpA / 4 SpD / 0 Spe
+Adamant Nature
+- Dynamic Punch
 - Rock Slide
-- Earthquake
-- Body Slam
-- Cross Chop
+- Knock Off
+- Protect
 
 === TRAINER_KAREN_1_HNS ===
 Name: KAREN
@@ -9152,58 +9186,75 @@ Class: Elite Four Hns
 Pic: Elite Four Karen Hns
 Gender: Male
 Music: Hg Elite Four
-Double Battle: No
-AI: Basic Trainer
+Double Battle: Yes
+AI: Smart Trainer / Prediction
 Mugshot: Yellow
-Items: Full Restore / Full Restore
 
-Umbreon @ Sitrus Berry
+Umbreon @ Leftovers
 Level: 68
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Growth
-- Shadow Ball
-- Hidden Power
-- Baton Pass
+Ability: Inner Focus
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 0 Atk / 4 Def / 0 SpA / 252 SpD / 0 Spe
+Careful Nature
+- Snarl
+- Foul Play
+- Helping Hand
+- Protect
 
-Weavile
+Weavile @ Focus Sash
 Level: 67
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Hone Claws
-- Metal Claw
-- Night Slash
-- Avalanche
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 0 HP / 252 Atk / 0 Def / 0 SpA / 4 SpD / 252 Spe
+Jolly Nature
+- Fake Out
+- Knock Off
+- Triple Axel
+- Ice Shard
 
-Donphalanx @ Scope Lens
+Donphalanx @ Assault Vest
 Level: 68
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Earthquake
-- Head Smash
-- Assurance
-- Iron Defense
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 0 Def / 0 SpA / 4 SpD / 0 Spe
+Adamant Nature
+- High Horsepower
+- Knock Off
+- Rock Slide
+- Ice Shard
 
-Grimfowl @ Sharp Beak
+Grimfowl @ Life Orb
 Level: 68
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Ability: No Guard
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 0 Atk / 0 Def / 252 SpA / 0 SpD / 252 Spe
+Timid Nature
+- Tailwind
+- Hurricane
 - Night Daze
-- Air Slash
-- Nasty Plot
-- Roost
+- Protect
 
-Absol @ Leftovers
+Absol @ Scope Lens
 Level: 67
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Ability: Super Luck
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 0 HP / 252 Atk / 0 Def / 0 SpA / 4 SpD / 252 Spe
+Jolly Nature
+- Sucker Punch
+- Night Slash
 - Psycho Cut
-- Shadow Claw
-- Perish Song
-- Slash
+- Protect
 
-Houndoom Relic @ Charcoal
+Houndoom Relic @ Shuca Berry
 Level: 69
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Flamethrower
-- Crunch
-- Iron Tail
-- Hidden Power
+Ability: Flash Fire
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 0 Atk / 0 Def / 252 SpA / 0 SpD / 252 Spe
+Timid Nature
+- Heat Wave
+- Dark Pulse
+- Will-O-Wisp
+- Protect
 
 === TRAINER_KOGA_1_HNS ===
 Name: KOGA
@@ -9262,58 +9313,75 @@ Class: Elite Four Hns
 Pic: Elite Four Koga Hns
 Gender: Male
 Music: Hg Elite Four
-Double Battle: No
-AI: Basic Trainer
+Double Battle: Yes
+AI: Smart Trainer / Prediction
 Mugshot: Purple
-Items: Full Restore / Full Restore
 
-Tentacruel @ Chesto Berry
+Toxeon @ Focus Sash
 Level: 67
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Waterfall
-- Blizzard
-- Sludge Wave
-- Rest
-
-Muk @ Leftovers
-Level: 67
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Minimize
-- Fire Blast
-- Gunk Shot
-- Toxic
-
-Toxeon
-Level: 67
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Ability: Lightning Rod
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
+Jolly Nature
 - Toxic Spikes
-- Sludge Wave
+- Poison Jab
 - Crunch
-- Thunder Fang
+- Protect
 
-Nidoking @ Quick Claw
-Level: 67
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Lovely Kiss
-- Fire Blast
-- Surf
-- Earthquake
+Crobat Relic @ Covert Cloak
+Level: 68
+Ability: Infiltrator
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 4 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
+Jolly Nature
+- Tailwind
+- Taunt
+- Cross Poison
+- Super Fang
 
-Beedrill Relic @ Bright Powder
+Muk @ Black Sludge
 Level: 67
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Ability: Poison Touch
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 0 Def / 0 SpA / 4 SpD / 0 Spe
+Adamant Nature
+- Gunk Shot
+- Knock Off
+- Venom Drench
+- Protect
+
+Tentacruel @ Assault Vest
+Level: 67
+Ability: Liquid Ooze
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 0 Atk / 0 Def / 252 SpA / 0 SpD / 252 Spe
+Timid Nature
+- Scald
+- Icy Wind
+- Acid Spray
+- Venoshock
+
+Nidoking @ Life Orb
+Level: 67
+Ability: Sheer Force
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 0 HP / 0 Atk / 4 Def / 252 SpA / 0 SpD / 252 Spe
+Timid Nature
+- Earth Power
+- Venoshock
+- Ice Beam
+- Thunderbolt
+
+Beedrill Relic @ Scope Lens
+Level: 67
+Ability: Sniper
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 0 HP / 252 Atk / 0 Def / 0 SpA / 4 SpD / 252 Spe
+Jolly Nature
 - Megahorn
 - Poison Jab
-- Double Team
-- Toxic
-
-Crobat Relic @ Leftovers
-Level: 68
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Cross Poison
-- Air Slash
-- Toxic
-- Confuse Ray
+- Drill Run
+- Protect
 
 === TRAINER_LANCE_1_HNS ===
 Name: LANCE
@@ -9380,58 +9448,75 @@ Class: Champion Hns
 Pic: Champion Lance Hns
 Gender: Male
 Music: Hg Champion
-Double Battle: No
-AI: Basic Trainer
-Items: Full Restore / Full Restore
+Double Battle: Yes
+AI: Smart Trainer / Prediction
 Mugshot: Blue
 
-Drakeon @ Dragon Fang
+Drakeon @ Clear Amulet
 Level: 69
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 0 HP / 252 Atk / 0 Def / 0 SpA / 4 SpD / 252 Spe
+Jolly Nature
 - Dragon Claw
-- Dragon Dance
-- Crunch
-- Iron Head
-
-Dragonite Relic @ Sitrus Berry
-Level: 68
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Iron Tail
-- Ice Punch
-- Dragon Rush
-- Dragon Dance
-
-Gyarados Relic @ Quick Claw
-Level: 69
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Waterfall
-- Hyper Beam
-- Crunch
 - Earthquake
+- Rock Slide
+- Protect
 
-Charaxis @ Leftovers
-Level: 68
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Fire Blast
-- Crunch
-- Earthquake
-- Swords Dance
-
-Skarmadon @ Sharp Beak
+Skarmadon @ Covert Cloak
 Level: 69
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Ability: Sturdy
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 4 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
+Jolly Nature
+- Tailwind
 - Brave Bird
 - Iron Head
-- Roost
-- Heavy Slam
+- Protect
 
-Feralodon @ Mystic Water
-Level: 70
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Dragon Dance
-- Liquidation
+Gyarados Relic @ Wacan Berry
+Level: 69
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 0 HP / 252 Atk / 0 Def / 0 SpA / 4 SpD / 252 Spe
+Jolly Nature
+- Waterfall
 - Crunch
+- Taunt
+- Protect
+
+Feralodon @ Life Orb
+Level: 70
+Ability: Tidal Roar
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 0 HP / 252 Atk / 0 Def / 0 SpA / 4 SpD / 252 Spe
+Adamant Nature
+- Liquidation
+- Dragon Claw
 - Ice Fang
+- Protect
+
+Dragonite Relic @ Weakness Policy
+Level: 68
+Ability: Multiscale
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 0 Def / 0 SpA / 4 SpD / 0 Spe
+Adamant Nature
+- Dragon Dance
+- Extreme Speed
+- Dragon Claw
+- Fire Punch
+
+Charaxis @ Choice Band
+Level: 68
+Ability: Gale Wings
+IVs: 31 HP / 31 Atk / 31 Def / 0 SpA / 31 SpD / 31 Spe
+EVs: 0 HP / 252 Atk / 0 Def / 0 SpA / 4 SpD / 252 Spe
+Jolly Nature
+- Brave Bird
+- Flare Blitz
+- Earthquake
+- Rock Slide
 
 === TRAINER_LANCE_3_HNS ===
 Name: LANCE
