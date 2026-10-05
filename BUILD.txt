@@ -1,12 +1,11 @@
 PJR Alpha latest verified ROM
-Source commit: a8eb7c7c5a
-GitHub Actions run: 268
-SHA256: 1EF179B1DAC3197182FF7924718A3EF5960F3C1A242EE0E80F7F565EDA33F7B7
-Build source: clean GitHub Actions artifact, directly descended from Run267 / successful Run266 lineage.
-Indigo Plateau Cooltrainer is now the free repeatable Hazard Tutor.
-Hazard Tutor: Stealth Rock, Spikes, Toxic Spikes, Sticky Web, Stone Axe, Ceaseless Edge, Salt Cure, Leech Seed, Toxic, Will-O-Wisp, Thunder Wave, Taunt, Encore, Knock Off, Roar, Whirlwind, Dragon Tail, Infestation.
-Indigo Plateau ShigyNinja is now the free repeatable Cleanup Tutor.
-Cleanup Tutor: Rapid Spin, Defog, Mortal Spin, Tidy Up, Court Change, Haze, Clear Smog, Brick Break, Psychic Fangs, Ice Spinner, Heal Bell, Aromatherapy, U-turn, Volt Switch, Flip Turn, Parting Shot, Snarl, Icy Wind, Breaking Swipe, Chilling Water, Acid Spray, Nuzzle.
-Second Elite Four rematch remains the verified 6v6 doubles difficulty pass.
-Mt Silver blocker remains tied to second League clear; old-save repair remains active.
-Direct map Fly from Run266 lineage retained.
+Source commit: f0de2c5688
+GitHub Actions run: 269
+SHA256: 4AA3D198640F66ED5706A94C829E2ED47272DF251204DDCFE3A2F2CEA6C52DF7
+Build source: clean GitHub Actions artifact.
+Indigo Hazard and Cleanup tutors now use their own permissive compatibility mode.
+Every non-Egg Pokemon can learn any of the 40 moves explicitly offered by these two tutors.
+Normal TMs and all other move tutors keep their existing species compatibility.
+Cleanup tutor NPC is static and no longer wanders during move teaching.
+Run268 Indigo tutor lists retained; Run267 harder Elite Four retained.
+Mt Silver second-League unlock regression remains green.
