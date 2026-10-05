@@ -395,7 +395,7 @@ IndigoPlateau_EventScript_TutorTeachMove::
 	goto_if_eq VAR_RESULT, NO, IndigoPlateau_EventScript_TutorDecline
 	msgbox IndigoPlateau_Text_TutorWhichMon, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
-	chooseboxmon SELECT_PC_MON_MOVE_TUTOR
+	chooseboxmon SELECT_PC_MON_PJR_CONTROL_TUTOR
 	waitstate
 	goto_if_eq VAR_RESULT, FALSE, IndigoPlateau_EventScript_TutorCancelled
 	msgbox IndigoPlateau_Text_TutorDone, MSGBOX_DEFAULT

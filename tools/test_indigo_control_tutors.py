@@ -1,10 +1,14 @@
 """Regression checks for PJR Indigo Plateau battlefield-control move tutors."""
 from pathlib import Path
+import json
 import re
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "data" / "maps" / "IndigoPlateau_PokemonCenter_hns" / "scripts.inc"
+MAP = ROOT / "data" / "maps" / "IndigoPlateau_PokemonCenter_hns" / "map.json"
+CHOOSEBOX = ROOT / "src" / "chooseboxmon.c"
+PARTY_CONSTANTS = ROOT / "include" / "constants" / "party_menu.h"
 
 HAZARD_MOVES = [
     "MOVE_STEALTH_ROCK", "MOVE_SPIKES", "MOVE_TOXIC_SPIKES", "MOVE_STICKY_WEB",
@@ -66,13 +70,13 @@ class TestIndigoControlTutors(unittest.TestCase):
         for move in CLEANUP_MOVES:
             self.assertRegex(source, rf"setvar VAR_0x8005, {move}\b")
 
-    def test_tutors_are_free_repeatable_and_use_normal_compatibility(self):
+    def test_tutors_are_free_repeatable_and_use_pjr_permissive_compatibility(self):
         source = text()
         common = block(
             "IndigoPlateau_EventScript_TutorTeachMove",
             "IndigoPlateau_EventScript_TutorCancelled",
         )
-        self.assertIn("chooseboxmon SELECT_PC_MON_MOVE_TUTOR", common)
+        self.assertIn("chooseboxmon SELECT_PC_MON_PJR_CONTROL_TUTOR", common)
         self.assertNotRegex(common, r"removeitem|removemoney|setflag")
         self.assertNotRegex(
             block(
@@ -81,6 +85,36 @@ class TestIndigoControlTutors(unittest.TestCase):
             ),
             r"checkitem|checkmoney|goto_if_set|setflag",
         )
+
+        choosebox = CHOOSEBOX.read_text(encoding="utf-8")
+        constants = PARTY_CONSTANTS.read_text(encoding="utf-8")
+        self.assertIn("SELECT_PC_MON_PJR_CONTROL_TUTOR", constants)
+        self.assertIn(
+            "[SELECT_PC_MON_PJR_CONTROL_TUTOR] = {ChooseMonForMoveTutor, "
+            "CanMonLearnPjrControlMove, MoveTutor_AfterChooseBoxMon, FALSE}",
+            choosebox,
+        )
+        self.assertIn("if (IsPjrControlTutorMove(gSpecialVar_0x8005))", choosebox)
+        self.assertIn("return VALID_MON;", choosebox)
+        for move in HAZARD_MOVES + CLEANUP_MOVES:
+            self.assertIn(f"case {move}:", choosebox)
+
+        # Normal tutor/TM compatibility remains intact outside these two NPCs.
+        self.assertIn(
+            "CanLearnTeachableMove(GetBoxMonData(boxmon, MON_DATA_SPECIES), "
+            "gSpecialVar_0x8005)",
+            choosebox,
+        )
+
+    def test_cleanup_tutor_npc_is_static(self):
+        data = json.loads(MAP.read_text(encoding="utf-8"))
+        npc = next(
+            obj for obj in data["object_events"]
+            if obj.get("script") == "IndigoPlateau_EventScript_ShigyNinja"
+        )
+        self.assertEqual(npc["movement_type"], "MOVEMENT_TYPE_NONE")
+        self.assertEqual(npc["movement_range_x"], 0)
+        self.assertEqual(npc["movement_range_y"], 0)
 
     def test_transport_npcs_are_not_repurposed(self):
         source = text()

@@ -40,6 +40,7 @@ static u32 IsNotEgg(struct BoxPokemon *boxmon);
 static u32 IsMatchingSpecies(struct BoxPokemon *boxmon);
 static u32 CanMonDeleteMove(struct BoxPokemon *boxmon);
 static u32 CanMonLearnMove(struct BoxPokemon *boxmon);
+static u32 CanMonLearnPjrControlMove(struct BoxPokemon *boxmon);
 static u32 CanMonLearnPLAMove(struct BoxPokemon *boxmon);
 static u32 CanRelearnMoves(struct BoxPokemon *boxmon);
 
@@ -52,6 +53,7 @@ static const struct PcMonSelection sPcMonSelectionTypes[] =
     [SELECT_PC_MON_MOVE_DELETER] = {ChoosePartyMon, CanMonDeleteMove, NULL, FALSE},
     [SELECT_PC_MON_MOVE_RELEARNER] = {ChooseMonForMoveRelearner, CanRelearnMoves, NULL, FALSE},
     [SELECT_PC_MON_PLA_TUTOR] = {ChooseMonForMoveTutor, CanMonLearnPLAMove, MoveTutor_AfterChooseBoxMon, FALSE},
+    [SELECT_PC_MON_PJR_CONTROL_TUTOR] = {ChooseMonForMoveTutor, CanMonLearnPjrControlMove, MoveTutor_AfterChooseBoxMon, FALSE},
 };
 
 static u32 NoFilter(struct BoxPokemon *boxmon)
@@ -102,6 +104,72 @@ static u32 CanMonLearnMove(struct BoxPokemon *boxmon)
     if (CanLearnTeachableMove(GetBoxMonData(boxmon, MON_DATA_SPECIES), gSpecialVar_0x8005))
         return VALID_MON;
     return CANNOT_LEARN_MOVE;
+}
+
+static bool32 IsPjrControlTutorMove(u16 move)
+{
+    switch (move)
+    {
+    case MOVE_STEALTH_ROCK:
+    case MOVE_SPIKES:
+    case MOVE_TOXIC_SPIKES:
+    case MOVE_STICKY_WEB:
+    case MOVE_STONE_AXE:
+    case MOVE_CEASELESS_EDGE:
+    case MOVE_SALT_CURE:
+    case MOVE_LEECH_SEED:
+    case MOVE_TOXIC:
+    case MOVE_WILL_O_WISP:
+    case MOVE_THUNDER_WAVE:
+    case MOVE_TAUNT:
+    case MOVE_ENCORE:
+    case MOVE_KNOCK_OFF:
+    case MOVE_ROAR:
+    case MOVE_WHIRLWIND:
+    case MOVE_DRAGON_TAIL:
+    case MOVE_INFESTATION:
+    case MOVE_RAPID_SPIN:
+    case MOVE_DEFOG:
+    case MOVE_MORTAL_SPIN:
+    case MOVE_TIDY_UP:
+    case MOVE_COURT_CHANGE:
+    case MOVE_HAZE:
+    case MOVE_CLEAR_SMOG:
+    case MOVE_BRICK_BREAK:
+    case MOVE_PSYCHIC_FANGS:
+    case MOVE_ICE_SPINNER:
+    case MOVE_HEAL_BELL:
+    case MOVE_AROMATHERAPY:
+    case MOVE_U_TURN:
+    case MOVE_VOLT_SWITCH:
+    case MOVE_FLIP_TURN:
+    case MOVE_PARTING_SHOT:
+    case MOVE_SNARL:
+    case MOVE_ICY_WIND:
+    case MOVE_BREAKING_SWIPE:
+    case MOVE_CHILLING_WATER:
+    case MOVE_ACID_SPRAY:
+    case MOVE_NUZZLE:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
+static u32 CanMonLearnPjrControlMove(struct BoxPokemon *boxmon)
+{
+    if (GetBoxMonData(boxmon, MON_DATA_IS_EGG))
+        return CANNOT_LEARN_MOVE_IS_EGG;
+    if (BoxMonKnowsMove(boxmon, gSpecialVar_0x8005))
+        return ALREADY_KNOWS_MOVE;
+
+    // Indigo Plateau's PJR control tutors are deliberately permissive.
+    // They are postgame team-building tools, so every non-Egg can learn
+    // the moves they explicitly offer without changing normal tutor/TM rules.
+    if (IsPjrControlTutorMove(gSpecialVar_0x8005))
+        return VALID_MON;
+
+    return CanMonLearnMove(boxmon);
 }
 
 static const u16 sPLATutorLearnsets[][2] =
