@@ -1,13 +1,12 @@
 PJR Alpha latest verified ROM
-Source commit: 5536e6e6f4
-GitHub Actions run: 271
-SHA256: 6F175E07FF8E568E2FFDF4B1D622585B0B5CF154A45E420BC59ED6711294EFE8
-Indigo Hazard/Cleanup tutor compatibility is no longer universal.
-Normal species compatibility is preserved.
-Relic-series custom species only receive thematic type-based fallback for obvious missing compatibility.
-Stone Axe fallback: Rock custom species only.
-Ceaseless Edge fallback: Dark custom species only.
-Salt Cure fallback: Rock custom species only.
-Tidy Up, Court Change and Psychic Fangs: normal compatibility only.
+Source commit: aba2002934
+GitHub Actions run: 272
+SHA256: FDA98CEC357C7E8BE361832F4D3ED2B7FA7E67472A8D9FB4255F80FB00C96E0A
+Build source: clean GitHub Actions artifact.
+Indigo Hazard/Cleanup tutors keep canonical donor compatibility first.
+Vanilla Pokemon do not gain extra fallback compatibility.
+Relic custom species receive only restrained move-type/theme fallback.
+Examples: Shuckoloose gets Rock control moves; Toxeon Poison utility; Feralodon Water/Dragon control; Grimfowl Dark/Flying control.
+Rapid Spin, Tidy Up, Court Change and Psychic Fangs require normal donor compatibility rather than broad fallback.
 Cleanup tutor NPC remains static.
-Harder second Elite Four and Mt Silver second-clear unlock retained.
+Harder Elite Four and Mt Silver progression remain unchanged.
