@@ -11,7 +11,7 @@ EXPECTED = {
     "sudowarden": ("afa828cdfb92ba16c95450ad2c231be54026a7fe0d1cb9211a2d918927113313", (43, 60)),
     "donphalanx": ("718ca63f5f6784544b4de40d6d931895e3092d5a56d7d8385c3cb9306f6556a9", (64, 43)),
     "faeranium": ("d8268eca5ec2378d68ee3ae21569c81443ca111745b4b4a21bdd4bc8e83c3622", (48, 60)),
-    "pyroclast": ("1a25e7cf50fb34ecc4ac84b6f608af09331db42affe8599909c7d5ccdcadbb7e", (55, 60)),
+    "pyroclast": ("18b72e8c9422b25a581fdb66e00fb01bc7bc32b27578c9d56ae901d3a8d11c8e", (55, 60)),
 }
 
 def ink_bbox(path):

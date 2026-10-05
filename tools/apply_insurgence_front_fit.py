@@ -36,8 +36,9 @@ def load_jasc_palette(path: Path):
     assert len(cols) == count
     # GBA OBJ palettes always have 16 slots. Index 0 is transparent even when
     # the donor palette stores a visible RGB value there.
+    original_count = len(cols)
     cols.extend([(0, 0, 0)] * (16 - len(cols)))
-    return cols
+    return cols, original_count
 
 def palette_bytes(cols):
     out = []
@@ -66,7 +67,7 @@ def convert_one(name, source_name):
     art = art.resize((new_w, new_h), Image.Resampling.NEAREST)
 
     target_dir = TARGET_ROOT / name
-    colors = load_jasc_palette(target_dir / "normal.pal")
+    colors, palette_count = load_jasc_palette(target_dir / "normal.pal")
     out = Image.new("P", (64, 64), 0)
     out.putpalette(palette_bytes(colors))
     src_px = art.load()
@@ -74,7 +75,7 @@ def convert_one(name, source_name):
 
     def nearest(rgb):
         return min(
-            range(1, 16),
+            range(1, palette_count),
             key=lambda i: sum((rgb[c] - colors[i][c]) ** 2 for c in range(3)),
         )
 
