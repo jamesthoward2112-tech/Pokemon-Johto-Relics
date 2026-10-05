@@ -9,6 +9,7 @@ SCRIPT = ROOT / "data" / "maps" / "IndigoPlateau_PokemonCenter_hns" / "scripts.i
 MAP = ROOT / "data" / "maps" / "IndigoPlateau_PokemonCenter_hns" / "map.json"
 CHOOSEBOX = ROOT / "src" / "chooseboxmon.c"
 PARTY_CONSTANTS = ROOT / "include" / "constants" / "party_menu.h"
+PJR_FAMILIES = ROOT / "src" / "data" / "pokemon" / "species_info" / "pjr_families.h"
 
 HAZARD_MOVES = [
     "MOVE_STEALTH_ROCK", "MOVE_SPIKES", "MOVE_TOXIC_SPIKES", "MOVE_STICKY_WEB",
@@ -70,7 +71,7 @@ class TestIndigoControlTutors(unittest.TestCase):
         for move in CLEANUP_MOVES:
             self.assertRegex(source, rf"setvar VAR_0x8005, {move}\b")
 
-    def test_tutors_are_free_repeatable_and_use_pjr_permissive_compatibility(self):
+    def test_tutors_are_free_repeatable_and_use_logical_compatibility(self):
         source = text()
         common = block(
             "IndigoPlateau_EventScript_TutorTeachMove",
@@ -94,10 +95,43 @@ class TestIndigoControlTutors(unittest.TestCase):
             "CanMonLearnPjrControlMove, MoveTutor_AfterChooseBoxMon, FALSE}",
             choosebox,
         )
-        self.assertIn("if (IsPjrControlTutorMove(gSpecialVar_0x8005))", choosebox)
-        self.assertIn("return VALID_MON;", choosebox)
+
+        # These tutors keep normal compatibility, then add logical type-based
+        # fallback only for Relic-series custom species.
+        self.assertIn("if (CanLearnTeachableMove(species, move))", choosebox)
+        self.assertIn(
+            "if (species < SPECIES_SCARABUB || species > SPECIES_DRAGONITE_RELIC)",
+            choosebox,
+        )
+        self.assertIn("CanSpeciesLearnPjrControlTutorMove(species, gSpecialVar_0x8005)", choosebox)
+        self.assertNotIn("if (IsPjrControlTutorMove(gSpecialVar_0x8005))", choosebox)
         for move in HAZARD_MOVES + CLEANUP_MOVES:
             self.assertIn(f"case {move}:", choosebox)
+
+        # Representative type rules: not universal, but the obvious archetypes are covered.
+        self.assertRegex(
+            choosebox,
+            r"(?s)case MOVE_STONE_AXE:.*?TYPE_ROCK.*?TYPE_GROUND.*?TYPE_FIGHTING",
+        )
+        self.assertRegex(
+            choosebox,
+            r"(?s)case MOVE_TOXIC_SPIKES:.*?TYPE_POISON",
+        )
+        self.assertRegex(
+            choosebox,
+            r"(?s)case MOVE_DEFOG:.*?TYPE_FLYING",
+        )
+        self.assertRegex(
+            choosebox,
+            r"(?s)case MOVE_FLIP_TURN:.*?TYPE_WATER",
+        )
+
+        # Shuckoloose is Bug/Rock, so it receives the intended Rock tutor access.
+        pjr_families = PJR_FAMILIES.read_text(encoding="utf-8")
+        self.assertRegex(
+            pjr_families,
+            r"SPECIES_SHUCKOLOSSE.*?TYPE_BUG, TYPE_ROCK",
+        )
 
         # Normal tutor/TM compatibility remains intact outside these two NPCs.
         self.assertIn(

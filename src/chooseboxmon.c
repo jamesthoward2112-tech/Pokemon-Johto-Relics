@@ -106,51 +106,140 @@ static u32 CanMonLearnMove(struct BoxPokemon *boxmon)
     return CANNOT_LEARN_MOVE;
 }
 
-static bool32 IsPjrControlTutorMove(u16 move)
+static bool32 CanSpeciesLearnPjrControlTutorMove(u16 species, u16 move)
 {
+    // Always preserve the game's normal TM / tutor compatibility first.
+    if (CanLearnTeachableMove(species, move))
+        return TRUE;
+
+    // Vanilla species stay on their normal compatibility. The fallback below
+    // exists only for Relic-series custom species, whose teachable tables are
+    // intentionally lighter and otherwise miss obvious thematic moves.
+    if (species < SPECIES_SCARABUB || species > SPECIES_DRAGONITE_RELIC)
+        return FALSE;
+
     switch (move)
     {
     case MOVE_STEALTH_ROCK:
+        return IsSpeciesOfType(species, TYPE_ROCK)
+            || IsSpeciesOfType(species, TYPE_GROUND)
+            || IsSpeciesOfType(species, TYPE_STEEL);
     case MOVE_SPIKES:
+        return IsSpeciesOfType(species, TYPE_GROUND)
+            || IsSpeciesOfType(species, TYPE_ROCK)
+            || IsSpeciesOfType(species, TYPE_STEEL)
+            || IsSpeciesOfType(species, TYPE_POISON);
     case MOVE_TOXIC_SPIKES:
+        return IsSpeciesOfType(species, TYPE_POISON);
     case MOVE_STICKY_WEB:
+        return IsSpeciesOfType(species, TYPE_BUG);
     case MOVE_STONE_AXE:
+        return IsSpeciesOfType(species, TYPE_ROCK)
+            || IsSpeciesOfType(species, TYPE_GROUND)
+            || IsSpeciesOfType(species, TYPE_FIGHTING);
     case MOVE_CEASELESS_EDGE:
+        return IsSpeciesOfType(species, TYPE_DARK)
+            || IsSpeciesOfType(species, TYPE_STEEL)
+            || IsSpeciesOfType(species, TYPE_GHOST);
     case MOVE_SALT_CURE:
+        return IsSpeciesOfType(species, TYPE_ROCK)
+            || IsSpeciesOfType(species, TYPE_GROUND);
     case MOVE_LEECH_SEED:
+        return IsSpeciesOfType(species, TYPE_GRASS);
     case MOVE_TOXIC:
+        return IsSpeciesOfType(species, TYPE_POISON);
     case MOVE_WILL_O_WISP:
+        return IsSpeciesOfType(species, TYPE_FIRE)
+            || IsSpeciesOfType(species, TYPE_GHOST);
     case MOVE_THUNDER_WAVE:
+        return IsSpeciesOfType(species, TYPE_ELECTRIC)
+            || IsSpeciesOfType(species, TYPE_PSYCHIC);
     case MOVE_TAUNT:
+        return IsSpeciesOfType(species, TYPE_DARK)
+            || IsSpeciesOfType(species, TYPE_FIGHTING)
+            || IsSpeciesOfType(species, TYPE_GHOST);
     case MOVE_ENCORE:
+        return IsSpeciesOfType(species, TYPE_NORMAL)
+            || IsSpeciesOfType(species, TYPE_PSYCHIC)
+            || IsSpeciesOfType(species, TYPE_FAIRY);
     case MOVE_KNOCK_OFF:
+        return IsSpeciesOfType(species, TYPE_DARK)
+            || IsSpeciesOfType(species, TYPE_FIGHTING)
+            || IsSpeciesOfType(species, TYPE_GHOST);
     case MOVE_ROAR:
+        return IsSpeciesOfType(species, TYPE_NORMAL)
+            || IsSpeciesOfType(species, TYPE_FIRE)
+            || IsSpeciesOfType(species, TYPE_DRAGON)
+            || IsSpeciesOfType(species, TYPE_DARK);
     case MOVE_WHIRLWIND:
+        return IsSpeciesOfType(species, TYPE_FLYING);
     case MOVE_DRAGON_TAIL:
+        return IsSpeciesOfType(species, TYPE_DRAGON);
     case MOVE_INFESTATION:
+        return IsSpeciesOfType(species, TYPE_BUG)
+            || IsSpeciesOfType(species, TYPE_POISON)
+            || IsSpeciesOfType(species, TYPE_GHOST);
     case MOVE_RAPID_SPIN:
+        return IsSpeciesOfType(species, TYPE_NORMAL)
+            || IsSpeciesOfType(species, TYPE_ROCK)
+            || IsSpeciesOfType(species, TYPE_GROUND)
+            || IsSpeciesOfType(species, TYPE_STEEL);
     case MOVE_DEFOG:
+        return IsSpeciesOfType(species, TYPE_FLYING);
     case MOVE_MORTAL_SPIN:
+        return IsSpeciesOfType(species, TYPE_POISON);
     case MOVE_TIDY_UP:
+        return IsSpeciesOfType(species, TYPE_NORMAL);
     case MOVE_COURT_CHANGE:
+        return IsSpeciesOfType(species, TYPE_FIGHTING)
+            || IsSpeciesOfType(species, TYPE_PSYCHIC);
     case MOVE_HAZE:
+        return IsSpeciesOfType(species, TYPE_ICE)
+            || IsSpeciesOfType(species, TYPE_WATER)
+            || IsSpeciesOfType(species, TYPE_POISON)
+            || IsSpeciesOfType(species, TYPE_GHOST);
     case MOVE_CLEAR_SMOG:
+        return IsSpeciesOfType(species, TYPE_POISON)
+            || IsSpeciesOfType(species, TYPE_FIRE);
     case MOVE_BRICK_BREAK:
+        return IsSpeciesOfType(species, TYPE_FIGHTING);
     case MOVE_PSYCHIC_FANGS:
+        return IsSpeciesOfType(species, TYPE_PSYCHIC)
+            || IsSpeciesOfType(species, TYPE_DARK);
     case MOVE_ICE_SPINNER:
+        return IsSpeciesOfType(species, TYPE_ICE)
+            || IsSpeciesOfType(species, TYPE_WATER);
     case MOVE_HEAL_BELL:
+        return IsSpeciesOfType(species, TYPE_FAIRY)
+            || IsSpeciesOfType(species, TYPE_PSYCHIC)
+            || IsSpeciesOfType(species, TYPE_NORMAL);
     case MOVE_AROMATHERAPY:
+        return IsSpeciesOfType(species, TYPE_GRASS)
+            || IsSpeciesOfType(species, TYPE_FAIRY);
     case MOVE_U_TURN:
+        return IsSpeciesOfType(species, TYPE_BUG)
+            || IsSpeciesOfType(species, TYPE_FLYING);
     case MOVE_VOLT_SWITCH:
+        return IsSpeciesOfType(species, TYPE_ELECTRIC);
     case MOVE_FLIP_TURN:
+        return IsSpeciesOfType(species, TYPE_WATER);
     case MOVE_PARTING_SHOT:
+        return IsSpeciesOfType(species, TYPE_DARK)
+            || IsSpeciesOfType(species, TYPE_GHOST);
     case MOVE_SNARL:
+        return IsSpeciesOfType(species, TYPE_DARK);
     case MOVE_ICY_WIND:
+        return IsSpeciesOfType(species, TYPE_ICE)
+            || IsSpeciesOfType(species, TYPE_WATER);
     case MOVE_BREAKING_SWIPE:
+        return IsSpeciesOfType(species, TYPE_DRAGON);
     case MOVE_CHILLING_WATER:
+        return IsSpeciesOfType(species, TYPE_WATER)
+            || IsSpeciesOfType(species, TYPE_ICE);
     case MOVE_ACID_SPRAY:
+        return IsSpeciesOfType(species, TYPE_POISON);
     case MOVE_NUZZLE:
-        return TRUE;
+        return IsSpeciesOfType(species, TYPE_ELECTRIC);
     default:
         return FALSE;
     }
@@ -158,18 +247,18 @@ static bool32 IsPjrControlTutorMove(u16 move)
 
 static u32 CanMonLearnPjrControlMove(struct BoxPokemon *boxmon)
 {
+    u16 species;
+
     if (GetBoxMonData(boxmon, MON_DATA_IS_EGG))
         return CANNOT_LEARN_MOVE_IS_EGG;
     if (BoxMonKnowsMove(boxmon, gSpecialVar_0x8005))
         return ALREADY_KNOWS_MOVE;
 
-    // Indigo Plateau's PJR control tutors are deliberately permissive.
-    // They are postgame team-building tools, so every non-Egg can learn
-    // the moves they explicitly offer without changing normal tutor/TM rules.
-    if (IsPjrControlTutorMove(gSpecialVar_0x8005))
+    species = GetBoxMonData(boxmon, MON_DATA_SPECIES);
+    if (CanSpeciesLearnPjrControlTutorMove(species, gSpecialVar_0x8005))
         return VALID_MON;
 
-    return CanMonLearnMove(boxmon);
+    return CANNOT_LEARN_MOVE;
 }
 
 static const u16 sPLATutorLearnsets[][2] =
