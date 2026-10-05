@@ -134,16 +134,11 @@ static bool32 CanSpeciesLearnPjrControlTutorMove(u16 species, u16 move)
     case MOVE_STICKY_WEB:
         return IsSpeciesOfType(species, TYPE_BUG);
     case MOVE_STONE_AXE:
-        return IsSpeciesOfType(species, TYPE_ROCK)
-            || IsSpeciesOfType(species, TYPE_GROUND)
-            || IsSpeciesOfType(species, TYPE_FIGHTING);
+        return IsSpeciesOfType(species, TYPE_ROCK);
     case MOVE_CEASELESS_EDGE:
-        return IsSpeciesOfType(species, TYPE_DARK)
-            || IsSpeciesOfType(species, TYPE_STEEL)
-            || IsSpeciesOfType(species, TYPE_GHOST);
+        return IsSpeciesOfType(species, TYPE_DARK);
     case MOVE_SALT_CURE:
-        return IsSpeciesOfType(species, TYPE_ROCK)
-            || IsSpeciesOfType(species, TYPE_GROUND);
+        return IsSpeciesOfType(species, TYPE_ROCK);
     case MOVE_LEECH_SEED:
         return IsSpeciesOfType(species, TYPE_GRASS);
     case MOVE_TOXIC:
@@ -189,10 +184,8 @@ static bool32 CanSpeciesLearnPjrControlTutorMove(u16 species, u16 move)
     case MOVE_MORTAL_SPIN:
         return IsSpeciesOfType(species, TYPE_POISON);
     case MOVE_TIDY_UP:
-        return IsSpeciesOfType(species, TYPE_NORMAL);
     case MOVE_COURT_CHANGE:
-        return IsSpeciesOfType(species, TYPE_FIGHTING)
-            || IsSpeciesOfType(species, TYPE_PSYCHIC);
+        return FALSE;
     case MOVE_HAZE:
         return IsSpeciesOfType(species, TYPE_ICE)
             || IsSpeciesOfType(species, TYPE_WATER)
@@ -204,8 +197,7 @@ static bool32 CanSpeciesLearnPjrControlTutorMove(u16 species, u16 move)
     case MOVE_BRICK_BREAK:
         return IsSpeciesOfType(species, TYPE_FIGHTING);
     case MOVE_PSYCHIC_FANGS:
-        return IsSpeciesOfType(species, TYPE_PSYCHIC)
-            || IsSpeciesOfType(species, TYPE_DARK);
+        return FALSE;
     case MOVE_ICE_SPINNER:
         return IsSpeciesOfType(species, TYPE_ICE)
             || IsSpeciesOfType(species, TYPE_WATER);

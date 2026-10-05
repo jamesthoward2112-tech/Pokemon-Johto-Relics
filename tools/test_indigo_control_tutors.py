@@ -111,7 +111,23 @@ class TestIndigoControlTutors(unittest.TestCase):
         # Representative type rules: not universal, but the obvious archetypes are covered.
         self.assertRegex(
             choosebox,
-            r"(?s)case MOVE_STONE_AXE:.*?TYPE_ROCK.*?TYPE_GROUND.*?TYPE_FIGHTING",
+            r"(?s)case MOVE_STONE_AXE:\s*return IsSpeciesOfType\(species, TYPE_ROCK\);",
+        )
+        self.assertRegex(
+            choosebox,
+            r"(?s)case MOVE_CEASELESS_EDGE:\s*return IsSpeciesOfType\(species, TYPE_DARK\);",
+        )
+        self.assertRegex(
+            choosebox,
+            r"(?s)case MOVE_SALT_CURE:\s*return IsSpeciesOfType\(species, TYPE_ROCK\);",
+        )
+        self.assertRegex(
+            choosebox,
+            r"(?s)case MOVE_TIDY_UP:\s*case MOVE_COURT_CHANGE:\s*return FALSE;",
+        )
+        self.assertRegex(
+            choosebox,
+            r"(?s)case MOVE_PSYCHIC_FANGS:\s*return FALSE;",
         )
         self.assertRegex(
             choosebox,
