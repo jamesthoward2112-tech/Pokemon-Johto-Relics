@@ -10,6 +10,7 @@ MAP = ROOT / "data" / "maps" / "IndigoPlateau_PokemonCenter_hns" / "map.json"
 CHOOSEBOX = ROOT / "src" / "chooseboxmon.c"
 PARTY_CONSTANTS = ROOT / "include" / "constants" / "party_menu.h"
 PJR_FAMILIES = ROOT / "src" / "data" / "pokemon" / "species_info" / "pjr_families.h"
+MOVES_INFO = ROOT / "src" / "data" / "moves_info.h"
 
 HAZARD_MOVES = [
     "MOVE_STEALTH_ROCK", "MOVE_SPIKES", "MOVE_TOXIC_SPIKES", "MOVE_STICKY_WEB",
@@ -108,46 +109,44 @@ class TestIndigoControlTutors(unittest.TestCase):
         for move in HAZARD_MOVES + CLEANUP_MOVES:
             self.assertIn(f"case {move}:", choosebox)
 
-        # Representative type rules: not universal, but the obvious archetypes are covered.
-        self.assertRegex(
+        # Most fallback access follows the move's own non-Normal type.
+        self.assertIn("moveType = GetMoveType(move);", choosebox)
+        self.assertIn(
+            "if (moveType != TYPE_NORMAL && IsSpeciesOfType(species, moveType))",
             choosebox,
-            r"(?s)case MOVE_STONE_AXE:\s*return IsSpeciesOfType\(species, TYPE_ROCK\);",
-        )
-        self.assertRegex(
-            choosebox,
-            r"(?s)case MOVE_CEASELESS_EDGE:\s*return IsSpeciesOfType\(species, TYPE_DARK\);",
-        )
-        self.assertRegex(
-            choosebox,
-            r"(?s)case MOVE_SALT_CURE:\s*return IsSpeciesOfType\(species, TYPE_ROCK\);",
-        )
-        self.assertRegex(
-            choosebox,
-            r"(?s)case MOVE_TIDY_UP:\s*case MOVE_COURT_CHANGE:\s*return FALSE;",
-        )
-        self.assertRegex(
-            choosebox,
-            r"(?s)case MOVE_PSYCHIC_FANGS:\s*return FALSE;",
-        )
-        self.assertRegex(
-            choosebox,
-            r"(?s)case MOVE_TOXIC_SPIKES:.*?TYPE_POISON",
-        )
-        self.assertRegex(
-            choosebox,
-            r"(?s)case MOVE_DEFOG:.*?TYPE_FLYING",
-        )
-        self.assertRegex(
-            choosebox,
-            r"(?s)case MOVE_FLIP_TURN:.*?TYPE_WATER",
         )
 
-        # Shuckoloose is Bug/Rock, so it receives the intended Rock tutor access.
+        # The few semantic exceptions remain deliberately narrow.
+        self.assertRegex(
+            choosebox,
+            r"(?s)case MOVE_WILL_O_WISP:.*?TYPE_FIRE.*?TYPE_GHOST",
+        )
+        self.assertRegex(
+            choosebox,
+            r"(?s)case MOVE_WHIRLWIND:\s*return IsSpeciesOfType\(species, TYPE_FLYING\);",
+        )
+        self.assertRegex(
+            choosebox,
+            r"(?s)case MOVE_HEAL_BELL:\s*return IsSpeciesOfType\(species, TYPE_FAIRY\);",
+        )
+        self.assertRegex(
+            choosebox,
+            r"(?s)case MOVE_PSYCHIC_FANGS:\s*case MOVE_RAPID_SPIN:\s*"
+            r"case MOVE_TIDY_UP:\s*case MOVE_COURT_CHANGE:.*?return FALSE;",
+        )
+
+        # Shuckoloose is Bug/Rock and the Rock control moves are genuinely Rock type.
         pjr_families = PJR_FAMILIES.read_text(encoding="utf-8")
+        moves_info = MOVES_INFO.read_text(encoding="utf-8")
         self.assertRegex(
             pjr_families,
             r"SPECIES_SHUCKOLOSSE.*?TYPE_BUG, TYPE_ROCK",
         )
+        for move in ("MOVE_STEALTH_ROCK", "MOVE_STONE_AXE", "MOVE_SALT_CURE"):
+            self.assertRegex(
+                moves_info,
+                rf"(?s)\[{move}\]\s*=\s*\{{.*?\.type\s*=\s*TYPE_ROCK",
+            )
 
         # Normal tutor/TM compatibility remains intact outside these two NPCs.
         self.assertIn(

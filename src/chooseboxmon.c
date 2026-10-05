@@ -106,86 +106,83 @@ static u32 CanMonLearnMove(struct BoxPokemon *boxmon)
     return CANNOT_LEARN_MOVE;
 }
 
-static bool32 CanSpeciesLearnPjrControlTutorMove(u16 species, u16 move)
+static bool32 IsPjrControlTutorMove(u16 move)
 {
-    // Always preserve the game's normal TM / tutor compatibility first.
-    if (CanLearnTeachableMove(species, move))
-        return TRUE;
-
-    // Vanilla species stay on their normal compatibility. The fallback below
-    // exists only for Relic-series custom species, whose teachable tables are
-    // intentionally lighter and otherwise miss obvious thematic moves.
-    if (species < SPECIES_SCARABUB || species > SPECIES_DRAGONITE_RELIC)
-        return FALSE;
-
     switch (move)
     {
     case MOVE_STEALTH_ROCK:
-        return IsSpeciesOfType(species, TYPE_ROCK)
-            || IsSpeciesOfType(species, TYPE_GROUND)
-            || IsSpeciesOfType(species, TYPE_STEEL);
     case MOVE_SPIKES:
-        return IsSpeciesOfType(species, TYPE_GROUND)
-            || IsSpeciesOfType(species, TYPE_ROCK)
-            || IsSpeciesOfType(species, TYPE_STEEL)
-            || IsSpeciesOfType(species, TYPE_POISON);
     case MOVE_TOXIC_SPIKES:
-        return IsSpeciesOfType(species, TYPE_POISON);
     case MOVE_STICKY_WEB:
-        return IsSpeciesOfType(species, TYPE_BUG);
     case MOVE_STONE_AXE:
-        return IsSpeciesOfType(species, TYPE_ROCK);
     case MOVE_CEASELESS_EDGE:
-        return IsSpeciesOfType(species, TYPE_DARK);
     case MOVE_SALT_CURE:
-        return IsSpeciesOfType(species, TYPE_ROCK);
     case MOVE_LEECH_SEED:
-        return IsSpeciesOfType(species, TYPE_GRASS);
     case MOVE_TOXIC:
-        return IsSpeciesOfType(species, TYPE_POISON);
+    case MOVE_WILL_O_WISP:
+    case MOVE_THUNDER_WAVE:
+    case MOVE_TAUNT:
+    case MOVE_ENCORE:
+    case MOVE_KNOCK_OFF:
+    case MOVE_ROAR:
+    case MOVE_WHIRLWIND:
+    case MOVE_DRAGON_TAIL:
+    case MOVE_INFESTATION:
+    case MOVE_RAPID_SPIN:
+    case MOVE_DEFOG:
+    case MOVE_MORTAL_SPIN:
+    case MOVE_TIDY_UP:
+    case MOVE_COURT_CHANGE:
+    case MOVE_HAZE:
+    case MOVE_CLEAR_SMOG:
+    case MOVE_BRICK_BREAK:
+    case MOVE_PSYCHIC_FANGS:
+    case MOVE_ICE_SPINNER:
+    case MOVE_HEAL_BELL:
+    case MOVE_AROMATHERAPY:
+    case MOVE_U_TURN:
+    case MOVE_VOLT_SWITCH:
+    case MOVE_FLIP_TURN:
+    case MOVE_PARTING_SHOT:
+    case MOVE_SNARL:
+    case MOVE_ICY_WIND:
+    case MOVE_BREAKING_SWIPE:
+    case MOVE_CHILLING_WATER:
+    case MOVE_ACID_SPRAY:
+    case MOVE_NUZZLE:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
+static bool32 CanSpeciesLearnPjrControlTutorMove(u16 species, u16 move)
+{
+    enum Type moveType;
+
+    // Keep all existing canonical / donor compatibility.
+    if (CanLearnTeachableMove(species, move))
+        return TRUE;
+
+    // Only the Relic-series custom roster gets the fallback below.
+    if (species < SPECIES_SCARABUB || species > SPECIES_DRAGONITE_RELIC)
+        return FALSE;
+    if (!IsPjrControlTutorMove(move))
+        return FALSE;
+
+    // A few status moves have a theme that is clearer than their nominal type.
+    switch (move)
+    {
     case MOVE_WILL_O_WISP:
         return IsSpeciesOfType(species, TYPE_FIRE)
             || IsSpeciesOfType(species, TYPE_GHOST);
-    case MOVE_THUNDER_WAVE:
-        return IsSpeciesOfType(species, TYPE_ELECTRIC)
-            || IsSpeciesOfType(species, TYPE_PSYCHIC);
-    case MOVE_TAUNT:
-        return IsSpeciesOfType(species, TYPE_DARK)
-            || IsSpeciesOfType(species, TYPE_FIGHTING)
-            || IsSpeciesOfType(species, TYPE_GHOST);
     case MOVE_ENCORE:
-        return IsSpeciesOfType(species, TYPE_NORMAL)
-            || IsSpeciesOfType(species, TYPE_PSYCHIC)
-            || IsSpeciesOfType(species, TYPE_FAIRY);
-    case MOVE_KNOCK_OFF:
-        return IsSpeciesOfType(species, TYPE_DARK)
-            || IsSpeciesOfType(species, TYPE_FIGHTING)
-            || IsSpeciesOfType(species, TYPE_GHOST);
+        return IsSpeciesOfType(species, TYPE_FAIRY)
+            || IsSpeciesOfType(species, TYPE_PSYCHIC);
     case MOVE_ROAR:
-        return IsSpeciesOfType(species, TYPE_NORMAL)
-            || IsSpeciesOfType(species, TYPE_FIRE)
-            || IsSpeciesOfType(species, TYPE_DRAGON)
-            || IsSpeciesOfType(species, TYPE_DARK);
+        return IsSpeciesOfType(species, TYPE_DRAGON);
     case MOVE_WHIRLWIND:
         return IsSpeciesOfType(species, TYPE_FLYING);
-    case MOVE_DRAGON_TAIL:
-        return IsSpeciesOfType(species, TYPE_DRAGON);
-    case MOVE_INFESTATION:
-        return IsSpeciesOfType(species, TYPE_BUG)
-            || IsSpeciesOfType(species, TYPE_POISON)
-            || IsSpeciesOfType(species, TYPE_GHOST);
-    case MOVE_RAPID_SPIN:
-        return IsSpeciesOfType(species, TYPE_NORMAL)
-            || IsSpeciesOfType(species, TYPE_ROCK)
-            || IsSpeciesOfType(species, TYPE_GROUND)
-            || IsSpeciesOfType(species, TYPE_STEEL);
-    case MOVE_DEFOG:
-        return IsSpeciesOfType(species, TYPE_FLYING);
-    case MOVE_MORTAL_SPIN:
-        return IsSpeciesOfType(species, TYPE_POISON);
-    case MOVE_TIDY_UP:
-    case MOVE_COURT_CHANGE:
-        return FALSE;
     case MOVE_HAZE:
         return IsSpeciesOfType(species, TYPE_ICE)
             || IsSpeciesOfType(species, TYPE_WATER)
@@ -194,47 +191,35 @@ static bool32 CanSpeciesLearnPjrControlTutorMove(u16 species, u16 move)
     case MOVE_CLEAR_SMOG:
         return IsSpeciesOfType(species, TYPE_POISON)
             || IsSpeciesOfType(species, TYPE_FIRE);
-    case MOVE_BRICK_BREAK:
-        return IsSpeciesOfType(species, TYPE_FIGHTING);
-    case MOVE_PSYCHIC_FANGS:
-        return FALSE;
     case MOVE_ICE_SPINNER:
-        return IsSpeciesOfType(species, TYPE_ICE)
-            || IsSpeciesOfType(species, TYPE_WATER);
-    case MOVE_HEAL_BELL:
-        return IsSpeciesOfType(species, TYPE_FAIRY)
-            || IsSpeciesOfType(species, TYPE_PSYCHIC)
-            || IsSpeciesOfType(species, TYPE_NORMAL);
-    case MOVE_AROMATHERAPY:
-        return IsSpeciesOfType(species, TYPE_GRASS)
-            || IsSpeciesOfType(species, TYPE_FAIRY);
-    case MOVE_U_TURN:
-        return IsSpeciesOfType(species, TYPE_BUG)
-            || IsSpeciesOfType(species, TYPE_FLYING);
-    case MOVE_VOLT_SWITCH:
-        return IsSpeciesOfType(species, TYPE_ELECTRIC);
-    case MOVE_FLIP_TURN:
-        return IsSpeciesOfType(species, TYPE_WATER);
-    case MOVE_PARTING_SHOT:
-        return IsSpeciesOfType(species, TYPE_DARK)
-            || IsSpeciesOfType(species, TYPE_GHOST);
-    case MOVE_SNARL:
-        return IsSpeciesOfType(species, TYPE_DARK);
     case MOVE_ICY_WIND:
         return IsSpeciesOfType(species, TYPE_ICE)
             || IsSpeciesOfType(species, TYPE_WATER);
-    case MOVE_BREAKING_SWIPE:
-        return IsSpeciesOfType(species, TYPE_DRAGON);
+    case MOVE_HEAL_BELL:
+        return IsSpeciesOfType(species, TYPE_FAIRY);
     case MOVE_CHILLING_WATER:
         return IsSpeciesOfType(species, TYPE_WATER)
             || IsSpeciesOfType(species, TYPE_ICE);
-    case MOVE_ACID_SPRAY:
-        return IsSpeciesOfType(species, TYPE_POISON);
-    case MOVE_NUZZLE:
-        return IsSpeciesOfType(species, TYPE_ELECTRIC);
-    default:
+    case MOVE_PSYCHIC_FANGS:
+    case MOVE_RAPID_SPIN:
+    case MOVE_TIDY_UP:
+    case MOVE_COURT_CHANGE:
+        // Shape / anatomy / signature-style moves need explicit donor
+        // compatibility rather than a broad type rule.
         return FALSE;
+    default:
+        break;
     }
+
+    // For the remaining tutor moves, a Relic custom may learn the move when
+    // its own typing matches the move's type. This gives, for example,
+    // Shuckoloose Rock hazards, Toxeon Poison utility, and Feralodon Water /
+    // Dragon control without making unrelated species universally eligible.
+    moveType = GetMoveType(move);
+    if (moveType != TYPE_NORMAL && IsSpeciesOfType(species, moveType))
+        return TRUE;
+
+    return FALSE;
 }
 
 static u32 CanMonLearnPjrControlMove(struct BoxPokemon *boxmon)
