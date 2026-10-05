@@ -26,5 +26,6 @@ MtSilver_Outside_EventScript_SignCancel::
 
 MtSilver_Outside_Text_Sign:
 	.string "MT. SILVER\n"
-	.string "A shortcut climbs straight to the summit.\p"
+	.string "A hidden trail skips the\n"
+	.string "long climb.\p"
 	.string "Take the shortcut to RED?$"
