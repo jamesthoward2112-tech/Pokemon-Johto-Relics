@@ -1408,12 +1408,12 @@ static void SpriteCB_CreditsMon(struct Sprite *sprite)
 
 #define sMonSpriteId data[0]
 
-static u8 CreateCreditsMonSprite(u16 nationalDexNum, s16 x, s16 y, u16 position)
+static u8 CreateCreditsMonSprite(u16 species, s16 x, s16 y, u16 position)
 {
     u8 monSpriteId;
     u8 bgSpriteId;
 
-    monSpriteId = CreateMonSpriteFromNationalDexNumber(nationalDexNum, x, y, position);
+    monSpriteId = CreateMonPicSprite(species, FALSE, 0, TRUE, x, y, position, TAG_NONE);
     gSprites[monSpriteId].oam.priority = 1;
     gSprites[monSpriteId].sPosition = position + 1;
     gSprites[monSpriteId].invisible = TRUE;
@@ -1447,72 +1447,15 @@ static void SpriteCB_CreditsMonBg(struct Sprite *sprite)
 
 static void DeterminePokemonToShow(void)
 {
-    enum NationalDexOrder starter = SpeciesToNationalPokedexNum(GetStarterPokemon(VarGet(VAR_STARTER_MON)));
-    u16 page;
-    u16 dexNum;
-    u16 j;
+    u16 i;
+    const u16 customSpeciesCount = SPECIES_DRAGONITE_RELIC - SPECIES_SCARABUB + 1;
 
-    for (dexNum = 1, j = 0; dexNum < NATIONAL_DEX_COUNT; dexNum++)
-    {
-        if (GetSetPokedexFlag(dexNum, FLAG_GET_CAUGHT))
-        {
-            sCreditsData->caughtMonIds[j] = dexNum;
-            j++;
-        }
-    }
+    // PJR credits are a showcase for the Relic-series custom roster.
+    // Keep species IDs directly so forms sharing a National Dex number do not collapse to vanilla graphics.
+    for (i = 0; i < NUM_MON_SLIDES; i++)
+        sCreditsData->monToShow[i] = SPECIES_SCARABUB + (i % customSpeciesCount);
 
-    for (dexNum = j; dexNum < NATIONAL_DEX_COUNT; dexNum++)
-        sCreditsData->caughtMonIds[dexNum] = NATIONAL_DEX_NONE;
-
-    sCreditsData->numCaughtMon = j;
-    if (sCreditsData->numCaughtMon < NUM_MON_SLIDES)
-        sCreditsData->numMonToShow = j;
-    else
-        sCreditsData->numMonToShow = NUM_MON_SLIDES;
-
-    j = 0;
-    do
-    {
-        page = Random() % sCreditsData->numCaughtMon;
-        sCreditsData->monToShow[j] = sCreditsData->caughtMonIds[page];
-
-        j++;
-        sCreditsData->caughtMonIds[page] = 0;
-        sCreditsData->numCaughtMon--;
-        if (page != sCreditsData->numCaughtMon)
-        {
-            sCreditsData->caughtMonIds[page] = sCreditsData->caughtMonIds[sCreditsData->numCaughtMon];
-            sCreditsData->caughtMonIds[sCreditsData->numCaughtMon] = 0;
-        }
-    }
-    while (sCreditsData->numCaughtMon != 0 && j < NUM_MON_SLIDES);
-
-    if (sCreditsData->numMonToShow < NUM_MON_SLIDES)
-    {
-        for (j = sCreditsData->numMonToShow, page = 0; j < NUM_MON_SLIDES; j++)
-        {
-            sCreditsData->monToShow[j] = sCreditsData->monToShow[page];
-
-            page++;
-            if (page == sCreditsData->numMonToShow)
-                page = 0;
-        }
-        sCreditsData->monToShow[NUM_MON_SLIDES - 1] = starter;
-    }
-    else
-    {
-        for (dexNum = 0; sCreditsData->monToShow[dexNum] != starter && dexNum < NUM_MON_SLIDES; dexNum++);
-
-        if (dexNum < sCreditsData->numMonToShow - 1)
-        {
-            sCreditsData->monToShow[dexNum] = sCreditsData->monToShow[NUM_MON_SLIDES-1];
-            sCreditsData->monToShow[NUM_MON_SLIDES - 1] = starter;
-        }
-        else
-        {
-            sCreditsData->monToShow[NUM_MON_SLIDES - 1] = starter;
-        }
-    }
+    sCreditsData->numCaughtMon = 0;
     sCreditsData->numMonToShow = NUM_MON_SLIDES;
 }
 
