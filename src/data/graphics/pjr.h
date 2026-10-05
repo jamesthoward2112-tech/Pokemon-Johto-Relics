@@ -253,3 +253,14 @@ const u16 gMonShinyPalette_GyaradosRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4
 const u32 gMonFrontPic_DragoniteRelic[] = INCBIN_U32("graphics/pokemon/pjr_e4/dragonite_relic/front.4bpp.smol");
 const u16 gMonPalette_DragoniteRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/dragonite_relic/normal.gbapal");
 const u16 gMonShinyPalette_DragoniteRelic[] = INCBIN_U16("graphics/pokemon/pjr_e4/dragonite_relic/shiny.gbapal");
+
+
+// Jessie & James final Tin Tower visual forms.
+const u32 gMonFrontPic_AsudemJJ[] = INCBIN_U32("graphics/pokemon/arbok/asudem/front.4bpp.smol");
+const u16 gMonPalette_AsudemJJ[] = INCBIN_U16("graphics/pokemon/arbok/asudem/front.gbapal");
+const u32 gMonFrontPic_NidogodJJ[] = INCBIN_U32("graphics/pokemon/nidoking/nidogod/front.4bpp.smol");
+const u16 gMonPalette_NidogodJJ[] = INCBIN_U16("graphics/pokemon/nidoking/nidogod/front.gbapal");
+const u32 gMonFrontPic_VictreebelReduxJJ[] = INCBIN_U32("graphics/pokemon/victreebel/redux/front.4bpp.smol");
+const u16 gMonPalette_VictreebelReduxJJ[] = INCBIN_U16("graphics/pokemon/victreebel/redux/front.gbapal");
+const u32 gMonFrontPic_TyranitarReduxJJ[] = INCBIN_U32("graphics/pokemon/tyranitar/mega_redux/front.4bpp.smol");
+const u16 gMonPalette_TyranitarReduxJJ[] = INCBIN_U16("graphics/pokemon/tyranitar/mega_redux/front.gbapal");

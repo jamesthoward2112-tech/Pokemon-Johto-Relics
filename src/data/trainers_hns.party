@@ -16091,3 +16091,41 @@ Tera Type: Fighting
 - Wild Charge  
 - Bulk Up  
 - Throat Chop
+
+
+=== TRAINER_JESSIE_JAMES_TINTOWER_HNS ===
+Name: JAMES
+Class: Jessie James Hns
+Pic: James Hns
+Gender: Male
+Music: Rocket
+Double Battle: Yes
+AI: Check Bad Move / Try To Faint / Check Viability / Setup First Turn
+
+Asudem Jj
+Level: 78
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+
+Nidogod Jj
+Level: 79
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+
+Victreebel Redux Jj
+Level: 78
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+
+Tyranitar Redux Jj
+Level: 81
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+
+Meowth @ Eviolite
+Level: 78
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+
+Pikachu @ Light Ball
+Level: 80
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Volt Tackle
+- Extreme Speed
+- Iron Tail
+- Fake Out

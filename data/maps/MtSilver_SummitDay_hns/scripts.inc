@@ -84,6 +84,9 @@ MtSilver_SummitDay_Text_RedBeaten:
 MtSilver_SummitDay_Text_Crest:
 	.string "RED leaves behind the ANCIENT\n"
 	.string "RAINBOW CREST.\p"
-	.string "Its light points toward BELL TOWER.$"
+	.string "Its light points toward TIN TOWER.\p"
+	.string "RED: The ULTIMATE RELIC has been\n"
+	.string "spotted at the top of TIN TOWER.\p"
+	.string "The CREST is reacting. Go.$"
 
 

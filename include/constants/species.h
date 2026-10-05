@@ -1744,7 +1744,13 @@
 #define SPECIES_GYARADOS_RELIC                          1618
 #define SPECIES_DRAGONITE_RELIC                         1619
 
-#define SPECIES_EGG                                     (SPECIES_DRAGONITE_RELIC + 1)
+// Trainer-only visual forms for Jessie & James' final Tin Tower battle.
+#define SPECIES_ASUDEM_JJ                                1620
+#define SPECIES_NIDOGOD_JJ                               1621
+#define SPECIES_VICTREEBEL_REDUX_JJ                      1622
+#define SPECIES_TYRANITAR_REDUX_JJ                       1623
+
+#define SPECIES_EGG                                     (SPECIES_TYRANITAR_REDUX_JJ + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

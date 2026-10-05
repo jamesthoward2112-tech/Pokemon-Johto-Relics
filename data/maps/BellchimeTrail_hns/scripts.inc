@@ -51,3 +51,25 @@ EcruteakBellchimeTrail_Movement_CameraPanUp::
 	slide_up
 	slide_up
 	step_end
+
+
+EcruteakBellchimeTrail_EventScript_RelicShortcut::
+	goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, EcruteakBellchimeTrail_Text_RelicShortcutDormant
+	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, EcruteakBellchimeTrail_Text_RelicShortcutDormant
+	msgbox EcruteakBellchimeTrail_Text_RelicShortcutReady, MSGBOX_DEFAULT
+	warp MAP_TIN_TOWER_8F_HNS, 6, 12
+	waitstate
+	end
+
+EcruteakBellchimeTrail_Text_RelicShortcutDormant:
+	msgbox EcruteakBellchimeTrail_Text_RelicShortcutDormantMsg, MSGBOX_DEFAULT
+	end
+
+EcruteakBellchimeTrail_Text_RelicShortcutReady:
+	.string "The ANCIENT RAINBOW CREST glows.\p"
+	.string "A hidden passage opens toward the\n"
+	.string "highest floor of TIN TOWER.$"
+
+EcruteakBellchimeTrail_Text_RelicShortcutDormantMsg:
+	.string "TIN TOWER\n"
+	.string "A sacred tower watched by HO-OH.$"

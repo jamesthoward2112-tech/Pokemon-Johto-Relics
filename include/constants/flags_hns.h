@@ -850,7 +850,7 @@
 #define FLAG_PJR_JESSIE_JAMES_1_DEFEATED           0x304
 #define FLAG_PJR_JESSIE_JAMES_2_DEFEATED           0x305
 #define FLAG_PJR_JESSIE_JAMES_3_DEFEATED           0x306
-#define FLAG_UNUSED_39                              0x307
+#define FLAG_PJR_JESSIE_JAMES_FINAL_DEFEATED       0x307
 #define HNS_UNUSED_COUNT                            40
 
 #define HNS_CONTENT_FLAGS_END                       0x308
