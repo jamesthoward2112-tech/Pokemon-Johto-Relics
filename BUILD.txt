@@ -1,8 +1,12 @@
 PJR Alpha latest verified ROM
-Source commit: 55a923334f
-GitHub Actions run: 267
-SHA256: F82E8BA8D618B6D41A3CF484452E015678D14ECA87374FA125D10113ECEB2D0E
-Build source: clean GitHub Actions artifact, directly descended from successful Run266 (1b11e8c29c).
-Elite Four second-clear rematch: 6v6 doubles, Smart Trainer / Prediction AI, existing levels 66-70 unchanged.
-Fly/map source is unchanged from Run266 and retains direct A/R Fly with HM02 + fifth badge.
-Corrected chrome Skarmadon and enlarged Donphalanx retained.
+Source commit: a8eb7c7c5a
+GitHub Actions run: 268
+SHA256: 1EF179B1DAC3197182FF7924718A3EF5960F3C1A242EE0E80F7F565EDA33F7B7
+Build source: clean GitHub Actions artifact, directly descended from Run267 / successful Run266 lineage.
+Indigo Plateau Cooltrainer is now the free repeatable Hazard Tutor.
+Hazard Tutor: Stealth Rock, Spikes, Toxic Spikes, Sticky Web, Stone Axe, Ceaseless Edge, Salt Cure, Leech Seed, Toxic, Will-O-Wisp, Thunder Wave, Taunt, Encore, Knock Off, Roar, Whirlwind, Dragon Tail, Infestation.
+Indigo Plateau ShigyNinja is now the free repeatable Cleanup Tutor.
+Cleanup Tutor: Rapid Spin, Defog, Mortal Spin, Tidy Up, Court Change, Haze, Clear Smog, Brick Break, Psychic Fangs, Ice Spinner, Heal Bell, Aromatherapy, U-turn, Volt Switch, Flip Turn, Parting Shot, Snarl, Icy Wind, Breaking Swipe, Chilling Water, Acid Spray, Nuzzle.
+Second Elite Four rematch remains the verified 6v6 doubles difficulty pass.
+Mt Silver blocker remains tied to second League clear; old-save repair remains active.
+Direct map Fly from Run266 lineage retained.
