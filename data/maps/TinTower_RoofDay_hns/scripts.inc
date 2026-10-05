@@ -5,10 +5,36 @@ TinTower_RoofDay_hns_MapScripts::
 TinTower_RoofDay_OnTransition:
 	call_if_set FLAG_DAY_POKEMON, TinTower_RoofDay_EventScript_SetNight
 	call_if_unset FLAG_DAY_POKEMON, TinTower_RoofDay_EventScript_SetDay
+	call TinTower_RoofDay_EventScript_SyncRelicHoOhState
 	goto_if_eq VAR_COMPLETED_HO_OH, 2, TinTower_RoofDay_MapScript_HoohStory
 	goto_if_eq VAR_COMPLETED_HO_OH, 3, TinTower_RoofDay_MapScript_HoohPostStoryGone
 	goto_if_eq VAR_COMPLETED_HO_OH, 4, TinTower_RoofDay_MapScript_HoohPostStoryEncounter
 	end
+
+@ Save-compatible self-heal for the final RELIC encounter.  Older saves could
+@ own the Crest and Alphoracle but still have VAR_COMPLETED_HO_OH stuck at 3,
+@ leaving an empty roof.  Derive the unlock from the real quest flags on entry.
+TinTower_RoofDay_EventScript_SyncRelicHoOhState::
+	goto_if_set FLAG_PJR_RELIC_HO_OH, TinTower_RoofDay_EventScript_SyncRelicHoOhCaught
+	goto_if_unset FLAG_PJR_RELIC_RAIKOU, TinTower_RoofDay_EventScript_SyncRelicHoOhDone
+	goto_if_unset FLAG_PJR_RELIC_ENTEI, TinTower_RoofDay_EventScript_SyncRelicHoOhDone
+	goto_if_unset FLAG_PJR_RELIC_LUGIA, TinTower_RoofDay_EventScript_SyncRelicHoOhDone
+	goto_if_unset FLAG_PJR_RELIC_UNOWN_I, TinTower_RoofDay_EventScript_SyncRelicHoOhDone
+	goto_if_unset FLAG_PJR_RELIC_CELEBI, TinTower_RoofDay_EventScript_SyncRelicHoOhDone
+	goto_if_unset FLAG_PJR_RELIC_SUICUNE, TinTower_RoofDay_EventScript_SyncRelicHoOhDone
+	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, TinTower_RoofDay_EventScript_SyncRelicHoOhDone
+	goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, TinTower_RoofDay_EventScript_SyncRelicHoOhDone
+	setvar VAR_COMPLETED_HO_OH, 4
+	clearflag FLAG_HIDE_HO_OH
+	return
+
+TinTower_RoofDay_EventScript_SyncRelicHoOhCaught::
+	setvar VAR_COMPLETED_HO_OH, 3
+	setflag FLAG_HIDE_HO_OH
+	return
+
+TinTower_RoofDay_EventScript_SyncRelicHoOhDone::
+	return
 
 TinTower_RoofDay_EventScript_SetNight::
 	setmaplayoutindex LAYOUT_TIN_TOWER_ROOF_NIGHT_HNS
