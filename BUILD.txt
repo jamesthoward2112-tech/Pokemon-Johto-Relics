@@ -1,11 +1,13 @@
 PJR Alpha latest verified ROM
-Source commit: f0de2c5688
-GitHub Actions run: 269
-SHA256: 4AA3D198640F66ED5706A94C829E2ED47272DF251204DDCFE3A2F2CEA6C52DF7
-Build source: clean GitHub Actions artifact.
-Indigo Hazard and Cleanup tutors now use their own permissive compatibility mode.
-Every non-Egg Pokemon can learn any of the 40 moves explicitly offered by these two tutors.
-Normal TMs and all other move tutors keep their existing species compatibility.
-Cleanup tutor NPC is static and no longer wanders during move teaching.
-Run268 Indigo tutor lists retained; Run267 harder Elite Four retained.
-Mt Silver second-League unlock regression remains green.
+Source commit: 5536e6e6f4
+GitHub Actions run: 271
+SHA256: 6F175E07FF8E568E2FFDF4B1D622585B0B5CF154A45E420BC59ED6711294EFE8
+Indigo Hazard/Cleanup tutor compatibility is no longer universal.
+Normal species compatibility is preserved.
+Relic-series custom species only receive thematic type-based fallback for obvious missing compatibility.
+Stone Axe fallback: Rock custom species only.
+Ceaseless Edge fallback: Dark custom species only.
+Salt Cure fallback: Rock custom species only.
+Tidy Up, Court Change and Psychic Fangs: normal compatibility only.
+Cleanup tutor NPC remains static.
+Harder second Elite Four and Mt Silver second-clear unlock retained.
