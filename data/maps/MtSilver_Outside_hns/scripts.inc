@@ -9,8 +9,22 @@ MtSilver_Outside_OnTransition:
 	end
 
 MtSilver_Outside_EventScript_Sign::
-	msgbox MtSilver_Outside_Text_Sign, MSGBOX_SIGN
+	msgbox MtSilver_Outside_Text_Sign, MSGBOX_YESNO
+	switch VAR_RESULT
+	case YES, MtSilver_Outside_EventScript_SummitShortcut
+	case NO, MtSilver_Outside_EventScript_SignCancel
+	case MULTI_B_PRESSED, MtSilver_Outside_EventScript_SignCancel
+
+MtSilver_Outside_EventScript_SummitShortcut::
+	closemessage
+	warp MAP_MT_SILVER_SUMMIT_DAY_HNS, 10, 8
+	waitstate
+	end
+
+MtSilver_Outside_EventScript_SignCancel::
 	end
 
 MtSilver_Outside_Text_Sign:
-	.string "MT. SILVER$"
+	.string "MT. SILVER\n"
+	.string "A shortcut climbs straight to the summit.\p"
+	.string "Take the shortcut to RED?$"
