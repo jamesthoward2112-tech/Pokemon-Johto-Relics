@@ -1,9 +1,8 @@
 PJR Alpha latest verified ROM
 Source commit: 55a923334f
-SHA256: 60F62573F568424256EDCC02AEA4431241E471D7227BA58AFA60D9780263852D
-Built: 2026-10-05 09:48 BST
-Size: 33554432 bytes
-Elite Four second-clear rematch: all five battles are 6v6 doubles with Smart Trainer / Prediction AI, competitive items, EVs, natures, abilities, speed control, hazards/weather and doubles synergy. Existing levels 66-70 are unchanged.
-Bruno now uses Obsideon in the rematch sand core; Lance remains 6/6 custom.
-Corrected chrome Skarmadon and enlarged Donphalanx sprite sets from source commit 1b11e8c29c retained and regression-checked.
-Mt Silver/Kanto/Blue progression regressions remain green.
+GitHub Actions run: 267
+SHA256: F82E8BA8D618B6D41A3CF484452E015678D14ECA87374FA125D10113ECEB2D0E
+Build source: clean GitHub Actions artifact, directly descended from successful Run266 (1b11e8c29c).
+Elite Four second-clear rematch: 6v6 doubles, Smart Trainer / Prediction AI, existing levels 66-70 unchanged.
+Fly/map source is unchanged from Run266 and retains direct A/R Fly with HM02 + fifth badge.
+Corrected chrome Skarmadon and enlarged Donphalanx retained.
