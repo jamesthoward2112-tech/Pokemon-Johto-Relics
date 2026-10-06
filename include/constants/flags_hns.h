@@ -1327,6 +1327,7 @@
 #define FLAG_PJR_GOT_RAINBOW_CREST                  (SYS_FLAGS + 0x73)
 #define FLAG_PJR_RELIC_HO_OH                        (SYS_FLAGS + 0x74)
 #define FLAG_PJR_GYM_REWARD_CLAIR_TM                (SYS_FLAGS + 0x75)
+#define FLAG_PJR_QA_EVOLUTION_KIT                   (SYS_FLAGS + 0x76)
 
 // Visited / World Map flags
 #define FLAG_VISITED_NEWBARK_TOWN                   (SYS_FLAGS + 0x90)
