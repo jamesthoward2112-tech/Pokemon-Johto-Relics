@@ -903,14 +903,6 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route7_EventScript_Door"
-    },
-    {
-      "type": "sign",
-      "x": 36,
-      "y": 41,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "EcruteakBellchimeTrail_EventScript_RelicShortcut"
     }
   ],
   "game_version": "hns",

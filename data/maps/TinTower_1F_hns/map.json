@@ -91,7 +91,7 @@
       "y": 17,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "RuinsOfAlph_PuzzleAndRewardChambers_MapScript_StatueDescription"
+      "script": "EcruteakBellchimeTrail_EventScript_RelicShortcut"
     },
     {
       "type": "sign",
@@ -115,7 +115,7 @@
       "y": 17,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "RuinsOfAlph_PuzzleAndRewardChambers_MapScript_StatueDescription"
+      "script": "EcruteakBellchimeTrail_EventScript_RelicShortcut"
     },
     {
       "type": "sign",
