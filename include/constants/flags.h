@@ -1526,6 +1526,7 @@
 #define FLAG_PJR_GYM_REWARD_PRYCE                   FLAG_UNUSED_0x8EE
 #define FLAG_PJR_GYM_REWARD_CLAIR                   FLAG_UNUSED_0x8EF
 #define FLAG_PJR_GYM_REWARD_CLAIR_TM                FLAG_UNUSED_0x8F0
+#define FLAG_PJR_QA_EVOLUTION_KIT                   FLAG_UNUSED_0x8F1
 #define FLAG_UNUSED_0x8E8                           (SYSTEM_FLAGS + 0x88) // Unused Flag
 #define FLAG_UNUSED_0x8E9                           (SYSTEM_FLAGS + 0x89) // Unused Flag
 #define FLAG_UNUSED_0x8EA                           (SYSTEM_FLAGS + 0x8A) // Unused Flag
