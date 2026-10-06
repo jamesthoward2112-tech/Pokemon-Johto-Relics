@@ -1,4 +1,4 @@
-name: PJR Alpha build
+name: PJR Beta build
 
 on:
   push:
@@ -61,27 +61,29 @@ jobs:
                   continue
               dst = pathlib.Path('graphics/pokemon') / species_dir.name
               dst.mkdir(parents=True, exist_ok=True)
-              for name in ('front.png', 'back.png', 'icon.png'):
+              # Party icons in the repo are palette-normalized GBA conversions of the donor icons.
+              # Keep those conversions; copying the donor PNGs here corrupts party-menu rendering.
+              for name in ('front.png', 'back.png'):
                   shutil.copy2(species_dir / name, dst / name)
           PY
       - name: Check Tin Tower shortcut and final encounter
         run: python3 tools/check_pjr_tintower_shortcut.py
-      - name: Build PJR Alpha
+      - name: Build PJR Beta
         run: |
           make hns -j4 -O
-      - name: Package PJR Alpha
+      - name: Package PJR Beta
         run: |
-          cp pokehns.gba PJR-Alpha.gba
-          arm-none-eabi-nm -n pokehns.elf > PJR-Alpha.sym
-          sha256sum PJR-Alpha.gba > PJR-Alpha-SHA256.txt
-          printf "%s\n" "$GITHUB_SHA" > PJR-Alpha-Commit.txt
+          cp pokehns.gba PJR-Beta.gba
+          arm-none-eabi-nm -n pokehns.elf > PJR-Beta.sym
+          sha256sum PJR-Beta.gba > PJR-Beta-SHA256.txt
+          printf "%s\n" "$GITHUB_SHA" > PJR-Beta-Commit.txt
       - uses: actions/upload-artifact@v4
         with:
-          name: PJR-Alpha
+          name: PJR-Beta
           path: |
-            PJR-Alpha.gba
-            PJR-Alpha.sym
-            PJR-Alpha-SHA256.txt
-            PJR-Alpha-Commit.txt
+            PJR-Beta.gba
+            PJR-Beta.sym
+            PJR-Beta-SHA256.txt
+            PJR-Beta-Commit.txt
           if-no-files-found: error
           retention-days: 14
