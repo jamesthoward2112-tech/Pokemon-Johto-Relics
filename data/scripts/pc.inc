@@ -152,9 +152,9 @@ gText_PjrEvolutionQaKitInstalled:
 	.string "stones were added to your BAG.$"
 
 gText_PjrEvolutionQaKitNeedsBox:
-	.string "PJR QA KIT needs one completely\n"
-	.string "empty PC Box.\p"
-	.string "Clear a Box, then access POKéMON\n"
+	.string "PJR QA KIT needs one empty PC Box\n"
+	.string "and enough room in your BAG.\p"
+	.string "Make room, then access POKéMON\n"
 	.string "STORAGE again. Nothing was changed.$"
 
 EventScript_AccessSomeonesPC::
