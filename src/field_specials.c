@@ -4631,34 +4631,47 @@ void PjrGiveEvolutionQaKit(void)
      || (fireStoneNeeded && !CheckBagHasSpace(ITEM_FIRE_STONE, fireStoneNeeded)))
         return;
 
-    // Keep the player's existing collection untouched: use one fully empty box.
+    // First look for a kit already installed by an earlier load.
     for (boxId = 0; boxId < TOTAL_BOXES_COUNT; boxId++)
     {
-        if (CountMonsInBox(boxId) == 0)
+        if (StringCompare(gPokemonStoragePtr->boxNames[boxId], sPjrEvolutionQaBoxName) == 0)
         {
             qaBox = boxId;
             break;
         }
     }
 
+    // Otherwise keep the player's collection untouched and use one fully empty box.
     if (qaBox < 0)
-        return;
-
-    StringCopy(gPokemonStoragePtr->boxNames[qaBox], sPjrEvolutionQaBoxName);
-
-    for (i = 0; i < ARRAY_COUNT(sPjrEvolutionQaMons); i++)
     {
-        const struct PjrEvolutionQaMon *entry = &sPjrEvolutionQaMons[i];
+        for (boxId = 0; boxId < TOTAL_BOXES_COUNT; boxId++)
+        {
+            if (CountMonsInBox(boxId) == 0)
+            {
+                qaBox = boxId;
+                break;
+            }
+        }
 
-        CreateBoxMon(&boxMon, entry->species, entry->level, Random32(), OTID_STRUCT_PLAYER_ID);
-        SetBoxMonIVs(&boxMon, USE_RANDOM_IVS);
-        GiveBoxMonInitialMoveset(&boxMon);
+        if (qaBox < 0)
+            return;
 
-        heldItem = entry->heldItem;
-        SetBoxMonData(&boxMon, MON_DATA_HELD_ITEM, &heldItem);
+        StringCopy(gPokemonStoragePtr->boxNames[qaBox], sPjrEvolutionQaBoxName);
 
-        slot = i;
-        gPokemonStoragePtr->boxes[qaBox][slot] = boxMon;
+        for (i = 0; i < ARRAY_COUNT(sPjrEvolutionQaMons); i++)
+        {
+            const struct PjrEvolutionQaMon *entry = &sPjrEvolutionQaMons[i];
+
+            CreateBoxMon(&boxMon, entry->species, entry->level, Random32(), OTID_STRUCT_PLAYER_ID);
+            SetBoxMonIVs(&boxMon, USE_RANDOM_IVS);
+            GiveBoxMonInitialMoveset(&boxMon);
+
+            heldItem = entry->heldItem;
+            SetBoxMonData(&boxMon, MON_DATA_HELD_ITEM, &heldItem);
+
+            slot = i;
+            gPokemonStoragePtr->boxes[qaBox][slot] = boxMon;
+        }
     }
 
     // Stone-use evolutions: Omeon + Grimfowl use Dusk Stone,
