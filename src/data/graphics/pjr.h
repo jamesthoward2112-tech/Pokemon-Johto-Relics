@@ -168,9 +168,9 @@ const u16 gMonShinyPalette_Drakeon[] = INCBIN_U16("graphics/pokemon/drakeon/shin
 const u32 gMonBackPic_Drakeon[] = INCBIN_U32("graphics/pokemon/drakeon/back.4bpp.smol");
 const u8 gMonIcon_Drakeon[] = INCBIN_U8("graphics/pokemon/drakeon/icon.4bpp");
 
-const u32 gMonFrontPic_Ghoulbat[] = INCBIN_U32("graphics/pokemon/crobat/anim_front.4bpp.smol");
-const u16 gMonPalette_Ghoulbat[] = INCBIN_U16("graphics/pokemon/crobat/normal.gbapal");
-const u16 gMonShinyPalette_Ghoulbat[] = INCBIN_U16("graphics/pokemon/crobat/shiny.gbapal");
+const u32 gMonFrontPic_Ghoulbat[] = INCBIN_U32("graphics/pokemon/pjr_e4/crobat_relic/front.4bpp.smol");
+const u16 gMonPalette_Ghoulbat[] = INCBIN_U16("graphics/pokemon/pjr_e4/crobat_relic/normal.gbapal");
+const u16 gMonShinyPalette_Ghoulbat[] = INCBIN_U16("graphics/pokemon/pjr_e4/crobat_relic/shiny.gbapal");
 const u32 gMonBackPic_Ghoulbat[] = INCBIN_U32("graphics/pokemon/crobat/back.4bpp.smol");
 const u8 gMonIcon_Ghoulbat[] = INCBIN_U8("graphics/pokemon/crobat/icon.4bpp");
 
