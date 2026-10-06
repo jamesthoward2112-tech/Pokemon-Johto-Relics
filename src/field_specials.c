@@ -4565,6 +4565,8 @@ struct PjrEvolutionQaMon
     u16 heldItem;
 };
 
+static const u8 sPjrEvolutionQaBoxName[] = _("RELICTST");
+
 static const struct PjrEvolutionQaMon sPjrEvolutionQaMons[] =
 {
     { SPECIES_HERACROSS,  39, ITEM_ANCIENT_HORN  },
@@ -4642,7 +4644,7 @@ void PjrGiveEvolutionQaKit(void)
     if (qaBox < 0)
         return;
 
-    StringCopy(gPokemonStoragePtr->boxNames[qaBox], _("RELICTST"));
+    StringCopy(gPokemonStoragePtr->boxNames[qaBox], sPjrEvolutionQaBoxName);
 
     for (i = 0; i < ARRAY_COUNT(sPjrEvolutionQaMons); i++)
     {
