@@ -4,7 +4,7 @@
 
 **`pjr-rebuild` is the single source of truth for the active Pokémon Johto Relics Alpha.**
 
-Use GitHub HEAD on `pjr-rebuild` plus the latest successful **PJR Alpha build** workflow as the authoritative state. Chat/session state is never authoritative.
+Use GitHub HEAD on `pjr-rebuild` plus the latest successful **PJR Beta build** workflow as the authoritative state. Chat/session state is never authoritative.
 
 ## Feature branches
 
@@ -14,12 +14,12 @@ After a feature is validated, fast-forward or merge it into `pjr-rebuild`, close
 
 ## Build authority
 
-The dedicated workflow `.github/workflows/pjr-rebuild.yml` builds the real HnS/PJR Alpha and packages:
+The dedicated workflow `.github/workflows/pjr-rebuild.yml` builds the real HnS/PJR Beta and packages:
 
-- `PJR-Alpha.gba`
-- `PJR-Alpha.sym`
-- `PJR-Alpha-SHA256.txt`
-- `PJR-Alpha-Commit.txt`
+- `PJR-Beta.gba`
+- `PJR-Beta.sym`
+- `PJR-Beta-SHA256.txt`
+- `PJR-Beta-Commit.txt`
 
 A feature is not considered test-ready until this workflow succeeds on the canonical branch.
 
@@ -27,7 +27,7 @@ A feature is not considered test-ready until this workflow succeeds on the canon
 
 The Ecruteak Rock Shop feature was validated by **PJR Alpha build Run 143** at commit `85393e8f` and folded into `pjr-rebuild`.
 
-`pjr-rock-shop-ecruteak` is now historical only. New PJR feature work should branch from `pjr-rebuild` and open a PR back to `pjr-rebuild`. The PJR Alpha workflow runs on both those PRs and pushes to the canonical branch.
+`pjr-rock-shop-ecruteak` is now historical only. New PJR feature work should branch from `pjr-rebuild` and open a PR back to `pjr-rebuild`. The PJR Beta workflow runs on both those PRs and pushes to the canonical branch.
 
 The generic Emerald/FireRed/LeafGreen CI is intentionally restricted to `master` and `upcoming`; it is not the authority for the HnS/PJR build.
 
