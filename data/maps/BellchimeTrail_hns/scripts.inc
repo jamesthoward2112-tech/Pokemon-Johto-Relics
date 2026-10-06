@@ -54,8 +54,18 @@ EcruteakBellchimeTrail_Movement_CameraPanUp::
 
 
 EcruteakBellchimeTrail_EventScript_RelicShortcut::
+	@ Older saves may already be at the final Relic Ho-Oh encounter from before
+	@ the shortcut flags existed. That stage proves both relic prerequisites.
+	goto_if_eq VAR_COMPLETED_HO_OH, 4, EcruteakBellchimeTrail_EventScript_RelicShortcutBackfill
 	goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, EcruteakBellchimeTrail_Text_RelicShortcutDormant
 	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, EcruteakBellchimeTrail_Text_RelicShortcutDormant
+	goto EcruteakBellchimeTrail_EventScript_RelicShortcutReady
+
+EcruteakBellchimeTrail_EventScript_RelicShortcutBackfill::
+	setflag FLAG_PJR_GOT_RAINBOW_CREST
+	setflag FLAG_PJR_RELIC_ALPHORACLE
+
+EcruteakBellchimeTrail_EventScript_RelicShortcutReady::
 	msgbox EcruteakBellchimeTrail_Text_RelicShortcutReady, MSGBOX_DEFAULT
 	warp MAP_TIN_TOWER_8F_HNS, 6, 12
 	waitstate
