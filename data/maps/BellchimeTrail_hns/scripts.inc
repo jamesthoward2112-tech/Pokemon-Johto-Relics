@@ -54,16 +54,22 @@ EcruteakBellchimeTrail_Movement_CameraPanUp::
 
 
 EcruteakBellchimeTrail_EventScript_RelicShortcut::
-	@ Older saves may already be at the final Relic Ho-Oh encounter from before
-	@ the shortcut flags existed. That stage proves both relic prerequisites.
+	@ The original endgame state is persistent, but VAR_COMPLETED_HO_OH
+	@ changes from 4 to 3 after Relic Ho-Oh is caught. Both states must
+	@ preserve access to the rooftop shortcut on old saves.
+	goto_if_set FLAG_PJR_RELIC_HO_OH, EcruteakBellchimeTrail_EventScript_RelicShortcutBackfill
 	goto_if_eq VAR_COMPLETED_HO_OH, 4, EcruteakBellchimeTrail_EventScript_RelicShortcutBackfill
-	goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, EcruteakBellchimeTrail_Text_RelicShortcutDormant
-	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, EcruteakBellchimeTrail_Text_RelicShortcutDormant
-	goto EcruteakBellchimeTrail_EventScript_RelicShortcutReady
+	@ Red's canonical completion flag pre-dates the PJR crest flag.
+	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, EcruteakBellchimeTrail_EventScript_RelicShortcutDormant
+	goto_if_set FLAG_PJR_GOT_RAINBOW_CREST, EcruteakBellchimeTrail_EventScript_RelicShortcutReady
+	goto_if_set FLAG_DEFEATED_RED, EcruteakBellchimeTrail_EventScript_RelicShortcutCrestBackfill
+	goto_if_set FLAG_PJR_RED_DEFEATED, EcruteakBellchimeTrail_EventScript_RelicShortcutCrestBackfill
+	goto EcruteakBellchimeTrail_EventScript_RelicShortcutDormant
 
 EcruteakBellchimeTrail_EventScript_RelicShortcutBackfill::
-	setflag FLAG_PJR_GOT_RAINBOW_CREST
 	setflag FLAG_PJR_RELIC_ALPHORACLE
+EcruteakBellchimeTrail_EventScript_RelicShortcutCrestBackfill::
+	setflag FLAG_PJR_GOT_RAINBOW_CREST
 
 EcruteakBellchimeTrail_EventScript_RelicShortcutReady::
 	msgbox EcruteakBellchimeTrail_Text_RelicShortcutReady, MSGBOX_DEFAULT
@@ -71,7 +77,7 @@ EcruteakBellchimeTrail_EventScript_RelicShortcutReady::
 	waitstate
 	end
 
-EcruteakBellchimeTrail_Text_RelicShortcutDormant:
+EcruteakBellchimeTrail_EventScript_RelicShortcutDormant::
 	msgbox EcruteakBellchimeTrail_Text_RelicShortcutDormantMsg, MSGBOX_DEFAULT
 	end
 
@@ -81,5 +87,6 @@ EcruteakBellchimeTrail_Text_RelicShortcutReady:
 	.string "roof of TIN TOWER.$"
 
 EcruteakBellchimeTrail_Text_RelicShortcutDormantMsg:
-	.string "TIN TOWER\n"
-	.string "A sacred tower watched by HO-OH.$"
+	.string "The ancient statue is silent.\p"
+	.string "The FIRST VOICE and RED's CREST\n"
+	.string "must awaken its passage.$"

@@ -64,6 +64,8 @@ jobs:
               for name in ('front.png', 'back.png', 'icon.png'):
                   shutil.copy2(species_dir / name, dst / name)
           PY
+      - name: Check Tin Tower shortcut and final encounter
+        run: python3 tools/check_pjr_tintower_shortcut.py
       - name: Build PJR Alpha
         run: |
           make hns -j4 -O
