@@ -4539,6 +4539,24 @@ bool32 CheckObjectAtXY(u32 x, u32 y)
     return FALSE;
 }
 
+// Runtime fallback for the two Tin Tower entrance statues, including
+// the upper halves of their tiles. All other statues keep their normal text.
+bool32 IsPjrTinTowerEntranceStatue(void)
+{
+    s16 x, y;
+
+    if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(MAP_TIN_TOWER_1F_HNS)
+        || gSaveBlock1Ptr->location.mapNum != MAP_NUM(MAP_TIN_TOWER_1F_HNS))
+        return FALSE;
+
+    PlayerGetDestCoords(&x, &y);
+    x -= MAP_OFFSET;
+    y -= MAP_OFFSET;
+
+    return y >= 15 && y <= 17
+        && ((x >= 6 && x <= 8) || (x >= 10 && x <= 12));
+}
+
 bool32 CheckPartyHasSpecies(u32 givenSpecies)
 {
     u32 partyIndex;

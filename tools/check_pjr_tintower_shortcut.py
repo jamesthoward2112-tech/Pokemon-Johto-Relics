@@ -5,7 +5,7 @@ from pathlib import Path
 root = Path(__file__).resolve().parents[1]
 maps = root / "data" / "maps"
 first = json.loads((maps / "TinTower_1F_hns" / "map.json").read_text())
-statues = {(7, 17), (11, 17)}
+statues = {(7, 16), (11, 16), (7, 17), (11, 17)}
 wired = {
     (event["x"], event["y"])
     for event in first["bg_events"]
@@ -37,3 +37,13 @@ assert "Ghoulbat @ Life Orb" in party
 assert "Meowth @" not in party
 assert "Pikachu @ Light Ball" in party
 print("PASS: both statues lead directly to rooftop; save backfill, Rocket ambush and Ho-Oh retained")
+
+generic = (maps / "RuinsOfAlph_PuzzleAndRewardChambers_hns" / "scripts.inc").read_text()
+assert "specialvar VAR_RESULT, IsPjrTinTowerEntranceStatue" in generic
+assert "goto_if_eq VAR_RESULT, TRUE, EcruteakBellchimeTrail_EventScript_RelicShortcut" in generic
+special = (root / "src/field_specials.c").read_text()
+assert "MAP_GROUP(MAP_TIN_TOWER_1F_HNS)" in special
+assert "MAP_NUM(MAP_TIN_TOWER_1F_HNS)" in special
+assert "x -= MAP_OFFSET;" in special and "y -= MAP_OFFSET;" in special
+assert "def_special IsPjrTinTowerEntranceStatue" in (root / "data/specials.inc").read_text()
+print("PASS: runtime generic statue fallback resolves entrance statues only")

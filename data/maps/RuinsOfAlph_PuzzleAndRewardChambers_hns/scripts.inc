@@ -67,6 +67,10 @@ RuinsOfAlph_PuzzleAndRewardChambers_MapScript_HoohDescription::
 	release
 	end
 RuinsOfAlph_PuzzleAndRewardChambers_MapScript_StatueDescription::
+	@ Some entrance-statue interactions resolve through this shared script
+	@ rather than their map's specific background-event hook. Recover them.
+	specialvar VAR_RESULT, IsPjrTinTowerEntranceStatue
+	goto_if_eq VAR_RESULT, TRUE, EcruteakBellchimeTrail_EventScript_RelicShortcut
 	lock
 	msgbox RuinsOfAlph_PuzzleAndRewardChambers_Text_Statue, MSGBOX_DEFAULT
 	release
