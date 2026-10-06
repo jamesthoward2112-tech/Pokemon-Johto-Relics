@@ -1,2 +1,8 @@
 TinTower_RoofNight_hns_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, TinTower_RoofNight_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, TinTower_RoofDay_OnFrame
 	.byte 0
+
+TinTower_RoofNight_OnTransition::
+	call TinTower_RoofDay_EventScript_SyncFinalRocketState
+	end

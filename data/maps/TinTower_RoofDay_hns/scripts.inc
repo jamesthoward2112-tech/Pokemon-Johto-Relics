@@ -1,15 +1,36 @@
 TinTower_RoofDay_hns_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, TinTower_RoofDay_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, TinTower_RoofDay_OnFrame
 	.byte 0
 
 TinTower_RoofDay_OnTransition:
 	call_if_set FLAG_DAY_POKEMON, TinTower_RoofDay_EventScript_SetNight
 	call_if_unset FLAG_DAY_POKEMON, TinTower_RoofDay_EventScript_SetDay
 	call TinTower_RoofDay_EventScript_SyncRelicHoOhState
+	call TinTower_RoofDay_EventScript_SyncFinalRocketState
 	goto_if_eq VAR_COMPLETED_HO_OH, 2, TinTower_RoofDay_MapScript_HoohStory
 	goto_if_eq VAR_COMPLETED_HO_OH, 3, TinTower_RoofDay_MapScript_HoohPostStoryGone
 	goto_if_eq VAR_COMPLETED_HO_OH, 4, TinTower_RoofDay_MapScript_HoohPostStoryEncounter
 	end
+
+@ Rooftop confrontation: one-time, unavoidable encounter on arrival.
+@ Do not alter Ho-Oh's existing script or persistent quest state.
+TinTower_RoofDay_OnFrame::
+	map_script_2 VAR_TEMP_0, 1, TinTower_8F_EventScript_JessieJamesBattle
+	.2byte 0
+
+TinTower_RoofDay_EventScript_SyncFinalRocketState::
+	setvar VAR_TEMP_0, 0
+	goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, TinTower_RoofDay_EventScript_HideFinalRocket
+	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, TinTower_RoofDay_EventScript_HideFinalRocket
+	goto_if_set FLAG_PJR_JESSIE_JAMES_FINAL_DEFEATED, TinTower_RoofDay_EventScript_HideFinalRocket
+	setvar VAR_TEMP_0, 1
+	return
+
+TinTower_RoofDay_EventScript_HideFinalRocket::
+	removeobject LOCALID_TINTOWER8F_JESSIE
+	removeobject LOCALID_TINTOWER8F_JAMES
+	return
 
 @ Save-compatible self-heal for the final RELIC encounter.  Older saves could
 @ own the Crest and Alphoracle but still have VAR_COMPLETED_HO_OH stuck at 3,

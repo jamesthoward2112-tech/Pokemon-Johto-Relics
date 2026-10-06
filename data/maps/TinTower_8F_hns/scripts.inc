@@ -17,14 +17,6 @@ TinTower_8F_EventScript_SetWarpDay::
 
 TinTower_8F_OnTransition::
 	call TinTower_OnTransition
-	goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, TinTower_8F_HideFinalRocket
-	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, TinTower_8F_HideFinalRocket
-	goto_if_set FLAG_PJR_JESSIE_JAMES_FINAL_DEFEATED, TinTower_8F_HideFinalRocket
-	end
-
-TinTower_8F_HideFinalRocket::
-	removeobject LOCALID_TINTOWER8F_JESSIE
-	removeobject LOCALID_TINTOWER8F_JAMES
 	end
 
 TinTower_8F_EventScript_JessieJamesTrigger::
@@ -39,6 +31,7 @@ TinTower_8F_EventScript_JessieJamesInteract::
 
 TinTower_8F_EventScript_JessieJamesBattle::
 	lockall
+	setvar VAR_TEMP_0, 0
 	applymovement LOCALID_TINTOWER8F_JESSIE, Common_Movement_FacePlayer
 	applymovement LOCALID_TINTOWER8F_JAMES, Common_Movement_FacePlayer
 	waitmovement 0

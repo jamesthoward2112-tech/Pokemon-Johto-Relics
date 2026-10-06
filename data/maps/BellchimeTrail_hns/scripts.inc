@@ -67,7 +67,7 @@ EcruteakBellchimeTrail_EventScript_RelicShortcutBackfill::
 
 EcruteakBellchimeTrail_EventScript_RelicShortcutReady::
 	msgbox EcruteakBellchimeTrail_Text_RelicShortcutReady, MSGBOX_DEFAULT
-	warp MAP_TIN_TOWER_8F_HNS, 6, 12
+	warp MAP_TIN_TOWER_ROOF_DAY_HNS, 10, 13
 	waitstate
 	end
 
@@ -78,7 +78,7 @@ EcruteakBellchimeTrail_Text_RelicShortcutDormant:
 EcruteakBellchimeTrail_Text_RelicShortcutReady:
 	.string "The ANCIENT RAINBOW CREST glows.\p"
 	.string "A hidden passage opens toward the\n"
-	.string "highest floor of TIN TOWER.$"
+	.string "roof of TIN TOWER.$"
 
 EcruteakBellchimeTrail_Text_RelicShortcutDormantMsg:
 	.string "TIN TOWER\n"
