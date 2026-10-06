@@ -14308,7 +14308,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .teachableLearnset = sMarowakTeachableLearnset,
         .formSpeciesIdTable = sMarowakFormSpeciesIdTable,
         .evolutions = EVOLUTION(
-            {EVO_LEVEL, 40, SPECIES_OSTEODIAN, CONDITIONS({IF_HOLD_ITEM, ITEM_THICK_CLUB}, {IF_TIME, TIME_DAY})},
+            {EVO_LEVEL, 40, SPECIES_OSTEODIAN, CONDITIONS({IF_HOLD_ITEM, ITEM_THICK_CLUB}, {IF_NOT_TIME, TIME_NIGHT})},
             {EVO_LEVEL, 40, SPECIES_MAROGHOST, CONDITIONS({IF_HOLD_ITEM, ITEM_SPELL_TAG}, {IF_TIME, TIME_NIGHT})}
         ),
     },

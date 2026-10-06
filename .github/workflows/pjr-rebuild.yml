@@ -61,7 +61,9 @@ jobs:
                   continue
               dst = pathlib.Path('graphics/pokemon') / species_dir.name
               dst.mkdir(parents=True, exist_ok=True)
-              for name in ('front.png', 'back.png', 'icon.png'):
+              # Party icons in the repo are palette-normalized GBA conversions of the donor icons.
+              # Keep those conversions; copying the donor PNGs here corrupts party-menu rendering.
+              for name in ('front.png', 'back.png'):
                   shutil.copy2(species_dir / name, dst / name)
           PY
       - name: Check Tin Tower shortcut and final encounter
