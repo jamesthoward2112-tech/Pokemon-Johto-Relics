@@ -2184,14 +2184,11 @@ void CB2_ContinueSavedGame(void)
     u8 trainerHillMapId;
 
 #if IS_HNS
-    // QA-only: inject the Relic evolution test roster as soon as an existing
-    // save finishes loading. This avoids relying on any particular PC script.
-    if (!FlagGet(FLAG_PJR_QA_EVOLUTION_KIT))
-    {
-        PjrGiveEvolutionQaKit();
-        if (gSpecialVar_Result == TRUE)
-            FlagSet(FLAG_PJR_QA_EVOLUTION_KIT);
-    }
+    // QA-only: inject/top up the Relic evolution test kit as soon as an
+    // existing save finishes loading. PjrGiveEvolutionQaKit is idempotent.
+    PjrGiveEvolutionQaKit();
+    if (gSpecialVar_Result == TRUE)
+        FlagSet(FLAG_PJR_QA_EVOLUTION_KIT);
 #endif
 
     FieldClearVBlankHBlankCallbacks();
