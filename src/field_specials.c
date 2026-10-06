@@ -4557,6 +4557,101 @@ bool32 IsPjrTinTowerEntranceStatue(void)
         && ((x >= 6 && x <= 8) || (x >= 10 && x <= 12));
 }
 
+
+struct PjrEvolutionQaMon
+{
+    u16 species;
+    u8 level;
+    u16 heldItem;
+};
+
+static const struct PjrEvolutionQaMon sPjrEvolutionQaMons[] =
+{
+    { SPECIES_HERACROSS,  39, ITEM_ANCIENT_HORN  },
+    { SPECIES_SKARMORY,   39, ITEM_ANCIENT_PLUME },
+    { SPECIES_MILTANK,    39, ITEM_ANCIENT_BELL  },
+    { SPECIES_SHUCKLE,    39, ITEM_ANCIENT_SHELL },
+    { SPECIES_SUDOWOODO,  39, ITEM_FOSSIL_BARK   },
+    { SPECIES_DONPHAN,    39, ITEM_ANCIENT_TUSK  },
+
+    { SPECIES_MEGANIUM,   44, ITEM_MIRACLE_SEED  },
+    { SPECIES_TYPHLOSION, 44, ITEM_CHARCOAL      },
+    { SPECIES_FERALIGATR, 44, ITEM_MYSTIC_WATER  },
+    { SPECIES_JYNX,       39, ITEM_FROST_MIRROR  },
+    { SPECIES_PINSIR,     41, ITEM_NONE           },
+    { SPECIES_CROBAT,     49, ITEM_NONE           },
+
+    { SPECIES_MAROWAK,    39, ITEM_THICK_CLUB     },
+    { SPECIES_MAROWAK,    39, ITEM_SPELL_TAG      },
+    { SPECIES_DELIBIRD,   30, ITEM_NONE           },
+    { SPECIES_NOCTOWL,    30, ITEM_NONE           },
+    { SPECIES_QWILFISH,   39, ITEM_METAL_COAT     },
+    { SPECIES_SUNFLORA,   30, ITEM_NONE           },
+
+    { SPECIES_EEVEE,      24, ITEM_EXPERT_BELT    },
+    { SPECIES_EEVEE,      24, ITEM_SILVER_POWDER  },
+    { SPECIES_EEVEE,      24, ITEM_SOFT_SAND      },
+    { SPECIES_EEVEE,      24, ITEM_METAL_COAT     },
+    { SPECIES_EEVEE,      24, ITEM_HARD_STONE     },
+    { SPECIES_EEVEE,      24, ITEM_POISON_BARB    },
+
+    { SPECIES_EEVEE,      24, ITEM_DRAGON_FANG    },
+    { SPECIES_EEVEE,      24, ITEM_NONE           },
+};
+
+void PjrGiveEvolutionQaKit(void)
+{
+    struct BoxPokemon boxMon;
+    u32 boxId;
+    u32 slot;
+    u32 i;
+    u16 heldItem;
+    s32 qaBox = -1;
+
+    gSpecialVar_Result = FALSE;
+
+    // Keep the player's existing collection untouched: use one fully empty box.
+    for (boxId = 0; boxId < TOTAL_BOXES_COUNT; boxId++)
+    {
+        if (CountMonsInBox(boxId) == 0)
+        {
+            qaBox = boxId;
+            break;
+        }
+    }
+
+    if (qaBox < 0)
+        return;
+
+    StringCopy(gPokemonStoragePtr->boxNames[qaBox], _("RELICTST"));
+
+    for (i = 0; i < ARRAY_COUNT(sPjrEvolutionQaMons); i++)
+    {
+        const struct PjrEvolutionQaMon *entry = &sPjrEvolutionQaMons[i];
+
+        CreateBoxMon(&boxMon, entry->species, entry->level, Random32(), OTID_STRUCT_PLAYER_ID);
+        SetBoxMonIVs(&boxMon, USE_RANDOM_IVS);
+        GiveBoxMonInitialMoveset(&boxMon);
+
+        heldItem = entry->heldItem;
+        SetBoxMonData(&boxMon, MON_DATA_HELD_ITEM, &heldItem);
+
+        slot = i;
+        gPokemonStoragePtr->boxes[qaBox][slot] = boxMon;
+    }
+
+    // Stone-use evolutions: Omeon + Grimfowl use Dusk Stone,
+    // Jollibird uses Shiny Stone, and Sunflorid uses Fire Stone.
+    AddBagItem(ITEM_RARE_CANDY, 99);
+    AddBagItem(ITEM_DUSK_STONE, 4);
+    AddBagItem(ITEM_SHINY_STONE, 2);
+    AddBagItem(ITEM_FIRE_STONE, 2);
+
+    gPokemonStoragePtr->currentBox = qaBox;
+    FlagSet(FLAG_SYS_POKEMON_GET);
+    gSpecialVar_Result = TRUE;
+}
+
 bool32 CheckPartyHasSpecies(u32 givenSpecies)
 {
     u32 partyIndex;
