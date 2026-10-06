@@ -4606,9 +4606,28 @@ void PjrGiveEvolutionQaKit(void)
     u32 slot;
     u32 i;
     u16 heldItem;
+    u16 rareCandyNeeded;
+    u16 duskStoneNeeded;
+    u16 shinyStoneNeeded;
+    u16 fireStoneNeeded;
     s32 qaBox = -1;
 
     gSpecialVar_Result = FALSE;
+
+    rareCandyNeeded = CountTotalItemQuantityInBag(ITEM_RARE_CANDY) >= 99
+        ? 0 : 99 - CountTotalItemQuantityInBag(ITEM_RARE_CANDY);
+    duskStoneNeeded = CountTotalItemQuantityInBag(ITEM_DUSK_STONE) >= 4
+        ? 0 : 4 - CountTotalItemQuantityInBag(ITEM_DUSK_STONE);
+    shinyStoneNeeded = CountTotalItemQuantityInBag(ITEM_SHINY_STONE) >= 2
+        ? 0 : 2 - CountTotalItemQuantityInBag(ITEM_SHINY_STONE);
+    fireStoneNeeded = CountTotalItemQuantityInBag(ITEM_FIRE_STONE) >= 2
+        ? 0 : 2 - CountTotalItemQuantityInBag(ITEM_FIRE_STONE);
+
+    if ((rareCandyNeeded && !CheckBagHasSpace(ITEM_RARE_CANDY, rareCandyNeeded))
+     || (duskStoneNeeded && !CheckBagHasSpace(ITEM_DUSK_STONE, duskStoneNeeded))
+     || (shinyStoneNeeded && !CheckBagHasSpace(ITEM_SHINY_STONE, shinyStoneNeeded))
+     || (fireStoneNeeded && !CheckBagHasSpace(ITEM_FIRE_STONE, fireStoneNeeded)))
+        return;
 
     // Keep the player's existing collection untouched: use one fully empty box.
     for (boxId = 0; boxId < TOTAL_BOXES_COUNT; boxId++)
@@ -4642,10 +4661,14 @@ void PjrGiveEvolutionQaKit(void)
 
     // Stone-use evolutions: Omeon + Grimfowl use Dusk Stone,
     // Jollibird uses Shiny Stone, and Sunflorid uses Fire Stone.
-    AddBagItem(ITEM_RARE_CANDY, 99);
-    AddBagItem(ITEM_DUSK_STONE, 4);
-    AddBagItem(ITEM_SHINY_STONE, 2);
-    AddBagItem(ITEM_FIRE_STONE, 2);
+    if (rareCandyNeeded)
+        AddBagItem(ITEM_RARE_CANDY, rareCandyNeeded);
+    if (duskStoneNeeded)
+        AddBagItem(ITEM_DUSK_STONE, duskStoneNeeded);
+    if (shinyStoneNeeded)
+        AddBagItem(ITEM_SHINY_STONE, shinyStoneNeeded);
+    if (fireStoneNeeded)
+        AddBagItem(ITEM_FIRE_STONE, fireStoneNeeded);
 
     gPokemonStoragePtr->currentBox = qaBox;
     FlagSet(FLAG_SYS_POKEMON_GET);
