@@ -1,0 +1,23 @@
+name: ChatGPT PRL clean restart transfer
+on:
+  push:
+    paths:
+      - '.github/workflows/chatgpt-prl-clean-restart-transfer.yml'
+
+jobs:
+  transfer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch exact ROM
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 5 --retry-delay 2 'https://tmpfiles.org/dl/wPAmlfDeU2hZ/pokeprl.gba' -o PRL_CLEAN_RESTART_PALLET_TEST.gba
+          echo 'b97888871ea676a0af78c84d8e65f12fa72ab3d22077bfd9c2e3acb701e1e28f  PRL_CLEAN_RESTART_PALLET_TEST.gba' | sha256sum -c -
+      - name: Upload ROM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PRL_CLEAN_RESTART_PALLET_TEST
+          path: PRL_CLEAN_RESTART_PALLET_TEST.gba
+          if-no-files-found: error
+          retention-days: 1
