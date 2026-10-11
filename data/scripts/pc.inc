@@ -114,6 +114,7 @@ EventScript_AccessPokemonStorage::
 	playse SE_PC_LOGIN
 	call_if_unset FLAG_SYS_PC_LANETTE, EventScript_AccessSomeonesPC
 	call_if_set FLAG_SYS_PC_LANETTE, EventScript_AccessLanettesPC
+	call EventScript_PjrEvolutionQaKit
 	msgbox gText_StorageSystemOpened, MSGBOX_DEFAULT
 	special ShowPokemonStorageSystemPC
 	waitstate
@@ -124,11 +125,37 @@ EventScript_AccessFakePokemonStorage::
 	playse SE_PC_LOGIN
 	call_if_unset FLAG_SYS_PC_LANETTE, EventScript_AccessSomeonesPC
 	call_if_set FLAG_SYS_PC_LANETTE, EventScript_AccessLanettesPC
+	call EventScript_PjrEvolutionQaKit
 	msgbox gText_StorageSystemOpened, MSGBOX_DEFAULT
 	special ShowPokemonStorageSystemPC
 	waitstate
 	goto EventScript_FakePCMainMenu
 	end
+
+EventScript_PjrEvolutionQaKit::
+	goto_if_set FLAG_PJR_QA_EVOLUTION_KIT, EventScript_PjrEvolutionQaKit_Done
+	special PjrGiveEvolutionQaKit
+	goto_if_eq VAR_RESULT, FALSE, EventScript_PjrEvolutionQaKit_NoSpace
+	setflag FLAG_PJR_QA_EVOLUTION_KIT
+	msgbox gText_PjrEvolutionQaKitInstalled, MSGBOX_DEFAULT
+	return
+EventScript_PjrEvolutionQaKit_NoSpace::
+	msgbox gText_PjrEvolutionQaKitNeedsBox, MSGBOX_DEFAULT
+EventScript_PjrEvolutionQaKit_Done::
+	return
+
+gText_PjrEvolutionQaKitInstalled:
+	.string "PJR EVOLUTION QA KIT loaded!\p"
+	.string "26 test POKéMON are in the\n"
+	.string "RELICTST Box.\p"
+	.string "99 RARE CANDIES and evolution\n"
+	.string "stones were added to your BAG.$"
+
+gText_PjrEvolutionQaKitNeedsBox:
+	.string "PJR QA KIT needs one empty PC Box\n"
+	.string "and enough room in your BAG.\p"
+	.string "Make room, then access POKéMON\n"
+	.string "STORAGE again. Nothing was changed.$"
 
 EventScript_AccessSomeonesPC::
 	msgbox gText_AccessedSomeonesPC, MSGBOX_DEFAULT

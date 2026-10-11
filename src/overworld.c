@@ -2183,6 +2183,14 @@ void CB2_ContinueSavedGame(void)
 {
     u8 trainerHillMapId;
 
+#if IS_HNS
+    // QA-only: inject/top up the Relic evolution test kit as soon as an
+    // existing save finishes loading. PjrGiveEvolutionQaKit is idempotent.
+    PjrGiveEvolutionQaKit();
+    if (gSpecialVar_Result == TRUE)
+        FlagSet(FLAG_PJR_QA_EVOLUTION_KIT);
+#endif
+
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();
     ResetSafariZoneFlag_();
