@@ -394,6 +394,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_VISE_GRIP] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 5, }),
         .name = COMPOUND_STRING("VISE GRIP"),
         .description = COMPOUND_STRING(
             "Grips the foe with large and\n"
@@ -439,6 +441,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_RAZOR_WIND] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 3, }),
         .name = COMPOUND_STRING("RAZOR WIND"),
         #if B_UPDATED_MOVE_DATA == GEN_3 || B_UPDATED_MOVE_DATA == GEN_1
             .description = COMPOUND_STRING(
@@ -504,6 +508,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_CUT] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 5, }),
         .name = COMPOUND_STRING("CUT"),
         .description = COMPOUND_STRING(
             "Cuts the foe with sharp\n"
@@ -906,6 +912,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_HORN_ATTACK] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 5, }),
         .name = COMPOUND_STRING("HORN ATTACK"),
         .description = COMPOUND_STRING(
             "Jabs the foe with sharp\n"
@@ -928,6 +936,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_FURY_ATTACK] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 3, }),
         .name = COMPOUND_STRING("FURY ATTACK"),
         .description = COMPOUND_STRING(
             "Jabs the foe 2 to 5 times\n"
@@ -1211,6 +1221,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_PIN_MISSILE] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 3, }),
         .name = COMPOUND_STRING("PIN MISSILE"),
         .description = COMPOUND_STRING(
             "Sharp pins are fired to\n"
@@ -1273,7 +1285,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_FLINCH,
             .chance = B_UPDATED_MOVE_DATA >= GEN_2 ? 30 : 10,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_BLEED, .chance = 5, }),
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_STARTLE_PREV_MON : CONTEST_EFFECT_BADLY_STARTLE_PREV_MONS,
         .contestCategory = CONTEST_CATEGORY_TOUGH,
         .contestComboStarterId = 0,
@@ -1799,6 +1812,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_PECK] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 3, }),
         .name = COMPOUND_STRING("PECK"),
         .description = COMPOUND_STRING(
             "Attacks the foe with a\n"
@@ -1821,6 +1836,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_DRILL_PECK] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .name = COMPOUND_STRING("DRILL PECK"),
         .description = COMPOUND_STRING(
             "A corkscrewing attack with\n"
@@ -2085,6 +2102,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_RAZOR_LEAF] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 5, }),
         .name = COMPOUND_STRING("RAZOR LEAF"),
         .description = COMPOUND_STRING(
             "Cuts enemies with leaves.\n"
@@ -3571,6 +3590,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_SPIKE_CANNON] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 3, }),
         .name = COMPOUND_STRING("SPIKE CANNON"),
         .description = COMPOUND_STRING(
             "Launches sharp spikes that\n"
@@ -3838,6 +3859,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_LEECH_LIFE] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 3, }),
         .name = COMPOUND_STRING("LEECH LIFE"),
         .description = COMPOUND_STRING(
             "Attack that steals half\n"
@@ -4136,6 +4159,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_CRABHAMMER] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .name = COMPOUND_STRING("CRABHAMMER"),
         .description = COMPOUND_STRING(
             "Hammers with a pincer. Has a\n"
@@ -4185,6 +4210,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_FURY_SWIPES] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 3, }),
         .name = COMPOUND_STRING("FURY SWIPES"),
         .description = COMPOUND_STRING(
             "Rakes the foe with sharp\n"
@@ -4309,7 +4336,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_FLINCH,
             .chance = 10,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_REPETITION_NOT_BORING : CONTEST_EFFECT_BADLY_STARTLE_FRONT_MON,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,
@@ -4414,6 +4442,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_SUPER_FANG] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 3, }),
         .name = COMPOUND_STRING("SUPER FANG"),
         .description = COMPOUND_STRING(
             "Attacks with sharp fangs\n"
@@ -4439,6 +4469,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_SLASH] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .name = COMPOUND_STRING("SLASH"),
         .description = COMPOUND_STRING(
             "Slashes with claws, etc. Has\n"
@@ -4672,6 +4704,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_NIGHTMARE] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_FEAR, .chance = 10, }),
         .name = COMPOUND_STRING("NIGHTMARE"),
         .description = COMPOUND_STRING(
             "Inflicts 1/4 damage on a\n"
@@ -5699,6 +5733,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_FURY_CUTTER] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 3, }),
         .name = COMPOUND_STRING("FURY CUTTER"),
         .description = COMPOUND_STRING(
             "Attack that intensifies\n"
@@ -6064,6 +6100,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_MEGAHORN] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 15, }),
         .name = COMPOUND_STRING("MEGAHORN"),
         .description = COMPOUND_STRING(
             "A brutal ramming attack\n"
@@ -6296,7 +6334,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             .moveEffect = MOVE_EFFECT_ATK_PLUS_1,
             .self = TRUE,
             .chance = 10,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_BLEED, .chance = 5, }),
         .contestEffect = CONTEST_EFFECT_HIGHLY_APPEALING,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,
@@ -6567,7 +6606,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             .moveEffect = MOVE_EFFECT_SP_DEF_MINUS_1,
         #endif
             .chance = 20,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_FRONT_MON,
         .contestCategory = CONTEST_CATEGORY_TOUGH,
         .contestComboStarterId = 0,
@@ -6704,7 +6744,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_SP_DEF_MINUS_1,
             .chance = 20,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_FEAR, .chance = 5, }),
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_HIGHLY_APPEALING : CONTEST_EFFECT_SHIFT_JUDGE_ATTENTION,
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -8379,7 +8420,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_FLINCH,
             .chance = 30,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_FEAR, .chance = 3, }),
         .contestEffect = CONTEST_EFFECT_STARTLE_PREV_MON,
         .contestCategory = C_UPDATED_MOVE_CATEGORIES >= GEN_6 ? CONTEST_CATEGORY_CUTE : CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -8465,6 +8507,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_AIR_CUTTER] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 3, }),
         .name = COMPOUND_STRING("AIR CUTTER"),
         .description = COMPOUND_STRING(
             "Hacks with razorlike wind.\n"
@@ -8924,6 +8968,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_AERIAL_ACE] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 5, }),
         .name = COMPOUND_STRING("AERIAL ACE"),
         .description = COMPOUND_STRING(
             "An extremely speedy and\n"
@@ -9048,6 +9094,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_DRAGON_CLAW] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .name = COMPOUND_STRING("DRAGON CLAW"),
         .description = COMPOUND_STRING(
             "Slashes the foe with sharp\n"
@@ -9347,6 +9395,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_LEAF_BLADE] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .name = COMPOUND_STRING("LEAF BLADE"),
         .description = COMPOUND_STRING(
             "Slashes with a sharp leaf.\n"
@@ -10604,7 +10654,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_FLINCH,
             .chance = 20,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_FEAR, .chance = 5, }),
         .contestEffect = CONTEST_EFFECT_HIGHLY_APPEALING,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,
@@ -10614,6 +10665,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_NIGHT_SLASH] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .name = COMPOUND_STRING("NIGHT SLASH"),
         .description = COMPOUND_STRING(
             "Hits as soon as possible.\n"
@@ -10698,7 +10751,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_FLINCH,
             .chance = 30,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_BLEED, .chance = 3, }),
         .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_FRONT_MON,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,
@@ -10708,6 +10762,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_X_SCISSOR] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .name = COMPOUND_STRING("X-SCISSOR"),
         .description = COMPOUND_STRING(
             "Slashes the foe with crossed\n"
@@ -11111,6 +11167,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_SHADOW_CLAW] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .name = COMPOUND_STRING("SHADOW CLAW"),
         .description = COMPOUND_STRING(
             "Strikes with a shadow claw.\n"
@@ -11155,7 +11213,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         {
             .moveEffect = MOVE_EFFECT_FLINCH,
             .chance = 10,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_BLEED, .chance = 5, }),
         .contestEffect = CONTEST_EFFECT_HIGHLY_APPEALING,
         .contestCategory = C_UPDATED_MOVE_CATEGORIES >= GEN_6 ? CONTEST_CATEGORY_COOL : CONTEST_CATEGORY_SMART,
         .contestComboStarterId = COMBO_STARTER_THUNDER_FANG,
@@ -11190,7 +11249,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         {
             .moveEffect = MOVE_EFFECT_FLINCH,
             .chance = 10,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_BLEED, .chance = 5, }),
         .contestEffect = CONTEST_EFFECT_HIGHLY_APPEALING,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = COMBO_STARTER_ICE_FANG,
@@ -11221,7 +11281,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         {
             .moveEffect = MOVE_EFFECT_FLINCH,
             .chance = 10,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_BLEED, .chance = 5, }),
         .contestEffect = CONTEST_EFFECT_HIGHLY_APPEALING,
         .contestCategory = C_UPDATED_MOVE_CATEGORIES >= GEN_6 ? CONTEST_CATEGORY_COOL : CONTEST_CATEGORY_BEAUTY,
         .contestComboStarterId = COMBO_STARTER_FIRE_FANG,
@@ -11279,6 +11340,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_PSYCHO_CUT] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .name = COMPOUND_STRING("PSYCHO CUT"),
         .description = COMPOUND_STRING(
             "Tears with psychic blades.\n"
@@ -11696,6 +11759,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_STONE_EDGE] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 15, }),
         .name = COMPOUND_STRING("STONE EDGE"),
         .description = COMPOUND_STRING(
             "Stabs the foe with stones.\n"
@@ -12249,7 +12314,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             .moveEffect = MOVE_EFFECT_ALL_STATS_UP,
             .self = TRUE,
             .chance = 10,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_FEAR, .chance = 5, }),
         .contestEffect = CONTEST_EFFECT_IMPROVE_CONDITION_PREVENT_NERVOUSNESS,
         .contestCategory = C_UPDATED_MOVE_CATEGORIES >= GEN_6 ? CONTEST_CATEGORY_BEAUTY : CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -13200,6 +13266,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_HEX] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_FEAR, .chance = 5, }),
         .name = COMPOUND_STRING("HEX"),
         .description = COMPOUND_STRING(
             "Does double damage if the\n"
@@ -13739,6 +13807,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_DRILL_RUN] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .name = COMPOUND_STRING("DRILL RUN"),
         .description = COMPOUND_STRING(
             "Spins its body like a drill.\n"
@@ -13833,6 +13903,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_SACRED_SWORD] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .name = COMPOUND_STRING("SACRED SWORD"),
         .description = sChipAwayDescription,
         .effect = EFFECT_HIT,
@@ -13872,7 +13944,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_DEF_MINUS_1,
             .chance = 50,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_BLEED, .chance = 5, }),
         .contestEffect = CONTEST_EFFECT_REPETITION_NOT_BORING,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,
@@ -14401,7 +14474,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_SP_ATK_MINUS_1,
             .chance = 100,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_FEAR, .chance = 5, }),
         .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_PREV_MONS, //CONTEST_EFFECT_QUICKLY_GROW_BORED
         .contestCategory = CONTEST_CATEGORY_TOUGH,
         .contestComboStarterId = 0,
@@ -16311,6 +16385,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_SOLAR_BLADE] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .name = COMPOUND_STRING("SOLAR BLADE"),
         .description = COMPOUND_STRING(
             "Charges first turn, then\n"
@@ -16475,7 +16551,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_THROAT_CHOP,
             .chance = 100,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_FEAR, .chance = 5, }),
         .contestEffect = CONTEST_EFFECT_MAKE_FOLLOWING_MONS_NERVOUS,
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -16682,6 +16759,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_SMART_STRIKE] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .name = COMPOUND_STRING("SMART STRIKE"),
         .description = COMPOUND_STRING(
             "Hits with an accurate\n"
@@ -17032,7 +17111,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_BREAK_SCREEN,
             .preAttackEffect = TRUE,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .makesContact = TRUE,
         .bitingMove = TRUE,
         .contestEffect = CONTEST_EFFECT_WORSEN_CONDITION_OF_PREV_MONS,
@@ -17804,7 +17884,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .bitingMove = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_TRAP_BOTH,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_BLEED, .chance = 5, }),
         .contestEffect = CONTEST_EFFECT_DONT_EXCITE_AUDIENCE,
         .contestCategory = CONTEST_CATEGORY_TOUGH,
         .contestComboStarterId = 0,
@@ -17998,6 +18079,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_FISHIOUS_REND] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 5, }),
         .name = COMPOUND_STRING("FISHIOUS REND"),
         .description = COMPOUND_STRING(
             "Double power if the user\n"
@@ -18200,6 +18283,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_BEHEMOTH_BLADE] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .name = COMPOUND_STRING("BEHEMOTH BLADE"),
         .description = COMPOUND_STRING(
             "Strikes as a sword. Deals 2x\n"
@@ -19434,7 +19519,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .slicingMove = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .sheerForceOverride = TRUE,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_BLEED, .chance = 5, }),
         .battleAnimScript = gBattleAnimMove_StoneAxe,
     },
 
@@ -19771,7 +19857,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .slicingMove = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .sheerForceOverride = TRUE,
-        }),
+        },
+            { .moveEffect = MOVE_EFFECT_BLEED, .chance = 5, }),
         .battleAnimScript = gBattleAnimMove_CeaselessEdge,
     },
 
@@ -20268,6 +20355,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_KOWTOW_CLEAVE] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .name = COMPOUND_STRING("KOWTOW CLEAVE"),
         .description = COMPOUND_STRING(
             "User slashes the foe after\n"
@@ -20721,6 +20810,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_BITTER_BLADE] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 3, }),
         .name = COMPOUND_STRING("BITTER BLADE"),
         .description = COMPOUND_STRING(
             "Attack that absorbs\n"
@@ -20811,6 +20902,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_AQUA_CUTTER] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .name = COMPOUND_STRING("AQUA CUTTER"),
         .description = COMPOUND_STRING(
             "Pressurized water cut with a\n"
@@ -21209,6 +21302,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_MIGHTY_CLEAVE] =
     {
+        // PRL-pinned authentic status secondary effect.
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .name = COMPOUND_STRING("MIGHTY CLEAVE"),
         .description = sFeintDescription,
         .effect = EFFECT_HIT,
