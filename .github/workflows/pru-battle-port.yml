@@ -38,6 +38,8 @@ jobs:
           PY
       - name: Verify native PRL ability integration
         run: python3 tools/pru/verify_custom_abilities.py
+      - name: Check authentic PRU move references before costly compilation
+        run: python3 tools/pru/check_custom_move_registration.py
       - name: Restore exact Azul Agua donor tiles
         run: |
           base64 -d assets/pjr_azul_agua/building_tiles.png.b64 > data/tilesets/primary/azul_agua_building_hns/tiles.png
