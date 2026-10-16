@@ -157,6 +157,7 @@ extern const u8 BattleScript_MoveEffectPoison[];
 extern const u8 BattleScript_MoveEffectBurn[];
 extern const u8 BattleScript_MoveEffectFrostbite[];
 extern const u8 BattleScript_MoveEffectBleed[];
+extern const u8 BattleScript_MoveEffectFear[];
 extern const u8 BattleScript_MoveEffectFreeze[];
 extern const u8 BattleScript_MoveEffectParalysis[];
 extern const u8 BattleScript_MoveEffectUproar[];
