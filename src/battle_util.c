@@ -5223,6 +5223,8 @@ bool32 CanBattlerEscape(enum BattlerId battler) // no ability check
         return TRUE;
     else if (gBattleMons[battler].volatiles.escapePrevention)
         return FALSE;
+    else if (gBattleMons[battler].volatiles.fearTimer > 0)
+        return FALSE;
     else if (gBattleMons[battler].volatiles.wrapped)
         return FALSE;
     else if (gBattleMons[battler].volatiles.root)
@@ -7922,6 +7924,10 @@ static inline uq4_12_t GetOtherModifiers(struct BattleContext *ctx)
     DAMAGE_MULTIPLY_MODIFIER(GetAirborneModifier(ctx->move, ctx->battlerDef));
     DAMAGE_MULTIPLY_MODIFIER(GetScreensModifier(ctx));
     DAMAGE_MULTIPLY_MODIFIER(GetCollisionCourseElectroDriftModifier(ctx->move, ctx->typeEffectivenessModifier));
+
+    // PRL Fear increases the defender's incoming normal attack damage by 50%.
+    if (gBattleMons[ctx->battlerDef].volatiles.fearTimer > 0)
+        DAMAGE_MULTIPLY_MODIFIER(UQ_4_12(1.5));
 
     // PRL Eerie Fog shields Ghost- and Psychic-type defenders by 20%.
     if ((ctx->weather & B_WEATHER_FOG)
