@@ -24,10 +24,14 @@ Native 64×64 front and back; <=15 non-transparent colours, binary alpha and ind
 
 All six have transparent 64×64 front/back and normal/shiny fronts with <=15 opaque colours, verified directly against archived PNG bytes. Still **candidate only, not approved**. User must review designs; earlier approved choices (e.g. PHR donor picks) should not be overwritten until reconciled.
 
-## Still open — find genuine distinctive, GBA-ready alternate art
-- **Mew** (Xenoverse Mew Retro has oversized strips, not direct native GBA sprite).
-- **Regirock, Regice, Registeel** (Odyssey II has alternate poses, not proven custom redesigns).
-- **Deoxys** (PRU has Normal/Attack/Defense/Speed folders, but Odyssey II's single version is an alternate vanilla pose; locate genuine custom art and preserve form functionality).
+## Corrective follow-up audit — 16 October 2026
+Earlier claim that all five Mew/Regis/Deoxys lack genuinely different art was wrong. Inspection of pixels in existing archived assets confirms:
+- **Regirock, Regice, Registeel and Deoxys:** distinctive native 64×64 front/back and 32×64 menu icon in the Odyssey II bank `/Project Hoenn Relics/Sprite Resources/Odyssey II - Complete Sprite Bank/Odyssey_II_Complete_Sprite_Bank.zip`. The three Regis are also individually saved as previously user-selected PHR assets in `/Project Hoenn Relics/Sprite Resources/Odyssey II - Selected Hoenn/`. These are genuine redesigns, not mere alternate vanilla poses. Normal/shiny palette/source QA remains to be done.
+- **Mew Retro (Xenoverse):** native source animation strips, front 352×85 (four 88×85 frames), back 300×75 (four 75×75 frames), Icon/IconShiny present. The opaque sprites within each front/back frame fit a 64×64 canvas *without any pixel resizing or drawing*. Native frame extraction/cropping and icon/animation reformatting are needed, so not direct-copy ready. Source: `PJR_Xenoverse_New_Donor_Bank.zip`, folder `05_Other_Xenoverse_Styles_and_Retro/Mew_Retro/`.
+- **Second Registeel option:** Wild Indigo `REVIEW_ONLY_10/registeel_anim_front.png` has two 64×64 frames (64×128 sheet) showing a black shadow design. **Front only**, no matching verified back/icon. Comparison sheet shows an Odyssey II back for reference, NOT a Wild Indigo back.
+- **Deoxys:** redesigned donor available for Normal form only. Attack/Defense/Speed donor variants still need checks; preserve existing functional forms.
+- All candidates NOT imported/approved by the user. Vanilla overworld fallback remains; user-approved proper alternative OW sets may replace it. No scaling or redraw.
+- Local review sheet: `/mnt/data/PRU_Remaining_5_Actual_Custom_Sprites_2026-10-16.png`.
 
 ## Sources of truth and QA
 - Current PRU Notion: https://app.notion.com/p/3fb4939d431681afa46fdeb97cf8c79b
