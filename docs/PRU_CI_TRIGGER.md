@@ -30,3 +30,8 @@ Build branch `pru/pretest-story-services-20261016` after Elm automatic Pikachu +
 ## Pre-test first-adventure and complete active-HNS inventory build 2 (2026-10-16)
 
 Compile all latest **source changes** (fossils + Pikachu, Elm/Oak dialogue, 7-Relic/Ho-Oh flag-dependent scientist text, Bellchime no fabricated Crest/Alphoracle, Red Crest full-bag safe retry with normal Red rematches preserved), and verify expanded static gates `tools/pru/check_pretest_story.py`. Separate successful source inventory runner [38964424218](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38964424218) enumerated 550 HNS maps and 663 keyword-matched dialogue lines with no tracked stale-wording hits; **not a full semantic or emulator audit**. Save final ROM SHA and CI errors, if any.
+
+
+## Pre-test Relic story build 3 (2026-10-16)
+
+The prior build [38964900754](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38964900754) failed only because `tools/check_pjr_tintower_shortcut.py` still expected the old unsafe Crest/Alphoracle flag backfill from reachable TinTower 1F entrance statues. We kept the actual 4 wired statue coordinates and Rocket/Ho-Oh scenes but replaced the invalid test assertions with real-catch/real-item gates. Run complete original static checks and `make hns` again; do not confuse compilation with emulator QA.
