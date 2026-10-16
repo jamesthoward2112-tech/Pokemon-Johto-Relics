@@ -23641,4 +23641,40 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_DoubleEdge,
     },
 
+    // PRU Bleeding-enabled original PRL move effects.
+    [MOVE_RIP_AND_TEAR] =
+    {
+        .name = COMPOUND_STRING("Rip and Tear"),
+        .description = COMPOUND_STRING("Rips the target, lowering its Speed and possibly causing bleeding."),
+        .effect = EFFECT_HIT, .power = 110, .type = TYPE_DARK, .accuracy = 90,
+        .pp = 5, .target = TARGET_SELECTED, .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL, .makesContact = TRUE, .bitingMove = TRUE,
+        .cantUseTwice = TRUE,    .additionalEffects = ADDITIONAL_EFFECTS(
+            { .moveEffect = MOVE_EFFECT_SPD_MINUS_1, .chance = 100 },
+            { .moveEffect = MOVE_EFFECT_BLEED, .chance = 50 }),
+        .battleAnimScript = gBattleAnimMove_Crunch,
+    },
+
+    [MOVE_IRON_FANGS] =
+    {
+        .name = COMPOUND_STRING("Iron Fangs"),
+        .description = COMPOUND_STRING("Steel fangs smash\nthrough barriers."),
+        .effect = EFFECT_HIT,
+        .power = 85,
+        .type = TYPE_STEEL,
+        .accuracy = 100,
+        .pp = 15,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .bitingMove = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_BREAK_SCREEN,
+            .preAttackEffect = TRUE,
+        },
+                { .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
+        .battleAnimScript = gBattleAnimMove_BrickBreak,
+    },
+
 };
