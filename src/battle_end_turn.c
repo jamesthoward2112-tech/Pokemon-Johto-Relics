@@ -57,6 +57,9 @@ static bool32 HandleEndTurnVarious(enum BattlerId battler)
 
     for (enum BattlerId i = 0; i < gBattlersCount; i++)
     {
+        if (gBattleMons[i].volatiles.fearTimer > 0)
+            gBattleMons[i].volatiles.fearTimer--;
+
         if (gBattleMons[i].volatiles.throatChopTimer > 0)
             gBattleMons[i].volatiles.throatChopTimer--;
 
