@@ -1,5 +1,15 @@
 # PRU Work Resume Checkpoint
 
+## Follow-up checkpoint — 2026-10-16 20:00 BST (build running)
+
+- Explicit GitHub Actions build [38951072549](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38951072549) is running from trigger commit `27781e0abf52cd3c66a80ba2df05288da0c464e6`. CI **passed** the new 12-sprite RGBA→indexed 4bpp conversion step, then entered `make hns`. No finished ROM or compile result is yet verified.
+- Compared imported PRU learnsets against `include/constants/moves.h`: 25 genuine custom move identifiers remain undefined (including PRL `EEVOBOOST`, `LOVELY_BITE`, `SHADOW_FANGS` and AlteRed/Procyon original donor names). Their effects are **not** declared implemented; consult canonical donor references instead of silently replacing source moves.
+- Reconciled canonical AlteRed donor records: Frytning original party icon uses PJR icon palette index 0, Mewsion index 1. Corrected `src/data/pokemon/species_info/pru_custom.h` (commit `b684945f...`).
+- Registered regular Weezing's approved Thunder Stone evolution to `SPECIES_FRYTNING` in `src/data/pokemon/species_info/gen_1_families.h` (commit `4de2c986...`). Galarian Weezing and other existing forms were left unchanged.
+- The icon-palette and Weezing evolution commits occurred **after** the explicit CI-trigger commit; they are source-committed but **not included in that run**. Require a subsequent explicit build before declaring those changes compiled. No emulator visuals or evolution execution verified.
+- Source-of-truth note: user Library `PRU_Donor_Gaps_Resolved_2026-10-16.md` documents four optional, **non-identical and explicit** AlteRed fallback moves (Terror Wave, Sparklingsky, Super Glitch and Assimilate) for a compatibility release, but authentic move effects are still preferable for the complete integration goal; do not misdescribe fallbacks as ported original effects.
+
+
 ## Follow-up checkpoint — 2026-10-16 19:37 BST / CI sprite-format repair
 
 - Recovered GitHub Actions run [38940072721](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38940072721), which failed at `graphics/pokemon/adnokana/back.4bpp`: original AlteRed PNG is RGBA (PNG colour type 6) but `gbagfx` requires indexed artwork.
