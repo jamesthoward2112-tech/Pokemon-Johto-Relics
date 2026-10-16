@@ -25,3 +25,8 @@ Trigger 7: compile the complete 25 donor-move integration and late canonical Kan
 ## Pre-test opening/dialogue source build 1 (2026-10-16)
 
 Build branch `pru/pretest-story-services-20261016` after Elm automatic Pikachu + three fossils, Crest-state dialogue, Oak Johto-first Kanto research, source scanner and title-plan documentation. Verify exact first failure if any and save the build artifact; **do not claim emulator gameplay success**. Preserve `pjr-rebuild` and original consolidated branch.
+
+
+## Pre-test first-adventure and complete active-HNS inventory build 2 (2026-10-16)
+
+Compile all latest **source changes** (fossils + Pikachu, Elm/Oak dialogue, 7-Relic/Ho-Oh flag-dependent scientist text, Bellchime no fabricated Crest/Alphoracle, Red Crest full-bag safe retry with normal Red rematches preserved), and verify expanded static gates `tools/pru/check_pretest_story.py`. Separate successful source inventory runner [38964424218](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38964424218) enumerated 550 HNS maps and 663 keyword-matched dialogue lines with no tracked stale-wording hits; **not a full semantic or emulator audit**. Save final ROM SHA and CI errors, if any.
