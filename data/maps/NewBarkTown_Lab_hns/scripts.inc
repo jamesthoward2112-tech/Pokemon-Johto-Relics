@@ -163,7 +163,7 @@ NewBarkTown_Lab_EventScript_ChikoritaBall::
 NewBarkTown_Lab_EventScript_ChikoritaBall_Choice::
 	@callnative DisableStaticRandomizer
 	setvar VAR_STARTER_MON, 0
-	setvar PLAYER_STARTER_SPECIES, SPECIES_SCARABUB
+	setvar PLAYER_STARTER_SPECIES, SPECIES_PIKACHU
 	showmonpic PLAYER_STARTER_SPECIES, 10, 3
 	playmoncry PLAYER_STARTER_SPECIES, CRY_MODE_NORMAL
 	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
@@ -183,16 +183,8 @@ NewBarkTown_Lab_EventScript_CyndaquilBall::
 	end
 
 NewBarkTown_Lab_EventScript_CyndaquilBall_Choice::
-	@callnative DisableStaticRandomizer
-	setvar VAR_STARTER_MON, 1
-	setvar PLAYER_STARTER_SPECIES, SPECIES_SKARMET
-	showmonpic PLAYER_STARTER_SPECIES, 10, 3
-	playmoncry PLAYER_STARTER_SPECIES, CRY_MODE_NORMAL
-	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
-	buffermoncategory STR_VAR_2, PLAYER_STARTER_SPECIES
-	msgbox NewBarkTown_Lab_Text_ChooseCyndaquil, MSGBOX_YESNO	
-	goto_if_eq VAR_RESULT, YES, NewBarkTown_Lab_EventScript_ChoseStarter
-	goto_if_eq VAR_RESULT, NO, NewBarkTown_Lab_EventScript_DeclinedStarter
+	msgbox NewBarkTown_Lab_Text_ReservedResearchPokemon, MSGBOX_DEFAULT
+	release
 	end
 
 NewBarkTown_Lab_EventScript_TotodileBall::
@@ -205,16 +197,8 @@ NewBarkTown_Lab_EventScript_TotodileBall::
 	end
 
 NewBarkTown_Lab_EventScript_TotodileBall_Choice::
-	@callnative DisableStaticRandomizer
-	setvar VAR_STARTER_MON, 2
-	setvar PLAYER_STARTER_SPECIES, SPECIES_MOOTINY
-	showmonpic PLAYER_STARTER_SPECIES, 10, 3
-	playmoncry PLAYER_STARTER_SPECIES, CRY_MODE_NORMAL
-	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
-	buffermoncategory STR_VAR_2, PLAYER_STARTER_SPECIES
-	msgbox NewBarkTown_Lab_Text_ChooseTotodile, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, NewBarkTown_Lab_EventScript_ChoseStarter
-	goto_if_eq VAR_RESULT, NO, NewBarkTown_Lab_EventScript_DeclinedStarter
+	msgbox NewBarkTown_Lab_Text_ReservedResearchPokemon, MSGBOX_DEFAULT
+	release
 	end
 
 NewBarkTown_Lab_EventScript_DeclinedStarter::
@@ -269,11 +253,11 @@ NewBarkTown_Lab_EventScript_GiveStarter_Totodile::
 	return
 
 NewBarkTown_Lab_EventScript_GiveScarabub_NotShiny::
-	createmon 0, 0, SPECIES_SCARABUB, 5, ITEM_NONE, BALL_POKE, NATURE_RANDOM, NUM_ABILITY_PERSONALITY, MON_GENDER_RANDOM, 0, 0, 0, 0, 0, 0, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, SHINY_MODE_NEVER
+	createmon 0, 0, SPECIES_PIKACHU, 5, ITEM_NONE, BALL_POKE, NATURE_RANDOM, NUM_ABILITY_PERSONALITY, MON_GENDER_RANDOM, 0, 0, 0, 0, 0, 0, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, SHINY_MODE_NEVER
 	return
 
 NewBarkTown_Lab_EventScript_GiveScarabub_Shiny::
-	createmon 0, 0, SPECIES_SCARABUB, 5, ITEM_NONE, BALL_POKE, NATURE_RANDOM, NUM_ABILITY_PERSONALITY, MON_GENDER_RANDOM, 0, 0, 0, 0, 0, 0, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, SHINY_MODE_ALWAYS
+	createmon 0, 0, SPECIES_PIKACHU, 5, ITEM_NONE, BALL_POKE, NATURE_RANDOM, NUM_ABILITY_PERSONALITY, MON_GENDER_RANDOM, 0, 0, 0, 0, 0, 0, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, SHINY_MODE_ALWAYS
 	return
 
 NewBarkTown_Lab_EventScript_GiveSkarmet_NotShiny::
@@ -740,13 +724,13 @@ NewBarkTown_Lab_Text_ElmIntro:
 	.string "learn what it means.$"
 
 NewBarkTown_Lab_Text_ElmAccepted:
-	.string "I prepared three\n"
-	.string "unusual POKéMON.$"
+	.string "I have one partner\n"
+	.string "ready for you.$"
 
 NewBarkTown_Lab_Text_ElmResearchAmbitions:
-	.string "Each one reacted to\n"
+	.string "PIKACHU reacted to\n"
 	.string "the Resonance.\p"
-	.string "Their growth may show\n"
+	.string "Its growth may show\n"
 	.string "what is happening.$"
 
 NewBarkTown_Lab_Text_ElmGotAnEmail:
@@ -762,8 +746,9 @@ NewBarkTown_Lab_Text_ElmMissionFromMrPokemon:
 	.string "Then come back to me.$"
 
 NewBarkTown_Lab_Text_ElmChooseAPokemon:
-	.string "Choose one POKéMON\n"
-	.string "for the journey.$"
+	.string "The left POKé BALL\n"
+	.string "holds PIKACHU.\p"
+	.string "Take it for the journey.$"
 
 NewBarkTown_Lab_Text_ElmWhereGoing:
 	.string "ELM: Wait! Where are you\n"
@@ -776,7 +761,13 @@ NewBarkTown_Lab_Text_ChooseTotodile:
 	.string "Choose {STR_VAR_1}?$"
 
 NewBarkTown_Lab_Text_ChooseChikorita:
-	.string "Choose {STR_VAR_1}?$"
+	.string "Take {STR_VAR_1}?$"
+
+NewBarkTown_Lab_Text_ReservedResearchPokemon:
+	.string "ELM: Those POKéMON\n"
+	.string "are for my research.\p"
+	.string "Your partner is in\n"
+	.string "the left POKé BALL.$"
 
 NewBarkTown_Lab_Text_DidntChooseStarter:
 	.string "ELM: Think it over carefully.\p"
