@@ -932,9 +932,9 @@ NewBarkTown_Lab_Text_StarterEggNoRoom:
 	.string "then come back.$"
 
 NewBarkTown_Lab_Text_ElmWildPartners:
-	.string "SCARABUB, SKARMET and\\n"
-	.string "MOOTINY live in JOHTO.\\p"
-	.string "You can catch them\\n"
+	.string "SCARABUB, SKARMET and\n"
+	.string "MOOTINY live in JOHTO.\p"
+	.string "You can catch them\n"
 	.string "in the wild now.$"
 
 NewBarkTown_Lab_Text_StarterEggsAfter:
