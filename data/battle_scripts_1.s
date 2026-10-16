@@ -5683,6 +5683,11 @@ BattleScript_FrostbiteTurnDmg::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_DoStatusTurnDmg
 
+BattleScript_BleedTurnDmg::
+	printstring STRINGID_PKMNHURTBYBLEED
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_DoStatusTurnDmg
+
 BattleScript_MoveUsedIsFrozen::
 	printstring STRINGID_PKMNISFROZEN
 	waitmessage B_WAIT_TIME_LONG
@@ -5933,6 +5938,12 @@ BattleScript_MoveEffectBurn::
 BattleScript_MoveEffectFrostbite::
 	statusanimation BS_EFFECT_BATTLER
 	printfromtable gGotFrostbiteStringIds
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_UpdateEffectStatusIconRet
+
+BattleScript_MoveEffectBleed::
+	statusanimation BS_EFFECT_BATTLER
+	printstring STRINGID_PKMNGOTBLEED
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_UpdateEffectStatusIconRet
 
