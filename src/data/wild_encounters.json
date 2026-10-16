@@ -37793,8 +37793,8 @@
               },
               {
                 "min_level": 4,
-                "max_level": 4,
-                "species": "SPECIES_DUNSPARCE"
+                "max_level": 6,
+                "species": "SPECIES_NOIBAT"
               }
             ]
           },
@@ -38501,27 +38501,27 @@
               {
                 "min_level": 15,
                 "max_level": 19,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 15,
                 "max_level": 19,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 15,
                 "max_level": 19,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
-                "min_level": 15,
+                "min_level": 20,
                 "max_level": 24,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
-                "min_level": 15,
+                "min_level": 20,
                 "max_level": 24,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               }
             ]
           },
@@ -38660,22 +38660,22 @@
               {
                 "min_level": 4,
                 "max_level": 6,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 4,
                 "max_level": 6,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 5,
                 "max_level": 6,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 4,
                 "max_level": 6,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               }
             ]
           },
@@ -38685,27 +38685,27 @@
               {
                 "min_level": 15,
                 "max_level": 19,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 15,
                 "max_level": 19,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 15,
                 "max_level": 19,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
-                "min_level": 15,
+                "min_level": 20,
                 "max_level": 24,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
-                "min_level": 15,
+                "min_level": 20,
                 "max_level": 24,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               }
             ]
           },
@@ -38789,17 +38789,17 @@
               {
                 "min_level": 7,
                 "max_level": 7,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 7,
                 "max_level": 7,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 7,
                 "max_level": 7,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 6,
@@ -38849,7 +38849,7 @@
               {
                 "min_level": 20,
                 "max_level": 24,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 20,
@@ -38859,7 +38859,7 @@
               {
                 "min_level": 20,
                 "max_level": 24,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               }
             ]
           },
@@ -38958,17 +38958,17 @@
               {
                 "min_level": 5,
                 "max_level": 7,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 5,
                 "max_level": 7,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 5,
                 "max_level": 7,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 7,
@@ -39033,7 +39033,7 @@
               {
                 "min_level": 20,
                 "max_level": 24,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 20,
@@ -39043,7 +39043,7 @@
               {
                 "min_level": 20,
                 "max_level": 24,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               }
             ]
           },
@@ -39207,27 +39207,27 @@
               {
                 "min_level": 15,
                 "max_level": 19,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 15,
                 "max_level": 19,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 15,
                 "max_level": 19,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
-                "min_level": 15,
+                "min_level": 20,
                 "max_level": 24,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
-                "min_level": 15,
+                "min_level": 20,
                 "max_level": 24,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               }
             ]
           },
@@ -39361,27 +39361,27 @@
               {
                 "min_level": 15,
                 "max_level": 19,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 15,
                 "max_level": 19,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 15,
                 "max_level": 19,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
-                "min_level": 15,
+                "min_level": 20,
                 "max_level": 24,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
-                "min_level": 15,
+                "min_level": 20,
                 "max_level": 24,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               }
             ]
           },
@@ -39490,7 +39490,7 @@
               {
                 "min_level": 20,
                 "max_level": 20,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 23,
@@ -39500,7 +39500,7 @@
               {
                 "min_level": 20,
                 "max_level": 20,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 23,
@@ -39525,7 +39525,7 @@
               {
                 "min_level": 20,
                 "max_level": 24,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 20,
@@ -39535,7 +39535,7 @@
               {
                 "min_level": 20,
                 "max_level": 24,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               }
             ]
           },
@@ -43324,27 +43324,27 @@
               {
                 "min_level": 20,
                 "max_level": 30,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 20,
                 "max_level": 30,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 20,
                 "max_level": 30,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 30,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 30,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               }
             ]
           }
@@ -43671,12 +43671,12 @@
               {
                 "min_level": 23,
                 "max_level": 25,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 23,
                 "max_level": 25,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 23,
@@ -47814,7 +47814,7 @@
               {
                 "min_level": 53,
                 "max_level": 53,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 52,
@@ -47834,7 +47834,7 @@
               {
                 "min_level": 53,
                 "max_level": 53,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 52,
@@ -50433,27 +50433,27 @@
               {
                 "min_level": 30,
                 "max_level": 40,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 30,
                 "max_level": 40,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 30,
                 "max_level": 40,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 30,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 30,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               }
             ]
           },
@@ -53220,9 +53220,9 @@
                 "species": "SPECIES_MAROWAK"
               },
               {
-                "min_level": 42,
+                "min_level": 40,
                 "max_level": 42,
-                "species": "SPECIES_ZUBAT"
+                "species": "SPECIES_NOIBAT"
               }
             ]
           },
@@ -53374,9 +53374,9 @@
                 "species": "SPECIES_HAUNTER"
               },
               {
-                "min_level": 42,
+                "min_level": 40,
                 "max_level": 42,
-                "species": "SPECIES_ZUBAT"
+                "species": "SPECIES_NOIBAT"
               }
             ]
           },
@@ -53523,9 +53523,9 @@
                 "species": "SPECIES_MAROWAK"
               },
               {
-                "min_level": 45,
-                "max_level": 45,
-                "species": "SPECIES_KANGASKHAN"
+                "min_level": 44,
+                "max_level": 46,
+                "species": "SPECIES_NOIVERN"
               },
               {
                 "min_level": 42,
@@ -53677,9 +53677,9 @@
                 "species": "SPECIES_GOLBAT"
               },
               {
-                "min_level": 42,
-                "max_level": 42,
-                "species": "SPECIES_HAUNTER"
+                "min_level": 44,
+                "max_level": 46,
+                "species": "SPECIES_NOIVERN"
               },
               {
                 "min_level": 42,
@@ -54241,17 +54241,17 @@
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
@@ -54321,17 +54321,17 @@
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
@@ -54365,7 +54365,7 @@
               {
                 "min_level": 45,
                 "max_level": 49,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
@@ -54385,7 +54385,7 @@
               {
                 "min_level": 45,
                 "max_level": 49,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
@@ -54405,7 +54405,7 @@
               {
                 "min_level": 45,
                 "max_level": 49,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
@@ -54450,17 +54450,17 @@
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
@@ -54530,17 +54530,17 @@
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
@@ -54644,22 +54644,22 @@
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
@@ -54739,17 +54739,17 @@
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
@@ -54783,7 +54783,7 @@
               {
                 "min_level": 45,
                 "max_level": 49,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
@@ -54803,7 +54803,7 @@
               {
                 "min_level": 45,
                 "max_level": 49,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
@@ -54823,7 +54823,7 @@
               {
                 "min_level": 45,
                 "max_level": 49,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
@@ -54853,22 +54853,22 @@
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
@@ -54948,17 +54948,17 @@
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
@@ -55062,22 +55062,22 @@
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
@@ -55127,17 +55127,17 @@
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
@@ -55211,7 +55211,7 @@
               {
                 "min_level": 48,
                 "max_level": 48,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 41,
@@ -55241,22 +55241,22 @@
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
@@ -55306,17 +55306,17 @@
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
@@ -55420,22 +55420,22 @@
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
@@ -55485,17 +55485,17 @@
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
@@ -55529,7 +55529,7 @@
               {
                 "min_level": 45,
                 "max_level": 49,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
@@ -55549,7 +55549,7 @@
               {
                 "min_level": 45,
                 "max_level": 49,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
@@ -55569,7 +55569,7 @@
               {
                 "min_level": 45,
                 "max_level": 49,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
@@ -55599,22 +55599,22 @@
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
                 "max_level": 47,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 47,
@@ -55664,17 +55664,17 @@
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
@@ -59248,17 +59248,17 @@
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
@@ -59372,17 +59372,17 @@
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
@@ -59496,17 +59496,17 @@
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
@@ -59620,17 +59620,17 @@
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
@@ -60192,12 +60192,12 @@
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
@@ -60381,12 +60381,12 @@
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
@@ -66906,7 +66906,7 @@
               {
                 "min_level": 62,
                 "max_level": 62,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 65,
@@ -66926,7 +66926,7 @@
               {
                 "min_level": 62,
                 "max_level": 62,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 35,
@@ -66966,7 +66966,7 @@
               {
                 "min_level": 60,
                 "max_level": 65,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
@@ -69048,12 +69048,12 @@
               {
                 "min_level": 35,
                 "max_level": 40,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 35,
                 "max_level": 40,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 35,
@@ -69113,7 +69113,7 @@
               {
                 "min_level": 35,
                 "max_level": 40,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 35,
@@ -69128,12 +69128,12 @@
               {
                 "min_level": 35,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 35,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               }
             ]
           },
@@ -69168,12 +69168,12 @@
               {
                 "min_level": 35,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 35,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 35,
@@ -69212,7 +69212,7 @@
               {
                 "min_level": 19,
                 "max_level": 26,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 19,
@@ -69222,7 +69222,7 @@
               {
                 "min_level": 19,
                 "max_level": 26,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 19,
@@ -69678,17 +69678,17 @@
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
@@ -69787,22 +69787,22 @@
               {
                 "min_level": 41,
                 "max_level": 45,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_WOOPER_PALDEA"
               },
               {
                 "min_level": 41,
                 "max_level": 45,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 41,
                 "max_level": 45,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 41,
                 "max_level": 45,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               }
             ]
           },
@@ -70251,12 +70251,12 @@
               {
                 "min_level": 42,
                 "max_level": 44,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
                 "max_level": 40,
-                "species": "SPECIES_QUAGSIRE"
+                "species": "SPECIES_CLODSIRE"
               },
               {
                 "min_level": 40,
