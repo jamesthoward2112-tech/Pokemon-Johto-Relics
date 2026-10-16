@@ -8,7 +8,7 @@ import argparse, csv, hashlib, json, re
 from pathlib import Path
 
 SOURCE_PRL = "6ee9b984521ac6f2beaf995f771a726379e55c88"
-SPECIES_PATTERN = re.compile(r"(?m)^[ \t]*\[(SPECIES_[A-Z0-9_]+)\][ \t]*=[ \t]*\{")
+SPECIES_PATTERN = re.compile(r"(?m)^[ \t]*\[(SPECIES_[A-Z0-9_]+)\][ \t]*=\s*\{")
 LEARN_PATTERN = re.compile(r"static\s+const\s+struct\s+LevelUpMove\s+(s\w+)\[\]\s*=\s*\{(.*?)\};", re.S)
 MOVE_PATTERN = re.compile(r"LEVEL_UP_MOVE\(\s*(\d+)\s*,\s*MOVE_([A-Z0-9_]+)\s*\)")
 PROPS = ("baseHP","baseAttack","baseDefense","baseSpAttack","baseSpDefense",
