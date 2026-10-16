@@ -39195,9 +39195,9 @@
                 "species": "SPECIES_CUBONE"
               },
               {
-                "min_level": 9,
+                "min_level": 8,
                 "max_level": 9,
-                "species": "SPECIES_ZUBAT"
+                "species": "SPECIES_NINCADA"
               }
             ]
           },
@@ -40163,9 +40163,9 @@
                 "species": "SPECIES_ODDISH"
               },
               {
-                "min_level": 9,
+                "min_level": 8,
                 "max_level": 9,
-                "species": "SPECIES_KAKUNA"
+                "species": "SPECIES_WURMPLE"
               }
             ]
           },
@@ -44161,9 +44161,9 @@
                 "species": "SPECIES_RHYHORN"
               },
               {
-                "min_level": 22,
-                "max_level": 22,
-                "species": "SPECIES_CUBONE"
+                "min_level": 18,
+                "max_level": 20,
+                "species": "SPECIES_TYROGUE"
               }
             ]
           },
@@ -44315,9 +44315,9 @@
                 "species": "SPECIES_RHYHORN"
               },
               {
-                "min_level": 22,
-                "max_level": 22,
-                "species": "SPECIES_CUBONE"
+                "min_level": 18,
+                "max_level": 20,
+                "species": "SPECIES_TYROGUE"
               }
             ]
           },
