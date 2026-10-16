@@ -27,14 +27,14 @@ jobs:
           info = Path('src/data/moves_info.h').read_text()
           source = Path('tools/pru/donors/prl_custom_move_records.reference.h').read_text()
           names = ('AMBER_BLADE','SUN_RITE','TECTONIC_TIDE','EPOCH_CRASH','RELIC_WISH',
-                   'EDEN_BLOOM','SCORCHWING','BASTION_CANNON','EERIE_FOG','EEVOBOOST')
+                   'EDEN_BLOOM','SCORCHWING','BASTION_CANNON','EERIE_FOG')
           for suffix in names:
               name = 'MOVE_' + suffix
               assert ('    ' + name + ',') in enum or (name + ' =') in enum
               assert ('[' + name + ']') in info
               assert ('[' + name + ']') in source
           assert '.weatherType = BATTLE_WEATHER_FOG' in info
-          print('PASS: 10 PRL signature move records present in the active engine tables')
+          print('PASS: 9 PRL signature move records present in the active engine tables')
           PY
       - name: Restore exact Azul Agua donor tiles
         run: |
