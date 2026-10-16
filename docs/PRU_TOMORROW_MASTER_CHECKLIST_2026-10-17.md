@@ -10,6 +10,15 @@ Recorded 16 October 2026. **Pre-test source/content phase.** User explicitly wan
 - Existing separate draft [PR #10](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/pull/10): acquisition ecology + badge-gated Goldenrod Rock Shop. [PR #11](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/pull/11): battle port foundations. Integrate selectively and test, not wholesale or via temporary playtest warp.
 - Status vocabulary: **CODED (UNCOMPILED)** ≠ **BUILT** ≠ **TESTED**. Always record exact SHA, CI outcome and tested behaviours. Preserve progress and avoid needless Work credits/builds.
 
+## P0B — IMMEDIATELY AFTER POINT 1: NEW TITLE SCREEN AND TITLE ANIMATION
+
+- [ ] **New PRU title screen** — Noxichu in a mysterious **Relic-looking cave**: ancient carved stones, luminous Resonance runes/crystals and archaeological ambience, not a generic cave. Display **Pokémon Relics Ultimate** branding.
+- [ ] **Authoritative asset MUST be the latest approved NEW Noxichu battle/front/side art from PRL** (October 2026 pack), not PJR/PKR's old sprites. Pin source branch, commit, exact file path, dimensions, palette and checksum; confirm current PRU installed sprite is latest.
+- [ ] **Remove stale Noxichu usage entirely**: enumerate and compare every occurrence of old Noxichu graphics (front, back, icon, shiny, alternate portraits, overworld, follower, title, trainer teams/icons, menus, demo art, hard-coded pointer tables). Replace with the new approved asset wherever applicable; use vanilla overworld fallback only if no approved updated overworld. Do not delete unreferenced donor-source/attribution files without verifying no references; unused archival files are distinguishable from the runtime. Automated negative-reference check required.
+- [ ] **New title animation** — cave reveal with pulsing Resonance, reveal of new Noxichu, polished Pokémon Relics Ultimate logo, suitable GBA frame/palette/VRAM budgets; confirm animation loops and starts from fresh boot without corruption/crash. Custom scene should be implemented as GBA game art/animation, not merely a concept image.
+- [ ] Check title source/credits/palette donor attribution, internal ROM identity and emulator playback; release is blocked until verified.
+- [ ] **Priority order:** finish complete point 1 (Elm + Relic dialogue), then this title work BEFORE all remaining P0 items.
+
 ## P0 — Today's new requests to finish before the user's first real playthrough
 
 - [x] **CODED (UNCOMPILED)** Replace three selectable Pokéballs on Professor Elm's desk with passive fossil exhibits (Helix, Dome, Old Amber), and descriptive non-reward text, using existing HNS/FRLG fossil sprites. Inspect map rendering and coordinates in actual ROM.
