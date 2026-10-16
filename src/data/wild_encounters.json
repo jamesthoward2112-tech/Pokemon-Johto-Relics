@@ -59672,8 +59672,8 @@
                 "species": "SPECIES_GRAVELER"
               },
               {
-                "min_level": 43,
-                "max_level": 42,
+                "min_level": 42,
+                "max_level": 43,
                 "species": "SPECIES_WEEZING"
               },
               {
@@ -59861,8 +59861,8 @@
                 "species": "SPECIES_GRAVELER"
               },
               {
-                "min_level": 43,
-                "max_level": 42,
+                "min_level": 42,
+                "max_level": 43,
                 "species": "SPECIES_WEEZING"
               },
               {
@@ -67999,13 +67999,13 @@
                 "species": "SPECIES_MAGIKARP"
               },
               {
-                "min_level": 45,
-                "max_level": 40,
+                "min_level": 40,
+                "max_level": 45,
                 "species": "SPECIES_POLIWAG"
               },
               {
-                "min_level": 45,
-                "max_level": 40,
+                "min_level": 40,
+                "max_level": 45,
                 "species": "SPECIES_GOLDEEN"
               },
               {
@@ -68014,8 +68014,8 @@
                 "species": "SPECIES_MAGIKARP"
               },
               {
-                "min_level": 45,
-                "max_level": 40,
+                "min_level": 40,
+                "max_level": 45,
                 "species": "SPECIES_POLIWAG"
               },
               {
