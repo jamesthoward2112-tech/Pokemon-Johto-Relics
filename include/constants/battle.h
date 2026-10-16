@@ -605,6 +605,9 @@ enum __attribute__((packed)) MoveEffect
     // PRU: append status effect rather than shifting legacy PJR effect IDs.
     MOVE_EFFECT_BLEED,
     MOVE_EFFECT_FEAR,
+    // PRU: exact independent ten-percent signature move side effects.
+    MOVE_EFFECT_PRU_INFATUATION,
+    MOVE_EFFECT_PRU_CURSE,
     NUM_MOVE_EFFECTS
 };
 
