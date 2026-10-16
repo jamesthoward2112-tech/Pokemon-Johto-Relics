@@ -943,6 +943,8 @@ enum __attribute__((packed)) Move
     MOVE_BEATDOWN,
     MOVE_TAKE_FLIGHT,
     MOVE_INSECT_IMPACT,
+    MOVE_RIP_AND_TEAR,
+    MOVE_IRON_FANGS,
 
     MOVES_COUNT,
 
