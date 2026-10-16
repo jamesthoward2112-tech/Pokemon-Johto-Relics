@@ -1,5 +1,19 @@
 # PRU Work Resume Checkpoint
 
+## GitHub-only continuation — 2026-10-16, after Work credit exhaustion
+
+- **Verified remote branch:** `pru/complete-selective-integration-20261016`. The restored species/header and engine work described here are remotely committed, not local-only.
+- **Critical repair:** Work's `include/constants/species.h` at tree blob `166404eb...` contained binary NULs and caused an unterminated preprocessor header. Reconstructed the exact frozen PJR definitions 1–1623 from PR #11 and appended approved 19 species IDs 1624–1642; repaired result `86aee386...`, commit `a5adc7d5...`.
+- **Compiler fix:** Removed duplicate `BattleScript_AbilityHpHeal` label in `data/battle_scripts_1.s`, commit `ad7a2f52...`. Previous CI had failed on assembler symbol redefinition.
+- **Original PRL move additions:** Native PJR move enum and move table implementations for Seismic Slam, Soil Drain, Bravado, Raging Souls, Beatdown, Take Flight, Insect Impact, Rip and Tear and Iron Fangs. Original stats/effects/probabilities retained; Soil Drain uses PJR's real `EFFECT_ABSORB` 50% semantics, unlike PRL's newer `MOVE_EFFECT_ABSORB` additional-effect API.
+- **Bleeding source layer:** `STATUS1_BLEED` bit 13 and `MOVE_EFFECT_BLEED` appended (preserve frozen PJR status/effect indices); native infliction, Rock/Ghost immunity, safeguard/status gate, residual 1/16 max HP (minimum 1, Magic Guard exemption), battle scripts/messages. Source commits `33344ad...` through `aa133055...`. **Not yet emulator-tested; visual red BLD, cures/healing moves, all standard move proc chances and edge cases remain.**
+- **Fear source layer:** append `VOLATILE_FEAR` / `fearTimer`, native two-turn infliction/expiry, 1.5x normal incoming damage, escape gate, scripts/messages. Source commits `58710020...` through `7f8368bb...`. **Not yet emulator-tested; Fear-inflicting standard moves and interaction QA remain.**
+- **CI:** `.github/workflows/pru-battle-port.yml` now runs only on explicit `docs/PRU_CI_TRIGGER.md` changes, preventing dozens of full builds for intermediate commits. Compiler output is redirected and bounded on failures for diagnosable GitHub logs. Explicit compile checkpoint triggered by `5f3fe828...`; inspect GitHub Actions run `38938373925` for actual result. Previous attempts failed first on corrupt species.h, then duplicate script label; later donor/engine errors expected.
+- **Immediate next tasks:** fix errors from latest bounded CI run; register original donor moves used in 19 species learnsets (do not substitute vanilla), complete Eevoboost, Lovely Bite, Shadow Fangs, Fear/Bleeding original proc chances and animations, complete Eerie Fog stat-drop, reconcile missing ability definitions, scripted Mewsion encounter and acquisition ecology; test saves/emulator. No consolidated playable ROM is claimed yet.
+- **User requirement:** regular factual GitHub checkpoint updates and credit-efficient batch work. Do not merge QA-only Rock Shop fresh-start warp into production.
+
+
+
 Updated: 2026-10-16 (recovery after interrupted Work session)
 
 ## Live recovery state — 2026-10-16T16:18:30Z
