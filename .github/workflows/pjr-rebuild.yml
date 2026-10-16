@@ -1,8 +1,8 @@
-name: PJR Beta build
+name: PRU standalone development build
 
 on:
   push:
-    branches: [pjr-rebuild]
+    branches: [pru/ultimate-pokedex-encounters-20261016]
   pull_request:
     branches: [pjr-rebuild]
   workflow_dispatch:
@@ -15,7 +15,7 @@ env:
   DEPRECATED_ERROR: 1
 
 jobs:
-  three-starter-test:
+  pru-donor-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -68,22 +68,22 @@ jobs:
           PY
       - name: Check Tin Tower shortcut and final encounter
         run: python3 tools/check_pjr_tintower_shortcut.py
-      - name: Build PJR Beta
+      - name: Build PRU donor test ROM
         run: |
           make hns -j4 -O
-      - name: Package PJR Beta
+      - name: Package PRU standalone development ROM
         run: |
-          cp pokehns.gba PJR-Beta.gba
-          arm-none-eabi-nm -n pokehns.elf > PJR-Beta.sym
-          sha256sum PJR-Beta.gba > PJR-Beta-SHA256.txt
-          printf "%s\n" "$GITHUB_SHA" > PJR-Beta-Commit.txt
+          cp pokehns.gba PRU-Development.gba
+          arm-none-eabi-nm -n pokehns.elf > PRU-Development.sym
+          sha256sum PRU-Development.gba > PRU-Development-SHA256.txt
+          printf "%s\n" "$GITHUB_SHA" > PRU-Development-Commit.txt
       - uses: actions/upload-artifact@v4
         with:
-          name: PJR-Beta
+          name: PRU-Development
           path: |
-            PJR-Beta.gba
-            PJR-Beta.sym
-            PJR-Beta-SHA256.txt
-            PJR-Beta-Commit.txt
+            PRU-Development.gba
+            PRU-Development.sym
+            PRU-Development-SHA256.txt
+            PRU-Development-Commit.txt
           if-no-files-found: error
           retention-days: 14
