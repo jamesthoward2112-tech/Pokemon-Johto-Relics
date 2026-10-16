@@ -23383,7 +23383,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .criticalHitStage = 1,
-        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_STAT_MINUS, .defense = 1, .chance = 20, }),
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_DEF_MINUS_1, .chance = 20, }),
         .battleAnimScript = gBattleAnimMove_LeafBlade,
     },
 
@@ -23399,7 +23399,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
-        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_STAT_PLUS, .speed = 1, .self = TRUE, .chance = 30, }),
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_SPD_PLUS_1, .self = TRUE, .chance = 30, }),
         .battleAnimScript = gBattleAnimMove_BlazeKick,
     },
 
@@ -23415,7 +23415,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
-        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_STAT_MINUS, .defense = 1, .chance = 30, }),
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_DEF_MINUS_1, .chance = 30, }),
         .battleAnimScript = gBattleAnimMove_AquaTail,
     },
 
@@ -23431,7 +23431,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
-        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_STAT_MINUS, .defense = 1, .chance = 20, }),
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_DEF_MINUS_1, .chance = 20, }),
         .battleAnimScript = gBattleAnimMove_StoneEdge,
     },
 
@@ -23495,7 +23495,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
-        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_STAT_PLUS, .defense = 1, .self = TRUE, .chance = 30, }),
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_DEF_PLUS_1, .self = TRUE, .chance = 30, }),
         .battleAnimScript = gBattleAnimMove_FlashCannon,
     },
 
@@ -23517,32 +23517,5 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_Mist,
     },
 
-    [MOVE_EEVOBOOST] =
-        {
-            .name = COMPOUND_STRING("Eevoboost"),
-            .description = COMPOUND_STRING(
-                "Gathers inner potential\n"
-                "to raise all five stats."),
-            .effect = EFFECT_EXTREME_EVOBOOST,
-            .power = 0,
-            .type = TYPE_NORMAL,
-            .accuracy = 0,
-            .pp = 5,
-            .target = TARGET_USER,
-            .priority = -2,
-            .category = DAMAGE_CATEGORY_STATUS,
-            .ignoresProtect = TRUE,
-            .mirrorMoveBanned = TRUE,
-            .snatchAffected = TRUE,
-            .additionalEffects = ADDITIONAL_EFFECTS({
-                .moveEffect = STAT_CHANGE_EFFECT_PLUS,
-                .attack = 1,
-                .defense = 1,
-                .speed = 1,
-                .spAtk = 1,
-                .spDef = 1,
-            }),
-            .battleAnimScript = gBattleAnimMove_ExtremeEvoboost,
-        },
 
 };
