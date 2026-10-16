@@ -43790,7 +43790,7 @@
               {
                 "min_level": 22,
                 "max_level": 22,
-                "species": "SPECIES_ARBOK"
+                "species": "SPECIES_CASTFORM_NORMAL"
               },
               {
                 "min_level": 22,
@@ -43974,7 +43974,7 @@
               {
                 "min_level": 20,
                 "max_level": 20,
-                "species": "SPECIES_MARILL"
+                "species": "SPECIES_CASTFORM_NORMAL"
               },
               {
                 "min_level": 20,
@@ -52849,7 +52849,7 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_ELECTABUZZ"
+                "species": "SPECIES_PORYGON"
               },
               {
                 "min_level": 46,
@@ -53033,7 +53033,7 @@
               {
                 "min_level": 46,
                 "max_level": 46,
-                "species": "SPECIES_ELECTABUZZ"
+                "species": "SPECIES_PORYGON"
               },
               {
                 "min_level": 46,
