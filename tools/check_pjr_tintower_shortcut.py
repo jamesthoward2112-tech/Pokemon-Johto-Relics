@@ -14,8 +14,15 @@ wired = {
 assert wired == statues, (wired, statues)
 
 shortcut = (maps / "BellchimeTrail_hns" / "scripts.inc").read_text()
-assert "goto_if_set FLAG_PJR_RELIC_HO_OH" in shortcut
-assert "goto_if_set FLAG_DEFEATED_RED" in shortcut
+# PRU fresh-save rules: only real Alphoracle capture and Crest possession
+# unlock the roof. Earlier PJR compatibility tests incorrectly demanded that
+# entering this reachable shortcut should fabricate those story flags.
+assert "goto_if_unset FLAG_PJR_RELIC_ALPHORACLE" in shortcut
+assert "goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST" in shortcut
+assert "checkitem ITEM_ANCIENT_RAINBOW_CREST" in shortcut
+assert "setflag FLAG_PJR_RELIC_ALPHORACLE" not in shortcut
+assert "setflag FLAG_PJR_GOT_RAINBOW_CREST" not in shortcut
+assert "EcruteakBellchimeTrail_EventScript_RelicShortcutBackfill" not in shortcut
 assert "warp MAP_TIN_TOWER_ROOF_DAY_HNS, 10, 13" in shortcut
 
 for suffix in ("RoofDay", "RoofNight"):
@@ -36,7 +43,7 @@ party = (root / "src" / "data" / "trainers_hns.party").read_text().split(
 assert "Ghoulbat @ Life Orb" in party
 assert "Meowth @" not in party
 assert "Pikachu @ Light Ball" in party
-print("PASS: both statues lead directly to rooftop; save backfill, Rocket ambush and Ho-Oh retained")
+print("PASS: both statues retain access conditional on authentic Alphoracle/Crest; Rocket ambush and Ho-Oh retained")
 
 generic = (maps / "RuinsOfAlph_PuzzleAndRewardChambers_hns" / "scripts.inc").read_text()
 assert "specialvar VAR_RESULT, IsPjrTinTowerEntranceStatue" in generic
