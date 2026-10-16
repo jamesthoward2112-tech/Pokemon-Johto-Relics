@@ -1,5 +1,16 @@
 # PRU Work Resume Checkpoint
 
+## Pretest story source pass — 16 October 2026 (ongoing)
+
+- User has **paused the current WIP ROM playthrough** until Elm's lab and the full Johto-first Relic dialogue are ready. Title screen/animation then becomes the very next priority, **ahead of Gym, gift, trainer, and shop work**.
+- Safe working branch: `pru/pretest-story-services-20261016`, forked from consolidated `4501256af136729daf5e0e54824e16ccd702b6d5`. **Never alter original `pjr-rebuild`**. Current source dialogue audit `docs/PRU_STANDALONE_RELIC_DIALOGUE_AUDIT.md`; full planned work `docs/PRU_TOMORROW_MASTER_CHECKLIST_2026-10-17.md`.
+- **Committed source:** Elm's desk now holds three fossil display objects, not Pokéballs; no selection or acceptance flow. Elm gifts Level 5 Pikachu directly and discusses fossil/Alph Resonance. Silver branch `VAR_STARTER_MON=0`, original Mystery Egg/Togepi path and Rocket theft retained.
+- **Committed source:** Oak first Kanto lab visit discusses Johto/Alph findings. Ruins scientist differentiates missing Crest, Crest ready/Relic Ho-Oh outstanding and Relic Ho-Oh caught; unified HNS Tin Tower naming. Removed obsolete Elm starter-choice Egg claim.
+- GitHub Actions workflow `.github/workflows/pru-battle-port.yml` temporarily extended for this working branch only, with new `tools/pru/check_pretest_story.py` script: verifies passive fossils, starter, original Egg, chronology and critical flags; scans all active HNS maps for exact obsolete sequel-choice expressions. Workflow run **[38963859049](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38963859049)** source static scans **GREEN as observed**; full ROM compilation may still be underway. **Do not equate green source checks with emulator QA**. Trigger commit `112f5b6d39177333e5f4e22f0e6aa62a1f74fdd6` (later doc-only commits not part of this build, no code changes afterwards).
+- **Known high-priority remaining:** old PJR Hall of Fame rematches can reset legacy caught flags / classify premature Kanto Championship; full-bag Ancient Rainbow Crest path needs safe gating; all legendary/event/roaming interactions need emulator tests; scan every custom/HNS dialogue path and alternate states. These are tracked, not claimed complete.
+- Next title priority: newest PRL Noxichu donor asset from PRL PR108 `6ee9b984...` differs from currently installed PRU Noxichu front/back and PRU folder lacks `icon.png`. Audit every art reference before replacing, then new Relic cave title animation (search donor; fallback PRL Jirachi/Celebi intro). **Title work not implemented yet.**
+
+
 ## PRU binary inspection — first successful test artifact
 
 - Downloaded and inspected artifact ID `12069724170`: ZIP contains `PRU-Consolidated-WIP.gba` (33,554,432 bytes), `.sym`, SHA-256 and commit. Independently verified ROM SHA-256 `8e8899132ca32ba41c2a5584e279efd052fc76257fc76ccc9923d0aa307a7ffd`, matching artifact manifest.
