@@ -48026,8 +48026,8 @@
                 "species": "SPECIES_ONIX"
               },
               {
-                "min_level": 35,
-                "max_level": 40,
+                "min_level": 57,
+                "max_level": 60,
                 "species": "SPECIES_PUPITAR"
               },
               {
@@ -48041,8 +48041,8 @@
                 "species": "SPECIES_GOLBAT"
               },
               {
-                "min_level": 15,
-                "max_level": 20,
+                "min_level": 50,
+                "max_level": 53,
                 "species": "SPECIES_LARVITAR"
               },
               {
@@ -48334,8 +48334,8 @@
                 "species": "SPECIES_ONIX"
               },
               {
-                "min_level": 35,
-                "max_level": 40,
+                "min_level": 57,
+                "max_level": 60,
                 "species": "SPECIES_PUPITAR"
               },
               {
@@ -48642,8 +48642,8 @@
                 "species": "SPECIES_ONIX"
               },
               {
-                "min_level": 35,
-                "max_level": 40,
+                "min_level": 57,
+                "max_level": 60,
                 "species": "SPECIES_PUPITAR"
               },
               {
@@ -48657,8 +48657,8 @@
                 "species": "SPECIES_GOLBAT"
               },
               {
-                "min_level": 15,
-                "max_level": 20,
+                "min_level": 50,
+                "max_level": 53,
                 "species": "SPECIES_LARVITAR"
               },
               {
@@ -48796,8 +48796,8 @@
                 "species": "SPECIES_ONIX"
               },
               {
-                "min_level": 35,
-                "max_level": 40,
+                "min_level": 57,
+                "max_level": 60,
                 "species": "SPECIES_PUPITAR"
               },
               {
@@ -48811,8 +48811,8 @@
                 "species": "SPECIES_GOLBAT"
               },
               {
-                "min_level": 15,
-                "max_level": 20,
+                "min_level": 50,
+                "max_level": 53,
                 "species": "SPECIES_LARVITAR"
               },
               {
@@ -49536,14 +49536,14 @@
                 "species": "SPECIES_ARBOK"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_CHIKORITA"
+                "min_level": 38,
+                "max_level": 40,
+                "species": "SPECIES_MEGANIUM"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_CYNDAQUIL"
+                "min_level": 38,
+                "max_level": 41,
+                "species": "SPECIES_TYPHLOSION"
               },
               {
                 "min_level": 38,
@@ -49561,9 +49561,9 @@
                 "species": "SPECIES_PONYTA"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_CYNDAQUIL"
+                "min_level": 38,
+                "max_level": 41,
+                "species": "SPECIES_TYPHLOSION"
               }
             ]
           },
@@ -49720,14 +49720,14 @@
                 "species": "SPECIES_ARBOK"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_CHIKORITA"
+                "min_level": 38,
+                "max_level": 40,
+                "species": "SPECIES_MEGANIUM"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_TOTODILE"
+                "min_level": 38,
+                "max_level": 41,
+                "species": "SPECIES_FERALIGATR"
               },
               {
                 "min_level": 42,
@@ -49740,9 +49740,9 @@
                 "species": "SPECIES_RAPIDASH"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_TOTODILE"
+                "min_level": 38,
+                "max_level": 41,
+                "species": "SPECIES_FERALIGATR"
               },
               {
                 "min_level": 42,
@@ -49904,14 +49904,14 @@
                 "species": "SPECIES_ARBOK"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_BULBASAUR"
+                "min_level": 38,
+                "max_level": 40,
+                "species": "SPECIES_VENUSAUR"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_CHARMANDER"
+                "min_level": 38,
+                "max_level": 41,
+                "species": "SPECIES_CHARIZARD"
               },
               {
                 "min_level": 38,
@@ -49929,9 +49929,9 @@
                 "species": "SPECIES_PONYTA"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_CHARMANDER"
+                "min_level": 38,
+                "max_level": 41,
+                "species": "SPECIES_CHARIZARD"
               }
             ]
           },
@@ -50088,9 +50088,9 @@
                 "species": "SPECIES_ARBOK"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_BULBASAUR"
+                "min_level": 38,
+                "max_level": 40,
+                "species": "SPECIES_VENUSAUR"
               },
               {
                 "min_level": 42,
@@ -50098,9 +50098,9 @@
                 "species": "SPECIES_DODRIO"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_SQUIRTLE"
+                "min_level": 38,
+                "max_level": 41,
+                "species": "SPECIES_BLASTOISE"
               },
               {
                 "min_level": 42,
@@ -50108,9 +50108,9 @@
                 "species": "SPECIES_RAPIDASH"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_SQUIRTLE"
+                "min_level": 38,
+                "max_level": 41,
+                "species": "SPECIES_BLASTOISE"
               },
               {
                 "min_level": 42,
@@ -66929,8 +66929,8 @@
                 "species": "SPECIES_QUAGSIRE"
               },
               {
-                "min_level": 35,
-                "max_level": 40,
+                "min_level": 57,
+                "max_level": 60,
                 "species": "SPECIES_PUPITAR"
               },
               {
@@ -67359,8 +67359,8 @@
                 "species": "SPECIES_ONIX"
               },
               {
-                "min_level": 35,
-                "max_level": 40,
+                "min_level": 57,
+                "max_level": 60,
                 "species": "SPECIES_PUPITAR"
               },
               {
