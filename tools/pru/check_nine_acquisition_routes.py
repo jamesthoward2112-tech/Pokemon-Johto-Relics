@@ -95,9 +95,9 @@ for species, map_id in expected.items():
 # Goldenrod 2F inventory. Gameplay access and successful purchase remain ROM QA.
 shop_script = (ROOT / "data/maps/GoldenrodCity_DepartmentStore_2F_hns/scripts.inc").read_text()
 shop_map = json.loads((ROOT / "data/maps/GoldenrodCity_DepartmentStore_2F_hns/map.json").read_text())
-clerk_script = "GoldenrodDeptStore2_EventScript_Clerk"
-shop_table = "GoldenrodDeptStore2_Pokemart"
-assert clerk_script in shop_script, "Goldenrod 2F shopkeeper script disappeared"
+clerk_script = "GoldenrodDeptStore2_EventScript_RockShop"
+shop_table = "GoldenrodDeptStore2_RockShop"
+assert clerk_script in shop_script, "Goldenrod 2F Rock Shop clerk script disappeared"
 clerk = shop_script.split(clerk_script + "::", 1)
 assert len(clerk) == 2, "Goldenrod 2F shopkeeper definition disappeared"
 assert ("pokemart " + shop_table) in clerk[1][:400], (
@@ -107,7 +107,7 @@ shop_inventory = shop_script.split(shop_table + ":", 1)
 assert len(shop_inventory) == 2, "Goldenrod 2F inventory missing"
 shop_inventory = shop_inventory[1].split("pokemartlistend", 1)[0]
 for item in ("ITEM_FIRE_STONE", "ITEM_WATER_STONE", "ITEM_DEEP_SEA_SCALE"):
-    assert ".2byte " + item in shop_inventory, f"Goldenrod 2F no longer sells {item}"
+    assert ".2byte " + item in shop_inventory, f"Goldenrod Rock Shop no longer sells {item}"
 assert any(
     obj.get("script") == clerk_script and obj.get("flag") == "0"
     for obj in shop_map.get("object_events", [])
