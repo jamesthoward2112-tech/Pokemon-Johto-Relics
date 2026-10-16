@@ -212,7 +212,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_GREAT_BALL] =
     {
         .name = ITEM_NAME("GREAT BALL"),
-        .price = 150,
+        .price = 200,
         .description = COMPOUND_STRING(
             "A good Ball with a\n"
             "higher catch rate\n"
@@ -230,7 +230,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("ULTRA BALL"),
         //.price = (I_PRICE >= GEN_7) ? 800 : 1200,
-        .price = 300,
+        .price = 400,
         .description = COMPOUND_STRING(
             "A better Ball with\n"
             "a higher catch rate\n"
@@ -417,7 +417,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_LUXURY_BALL] =
     {
         .name = ITEM_NAME("LUXURY BALL"),
-        .price = (I_PRICE >= GEN_8) ? 3000 : 1000,
+        .price = (I_PRICE >= GEN_8) ? 1500 : 500,
         .description = COMPOUND_STRING(
             "A cozy Ball that\n"
             "makes Pokémon\n"
@@ -599,7 +599,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_SPORT_BALL] =
     {
         .name = ITEM_NAME("SPORT BALL"),
-        .price = (I_PRICE <= GEN_3 || I_PRICE >= GEN_9) ? 0 : 300,
+        .price = (I_PRICE <= GEN_3 || I_PRICE >= GEN_9) ? 0 : 150,
         .description = COMPOUND_STRING(
             "A special Ball\n"
             "used in the Bug-\n"
@@ -8282,7 +8282,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_LIGHT_BALL] =
     {
         .name = ITEM_NAME("LIGHT BALL"),
-        .price = (I_PRICE >= GEN_7) ? 500 : 50,
+        .price = (I_PRICE >= GEN_7) ? 1000 : 100,
         .holdEffect = HOLD_EFFECT_LIGHT_BALL,
         .description = COMPOUND_STRING(
             "A hold item that\n"
@@ -9656,7 +9656,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("SNOWBALL"),
     #if I_PRICE >= GEN_9
-        .price = 2500,
+        .price = 5000,
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -9898,7 +9898,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("SMOKE BALL"),
     #if I_PRICE >= GEN_9
-        .price = 7500,
+        .price = 15000,
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -10291,7 +10291,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("IRON BALL"),
     #if I_PRICE >= GEN_9
-        .price = 10000,
+        .price = 20000,
     #elif I_PRICE >= GEN_7
         .price = 4000,
     #else
@@ -12647,7 +12647,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_TM_SHADOW_BALL] =
     {
         .name = ITEM_NAME("TM30"),
-        .price = 1500,
+        .price = 3000,
         .description = COMPOUND_STRING(
             "Hurls a dark lump\n"
             "at the foe. It may\n"
@@ -16065,7 +16065,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_GS_BALL] =
     {
         .name = ITEM_NAME("GS BALL"),
-        .price = 500,
+        .price = 1000,
         .description = COMPOUND_STRING(
             "A strange Poké Ball\n"
             "with a gold and\n"
