@@ -21,8 +21,11 @@ Status: **development only; not playable-approved**.
 - Elm's first selectable lab Poké Ball now awards level-5 Pikachu with existing shiny/party/PC semantics.
 - Other two lab balls remain present for narrative continuity but cannot be selected. Rival-variable branch `VAR_STARTER_MON=0` retained intentionally.
 - Elm opening dialogue changed to describe Pikachu instead of three choices.
-- 14 Pokémon gained deliberately placed wild slots: Chikorita (Route 29), Cyndaquil (Route 36), Totodile (Slowpoke Well), Bulbasaur (Ilex Forest), Charmander (Burned Tower), Squirtle (Route 41 Surf), Treecko (Route 34), Torchic (Route 37), Mudkip (Union Cave), Scarabub (National Park), Skarmet (Route 45), Mootiny (Route 39), Porygon (Route 10), and Castform (Route 42).
-- Land starter slots use 5% table positions. Squirtle/Porygon/Castform use 1% positions. Fourteen species were inserted into 24 day/night or single encounter variants. Existing displaced species retain other slots in the same variant.
+- **Approved early-starter policy supersedes older locations:** all 9 traditional starter stages and 3 PJR starter stages are available no later than Route 33 / early Union Cave / Slowpoke Well, all wild at level 2–9, with no Surf requirement. Day/night variants contain the same starter where available. These are catchable before their Lv14–18 evolutions, not late-game gifts.
+- Chikorita Route 29 Lv2–3 (5%); Cyndaquil Route 30 Lv4 (5%); Totodile Slowpoke Well B1F Lv6–8 (5%); Bulbasaur Route 31 Lv5 (5%); Charmander Route 46 Lv2–3 (5%); Squirtle Route 32 **grass** Lv6 (5%); Treecko Route 30 Lv3–4 (4%); Torchic Route 33 Lv8–9 (5%); Mudkip Union Cave B1F Lv8 (5%).
+- Scarabub Route 31 Lv5 (4%), evolves to Heracross at Lv18; Skarmet Route 46 Lv2–3 (4%), evolves to Skarmory at Lv18; Mootiny Route 29 Lv2–3 (4%), evolves to Miltank at Lv18. All three donor evolutions verified from `src/data/pokemon/species_info/pjr_families.h`.
+- **Later evolved replacements:** Burned Tower Charmeleon Lv16–18; Route 41 Wartortle Lv22–25; Route 34 Grovyle Lv17–18; Route 37 Combusken Lv17–18; National Park Heracross Lv18; Route 45 Skarmory Lv37; Route 39 Miltank Lv21 (no Mootiny); deeper Slowpoke Well Croconaw Lv20–22; deeper Union Cave Marshtomp Lv21–23. Original Bulbasaur in Ilex Forest and Cyndaquil on Route 36 remain additional low-level opportunities; Totodile and Mudkip remain at their original early cave sources.
+- Porygon remains catchable on Route 10 and Castform on Route 42. All inserted starter-stage encounters use existing PJR wild encounter slots; no gift conversion beyond the Pikachu opening yet.
 - Main HNS encounter baseline before targeted inserts contained 165 unique maps / 257 encounter variants; 265 of the original 386 were directly present in at least one HNS wild table. The other 121 mostly require evolution or static/legendary audits. This is **not** a claim that all 386 were already obtainable.
 - **No other gift events removed yet.** The master all-species import is not complete.
 
@@ -38,12 +41,11 @@ Status: **development only; not playable-approved**.
 9. Test championship and Trainer Card progression with fresh saves; no persistent level mutation from battle cap.
 10. Check final GBA ROM size, battle graphics/icon/palette pipeline, and save version/migration.
 
-## Starter habitat proposals — unimplemented
-- Bulbasaur: Ilex/Viridian Forest; Chikorita: early Johto grassland; Treecko: Ilex and late forest routes.
-- Charmander: Burned Tower foothills/Mt. Silver; Cyndaquil: early Johto warm/dry areas; Torchic: grassland nearer Route 37.
-- Squirtle: coasts/Seafoam; Totodile: Slowpoke Well waterways; Mudkip: cave pools/Union Cave.
-- All three custom PJR starter families (Scarabub, Skarmet, Mootiny) must be moved into wild encounter/evolution chains. **Do not remove their assets.**
-- Replace currently scripted gifts such as PJR starter Eggs only after confirming no plot progression relies on the gift flag.
+## Early and evolved encounter audit — committed; emulator pending
+- Canonical map/level/location rules are the early-start policy above. No new PJR geography or Surf dependency for a starter-stage Pokémon.
+- Encounter-table change `078310b5` replaces 32 variant slots. Every displaced original species remains available in at least one other slot in that same variant; this was checked before committing.
+- GitHub compilation verifies source integration only. Fresh-save playtesting must check early access, wild catch rate, progression and evolved-stage availability; do not equate a successful build with in-game success.
+- Any further Pokémon encounter pass must preserve this early starter availability as a regression gate.
 
 ## Evidence
 - `data/maps/NewBarkTown_Lab_hns/scripts.inc`: Elm, starter gift, Silver theft and multiple later Egg gift flows.
