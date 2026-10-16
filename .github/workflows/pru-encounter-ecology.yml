@@ -29,6 +29,8 @@ jobs:
         run: python tools/pru/check_encounter_ecology.py
       - name: Source-audit nine ordinary acquisition chains
         run: python tools/pru/check_nine_acquisition.py
+      - name: Check nine ordinary acquisition routes and evolution branches
+        run: python tools/pru/check_nine_acquisition_routes.py
       - name: Explain gameplay build dependency
         run: |
           echo "Static encounter data gate only."
