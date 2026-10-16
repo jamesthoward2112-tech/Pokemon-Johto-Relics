@@ -29,6 +29,16 @@ jobs:
           path: artifacts/pru-dialogue-audit/
           if-no-files-found: warn
           retention-days: 30
+      - name: Audit gift-independent wild access
+        run: python3 tools/audit_pru_catchability.py
+      - name: Upload wild catchability report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PRU-Catchability-Audit
+          path: artifacts/pru-catchability/
+          if-no-files-found: warn
+          retention-days: 30
       - name: Restore exact Azul Agua donor tiles
         run: |
           base64 -d assets/pjr_azul_agua/building_tiles.png.b64 > data/tilesets/primary/azul_agua_building_hns/tiles.png
