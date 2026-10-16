@@ -51,6 +51,26 @@ Use `python3 tools/pru/check_encounter_ecology.py` to test source-only constrain
 
 **Important:** `python3 tools/pru/check_encounter_ecology.py --require-engine` additionally verifies the Gemlin species ID exists. This is an **expected failure** until Work's separately-developed species integration has been merged. Do not claim this branch alone compiles as a ROM.
 
+## Nine ordinary Pokémon acquisition audit — source fixes (16 October)
+
+All nine previously marked `ACQUISITION_REVIEW` in the 444-species matrix now have a verified **source-defined evolution route** and accessible base Pokémon encounter staged. The matrix labels them `EVOLUTION_DEFINED_QA_PENDING` — **not** caught or emulator-tested.
+
+| Pokémon | Source-defined acquisition | Source item / wild access |
+| --- | --- | --- |
+| Hitmonlee | Tyrogue reaches Lv20 with Attack > Defense | Tyrogue newly available Mt. Mortar 1F south day/night, Lv18–20 at 1% |
+| Hitmontop | Tyrogue reaches Lv20 with Attack = Defense | Same Tyrogue location; preserve branching Hitmonchan |
+| Vaporeon | Water Stone on Eevee | Eevee already wild on Route 29 Lv2–3; Water Stone sold Goldenrod 2F / Ecruteak Rock Shop |
+| Flareon | Fire Stone on Eevee | Same Route 29 Eevee; Fire Stone sold Goldenrod 2F / Ecruteak Rock Shop |
+| Espeon | Eevee levels up with sufficient friendship during day | Route 29 Eevee; verify in-game time and friendship triggers |
+| Umbreon | Eevee levels up with sufficient friendship during night | Route 29 Eevee; verify in-game time and friendship triggers |
+| Cascoon | Wurmple levels to 7+; PID evolution branch | New Ilex Forest daytime Wurmple Lv8–9, rare 1% slot; original late Viridian Forest preserved |
+| Shedinja | Nincada reaches Lv20 and evolves to Ninjask with spare team slot and Poké Ball | New Union Cave 1F Nincada Lv8–9, rare 1% slot; original late habitats preserved |
+| Gorebyss | Deep Sea Scale used on Clamperl, or trade while holding it | Clamperl already fishing on Route 20; Deep Sea Scale now sold Goldenrod 2F alongside Deep Sea Tooth for Huntail |
+
+**Regression tests:** `tools/pru/check_nine_acquisition.py` runs in the PR #10 `pru-encounter-ecology.yml` workflow. It checks exact source evolution definitions, baseline base-species habitats, Goldenrod stock, and Shedinja configuration. This is a **source test**, not emulator evidence. All 19 species in Work's unfinished PRL port and all 25 legendary/special encounters remain separately gated.
+
+**Ecological preservation:** Four wild table slots changed: two Mt. Mortar south day/night Cubone slots (other Cubone slots remain), one Ilex daytime Kakuna slot (other Kakuna remain), one Union Cave 1F Zubat slot (other Zubat remain). No direct wild Relic evolutions, legendaries, or trainer/gift scripts changed. No existing species IDs or saved gameplay data were altered.
+
 ## Remaining nonlegendary catchability gates (no user decisions needed)
 
 1. Merge the complete 19-species import including Gemlin, and make sure all 444 National Pokédex entries can be obtained through wild catch, breeding, known evolutionary routes, static events, or independently available items; do **not** make evolved Relic species wild.
