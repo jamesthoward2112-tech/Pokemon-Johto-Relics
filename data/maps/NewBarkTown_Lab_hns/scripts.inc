@@ -163,7 +163,7 @@ NewBarkTown_Lab_EventScript_ChikoritaBall::
 NewBarkTown_Lab_EventScript_ChikoritaBall_Choice::
 	@callnative DisableStaticRandomizer
 	setvar VAR_STARTER_MON, 0
-	setvar PLAYER_STARTER_SPECIES, SPECIES_SCARABUB
+	setvar PLAYER_STARTER_SPECIES, SPECIES_PIKACHU
 	showmonpic PLAYER_STARTER_SPECIES, 10, 3
 	playmoncry PLAYER_STARTER_SPECIES, CRY_MODE_NORMAL
 	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
@@ -183,16 +183,8 @@ NewBarkTown_Lab_EventScript_CyndaquilBall::
 	end
 
 NewBarkTown_Lab_EventScript_CyndaquilBall_Choice::
-	@callnative DisableStaticRandomizer
-	setvar VAR_STARTER_MON, 1
-	setvar PLAYER_STARTER_SPECIES, SPECIES_SKARMET
-	showmonpic PLAYER_STARTER_SPECIES, 10, 3
-	playmoncry PLAYER_STARTER_SPECIES, CRY_MODE_NORMAL
-	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
-	buffermoncategory STR_VAR_2, PLAYER_STARTER_SPECIES
-	msgbox NewBarkTown_Lab_Text_ChooseCyndaquil, MSGBOX_YESNO	
-	goto_if_eq VAR_RESULT, YES, NewBarkTown_Lab_EventScript_ChoseStarter
-	goto_if_eq VAR_RESULT, NO, NewBarkTown_Lab_EventScript_DeclinedStarter
+	msgbox NewBarkTown_Lab_Text_ReservedResearchPokemon, MSGBOX_DEFAULT
+	release
 	end
 
 NewBarkTown_Lab_EventScript_TotodileBall::
@@ -205,16 +197,8 @@ NewBarkTown_Lab_EventScript_TotodileBall::
 	end
 
 NewBarkTown_Lab_EventScript_TotodileBall_Choice::
-	@callnative DisableStaticRandomizer
-	setvar VAR_STARTER_MON, 2
-	setvar PLAYER_STARTER_SPECIES, SPECIES_MOOTINY
-	showmonpic PLAYER_STARTER_SPECIES, 10, 3
-	playmoncry PLAYER_STARTER_SPECIES, CRY_MODE_NORMAL
-	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
-	buffermoncategory STR_VAR_2, PLAYER_STARTER_SPECIES
-	msgbox NewBarkTown_Lab_Text_ChooseTotodile, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, NewBarkTown_Lab_EventScript_ChoseStarter
-	goto_if_eq VAR_RESULT, NO, NewBarkTown_Lab_EventScript_DeclinedStarter
+	msgbox NewBarkTown_Lab_Text_ReservedResearchPokemon, MSGBOX_DEFAULT
+	release
 	end
 
 NewBarkTown_Lab_EventScript_DeclinedStarter::
@@ -269,11 +253,11 @@ NewBarkTown_Lab_EventScript_GiveStarter_Totodile::
 	return
 
 NewBarkTown_Lab_EventScript_GiveScarabub_NotShiny::
-	createmon 0, 0, SPECIES_SCARABUB, 5, ITEM_NONE, BALL_POKE, NATURE_RANDOM, NUM_ABILITY_PERSONALITY, MON_GENDER_RANDOM, 0, 0, 0, 0, 0, 0, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, SHINY_MODE_NEVER
+	createmon 0, 0, SPECIES_PIKACHU, 5, ITEM_NONE, BALL_POKE, NATURE_RANDOM, NUM_ABILITY_PERSONALITY, MON_GENDER_RANDOM, 0, 0, 0, 0, 0, 0, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, SHINY_MODE_NEVER
 	return
 
 NewBarkTown_Lab_EventScript_GiveScarabub_Shiny::
-	createmon 0, 0, SPECIES_SCARABUB, 5, ITEM_NONE, BALL_POKE, NATURE_RANDOM, NUM_ABILITY_PERSONALITY, MON_GENDER_RANDOM, 0, 0, 0, 0, 0, 0, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, SHINY_MODE_ALWAYS
+	createmon 0, 0, SPECIES_PIKACHU, 5, ITEM_NONE, BALL_POKE, NATURE_RANDOM, NUM_ABILITY_PERSONALITY, MON_GENDER_RANDOM, 0, 0, 0, 0, 0, 0, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, USE_RANDOM_IVS, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, MOVE_DEFAULT, SHINY_MODE_ALWAYS
 	return
 
 NewBarkTown_Lab_EventScript_GiveSkarmet_NotShiny::
@@ -485,69 +469,17 @@ NewBarkTown_Lab_EventScript_ElmKimono::
 NewBarkTown_Lab_EventScript_ElmLeague::
 	lock
 	faceplayer
-	goto_if_unset FLAG_PJR_GOT_STARTER_EGG_A, NewBarkTown_Lab_EventScript_ElmStarterEggFirst
-	goto_if_unset FLAG_PJR_GOT_STARTER_EGG_B, NewBarkTown_Lab_EventScript_ElmStarterEggSecond
-	msgbox NewBarkTown_Lab_Text_StarterEggsAfter, MSGBOX_DEFAULT
-	closemessage
-	release
-	end
-
-NewBarkTown_Lab_EventScript_ElmStarterEggFirst::
+	goto_if_set FLAG_PJR_GOT_STARTER_EGG_A, NewBarkTown_Lab_EventScript_ElmLeagueAlreadyAdvised
 	msgbox NewBarkTown_Lab_Text_League, MSGBOX_DEFAULT
-	goto_if_eq VAR_STARTER_MON, 0, NewBarkTown_Lab_EventScript_GiveEggSkarmetFirst
-	goto_if_eq VAR_STARTER_MON, 1, NewBarkTown_Lab_EventScript_GiveEggMootinyFirst
-	goto NewBarkTown_Lab_EventScript_GiveEggScarabubFirst
-
-NewBarkTown_Lab_EventScript_GiveEggSkarmetFirst::
-	bufferspeciesname STR_VAR_1, SPECIES_SKARMET
-	giveegg SPECIES_SKARMET
-	goto NewBarkTown_Lab_EventScript_StarterEggFirstResult
-
-NewBarkTown_Lab_EventScript_GiveEggMootinyFirst::
-	bufferspeciesname STR_VAR_1, SPECIES_MOOTINY
-	giveegg SPECIES_MOOTINY
-	goto NewBarkTown_Lab_EventScript_StarterEggFirstResult
-
-NewBarkTown_Lab_EventScript_GiveEggScarabubFirst::
-	bufferspeciesname STR_VAR_1, SPECIES_SCARABUB
-	giveegg SPECIES_SCARABUB
-
-NewBarkTown_Lab_EventScript_StarterEggFirstResult::
-	goto_if_eq VAR_RESULT, MON_CANT_GIVE, NewBarkTown_Lab_EventScript_StarterEggNoRoom
 	setflag FLAG_PJR_GOT_STARTER_EGG_A
-	msgbox NewBarkTown_Lab_Text_StarterEggReceived, MSGBOX_DEFAULT
-	goto NewBarkTown_Lab_EventScript_ElmStarterEggSecond
-
-NewBarkTown_Lab_EventScript_ElmStarterEggSecond::
-	goto_if_eq VAR_STARTER_MON, 0, NewBarkTown_Lab_EventScript_GiveEggMootinySecond
-	goto_if_eq VAR_STARTER_MON, 1, NewBarkTown_Lab_EventScript_GiveEggScarabubSecond
-	goto NewBarkTown_Lab_EventScript_GiveEggSkarmetSecond
-
-NewBarkTown_Lab_EventScript_GiveEggMootinySecond::
-	bufferspeciesname STR_VAR_1, SPECIES_MOOTINY
-	giveegg SPECIES_MOOTINY
-	goto NewBarkTown_Lab_EventScript_StarterEggSecondResult
-
-NewBarkTown_Lab_EventScript_GiveEggScarabubSecond::
-	bufferspeciesname STR_VAR_1, SPECIES_SCARABUB
-	giveegg SPECIES_SCARABUB
-	goto NewBarkTown_Lab_EventScript_StarterEggSecondResult
-
-NewBarkTown_Lab_EventScript_GiveEggSkarmetSecond::
-	bufferspeciesname STR_VAR_1, SPECIES_SKARMET
-	giveegg SPECIES_SKARMET
-
-NewBarkTown_Lab_EventScript_StarterEggSecondResult::
-	goto_if_eq VAR_RESULT, MON_CANT_GIVE, NewBarkTown_Lab_EventScript_StarterEggNoRoom
 	setflag FLAG_PJR_GOT_STARTER_EGG_B
-	msgbox NewBarkTown_Lab_Text_StarterEggReceived, MSGBOX_DEFAULT
-	msgbox NewBarkTown_Lab_Text_StarterEggsComplete, MSGBOX_DEFAULT
+	msgbox NewBarkTown_Lab_Text_ElmWildPartners, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
 
-NewBarkTown_Lab_EventScript_StarterEggNoRoom::
-	msgbox NewBarkTown_Lab_Text_StarterEggNoRoom, MSGBOX_DEFAULT
+NewBarkTown_Lab_EventScript_ElmLeagueAlreadyAdvised::
+	msgbox NewBarkTown_Lab_Text_ElmWildPartners, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
@@ -740,13 +672,13 @@ NewBarkTown_Lab_Text_ElmIntro:
 	.string "learn what it means.$"
 
 NewBarkTown_Lab_Text_ElmAccepted:
-	.string "I prepared three\n"
-	.string "unusual POKéMON.$"
+	.string "I have one partner\n"
+	.string "ready for you.$"
 
 NewBarkTown_Lab_Text_ElmResearchAmbitions:
-	.string "Each one reacted to\n"
+	.string "PIKACHU reacted to\n"
 	.string "the Resonance.\p"
-	.string "Their growth may show\n"
+	.string "Its growth may show\n"
 	.string "what is happening.$"
 
 NewBarkTown_Lab_Text_ElmGotAnEmail:
@@ -762,8 +694,9 @@ NewBarkTown_Lab_Text_ElmMissionFromMrPokemon:
 	.string "Then come back to me.$"
 
 NewBarkTown_Lab_Text_ElmChooseAPokemon:
-	.string "Choose one POKéMON\n"
-	.string "for the journey.$"
+	.string "The left POKé BALL\n"
+	.string "holds PIKACHU.\p"
+	.string "Take it for the journey.$"
 
 NewBarkTown_Lab_Text_ElmWhereGoing:
 	.string "ELM: Wait! Where are you\n"
@@ -776,7 +709,13 @@ NewBarkTown_Lab_Text_ChooseTotodile:
 	.string "Choose {STR_VAR_1}?$"
 
 NewBarkTown_Lab_Text_ChooseChikorita:
-	.string "Choose {STR_VAR_1}?$"
+	.string "Take {STR_VAR_1}?$"
+
+NewBarkTown_Lab_Text_ReservedResearchPokemon:
+	.string "ELM: Those POKéMON\n"
+	.string "are for my research.\p"
+	.string "Your partner is in\n"
+	.string "the left POKé BALL.$"
 
 NewBarkTown_Lab_Text_DidntChooseStarter:
 	.string "ELM: Think it over carefully.\p"
@@ -991,6 +930,12 @@ NewBarkTown_Lab_Text_StarterEggNoRoom:
 	.string "that EGG.\p"
 	.string "Make room in your party or PC,\n"
 	.string "then come back.$"
+
+NewBarkTown_Lab_Text_ElmWildPartners:
+	.string "SCARABUB, SKARMET and\n"
+	.string "MOOTINY live in JOHTO.\p"
+	.string "You can catch them\n"
+	.string "in the wild now.$"
 
 NewBarkTown_Lab_Text_StarterEggsAfter:
 	.string "How are those three young partners\n"

@@ -1,0 +1,37 @@
+name: PRU canonical Pokemon source registry
+on:
+  push:
+    branches: [pru/ultimate-pokedex-encounters-20261016]
+    paths:
+      - tools/pru/**
+      - .github/workflows/pru-pokemon-source.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  generate-canonical-reference:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout live PRU Johto/PJR source
+        uses: actions/checkout@v4
+        with:
+          path: pru
+      - name: Checkout pinned latest PRL Kanto/Hoenn source
+        uses: actions/checkout@v4
+        with:
+          repository: jamesthoward2112-tech/Pokemon-Relic-Legacy
+          ref: 6ee9b984521ac6f2beaf995f771a726379e55c88
+          path: prl
+          persist-credentials: false
+      - name: Generate per-Pokemon reference and sprite hashes
+        run: |
+          python3 pru/tools/pru/generate_species_registry.py --prl prl --pjr pru --out output/pru_species
+      - name: Upload PRU full Pokemon source registry
+        uses: actions/upload-artifact@v4
+        with:
+          name: PRU-Pokemon-Data-Source-20261016
+          path: output/pru_species/
+          if-no-files-found: error
+          retention-days: 30

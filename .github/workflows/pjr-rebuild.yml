@@ -1,8 +1,8 @@
-name: PJR Beta build
+name: PRU standalone development build
 
 on:
   push:
-    branches: [pjr-rebuild]
+    branches: [pru/ultimate-pokedex-encounters-20261016]
   pull_request:
     branches: [pjr-rebuild]
   workflow_dispatch:
@@ -15,10 +15,67 @@ env:
   DEPRECATED_ERROR: 1
 
 jobs:
-  three-starter-test:
+  pru-donor-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Inventory all registered HNS dialogue and gift/flag events
+        run: python3 tools/audit_pru_standalone_dialogue.py
+      - name: Upload standalone PRU dialogue inventory
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PRU-Dialogue-Audit
+          path: artifacts/pru-dialogue-audit/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Audit gift-independent wild access
+        run: python3 tools/audit_pru_catchability.py
+      - name: Upload wild catchability report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PRU-Catchability-Audit
+          path: artifacts/pru-catchability/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Download Sevii Noibat original Radical Red sprite sources
+        continue-on-error: true
+        run: |
+          python3 - <<'PY'
+          import pathlib, urllib.request, struct, hashlib, json
+          commit = "488a0918194d567b5f7b02c396118d51fb9c81ce"
+          root = pathlib.Path("artifacts/pru-sevii-donor")
+          summary = []
+          for species, rr_id in (("noibat",866),("noivern",867)):
+              for part in ("front","back","front shiny","back shiny"):
+                  dest = root / species / (part.replace(" ","_") + ".png")
+                  dest.parent.mkdir(parents=True,exist_ok=True)
+                  url = ("https://raw.githubusercontent.com/JwowSquared/"
+                         "Radical-Red-Pokedex/" + commit + "/graphics/species/"
+                         + part.replace(" ","%20") + "/" + str(rr_id) + ".png")
+                  with urllib.request.urlopen(url,timeout=20) as response:
+                      raw = response.read()
+                  assert raw[:4] == bytes((137, 80, 78, 71)), url
+                  dest.write_bytes(raw)
+                  width, height = struct.unpack(">II",raw[16:24])
+                  summary.append(dict(pokemon=species,part=part,width=width,
+                                      height=height,sha256=hashlib.sha256(raw).hexdigest()))
+          (root/"manifest.json").write_text(json.dumps(summary,indent=2))
+          print(json.dumps(summary,indent=2))
+          PY
+      - name: Upload source Sevii sprites for PRU integration
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PRU-Sevii-Source-Sprites
+          path: artifacts/pru-sevii-donor/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Install pinned Sevii battle sprites (Radical Red)
+        run: python3 tools/import_pru_sevii_sprites.py
+      - name: Verify PRU regional replacement species, encounters and parties
+        run: python3 tools/check_pru_regional_replacements.py
       - name: Restore exact Azul Agua donor tiles
         run: |
           base64 -d assets/pjr_azul_agua/building_tiles.png.b64 > data/tilesets/primary/azul_agua_building_hns/tiles.png
@@ -68,22 +125,22 @@ jobs:
           PY
       - name: Check Tin Tower shortcut and final encounter
         run: python3 tools/check_pjr_tintower_shortcut.py
-      - name: Build PJR Beta
+      - name: Build PRU donor test ROM
         run: |
           make hns -j4 -O
-      - name: Package PJR Beta
+      - name: Package PRU standalone development ROM
         run: |
-          cp pokehns.gba PJR-Beta.gba
-          arm-none-eabi-nm -n pokehns.elf > PJR-Beta.sym
-          sha256sum PJR-Beta.gba > PJR-Beta-SHA256.txt
-          printf "%s\n" "$GITHUB_SHA" > PJR-Beta-Commit.txt
+          cp pokehns.gba PRU-Development.gba
+          arm-none-eabi-nm -n pokehns.elf > PRU-Development.sym
+          sha256sum PRU-Development.gba > PRU-Development-SHA256.txt
+          printf "%s\n" "$GITHUB_SHA" > PRU-Development-Commit.txt
       - uses: actions/upload-artifact@v4
         with:
-          name: PJR-Beta
+          name: PRU-Development
           path: |
-            PJR-Beta.gba
-            PJR-Beta.sym
-            PJR-Beta-SHA256.txt
-            PJR-Beta-Commit.txt
+            PRU-Development.gba
+            PRU-Development.sym
+            PRU-Development-SHA256.txt
+            PRU-Development-Commit.txt
           if-no-files-found: error
           retention-days: 14
