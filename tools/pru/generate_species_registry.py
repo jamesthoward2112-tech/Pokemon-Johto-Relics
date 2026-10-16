@@ -140,6 +140,31 @@ def main():
                     f2=chosen_root/"graphics/pokemon"/slug/asset
                     if f2.is_file():data["graphical_assets"][asset]={"path":str(f2.relative_to(chosen_root)),"sha256":sha(f2)}
             species[name]=data
+    # Noxichu is declared in PRL's include/constants/species.h and has
+    # custom level-up/graphics; PR108 currently lacks a species-info block.
+    # Make that gap visible rather than silently omitting the Pokemon.
+    if "NOXICHU" not in species:
+        name="NOXICHU"
+        slug=name.lower()
+        gfx=prl/"graphics/pokemon"/slug
+        art={"root":"PRL","dir":"graphics/pokemon/"+slug+"/"}
+        for asset in REQUIRED_GRAPHICS:
+            f=gfx/asset
+            if f.is_file():
+                art[asset]={"path":str(f.relative_to(prl)),"sha256":sha(f)}
+        rec={"species_constant":"SPECIES_NOXICHU","name":name,
+          "source_tier":"PRL-Kanto","source_root":"prl",
+          "source_file":"include/constants/species.h + src/data/pokemon/level_up_learnsets/prl_custom.h",
+          "source_commit":SOURCE_PRL,
+          "source_properties":{"levelUpLearnset":"sNoxichuLevelUpLearnset"},
+          "graphical_assets":art,
+          "status":"BLOCKED_PRL_SPECIES_INFO_NOT_FOUND",
+          "validation":["Species enum is present, but pinned PRL species_info block missing",
+                        "Do not invent stats/typing/abilities; reconcile against newer approved donor",
+                        "Sprites/palettes hash-audited, runtime pointer and emulator QA pending"]}
+        learn=learns["prl"].get("sNoxichuLevelUpLearnset")
+        if learn:rec["level_up"]=learn
+        species[name]=rec
     # RR species definitions must supersede ordinary inherited expansion entries.
     for name,override in RR.items():
         data=species.get(name,{"name":name,"species_constant":"SPECIES_"+name,
