@@ -477,27 +477,61 @@ GoldenrodCity_Text_MoveTutorNotEnoughCoins:
 GoldenrodCity_EventScript_PJRGiftTotodile::
 	lock
 	faceplayer
-	msgbox GoldenrodCity_EventScript_PJRGiftTotodile_Text_Clue, MSGBOX_DEFAULT
-	closemessage
+	goto_if_set FLAG_PJR_GOT_TOTODILE, GoldenrodCity_EventScript_PJRGiftTotodile_After
+	msgbox GoldenrodCity_EventScript_PJRGiftTotodile_Text_Offer, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, GoldenrodCity_EventScript_PJRGiftTotodile_Declined
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TOTODILE
+	bufferspeciesname STR_VAR_1, SPECIES_TOTODILE
+	givemon SPECIES_TOTODILE, 20
+	goto_if_eq VAR_RESULT, MON_CANT_GIVE, GoldenrodCity_EventScript_PJRGiftTotodile_NoRoom
+	setflag FLAG_PJR_GOT_TOTODILE
+	removeobject LOCALID_PJR_GIFT_TOTODILE
+	call Common_EventScript_GiftMon
+	goto GoldenrodCity_EventScript_PJRGiftTotodile_After
+
+GoldenrodCity_EventScript_PJRGiftTotodile_After::
+	msgbox GoldenrodCity_EventScript_PJRGiftTotodile_Text_After, MSGBOX_DEFAULT
+	release
+	end
+
+GoldenrodCity_EventScript_PJRGiftTotodile_Declined::
+	msgbox GoldenrodCity_EventScript_PJRGiftTotodile_Text_Declined, MSGBOX_DEFAULT
+	release
+	end
+
+GoldenrodCity_EventScript_PJRGiftTotodile_NoRoom::
+	msgbox GoldenrodCity_EventScript_PJRGiftTotodile_Text_NoRoom, MSGBOX_DEFAULT
 	release
 	end
 
 GoldenrodCity_EventScript_PJRGiftTotodileMon::
 	lock
 	faceplayer
+	waitse
 	playmoncry SPECIES_TOTODILE, CRY_MODE_NORMAL
 	msgbox GoldenrodCity_EventScript_PJRGiftTotodile_Text_Mon, MSGBOX_DEFAULT
 	waitmoncry
 	release
 	end
 
-GoldenrodCity_EventScript_PJRGiftTotodile_Text_Clue:
-	.string "I'm one of ELM's aides.\p"
-	.string "Wild TOTODILE have been\n"
-	.string "spotted near SLOWPOKE WELL.\p"
-	.string "This one is my partner.\n"
-	.string "Catch one of your own!$"
+GoldenrodCity_EventScript_PJRGiftTotodile_Text_Offer:
+	.string "I'm one of PROF. ELM's aides.\n"
+	.string "This TOTODILE needs a partner.\p"
+	.string "Would you take it with you?$"
+
+GoldenrodCity_EventScript_PJRGiftTotodile_Text_After:
+	.string "Take good care of TOTODILE!\n"
+	.string "It is yours to raise.$"
+
+GoldenrodCity_EventScript_PJRGiftTotodile_Text_Declined:
+	.string "We'll wait here until you're\n"
+	.string "ready to take TOTODILE.$"
+
+GoldenrodCity_EventScript_PJRGiftTotodile_Text_NoRoom:
+	.string "Your party and PC are full.\p"
+	.string "Make room, then come back.\n"
+	.string "I'll keep TOTODILE for you.$"
 
 GoldenrodCity_EventScript_PJRGiftTotodile_Text_Mon:
-	.string "TOTODILE seems happy to\n"
-	.string "travel with ELM's aide.$"
+	.string "TOTODILE is waiting for a\n"
+	.string "TRAINER. Talk to ELM's aide!$"
