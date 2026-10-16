@@ -5952,6 +5952,18 @@ BattleScript_MoveEffectFear::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
+// PRU: outcome narration for independent Lovely Bite / Shadow Fangs secondaries.
+BattleScript_MoveEffectPRUInfatuation::
+	volatileanimation BS_EFFECT_BATTLER, VOLATILE_INFATUATION
+	printstring STRINGID_PKMNFELLINLOVE
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_MoveEffectPRUCurse::
+	printstring STRINGID_PKMNLAIDCURSE
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_MoveEffectFreeze::
 	statusanimation BS_EFFECT_BATTLER
 	printfromtable gGotFrozenStringIds
