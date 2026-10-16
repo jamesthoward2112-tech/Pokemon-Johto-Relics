@@ -135,7 +135,6 @@ NewBarkTown_Lab_EventScript_ElmChoosePokemon::
 	setvar PLAYER_STARTER_SPECIES, SPECIES_PIKACHU
 	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
 	msgbox NewBarkTown_Lab_Text_ElmChooseAPokemon, MSGBOX_DEFAULT
-	@callnative DisableStaticRandomizer
 	goto NewBarkTown_Lab_EventScript_ChoseStarter
 	end
 
@@ -169,14 +168,14 @@ NewBarkTown_Lab_EventScript_FossilDisplay_Amber::
 	end
 
 NewBarkTown_Lab_EventScript_ChoseStarter::
-	@callnative EnableStaticRandomizer
-	hidemonpic
+	@ No creature portrait was shown; direct gift comes from Elm.
+	@ Don't call hidemonpic before one has been shown.
+	@ Pokemon comes from Elm, not from a disappearing overworld Pokeball.
 	@ PRU: Elm himself is the speaker, not a selected desk ball.
 	@ Never remove VAR_LAST_TALKED here, or Elm vanishes from the lab.
 	msgbox NewBarkTown_Lab_Text_ChoseStarter, MSGBOX_DEFAULT
-	call_if_eq VAR_STARTER_MON, 0, NewBarkTown_Lab_EventScript_GiveStarter_Chikorita
-	call_if_eq VAR_STARTER_MON, 1, NewBarkTown_Lab_EventScript_GiveStarter_Cyndaquil
-	call_if_eq VAR_STARTER_MON, 2, NewBarkTown_Lab_EventScript_GiveStarter_Totodile
+	@ PRU: one and only starter. Do not consult abandoned alternate ball slots.
+	call NewBarkTown_Lab_EventScript_GiveStarter_Chikorita
 	special CalculatePlayerPartyCount
 	setflag FLAG_SYS_POKEMON_GET
 	@ PJR: Elm has already given the assignment; no second conversation is required.
@@ -624,22 +623,24 @@ NewBarkTown_Lab_Text_ShouldntTouch:
 NewBarkTown_Lab_Text_ElmIntro:
 	.string "ELM: {PLAYER}!\n"
 	.string "Good timing!\p"
-	.string "OAK found a strange\n"
-	.string "ancient Resonance.\p"
-	.string "It is stirring near\n"
-	.string "JOHTO's old ruins.\p"
+	.string "OAK detected a strange\n"
+	.string "signal at the RUINS OF ALPH.\p"
+	.string "I call this energy\n"
+	.string "RESONANCE.\p"
 	.string "I need your help to\n"
-	.string "learn what it means.$"
+	.string "find out what it means.$"
 
 NewBarkTown_Lab_Text_ElmAccepted:
 	.string "I have one partner\n"
 	.string "ready for you.$"
 
 NewBarkTown_Lab_Text_ElmResearchAmbitions:
-	.string "PIKACHU reacted to\n"
-	.string "the Resonance.\p"
-	.string "Its growth may show\n"
-	.string "what is happening.$"
+	.string "These fossils also give\n"
+	.string "off faint RESONANCE.\p"
+	.string "But PIKACHU reacted\n"
+	.string "more strongly than any!\p"
+	.string "We may learn why on\n"
+	.string "your journey.$"
 
 NewBarkTown_Lab_Text_ElmGotAnEmail:
 	.string "Oh! I got an e-mail!\p"
