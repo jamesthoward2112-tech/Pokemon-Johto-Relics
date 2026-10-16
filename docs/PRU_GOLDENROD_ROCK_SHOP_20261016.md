@@ -1,49 +1,52 @@
-# PRU — Goldenrod Department Store Rock Shop
+# PRU — Goldenrod Department Store 2F Rock Shop
 
-**Implementation branch:** `pru/encounter-ecology-20261016` (encounter-only PR #10).
+**Implementation branch:** `pru/encounter-ecology-20261016` ([PR #10](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/pull/10)).
 
-**Status:** Script, map NPC and directory **committed to source**. Source-only CI in progress; do not claim this as a playable or emulator-tested shop until the consolidated 19-species ROM is built and the counter has been visited.
+**Status:** Three-tier badge-dependent inventory and dedicated clerk are committed to source. Source-only CI is the next gate. **Not yet a compiled or emulator-tested PRU ROM.**
 
-## Design decision
+## Design: unlock stock, not the shop
 
-The player encounters **one dedicated Rock Shop inside Goldenrod Department Store 2F**, alongside the original Trainer's Market supplies clerk. Reuse an existing floor/counter; do **not** add a standalone building, edit storyline flags, reset saves, or repurpose other shop floors.
+- Location: **Goldenrod Department Store 2F**. Existing supplies clerk at (14,11) remains; dedicated Rock Shop clerk at (17,11).
+- The Rock Shop is always visible. It checks existing **fourth- and eighth-Johto badge flags** when spoken to, requires no new save fields, and chooses an increasingly large static Poké Mart item list.
+- Branch priority: `FLAG_BADGE08_GET` first, then `FLAG_BADGE04_GET`, then arrival stock.
+- Existing shops, gift scripts, pickups and story items are not rewritten. These are **shop unlock restrictions**, not global item bans.
+- Shop entry communicates that more evolution items unlock with Gym Badges.
 
-- Existing general clerk: (14,11), `GoldenrodDeptStore2_EventScript_Clerk`, 18 ordinary trainer supplies; balls, medicine, Escape Rope, Repels.
-- New Rock Shop clerk: (17,11), `GoldenrodDeptStore2_EventScript_RockShop`, 48 evolution-related items in `GoldenrodDeptStore2_RockShop`.
-- 1F directory and 2F directory both show `2F MARKET / ROCK SHOP`.
-- Shop entry says `Welcome to the ROCK SHOP!` and explains stones, special evolution items and Relic catalysts.
-- Existing Poké Mart pricing is reused, instead of adding arbitrary per-item prices.
+| Availability | Total stock | What is added |
+| --- | ---: | --- |
+| First visit to Goldenrod | **6** | Fire, Water, Thunder, Leaf, Moon and Sun Stones |
+| Fourth Johto badge | **29** | Ice, Shiny, Dusk, Dawn and Oval Stones; King's Rock, Metal Coat, Dragon Scale, Up-Grade, Deep Sea Scale/Tooth, Linking Cord; 11 species-specific held evolution catalysts |
+| Eighth Johto badge | **48** | Dubious Disc, Protector, Electirizer, Magmarizer, Prism Scale, Reaper Cloth, Razor Claw/Fang; Galarica Cuff/Wreath, Black Augurite, Peat Block; and 7 PJR Relic catalysts |
 
-## Stock categories
+**Late Relic catalysts:** Ancient Shell, Fossil Bark, Ancient Tusk, Frost Mirror, Ancient Horn, Ancient Plume and Ancient Bell enter the shop only at the eighth badge. Ordinary Pokémon continue evolving through their own normal mechanics. A Relic evolution's own additional level, item, move or quest condition must also be met.
 
-| Stock type | Examples |
-| --- | --- |
-| Evolution stones (11) | Fire, Water, Thunder, Leaf, Ice, Moon, Sun, Shiny, Dusk, Dawn, Oval |
-| Held/trade evolution catalysts (15) | King's Rock, Metal Coat, Dragon Scale, Up-Grade, Dubious Disc, Protector, Electirizer, Magmarizer, Prism Scale, Reaper Cloth, Razor Claw, Razor Fang, both Deep Sea items, Linking Cord |
-| Regional alternative evolution items (4) | Galarica Cuff/Wreath, Black Augurite, Peat Block |
-| Species-specific held evolution catalysts (11) | Expert Belt, Silver Powder, Soft Sand, Hard Stone, Poison Barb, Dragon Fang, Thick Club, Spell Tag, Miracle Seed, Charcoal, Mystic Water |
-| PJR Relic catalysts (7) | Ancient Shell, Fossil Bark, Ancient Tusk, Frost Mirror, Ancient Horn, Ancient Plume, Ancient Bell |
+**Never sold at this Rock Shop:** story-only Ancient Rainbow Crest and Ancient Candy. Ancient Candy retains its separately approved post-League restriction.
 
-All 48 items have source constants and item definitions; the PJR Relic catalysts use the existing `PJR_CATALYST_ITEM` data macro. **The Ancient Rainbow Crest is a story-only key item and is intentionally not sold. Ancient Candy is not a shop item and remains behind its approved late-game restrictions.**
+All 48 approved items retain original PJR item IDs and current item definitions and prices. Existing Trainer's Market clerk retains its 18 original supplies. The department store directories still identify the Rock Shop.
 
-This central counter does not substitute species-specific level, friendship, move-use, story or badge conditions: it only offers evolution items. Evolution still has to satisfy the actual species rules.
+## Nine-Pokémon acquisition impact
 
-## Nine-acquisition audit impact
+- Eevee -> Vaporeon/Flareon: **Water and Fire Stones at the first Rock Shop visit**.
+- Clamperl -> Gorebyss: **Deep Sea Scale after fourth Johto badge**, which predates ordinary late-game Clamperl availability on Route 20.
+- Tyrogue, Wurmple and Nincada evolution mechanics and wild locations unchanged.
+- Eevee -> Espeon/Umbreon friendship/time-of-day mechanics remain unchanged.
+- No mature evolved forms added to wild encounters purely to bypass progression.
 
-The Water Stone, Fire Stone and Deep Sea Scale required to produce Vaporeon, Flareon and Gorebyss now have a **single, explicit purchase endpoint** at this Rock Shop, instead of being mixed into the original supply clerk inventory. Separate Tyrogue/Eevee/Wurmple/Nincada/Clamperl wild sources remain unchanged. The nine-species checks are updated to point to the actual Rock Shop clerk.
+## Source implementation and tests
 
-## Static checks and gameplay gates
+- `data/maps/GoldenrodCity_DepartmentStore_2F_hns/scripts.inc`: badge-checked three-way Rock Shop dispatch; static inventories `GoldenrodDeptStore2_RockShop` (6), `GoldenrodDeptStore2_RockShopFourBadges` (29), `GoldenrodDeptStore2_RockShopEightBadges` (48).
+- `data/maps/GoldenrodCity_DepartmentStore_2F_hns/map.json`: dedicated Rock Shop clerk at (17,11).
+- `tools/pru/check_rock_shop.py`: exact stock/availability invariants, item-source registration, clerk coordinates and original goods retention.
+- `tools/pru/check_nine_acquisition.py` and `tools/pru/check_nine_acquisition_routes.py`: check Water/Fire Stones in arrival inventory, Deep Sea items in four-badge inventory, and actual staged clerk connection.
+- `.github/workflows/pru-encounter-ecology.yml`: runs source-only checks.
 
-Run:
-- `python tools/pru/check_encounter_ecology.py`
-- `python tools/pru/check_nine_acquisition.py`
-- `python tools/pru/check_nine_acquisition_routes.py`
-- `python tools/pru/check_rock_shop.py`
+## ROM QA required after combining branches
 
-CI: `.github/workflows/pru-encounter-ecology.yml`. The Rock Shop gate checks complete stock, preserved supplies, item definitions, map NPC scripts/coordinates and directory text.
+1. Confirm starting with **three badges** opens 6 items; four badges gives 29; eight badges gives 48. Test ordinary saves crossing the unlock thresholds without special migration.
+2. Validate actual Rock Shop clerk interaction, map collision, menu scrolling, each item cost and delivery.
+3. Use Water/Fire Stones to evolve Eevee and Deep Sea Scale on Clamperl after appropriate badge progression.
+4. Ensure shop does not allow Ancient Candy or quest-only crest early, and that source-gated rare Relic catalysts are not mistakenly offered early by any other new PRU store.
+5. The interrupted 19-species PRL import may introduce **Ancient Stone / Ancient Emblem** or other *new* species-specific items. Reconcile those symbols and their approved story restrictions when branches are combined; do not guess their IDs or sell story keys.
+6. Check correct Johto badge flag progression in emulator and ensure endgame unlocks do not rely on rematches.
 
-**Post-merge ROM QA needed:** Counter position and collision, shop interaction, full-item list scrolling, price deduction and item delivery, stock availability from a normal save, actual item-use evolutions and in-game time/friendship rules. Any newly added PRL item constants such as **Ancient Stone** or **Ancient Emblem** (if introduced by the 19-species engine import) must be reconciled with this counter. Never sell unique progression/story keys or Ancient Candy merely to satisfy a broad item list.
-
-## Work handoff
-
-Do not merge PR #10 onto the interrupted local Work branch until that worktree has been safely committed and pushed. Once saved, integrate the Rock Shop and all encounter regression tests as part of the **single consolidated PRU build**. Keep PRL custom species and battle engine untouched by this shop-specific branch.
+**Do not merge this encounter/commerce branch into Work's unpublished worktree until its changes are safely pushed.** There is no verified complete PRU ROM from this branch.
