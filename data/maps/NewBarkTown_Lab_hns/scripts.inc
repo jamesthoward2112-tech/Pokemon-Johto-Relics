@@ -876,9 +876,9 @@ NewBarkTown_Lab_Text_StarterEggReceived:
 	.string "{STR_VAR_1} EGG.$"
 
 NewBarkTown_Lab_Text_StarterEggsComplete:
-	.string "Those are the two partners you\n"
-	.string "didn't choose at the start.\p"
-	.string "Their EGGS should hatch quickly.\n"
+	.string "These young POKéMON carry\n"
+	.string "a trace of RESONANCE.\p"
+	.string "Their EGGS should hatch soon.\n"
 	.string "Raise them well!$"
 
 NewBarkTown_Lab_Text_StarterEggNoRoom:
