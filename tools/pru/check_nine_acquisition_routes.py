@@ -100,7 +100,7 @@ shop_table = "GoldenrodDeptStore2_Pokemart"
 assert clerk_script in shop_script, "Goldenrod 2F shopkeeper script disappeared"
 clerk = shop_script.split(clerk_script + "::", 1)
 assert len(clerk) == 2, "Goldenrod 2F shopkeeper definition disappeared"
-assert ("pokemart " + shop_table) in clerk[1].split("\\n\\n", 1)[0], (
+assert ("pokemart " + shop_table) in clerk[1][:400], (
     "Goldenrod 2F shopkeeper no longer opens expected inventory"
 )
 shop_inventory = shop_script.split(shop_table + ":", 1)
