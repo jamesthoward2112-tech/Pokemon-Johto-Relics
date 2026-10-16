@@ -40,6 +40,22 @@
 | P2 | PJR \`VioletCity_hns/scripts.inc\`, \`AzaleaTown_hns/scripts.inc\`, \`GoldenrodCity_hns/scripts.inc\` | Optional traditional starter gifts were changed into wild-location tips on PRU branch. | Preserve these NPC clues, without claiming player was offered three starters. Verify displayed line width and night/day; no more transfers. | All three aides + nearby Pokémon |
 | P2 | PJR \`NewBarkTown_Lab_hns/scripts.inc\` | Elm's optional after-League starter Egg gifts were removed; the actual original Togepi Egg still exists in \`VioletCity_PokemonCenter_hns/scripts.inc\`. | One explicit permitted story Egg (Togepi); no other starter Egg handout. Audit dormant post-League text to prevent contradictory lines appearing through legacy routes. | Mr Pokémon → Elm → Violet aid → hatching → Kimono links |
 
+## Hoenn Relic dialogue donor cross-check (PHR H022)
+The authoritative PHR donor is \`Pokemon-Hoenn-Relics\`, branch \`feature/h022-postgame-rematches\` (\`865a80d7e65380b9e61a2994c49bf0eae4169bcb\`). These source documents were checked: \`README.md\`, \`docs/H009_RELIC_JOURNAL.md\`, \`docs/H010_OPENING_WATTSON.md\`, and \`docs/H022_POSTGAME_REMATCHES.md\`.
+
+| Priority | PHR source assertion | PRU disposition |
+|---|---|---|
+| P0 | H010: “PHR takes place two years after the Kanto relic awakening.” | **DISCARD.** PRU has its own first adventure; no previous PKR or Kanto save/awakening, no pre-existing Champion status. |
+| P0 | H009: “Birch is carrying forward Oak's sealed Kanto relic research.” | **REWRITE provenance.** In PRU, Oak first detects unusual Johto readings and works with Elm. Other scientists worldwide may provide independent evidence, but not from the player's earlier game. |
+| P0 | H010: Birch rescue, three Hoenn starters, Birch's Relic Journal award after rival fight. | **DO NOT PORT.** PRU has one Pikachu starter in New Bark and a single uninterrupted PJR adventure. Future Relic Journal if adopted must be owned by Elm/Alph/Oak and appropriately unlocked, not a Hoenn Birch tutorial. |
+| P0 | H022: post-Hoenn Hall of Fame Birch/Oak research call, Hoenn E4, Hoenn-only rematch circuit, Mega Ring awarded after Hoenn League. | **DO NOT PORT AS WRITTEN.** PRU's first Champion is Johto's Lance; any Mega Ring/training reward is a new PRU progression design rather than an imported Hoenn completion flag. |
+| P0 | H022: an unusual “returning Relicanth” underpins a previous Kanto Relic investigation. | **DISCARD prior-player investigation.** The later PRL Kanto canon explicitly *retired Relicanth as Rocket's target/ultimate Relic*. Normal Relicanth remains a species without old-game lore baggage. |
+| P1 | H010: Resonance Lens theft, Aqua/Magma pursuing ancient Pokémon, museum, 10-guardian mural, Devon/Granite Cave. | **OPTIONAL LORE ONLY.** Do not silently duplicate inaccessible Hoenn quests/locations in PRU. If adapted, introduce evidence through reachable Johto/Kanto locations and use new event flags. |
+| P1 | H005–H008: Hoennmon evolution data/sprites/abilities, and the H009 Journal roster of 13. | **REUSE GAME DATA**, after conflict/duplicate audit against later PRL species locks. Species imports must not depend on PHR plot rewards. |
+| P1 | H022: later guardian sanctuaries, Coelossus/Astrachi. | **NEW PRU LOCATIONS/QUESTS REQUIRED.** Do not assume Hoenn map or postgame is present. Preserve approved species classification, data and graphics from latest source. |
+
+A source import must classify **each dialogue line separately** from species/battle data: a Hoenn species can belong in a Johto forest or Kanto cave without its original Hoenn NPC, city, storyline, calendar offset, legendary blessing, gift script or associated save flags.
+
 ## Narrative chapters for PRU — one continuous game
 1. **Johto opening / the first signal:** Oak's instruments detect Resonance; Elm gives a promising Pikachu; local scientists do not yet understand why some species show unusual evolution. The player is a novice. Silver's theft and the Mystery Egg remain PJR's existing story beats.
 2. **Field discoveries:** Ruins of Alph stones, Ecruteak tower lore, Dragon's Den, traditional starter families in the wild and early Relic babies provide escalating evidence. Keep the surprise of individual Relic evolutions; no dialogue promising the player already owns them.
@@ -78,6 +94,7 @@ This file is a **critical-path source-confirmed first pass**, not a dishonest cl
 - [x] PJR Ho-Oh/Red Ancient Rainbow Crest and PRL golden-bird conflict identified.
 - [x] PRL Pallet/Kanto report, Giovanni/Silph, fossils and Hoenn passage conflicts identified.
 - [x] Steven's Sinjoh/Hoenn *NPC backstory* distinguished from forbidden prior player history.
+- [x] PHR H009/H010/H022 donor sequel/timeline and Relicanth narrative conflicts identified; data reuse separated from dialogue port.
 - [ ] All active HNS maps (including side NPCs, signage, optional legends, roaming interactions, followers and rematch dialogue) text scanned and conflicts fixed.
 - [ ] PRL's *every* Kanto archaeology scene inventoried, classified as reusable/adaptable/excluded, with destination HNS maps and flags.
 - [ ] All custom Pokémon donor lore from PKR, PHR, PJR and PRL reconciled, including superseded designs and late additions.
