@@ -2,7 +2,7 @@ SaffronCity_SilphCo_hns_MapScripts::
 	.byte 0
 
 SaffronCity_SilphCo_EventScript_Steven::
-	lock 
+	lock
 	msgbox SaffronCity_SilphCo_Text_Steven1, MSGBOX_DEFAULT
 	closemessage
 	delay 20
@@ -12,58 +12,14 @@ SaffronCity_SilphCo_EventScript_Steven::
 	applymovement LOCALID_SILPHCO_STEVEN, Common_Movement_ExclamationMark
 	delay 55
 	waitmovement LOCALID_SILPHCO_STEVEN
-SaffronCity_SilphCo_EventScript_StevenChooseStone::
-	message SaffronCity_SilphCo_Text_Steven2
-	waitmessage
-	multichoice 20, 0, MULTI_HOENN_STARTERS, FALSE
-	switch VAR_RESULT
-	case 0, SaffronCity_SilphCo_EventScript_TreeckoChosen
-	case 1, SaffronCity_SilphCo_EventScript_TorchicChosen
-	case 2, SaffronCity_SilphCo_EventScript_MudkipChosen
-	case MULTI_B_PRESSED, SaffronCity_SilphCo_EventScript_Refused
-
-SaffronCity_SilphCo_EventScript_Refused::
-	msgbox SaffronCity_SilphCo_Text_Refused, MSGBOX_DEFAULT
-	turnobject LOCALID_SILPHCO_STEVEN, DIR_NORTH
-	closemessage
-	release
-	end
-
-SaffronCity_SilphCo_Text_Refused:
-	.string "Oh...$"
-
-SaffronCity_SilphCo_EventScript_TreeckoChosen::
-	closemessage
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TREECKO
-	bufferspeciesname STR_VAR_1, SPECIES_TREECKO
-	msgbox SaffronCity_SilphCo_Text_Steven3, MSGBOX_DEFAULT
-	givemon SPECIES_TREECKO, 5
-	call Common_EventScript_GiftMon
-	goto SaffronCity_SilphCo_EventScript_AfterStarterGiven
-SaffronCity_SilphCo_EventScript_TorchicChosen::
-	closemessage
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TORCHIC
-	bufferspeciesname STR_VAR_1, SPECIES_TORCHIC
-	msgbox SaffronCity_SilphCo_Text_Steven3, MSGBOX_DEFAULT
-	givemon SPECIES_TORCHIC, 5
-	call Common_EventScript_GiftMon
-	goto SaffronCity_SilphCo_EventScript_AfterStarterGiven
-SaffronCity_SilphCo_EventScript_MudkipChosen::
-	closemessage
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_MUDKIP
-	bufferspeciesname STR_VAR_1, SPECIES_MUDKIP
-	msgbox SaffronCity_SilphCo_Text_Steven3, MSGBOX_DEFAULT
-	givemon SPECIES_MUDKIP, 5
-	call Common_EventScript_GiftMon
-	goto SaffronCity_SilphCo_EventScript_AfterStarterGiven
-
-SaffronCity_SilphCo_EventScript_AfterStarterGiven::
-	msgbox SaffronCity_SilphCo_Text_Steven4, MSGBOX_DEFAULT
+	msgbox SaffronCity_SilphCo_Text_Steven2, MSGBOX_DEFAULT
 	closemessage
 	call_if_eq VAR_FACING, DIR_NORTH, SaffronCity_SilphCo_EventScript_PlayerMove
 	applymovement LOCALID_SILPHCO_STEVEN, SaffronCity_SilphCo_Movement_StevenLeave
 	waitmovement 0
 	playse SE_EXIT
+	@ PRU: legacy FLAG_GOT_HOENN_STARTER hides this one-time Steven scene.
+	@ It now records a research meeting, never a free starter gift.
 	setflag FLAG_GOT_HOENN_STARTER
 	removeobject LOCALID_SILPHCO_STEVEN
 	release
@@ -92,29 +48,23 @@ SaffronCity_SilphCo_Movement_StevenLeave:
 
 
 SaffronCity_SilphCo_Text_Steven1:
-	.string "Hello...\n"
-	.string "You're breaking up...\l"
-	.string "I think it depends on my dad.\l"
-	.string "I see...\n"
-	.string "I'll be on my way. See you soon.$"
+	.string "STEVEN: ELM? It's STEVEN.\p"
+	.string "Those strange ALPH readings\n"
+	.string "match traces found in HOENN.\p"
+	.string "I'll send my notes to OAK.$"
+
 SaffronCity_SilphCo_Text_Steven2:
-	.string "STEVEN: You are... I remember your\n"
-	.string "eyes.\p"
-	.string "When I see a trainer whose eyes\n"
-	.string "twinkle, I always remember.\p"
-	.string "You have a POKéDEX! So you are\n"
-	.string "also in search of POKéMON!\l"
-	.string "Let me see...\p"
-	.string "I think I can help you with that.\p"
-	.string "Let's say that you have stones in\n"
-	.string "front of you. Which color would\l"
-	.string " you pick?$"
-SaffronCity_SilphCo_Text_Steven3:
-	.string "You chose correctly! I'll give you\n"
-	.string "{STR_VAR_1}!$"
-SaffronCity_SilphCo_Text_Steven4:
-	.string "Take good care of it. Your caring\n"
-	.string "for it will make me very happy.$"
+	.string "STEVEN: Oh! You're {PLAYER}!\p"
+	.string "ELM told me about your work\n"
+	.string "with ancient RESONANCE.\p"
+	.string "Some unusual partners can be\n"
+	.string "found quite early in JOHTO.\p"
+	.string "TREECKO live on ROUTE 30.\n"
+	.string "TORCHIC roam ROUTE 33.\p"
+	.string "MUDKIP can be found deep\n"
+	.string "inside UNION CAVE.\p"
+	.string "Study how they grow. Their\n"
+	.string "evolutions may surprise us!$"
 
 SaffronCity_SilphCo_EventScript_Receptionist::
 	msgbox SilphCo_Text_Receptionist, MSGBOX_NPC
