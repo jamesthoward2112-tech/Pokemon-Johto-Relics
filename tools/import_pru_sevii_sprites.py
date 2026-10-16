@@ -20,7 +20,7 @@ EXPECTED = {
     ("noibat", "back shiny"): "0d944d0373605bf0c830f3198310e08d707d3067090bb18f2de69cd79cf4977b",
     ("noivern", "front"): "bb383809f6b6f1bb8fb924d7b762eda239442f78ad426dba13805b1ad8ea6355",
     ("noivern", "back"): "726873522d471ec11823ae0ba8521784ba8bfbf787c7c3d78edff24e3a0ee61b",
-    ("noivern", "front shiny"): "266a492f052245d391964d15896b51424f71d8c27d4b65ad0c2960108c",
+    ("noivern", "front shiny"): "266a492f052245d391964d15896b51424f71d8c27f95a27d4b65ad0c2960108c",
     ("noivern", "back shiny"): "8e128c8ae1bb5ce654e3ff3165f56d7a5fd1006eb370ba5054607c93b4185f70",
 }
 DEX_IDS = {"noibat": 866, "noivern": 867}
