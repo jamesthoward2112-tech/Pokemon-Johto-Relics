@@ -2791,6 +2791,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         .levelUpLearnset = sArbokLevelUpLearnset,
         .teachableLearnset = sArbokTeachableLearnset,
+        // Original Kanto Ultimate donor: level 40 Arbok -> Adnokana.
+        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_ADNOKANA}),
     },
 #endif //P_FAMILY_EKANS
 
@@ -15078,8 +15080,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         .levelUpLearnset = sWeezingLevelUpLearnset,
         .teachableLearnset = sWeezingTeachableLearnset,
-        // PRU: alternative branch discovered via Thunder Stone, regular Weezing retained.
-        .evolutions = EVOLUTION({EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_FRYTNING}),
+        // PRU: original Level 40 Cheauking and alternate Thunder Stone Frytning.
+        .evolutions = EVOLUTION(
+            {EVO_LEVEL, 40, SPECIES_CHEAUKING},
+            {EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_FRYTNING}),
         .formSpeciesIdTable = sWeezingFormSpeciesIdTable,
     },
 
