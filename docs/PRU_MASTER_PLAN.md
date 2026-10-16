@@ -21,7 +21,10 @@ Status: **development only; not playable-approved**.
 - Elm's first selectable lab Poké Ball now awards level-5 Pikachu with existing shiny/party/PC semantics.
 - Other two lab balls remain present for narrative continuity but cannot be selected. Rival-variable branch `VAR_STARTER_MON=0` retained intentionally.
 - Elm opening dialogue changed to describe Pikachu instead of three choices.
-- **No wild encounter tables modified yet. No other gift events removed yet.**
+- 14 Pokémon gained deliberately placed wild slots: Chikorita (Route 29), Cyndaquil (Route 36), Totodile (Slowpoke Well), Bulbasaur (Ilex Forest), Charmander (Burned Tower), Squirtle (Route 41 Surf), Treecko (Route 34), Torchic (Route 37), Mudkip (Union Cave), Scarabub (National Park), Skarmet (Route 45), Mootiny (Route 39), Porygon (Route 10), and Castform (Route 42).
+- Land starter slots use 5% table positions. Squirtle/Porygon/Castform use 1% positions. Fourteen species were inserted into 24 day/night or single encounter variants. Existing displaced species retain other slots in the same variant.
+- Main HNS encounter baseline before targeted inserts contained 165 unique maps / 257 encounter variants; 265 of the original 386 were directly present in at least one HNS wild table. The other 121 mostly require evolution or static/legendary audits. This is **not** a claim that all 386 were already obtainable.
+- **No other gift events removed yet.** The master all-species import is not complete.
 
 ## Required gates BEFORE a playable declaration
 1. Workflow `PJR Beta build` succeeds on this feature branch/PR.
@@ -30,7 +33,7 @@ Status: **development only; not playable-approved**.
 4. Finish Mr. Pokémon / Silver / police theft / Elm return; ensure visible balls and flags remain coherent, and Route 30 opens.
 5. Audit every gift/egg/trade/static species award. Preserve Oak/Elm story logic while converting disallowed Pokémon rewards to catchable encounters; ordinary in-game trades also need an explicit policy.
 6. Reconcile every custom donor: distinguish species, form, shiny palette, trainer-only form, superseded design. Do not allocate final PJR species IDs without the resolved registry.
-7. Inspect `src/data/wild_encounters.json` (approximately 2 MB) in a full repository checkout; the file exceeds the connected GitHub text fetch limit. Generate auditable per-map encounter diffs and test surf/fish/day/night slots, DexNav and swarms.
+7. Audit `src/data/wild_encounters.json` (approximately 2 MB): first 14 species insertion completed by exact slot, but validate every day/night/surf/fishing table, rarity, DexNav and swarms in an emulator. Do not claim the entire National Dex is implemented.
 8. Ensure all 386 base families plus approved custom families have a complete acquisition chain: encounter, evolution item/condition, or scripted legendary battle. No inaccessible gifts.
 9. Test championship and Trainer Card progression with fresh saves; no persistent level mutation from battle cap.
 10. Check final GBA ROM size, battle graphics/icon/palette pipeline, and save version/migration.
