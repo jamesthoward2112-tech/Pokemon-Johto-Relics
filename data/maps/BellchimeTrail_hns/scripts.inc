@@ -54,22 +54,14 @@ EcruteakBellchimeTrail_Movement_CameraPanUp::
 
 
 EcruteakBellchimeTrail_EventScript_RelicShortcut::
-	@ The original endgame state is persistent, but VAR_COMPLETED_HO_OH
-	@ changes from 4 to 3 after Relic Ho-Oh is caught. Both states must
-	@ preserve access to the rooftop shortcut on old saves.
-	goto_if_set FLAG_PJR_RELIC_HO_OH, EcruteakBellchimeTrail_EventScript_RelicShortcutBackfill
-	goto_if_eq VAR_COMPLETED_HO_OH, 4, EcruteakBellchimeTrail_EventScript_RelicShortcutBackfill
-	@ Red's canonical completion flag pre-dates the PJR crest flag.
+	@ PRU is a fresh standalone story. Never backfill or create mythical
+	@ catches from old VAR_COMPLETED_HO_OH / defeated-Red flags.
+	@ The actual seven captured RELICS and real Crest must unlock the roof.
 	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, EcruteakBellchimeTrail_EventScript_RelicShortcutDormant
-	goto_if_set FLAG_PJR_GOT_RAINBOW_CREST, EcruteakBellchimeTrail_EventScript_RelicShortcutReady
-	goto_if_set FLAG_DEFEATED_RED, EcruteakBellchimeTrail_EventScript_RelicShortcutCrestBackfill
-	goto_if_set FLAG_PJR_RED_DEFEATED, EcruteakBellchimeTrail_EventScript_RelicShortcutCrestBackfill
-	goto EcruteakBellchimeTrail_EventScript_RelicShortcutDormant
-
-EcruteakBellchimeTrail_EventScript_RelicShortcutBackfill::
-	setflag FLAG_PJR_RELIC_ALPHORACLE
-EcruteakBellchimeTrail_EventScript_RelicShortcutCrestBackfill::
-	setflag FLAG_PJR_GOT_RAINBOW_CREST
+	goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, EcruteakBellchimeTrail_EventScript_RelicShortcutDormant
+	checkitem ITEM_ANCIENT_RAINBOW_CREST
+	goto_if_eq VAR_RESULT, FALSE, EcruteakBellchimeTrail_EventScript_RelicShortcutDormant
+	goto EcruteakBellchimeTrail_EventScript_RelicShortcutReady
 
 EcruteakBellchimeTrail_EventScript_RelicShortcutReady::
 	msgbox EcruteakBellchimeTrail_Text_RelicShortcutReady, MSGBOX_DEFAULT
