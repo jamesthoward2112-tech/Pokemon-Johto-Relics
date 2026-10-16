@@ -1,5 +1,13 @@
 # PRU Work Resume Checkpoint
 
+## 2026-10-16 20:02 BST — compile verdict and fail-fast safeguard
+
+- **Final run verdict:** [GitHub Actions 38951072549](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38951072549) **FAILED** after sprite-format conversion succeeded. At `build/hns/src/pokemon.o`, compiler reports 25 undeclared original custom `MOVE_*` names in `src/data/pokemon/level_up_learnsets/pru.h` and `src/data/pokemon/teachable_learnsets/pru.h`. All names and attribution/compatibility constraints are explicitly tracked in `docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md`.
+- **New CI fail-fast gate:** `tools/pru/check_custom_move_registration.py` is committed and wired into the workflow before toolchain installation and full `make hns`; it lists missing genuine move constants, fails on missing entries, and warns about absent active move-table registrations without auto-stubbing. This prevents repeated ~5-minute failed builds during staged move integration. No new explicit compile requested until the real 25 move dependencies are addressed.
+- **Additional committed source:** original Frytning/Mewsion icon palette indices corrected; normal Weezing Thunder Stone → Frytning evolution added. These post-trigger edits have **not** yet been compiled and must pass the next consolidated build.
+- **Next phase:** implement genuine move effects/data in source (PRL reference for Eevoboost/Lovely Bite/Shadow Fangs and external donor references for remaining 22), run the cheap gate, then CI build; do not claim the GBA ROM is playable, downloaded or emulator-tested until artifact and QA exist.
+
+
 ## Follow-up checkpoint — 2026-10-16 20:00 BST (build running)
 
 - Explicit GitHub Actions build [38951072549](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38951072549) is running from trigger commit `27781e0abf52cd3c66a80ba2df05288da0c464e6`. CI **passed** the new 12-sprite RGBA→indexed 4bpp conversion step, then entered `make hns`. No finished ROM or compile result is yet verified.
