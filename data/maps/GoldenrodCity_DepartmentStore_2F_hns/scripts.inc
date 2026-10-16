@@ -123,18 +123,18 @@ GoldenrodDeptStore2_EventScript_QAZeroBadges::
 	end
 
 GoldenrodDeptStore2_Text_QAFourBadges:
-	.string "QA MODE: 4 BADGES.\\p"
-	.string "The ROCK SHOP has 29 items.\\l"
+	.string "QA MODE: 4 BADGES.\p"
+	.string "The ROCK SHOP has 29 items.\l"
 	.string "Talk again for 8 badges.$"
 
 GoldenrodDeptStore2_Text_QAEightBadges:
-	.string "QA MODE: 8 BADGES.\\p"
-	.string "The ROCK SHOP has 48 items.\\l"
+	.string "QA MODE: 8 BADGES.\p"
+	.string "The ROCK SHOP has 48 items.\l"
 	.string "Talk again to reset.$"
 
 GoldenrodDeptStore2_Text_QAZeroBadges:
-	.string "QA MODE: 0 BADGES.\\p"
-	.string "The ROCK SHOP has 6 items.\\l"
+	.string "QA MODE: 0 BADGES.\p"
+	.string "The ROCK SHOP has 6 items.\l"
 	.string "Talk again for 4 badges.$"
 
 GoldenrodDeptStore2_EventScript_RockShop::
