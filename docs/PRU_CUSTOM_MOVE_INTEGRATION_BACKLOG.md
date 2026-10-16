@@ -1,5 +1,14 @@
 # PRU donor custom moves — compile-blocking integration backlog
 
+## Updated signature effects — 16 October 2026 (post-first CI trigger)
+
+- Lovely Bite's native `MOVE_EFFECT_PRU_INFATUATION` is now wired into `SetMoveEffect`, checking opposite gender, Oblivious, Aroma Veil and already-infatuated status. It is applied at an independently specified 10% chance on the struck Pokémon, alongside the separate 10% Bleeding chance.
+- Shadow Fangs now applies `MOVE_EFFECT_PRU_CURSE` on the struck battler at an independently specified 10% chance. This sets the existing native `volatiles.cursed` effect without the user's half-HP Ghost Curse cost, alongside separate 10% Bleeding.
+- Both new effects have native battle scripts/messages. New source checker `tools/pru/verify_25_donor_moves.py` asserts all 25 data entries, the two distinct chance rolls and the new one-stage Eevoboost implementation.
+- **CI timing:** these additional source edits occurred *after* first complete 25-move compilation was explicitly triggered. They are committed and need the next CI build and emulator testing. Only source registration is proven until those tests pass.
+- Original donor effects for Procyon/Deneb and the approved but non-identical AlteRed compatibility names remain partial (see staging notes below).
+
+
 ## Source staging milestone — 16 October 2026 (UNVERIFIED BUILD)
 
 - All 25 `MOVE_*` identifiers are now explicitly appended in `include/constants/moves.h`, and 25 native battle records are present in `src/data/moves_info.h`. The original PJR moves remain unchanged; Z/Max move ID offset and saved move-ID compatibility require a separate audit.
