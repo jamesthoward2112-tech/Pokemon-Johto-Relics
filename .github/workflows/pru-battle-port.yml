@@ -1,0 +1,106 @@
+name: PRU battle engine integration build
+
+on:
+  push:
+    branches: [pru/battle-port-phase1-20261016]
+  pull_request:
+    branches: [pjr-rebuild]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  UNUSED_ERROR: 0
+  DEPRECATED_ERROR: 1
+
+jobs:
+  three-starter-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify PRL signature move integration
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          enum = Path('include/constants/moves.h').read_text()
+          info = Path('src/data/moves_info.h').read_text()
+          source = Path('tools/pru/donors/prl_custom_move_records.reference.h').read_text()
+          names = ('AMBER_BLADE','SUN_RITE','TECTONIC_TIDE','EPOCH_CRASH','RELIC_WISH',
+                   'EDEN_BLOOM','SCORCHWING','BASTION_CANNON','EERIE_FOG')
+          for suffix in names:
+              name = 'MOVE_' + suffix
+              assert ('    ' + name + ',') in enum or (name + ' =') in enum
+              assert ('[' + name + ']') in info
+              assert ('[' + name + ']') in source
+          assert '.weatherType = BATTLE_WEATHER_FOG' in info
+          print('PASS: 9 PRL signature move records present in the active engine tables')
+          PY
+      - name: Restore exact Azul Agua donor tiles
+        run: |
+          base64 -d assets/pjr_azul_agua/building_tiles.png.b64 > data/tilesets/primary/azul_agua_building_hns/tiles.png
+          base64 -d assets/pjr_azul_agua/rock_shop_tiles.png.b64 > data/tilesets/secondary/azul_agua_rock_shop_hns/tiles.png
+          echo "19d1988dc7426e0be5957918de876e7a500ae327cc99bf53ef55d172d6a0f240  data/tilesets/primary/azul_agua_building_hns/tiles.png" | sha256sum -c -
+          echo "5dac0833356b45617e3321e3686a15460a4f88d3f631cd1697071802f21bcc6a  data/tilesets/secondary/azul_agua_rock_shop_hns/tiles.png" | sha256sum -c -
+      - name: Install toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3
+      - name: Install PJR Infinity donor assets
+        run: |
+          cat \
+            assets/pjr_infinity/parts/part00.txt \
+            assets/pjr_infinity/parts/part01.txt \
+            assets/pjr_infinity/parts/part02.txt \
+            assets/pjr_infinity/fixed/part030.txt \
+            assets/pjr_infinity/fixed/part031.txt \
+            assets/pjr_infinity/fixed/part032.txt \
+            assets/pjr_infinity/fixed/part0330.txt \
+            assets/pjr_infinity/fixed/part0331.txt \
+            assets/pjr_infinity/fixed/part0332.txt \
+            assets/pjr_infinity/fixed/part0333.txt \
+            assets/pjr_infinity/parts/part04.txt \
+            assets/pjr_infinity/parts/part05.txt \
+            assets/pjr_infinity/parts/part06.txt \
+            | base64 -d > /tmp/pjr-infinity-assets.zip
+          python3 - <<'PY'
+          import pathlib, shutil, zipfile
+          src = pathlib.Path('/tmp/pjr-infinity-assets')
+          with zipfile.ZipFile('/tmp/pjr-infinity-assets.zip') as zf:
+              zf.extractall(src)
+          approved_non_core = {
+              'alphoracle', 'champeon', 'guardeon', 'lepideon', 'obsideon',
+              'omeon', 'toxeon', 'sphynxeon', 'jollibird', 'grimfowl',
+              'kablowfish', 'sunflorid',
+          }
+          for species_dir in src.iterdir():
+              if not species_dir.is_dir() or species_dir.name not in approved_non_core:
+                  continue
+              dst = pathlib.Path('graphics/pokemon') / species_dir.name
+              dst.mkdir(parents=True, exist_ok=True)
+              # Party icons in the repo are palette-normalized GBA conversions of the donor icons.
+              # Keep those conversions; copying the donor PNGs here corrupts party-menu rendering.
+              for name in ('front.png', 'back.png'):
+                  shutil.copy2(species_dir / name, dst / name)
+          PY
+      - name: Check Tin Tower shortcut and final encounter
+        run: python3 tools/check_pjr_tintower_shortcut.py
+      - name: Build PJR Beta
+        run: |
+          make hns -j4 -O
+      - name: Package PJR Beta
+        run: |
+          cp pokehns.gba PRU-Battle-Port.gba
+          arm-none-eabi-nm -n pokehns.elf > PRU-Battle-Port.sym
+          sha256sum PRU-Battle-Port.gba > PRU-Battle-Port-SHA256.txt
+          printf "%s\n" "$GITHUB_SHA" > PRU-Battle-Port-Commit.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PRU-Battle-Port
+          path: |
+            PRU-Battle-Port.gba
+            PRU-Battle-Port.sym
+            PRU-Battle-Port-SHA256.txt
+            PRU-Battle-Port-Commit.txt
+          if-no-files-found: error
+          retention-days: 14

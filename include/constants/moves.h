@@ -926,6 +926,17 @@ enum __attribute__((packed)) Move
     MOVE_MAGMA_RIFT,
     MOVE_DEATH_ROLL,
 
+    // PRU native signature moves (PJR move IDs above are stable).
+    MOVE_AMBER_BLADE,
+    MOVE_SUN_RITE,
+    MOVE_TECTONIC_TIDE,
+    MOVE_EPOCH_CRASH,
+    MOVE_RELIC_WISH,
+    MOVE_EDEN_BLOOM,
+    MOVE_SCORCHWING,
+    MOVE_BASTION_CANNON,
+    MOVE_EERIE_FOG,
+
     MOVES_COUNT,
 
     // Z Moves

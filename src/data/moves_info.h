@@ -23369,4 +23369,153 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_AquaTail,
     },
 
+    // Authentic PRL move effects; adapted only where the PRU engine requires it.
+    [MOVE_AMBER_BLADE] =
+    {
+        .name = COMPOUND_STRING("AMBER BLADE"),
+        .description = COMPOUND_STRING("PRL signature move."),
+        .effect = EFFECT_HIT,
+        .power = 95,
+        .type = TYPE_GRASS,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .criticalHitStage = 1,
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_DEF_MINUS_1, .chance = 20, }),
+        .battleAnimScript = gBattleAnimMove_LeafBlade,
+    },
+
+    [MOVE_SUN_RITE] =
+    {
+        .name = COMPOUND_STRING("SUN RITE"),
+        .description = COMPOUND_STRING("PRL signature move."),
+        .effect = EFFECT_HIT,
+        .power = 95,
+        .type = TYPE_FIRE,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_SPD_PLUS_1, .self = TRUE, .chance = 30, }),
+        .battleAnimScript = gBattleAnimMove_BlazeKick,
+    },
+
+    [MOVE_TECTONIC_TIDE] =
+    {
+        .name = COMPOUND_STRING("TECTONIC TIDE"),
+        .description = COMPOUND_STRING("PRL signature move."),
+        .effect = EFFECT_HIT,
+        .power = 95,
+        .type = TYPE_WATER,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_DEF_MINUS_1, .chance = 30, }),
+        .battleAnimScript = gBattleAnimMove_AquaTail,
+    },
+
+    [MOVE_EPOCH_CRASH] =
+    {
+        .name = COMPOUND_STRING("EPOCH CRASH"),
+        .description = COMPOUND_STRING("PRL signature move."),
+        .effect = EFFECT_HIT,
+        .power = 120,
+        .type = TYPE_ROCK,
+        .accuracy = 100,
+        .pp = 5,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_DEF_MINUS_1, .chance = 20, }),
+        .battleAnimScript = gBattleAnimMove_StoneEdge,
+    },
+
+    [MOVE_RELIC_WISH] =
+    {
+        .name = COMPOUND_STRING("RELIC WISH"),
+        .description = COMPOUND_STRING("PRL signature move."),
+        .effect = EFFECT_HIT,
+        .power = 100,
+        .type = TYPE_FAIRY,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .battleAnimScript = gBattleAnimMove_Moonblast,
+    },
+
+    [MOVE_EDEN_BLOOM] =
+    {
+        .name = COMPOUND_STRING("Eden Bloom"),
+        .description = COMPOUND_STRING("A sacred bloom strikes the\nfoe. May cause poisoning."),
+        .effect = EFFECT_HIT,
+        .power = 95,
+        .type = TYPE_GRASS,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_POISON, .chance = 30, }),
+        .battleAnimScript = gBattleAnimMove_EnergyBall,
+    },
+
+    [MOVE_SCORCHWING] =
+    {
+        .name = COMPOUND_STRING("Scorch Wings"),
+        .description = COMPOUND_STRING("Scorching wings strike the\nfoe. May cause a burn."),
+        .effect = EFFECT_HIT,
+        .power = 95,
+        .type = TYPE_FLYING,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BURN, .chance = 20, }),
+        .battleAnimScript = gBattleAnimMove_BraveBird,
+    },
+
+    [MOVE_BASTION_CANNON] =
+    {
+        .name = COMPOUND_STRING("Bastion Cannon"),
+        .description = COMPOUND_STRING("A mighty steel blast that\nmay boost user's Defense."),
+        .effect = EFFECT_HIT,
+        .power = 95,
+        .type = TYPE_STEEL,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_DEF_PLUS_1, .self = TRUE, .chance = 30, }),
+        .battleAnimScript = gBattleAnimMove_FlashCannon,
+    },
+
+    [MOVE_EERIE_FOG] =
+    {
+        .name = COMPOUND_STRING("Eerie Fog"),
+        .description = COMPOUND_STRING("Summons an eerie fog for eight turns."),
+        .effect = EFFECT_WEATHER,
+        .power = 0,
+        .type = TYPE_GHOST,
+        .accuracy = 0,
+        .pp = 5,
+        .target = TARGET_FIELD,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .argument = { .weatherType = BATTLE_WEATHER_FOG },
+        .battleAnimScript = gBattleAnimMove_Mist,
+    },
+
+
 };
