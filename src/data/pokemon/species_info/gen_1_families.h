@@ -15078,6 +15078,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         .levelUpLearnset = sWeezingLevelUpLearnset,
         .teachableLearnset = sWeezingTeachableLearnset,
+        // PRU: alternative branch discovered via Thunder Stone, regular Weezing retained.
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_FRYTNING}),
         .formSpeciesIdTable = sWeezingFormSpeciesIdTable,
     },
 
