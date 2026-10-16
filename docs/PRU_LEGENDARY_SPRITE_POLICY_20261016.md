@@ -1,9 +1,36 @@
 # PRU Legendary and Mythical Sprite Policy — 16 October 2026
+**Latest user-approved sourcing rules. This document supersedes the earlier generic Odyssey II 21-legend sheet. No ROM assets swapped yet.**
 
-## PRU Legendary & Mythical battle-sprite policy — 16 October 2026
-**New user lock:** every Legendary and Mythical Pokémon should have a distinctive alternative/custom **battle sprite set** if a suitably complete native GBA sprite set already exists. **Keep their vanilla overworld graphics unchanged**, including roaming/static map appearance. This applies to existing original Gen 1–3 legends, while preserving approved special RELICS/Golden Ho-Oh/Primal donors and approved newer artwork over merely optional candidates.
-**Native assets first, with zero resize/redraw:** prioritize already-extracted **64×64 front and back**, **32×64 two-frame party icon**, transparent 4bpp-compatible palette (15 or fewer opaque colors + transparent), correct normal/shiny palettes and battle offsets. A source needing resizing, tracing or pixel redraw is not a priority and must not be substituted automatically. Palette quantization/metadata wiring and compile QA may still be needed even with compatible GBA dimensions. Missing shiny/palette/icon assets remain TODOs; do not claim fully integrated GBA readiness based only on front size.
-**Verified donor fallback:** the Pokémon Odyssey II native source bank contains complete 64×64 front/back and 32×64 party icons for all 21 original Gen 1–3 Legendary/Mythical Pokémon, with each candidate front checked at <=15 opaque colors and binary transparency. These source files are banked, **candidates only**, not globally authorized replacements for locked sprites. Library: `/Project Hoenn Relics/Sprite Resources/Odyssey II - Complete Sprite Bank/Odyssey_II_Complete_Sprite_Bank.zip`. Companion previews `PRU_Deoxys_OdysseyII_GBA_Sprite_Preview.png` and `PRU_21_GBA_Size_Legendary_Sprite_Candidates.png` can be referenced in the active project.
-**Deoxys:** Odyssey II donor includes `front/0410_Deoxys.png`, `back/0410_Deoxys.png`, `icon/0410_Deoxys.png` in native dimensions; it is the verifiable *alternative* candidate. Current PRU engine also carries Deoxys Normal/Attack/Defense/Speed battle sprite folders, which should remain functional; donor contains one sprite set for Deoxys rather than independently verified 4-form alternatives. The Wild Indigo `Wild_Indigo_PRL_Approved_and_Reference_Sprites_2026-10-08.zip` contains **no Deoxys assets**, correcting an earlier mistaken suggestion.
-**Acceptance gates:** preserve vanilla overworld appearance; respect existing approved sprite locks; no resizing/redrawing; check normal/shiny palettes, battle back, 2-frame icon, all forms, offsets, species/form pointers, build, emulator screens and save continuity before marking DONE.
-**Status:** specification/asset audit only; game graphics not newly swapped or emulator-approved by this record.
+## Locked existing custom sprites — PROTECT
+- Kanto: Articuno, Zapdos, Moltres, Mewtwo.
+- Johto: Raikou, Entei, Suicune, Lugia, Ho-Oh, and the established RELICS Celebi visual.
+- Reuse existing approved PRL/PJR donor art. Never replace these with an alternative vanilla pose simply because it is another native-size GBA sprite.
+
+## Overworld rule (corrected)
+**Keep original vanilla overworld sprites by default.** If matching **GBA-ready alternative overworld assets are actually supplied AND approved**, they may replace the vanilla appearance. Do not resize or redraw battle sprites into overworld figures.
+
+## Sourcing standard
+Native 64×64 front and back; <=15 non-transparent colours, binary alpha and indexed GBA-compatible palettes; verify both normal and shiny, 2-frame 32×64 party icons (or retain vanilla icon until ready), positioning/animation/form pointer correctness and emulator QA. **No resize or redraw.** A donor may be visually used for the original species without introducing Mega/Primal/Bond battle mechanics unless explicitly approved. A different vanilla pose **does not count as custom art**.
+
+## Six real alternate-form donor candidates found in existing Library assets
+| Species | Proposed visuals | Native-size verified source | Open items |
+|---|---|---|---|
+| Latias | Mega Latias | `/Project Hoenn Relics/Sprite Resources/Elite Redux v2.65 beta2/PHR_Elite_Redux_Hoenn_Mega_Sprites_v2.65.zip` | party icon, in-game visual test |
+| Latios | Mega Latios | same pack | party icon, in-game visual test; similar to Latias |
+| Rayquaza | Mega Rayquaza | same pack | party icon, in-game visual test |
+| Jirachi | Jirachi-Bond | `/Pokemon Sprite Libraries/TRE 2026/New Forms/TRE_2026_New_Forms_Extracted.zip`; `990_Jirachi-Bond/` | proper colored 32×64 icon and QA |
+| Kyogre | Primal Kyogre | `/Pokémon Johto Relics/Sprite Resources/TRE Primal Sprite Bank/PJR_TRE_Primal_Sprite_Bank.zip`; `1034_Kyogre` | bank only has 32×32 icon frame; QA |
+| Groudon | Primal Groudon | same pack; `1035_Groudon` | bank only has 32×32 icon frame; QA |
+
+All six have transparent 64×64 front/back and normal/shiny fronts with <=15 opaque colours, verified directly against archived PNG bytes. Still **candidate only, not approved**. User must review designs; earlier approved choices (e.g. PHR donor picks) should not be overwritten until reconciled.
+
+## Still open — find genuine distinctive, GBA-ready alternate art
+- **Mew** (Xenoverse Mew Retro has oversized strips, not direct native GBA sprite).
+- **Regirock, Regice, Registeel** (Odyssey II has alternate poses, not proven custom redesigns).
+- **Deoxys** (PRU has Normal/Attack/Defense/Speed folders, but Odyssey II's single version is an alternate vanilla pose; locate genuine custom art and preserve form functionality).
+
+## Sources of truth and QA
+- Current PRU Notion: https://app.notion.com/p/3fb4939d431681afa46fdeb97cf8c79b
+- Library visual preview: `/Pokémon Relics Ultimate/Canonical Data/PRU_Legendary_Custom_Sprite_Shortlist_2026-10-16.png`
+- Library audit: `/Pokémon Relics Ultimate/Canonical Data/PRU_Legendary_Sprite_Audit_2026-10-16.md`
+- No sprites were imported, overwritten or emulator-tested during this artwork audit.
