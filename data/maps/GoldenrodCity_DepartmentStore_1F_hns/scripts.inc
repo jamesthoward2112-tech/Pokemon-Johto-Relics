@@ -58,7 +58,7 @@ GoldenrodDeptStore1_Text_BugCatcher:
 GoldenrodDeptStore1_Text_Directory:
     .string "1F SERVICE COUNTER\n"
 	.string "YOU ARE HERE.\p"
-    .string "2F TRAINER'S MARKET\p"
+    .string "2F MARKET / ROCK SHOP\p"
     .string "3F BATTLE COLLECTION\p"
     .string "4F MEDICINE BOX\p"
     .string "5F TM CORNER\p"
