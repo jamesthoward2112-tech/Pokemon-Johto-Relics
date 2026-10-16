@@ -17,7 +17,20 @@ RuinsOfAlph_Lab_EventScript_Scientist1::
 	goto_if_unset FLAG_PJR_RELIC_CELEBI, RuinsOfAlph_Lab_EventScript_RelicCelebi
 	goto_if_unset FLAG_PJR_RELIC_SUICUNE, RuinsOfAlph_Lab_EventScript_RelicSuicune
 	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, RuinsOfAlph_Lab_EventScript_RelicAlphoracle
+	@ PRU: after ALPHORACLE, guide by actual crest/Ho-Oh capture flags.
+	goto_if_set FLAG_PJR_RELIC_HO_OH, RuinsOfAlph_Lab_EventScript_RelicsFullyComplete
+	goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, RuinsOfAlph_Lab_EventScript_RelicNeedsCrest
 	msgbox RuinsOfAlph_Lab_Text_RelicsComplete, MSGBOX_DEFAULT
+	release
+	end
+
+RuinsOfAlph_Lab_EventScript_RelicNeedsCrest::
+	msgbox RuinsOfAlph_Lab_Text_AlphoracleCaughtNeedsCrest, MSGBOX_DEFAULT
+	release
+	end
+
+RuinsOfAlph_Lab_EventScript_RelicsFullyComplete::
+	msgbox RuinsOfAlph_Lab_Text_RelicsFullyComplete, MSGBOX_DEFAULT
 	release
 	end
 
@@ -235,13 +248,21 @@ RuinsOfAlph_Lab_Text_AlphoracleCaught:
 	.string "The ANCIENT RAINBOW CREST answers\n"
 	.string "the awakened network.\p"
 	.string "A final resonance answers from\n"
-	.string "the BELL TOWER roof...$"
+	.string "the TIN TOWER roof...$"
 
 RuinsOfAlph_Lab_Text_RelicsComplete:
 	.string "All six RELICS and the FIRST VOICE\n"
 	.string "are recorded.\p"
-	.string "The last answer waits at the\n"
-	.string "BELL TOWER.$"
+	.string "The CREST is reacting!\p"
+	.string "Seek the ULTIMATE RELIC at\n"
+	.string "the top of TIN TOWER.$"
+
+RuinsOfAlph_Lab_Text_RelicsFullyComplete:
+	.string "All seven signals are recorded.\p"
+	.string "Even HO-OH has answered the\n"
+	.string "ANCIENT RAINBOW CREST!\p"
+	.string "The RELIC network is stable.\n"
+	.string "Our research can begin anew.$"
 
 RuinsOfAlph_Lab_Text_Scientist1:
 	.string "The RUINS are about 1500 years old.\p"
