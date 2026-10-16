@@ -107,8 +107,8 @@ GoldenrodDeptStore2_EventScript_RockShopFinish::
 	end
 
 GoldenrodDeptStore2_Text_RockShopWelcome:
-	.string "Welcome to the ROCK SHOP!\\p"
-	.string "More items unlock as you earn\\l"
+	.string "Welcome to the ROCK SHOP!\p"
+	.string "More items unlock as you earn\l"
 	.string "GYM BADGES.$"
 
 	.align 2
