@@ -1,5 +1,13 @@
 # PRU Work Resume Checkpoint
 
+## 16 October 2026 — first complete 25-move compile reached final linking
+
+- [CI run 38955135175](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38955135175) reached final ELF link after compiling all 25 donor moves; **failed on a single known missing external symbol**: `BattleScript_AbilityHpHeal`. Native / 4bpp art / move registration all passed. ROM compilation was NOT successful.
+- Exact root cause: prior duplicate-label repair left `data/battle_scripts_1.s` symbol `BattleScript_AbilityHpHeal:` with a single local colon, while `src/battle_util.c` references it as an external battle script. Repaired to `BattleScript_AbilityHpHeal::` so assembler exports one authoritative global symbol, without reintroducing a duplicate.
+- Following first CI trigger, separately committed native real 10% Infatuation and 10% Ghost Curse status rolls for Lovely Bite and Shadow Fangs, and `tools/pru/verify_25_donor_moves.py` mandatory source assertions.
+- **Next action:** explicit full CI compile incorporating exported battle script, new PRL signature secondary-effect cases, and 25-move static assertions; if green, obtain artifact hash then fresh-start emulator QA. Exact external original move-effect parity is still incomplete; document honestly.
+
+
 ## 16 October 2026 — Twenty-five donor moves implementation checkpoint
 
 - **Published code:** all 25 required names appended in `include/constants/moves.h` and 25 live battle records added in `src/data/moves_info.h` (not merely reference comments).
