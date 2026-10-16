@@ -206,8 +206,8 @@ static const struct BattleWeatherInfo sBattleWeatherInfo[BATTLE_WEATHER_COUNT] =
     {
         .flag = B_WEATHER_FOG,
         .rock = HOLD_EFFECT_NONE,
-        .abilityStartMessage = B_MSG_STARTED_DRIZZLE, // Placeholder
-        .moveStartMessage = B_MSG_STARTED_RAIN, // Placeholder
+        .abilityStartMessage = B_MSG_STARTED_FOG,
+        .moveStartMessage = B_MSG_STARTED_FOG,
         .endMessage = B_MSG_WEATHER_END_FOG,
         .continuesMessage = B_MSG_WEATHER_TURN_FOG,
         .animation = B_ANIM_FOG_CONTINUES,
@@ -2135,6 +2135,8 @@ bool32 TryChangeBattleWeather(enum BattlerId battler, u32 battleWeatherId, enum 
 
         if (gBattleWeather & B_WEATHER_PRIMAL_ANY)
             gBattleStruct->weatherDuration = 0;
+        else if (battleWeatherId == BATTLE_WEATHER_FOG)
+            gBattleStruct->weatherDuration = 8; // Original PRL Eerie Fog duration.
         else if (rock != 0 && GetBattlerHoldEffect(battler) == rock)
             gBattleStruct->weatherDuration = 8;
         else
@@ -7822,6 +7824,11 @@ static inline uq4_12_t GetOtherModifiers(struct BattleContext *ctx)
     DAMAGE_MULTIPLY_MODIFIER(GetScreensModifier(ctx));
     DAMAGE_MULTIPLY_MODIFIER(GetCollisionCourseElectroDriftModifier(ctx->move, ctx->typeEffectivenessModifier));
 
+    // PRL Eerie Fog shields Ghost- and Psychic-type defenders by 20%.
+    if ((ctx->weather & B_WEATHER_FOG)
+     && IS_BATTLER_ANY_TYPE(ctx->battlerDef, TYPE_GHOST, TYPE_PSYCHIC))
+        DAMAGE_MULTIPLY_MODIFIER(UQ_4_12(0.8));
+
     if (unmodifiedAttackerSpeed >= unmodifiedDefenderSpeed)
     {
         DAMAGE_MULTIPLY_MODIFIER(GetAttackerAbilitiesModifier(ctx->battlerAtk, ctx->typeEffectivenessModifier, ctx->isCrit, ctx->abilityAtk));
@@ -7998,7 +8005,12 @@ static inline s32 DoMoveDamageCalc(struct BattleContext *ctx)
 
     s32 dmg = DoFixedDamageMoveCalc(ctx);
     if (dmg != INT32_MAX)
+    {
+        if ((ctx->weather & B_WEATHER_FOG)
+         && IS_BATTLER_ANY_TYPE(ctx->battlerDef, TYPE_GHOST, TYPE_PSYCHIC))
+            dmg = uq4_12_multiply_by_int_half_down(UQ_4_12(0.8), dmg);
         return dmg;
+    }
 
     return DoMoveDamageCalcVars(ctx);
 }
