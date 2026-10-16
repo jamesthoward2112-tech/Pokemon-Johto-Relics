@@ -10,3 +10,5 @@ This is a **source build checkpoint only**. Do not describe it as emulator-teste
 Outstanding: original AlteRed donor move definitions, Eevoboost and the special Lovely Bite/Shadow Fangs effects, Fear/Bleeding status presentation and all remaining integration QA.
 
 Trigger 2: retry after binary-safe restoration of `src/pokemon.c` (source blob repaired), and full original PRL status-chance merge for 57 existing moves; capture first subsequent compiler error.
+
+Trigger 3: verify central Pokemon source now includes the 19 species' real gfx, level-up and teachable tables; compiler should progress to source-authentic custom move requirements. Static PRL bleeding/fear percentages now imported for 57 standard moves.
