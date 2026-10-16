@@ -559,6 +559,26 @@ static bool32 HandleEndTurnFrostbite(enum BattlerId battler)
     return effect;
 }
 
+static bool32 HandleEndTurnBleed(enum BattlerId battler)
+{
+    bool32 effect = FALSE;
+
+    gBattleStruct->eventState.endTurnBattler++;
+
+    if ((gBattleMons[battler].status1 & STATUS1_BLEED)
+     && IsBattlerAlive(battler)
+     && !IsAbilityAndRecord(battler, GetBattlerAbility(battler), ABILITY_MAGIC_GUARD))
+    {
+        // PRL Bleeding is one sixteenth of maximum HP, minimum one.
+        u32 damage = GetNonDynamaxMaxHP(battler) / 16;
+        SetPassiveDamageAmount(battler, damage == 0 ? 1 : damage);
+        BattleScriptExecute(BattleScript_BleedTurnDmg);
+        effect = TRUE;
+    }
+
+    return effect;
+}
+
 static bool32 HandleEndTurnNightmare(enum BattlerId battler)
 {
     bool32 effect = FALSE;
@@ -1468,6 +1488,7 @@ static bool32 (*const sEndTurnEffectHandlers[])(enum BattlerId battler) =
     [ENDTURN_POISON] = HandleEndTurnPoison,
     [ENDTURN_BURN] = HandleEndTurnBurn,
     [ENDTURN_FROSTBITE] = HandleEndTurnFrostbite,
+    [ENDTURN_BLEED] = HandleEndTurnBleed,
     [ENDTURN_NIGHTMARE] = HandleEndTurnNightmare,
     [ENDTURN_CURSE] = HandleEndTurnCurse,
     [ENDTURN_WRAP] = HandleEndTurnWrap,
