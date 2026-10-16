@@ -2476,4 +2476,67 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .aiRating = 10,
     },
 
+    [ABILITY_ANCIENT_GROVE] =
+    {
+        .name = _("Ancient Grove"),
+        .description = COMPOUND_STRING("Raises Defense for five turns."),
+        .aiRating = 3,
+    },
+
+    [ABILITY_SOLAR_DISCIPLINE] =
+    {
+        .name = _("Solar Discipline"),
+        .description = COMPOUND_STRING("Empowers Fire and Psychic moves."),
+        .aiRating = 3,
+    },
+
+    [ABILITY_TIDAL_BASTION] =
+    {
+        .name = _("Tidal Bastion"),
+        .description = COMPOUND_STRING("Softens supereffective hits."),
+        .aiRating = 3,
+    },
+
+    [ABILITY_ANCIENT_CORE] =
+    {
+        .name = _("Ancient Core"),
+        .description = COMPOUND_STRING("Fortifies and empowers ancient moves."),
+        .aiRating = 3,
+    },
+
+    [ABILITY_WISHMAKER] =
+    {
+        .name = _("Wishmaker"),
+        .description = COMPOUND_STRING("Grants five turns of wishlight."),
+        .aiRating = 3,
+    },
+
+    [ABILITY_EDENS_CANOPY] =
+    {
+        .name = _("Eden's Canopy"),
+        .description = COMPOUND_STRING("Sets grass and blocks status in it."),
+        .aiRating = 3,
+    },
+
+    [ABILITY_THERMAL_WINGS] =
+    {
+        .name = _("Thermal Wings"),
+        .description = COMPOUND_STRING("Empowers heat and reduces recoil."),
+        .aiRating = 3,
+    },
+
+    [ABILITY_CITADEL_SHELL] =
+    {
+        .name = _("Citadel Shell"),
+        .description = COMPOUND_STRING("Softens weaknesses; guards Defense."),
+        .aiRating = 3,
+    },
+
+    [ABILITY_STYGIAN_RUSH] =
+    {
+        .name = _("Stygian Rush"),
+        .description = COMPOUND_STRING("Dark moves gain priority at full HP."),
+        .aiRating = 7,
+    },
+
 };

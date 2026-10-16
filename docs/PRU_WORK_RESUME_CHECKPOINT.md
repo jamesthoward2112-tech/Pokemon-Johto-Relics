@@ -21,6 +21,14 @@ Updated: 2026-10-16 (recovery after interrupted Work session)
 - Build status: not yet compiled. The authentic learnsets intentionally expose the next required dependency batch: PRL ability constants/effects and original AlteRed/Procyon custom move constants/effects must be registered before compilation. This is staged source, not a playable ROM and not emulator-tested.
 - Next priority: implement the missing genuine custom moves and all PRL abilities, then run the first consolidated CI compile. Evolution links, acquisition locations, issue #8 Mewsion event and egg-move reconciliation remain outstanding.
 
+## Custom ability implementation checkpoint — 2026-10-16T17:31:00Z
+- Species reconstruction is remotely published at `98cef3c5c9f5ccdf8fca6150e0ad5053979704e4` on `pru/complete-selective-integration-20261016`.
+- Appended the nine PRL abilities absent from PJR after every frozen PJR ability ID: Ancient Grove, Solar Discipline, Tidal Bastion, Ancient Core, Wishmaker, Eden's Canopy, Thermal Wings, Citadel Shell and Stygian Rush. Existing Ancient Bastion/Bloom, Cinder Veil and Tidal Roar mechanics were preserved.
+- Ported their original triggers: five-turn per-battler aura timers; Defense, typed-power and super-effective modifiers; Wishmaker healing/stat protection; Eden's Canopy terrain/status protection; Ancient Core hazards/stat protection; Thermal Wings recoil reduction; Citadel Shell Defense protection; and full-HP Dark priority.
+- RED/GREEN gate: `tools/pru/verify_custom_abilities.py` initially failed on absent constants and now passes. `git diff --check` passes.
+- Local `make -j2 hns` remains blocked before source compilation by missing host dependencies: `arm-none-eabi-gcc`, `pkg-config`, and `png.h`. No ROM or emulator result is claimed. CI compile is deferred until the authentic move/status dependency batch is registered, because current species learnsets intentionally retain unresolved original donor move names rather than substitutes.
+- Next priority: append the remaining eleven PRL move records plus Eevoboost, then implement Bleeding/Fear so the native bleed-bearing moves can compile; follow with exact AlteRed moves and the approved Procyon-reference move subset.
+
 ## Purpose
 A **GitHub-published recovery checkpoint** for Pokémon Relics Ultimate's consolidated integration. Update this file after each meaningful source milestone and before every expected Work-session limit. Local-only logs are insufficient; **push the checkpoint and source commits to the remote branch** so a future conversation can resume without repeating investigation.
 

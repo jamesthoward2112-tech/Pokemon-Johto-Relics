@@ -3097,6 +3097,18 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
         gBattleScripting.battler = battler;
         switch (gLastUsedAbility)
         {
+        case ABILITY_ANCIENT_GROVE:
+        case ABILITY_SOLAR_DISCIPLINE:
+        case ABILITY_TIDAL_BASTION:
+        case ABILITY_WISHMAKER:
+            if (shouldAbilityTrigger)
+            {
+                gBattleStruct->prlAbilityTimer[battler] = 5;
+                gBattlerAbility = gBattleScripting.battler = battler;
+                BattleScriptCall(BattleScript_AbilityPopUp);
+                effect++;
+            }
+            break;
         case ABILITY_TRACE:
             {
                 enum BattlerId chosenTarget;
@@ -3425,6 +3437,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             }
             break;
         case ABILITY_GRASSY_SURGE:
+        case ABILITY_EDENS_CANOPY:
             if (!shouldAbilityTrigger)
                 break;
             if (TryChangeBattleTerrain(battler, STATUS_FIELD_GRASSY_TERRAIN))
@@ -3679,6 +3692,25 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             gBattlerAttacker = battler;
             switch (gLastUsedAbility)
             {
+            case ABILITY_ANCIENT_GROVE:
+            case ABILITY_SOLAR_DISCIPLINE:
+            case ABILITY_TIDAL_BASTION:
+                if (gBattleStruct->prlAbilityTimer[battler] > 0)
+                    gBattleStruct->prlAbilityTimer[battler]--;
+                break;
+            case ABILITY_WISHMAKER:
+                if (gBattleStruct->prlAbilityTimer[battler] > 0)
+                {
+                    gBattleStruct->prlAbilityTimer[battler]--;
+                    if (!IsBattlerAtMaxHp(battler)
+                     && !gBattleMons[battler].volatiles.healBlock)
+                    {
+                        SetHealAmount(battler, GetNonDynamaxMaxHP(battler) / 16);
+                        BattleScriptCall(BattleScript_AbilityHpHeal);
+                        effect++;
+                    }
+                }
+                break;
             case ABILITY_PICKUP:
                 if (gBattleMons[battler].item == ITEM_NONE
                  && PickupHasValidTarget(battler))
@@ -4089,6 +4121,18 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 SET_STATCHANGER(STAT_SPEED, 1, TRUE);
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptCall(BattleScript_GooeyActivates);
+                effect++;
+            }
+            break;
+        case ABILITY_ANCIENT_CORE:
+            if (!IsBattlerAlly(gBattlerAttacker, battler)
+             && IsBattleMovePhysical(move)
+             && IsBattlerTurnDamaged(battler, EXCLUDING_SUBSTITUTES)
+             && !IsHazardOnSide(GetBattlerSide(gBattlerAttacker), HAZARDS_STEALTH_ROCK))
+            {
+                PushHazardTypeToQueue(GetBattlerSide(gBattlerAttacker), HAZARDS_STEALTH_ROCK);
+                gBattlerAbility = gBattleScripting.battler = battler;
+                BattleScriptCall(BattleScript_AbilityPopUp);
                 effect++;
             }
             break;
@@ -5590,6 +5634,12 @@ bool32 CanSetNonVolatileStatus(enum BattlerId battlerAtk, enum BattlerId battler
     // Checks that apply to all non volatile statuses
     if (abilityDef == ABILITY_COMATOSE
      || abilityDef == ABILITY_PURIFYING_SALT)
+    {
+        abilityAffected = TRUE;
+        battleScript = BattleScript_AbilityProtectsDoesntAffect;
+    }
+    else if (abilityDef == ABILITY_EDENS_CANOPY
+          && gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN)
     {
         abilityAffected = TRUE;
         battleScript = BattleScript_AbilityProtectsDoesntAffect;
@@ -7168,6 +7218,25 @@ static inline u32 CalcAttackStat(struct BattleContext *ctx)
         if (moveType == TYPE_ROCK)
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
+    case ABILITY_SOLAR_DISCIPLINE:
+        if (gBattleStruct->prlAbilityTimer[battlerAtk] > 0
+         && (moveType == TYPE_FIRE || moveType == TYPE_PSYCHIC))
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
+        break;
+    case ABILITY_ANCIENT_CORE:
+        if (moveType == TYPE_WATER || moveType == TYPE_ROCK)
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
+        break;
+    case ABILITY_WISHMAKER:
+        if (gBattleStruct->prlAbilityTimer[battlerAtk] > 0
+         && (moveType == TYPE_PSYCHIC || moveType == TYPE_FAIRY))
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
+        break;
+    case ABILITY_THERMAL_WINGS:
+        if (!IsBattleMoveStatus(move)
+         && (moveType == TYPE_FIRE || moveType == TYPE_FLYING))
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
+        break;
     case ABILITY_PROTOSYNTHESIS:
         if (!(gBattleMons[battlerAtk].volatiles.transformed))
         {
@@ -7386,6 +7455,14 @@ static inline u32 CalcDefenseStat(struct BattleContext *ctx)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
             if (ctx->updateFlags)
                 RecordAbilityBattle(battlerDef, ABILITY_GRASS_PELT);
+        }
+        break;
+    case ABILITY_ANCIENT_GROVE:
+        if (gBattleStruct->prlAbilityTimer[battlerDef] > 0 && usesDefStat)
+        {
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
+            if (ctx->updateFlags)
+                RecordAbilityBattle(battlerDef, ABILITY_ANCIENT_GROVE);
         }
         break;
     case ABILITY_FLOWER_GIFT:
@@ -7693,9 +7770,25 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(struct BattleContext *ctx)
     case ABILITY_FILTER:
     case ABILITY_SOLID_ROCK:
     case ABILITY_PRISM_ARMOR:
+    case ABILITY_ANCIENT_CORE:
         if (ctx->typeEffectivenessModifier >= UQ_4_12(2.0))
         {
             modifier = UQ_4_12(0.75);
+            recordAbility = TRUE;
+        }
+        break;
+    case ABILITY_TIDAL_BASTION:
+        if (gBattleStruct->prlAbilityTimer[ctx->battlerDef] > 0
+         && ctx->typeEffectivenessModifier >= UQ_4_12(2.0))
+        {
+            modifier = UQ_4_12(0.75);
+            recordAbility = TRUE;
+        }
+        break;
+    case ABILITY_CITADEL_SHELL:
+        if (ctx->typeEffectivenessModifier >= UQ_4_12(2.0))
+        {
+            modifier = UQ_4_12(0.8);
             recordAbility = TRUE;
         }
         break;

@@ -2234,6 +2234,8 @@ static enum MoveEndResult MoveEndAbsorb(void)
          && !IsAbilityAndRecord(gBattlerAttacker, GetBattlerAbility(gBattlerAttacker), ABILITY_MAGIC_GUARD))
         {
             s32 recoil = (GetNonDynamaxMaxHP(gBattlerAttacker) + 1) / 2; // Half of Max HP Rounded UP
+            if (GetBattlerAbility(gBattlerAttacker) == ABILITY_THERMAL_WINGS)
+                recoil = max(1, recoil / 2);
             SetPassiveDamageAmount(gBattlerAttacker, recoil);
             gSpecialStatuses[gBattlerAttacker].mindBlownRecoil = TRUE;
             TryUpdateEvolutionTracker(IF_RECOIL_DAMAGE_GE, gBattleStruct->passiveHpUpdate[gBattlerAttacker], MOVE_NONE);
@@ -2983,11 +2985,16 @@ static enum MoveEndResult MoveEndMoveBlockRecoil(void)
             if (moveEffect == EFFECT_CHLOROBLAST)
             {
                 s32 recoil = (GetNonDynamaxMaxHP(gBattlerAttacker) + 1) / 2; // Half of Max HP Rounded UP
+                if (ability == ABILITY_THERMAL_WINGS)
+                    recoil = max(1, recoil / 2);
                 SetPassiveDamageAmount(gBattlerAttacker, recoil);
             }
             else
             {
-                SetPassiveDamageAmount(gBattlerAttacker, gBattleScripting.savedDmg * max(1, GetMoveRecoil(gCurrentMove)) / 100);
+                s32 recoil = gBattleScripting.savedDmg * max(1, GetMoveRecoil(gCurrentMove)) / 100;
+                if (ability == ABILITY_THERMAL_WINGS)
+                    recoil = max(1, recoil / 2);
+                SetPassiveDamageAmount(gBattlerAttacker, recoil);
             }
             TryUpdateEvolutionTracker(IF_RECOIL_DAMAGE_GE, gBattleStruct->passiveHpUpdate[gBattlerAttacker], MOVE_NONE);
             BattleScriptCall(BattleScript_MoveEffectRecoil);

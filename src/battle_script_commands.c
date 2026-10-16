@@ -7822,7 +7822,38 @@ static u32 ChangeStatBuffs(enum BattlerId battler, s8 statValue, enum Stat statI
     if (statValue <= -1) // Stat decrease.
     {
         enum BattleMoveEffects effect = GetMoveEffect(gCurrentMove);
-        if (gSideTimers[GetBattlerSide(battler)].mistTimer
+        bool32 prlBlocksAllStats =
+            battlerAbility == ABILITY_WISHMAKER
+            && gBattleStruct->prlAbilityTimer[battler] > 0;
+        bool32 prlBlocksOffense =
+            (battlerAbility == ABILITY_SOLAR_DISCIPLINE
+             && gBattleStruct->prlAbilityTimer[battler] > 0)
+            || battlerAbility == ABILITY_ANCIENT_CORE;
+        bool32 prlBlocksDefense = battlerAbility == ABILITY_CITADEL_SHELL;
+        bool32 prlBlocksThisStat =
+            prlBlocksAllStats
+            || (prlBlocksOffense && (statId == STAT_ATK || statId == STAT_SPATK))
+            || (prlBlocksDefense && statId == STAT_DEF);
+
+        if (!flags.certain
+         && prlBlocksThisStat
+         && gBattlerAttacker != battler
+         && !IsBattlerAlly(gBattlerAttacker, battler))
+        {
+            if (flags.allowPtr)
+            {
+                BattleScriptPush(BS_ptr);
+                gBattleScripting.battler = battler;
+                gBattlerAbility = battler;
+                gLastUsedAbility = battlerAbility;
+                RecordAbilityBattle(battler, gLastUsedAbility);
+                gBattlescriptCurrInstr = prlBlocksAllStats
+                    ? BattleScript_AbilityNoStatLoss
+                    : BattleScript_AbilityNoSpecificStatLoss;
+            }
+            return STAT_CHANGE_DIDNT_WORK;
+        }
+        else if (gSideTimers[GetBattlerSide(battler)].mistTimer
             && !flags.certain && effect != EFFECT_CURSE
             && !(battler == gBattlerTarget && GetBattlerAbility(gBattlerAttacker) == ABILITY_INFILTRATOR && !IsBattlerAlly(gBattlerAttacker, battler)))
         {
