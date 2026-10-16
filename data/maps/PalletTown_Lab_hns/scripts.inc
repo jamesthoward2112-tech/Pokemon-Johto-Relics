@@ -8,6 +8,8 @@ PalletTown_Lab_EventScript_Oak::
 	goto_if_eq VAR_PALLETTOWN_LABSTATE, 1, PalletTown_Lab_EventScript_OakBadgeCheck
 	goto_if_eq VAR_PALLETTOWN_LABSTATE, 2, PalletTown_Lab_EventScript_OakDex
 	msgbox PalletTown_Lab_Text_OakWelcomeKanto, MSGBOX_DEFAULT
+	@ PRU is Johto-first; Oak's discovery now follows Elm and the ALPH research.
+	msgbox PalletTown_Lab_Text_OakResonanceResearch, MSGBOX_DEFAULT
 	msgbox PalletTown_Lab_Text_OakLabGoodbye, MSGBOX_DEFAULT
 	setvar VAR_PALLETTOWN_LABSTATE, 1
 	goto_if_ge VAR_NUM_BADGES, 16, PalletTown_Lab_EventScript_OakBadgeCheck
@@ -80,6 +82,16 @@ PalletTown_Lab_Text_OakWelcomeKanto:
 	.string "way to KANTO.\p"
 	.string "What do you think of the trainers\n"
 	.string "out here? Pretty tough, huh?$"
+
+PalletTown_Lab_Text_OakResonanceResearch:
+	.string "ELM told me about the strange\n"
+	.string "RESONANCE at the RUINS OF ALPH.\p"
+	.string "Some old KANTO fossils are\n"
+	.string "giving off the same signal.\p"
+	.string "Your JOHTO findings may help\n"
+	.string "us understand the connection.\p"
+	.string "ELM will keep studying ALPH.\n"
+	.string "I'll examine the KANTO clues.$"
 
 PalletTown_Lab_Text_OakLabGoodbye:
 	.string "If you're in the area, I hope you\n"
