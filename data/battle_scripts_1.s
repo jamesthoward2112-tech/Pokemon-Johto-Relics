@@ -5947,6 +5947,11 @@ BattleScript_MoveEffectBleed::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_UpdateEffectStatusIconRet
 
+BattleScript_MoveEffectFear::
+	printstring STRINGID_PKMNFEARED
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_MoveEffectFreeze::
 	statusanimation BS_EFFECT_BATTLER
 	printfromtable gGotFrozenStringIds
