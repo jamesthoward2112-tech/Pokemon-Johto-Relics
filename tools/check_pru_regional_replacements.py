@@ -25,7 +25,7 @@ for required in ("SPECIES_WOOPER_PALDEA","SPECIES_CLODSIRE","SPECIES_NOIBAT","SP
 
 party=(root/"src/data/trainers_hns.party").read_text()
 import re
-assert not re.search(r"(?m)^(?:Wooper|Quagsire)\b", party)
+assert not re.search(r"(?m)^(?:Wooper|Quagsire)(?:[ \\t]|$)", party)
 assert "Wooper-Paldea" in party and "Clodsire" in party
 info=(root/"src/data/pokemon/species_info/gen_6_families.h").read_text()
 for key in ("NOIBAT-S","NOIVERN-S","TYPE_ROCK, TYPE_GHOST",
