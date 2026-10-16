@@ -64,8 +64,10 @@ MtSilver_SummitDay_EventScript_RedOnDefeat::
 	goto_if_set FLAG_PJR_GOT_RAINBOW_CREST, MtSilver_SummitDay_EventScript_AfterCrest
 	call MtSilver_SummitDay_EventScript_AwardCrest
 MtSilver_SummitDay_EventScript_AfterCrest:
-	@ Keep the original Hall of Fame and Red progression after this scene.
+	@ Only unlock the Relic form after the actual Crest has been granted.
+	goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, MtSilver_SummitDay_EventScript_ContinueClear
 	call_if_set FLAG_PJR_RELIC_ALPHORACLE, MtSilver_SummitDay_EventScript_UnlockRelicHoOh
+MtSilver_SummitDay_EventScript_ContinueClear::
 	setflag FLAG_END_NUZLOCKE
 	clearflag FLAG_HIDE_MTSILVER_RED
 	special GameClear
