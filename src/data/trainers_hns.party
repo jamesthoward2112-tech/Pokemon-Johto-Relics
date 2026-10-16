@@ -142,7 +142,7 @@ Music: Hg Boy 1
 Double Battle: No
 AI: Check Bad Move
 
-Wooper
+Wooper-Paldea
 Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -1123,7 +1123,7 @@ Magneton
 Level: 43
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Quagsire
+Clodsire
 Level: 44
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -1659,7 +1659,7 @@ Bellossom
 Level: 37
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Quagsire
+Clodsire
 Level: 38
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -3222,7 +3222,7 @@ Lanturn
 Level: 61
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Quagsire
+Clodsire
 Level: 61
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -3471,7 +3471,7 @@ Gyarados
 Level: 43
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Quagsire
+Clodsire
 Level: 43
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -3793,7 +3793,7 @@ Music: Hg Boy 2
 Double Battle: No
 AI: Check Bad Move
 
-Quagsire
+Clodsire
 Level: 59
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -3915,7 +3915,7 @@ Lanturn
 Level: 24
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Quagsire
+Clodsire
 Level: 24
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -4252,7 +4252,7 @@ Poliwhirl
 Level: 24
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Quagsire
+Clodsire
 Level: 24
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -4341,7 +4341,7 @@ Music: Hg Suspicious 2
 Double Battle: No
 AI: Check Bad Move
 
-Quagsire
+Clodsire
 Level: 23
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -4844,7 +4844,7 @@ Kabutops
 Level: 55
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Quagsire
+Clodsire
 Level: 55
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -8422,7 +8422,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Wonder Room
 - Cross Chop
 
-Quagsire @ Quick Claw
+Clodsire @ Quick Claw
 Level: 62
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Muddy Water
@@ -11906,7 +11906,7 @@ Level: 30
 Tangela
 Level: 35
 
-Quagsire
+Clodsire
 Level: 33
 
 Arcanine
@@ -11927,7 +11927,7 @@ Level: 27
 Tangela
 Level: 27
 
-Quagsire
+Clodsire
 Level: 30
 
 Yanma
@@ -11948,7 +11948,7 @@ Level: 45
 Tangela
 Level: 45
 
-Quagsire
+Clodsire
 Level: 43
 
 Arcanine
