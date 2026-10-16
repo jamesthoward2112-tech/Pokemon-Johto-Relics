@@ -72,6 +72,8 @@ jobs:
           path: artifacts/pru-sevii-donor/
           if-no-files-found: warn
           retention-days: 30
+      - name: Install pinned Sevii battle sprites (Radical Red)
+        run: python3 tools/import_pru_sevii_sprites.py
       - name: Restore exact Azul Agua donor tiles
         run: |
           base64 -d assets/pjr_azul_agua/building_tiles.png.b64 > data/tilesets/primary/azul_agua_building_hns/tiles.png
