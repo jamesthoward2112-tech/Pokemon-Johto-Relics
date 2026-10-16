@@ -6498,16 +6498,20 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
     #define NOIBAT_EGG_GROUPS MON_EGG_GROUPS(EGG_GROUP_FLYING)
 #endif
 
-    [SPECIES_NOIBAT] =
+    // PRU-only full replacement: the base Noibat/Noivern IDs are Seviian species.
+// RR reference: Rock/Ghost, Levitate/Rock Head/Sturdy, Lv36 evolution.
+// IMPORTANT: graphics below still point to stock Noibat/Noivern until the
+// Radical Red Sevii front/back/palette/icon donor assets are integrated.
+[SPECIES_NOIBAT] =
     {
         .dexNotRequired = TRUE,
         .baseHP        = 40,
-        .baseAttack    = 30,
+        .baseAttack    = 45,
         .baseDefense   = 35,
         .baseSpeed     = 55,
-        .baseSpAttack  = 45,
+        .baseSpAttack  = 30,
         .baseSpDefense = 40,
-        .types = MON_TYPES(TYPE_FLYING, TYPE_DRAGON),
+        .types = MON_TYPES(TYPE_ROCK, TYPE_GHOST),
         .catchRate = 190,
         .expYield = 49,
         .evYield_Speed = 1,
@@ -6516,12 +6520,12 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = NOIBAT_EGG_GROUPS,
-        .abilities = { ABILITY_FRISK, ABILITY_INFILTRATOR, ABILITY_TELEPATHY },
+        .abilities = { ABILITY_LEVITATE, ABILITY_ROCK_HEAD, ABILITY_STURDY },
         .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("NOIBAT"),
+        .speciesName = _("NOIBAT-S"),
         .cryId = CRY_NOIBAT,
         .natDexNum = NATIONAL_DEX_NOIBAT,
-        .categoryName = _("Sound Wave"),
+        .categoryName = _("Cave Echo"),
         .height = 5,
         .weight = 80,
         .description = COMPOUND_STRING(
@@ -6571,19 +6575,19 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .levelUpLearnset = sNoibatLevelUpLearnset,
         .teachableLearnset = sNoibatTeachableLearnset,
         .eggMoveLearnset = sNoibatEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 48, SPECIES_NOIVERN}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_NOIVERN}),
     },
 
     [SPECIES_NOIVERN] =
     {
         .dexNotRequired = TRUE,
         .baseHP        = 85,
-        .baseAttack    = 70,
+        .baseAttack    = 102,
         .baseDefense   = 80,
         .baseSpeed     = 123,
-        .baseSpAttack  = 97,
+        .baseSpAttack  = 70,
         .baseSpDefense = 80,
-        .types = MON_TYPES(TYPE_FLYING, TYPE_DRAGON),
+        .types = MON_TYPES(TYPE_ROCK, TYPE_GHOST),
         .catchRate = 45,
         .expYield = 187,
         .evYield_Speed = 2,
@@ -6592,12 +6596,12 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = NOIBAT_EGG_GROUPS,
-        .abilities = { ABILITY_FRISK, ABILITY_INFILTRATOR, ABILITY_TELEPATHY },
+        .abilities = { ABILITY_LEVITATE, ABILITY_ROCK_HEAD, ABILITY_STURDY },
         .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("NOIVERN"),
+        .speciesName = _("NOIVERN-S"),
         .cryId = CRY_NOIVERN,
         .natDexNum = NATIONAL_DEX_NOIVERN,
-        .categoryName = _("Sound Wave"),
+        .categoryName = _("Cave Echo"),
         .height = 15,
         .weight = 850,
         .description = COMPOUND_STRING(
