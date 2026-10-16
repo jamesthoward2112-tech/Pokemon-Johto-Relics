@@ -56,6 +56,16 @@ assert "goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, RuinsOfAlph_Lab_EventScript_Re
 assert "RuinsOfAlph_Lab_Text_RelicsFullyComplete:" in alph
 assert "the TIN TOWER roof" in alph
 assert "FLAG_PJR_GOT_RAINBOW_CREST" in crest
+assert "goto_if_eq VAR_RESULT, FALSE, MtSilver_SummitDay_EventScript_CrestFullBag" in crest
+assert "goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, MtSilver_SummitDay_EventScript_ContinueClear" in crest
+assert "MtSilver_SummitDay_EventScript_CheckPendingCrest::" in crest
+assert "MtSilver_SummitDay_EventScript_RedBattleNormal::" in crest
+trail = (map_dir / "BellchimeTrail_hns" / "scripts.inc").read_text()
+assert "EcruteakBellchimeTrail_EventScript_RelicShortcut::" in trail
+assert "EcruteakBellchimeTrail_EventScript_RelicShortcutBackfill" not in trail
+assert "EcruteakBellchimeTrail_EventScript_RelicShortcutCrestBackfill" not in trail
+assert "setflag FLAG_PJR_RELIC_ALPHORACLE" not in trail
+assert "setflag FLAG_PJR_GOT_RAINBOW_CREST" not in trail
 assert "PalletTown_Lab_Text_OakResonanceResearch:" in oak
 assert "msgbox PalletTown_Lab_Text_OakResonanceResearch" in oak
 assert "FLAG_IS_CHAMPION" in hof
