@@ -60,7 +60,12 @@ ROOTS = [
  ("PJR-Johto","pjr","src/data/pokemon/species_info/gen_2_families.h"),
  ("PJR-custom","pjr","src/data/pokemon/species_info/pjr_families.h"),
  ("PRL-custom","prl","src/data/pokemon/species_info/prl_custom.h"),
+ ("PRL-later-gen4","prl","src/data/pokemon/species_info/gen_4_families.h"),
+ ("PRL-later-gen5","prl","src/data/pokemon/species_info/gen_5_families.h"),
  ("PRL-Noibat","prl","src/data/pokemon/species_info/gen_6_families.h"),
+ ("PRL-later-gen7","prl","src/data/pokemon/species_info/gen_7_families.h"),
+ ("PRL-later-gen8","prl","src/data/pokemon/species_info/gen_8_families.h"),
+ ("PRL-later-gen9","prl","src/data/pokemon/species_info/gen_9_families.h"),
 ]
 ALWAYS_FROM_PRL = {"NOXICHU","EEVEEON","NIMBEON","TOXEON","NOLAX","KHANG"}
 CUSTOM_JOHTO_PREFER_PJR = {"SCARABUB","SKARMET","MOOTINY","ALPHORACLE",
@@ -156,11 +161,11 @@ def main():
           "source_tier":"PRL-Kanto","source_root":"prl",
           "source_file":"include/constants/species.h + src/data/pokemon/level_up_learnsets/prl_custom.h",
           "source_commit":SOURCE_PRL,
-          "source_properties":{"levelUpLearnset":"sNoxichuLevelUpLearnset"},
+          "source_properties":{"levelUpLearnset":"sNoxichuLevelUpLearnset","baseHP":"70","baseAttack":"110","baseDefense":"70","baseSpAttack":"110","baseSpDefense":"80","baseSpeed":"125","types":"Electric/Dark","abilities":"Infiltrator","evolutions":"Moon Stone on Pikachu","teachableLearnset":"Pikachu + Umbreon compatible moves; verify actual PRL TM tables"},
           "graphical_assets":art,
           "status":"BLOCKED_PRL_SPECIES_INFO_NOT_FOUND",
           "validation":["Species enum is present, but pinned PRL species_info block missing",
-                        "Do not invent stats/typing/abilities; reconcile against newer approved donor",
+                        "Design stats/typing/ability from PRL Step9 7-Oct canonical data; runtime species-info not found",
                         "Sprites/palettes hash-audited, runtime pointer and emulator QA pending"]}
         learn=learns["prl"].get("sNoxichuLevelUpLearnset")
         if learn:rec["level_up"]=learn
