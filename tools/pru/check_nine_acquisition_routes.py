@@ -97,17 +97,22 @@ shop_script = (ROOT / "data/maps/GoldenrodCity_DepartmentStore_2F_hns/scripts.in
 shop_map = json.loads((ROOT / "data/maps/GoldenrodCity_DepartmentStore_2F_hns/map.json").read_text())
 clerk_script = "GoldenrodDeptStore2_EventScript_RockShop"
 shop_table = "GoldenrodDeptStore2_RockShop"
+advanced_table = "GoldenrodDeptStore2_RockShopFourBadges"
 assert clerk_script in shop_script, "Goldenrod 2F Rock Shop clerk script disappeared"
 clerk = shop_script.split(clerk_script + "::", 1)
 assert len(clerk) == 2, "Goldenrod 2F shopkeeper definition disappeared"
-assert ("pokemart " + shop_table) in clerk[1][:400], (
-    "Goldenrod 2F shopkeeper no longer opens expected inventory"
+assert ("pokemart " + shop_table) in clerk[1][:700], (
+    "Goldenrod 2F shopkeeper no longer opens basic inventory"
 )
-shop_inventory = shop_script.split(shop_table + ":", 1)
-assert len(shop_inventory) == 2, "Goldenrod 2F inventory missing"
-shop_inventory = shop_inventory[1].split("pokemartlistend", 1)[0]
-for item in ("ITEM_FIRE_STONE", "ITEM_WATER_STONE", "ITEM_DEEP_SEA_SCALE"):
-    assert ".2byte " + item in shop_inventory, f"Goldenrod Rock Shop no longer sells {item}"
+assert ("pokemart " + advanced_table) in clerk[1][:1000], (
+    "Goldenrod 2F shopkeeper no longer opens four-badge inventory"
+)
+assert "goto_if_set FLAG_BADGE04_GET" in clerk[1][:450]
+basic = shop_script.split(shop_table + ":", 1)[1].split("pokemartlistend", 1)[0]
+advanced = shop_script.split(advanced_table + ":", 1)[1].split("pokemartlistend", 1)[0]
+for item in ("ITEM_FIRE_STONE", "ITEM_WATER_STONE"):
+    assert ".2byte " + item in basic, f"Goldenrod basic Rock Shop missing {item}"
+assert ".2byte ITEM_DEEP_SEA_SCALE" in advanced, "Goldenrod advanced Rock Shop missing Deep Sea Scale"
 assert any(
     obj.get("script") == clerk_script and obj.get("flag") == "0"
     for obj in shop_map.get("object_events", [])
