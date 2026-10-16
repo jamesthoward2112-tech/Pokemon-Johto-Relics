@@ -128,11 +128,15 @@ NewBarkTown_Lab_EventScript_ElmAccepted::
 	goto NewBarkTown_Lab_EventScript_ElmChoosePokemon
 	end
 
+@ PRU: Elm hands over the sole starter directly. No desk interaction or YES/NO.
+@ Keep VAR_STARTER_MON=0 for Silver's established Cyndaquil rival branch.
 NewBarkTown_Lab_EventScript_ElmChoosePokemon::
+	setvar VAR_STARTER_MON, 0
+	setvar PLAYER_STARTER_SPECIES, SPECIES_PIKACHU
+	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
 	msgbox NewBarkTown_Lab_Text_ElmChooseAPokemon, MSGBOX_DEFAULT
-	closemessage
-	setvar VAR_NEWBARKTOWN_LABSTATE, 1
-	release
+	@callnative DisableStaticRandomizer
+	goto NewBarkTown_Lab_EventScript_ChoseStarter
 	end
 
 NewBarkTown_Lab_EventScript_TriggerReturnPlayer::
@@ -151,54 +155,17 @@ NewBarkTown_Lab_EventScript_ShouldntTouch::
 	end
 
 
-NewBarkTown_Lab_EventScript_ChikoritaBall::
-	lock
-	goto_if_set FLAG_SYS_POKEMON_GET, NewBarkTown_Lab_EventScript_ShouldntTouch
-	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 1, NewBarkTown_Lab_EventScript_ChikoritaBall_Choice
-	msgbox NewBarkTown_Lab_Text_ShouldntTouch, MSGBOX_DEFAULT
-	release
-	closemessage
+@ PRU display only: the three desk exhibits are fossils, not available gifts.
+NewBarkTown_Lab_EventScript_FossilDisplay_Helix::
+	msgbox NewBarkTown_Lab_Text_FossilDisplay_Helix, MSGBOX_NPC
 	end
 
-NewBarkTown_Lab_EventScript_ChikoritaBall_Choice::
-	@callnative DisableStaticRandomizer
-	setvar VAR_STARTER_MON, 0
-	setvar PLAYER_STARTER_SPECIES, SPECIES_PIKACHU
-	showmonpic PLAYER_STARTER_SPECIES, 10, 3
-	playmoncry PLAYER_STARTER_SPECIES, CRY_MODE_NORMAL
-	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
-	buffermoncategory STR_VAR_2, PLAYER_STARTER_SPECIES
-	msgbox NewBarkTown_Lab_Text_ChooseChikorita, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, NewBarkTown_Lab_EventScript_ChoseStarter
-	goto_if_eq VAR_RESULT, NO, NewBarkTown_Lab_EventScript_DeclinedStarter
+NewBarkTown_Lab_EventScript_FossilDisplay_Dome::
+	msgbox NewBarkTown_Lab_Text_FossilDisplay_Dome, MSGBOX_NPC
 	end
 
-NewBarkTown_Lab_EventScript_CyndaquilBall::
-	lock
-	goto_if_set FLAG_SYS_POKEMON_GET, NewBarkTown_Lab_EventScript_ShouldntTouch
-	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 1, NewBarkTown_Lab_EventScript_CyndaquilBall_Choice
-	msgbox NewBarkTown_Lab_Text_ShouldntTouch, MSGBOX_DEFAULT
-	closemessage
-	release
-	end
-
-NewBarkTown_Lab_EventScript_CyndaquilBall_Choice::
-	msgbox NewBarkTown_Lab_Text_ReservedResearchPokemon, MSGBOX_DEFAULT
-	release
-	end
-
-NewBarkTown_Lab_EventScript_TotodileBall::
-	lock
-	goto_if_set FLAG_SYS_POKEMON_GET, NewBarkTown_Lab_EventScript_ShouldntTouch
-	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 1, NewBarkTown_Lab_EventScript_TotodileBall_Choice
-	msgbox NewBarkTown_Lab_Text_ShouldntTouch, MSGBOX_DEFAULT
-	release
-	closemessage
-	end
-
-NewBarkTown_Lab_EventScript_TotodileBall_Choice::
-	msgbox NewBarkTown_Lab_Text_ReservedResearchPokemon, MSGBOX_DEFAULT
-	release
+NewBarkTown_Lab_EventScript_FossilDisplay_Amber::
+	msgbox NewBarkTown_Lab_Text_FossilDisplay_Amber, MSGBOX_NPC
 	end
 
 NewBarkTown_Lab_EventScript_DeclinedStarter::
@@ -212,7 +179,8 @@ NewBarkTown_Lab_EventScript_DeclinedStarter::
 NewBarkTown_Lab_EventScript_ChoseStarter::
 	@callnative EnableStaticRandomizer
 	hidemonpic
-	removeobject VAR_LAST_TALKED
+	@ PRU: Elm himself is the speaker, not a selected desk ball.
+	@ Never remove VAR_LAST_TALKED here, or Elm vanishes from the lab.
 	msgbox NewBarkTown_Lab_Text_ChoseStarter, MSGBOX_DEFAULT
 	call_if_eq VAR_STARTER_MON, 0, NewBarkTown_Lab_EventScript_GiveStarter_Chikorita
 	call_if_eq VAR_STARTER_MON, 1, NewBarkTown_Lab_EventScript_GiveStarter_Cyndaquil
@@ -688,38 +656,33 @@ NewBarkTown_Lab_Text_ElmGotAnEmail:
 	.string "Okay.$"
 
 NewBarkTown_Lab_Text_ElmMissionFromMrPokemon:
-	.string "MR. POKéMON found\n"
+	.string "MR. POKéMON has found\n"
 	.string "something unusual.\p"
-	.string "Take your partner.\n"
-	.string "Then come back to me.$"
+	.string "PIKACHU is coming with you.\n"
+	.string "Please investigate!$"
 
 NewBarkTown_Lab_Text_ElmChooseAPokemon:
-	.string "The left POKé BALL\n"
-	.string "holds PIKACHU.\p"
-	.string "Take it for the journey.$"
+	.string "Take good care of\n"
+	.string "this PIKACHU!$"
 
 NewBarkTown_Lab_Text_ElmWhereGoing:
 	.string "ELM: Wait! Where are you\n"
 	.string "going?$"
 
-NewBarkTown_Lab_Text_ChooseCyndaquil:
-	.string "Choose {STR_VAR_1}?$"
+NewBarkTown_Lab_Text_FossilDisplay_Helix:
+	.string "A HELIX FOSSIL.\p"
+	.string "ELM is studying its\n"
+	.string "ancient Resonance.$"
 
-NewBarkTown_Lab_Text_ChooseTotodile:
-	.string "Choose {STR_VAR_1}?$"
+NewBarkTown_Lab_Text_FossilDisplay_Dome:
+	.string "A DOME FOSSIL.\p"
+	.string "It is an important\n"
+	.string "research specimen.$"
 
-NewBarkTown_Lab_Text_ChooseChikorita:
-	.string "Take {STR_VAR_1}?$"
-
-NewBarkTown_Lab_Text_ReservedResearchPokemon:
-	.string "ELM: Those POKéMON\n"
-	.string "are for my research.\p"
-	.string "Your partner is in\n"
-	.string "the left POKé BALL.$"
-
-NewBarkTown_Lab_Text_DidntChooseStarter:
-	.string "ELM: Think it over carefully.\p"
-	.string "Your partner is important.$"
+NewBarkTown_Lab_Text_FossilDisplay_Amber:
+	.string "An OLD AMBER sample.\p"
+	.string "Ancient energy is\n"
+	.string "sealed within it.$"
 
 NewBarkTown_Lab_Text_ChoseStarter:
 	.string "{STR_VAR_1} is now\n"
