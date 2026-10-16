@@ -52,6 +52,7 @@
 #include "union_room_chat.h"
 #include "constants/map_groups.h"
 #include "constants/items.h"
+#include "constants/species.h"
 #include "difficulty.h"
 #include "follower_npc.h"
 
@@ -195,7 +196,7 @@ static void WarpToTruck(void)
     if (IS_FRLG)
         SetWarpDestination(MAP_GROUP(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), MAP_NUM(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), WARP_ID_NONE, 6, 6);
     else if (IS_HNS)
-        SetWarpDestination(MAP_GROUP(MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_2F_HNS), MAP_NUM(MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_2F_HNS), 1, 0, 0);
+        SetWarpDestination(MAP_GROUP(MAP_GOLDENROD_CITY_DEPARTMENT_STORE_2F_HNS), MAP_NUM(MAP_GOLDENROD_CITY_DEPARTMENT_STORE_2F_HNS), WARP_ID_NONE, 17, 14);
     else
         SetWarpDestination(MAP_GROUP(MAP_INSIDE_OF_TRUCK), MAP_NUM(MAP_INSIDE_OF_TRUCK), WARP_ID_NONE, -1, -1);
     WarpIntoMap();
@@ -256,7 +257,7 @@ void NewGameInitData(void)
     ResetGabbyAndTy();
     ClearSecretBases();
     ClearBerryTrees();
-    SetMoney(&gSaveBlock1Ptr->money, 3000);
+    SetMoney(&gSaveBlock1Ptr->money, IS_HNS ? 950000 : 3000);
     SetCoins(0);
     ResetLinkContestBoolean();
     ResetGameStats();
@@ -266,6 +267,15 @@ void NewGameInitData(void)
     InitLotadSizeRecord();
     gPlayerPartyCount = 0;
     ZeroPlayerPartyMons();
+    // QA ROM ONLY: starterless Goldenrod shop testing without a prior save.
+    // Restore the vanilla New Bark opening in production PRU.
+    if (IS_HNS)
+    {
+        CreateRandomMon(&gPlayerParty[0], SPECIES_EEVEE, 20);
+        CreateRandomMon(&gPlayerParty[1], SPECIES_EEVEE, 20);
+        CreateRandomMon(&gPlayerParty[2], SPECIES_CLAMPERL, 25);
+        gPlayerPartyCount = 3;
+    }
     ResetPokemonStorageSystem();
     DeactivateAllRoamers();
     gSaveBlock1Ptr->registeredItem = ITEM_NONE;
