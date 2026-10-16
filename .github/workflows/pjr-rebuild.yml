@@ -39,6 +39,39 @@ jobs:
           path: artifacts/pru-catchability/
           if-no-files-found: warn
           retention-days: 30
+      - name: Download Sevii Noibat original Radical Red sprite sources
+        continue-on-error: true
+        run: |
+          python3 - <<'PY'
+          import pathlib, urllib.request, struct, hashlib, json
+          commit = "488a0918194d567b5f7b02c396118d51fb9c81ce"
+          root = pathlib.Path("artifacts/pru-sevii-donor")
+          summary = []
+          for species, rr_id in (("noibat",866),("noivern",867)):
+              for part in ("front","back","front shiny","back shiny"):
+                  dest = root / species / (part.replace(" ","_") + ".png")
+                  dest.parent.mkdir(parents=True,exist_ok=True)
+                  url = ("https://raw.githubusercontent.com/JwowSquared/"
+                         "Radical-Red-Pokedex/" + commit + "/graphics/species/"
+                         + part.replace(" ","%20") + "/" + str(rr_id) + ".png")
+                  with urllib.request.urlopen(url,timeout=20) as response:
+                      raw = response.read()
+                  assert raw[:8] == b"\\x89PNG\\r\\n\\x1a\\n", url
+                  dest.write_bytes(raw)
+                  width, height = struct.unpack(">II",raw[16:24])
+                  summary.append(dict(pokemon=species,part=part,width=width,
+                                      height=height,sha256=hashlib.sha256(raw).hexdigest()))
+          (root/"manifest.json").write_text(json.dumps(summary,indent=2))
+          print(json.dumps(summary,indent=2))
+          PY
+      - name: Upload source Sevii sprites for PRU integration
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PRU-Sevii-Source-Sprites
+          path: artifacts/pru-sevii-donor/
+          if-no-files-found: warn
+          retention-days: 30
       - name: Restore exact Azul Agua donor tiles
         run: |
           base64 -d assets/pjr_azul_agua/building_tiles.png.b64 > data/tilesets/primary/azul_agua_building_hns/tiles.png
