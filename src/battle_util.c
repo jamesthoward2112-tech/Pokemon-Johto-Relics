@@ -5624,6 +5624,12 @@ bool32 CanSetNonVolatileStatus(enum BattlerId battlerAtk, enum BattlerId battler
             battleScript = BattleScript_NotAffected;
         }
         break;
+    case MOVE_EFFECT_BLEED:
+        if (gBattleMons[battlerDef].status1 & STATUS1_BLEED)
+            battleScript = BattleScript_AlreadyBurned;
+        else if (IS_BATTLER_ANY_TYPE(battlerDef, TYPE_ROCK, TYPE_GHOST))
+            battleScript = BattleScript_NotAffected;
+        break;
     default:
         break;
     }
