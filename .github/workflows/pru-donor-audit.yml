@@ -1,0 +1,48 @@
+name: PRU Pinned PRL Donor Audit
+
+on:
+  push:
+    branches:
+      - pru/full-relic-import-20261016
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit-donor-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout isolated PJR Ultimate import branch
+        uses: actions/checkout@v4
+
+      - name: Checkout the exact authoritative PRL donor
+        uses: actions/checkout@v4
+        with:
+          repository: jamesthoward2112-tech/Pokemon-Relic-Legacy
+          ref: 6ee9b984521ac6f2beaf995f771a726379e55c88
+          path: donor-prl
+          persist-credentials: false
+
+      - name: Stage and verify all 29 missing custom art packs
+        run: |
+          python3 tools/pru/import_prl_artwork.py --donor donor-prl --root .
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d = json.loads(Path("docs/PRU_PRL_ARTWORK_IMPORT_MANIFEST.json").read_text())
+          assert d["status"] == "donor_art_staged_not_gameplay_implemented"
+          assert len(d["species"]) == 29
+          for entry in d["species"]:
+              name = entry["species"].lower()
+              for asset in ("front.png", "back.png", "icon.png", "normal.pal", "shiny.pal"):
+                  assert Path("graphics/pokemon", name, asset).is_file(), (name, asset)
+          print("All 29 donor species art packs are present; not yet engine-registered.")
+          PY
+
+      - name: Upload audit manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: PRU-pinned-donor-art-manifest
+          path: docs/PRU_PRL_ARTWORK_IMPORT_MANIFEST.json
+          if-no-files-found: error
