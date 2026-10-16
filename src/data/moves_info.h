@@ -23809,7 +23809,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
         .bitingMove = TRUE,
-        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
+        .additionalEffects = ADDITIONAL_EFFECTS(
+            { .moveEffect = MOVE_EFFECT_PRU_INFATUATION, .chance = 10, },
+            { .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .battleAnimScript = gBattleAnimMove_Bite,
     },
 
@@ -23828,7 +23830,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
         .bitingMove = TRUE,
-        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
+        .additionalEffects = ADDITIONAL_EFFECTS(
+            { .moveEffect = MOVE_EFFECT_PRU_CURSE, .chance = 10, },
+            { .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
         .battleAnimScript = gBattleAnimMove_Bite,
     },
 
