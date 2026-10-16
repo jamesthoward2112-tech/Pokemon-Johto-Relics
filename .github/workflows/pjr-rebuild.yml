@@ -56,7 +56,7 @@ jobs:
                          + part.replace(" ","%20") + "/" + str(rr_id) + ".png")
                   with urllib.request.urlopen(url,timeout=20) as response:
                       raw = response.read()
-                  assert raw[:8] == b"\\x89PNG\\r\\n\\x1a\\n", url
+                  assert raw[:4] == bytes((137, 80, 78, 71)), url
                   dest.write_bytes(raw)
                   width, height = struct.unpack(">II",raw[16:24])
                   summary.append(dict(pokemon=species,part=part,width=width,
