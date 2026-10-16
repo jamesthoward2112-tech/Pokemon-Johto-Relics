@@ -2863,6 +2863,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
 
 #include "data/graphics/pokemon.h"
 #include "data/graphics/pjr.h"
+#include "data/graphics/pru_pokemon.h"
 
 #include "data/pokemon/trainer_class_lookups.h"
 #include "data/pokemon/experience_tables.h"
@@ -2888,7 +2889,9 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
 #endif
 
 #include "data/pokemon/level_up_learnsets/pjr.h"
+#include "data/pokemon/level_up_learnsets/pru.h"
 #include "data/pokemon/teachable_learnsets.h"
+#include "data/pokemon/teachable_learnsets/pru.h"
 #include "data/pokemon/egg_moves.h"
 #include "data/pokemon/form_species_tables.h"
 #include "data/pokemon/form_change_tables.h"
