@@ -2,6 +2,16 @@
 
 Updated: 2026-10-16 (recovery after interrupted Work session)
 
+## Live recovery state — 2026-10-16T16:18:30Z
+- Active local branch: `pru/complete-selective-integration-20261016`.
+- Recovery base: `464fc66ed2ebe11ca1e4cda47d891dc753828499`, the CI-passing PR #11 head. It contains the seven native-move/Eerie Fog commits directly on top of PR #9.
+- Last published implementation before this checkpoint: `464fc66ed2ebe11ca1e4cda47d891dc753828499` on `origin/pru/battle-port-phase1-20261016`; GitHub Actions run `38925573625` compiled the isolated ROM successfully.
+- The original scratch worktree disappeared before this resumed session. Its local-only commits (`e6fb58120`, `ba603890c`) and uncommitted species/mechanics files were not present in any remote ref and could not be recovered byte-for-byte. No claim is made that those files were preserved.
+- Retained evidence from the interrupted session records GREEN static checks for the 19-species ID allocation, Bleeding/Fear/Eerie Fog source integration and selective Radical Red data, but those local edits were never compiled or pushed and must be reconstructed from the pinned donors.
+- Working tree at recovery was clean. This branch is the sole resumed integration branch; PR #10 remains separate.
+- Immediate priorities: reconstruct the 19 species/data/assets with the ID-freeze verifier; then port remaining authentic moves/abilities/status mechanics; then implement Mewsion issue #8; finally compile in CI and emulator-test.
+- Local build constraint remains: the scratch host lacks `arm-none-eabi-gcc`, `pkg-config` and libpng development headers, so GitHub Actions is the authoritative build environment.
+
 ## Purpose
 A **GitHub-published recovery checkpoint** for Pokémon Relics Ultimate's consolidated integration. Update this file after each meaningful source milestone and before every expected Work-session limit. Local-only logs are insufficient; **push the checkpoint and source commits to the remote branch** so a future conversation can resume without repeating investigation.
 
