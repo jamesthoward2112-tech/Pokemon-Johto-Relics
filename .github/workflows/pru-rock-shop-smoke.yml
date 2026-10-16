@@ -1,8 +1,8 @@
-name: PRU isolated Goldenrod Rock Shop ROM smoke
+name: PRU Fresh Start Rock Shop QA ROM
 
 on:
   push:
-    branches: [pru/rock-shop-smoke-20261016]
+    branches: [pru/rock-shop-freshstart-20261016]
   workflow_dispatch:
 
 permissions:
@@ -19,6 +19,21 @@ jobs:
       - uses: actions/checkout@v4
       - name: Assert Rock Shop badge tiers, item IDs, and NPC placement
         run: python3 tools/pru/check_rock_shop.py
+      - name: Check quick-start QA controls are isolated and ready
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          c = Path('src/new_game.c').read_text()
+          script = Path('data/maps/GoldenrodCity_DepartmentStore_2F_hns/scripts.inc').read_text()
+          layout = Path('data/maps/GoldenrodCity_DepartmentStore_2F_hns/map.json').read_text()
+          assert 'MAP_GOLDENROD_CITY_DEPARTMENT_STORE_2F_HNS' in c
+          assert 'IS_HNS ? 950000 : 3000' in c
+          assert 'SPECIES_EEVEE' in c and 'SPECIES_CLAMPERL' in c
+          for flag in ('FLAG_BADGE04_GET', 'FLAG_BADGE08_GET'):
+              assert flag in script
+          assert 'GoldenrodDeptStore2_EventScript_QATierControl' in layout
+          print('PASS: fresh start -> Goldenrod with funds and party; 0/4/8 badge cycling')
+          PY
       - name: Inventory all registered HNS dialogue and gift/flag events
         run: python3 tools/audit_pru_standalone_dialogue.py
       - name: Upload standalone PRU dialogue inventory
@@ -130,17 +145,17 @@ jobs:
           make hns -j4 -O
       - name: Package PRU standalone development ROM
         run: |
-          cp pokehns.gba PRU-RockShop-Smoke.gba
-          arm-none-eabi-nm -n pokehns.elf > PRU-RockShop-Smoke.sym
-          sha256sum PRU-RockShop-Smoke.gba > PRU-RockShop-Smoke-SHA256.txt
-          printf "%s\n" "$GITHUB_SHA" > PRU-RockShop-Smoke-Commit.txt
+          cp pokehns.gba PRU-RockShop-FreshStart.gba
+          arm-none-eabi-nm -n pokehns.elf > PRU-RockShop-FreshStart.sym
+          sha256sum PRU-RockShop-FreshStart.gba > PRU-RockShop-FreshStart-SHA256.txt
+          printf "%s\n" "$GITHUB_SHA" > PRU-RockShop-FreshStart-Commit.txt
       - uses: actions/upload-artifact@v4
         with:
-          name: PRU-RockShop-Smoke
+          name: PRU-RockShop-FreshStart
           path: |
-            PRU-RockShop-Smoke.gba
-            PRU-RockShop-Smoke.sym
-            PRU-RockShop-Smoke-SHA256.txt
-            PRU-RockShop-Smoke-Commit.txt
+            PRU-RockShop-FreshStart.gba
+            PRU-RockShop-FreshStart.sym
+            PRU-RockShop-FreshStart-SHA256.txt
+            PRU-RockShop-FreshStart-Commit.txt
           if-no-files-found: error
           retention-days: 14
