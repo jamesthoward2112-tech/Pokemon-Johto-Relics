@@ -2587,6 +2587,37 @@ void SetMoveEffect(enum BattlerId battlerAtk, enum BattlerId effectBattler, enum
             gBattlescriptCurrInstr = battleScript;
         }
         break;
+    // PRU Lovely Bite: infatuate only the struck battler; independently rolled
+    // from the original 10 percent bleeding secondary effect.
+    case MOVE_EFFECT_PRU_INFATUATION:
+        if (!gBattleMons[gEffectBattler].volatiles.infatuation
+         && AreBattlersOfOppositeGender(battlerAtk, effectBattler)
+         && abilities[effectBattler] != ABILITY_OBLIVIOUS
+         && !IsAbilityOnSide(effectBattler, ABILITY_AROMA_VEIL))
+        {
+            gBattleMons[gEffectBattler].volatiles.infatuation = INFATUATED_WITH(battlerAtk);
+            BattleScriptPush(battleScript);
+            gBattlescriptCurrInstr = BattleScript_MoveEffectPRUInfatuation;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = battleScript;
+        }
+        break;
+    // PRU Shadow Fangs: a curse is placed by the hit itself (no additional
+    // half-HP sacrifice). It still uses the native Ghost Curse residual effect.
+    case MOVE_EFFECT_PRU_CURSE:
+        if (!gBattleMons[gEffectBattler].volatiles.cursed)
+        {
+            gBattleMons[gEffectBattler].volatiles.cursed = TRUE;
+            BattleScriptPush(battleScript);
+            gBattlescriptCurrInstr = BattleScript_MoveEffectPRUCurse;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = battleScript;
+        }
+        break;
     case MOVE_EFFECT_FLINCH:
         if (abilities[effectBattler] == ABILITY_INNER_FOCUS)
         {
