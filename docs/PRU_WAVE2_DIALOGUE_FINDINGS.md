@@ -13,16 +13,16 @@ Status: **source inspection and complete registered-HNS text inventory completed
 
 ## Source-confirmed grants that need policy work
 
-The player's only approved starting gift is Pikachu. Elm's existing, story-critical **Togepi Egg is explicitly retained**. No other optional Pokémon gifts should remain, but do not remove a grant before its acquisition alternative and event flag have been checked.
+**Updated gift policy (16 Oct): gifts are allowed.** Pikachu remains the sole starter choice on the initial Elm lab table; Elm's Togepi Egg stays. Preserve meaningful original PJR NPC gift, Egg and prize events by default. Every gift species must ALSO be catchable/evolvable/encounterable without accepting that gift. Check flags, retries, full PC, and alternative acquisition.
 
 | Live/map source | Current source behaviour | PRU action | Gate |
 |---|---|---|---|
-| `SaffronCity_SilphCo_hns/scripts.inc` | Steven offers Treecko/Torchic/Mudkip via `MULTI_HOENN_STARTERS`, sets `FLAG_GOT_HOENN_STARTER` | **Convert** to Johto/Kanto wild-location or Relic research guidance; preserve Steve(n) visit flow and one-time dialogue, retitle flag only if references safely migrated | Inspect `map.json` object flag, acquire all three in wild, no repeat/softlock |
-| `CianwoodPokecenter_hns/scripts.inc` | Fisher can gift Lv25 Tentacool when player lacks Surf-capable party Pokémon | **Convert** to useful wild-location hint or non-Pokémon aid, without blocking required Surf progression | Verify HM-free Surf and fishing/wild Tentacool accessibility before removal |
-| `DragonsDen_Shrine_hns/scripts.inc` | Elder gives Dratini, including `givenamedmon 4` on special quiz path | **Design replacement** for the gift that preserves Elder's approval, Dratini family access and quiz-result distinction | Test both quiz branches and flags; do not erase Dragon's Den story |
-| `MtMortar_B1F_hns/scripts.inc` | Karate King gives Tyrogue after his battle | **Convert** reward/dialogue to training/clue and provide actual wild Tyrogue encounter | Check Kiyo event and `FLAG_GOT_TYROGUE` |
-| `NewSinjoh_House1_hns/scripts.inc` | Elizabeth gives Paldean Wooper after being shown Celebi | **Convert** to regional-variant lead or non-Pokémon recognition, with separate capture access | Keep Celebi recognition and original Sinjoh plot intact |
-| `UlaUla_House_hns/scripts.inc` | Noibat Egg is awarded during Phant event | **Review playable/registered Alola scope**; retain storyline if map accessible, but remove optional Egg only after replacement acquisition | Test transition/sidequest and Noibat acquisition |
+| `SaffronCity_SilphCo_hns/scripts.inc` | Steven offers Treecko/Torchic/Mudkip via `MULTI_HOENN_STARTERS`, sets `FLAG_GOT_HOENN_STARTER` | **KEEP/RESTORED** original optional Steven gift choice and one-time flag; Treecko/Torchic/Mudkip also available early in wild | Inspect `map.json` object flag, acquire all three in wild, no repeat/softlock |
+| `CianwoodPokecenter_hns/scripts.inc` | Fisher can gift Lv25 Tentacool when player lacks Surf-capable party Pokémon | **KEEP** the gift; separately verify wild Tentacool and its acquisition before Surf, and avoid gifting softlocks | Verify HM-free Surf and fishing/wild Tentacool accessibility before removal |
+| `DragonsDen_Shrine_hns/scripts.inc` | Elder gives Dratini, including `givenamedmon 4` on special quiz path | **KEEP** quiz-reward gift including special Dratini; verify independently obtainable wild Dratini | Test both quiz branches and flags; do not erase Dragon's Den story |
+| `MtMortar_B1F_hns/scripts.inc` | Karate King gives Tyrogue after his battle | **KEEP** Kiyo's victory gift; provide independently catchable Tyrogue | Check Kiyo event and `FLAG_GOT_TYROGUE` |
+| `NewSinjoh_House1_hns/scripts.inc` | Elizabeth gives Paldean Wooper after being shown Celebi | **KEEP** Celebi recognition gift; verify an independently obtainable Paldean Wooper encounter | Keep Celebi recognition and original Sinjoh plot intact |
+| `UlaUla_House_hns/scripts.inc` | Noibat Egg is awarded during Phant event | **KEEP** Noibat Egg if event is live and storyline valid; independently verify Noibat encounter route | Test transition/sidequest and Noibat acquisition |
 | `data/scripts/gift_pichu.inc` | Mystery Gift event awards special Surfing Pichu Egg | **Reachability check**: not an ordinary overworld gift; do not delete a detached event merely on regex match | Confirm hook, flag and approved Mystery Gift scope |
 
 ## Explicit non-equivalences — DON'T bulk delete
@@ -47,7 +47,7 @@ The player's only approved starting gift is Pikachu. Elm's existing, story-criti
 ## Next implementation order
 
 - [ ] Check map-object reference/reachability and all call sites for each Pokémon grant; produce source-level keep/convert/dead-code decisions.
-- [ ] Add alternate wild/quest acquisition *before* removing live free-gift scripts.
+- [ ] Confirm all gift species have independent wild/evolution/static-encounter sources; preserve live gift scripts, story flags and retries by default.
 - [ ] Finish donor cross-reference ledger for every approved Relic species, evolution, hint and accessible Johto/Kanto location; flag superseded PRL forms.
 - [ ] Finish all active HNS dialogue scene sign-off, including radio, rematches, day/night, trainer gender, optional NPCs, terminal/PC, maps and late Sinjoh.
 - [ ] Implement only lore-adapted Kanto reports, Old Rocket archives, Oak legendary leads, new flags and four-championship dialogue.
