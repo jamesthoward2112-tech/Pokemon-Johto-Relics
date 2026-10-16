@@ -1,5 +1,16 @@
 # PRU donor custom moves — compile-blocking integration backlog
 
+## Source staging milestone — 16 October 2026 (UNVERIFIED BUILD)
+
+- All 25 `MOVE_*` identifiers are now explicitly appended in `include/constants/moves.h`, and 25 native battle records are present in `src/data/moves_info.h`. The original PJR moves remain unchanged; Z/Max move ID offset and saved move-ID compatibility require a separate audit.
+- `EEVOBOOST`: new `EFFECT_PRU_EEVOBOOST`, one stage to all five stats, targeting user with PP 5 and priority -2, implemented as an isolated native battle script without changing the original Extreme Evoboost Z-Move +2 effect.
+- `LOVELY_BITE` and `SHADOW_FANGS`: authentic type/power/accuracy/PP/contact/biting and 10% Bleeding were registered. **Missing** original independent 10% Infatuation and 10% Curse respectively; not yet complete.
+- Eighteen Procyon/Deneb-reference moves: original source-listed name/type/category/power/accuracy/PP included. **Effect parity NOT verified**. `INFECTION` temporarily uses poison, `NEUROTOXIN` uses bad poison, `STINK_SPRAY` lowers accuracy, `LIFE_DRAIN` heals 50%, and several attacks use normal damage. These are documented interpretations, NOT authenticated donor scripts.
+- Four AlteRed names use explicit compatibility interpretations recorded in the approved `PRU_Donor_Gaps_Resolved_2026-10-16.md`; exact original secondary effects are not implemented. `TERROR_WAVE` retains verified 110 power/85 accuracy/5 PP as a ghost move; `SPARKLINGSKY` preserves Fire/200 power/5 PP and uses PJR native 50%-max-HP recoil (not source self-KO); `SUPER_GLITCH` uses Psychic typing as a pragmatic compatibility variant. `ASSIMILATE` is a Giga-Drain-style 75-power grass recovery move. All four preserve their **original move names** and must not be described as byte-identical imports.
+- Reference for the 18 moves' base metadata: [Procyon/Deneb new moves](https://pokemon-procyondeneb.fandom.com/wiki/New_Moves), [Vega/Altair moves](https://pokemon-procyondeneb.fandom.com/wiki/List_of_Moves) (community wiki; original scripts remain mandatory for exact parity).
+- **Important:** This is not a fully implemented original move pack. Do not close the checklist below until secondary effects, move animations, AI, status interactions and emulator QA are verified. No clean build is asserted from these commits yet.
+
+
 Date: 2026-10-16
 Source branch: `pru/complete-selective-integration-20261016`
 Compiler: [GitHub Actions run 38951072549](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38951072549)
