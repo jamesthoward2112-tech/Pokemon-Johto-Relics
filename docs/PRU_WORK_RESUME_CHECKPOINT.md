@@ -1,5 +1,12 @@
 # PRU Work Resume Checkpoint
 
+## 16 October 2026 — first successful consolidated ROM build
+
+- **Verified GREEN:** GitHub Actions [38956023183](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38956023183) built `make hns` successfully and packaged `PRU-Consolidated-WIP.gba` with `.sym`, SHA-256 and commit file. Triggering commit `1493c0f5e147a0cce179a4b257e73177e076680d`; artifact `PRU-Consolidated-WIP` GitHub ID `12069724170`. Both authentic-signature/static move QA scripts, donor art conversion, and final ELF link passed. **Not emulator-tested or ready for release.**
+- A *later, uncompiled* commit `50e8948cc32dae253c292a0f67f2137a08f6dd1f` also connects approved `SPECIES_ARBOK` Level 40 → `SPECIES_ADNOKANA`, and `SPECIES_WEEZING` Level 40 → `SPECIES_CHEAUKING`, plus Thunder Stone → `SPECIES_FRYTNING`. Trigger another source build to include these evolutions before giving an up-to-date ROM.
+- Remaining exactness caveat: original Procyon/Deneb/AlteRed move secondary effect parity, ROM save ID migration, all 444 obtainable species, Mewsion scripted battle, and Rock Shop branch integration/QA remain unfinished. Preserve PJR `pjr-rebuild`.
+
+
 ## 16 October 2026 — first complete 25-move compile reached final linking
 
 - [CI run 38955135175](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38955135175) reached final ELF link after compiling all 25 donor moves; **failed on a single known missing external symbol**: `BattleScript_AbilityHpHeal`. Native / 4bpp art / move registration all passed. ROM compilation was NOT successful.
