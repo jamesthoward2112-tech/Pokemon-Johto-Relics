@@ -470,12 +470,12 @@ AzaleaTown_EventScript_PJRGiftCyndaquilMon::
 	end
 
 AzaleaTown_EventScript_PJRGiftCyndaquil_Text_Clue:
-	.string "I'm one of ELM's aides.\\p"
-	.string "Wild CYNDAQUIL have been\\n"
-	.string "spotted near ROUTE 30.\\p"
-	.string "This one is my partner.\\n"
+	.string "I'm one of ELM's aides.\p"
+	.string "Wild CYNDAQUIL have been\n"
+	.string "spotted near ROUTE 30.\p"
+	.string "This one is my partner.\n"
 	.string "Catch one of your own!$"
 
 AzaleaTown_EventScript_PJRGiftCyndaquil_Text_Mon:
-	.string "CYNDAQUIL seems happy to\\n"
+	.string "CYNDAQUIL seems happy to\n"
 	.string "travel with ELM's aide.$"
