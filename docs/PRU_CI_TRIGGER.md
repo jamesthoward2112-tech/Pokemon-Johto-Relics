@@ -18,3 +18,5 @@ Trigger 4 (2026-10-16): rebuild after fixing the exact run 38940072721 RGBA-colo
 Trigger 5: run fail-fast custom move registration check plus full HnS compilation after implementing all 25 source move names and metadata, native one-stage Eevoboost, and preserving provisional external secondary-effect limitations. If compile fails, inspect first exact error. This is NOT move-effect parity or emulator QA signoff.
 
 Trigger 6: compile the 25 native move records and separately implemented original PRL signature effects, after repairing the sole previous linker error (BattleScript_AbilityHpHeal changed from private ':' to exported '::'). Include the cheap 25-move source checker; on success preserve ROM, symbols, SHA-256 and commit. No emulator claims until actual gameplay QA.
+
+Trigger 7: compile the complete 25 donor-move integration and late canonical Kanto Ultimate evolutions (Arbok level 40 -> Adnokana; Weezing level 40 -> Cheauking, Thunder Stone -> Frytning). Prior run 38956023183 succeeded at commit 1493c0f5 before evolution links. Capture final artifact SHA256. Build success does not imply emulator-tested or original external move-effect parity.
