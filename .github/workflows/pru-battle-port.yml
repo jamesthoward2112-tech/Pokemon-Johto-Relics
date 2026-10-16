@@ -2,7 +2,7 @@ name: PRU consolidated integration build
 
 on:
   push:
-    branches: [pru/complete-selective-integration-20261016]
+    branches: [pru/complete-selective-integration-20261016, pru/pretest-story-services-20261016]
     paths:
       - docs/PRU_CI_TRIGGER.md
   workflow_dispatch:
@@ -19,6 +19,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Verify PRU first-adventure fossil/Pikachu and Relic dialogue
+        if: github.ref_name == 'pru/pretest-story-services-20261016'
+        run: python3 tools/pru/check_pretest_story.py
+      - name: Upload PRU dialogue scan report
+        if: github.ref_name == 'pru/pretest-story-services-20261016'
+        uses: actions/upload-artifact@v4
+        with:
+          name: PRU-Pretest-Story-Scan
+          path: PRU-Pretest-Story-Scan.md
+          if-no-files-found: error
       - name: Verify PRL signature move integration
         run: |
           python3 - <<'PY'
