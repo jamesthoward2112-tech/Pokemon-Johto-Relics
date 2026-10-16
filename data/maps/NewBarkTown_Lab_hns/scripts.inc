@@ -168,14 +168,6 @@ NewBarkTown_Lab_EventScript_FossilDisplay_Amber::
 	msgbox NewBarkTown_Lab_Text_FossilDisplay_Amber, MSGBOX_NPC
 	end
 
-NewBarkTown_Lab_EventScript_DeclinedStarter::
-	hidemonpic
-	msgbox NewBarkTown_Lab_Text_DidntChooseStarter, MSGBOX_DEFAULT
-	closemessage
-	@callnative EnableStaticRandomizer
-	release
-	end
-
 NewBarkTown_Lab_EventScript_ChoseStarter::
 	@callnative EnableStaticRandomizer
 	hidemonpic
