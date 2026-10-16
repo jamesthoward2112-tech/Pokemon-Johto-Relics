@@ -1,0 +1,32 @@
+name: PRU live HNS Relic dialogue inventory
+
+on:
+  push:
+    branches:
+      - pru/pretest-story-services-20261016
+    paths:
+      - docs/PRU_DIALOGUE_AUDIT_RUN.md
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    name: Inventory active story dialogue
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enumerate all active HNS map dialogue and Relic flags
+        run: python3 tools/pru/inventory_relic_dialogue.py
+      - name: Print audit summary
+        run: sed -n '1,24p' PRU-Relic-Dialogue-Live-HNS-Inventory.md
+      - name: Upload dialogue inventory source evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: PRU-Relic-Dialogue-Audit
+          path: |
+            PRU-Relic-Dialogue-Live-HNS-Inventory.md
+            PRU-Relic-Dialogue-Live-HNS-Inventory.csv
+          if-no-files-found: error
+          retention-days: 14
