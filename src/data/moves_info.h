@@ -23772,4 +23772,420 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_BrickBreak,
     },
 
+
+    // PRU imported moves: indexed original donor metadata. The archived integration
+    // checklist distinguishes exact core mechanics from provisional secondary effects.
+    // authentic: Eevoboost. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_EEVOBOOST] =
+    {
+        .name = COMPOUND_STRING("Eevoboost"),
+        .description = COMPOUND_STRING("Boosts all five stats."),
+        .effect = EFFECT_PRU_EEVOBOOST,
+        .power = 0,
+        .type = TYPE_NORMAL,
+        .accuracy = 0,
+        .pp = 5,
+        .target = TARGET_USER,
+        .priority = -2,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .ignoresProtect = TRUE,
+        .snatchAffected = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .battleAnimScript = gBattleAnimMove_ExtremeEvoboost,
+    },
+
+    // partial: Lovely Bite. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_LOVELY_BITE] =
+    {
+        .name = COMPOUND_STRING("Lovely Bite"),
+        .description = COMPOUND_STRING("A bite that may charm."),
+        .effect = EFFECT_HIT,
+        .power = 85,
+        .type = TYPE_FAIRY,
+        .accuracy = 100,
+        .pp = 15,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .bitingMove = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
+        .battleAnimScript = gBattleAnimMove_Bite,
+    },
+
+    // partial: Shadow Fangs. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_SHADOW_FANGS] =
+    {
+        .name = COMPOUND_STRING("Shadow Fangs"),
+        .description = COMPOUND_STRING("Fangs with a curse."),
+        .effect = EFFECT_HIT,
+        .power = 80,
+        .type = TYPE_GHOST,
+        .accuracy = 100,
+        .pp = 15,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .bitingMove = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({ .moveEffect = MOVE_EFFECT_BLEED, .chance = 10, }),
+        .battleAnimScript = gBattleAnimMove_Bite,
+    },
+
+    // numeric: Angry Swarm. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_ANGRY_SWARM] =
+    {
+        .name = COMPOUND_STRING("Angry Swarm"),
+        .description = COMPOUND_STRING("An angry bug swarm."),
+        .effect = EFFECT_HIT,
+        .power = 80,
+        .type = TYPE_BUG,
+        .accuracy = 95,
+        .pp = 15,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .battleAnimScript = gBattleAnimMove_BugBuzz,
+    },
+
+    // numeric: Chrome Ball. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_CHROME_BALL] =
+    {
+        .name = COMPOUND_STRING("Chrome Ball"),
+        .description = COMPOUND_STRING("Hurls a chrome ball."),
+        .effect = EFFECT_HIT,
+        .power = 90,
+        .type = TYPE_STEEL,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .battleAnimScript = gBattleAnimMove_FlashCannon,
+    },
+
+    // numeric: Corner. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_CORNER] =
+    {
+        .name = COMPOUND_STRING("Corner"),
+        .description = COMPOUND_STRING("Corners the target."),
+        .effect = EFFECT_HIT,
+        .power = 80,
+        .type = TYPE_DARK,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .battleAnimScript = gBattleAnimMove_Crunch,
+    },
+
+    // numeric: Dark Resolve. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_DARK_RESOLVE] =
+    {
+        .name = COMPOUND_STRING("Dark Resolve"),
+        .description = COMPOUND_STRING("Dark energy erupts."),
+        .effect = EFFECT_HIT,
+        .power = 130,
+        .type = TYPE_DARK,
+        .accuracy = 100,
+        .pp = 5,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .battleAnimScript = gBattleAnimMove_DarkPulse,
+    },
+
+    // numeric: Deadly Toxin. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_DEADLY_TOXIN] =
+    {
+        .name = COMPOUND_STRING("Deadly Toxin"),
+        .description = COMPOUND_STRING("A concentrated toxin."),
+        .effect = EFFECT_HIT,
+        .power = 120,
+        .type = TYPE_POISON,
+        .accuracy = 70,
+        .pp = 5,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .battleAnimScript = gBattleAnimMove_SludgeBomb,
+    },
+
+    // numeric: Grimebuster. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_GRIMEBUSTER] =
+    {
+        .name = COMPOUND_STRING("Grimebuster"),
+        .description = COMPOUND_STRING("Powerful grime strikes."),
+        .effect = EFFECT_HIT,
+        .power = 130,
+        .type = TYPE_POISON,
+        .accuracy = 90,
+        .pp = 5,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .battleAnimScript = gBattleAnimMove_GunkShot,
+    },
+
+    // status_compat: Infection. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_INFECTION] =
+    {
+        .name = COMPOUND_STRING("Infection"),
+        .description = COMPOUND_STRING("Spreads infection."),
+        .effect = EFFECT_NON_VOLATILE_STATUS,
+        .power = 0,
+        .type = TYPE_POISON,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .argument = { .nonVolatileStatus = MOVE_EFFECT_POISON },
+        .battleAnimScript = gBattleAnimMove_PoisonGas,
+    },
+
+    // status_compat: Life Drain. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_LIFE_DRAIN] =
+    {
+        .name = COMPOUND_STRING("Life Drain"),
+        .description = COMPOUND_STRING("Drains target HP."),
+        .effect = EFFECT_ABSORB,
+        .power = 60,
+        .type = TYPE_GHOST,
+        .accuracy = 100,
+        .pp = 40,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .argument = { .absorbPercentage = 50 },
+        .battleAnimScript = gBattleAnimMove_GigaDrain,
+    },
+
+    // numeric: Metal Blast. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_METAL_BLAST] =
+    {
+        .name = COMPOUND_STRING("Metal Blast"),
+        .description = COMPOUND_STRING("A fierce metal strike."),
+        .effect = EFFECT_HIT,
+        .power = 120,
+        .type = TYPE_STEEL,
+        .accuracy = 85,
+        .pp = 5,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .battleAnimScript = gBattleAnimMove_IronHead,
+    },
+
+    // status_compat: Neurotoxin. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_NEUROTOXIN] =
+    {
+        .name = COMPOUND_STRING("Neurotoxin"),
+        .description = COMPOUND_STRING("Toxic nerve agent."),
+        .effect = EFFECT_NON_VOLATILE_STATUS,
+        .power = 0,
+        .type = TYPE_POISON,
+        .accuracy = 90,
+        .pp = 15,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .argument = { .nonVolatileStatus = MOVE_EFFECT_TOXIC },
+        .battleAnimScript = gBattleAnimMove_Toxic,
+    },
+
+    // numeric: Possess. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_POSSESS] =
+    {
+        .name = COMPOUND_STRING("Possess"),
+        .description = COMPOUND_STRING("A haunting assault."),
+        .effect = EFFECT_HIT,
+        .power = 120,
+        .type = TYPE_GHOST,
+        .accuracy = 70,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .battleAnimScript = gBattleAnimMove_ShadowBall,
+    },
+
+    // numeric: Quick Turn. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_QUICK_TURN] =
+    {
+        .name = COMPOUND_STRING("Quick Turn"),
+        .description = COMPOUND_STRING("A sharp dragon turn."),
+        .effect = EFFECT_HIT,
+        .power = 70,
+        .type = TYPE_DRAGON,
+        .accuracy = 100,
+        .pp = 15,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .battleAnimScript = gBattleAnimMove_DragonClaw,
+    },
+
+    // status_compat: Shadow Clamp. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_SHADOW_CLAMP] =
+    {
+        .name = COMPOUND_STRING("Shadow Clamp"),
+        .description = COMPOUND_STRING("Ghostly binding attack."),
+        .effect = EFFECT_HIT,
+        .power = 90,
+        .type = TYPE_GHOST,
+        .accuracy = 90,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .battleAnimScript = gBattleAnimMove_ShadowClaw,
+    },
+
+    // numeric: Smogscreen. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_SMOGSCREEN] =
+    {
+        .name = COMPOUND_STRING("Smogscreen"),
+        .description = COMPOUND_STRING("A blast of thick smog."),
+        .effect = EFFECT_HIT,
+        .power = 65,
+        .type = TYPE_POISON,
+        .accuracy = 90,
+        .pp = 25,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .battleAnimScript = gBattleAnimMove_Sludge,
+    },
+
+    // numeric: Soulshock. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_SOULSHOCK] =
+    {
+        .name = COMPOUND_STRING("Soulshock"),
+        .description = COMPOUND_STRING("A ghostly body blow."),
+        .effect = EFFECT_HIT,
+        .power = 65,
+        .type = TYPE_GHOST,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .battleAnimScript = gBattleAnimMove_ShadowPunch,
+    },
+
+    // status_compat: Stink Spray. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_STINK_SPRAY] =
+    {
+        .name = COMPOUND_STRING("Stink Spray"),
+        .description = COMPOUND_STRING("A blinding stench."),
+        .effect = EFFECT_ACCURACY_DOWN,
+        .power = 0,
+        .type = TYPE_POISON,
+        .accuracy = 90,
+        .pp = 20,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .battleAnimScript = gBattleAnimMove_Smokescreen,
+    },
+
+    // numeric: Vengeance. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_VENGEANCE] =
+    {
+        .name = COMPOUND_STRING("Vengeance"),
+        .description = COMPOUND_STRING("Retaliates with spite."),
+        .effect = EFFECT_HIT,
+        .power = 60,
+        .type = TYPE_DARK,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .battleAnimScript = gBattleAnimMove_Payback,
+    },
+
+    // numeric: Vile Venom. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_VILE_VENOM] =
+    {
+        .name = COMPOUND_STRING("Vile Venom"),
+        .description = COMPOUND_STRING("Potent venom strike."),
+        .effect = EFFECT_HIT,
+        .power = 95,
+        .type = TYPE_POISON,
+        .accuracy = 90,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .battleAnimScript = gBattleAnimMove_PoisonJab,
+    },
+
+    // approved_fallback: Assimilate. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_ASSIMILATE] =
+    {
+        .name = COMPOUND_STRING("Assimilate"),
+        .description = COMPOUND_STRING("Absorbs the target."),
+        .effect = EFFECT_ABSORB,
+        .power = 75,
+        .type = TYPE_GRASS,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .argument = { .absorbPercentage = 50 },
+        .battleAnimScript = gBattleAnimMove_GigaDrain,
+    },
+
+    // approved_fallback: Sparklingsky. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_SPARKLINGSKY] =
+    {
+        .name = COMPOUND_STRING("Sparklingsky"),
+        .description = COMPOUND_STRING("Explosive fire power."),
+        .effect = EFFECT_MAX_HP_50_RECOIL,
+        .power = 200,
+        .type = TYPE_FIRE,
+        .accuracy = 100,
+        .pp = 5,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .battleAnimScript = gBattleAnimMove_MindBlown,
+    },
+
+    // approved_fallback: Super Glitch. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_SUPER_GLITCH] =
+    {
+        .name = COMPOUND_STRING("Super Glitch"),
+        .description = COMPOUND_STRING("An unstable strike."),
+        .effect = EFFECT_HIT,
+        .power = 250,
+        .type = TYPE_PSYCHIC,
+        .accuracy = 100,
+        .pp = 1,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .battleAnimScript = gBattleAnimMove_Psystrike,
+    },
+
+    // approved_fallback: Terror Wave. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
+    [MOVE_TERROR_WAVE] =
+    {
+        .name = COMPOUND_STRING("Terror Wave"),
+        .description = COMPOUND_STRING("A terrifying wave."),
+        .effect = EFFECT_HIT,
+        .power = 110,
+        .type = TYPE_GHOST,
+        .accuracy = 85,
+        .pp = 5,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .battleAnimScript = gBattleAnimMove_ShadowBall,
+    },
+
 };
