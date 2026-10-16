@@ -12,3 +12,5 @@ Outstanding: original AlteRed donor move definitions, Eevoboost and the special 
 Trigger 2: retry after binary-safe restoration of `src/pokemon.c` (source blob repaired), and full original PRL status-chance merge for 57 existing moves; capture first subsequent compiler error.
 
 Trigger 3: verify central Pokemon source now includes the 19 species' real gfx, level-up and teachable tables; compiler should progress to source-authentic custom move requirements. Static PRL bleeding/fear percentages now imported for 57 standard moves.
+
+Trigger 4 (2026-10-16): rebuild after fixing the exact run 38940072721 RGBA-colour-type failure for external donor PNGs. Four donor sprite packs are normalized in the temporary Actions checkout to indexed 4bpp using the pinned JASC palettes; inspect the next real compile blocker, not source-only checks. No emulator-test claim.
