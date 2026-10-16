@@ -9,12 +9,14 @@ External assets: PRU Canonical Data Library `PRU_AlteRed_Three_Locked_Donors_202
 
 Port **PRL's custom battle moves, their original move effects, its custom abilities and their real engine triggers, and its Bleeding/Fear mechanics** together with the Pokémon. Do **not** substitute vanilla moves/abilities, merely copy names into enums, or remove the status systems to make the ROM compile. The newer PRL implementation must be adapted to PJR's battle engine rather than wholesale file replacement: PRL uses `BattleCalcValues` / `src/battle_set_effect.c` where current PJR uses a different earlier effect path.
 
-### PRL move audit (21 battle moves + 1 support/sentinel, PJR source has none)
+### PRL move audit (37 original move-data records; 21 absent from PJR)
 
 - `AMBER_BLADE`, `SUN_RITE`, `TECTONIC_TIDE`, `EPOCH_CRASH`, `RELIC_WISH`, `EDEN_BLOOM`, `SCORCHWING`, `BASTION_CANNON`
 - `LOVELY_BITE`, `SHADOW_FANGS`, `RIP_AND_TEAR`, `EERIE_FOG`, `SEISMIC_SLAM`, `SOIL_DRAIN`, `BRAVADO`, `RAGING_SOULS`
 - `IRON_FANGS`, `BEATDOWN`, `TAKE_FLIGHT`, `INSECT_IMPACT`, `EEVOBOOST`
 - `RANDOM_TEACHABLE` is a supporting/sentinel symbol; validate engine usage and never pretend it is a user-selectable attack.
+
+The full PRL custom-data section contains **37 records**: 21 missing from the current PJR move ID/data tables and 16 already present in PJR (preserve IDs and reconcile original effects individually). Authentic PRL source data has been staged without compile-time registration at `tools/pru/donors/prl_custom_move_records.reference.h`. Original PRL ability records (including internal placeholder slots, for reconciliation only) are staged at `tools/pru/donors/prl_custom_ability_records.reference.h`.
 
 PRL sources: `include/constants/moves.h`, `src/data/moves_info.h`, `src/data/pokemon/level_up_learnsets/prl_custom.h`, `src/data/pokemon/teachable_learnsets/prl_custom.h`, plus animation/effect code, battle scripts, move tutor and evolution references as needed.
 
@@ -64,7 +66,7 @@ Relevant PRL files: `include/constants/battle.h`, `include/battle.h`, `src/battl
 Produce machine-readable per-species report of: engine ID / display Dex number / source provenance / HP-Attack-Defense-SpAttack-SpDefense-Speed / primary and secondary types / all ability slots and *implemented trigger paths* / level-up-TM-tutor-egg moves and signature effects / evolution conditions and items / normal & shiny 64×64 front/back and 32×64 two-frame icon, palette indices / cries / encounters / one-save catchability.
 
 Additional mechanic tests:
-- [ ] Each of 21 real custom moves selectable, behaves as intended in battle, respects PP, targeting, animations, damage and secondary effects.
+- [ ] Each of the 37 PRL custom move records audited; all approved playable moves selectable and behave as intended in battle, respects PP, targeting, animations, damage and secondary effects.
 - [ ] Each of 16 custom abilities triggers as originally designed, works with opposing abilities and does not collide with PJR IDs.
 - [ ] Bleeding can be inflicted by standard and custom cutting/biting attacks at source probabilities; red BLD icon, end-turn 1/16, cures, statuses, fainting/rounding tested.
 - [ ] Fear 2-turn duration, 1.5× damage taken, escape prevention, stacking and cure behaviour tested in singles/doubles.
