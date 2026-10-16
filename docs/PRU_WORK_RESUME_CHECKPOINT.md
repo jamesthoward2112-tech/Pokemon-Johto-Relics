@@ -1,5 +1,17 @@
 # PRU Work Resume Checkpoint
 
+## Current GitHub-only progress — further repairs and verified CI blockers (16 October)
+
+- **Working branch** `pru/complete-selective-integration-20261016`, all changes described here remotely committed. Latest explicit compile trigger `aa4968fa4b75ce09e7bb3a8e6bc0e53902f963b8`.
+- **Repaired second binary-corrupted source**: `src/pokemon.c` was invalid non-UTF8/binary at line 1242 and produced thousands of stray-character compile errors. Reconstructed from prior verified clean source on PR #11, commit `17b8ca3fb202896b3ffbd5aaf4430365c997451f`. Note: original corrupt Work file bytes cannot be trusted; source history remains available.
+- **Ported all 57 standard PRL move-specific Bleeding/Fear chances** where matching PJR moves already exist, preserving original PJR move effects (e.g. Bite flinch and 5% Bleeding). Of those, 49 Bleeding and eight Fear; commit `5faf0611a3403b7bc9d18415c7af430a032c957e`. Two other source moves, Rip and Tear and Iron Fangs, already integrate status effects. Lovely Bite and Shadow Fangs await exact PRL Infatuation/Curse effect support.
+- **Fixed 19 species registration include omissions** in central `src/pokemon.c`: `#include "data/graphics/pru_pokemon.h"`, `#include "data/pokemon/level_up_learnsets/pru.h"` and `#include "data/pokemon/teachable_learnsets/pru.h"`. Commit `2ba3bdd9310534661c1803fd237ac712e7199456`. This addresses CI run `38939057476` errors where all 19 species graphics and learnsets were undeclared.
+- **Compiled result so far:** GitHub Actions run `38939057476` FAILED on missing 19-species graphics/learnset registration (fixed above). Next explicit CI run triggered at `aa4968fa...`, inspect for new genuine compilation errors and capture its run ID. Do not report current ROM as successfully built or tested.
+- **Outstanding before final ROM:** ~26 external donor custom moves in learnsets still not registered (from AlteRed and Procyon/Deneb). Source and moves' original effects must be obtained/ported rather than silently substituted. Eevoboost, Lovely Bite/Shadow Fangs, remaining Fear special cases, Eerie Fog end-turn stat decay, UI Red BLD, gameplay evolution/obtainability, Mewsion event #8 and full emulator QA. User's Rock Shop separate QA build remains deferred; never merge temporary new-game warp to production.
+- **Efficiency and recoverability:** Only build on explicit `docs/PRU_CI_TRIGGER.md` checkpoint edits; always update GitHub checkpoints, and do not waste Work credits or recertify completed donor audits.
+
+
+
 ## GitHub-only continuation — 2026-10-16, after Work credit exhaustion
 
 - **Verified remote branch:** `pru/complete-selective-integration-20261016`. The restored species/header and engine work described here are remotely committed, not local-only.
