@@ -12,6 +12,15 @@ Updated: 2026-10-16 (recovery after interrupted Work session)
 - Immediate priorities: reconstruct the 19 species/data/assets with the ID-freeze verifier; then port remaining authentic moves/abilities/status mechanics; then implement Mewsion issue #8; finally compile in CI and emulator-test.
 - Local build constraint remains: the scratch host lacks `arm-none-eabi-gcc`, `pkg-config` and libpng development headers, so GitHub Actions is the authoritative build environment.
 
+## Species reconstruction checkpoint — 2026-10-16T17:02:00Z
+- Active branch: `pru/complete-selective-integration-20261016`; last confirmed remote commit before this batch: `453cd93d26a40b33c78926b4f0ef1b593f4473bc`.
+- Reconstructed the frozen species-ID baseline and appended the exact approved IDs 1624–1642. `tools/pru/verify_species_import.py` verifies every pre-existing ID through 1623 against `tools/pru/baselines/pjr_ids_through_1623.json` and rejects nuMew or ordinary Wooper/Quagsire replacement.
+- Added pinned PRL species records and level-up/teachable learnsets for the 15 genuine imports. Added approved Kanto Ultimate/AlteRed records for Adnokana, Cheauking, Frytning index 110 and Mewsion/Mewduo index 150. Original custom move names remain in the learnsets; no vanilla fallback substitutions were made.
+- Imported front, back, normal palette, shiny palette and two-frame party icon for all 19 species: 75 files are byte-identical to pinned PRL commit `6ee9b984521ac6f2beaf995f771a726379e55c88`, and 20 are byte-identical to the approved external donor pack. All 57 PNGs passed 64x64 battle-sprite / 32x64 icon dimension checks.
+- Static verification: `python3 tools/pru/verify_species_import.py --donor /workspace/scratch/8f11ddff019a/prl-repo` PASS; `git diff --check` PASS.
+- Build status: not yet compiled. The authentic learnsets intentionally expose the next required dependency batch: PRL ability constants/effects and original AlteRed/Procyon custom move constants/effects must be registered before compilation. This is staged source, not a playable ROM and not emulator-tested.
+- Next priority: implement the missing genuine custom moves and all PRL abilities, then run the first consolidated CI compile. Evolution links, acquisition locations, issue #8 Mewsion event and egg-move reconciliation remain outstanding.
+
 ## Purpose
 A **GitHub-published recovery checkpoint** for Pokémon Relics Ultimate's consolidated integration. Update this file after each meaningful source milestone and before every expected Work-session limit. Local-only logs are insufficient; **push the checkpoint and source commits to the remote branch** so a future conversation can resume without repeating investigation.
 

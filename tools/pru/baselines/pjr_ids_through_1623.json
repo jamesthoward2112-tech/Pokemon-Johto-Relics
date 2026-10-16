@@ -1,0 +1,10 @@
+{
+  "maximum_frozen_species_id": 1623,
+  "normalized_mapping_entry_count": 1624,
+  "normalized_mapping_sha256": "d24c47dcbae731277bcb5fd18b7b18bcd35f0a6c22f12eb2305cecb287364162",
+  "tail_anchors": {
+    "SPECIES_SCARABUB": 1573,
+    "SPECIES_RELIC_HO_OH": 1609,
+    "SPECIES_TYRANITAR_REDUX_JJ": 1623
+  }
+}
