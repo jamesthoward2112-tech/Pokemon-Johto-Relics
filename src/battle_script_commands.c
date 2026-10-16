@@ -2370,6 +2370,10 @@ static void SetNonVolatileStatus(enum BattlerId effectBattler, enum MoveEffect e
         gBattleMons[effectBattler].status1 |= STATUS1_FROSTBITE;
         gBattlescriptCurrInstr = BattleScript_MoveEffectFrostbite;
         break;
+    case MOVE_EFFECT_BLEED:
+        gBattleMons[effectBattler].status1 |= STATUS1_BLEED;
+        gBattlescriptCurrInstr = BattleScript_MoveEffectBleed;
+        break;
     default:
         break;
     }
@@ -2525,6 +2529,7 @@ void SetMoveEffect(enum BattlerId battlerAtk, enum BattlerId effectBattler, enum
     case MOVE_EFFECT_PARALYSIS:
     case MOVE_EFFECT_TOXIC:
     case MOVE_EFFECT_FROSTBITE:
+    case MOVE_EFFECT_BLEED:
         if (IsSafeguardProtected(gBattlerAttacker, gEffectBattler, GetBattlerAbility(gBattlerAttacker)) && !primary)
         {
             gBattlescriptCurrInstr = battleScript;
@@ -3738,7 +3743,7 @@ static bool32 CanApplyAdditionalEffect(const struct AdditionalEffect *additional
         return FALSE;
 
     // If Toxic Chain will activate it blocks all other non volatile effects
-    if (gBattleStruct->toxicChainPriority && additionalEffect->moveEffect <= MOVE_EFFECT_FROSTBITE)
+    if (gBattleStruct->toxicChainPriority && (additionalEffect->moveEffect <= MOVE_EFFECT_FROSTBITE || additionalEffect->moveEffect == MOVE_EFFECT_BLEED))
         return FALSE;
 
     if (additionalEffect->self
