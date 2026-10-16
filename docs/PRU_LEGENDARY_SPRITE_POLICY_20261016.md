@@ -1,3 +1,12 @@
+# PRU Legendary Sprite Policy — Latest Locked Decision
+
+## Locked art decision — 16 October 2026: Registeel option A
+**APPROVED / retain:** Registeel Option A, the **Odyssey II redesign** displayed in the six-image Regi/Mew/Deoxys comparison: grey spiked armoured robot with pink/red central face/eye; matches `Registeel_front.png` and `Registeel_back.png` in `/Project Hoenn Relics/Sprite Resources/Odyssey II - Selected Hoenn/`. Both verified native 64×64 RGBA. Original project PHR selection is reaffirmed for PRU. Do **not** use Wild Indigo Option B's black shadow front; that candidate is REJECTED.
+**NOT APPROVED / REJECT:** Odyssey II Deoxys image is **not a sufficiently distinctive redesign** according to the user. It may be another pose but is NOT the selected custom Deoxys. Keep current Deoxys sprite + Normal/Attack/Defense/Speed functionality pending a truly changed GBA-ready design; do not reintroduce Odyssey II Deoxys as a "custom" recommendation.
+**Mew:** current Xenoverse Retro option **not chosen**. Seek a more distinctive *native GBA-ready* Mew alternative from sprite libraries, uploaded ROMs, or creator-approved source; do not assume nuMew (a separate custom species) is ordinary Mew.
+**Artwork fallback:** preserve vanilla overworld appearance unless matching user-approved overworld sprites are supplied. Battle replacements need 64×64 front/back, matching party icon where possible, palette/shiny/QA; no resizing/redrawing.
+**Acceptance:** approved as art direction/source lock, not a claim that the graphics have already been wired/compiled/emulator-tested in standalone PRU.
+
 # PRU Legendary and Mythical Sprite Policy — 16 October 2026
 **Latest user-approved sourcing rules. This document supersedes the earlier generic Odyssey II 21-legend sheet. No ROM assets swapped yet.**
 
