@@ -3,8 +3,8 @@ name: PRU consolidated integration build
 on:
   push:
     branches: [pru/complete-selective-integration-20261016]
-  pull_request:
-    branches: [pru/complete-selective-integration-20261016]
+    paths:
+      - docs/PRU_CI_TRIGGER.md
   workflow_dispatch:
 
 permissions:
