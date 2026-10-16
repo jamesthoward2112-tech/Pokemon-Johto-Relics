@@ -57,3 +57,14 @@ At **each meaningful code milestone or before work interruption**, overwrite thi
 - Source/data provenance and unresolved donor/graphics assumptions.
 
 **Rule: push source + checkpoint at meaningful intervals, and always before an expected usage cutoff. Never say the checkpoint is remotely recoverable until a `git ls-remote origin` check confirms it.**
+
+## Independent acquisition follow-up — ready to cherry-pick (16 October)
+
+The separate `pru/encounter-ecology-20261016` branch and [PR #10](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/pull/10) now include the completed **nine ordinary Pokémon source-audit follow-up**:
+- Tyrogue Mt Mortar 1F south day/night Lv18–20 (Hitmonlee and Hitmontop); Wurmple Ilex Forest day Lv8–9 (Cascoon); Nincada Union Cave 1F Lv8–9 (Shedinja).
+- Eevee Route 29 and all Water Stone, Fire Stone, friendship day/night evolution branches confirmed from species source (Vaporeon, Flareon, Espeon, Umbreon).
+- Goldenrod 2F now sells Deep Sea Scale and Tooth, complementing Clamperl's existing Route 20 fishing and Gorebyss/Huntail source evolution definitions.
+- `tools/pru/check_nine_acquisition.py` runs under `.github/workflows/pru-encounter-ecology.yml`. GitHub Actions passed on commit `d02fd90bfd30ec643b0e5f95c8f40b97db9a0a42`; this is **source-only QA**, not compilation or emulator testing.
+- The full 444-row acquisition matrix now marks these nine `EVOLUTION_DEFINED_QA_PENDING` rather than unresolved.
+- Detailed report: `docs/PRU_ENCOUNTER_ECOLOGY_20261016.md`; follow-up branch tip at time of note: `330bc40411ef8d7181e89912b4ae544dbbacd1e2`.
+- **Handoff:** after recovering and pushing Work's unpublished source, selectively merge/cherry-pick PR #10 into the consolidated integration branch, resolve the `SPECIES_GEMLIN` dependency, then compile and emulator-test. Avoid source-file replacement that drops Work's newly ported species data.
