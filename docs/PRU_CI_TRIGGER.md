@@ -8,3 +8,5 @@ Trigger 1: compile the recovered 19-species/9-ability integration after repairin
 This is a **source build checkpoint only**. Do not describe it as emulator-tested or release-ready.
 
 Outstanding: original AlteRed donor move definitions, Eevoboost and the special Lovely Bite/Shadow Fangs effects, Fear/Bleeding status presentation and all remaining integration QA.
+
+Trigger 2: retry after binary-safe restoration of `src/pokemon.c` (source blob repaired), and full original PRL status-chance merge for 57 existing moves; capture first subsequent compiler error.
