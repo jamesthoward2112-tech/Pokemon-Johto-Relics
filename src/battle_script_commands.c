@@ -2575,6 +2575,18 @@ void SetMoveEffect(enum BattlerId battlerAtk, enum BattlerId effectBattler, enum
             }
         }
         break;
+    case MOVE_EFFECT_FEAR:
+        if (gBattleMons[gEffectBattler].volatiles.fearTimer == 0)
+        {
+            gBattleMons[gEffectBattler].volatiles.fearTimer = 2;
+            BattleScriptPush(battleScript);
+            gBattlescriptCurrInstr = BattleScript_MoveEffectFear;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = battleScript;
+        }
+        break;
     case MOVE_EFFECT_FLINCH:
         if (abilities[effectBattler] == ABILITY_INNER_FOCUS)
         {
