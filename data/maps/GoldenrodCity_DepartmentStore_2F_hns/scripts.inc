@@ -82,6 +82,61 @@ GoldenrodDeptStore2_Pokemart:
 	.2byte ITEM_MAX_REPEL
 	pokemartlistend
 
+// QA-ONLY badge selector. Cycle 0 -> 4 -> 8 -> 0 from a fresh game.
+// This script is deliberately NOT present in the actual Rock Shop PR.
+GoldenrodDeptStore2_EventScript_QATierControl::
+	lock
+	faceplayer
+	goto_if_set FLAG_BADGE08_GET, GoldenrodDeptStore2_EventScript_QAZeroBadges
+	goto_if_set FLAG_BADGE04_GET, GoldenrodDeptStore2_EventScript_QAEightBadges
+	setflag FLAG_BADGE01_GET
+	setflag FLAG_BADGE02_GET
+	setflag FLAG_BADGE03_GET
+	setflag FLAG_BADGE04_GET
+	setvar VAR_NUM_BADGES, 4
+	msgbox GoldenrodDeptStore2_Text_QAFourBadges, MSGBOX_DEFAULT
+	release
+	end
+
+GoldenrodDeptStore2_EventScript_QAEightBadges::
+	setflag FLAG_BADGE05_GET
+	setflag FLAG_BADGE06_GET
+	setflag FLAG_BADGE07_GET
+	setflag FLAG_BADGE08_GET
+	setvar VAR_NUM_BADGES, 8
+	msgbox GoldenrodDeptStore2_Text_QAEightBadges, MSGBOX_DEFAULT
+	release
+	end
+
+GoldenrodDeptStore2_EventScript_QAZeroBadges::
+	clearflag FLAG_BADGE01_GET
+	clearflag FLAG_BADGE02_GET
+	clearflag FLAG_BADGE03_GET
+	clearflag FLAG_BADGE04_GET
+	clearflag FLAG_BADGE05_GET
+	clearflag FLAG_BADGE06_GET
+	clearflag FLAG_BADGE07_GET
+	clearflag FLAG_BADGE08_GET
+	setvar VAR_NUM_BADGES, 0
+	msgbox GoldenrodDeptStore2_Text_QAZeroBadges, MSGBOX_DEFAULT
+	release
+	end
+
+GoldenrodDeptStore2_Text_QAFourBadges:
+	.string "QA MODE: 4 BADGES.\\p"
+	.string "The ROCK SHOP has 29 items.\\l"
+	.string "Talk again for 8 badges.$"
+
+GoldenrodDeptStore2_Text_QAEightBadges:
+	.string "QA MODE: 8 BADGES.\\p"
+	.string "The ROCK SHOP has 48 items.\\l"
+	.string "Talk again to reset.$"
+
+GoldenrodDeptStore2_Text_QAZeroBadges:
+	.string "QA MODE: 0 BADGES.\\p"
+	.string "The ROCK SHOP has 6 items.\\l"
+	.string "Talk again for 4 badges.$"
+
 GoldenrodDeptStore2_EventScript_RockShop::
 	lock
 	faceplayer
