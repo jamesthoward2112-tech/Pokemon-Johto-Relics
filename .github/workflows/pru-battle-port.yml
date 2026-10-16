@@ -47,7 +47,7 @@ jobs:
       - name: Install toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3
+          sudo apt-get install -y --no-install-recommends binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3 python3-pil
       - name: Install PJR Infinity donor assets
         run: |
           cat \
@@ -87,6 +87,8 @@ jobs:
           PY
       - name: Check Tin Tower shortcut and final encounter
         run: python3 tools/check_pjr_tintower_shortcut.py
+      - name: Convert approved RGBA donor sprites to indexed GBA art
+        run: python3 tools/pru/prepare_external_donor_art.py
       - name: Build PRU consolidated integration
         run: |
           if make hns -j2 -O > /tmp/pru-build.log 2>&1; then
