@@ -29,6 +29,9 @@ MtSilver_SummitDay_EventScript_SetDay::
 MtSilver_SummitDay_EventScript_Red::
 	lock
 	faceplayer
+	@ After a defeated Red encounter, repair a full-bag Crest handoff without
+	@ requiring another battle or treating the Rainbow Crest as already owned.
+	goto_if_set FLAG_DEFEATED_RED, MtSilver_SummitDay_EventScript_CheckPendingCrest
 	msgbox MtSilver_SummitDay_Text_Red, MSGBOX_DEFAULT
 	closemessage
 	goto_if_unset FLAG_IS_KANTO_CHAMPION, MtSilver_SummitDay_EventScript_RedStandard
@@ -57,10 +60,9 @@ MtSilver_SummitDay_EventScript_RedOnDefeat::
 	setflag FLAG_DEFEATED_RED
 	setflag FLAG_PJR_RED_DEFEATED
 	goto_if_set FLAG_PJR_GOT_RAINBOW_CREST, MtSilver_SummitDay_EventScript_AfterCrest
-	giveitem ITEM_ANCIENT_RAINBOW_CREST
-	setflag FLAG_PJR_GOT_RAINBOW_CREST
-	msgbox MtSilver_SummitDay_Text_Crest, MSGBOX_DEFAULT
+	call MtSilver_SummitDay_EventScript_AwardCrest
 MtSilver_SummitDay_EventScript_AfterCrest:
+	@ Keep the original Hall of Fame and Red progression after this scene.
 	call_if_set FLAG_PJR_RELIC_ALPHORACLE, MtSilver_SummitDay_EventScript_UnlockRelicHoOh
 	setflag FLAG_END_NUZLOCKE
 	clearflag FLAG_HIDE_MTSILVER_RED
@@ -68,6 +70,44 @@ MtSilver_SummitDay_EventScript_AfterCrest:
 	waitstate
 	releaseall
 	end
+
+@ Both initial reward and a subsequent safe retry use the same one-time
+@ Crest handoff.  A full bag MUST NOT mark the Crest as received.
+MtSilver_SummitDay_EventScript_AwardCrest::
+	giveitem ITEM_ANCIENT_RAINBOW_CREST
+	goto_if_eq VAR_RESULT, FALSE, MtSilver_SummitDay_EventScript_CrestFullBag
+	setflag FLAG_PJR_GOT_RAINBOW_CREST
+	msgbox MtSilver_SummitDay_Text_Crest, MSGBOX_DEFAULT
+	return
+
+MtSilver_SummitDay_EventScript_CrestFullBag::
+	msgbox MtSilver_SummitDay_Text_CrestFullBag, MSGBOX_DEFAULT
+	return
+
+MtSilver_SummitDay_EventScript_CheckPendingCrest::
+	goto_if_set FLAG_PJR_GOT_RAINBOW_CREST, MtSilver_SummitDay_EventScript_RedAlreadyRewarded
+	msgbox MtSilver_SummitDay_Text_CrestPending, MSGBOX_DEFAULT
+	call MtSilver_SummitDay_EventScript_AwardCrest
+	call_if_set FLAG_PJR_GOT_RAINBOW_CREST, MtSilver_SummitDay_EventScript_UnlockRelicHoOh
+	release
+	end
+
+MtSilver_SummitDay_EventScript_RedAlreadyRewarded::
+	msgbox MtSilver_SummitDay_Text_Red, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+MtSilver_SummitDay_Text_CrestPending:
+	.string "RED left something behind.\p"
+	.string "Make room for the CREST\n"
+	.string "if your bag is full.$"
+
+MtSilver_SummitDay_Text_CrestFullBag:
+	.string "There is no room for the\n"
+	.string "ANCIENT RAINBOW CREST!\p"
+	.string "Return with bag space.\n"
+	.string "The CREST is still here.$"
 
 MtSilver_SummitDay_Text_Red:
 	.string ".........................\n"
