@@ -2,6 +2,14 @@
 
 > **Working copy updated 16 October 2026** on `pru/pretest-story-services-20261016`. Canonical source-first coverage from original audit `pru/ultimate-pokedex-encounters-20261016`, reconciled with live consolidated event code. **Not yet marked exhaustive or emulator-confirmed.**
 
+## GitHub runner narrative inventory, late source repairs and boundaries
+
+- **Runner [38964424218](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38964424218) completed GREEN.** Source inventory: **550 HNS script-bearing maps**, 159 maps with keyword-matched Relic/story content, **663 matching dialogue lines**. **0 exact stale-choice/sequel regex-pattern hits**. Download artifact `PRU-Relic-Dialogue-Audit` from Actions for the full CSV / Markdown of maps, source line numbers, dialogue and all critical Relic flag occurrences. This is exhaustive **lexical coverage for the scanner's defined terms**, NOT exhaustive dialogue interpretation or emulator signoff.
+- Full GitHub runner [38963859049](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38963859049) **SUCCESS** at `112f5b6d...` for the initial point-one changes: map/starter audit, PRL donor moves/abilities, toolchain and 32-MiB ROM build all passed. Follow-up build trigger `ea388120650fc17fc45829eb25e9de6719fbd1d3` includes new Relic safety fixes not in earlier ROM; inspect actual run and result before claiming built.
+- **New source guard: Bellchime Trail's dormant shortcut helper** once contained save-compatibility backfill that set `FLAG_PJR_RELIC_ALPHORACLE` / `FLAG_PJR_GOT_RAINBOW_CREST` based merely on Ho-Oh phase or defeating Red. We removed manufactured catch/item flags and now require Alphoracle catch + Crest ownership. The helper is **not referenced by current BellchimeTrail map event records**, so no proof it was reachable in live gameplay; guard nonetheless protects future wiring.
+- **New source guard: Red's Ancient Rainbow Crest** at `MtSilver_SummitDay_hns` now sets the obtained flag only after a successful `giveitem` result. With full bag, a later interaction with Red offers the Crest without another battle; ordinary Red rematches remain after successful handoff. Ho-Oh unlock requires the obtained flag, not simply Alphoracle. **Gameplay QA pending**.
+- **Unfixed inherited PJR concerns** remain: second-plus Hall of Fame runs can reset caught legendary flags and may label/award Kanto Champion early (depending on accessible badge progression), so the four-championship workstream must guard these. Cannot claim all legendary encounters safe yet.
+
 ## 16 October — verified source changes on this working branch
 
 - **Elm directly awards the one Lv5 Pikachu**, with no starter select/acceptance, and three research fossils replace the original Pokéball objects in `NewBarkTown_Lab_hns`. The opening now explains the fossils and Pikachu reacting to ancient Resonance. Silver's theft, the Mystery Egg and original Togepi Egg flow remain coded and require fresh-save gameplay QA.
@@ -108,7 +116,7 @@ This file is a **critical-path source-confirmed first pass**, not a dishonest cl
 - [x] PRL Pallet/Kanto report, Giovanni/Silph, fossils and Hoenn passage conflicts identified.
 - [x] Steven's Sinjoh/Hoenn *NPC backstory* distinguished from forbidden prior player history.
 - [x] PHR H009/H010/H022 donor sequel/timeline and Relicanth narrative conflicts identified; data reuse separated from dialogue port.
-- [ ] All active HNS maps (including side NPCs, signage, optional legends, roaming interactions, followers and rematch dialogue) text scanned and conflicts fixed.
+- [x] **Lexical inventory** across 550 active HNS map script files (663 matching story lines); zero exact tracked choice/sequel phrases, runner report saved.\n- [ ] **Full semantic sign-off** of every reachable side NPC, optional legendary, follower, rematch and alternate state; lexical scan alone does not prove this.
 - [ ] PRL's *every* Kanto archaeology scene inventoried, classified as reusable/adaptable/excluded, with destination HNS maps and flags.
 - [ ] All custom Pokémon donor lore from PKR, PHR, PJR and PRL reconciled, including superseded designs and late additions.
 - [ ] Every Relic obtainable through an independent wild/evolution/quest/battle route, with an NPC hint; NPC gifts are additional, never the only source. No hidden previous-ROM requirement.
