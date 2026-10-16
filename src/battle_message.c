@@ -790,6 +790,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_PKMNGOTFROSTBITE]                     = COMPOUND_STRING("{B_EFF_NAME_WITH_PREFIX} got frostbite!"),
     [STRINGID_PKMNGOTBLEED]                         = COMPOUND_STRING("{B_EFF_NAME_WITH_PREFIX} began bleeding!"),
     [STRINGID_PKMNHURTBYBLEED]                       = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is hurt by bleeding!"),
+    [STRINGID_PKMNFEARED]                            = COMPOUND_STRING("{B_EFF_NAME_WITH_PREFIX} became terrified!"),
     [STRINGID_PKMNSITEMHEALEDFROSTBITE]             = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX}'s {B_LAST_ITEM} cured its frostbite!"),
     [STRINGID_ATTACKERHEALEDITSFROSTBITE]           = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} cured its frostbite through sheer determination so you wouldn't worry!"),
     [STRINGID_PKMNFROSTBITEHEALED]                  = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX}'s frostbite was cured!"),
