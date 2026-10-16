@@ -29,9 +29,11 @@ MtSilver_SummitDay_EventScript_SetDay::
 MtSilver_SummitDay_EventScript_Red::
 	lock
 	faceplayer
-	@ After a defeated Red encounter, repair a full-bag Crest handoff without
-	@ requiring another battle or treating the Rainbow Crest as already owned.
-	goto_if_set FLAG_DEFEATED_RED, MtSilver_SummitDay_EventScript_CheckPendingCrest
+	@ A full-bag Crest can be collected on a later conversation, without
+	@ preventing ordinary Red rematches once the Crest is received.
+	goto_if_unset FLAG_DEFEATED_RED, MtSilver_SummitDay_EventScript_RedBattleNormal
+	goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, MtSilver_SummitDay_EventScript_CheckPendingCrest
+MtSilver_SummitDay_EventScript_RedBattleNormal::
 	msgbox MtSilver_SummitDay_Text_Red, MSGBOX_DEFAULT
 	closemessage
 	goto_if_unset FLAG_IS_KANTO_CHAMPION, MtSilver_SummitDay_EventScript_RedStandard
@@ -89,12 +91,6 @@ MtSilver_SummitDay_EventScript_CheckPendingCrest::
 	msgbox MtSilver_SummitDay_Text_CrestPending, MSGBOX_DEFAULT
 	call MtSilver_SummitDay_EventScript_AwardCrest
 	call_if_set FLAG_PJR_GOT_RAINBOW_CREST, MtSilver_SummitDay_EventScript_UnlockRelicHoOh
-	release
-	end
-
-MtSilver_SummitDay_EventScript_RedAlreadyRewarded::
-	msgbox MtSilver_SummitDay_Text_Red, MSGBOX_DEFAULT
-	closemessage
 	release
 	end
 
