@@ -70,14 +70,19 @@ def main() -> None:
                      ("EVO_ITEM", "ITEM_DEEP_SEA_SCALE"))
 
     market = (ROOT / "data/maps/GoldenrodCity_DepartmentStore_2F_hns/scripts.inc").read_text()
-    shop = market.split("GoldenrodDeptStore2_RockShop:", 1)[1].split("pokemartlistend", 1)[0]
-    for item in ("WATER_STONE", "FIRE_STONE", "DEEP_SEA_SCALE", "DEEP_SEA_TOOTH"):
-        must(f"ITEM_{item}" in shop, f"Goldenrod 2F Rock Shop missing ITEM_{item}")
+    initial = market.split("GoldenrodDeptStore2_RockShop:", 1)[1].split("pokemartlistend", 1)[0]
+    expanded = market.split("GoldenrodDeptStore2_RockShopFourBadges:", 1)[1].split("pokemartlistend", 1)[0]
+    for item in ("WATER_STONE", "FIRE_STONE"):
+        must(f".2byte ITEM_{item}" in initial, f"Goldenrod Rock Shop basic tier missing ITEM_{item}")
+    for item in ("DEEP_SEA_SCALE", "DEEP_SEA_TOOTH"):
+        must(f".2byte ITEM_{item}" in expanded, f"Goldenrod four-badge tier missing ITEM_{item}")
+    must("goto_if_set FLAG_BADGE04_GET" in market,
+         "Four-badge Rock Shop unlock path missing")
     config = (ROOT / "include/config/pokemon.h").read_text()
     must("P_SHEDINJA_BALL" in config, "Shedinja evolution ball rule absent")
 
     print("PASS: all nine have specified source evolutions, catchable base species")
-    print("PASS: Goldenrod Rock Shop sells required stones and both Deep Sea items")
+    print("PASS: basic stones in Goldenrod; Deep Sea evolution items unlock after four badges")
     print("NOTE: friendship time, Nincada spare-party/ball, Wurmple PID, and")
     print("      item evolution still require actual emulator gameplay testing.")
 
