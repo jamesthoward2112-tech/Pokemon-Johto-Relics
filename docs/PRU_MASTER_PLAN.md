@@ -5,7 +5,7 @@ Donor: `pjr-rebuild` at `9e9ec181961efbbdba88055876dfa9b18fd0ae64`
 Status: **development only; not playable-approved**.
 
 ## Non-negotiable scope
-- Separate PJR-based ROM. Never overwrite/rebrand the existing `pjr-rebuild` release.
+- **PRU is a fully standalone adventure and separate ROM**, not an extension/sequel of PKR, PHR, PJR, or PRL. It uses PJR as a technical/map/story donor only. No previous-ROM badge, Champion, money, party or save assumptions; no regional transfer/Hoenn playable chapter. The in-game title/credits/build artefact should eventually use `Pokémon Relics Ultimate` / `PRU` rather than PJR. Never overwrite the original `pjr-rebuild` release.
 - Preserve PJR's Johto + Kanto maps and story, including the first Johto Elite Four, Kanto/Sinjoh continuation and existing league rematches.
 - Pikachu is the **only offered first partner** at Elm's lab. The other research Poké Balls may remain for the theft storyline, but they are not obtainable by the player.
 - All standard Kanto/Johto/Hoenn species (#001–#386), all nine traditional starter families, and every approved Relic/custom species are to be catchable or reachable by normal evolution. Species families may be geographically restricted by map/story access, but are not unlocked in waves.
@@ -30,6 +30,12 @@ Status: **development only; not playable-approved**.
 - **Gift conversion pass 1 committed:** Elm's post-first-League starter Egg awards no longer grant eggs; original League directions and progress flags are retained. Three town aide scripts no longer give Chikorita (Violet City), Cyndaquil (Azalea Town), or Totodile (Goldenrod City); aides and their own Pokémon remain standing in towns and offer wild-location clues. The early-game starter families are already obtainable in the wild.
 - **Elm Togepi Egg preserved by user request:** keep `VioletCity_PokemonCenter_hns/scripts.inc`'s `giveegg SPECIES_TOGEPI`, Elm/Kimono story dialogue, `FLAG_RECEIVED_TOGEPI_EGG`, original hatching/return progression and Mr. Pokémon's separate Mystery Egg key item as PJR currently implements them. This exception is final; **do not redesign or remove the Togepi gift**.
 - **No claim yet that all gifts are removed.** Run comprehensive Pokémon-grant code search throughout other events, game corner, restoration, and trade endpoints. Master all-species import is not complete.
+
+## Standalone Relic dialogue — source audit
+- Canonical chapter/timeline and source conflicts are tracked in [PRU_STANDALONE_RELIC_DIALOGUE_AUDIT.md](PRU_STANDALONE_RELIC_DIALOGUE_AUDIT.md). Treat this register as blocking until its unchecked scene-by-scene and fresh-save QA gates are closed.
+- **Johto first**: Elm/Alph Resonance and PJR's radio-tower and first League plot are this player's first adventures. Kanto historical material may be adapted from PRL (most recent Kanto source), but cannot assume PKR/PRL's Kanto-first Champion, duplicate Giovanni-led Rocket or unknown golden bird after PJR's Ho-Oh reveal.
+- **Other regions are world lore only**: Steven may mention Hoenn archaeology and rare species; the player has never travelled or transferred Pokémon to Hoenn in PRU.
+- **Separate PKR 2.0**: PRL-to-Kanto-only conversion belongs in its own workstream/repository branch and is not a predecessor of PRU; do not strip PJR's Sinjoh/advanced legendary maps to enforce a #386 core planning index.
 
 ## Required gates BEFORE a playable declaration
 1. Workflow `PJR Beta build` succeeds on this feature branch/PR.
