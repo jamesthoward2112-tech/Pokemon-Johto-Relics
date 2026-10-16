@@ -87,9 +87,17 @@ jobs:
           PY
       - name: Check Tin Tower shortcut and final encounter
         run: python3 tools/check_pjr_tintower_shortcut.py
-      - name: Build PJR Beta
+      - name: Build PRU consolidated integration
         run: |
-          make hns -j4 -O
+          if make hns -j2 -O > /tmp/pru-build.log 2>&1; then
+            echo "ROM compilation completed successfully."
+          else
+            echo "First compiler/linker errors:"
+            grep -n -m 70 -E 'error:|Error:|undefined reference|make: \*\*\*' /tmp/pru-build.log || true
+            echo "Build log tail:"
+            tail -n 55 /tmp/pru-build.log
+            exit 1
+          fi
       - name: Package PJR Beta
         run: |
           cp pokehns.gba PRU-Consolidated-WIP.gba
