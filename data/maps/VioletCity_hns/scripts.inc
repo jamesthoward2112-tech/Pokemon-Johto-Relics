@@ -514,12 +514,12 @@ VioletCity_EventScript_PJRGiftChikoritaMon::
 	end
 
 VioletCity_EventScript_PJRGiftChikorita_Text_Clue:
-	.string "I'm one of ELM's aides.\\p"
-	.string "Wild CHIKORITA have been\\n"
-	.string "spotted near ROUTE 29.\\p"
-	.string "This one is my partner.\\n"
+	.string "I'm one of ELM's aides.\p"
+	.string "Wild CHIKORITA have been\n"
+	.string "spotted near ROUTE 29.\p"
+	.string "This one is my partner.\n"
 	.string "Catch one of your own!$"
 
 VioletCity_EventScript_PJRGiftChikorita_Text_Mon:
-	.string "CHIKORITA seems happy to\\n"
+	.string "CHIKORITA seems happy to\n"
 	.string "travel with ELM's aide.$"
