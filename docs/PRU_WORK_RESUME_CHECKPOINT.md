@@ -1,5 +1,15 @@
 # PRU Work Resume Checkpoint
 
+## Follow-up checkpoint — 2026-10-16 19:37 BST / CI sprite-format repair
+
+- Recovered GitHub Actions run [38940072721](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38940072721), which failed at `graphics/pokemon/adnokana/back.4bpp`: original AlteRed PNG is RGBA (PNG colour type 6) but `gbagfx` requires indexed artwork.
+- Verified all twelve external donor PNGs (front/back/icon for Adnokana, Cheauking, Frytning and Mewsion) are RGBA; PRL-sourced sprites remain separately pinned.
+- Committed `tools/pru/prepare_external_donor_art.py`: deterministic conversion of these twelve PNGs to 16-index GBA-ready source in the CI checkout; preserved exact existing 16-colour JASC battle palettes for front/back, transparent index zero, and recorded colour deviation and icon-palette visual QA warnings. Does not overwrite or remove the original binary donor graphics committed to source control.
+- Updated `.github/workflows/pru-battle-port.yml` to install `python3-pil` and run the conversion before `make hns`.
+- **QA honest gate:** compilation not yet verified after these changes. Icons still require in-emulator palette confirmation (shared PJR `iconPalIndex`), and unresolved original donor moves may reveal subsequent compiler errors. No emulator or released ROM claimed.
+- Continue fixing only genuine errors on `pru/complete-selective-integration-20261016`, keep `pjr-rebuild` and QA Rock Shop warp untouched. CI is intentionally limited to `docs/PRU_CI_TRIGGER.md` explicit pushes.
+
+
 ## Current GitHub-only progress — further repairs and verified CI blockers (16 October)
 
 - **Working branch** `pru/complete-selective-integration-20261016`, all changes described here remotely committed. Latest explicit compile trigger `aa4968fa4b75ce09e7bb3a8e6bc0e53902f963b8`.
