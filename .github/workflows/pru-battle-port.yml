@@ -1,10 +1,10 @@
-name: PRU battle engine integration build
+name: PRU consolidated integration build
 
 on:
   push:
-    branches: [pru/battle-port-phase1-20261016]
+    branches: [pru/complete-selective-integration-20261016]
   pull_request:
-    branches: [pjr-rebuild]
+    branches: [pru/complete-selective-integration-20261016]
   workflow_dispatch:
 
 permissions:
@@ -36,6 +36,8 @@ jobs:
           assert '.weatherType = BATTLE_WEATHER_FOG' in info
           print('PASS: 9 PRL signature move records present in the active engine tables')
           PY
+      - name: Verify native PRL ability integration
+        run: python3 tools/pru/verify_custom_abilities.py
       - name: Restore exact Azul Agua donor tiles
         run: |
           base64 -d assets/pjr_azul_agua/building_tiles.png.b64 > data/tilesets/primary/azul_agua_building_hns/tiles.png
@@ -90,17 +92,17 @@ jobs:
           make hns -j4 -O
       - name: Package PJR Beta
         run: |
-          cp pokehns.gba PRU-Battle-Port.gba
-          arm-none-eabi-nm -n pokehns.elf > PRU-Battle-Port.sym
-          sha256sum PRU-Battle-Port.gba > PRU-Battle-Port-SHA256.txt
-          printf "%s\n" "$GITHUB_SHA" > PRU-Battle-Port-Commit.txt
+          cp pokehns.gba PRU-Consolidated-WIP.gba
+          arm-none-eabi-nm -n pokehns.elf > PRU-Consolidated-WIP.sym
+          sha256sum PRU-Consolidated-WIP.gba > PRU-Consolidated-WIP-SHA256.txt
+          printf "%s\n" "$GITHUB_SHA" > PRU-Consolidated-WIP-Commit.txt
       - uses: actions/upload-artifact@v4
         with:
-          name: PRU-Battle-Port
+          name: PRU-Consolidated-WIP
           path: |
-            PRU-Battle-Port.gba
-            PRU-Battle-Port.sym
-            PRU-Battle-Port-SHA256.txt
-            PRU-Battle-Port-Commit.txt
+            PRU-Consolidated-WIP.gba
+            PRU-Consolidated-WIP.sym
+            PRU-Consolidated-WIP-SHA256.txt
+            PRU-Consolidated-WIP-Commit.txt
           if-no-files-found: error
           retention-days: 14
