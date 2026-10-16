@@ -20,3 +20,8 @@ Trigger 5: run fail-fast custom move registration check plus full HnS compilatio
 Trigger 6: compile the 25 native move records and separately implemented original PRL signature effects, after repairing the sole previous linker error (BattleScript_AbilityHpHeal changed from private ':' to exported '::'). Include the cheap 25-move source checker; on success preserve ROM, symbols, SHA-256 and commit. No emulator claims until actual gameplay QA.
 
 Trigger 7: compile the complete 25 donor-move integration and late canonical Kanto Ultimate evolutions (Arbok level 40 -> Adnokana; Weezing level 40 -> Cheauking, Thunder Stone -> Frytning). Prior run 38956023183 succeeded at commit 1493c0f5 before evolution links. Capture final artifact SHA256. Build success does not imply emulator-tested or original external move-effect parity.
+
+
+## Pre-test opening/dialogue source build 1 (2026-10-16)
+
+Build branch `pru/pretest-story-services-20261016` after Elm automatic Pikachu + three fossils, Crest-state dialogue, Oak Johto-first Kanto research, source scanner and title-plan documentation. Verify exact first failure if any and save the build artifact; **do not claim emulator gameplay success**. Preserve `pjr-rebuild` and original consolidated branch.
