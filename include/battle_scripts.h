@@ -538,6 +538,7 @@ extern const u8 BattleScript_RecoverHPZMove[];
 extern const u8 BattleScript_StatUpZMove[];
 extern const u8 BattleScript_HealReplacementZMove[];
 extern const u8 BattleScript_EffectExtremeEvoboost[];
+extern const u8 BattleScript_EffectPRUEevoboost[];
 
 // max moves
 extern const u8 BattleScript_EffectRaiseStatAllies[];
