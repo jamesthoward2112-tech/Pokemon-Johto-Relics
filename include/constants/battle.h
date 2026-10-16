@@ -293,7 +293,8 @@ enum VolatileFlags
     F(VOLATILE_OCTOLOCKED_BY,               octolockedBy,                  (enum BattlerId, MAX_BITS(MAX_BATTLERS_COUNT))) \
     F(VOLATILE_PARADOX_BOOSTED_STAT,        paradoxBoostedStat,            (enum Stat, NUM_STATS - 1)) \
     F(VOLATILE_UNABLE_TO_USE_MOVE,          unableToUseMove,               (u32, 1)) \
-    F(VOLATILE_ACTIVATE_DANCER,             activateDancer,                (u32, 1))
+    F(VOLATILE_ACTIVATE_DANCER,             activateDancer,                (u32, 1)) \
+    F(VOLATILE_FEAR,                        fearTimer,                     (u32, 3))
 
 
 /* Use within a macro to get the maximum allowed value for a volatile. Requires _typeMaxValue as input. */
@@ -603,6 +604,7 @@ enum __attribute__((packed)) MoveEffect
 
     // PRU: append status effect rather than shifting legacy PJR effect IDs.
     MOVE_EFFECT_BLEED,
+    MOVE_EFFECT_FEAR,
     NUM_MOVE_EFFECTS
 };
 
