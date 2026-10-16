@@ -9,7 +9,7 @@ Status: **development only; not playable-approved**.
 - Preserve PJR's Johto + Kanto maps and story, including the first Johto Elite Four, Kanto/Sinjoh continuation and existing league rematches.
 - Pikachu is the **only offered first partner** at Elm's lab. The other research Poké Balls may remain for the theft storyline, but they are not obtainable by the player.
 - All standard Kanto/Johto/Hoenn species (#001–#386), all nine traditional starter families, and every approved Relic/custom species are to be catchable or reachable by normal evolution. Species families may be geographically restricted by map/story access, but are not unlocked in waves.
-- No gift Pokémon or gift eggs besides the opening Pikachu. Existing story-critical egg handoffs must be redesigned with progression flags still intact; do not blindly delete scripts.
+- No optional Pokémon gifts besides the opening Pikachu. **Professor Elm's original Togepi Egg is an explicitly approved story exception and MUST remain exactly as part of PJR's existing plot and hatching sequence.** No additional optional starter Eggs.
 - Retain existing PJR Elite Four and Gym rematch stories, then add the dedicated four-championship track.
 - First championship: untouched PJR levels/teams/singles; second: similar party doubles approximately +10 levels; third: new teams and level cap; fourth: strongest Lv100 doubles and level cap.
 - **Ancient Candy** unlocks only after **second** championship; keep Chansey training NPCs before that. Candy raises level and is reusable; avoid reverse candy by temporary battle-level adjustment for championship 3+.
@@ -28,7 +28,7 @@ Status: **development only; not playable-approved**.
 - Porygon remains catchable on Route 10 and Castform on Route 42. All inserted starter-stage encounters use existing PJR wild encounter slots; no gift conversion beyond the Pikachu opening yet.
 - Main HNS encounter baseline before targeted inserts contained 165 unique maps / 257 encounter variants; 265 of the original 386 were directly present in at least one HNS wild table. The other 121 mostly require evolution or static/legendary audits. This is **not** a claim that all 386 were already obtainable.
 - **Gift conversion pass 1 committed:** Elm's post-first-League starter Egg awards no longer grant eggs; original League directions and progress flags are retained. Three town aide scripts no longer give Chikorita (Violet City), Cyndaquil (Azalea Town), or Totodile (Goldenrod City); aides and their own Pokémon remain standing in towns and offer wild-location clues. The early-game starter families are already obtainable in the wild.
-- **Story-critical Togepi Egg still pending.** `VioletCity_PokemonCenter_hns/scripts.inc` has `giveegg SPECIES_TOGEPI`; Elm/Kimono dialogues and `FLAG_RECEIVED_TOGEPI_EGG` are plot-linked. Do not remove until follow-up story-flag compatibility is verified. Mr. Pokémon's separate Mystery Egg key item and early plot remain untouched.
+- **Elm Togepi Egg preserved by user request:** keep `VioletCity_PokemonCenter_hns/scripts.inc`'s `giveegg SPECIES_TOGEPI`, Elm/Kimono story dialogue, `FLAG_RECEIVED_TOGEPI_EGG`, original hatching/return progression and Mr. Pokémon's separate Mystery Egg key item as PJR currently implements them. This exception is final; **do not redesign or remove the Togepi gift**.
 - **No claim yet that all gifts are removed.** Run comprehensive Pokémon-grant code search throughout other events, game corner, restoration, and trade endpoints. Master all-species import is not complete.
 
 ## Required gates BEFORE a playable declaration
@@ -36,7 +36,7 @@ Status: **development only; not playable-approved**.
 2. Emulator fresh-save: Oak intro -> New Bark -> Elm's lab. Inspect all pages for textbox overflow.
 3. Interact with each of three Poké Balls: only left ball yields Pikachu. Verify cry, battle back/front, party icon, nickname and PC deposits.
 4. Finish Mr. Pokémon / Silver / police theft / Elm return; ensure visible balls and flags remain coherent, and Route 30 opens.
-5. Audit every gift/egg/trade/static species award. Preserve Oak/Elm story logic while converting disallowed Pokémon rewards to catchable encounters; ordinary in-game trades also need an explicit policy.
+5. Audit optional gift/trade/static species awards. **Exempt the original Elm Togepi Egg and all associated story flags/dialogue.** Convert only disallowed optional Pokémon gifts; ordinary in-game trades need an explicit policy.
 6. Reconcile every custom donor: distinguish species, form, shiny palette, trainer-only form, superseded design. Do not allocate final PJR species IDs without the resolved registry.
 7. Audit `src/data/wild_encounters.json` (approximately 2 MB): first 14 species insertion completed by exact slot, but validate every day/night/surf/fishing table, rarity, DexNav and swarms in an emulator. Do not claim the entire National Dex is implemented.
 8. Ensure all 386 base families plus approved custom families have a complete acquisition chain: encounter, evolution item/condition, or scripted legendary battle. No inaccessible gifts.
