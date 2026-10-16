@@ -1,5 +1,13 @@
 # PRU Work Resume Checkpoint
 
+## PRU binary inspection — first successful test artifact
+
+- Downloaded and inspected artifact ID `12069724170`: ZIP contains `PRU-Consolidated-WIP.gba` (33,554,432 bytes), `.sym`, SHA-256 and commit. Independently verified ROM SHA-256 `8e8899132ca32ba41c2a5584e279efd052fc76257fc76ccc9923d0aa307a7ffd`, matching artifact manifest.
+- Verified GBA header checksum matches calculated value `0xB2`; linked symbols for `BattleScript_AbilityHpHeal`, `BattleScript_EffectPRUEevoboost`, `BattleScript_MoveEffectPRUInfatuation` and `BattleScript_MoveEffectPRUCurse` exist.
+- **Still WIP identity:** internal ROM title `POKEMON HNS`, game code `BPEE`, not yet branded PRU. This should be audited before the standalone release; do not mistake the WIP artifact for a final named release. Gameplay/emulator QA still required.
+- Final verification source-build incorporating new Arbok/Weezing evolutions: [38956851767](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38956851767) triggered from `73e17e535137c7b74038b816645cf694c1600def`; check actual result, do not assume success.
+
+
 ## 16 October 2026 — first successful consolidated ROM build
 
 - **Verified GREEN:** GitHub Actions [38956023183](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38956023183) built `make hns` successfully and packaged `PRU-Consolidated-WIP.gba` with `.sym`, SHA-256 and commit file. Triggering commit `1493c0f5e147a0cce179a4b257e73177e076680d`; artifact `PRU-Consolidated-WIP` GitHub ID `12069724170`. Both authentic-signature/static move QA scripts, donor art conversion, and final ELF link passed. **Not emulator-tested or ready for release.**
