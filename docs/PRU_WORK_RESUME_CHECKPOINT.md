@@ -1,5 +1,15 @@
 # PRU Work Resume Checkpoint
 
+## 16 October 2026 — Twenty-five donor moves implementation checkpoint
+
+- **Published code:** all 25 required names appended in `include/constants/moves.h` and 25 live battle records added in `src/data/moves_info.h` (not merely reference comments).
+- **Authentic PRL signatures:** `EEVOBOOST` uses its own new `EFFECT_PRU_EEVOBOOST` engine effect, shared +1 five-stat script while leaving existing Extreme Evoboost Z-Move +2 untouched. `LOVELY_BITE` inflicts 10% independent target-only Infatuation and 10% Bleeding. `SHADOW_FANGS` inflicts 10% independent target-only Ghost Curse and 10% Bleeding; it does not sacrifice the attacker’s HP. Relevant native status cases and script symbols are committed.
+- **Procyon/Deneb external eighteen:** registered original documented type, category, power, accuracy, PP and names. Numeric move records are real. Native effects are *provisional* for Infection, Neurotoxin, Life Drain, Stink Spray and various status/utility effects pending direct donor code or verified reference; consult `docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md`.
+- **AlteRed original four:** registered separate move records using the four approved compatibility approaches. Distinguish from exact effect ports. Type and power of Super Glitch/Assimilate are provisional compatibility and not claimed source-identical.
+- **CI check:** explicit [run 38955135175](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38955135175) is compiling source at triggering SHA `1b706b16...` after the new fail-fast move registration gate passed. Subsequent Lovely Bite/Shadow Fangs engine changes are remotely committed after the CI trigger, so require a follow-on compile. Do NOT claim a successful ROM before checking CI.
+- **Unresolved:** confirm full ROM compile, test effect proc independence, Native Curses in doubles, late donor original effect parity, species evolutions/encounters, Mewsion event, Rock Shop integration, 444 Pokédex, save compatibility and emulator QA. Existing PJR release and all temp freshstart hacks remain untouched.
+
+
 ## 2026-10-16 20:02 BST — compile verdict and fail-fast safeguard
 
 - **Final run verdict:** [GitHub Actions 38951072549](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38951072549) **FAILED** after sprite-format conversion succeeded. At `build/hns/src/pokemon.o`, compiler reports 25 undeclared original custom `MOVE_*` names in `src/data/pokemon/level_up_learnsets/pru.h` and `src/data/pokemon/teachable_learnsets/pru.h`. All names and attribution/compatibility constraints are explicitly tracked in `docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md`.
