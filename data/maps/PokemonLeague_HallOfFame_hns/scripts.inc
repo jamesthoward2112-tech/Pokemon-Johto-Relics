@@ -36,7 +36,19 @@ PokemonLeague_HallOfFame_EventScript_CutsceneKantoChamp::
 	applymovement OBJ_EVENT_ID_PLAYER, PokemonLeague_HallOfFame_Movement_PlayerEnter
 	waitmovement OBJ_EVENT_ID_PLAYER
 	waitmovement LOCALID_HALLOFFAME_LANCE
+	goto_if_unset FLAG_BADGE09_GET, PokemonLeague_HallOfFame_EventScript_JohtoRematchText
+	goto_if_unset FLAG_BADGE10_GET, PokemonLeague_HallOfFame_EventScript_JohtoRematchText
+	goto_if_unset FLAG_BADGE11_GET, PokemonLeague_HallOfFame_EventScript_JohtoRematchText
+	goto_if_unset FLAG_BADGE12_GET, PokemonLeague_HallOfFame_EventScript_JohtoRematchText
+	goto_if_unset FLAG_BADGE13_GET, PokemonLeague_HallOfFame_EventScript_JohtoRematchText
+	goto_if_unset FLAG_BADGE14_GET, PokemonLeague_HallOfFame_EventScript_JohtoRematchText
+	goto_if_unset FLAG_BADGE15_GET, PokemonLeague_HallOfFame_EventScript_JohtoRematchText
+	goto_if_unset FLAG_BADGE16_GET, PokemonLeague_HallOfFame_EventScript_JohtoRematchText
 	msgbox PokemonLeague_HallOfFame_Rematch_LanceText, MSGBOX_DEFAULT
+	goto PokemonLeague_HallOfFame_EventScript_RematchTextDone
+PokemonLeague_HallOfFame_EventScript_JohtoRematchText::
+	msgbox PokemonLeague_HallOfFame_JohtoRematch_LanceText, MSGBOX_DEFAULT
+PokemonLeague_HallOfFame_EventScript_RematchTextDone::
 	closemessage
 	special GivePartyMonChampionRibbon
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
@@ -67,7 +79,20 @@ PokemonLeague_HallOfFame_EventScript_SetFirstGameClearFlags::
 	setvar VAR_SSAQUA_STATE, 0
 	return
 
+@ A replay of Johto's League alone must never mark the Kanto title or
+@ reset one-off legendary encounters. Only the FIRST clear with all eight
+@ Kanto badges grants Kanto postgame unlocks.
 PokemonLeague_HallOfFame_EventScript_SetGameClearFlags::
+	setvar VAR_LEAGUE_STATE, 1
+	goto_if_set FLAG_IS_KANTO_CHAMPION, PokemonLeague_HallOfFame_EventScript_KantoAlreadyAwarded
+	goto_if_unset FLAG_BADGE09_GET, PokemonLeague_HallOfFame_EventScript_KantoAlreadyAwarded
+	goto_if_unset FLAG_BADGE10_GET, PokemonLeague_HallOfFame_EventScript_KantoAlreadyAwarded
+	goto_if_unset FLAG_BADGE11_GET, PokemonLeague_HallOfFame_EventScript_KantoAlreadyAwarded
+	goto_if_unset FLAG_BADGE12_GET, PokemonLeague_HallOfFame_EventScript_KantoAlreadyAwarded
+	goto_if_unset FLAG_BADGE13_GET, PokemonLeague_HallOfFame_EventScript_KantoAlreadyAwarded
+	goto_if_unset FLAG_BADGE14_GET, PokemonLeague_HallOfFame_EventScript_KantoAlreadyAwarded
+	goto_if_unset FLAG_BADGE15_GET, PokemonLeague_HallOfFame_EventScript_KantoAlreadyAwarded
+	goto_if_unset FLAG_BADGE16_GET, PokemonLeague_HallOfFame_EventScript_KantoAlreadyAwarded
 	setflag FLAG_HIDE_CERULEANCAVE_GUARD
 	setflag FLAG_HIDE_AZALEA_TOWN_SLOWPOKE
 	setflag FLAG_HIDE_SLOWPOKE_WELL_TAILLESS_SLOWPOKES
@@ -99,12 +124,10 @@ PokemonLeague_HallOfFame_EventScript_SetGameClearFlags::
 	call_if_ge VAR_ALOLA_STATE, 4, PokemonLeague_HallOfFame_EventScript_SpawnAlolaMons
 	call PokemonLeague_HallOfFame_EventScript_SpawnSinjohMons
 	call_if_ge VAR_SINJOH_STORYLINE, 13 PokemonLeague_HallOfFame_EventScript_SpawnArceus
-	clearflag FLAG_DEFEATED_MEW
-	clearflag FLAG_CAUGHT_MEW
-	clearflag FLAG_BATTLED_DEOXYS
-	clearflag FLAG_DEFEATED_DEOXYS
-	clearflag FLAG_SUMMONED_MTMOON_JIRACHI
-	setvar VAR_LEAGUE_STATE, 1
+	@ PRU: existing Mew, Deoxys and Jirachi results remain permanent.
+	return
+
+PokemonLeague_HallOfFame_EventScript_KantoAlreadyAwarded::
 	return
 
 PokemonLeague_HallOfFame_EventScript_SpawnAlolaMons::
@@ -140,8 +163,7 @@ PokemonLeague_HallOfFame_EventScript_SpawnPichu::
 	return
 
 PokemonLeague_HallOfFame_EventScript_SpawnRoamers::
-	clearflag FLAG_CAUGHT_ENTEI
-	clearflag FLAG_CAUGHT_RAIKOU
+	@ Keep Johto/R-E relic catches; never wipe legacy caught flags on rerun.
 	special InitRoamer
 	copyvar VAR_0x8004, VAR_ROAMER_POKEMON_HNS
 	special InitKantoRoamers
@@ -223,3 +245,13 @@ PokemonLeague_HallOfFame_Rematch_LanceText:
     .string "you, and your trusted partners,\l"
     .string "as champions once again.$"
 
+
+@ Johto League rematches are allowed before all Kanto badges. They are
+@ championship defenses, NOT proof of a Kanto championship.
+PokemonLeague_HallOfFame_JohtoRematch_LanceText:
+    .string "LANCE: Once again, you've earned\\n"
+    .string "your place among JOHTO's finest.\\p"
+    .string "Your partners have grown, yet your\\n"
+    .string "bond is as strong as ever.\\p"
+    .string "Let us record this LEAGUE victory,\\n"
+    .string "{PLAYER}, and your trusted team!$"
