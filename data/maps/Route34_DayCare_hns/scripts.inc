@@ -662,37 +662,37 @@ Route34_DayCare_EventScript_PRUExpertDone::
 	end
 
 Route34_DayCare_Text_PRUExpertIntro:
-	.string "I'm the BREEDING CENTRE's\\n"
-	.string "MOVE EXPERT!\\p"
-	.string "I can teach EGG MOVES and\\n"
+	.string "I'm the BREEDING CENTRE's\n"
+	.string "MOVE EXPERT!\p"
+	.string "I can teach EGG MOVES and\n"
 	.string "special TUTOR MOVES, for free.$"
 
 Route34_DayCare_Text_PRUExpertEggOffer:
-	.string "Would you like to learn\\n"
+	.string "Would you like to learn\n"
 	.string "some EGG MOVES?$"
 
 Route34_DayCare_Text_PRUExpertTutorOffer:
-	.string "How about TUTOR MOVES\\n"
+	.string "How about TUTOR MOVES\n"
 	.string "instead?$"
 
 Route34_DayCare_Text_PRUExpertChooseMon:
-	.string "Choose a POKéMON from your\\n"
+	.string "Choose a POKéMON from your\n"
 	.string "party or PC.$"
 
 Route34_DayCare_Text_PRUExpertChooseMove:
 	.string "Which move shall I teach?$"
 
 Route34_DayCare_Text_PRUExpertCannotTeachEgg:
-	.string "An EGG must hatch before\\n"
+	.string "An EGG must hatch before\n"
 	.string "I can teach it moves.$"
 
 Route34_DayCare_Text_PRUExpertNoMoves:
-	.string "No more moves of this kind\\n"
+	.string "No more moves of this kind\n"
 	.string "are available for it.$"
 
 Route34_DayCare_Text_PRUExpertTaughtMove:
 	.string "Great! Another move learned!$"
 
 Route34_DayCare_Text_PRUExpertGoodbye:
-	.string "Come back whenever you need\\n"
+	.string "Come back whenever you need\n"
 	.string "some new moves!$"
