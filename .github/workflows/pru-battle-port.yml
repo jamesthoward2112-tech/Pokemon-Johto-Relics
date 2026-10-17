@@ -81,6 +81,10 @@ jobs:
           base64 -d assets/pjr_azul_agua/rock_shop_tiles.png.b64 > data/tilesets/secondary/azul_agua_rock_shop_hns/tiles.png
           echo "19d1988dc7426e0be5957918de876e7a500ae327cc99bf53ef55d172d6a0f240  data/tilesets/primary/azul_agua_building_hns/tiles.png" | sha256sum -c -
           echo "5dac0833356b45617e3321e3686a15460a4f88d3f631cd1697071802f21bcc6a  data/tilesets/secondary/azul_agua_rock_shop_hns/tiles.png" | sha256sum -c -
+      - name: Install toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3 python3-pil
       - name: Archive 38 PRL Crystal Redux battle backgrounds (library only)
         if: github.ref_name == 'pru/noxichu-last-wish-title-test-20261017'
         run: python3 tools/pru/export_battle_background_library.py
@@ -95,10 +99,6 @@ jobs:
             PRU-Battle-Background-Library/Previews/Crystal_Redux_All_38_Contact_Sheet.png
           if-no-files-found: error
           retention-days: 30
-      - name: Install toolchain
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3 python3-pil
       - name: Install PJR Infinity donor assets
         run: |
           cat \
