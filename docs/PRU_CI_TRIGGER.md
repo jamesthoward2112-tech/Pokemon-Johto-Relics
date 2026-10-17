@@ -49,3 +49,8 @@ This file is a configured push-path CI trigger: prior map-only Red fix did **not
 ## 17 October — PRU Johto/Kanto title and legendary persistence compile retry
 
 Build branch `pru/noxichu-last-wish-title-test-20261017` after source fixes for Hall of Fame/Champions Room. Source checks passed in run 39022869046 but make hns failed on incorrect doubled backslashes in newly added GBA dialogue at ChampionsRoom line 441. Corrected source in commits `b699f141` and `1f507eae`; strengthened `tools/pru/check_pretest_story.py` with literal-backslash validation and the first Silver battle. Verify build and ROM artifact, not just static checks. This is a new build of the title-approved Last Wish-only PRU test variant; no Gengar or Emerald animations. Preserve legacy `pjr-rebuild`.
+
+
+## 17 Oct PRU gift inventory
+
+Run live HNS and donor map-script gift audit for Chikorita, Torchic, Mudkip and Treecko before selecting balanced replacement NPC gifts. Print source paths/lines; follow with specific changes on this preserved title/story branch.
