@@ -16505,6 +16505,24 @@ const struct ItemInfo gItemsInfo[] =
     PJR_CATALYST_ITEM(ITEM_ANCIENT_BELL, "ANCIENT BELL",
         "An Alph relic that\nresonates with\nMiltank.") ,
 
+    [ITEM_ANCIENT_STONE] =
+    {
+        .name = ITEM_NAME("ANCIENT STONE"),
+        .price = (I_PRICE >= GEN_7) ? 3000 : 2100,
+        .description = COMPOUND_STRING(
+            "An old stone that\n"
+            "awakens dormant\n"
+            "RELIC powers."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_EVOLUTION_STONE,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
+        .effect = gItemEffect_EvoItem,
+        .flingPower = 30,
+        .iconPic = gItemIcon_ShinyStone,
+        .iconPalette = gItemIconPalette_ShinyStone,
+    },
+
     [ITEM_ANCIENT_RAINBOW_CREST] =
     {
         .name = ITEM_NAME("ANCIENT CREST"),
