@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Reproducible *test-only* PRU boot/title assembly.
 
-Flow: native pokeemerald intro -> original Last Wish Scene 0 -> black fade
+Flow: native copyright/startup -> original Last Wish Scene 0 -> black fade
 -> approved Noxichu cavern art -> native flashing PRESS START.
 Executed by GitHub Actions before make hns; normal source branches untouched.
 """
@@ -105,17 +105,17 @@ def install_last_wish():
 def patch_boot_flow():
     intro = Path("src/intro.c")
     source = intro.read_text()
-    # Bypass only the HNS copyright/intro dispatch for this test variant;
-    # fall through to the preserved vanilla Emerald copyright/startup.
+    # Keep the native copyright/startup sequence; bypass the HnS-specific
+    # Gengar copyright/intro dispatch for this test variant only.
     old = "#elif IS_HNS\n    return SetUpCopyrightScreenHns();\n#endif"
     assert source.count(old) == 1
     source = source.replace(
         old,
-        "#elif IS_HNS\n    // PRU test: use the normal Emerald opening below.\n#endif",
+        "#elif IS_HNS\n    // PRU test: use the native copyright/startup below.\n#endif",
     )
-    # HnS has EXPANSION_INTRO enabled: that route plays the Gengar intro
-    # and never calls MainCB2_EndIntro. Select native Emerald scenes 1-3
-    # for this isolated PRU test, preserving the expansion path elsewhere.
+    # Launch Last Wish directly after the copyright/startup sequence.
+    # Both the Gengar Expansion intro AND the Emerald biking/Groudon/Rayquaza
+    # montage are deliberately removed from this PRU test ROM.
     expansion_branch = ("#if EXPANSION_INTRO == TRUE\n"
                         "        SetMainCallback2(CB2_ExpansionIntro);\n"
                         "        CreateTask(Task_HandleExpansionIntro, 0);\n"
@@ -123,11 +123,11 @@ def patch_boot_flow():
                         "        CreateTask(Task_Scene1_Load, 0);\n"
                         "        SetMainCallback2(MainCB2_Intro);\n"
                         "#endif")
-    assert source.count(expansion_branch) == 1, "Emerald/Expansion intro dispatch has changed"
+    assert source.count(expansion_branch) == 1, "Intro dispatch has changed"
     source = source.replace(expansion_branch,
-                            expansion_branch.replace("#if EXPANSION_INTRO == TRUE",
-                                                     "#if EXPANSION_INTRO == TRUE && !IS_HNS"))
-    print("INTRO_DISPATCH_PASS PRU uses Emerald intro instead of Gengar Expansion intro")
+                            "        // PRU: Last Wish is the only intro movie.\n"
+                            "        SetMainCallback2(CB2_InitPRUHwlScene0);")
+    print("INTRO_DISPATCH_PASS startup -> Last Wish, no Emerald/Gengar movie")
     old = ("static void MainCB2_EndIntro(void)\n"
            "{\n"
            "    if (!UpdatePaletteFade())\n"
@@ -142,7 +142,7 @@ def patch_boot_flow():
            "}")
     assert source.count(old) == 1
     intro.write_text(source.replace(old, new))
-    print("BOOT_FLOW_PASS Emerald -> Last Wish -> PRU title")
+    print("BOOT_FLOW_PASS startup -> Last Wish -> PRU title (no Emerald/Gengar montage)")
 
 def install_title_art():
     parts = sorted(ASSET_B64.parent.glob(ASSET_B64.name + '.part*'))
