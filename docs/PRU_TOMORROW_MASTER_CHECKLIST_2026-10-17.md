@@ -47,6 +47,13 @@ Recorded 16 October 2026. **Pre-test source/content phase.** User explicitly wan
 - Hall of Fame and Champions Room rewritten so Johto championship replays do not proclaim a Kanto title without all eight Kanto badges; previously caught Mew/Entei/Raikou and defeated Mew/Deoxys/Jirachi event states cannot be wiped on replay. Static asserts added; initial compiler text escape error corrected. Full CI run **`39023135810` GREEN**, compiled test artifact `12098065185`, SHA-256 `97fb3993591febdd39cb7194fda88fb75f9480f8e2d442f98be265102ba6ce81`. Gameplay test of these states still outstanding.
 - Still open: verify Silver physically stole a stored Pokémon (not one of the fossils); event-map text overflow, badge-gated gift/legend catch retry, and all P0 recurring trainers/shops/centres.
 
+### 17 October — source built: Chansey training and rare gifts
+
+- **BUILT, gameplay QA pending** — Existing Nurse Joy companion Chansey NPCs in 26 active HNS Pokémon Centres offer a Yes/No training double with two Chansey (Memento/Heal Pulse). 21 location tiers from Lv7 Cherrygrove through Lv100 Battle Frontier, rematchable with cleartrainerflag; requires two usable Pokémon. No new human trainer NPC or upstairs construction. Static check `tools/pru/check_chansey_training.py` passes.
+- **BUILT, gameplay QA pending** — Violet aide's misleading Chikorita clue now offers optional Lv8 Ralts (one-time, full storage retry); Steven in Saffron Silph Co gives choice of Treecko, Beldum or Bagon at Lv10 rather than Treecko/Torchic/Mudkip, with matching menu and retry-safe full PC. Gift species remain registered; independent wild routes still need map-access QA.
+- **CI green** run `39025297612` at `2b21bb9c`, verified 32-MiB GBA SHA256 `68f220ed15390bafb91491e403b1eafabac0a6ef03fee58cce02d9e6decf0e3f`, artifact ID `12097818098`. Preserve approved Last Wish-only → Noxichu title. Source check reports live wild slots: Ralts 3, Treecko 3, Beldum 2, Bagon 4; exact accessible maps still not runtime tested.
+- **Emulator QA outstanding:** inspect Chansey prompt/actual doubles/repeated rematches, two-usable-Pokémon condition, rewards/XP, gift selection and full-storage retries; confirm regional wild acquisition paths in current compiled version.
+
 ## P1 — Already pending from PRU consolidated integration and acquisition work
 
 - [ ] Merge **PR #10 encounter ecology** selectively: ordinary Wooper/Quagsire alongside separate Paldean Wooper/Clodsire; Seviian Noibat/Noivern; early plausible starter families; early Gemlin, Scarabub, Skarmet, Mootiny; later evolved forms, balanced late locations. Ordinary Relic evolutions generally require catalysts/evolution conditions; **do not place finished Relics indiscriminately in early wild grass**.
