@@ -246,9 +246,9 @@ PRU_ChanseyTrainer_End::
 	end
 
 PRU_ChanseyTrainer_Text_Offer:
-	.string "CHANSEY: Chan, chan!\p"
-	.string "Train against a pair of\n"
-	.string "CHANSEY? (DOUBLE BATTLE)$"
+	.string "CHANSEY wants to train!\\p"
+	.string "Battle a pair of CHANSEY\\n"
+	.string "in a DOUBLE BATTLE?$"
 
 PRU_ChanseyTrainer_Text_NeedTwo:
 	.string "Bring at least two POKéMON\n"
@@ -278,5 +278,5 @@ CherryGrove_Pokecenter_Text_Lass:
 	.string "boils. But watching the clock\l"
 	.string "in the POKéCENTER makes time fly!$"
 
-CherryGrove_Pokecenter_Text_Chansey:
-	.string "CHANSEY: Chaan! Sii!$"
+@ The obsolete standalone Chansey greeting was removed; all Centers use the
+@ PRU_ChanseyTrainer_Offer / trainerbattle_double script for repeatable training.
