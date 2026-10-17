@@ -106,6 +106,11 @@ for trainer in (
 opponents = read("include/constants/opponents_hns.h")
 species = read("include/constants/species.h")
 eevee_family = read("src/data/pokemon/species_info/gen_1_families.h")
+item_ids = read("include/constants/items.h")
+item_data = read("src/data/items.h")
+assert "ITEM_ANCIENT_STONE" in item_ids
+assert "[ITEM_ANCIENT_STONE]" in item_data
+assert "ItemUseOutOfBattle_EvolutionStone" in item_data
 assert ["#define", "SPECIES_EEVEEON", "1637"] in [line.split() for line in species.splitlines()]
 assert ["#define", "SPECIES_NIMBEON", "1638"] in [line.split() for line in species.splitlines()]
 assert "{EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_EEVEEON}" in eevee_family
