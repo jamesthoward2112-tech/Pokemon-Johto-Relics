@@ -494,12 +494,42 @@ VioletCity_Text_Kimono_Girl3:
 VioletCity_Text_Kimono_Girl4:
 .string "I am counting on you.$"
 
-@ PJR: available on arrival, including on saves that already visited this town.
-@ Only a successful handoff claims the gift; a full PC leaves it retryable.
+@ PRU: a rare Ralts joins the journey as an OPTIONAL one-time aide gift.
+@ Retain legacy PJR_CHIKORITA flag/labels for save and event compatibility.
+@ The child Pokemon object is a Ralts; obtaining the gift hides only this
+@ specific object, leaving Elm's aide available after the gift.
 VioletCity_EventScript_PJRGiftChikorita::
 	lock
 	faceplayer
-	msgbox VioletCity_EventScript_PJRGiftChikorita_Text_Clue, MSGBOX_DEFAULT
+	goto_if_set FLAG_PJR_GOT_CHIKORITA, VioletCity_EventScript_PRU_RaltsAlreadyGifted
+	msgbox VioletCity_EventScript_PRU_RaltsOfferText, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, VioletCity_EventScript_PRU_RaltsDeclined
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_RALTS
+	bufferspeciesname STR_VAR_1, SPECIES_RALTS
+	givemon SPECIES_RALTS, 8
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, VioletCity_EventScript_PRU_RaltsGiven
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, VioletCity_EventScript_PRU_RaltsGiven
+	msgbox VioletCity_EventScript_PRU_RaltsNoRoomText, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+VioletCity_EventScript_PRU_RaltsGiven::
+	call Common_EventScript_GiftMon
+	setflag FLAG_PJR_GOT_CHIKORITA
+	msgbox VioletCity_EventScript_PRU_RaltsThanksText, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+VioletCity_EventScript_PRU_RaltsDeclined::
+	msgbox VioletCity_EventScript_PRU_RaltsDeclineText, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+VioletCity_EventScript_PRU_RaltsAlreadyGifted::
+	msgbox VioletCity_EventScript_PRU_RaltsAlreadyText, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
@@ -507,19 +537,36 @@ VioletCity_EventScript_PJRGiftChikorita::
 VioletCity_EventScript_PJRGiftChikoritaMon::
 	lock
 	faceplayer
-	playmoncry SPECIES_CHIKORITA, CRY_MODE_NORMAL
-	msgbox VioletCity_EventScript_PJRGiftChikorita_Text_Mon, MSGBOX_DEFAULT
+	playmoncry SPECIES_RALTS, CRY_MODE_NORMAL
+	msgbox VioletCity_EventScript_PRU_RaltsMonText, MSGBOX_DEFAULT
 	waitmoncry
+	closemessage
 	release
 	end
 
-VioletCity_EventScript_PJRGiftChikorita_Text_Clue:
+VioletCity_EventScript_PRU_RaltsOfferText:
 	.string "I'm one of ELM's aides.\p"
-	.string "Wild CHIKORITA have been\n"
-	.string "spotted near ROUTE 29.\p"
-	.string "This one is my partner.\n"
-	.string "Catch one of your own!$"
+	.string "This rare RALTS seems to enjoy\n"
+	.string "the RESONANCE near ALPH.\p"
+	.string "Would you take good care of it?$"
 
-VioletCity_EventScript_PJRGiftChikorita_Text_Mon:
-	.string "CHIKORITA seems happy to\n"
-	.string "travel with ELM's aide.$"
+VioletCity_EventScript_PRU_RaltsNoRoomText:
+	.string "Even the PC is full!\p"
+	.string "Come back when you have room.\n"
+	.string "RALTS will wait for you.$"
+
+VioletCity_EventScript_PRU_RaltsThanksText:
+	.string "Take care of RALTS!\n"
+	.string "We can learn more together.$"
+
+VioletCity_EventScript_PRU_RaltsDeclineText:
+	.string "That's fine. RALTS and I\n"
+	.string "will still be here later.$"
+
+VioletCity_EventScript_PRU_RaltsAlreadyText:
+	.string "How is RALTS settling in?\n"
+	.string "Keep exploring those RUINS!$"
+
+VioletCity_EventScript_PRU_RaltsMonText:
+	.string "RALTS watches the strange\n"
+	.string "patterns of RESONANCE.$"
