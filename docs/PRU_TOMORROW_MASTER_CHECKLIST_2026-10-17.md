@@ -44,7 +44,7 @@ Recorded 16 October 2026. **Pre-test source/content phase.** User explicitly wan
 
 - Title sequence approved by user in emulator: Last Wish Celebi/Jirachi → Noxichu cave / flashing PRESS START, without Emerald or Gengar movie. Source and branch `c38745c`; this is a title-sequence approval, NOT an audit of all Noxichu battle/menu sprites.
 - Elm automatic Pikachu, passive fossils, Silver Cyndaquil branch, Mystery Egg/Togepi are source verified (not yet full fresh-save runtime QA).
-- Hall of Fame and Champions Room rewritten so Johto championship replays do not proclaim a Kanto title without all eight Kanto badges; previously caught Mew/Entei/Raikou and defeated Mew/Deoxys/Jirachi event states cannot be wiped on replay. Static asserts added; CI compilation/run `39022869046` must be checked for final pass.
+- Hall of Fame and Champions Room rewritten so Johto championship replays do not proclaim a Kanto title without all eight Kanto badges; previously caught Mew/Entei/Raikou and defeated Mew/Deoxys/Jirachi event states cannot be wiped on replay. Static asserts added; initial compiler text escape error corrected. Full CI run **`39023135810` GREEN**, compiled test artifact `12098065185`, SHA-256 `97fb3993591febdd39cb7194fda88fb75f9480f8e2d442f98be265102ba6ce81`. Gameplay test of these states still outstanding.
 - Still open: verify Silver physically stole a stored Pokémon (not one of the fossils); event-map text overflow, badge-gated gift/legend catch retry, and all P0 recurring trainers/shops/centres.
 
 ## P1 — Already pending from PRU consolidated integration and acquisition work
