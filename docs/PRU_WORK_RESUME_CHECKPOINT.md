@@ -1,5 +1,15 @@
 # PRU Work Resume Checkpoint
 
+## 17 October 2026 — approved title and first story-progression hardening
+
+- **Title user-approved in Pizza Boy A:** after the startup screen, play the original Last Wish Celebi/Jirachi sequence directly, fade to approved Noxichu Relic cavern with independent flashing PRESS START. No Gengar Expansion movie and no Emerald cycling/Groudon/Rayquaza footage. Test-only branch `pru/noxichu-last-wish-title-test-20261017` was compiled at commit `c38745c6d191dd297262d705800e50b58748a19a` in successful CI run `39020672422`; user confirmed the result as **Perfect**. Keep separate from canonical PJR release.
+- **Opening story source verified:** Professor Elm gives one level-5 Pikachu automatically; Helix/Dome/Old Amber are passive desk fossils; `VAR_STARTER_MON=0` selects Silver's Cyndaquil battle in Cherrygrove. The original Mystery Egg/Togepi path remains present. This is source checking, NOT a complete fresh-save run from Elm to the Pokémon League.
+- **NEW source progression repair:** Hall of Fame replay can only set `FLAG_IS_KANTO_CHAMPION` on the first league victory after **ALL** `FLAG_BADGE09_GET` through `FLAG_BADGE16_GET` are owned. Earlier repeats are Johto title defenses with conditional Lance/Mary/Hall of Fame text. Only the initial qualifying Kanto championship enables the Kanto postgame unlock pass; later league clears cannot reinitialise it.
+- **Legendary persistence:** removed `clearflag` of caught Mew, Entei and Raikou and no longer clear Mew/Deoxys/Jirachi event history on Hall of Fame rematches. Kanto postgame grants/roamers still need gameplay verification, as do previously caught legendary encounter object flags. This does **not** mean every legendary capture gate is QA-signed off.
+- **Regression work:** `tools/pru/check_pretest_story.py` now checks all eight Kanto badge gates, rematch dialogue branches and permanent capture flags; the title-test GitHub Actions workflow now runs the story regression in addition to battle compilation. Runner `39022869046` at `1ae1cc389247a63a912e41842e00aa13fc9b25f2` source checks passed, ROM compilation was underway at this checkpoint. Check final result before claiming compile success.
+- **Next:** fresh-start emulator playthrough through Mr. Pokémon, Silver's Cyndaquil battle and Togepi Egg; check that theft staging still depicts a genuine stored Pokémon, not one of Elm's fossil display objects. Continue Johto-first dialogue sweep and recurring Jessie/James and Eevee Twins integration.
+
+
 ## Pretest story source pass — 16 October 2026 (ongoing)
 
 - User has **paused the current WIP ROM playthrough** until Elm's lab and the full Johto-first Relic dialogue are ready. Title screen/animation then becomes the very next priority, **ahead of Gym, gift, trainer, and shop work**.
