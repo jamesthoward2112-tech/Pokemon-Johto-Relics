@@ -11,7 +11,8 @@ violet = source("data/maps/VioletCity_hns/scripts.inc")
 vmap = json.loads(source("data/maps/VioletCity_hns/map.json"))
 steven = source("data/maps/SaffronCity_SilphCo_hns/scripts.inc")
 menu = source("src/data/script_menu.h")
-assert "givemon SPECIES_RALTS, 8" in violet
+assert "givemon SPECIES_RALTS, 8, gender=MON_FEMALE" in violet
+assert "setflag FLAG_PJR_GOT_CHIKORITA\n\tremoveobject LOCALID_PJR_GIFT_CHIKORITA" in violet
 assert "FLAG_PJR_GOT_CHIKORITA" in violet  # stable legacy save flag
 assert "MON_GIVEN_TO_PC" in violet and "MON_GIVEN_TO_PARTY" in violet
 assert "setflag FLAG_PJR_GOT_CHIKORITA" in violet
@@ -34,4 +35,5 @@ for pokemon in ("RALTS", "TREECKO", "BELDUM", "BAGON"):
     print(f"WILD_ROUTE_SCAN {pokemon}: {count} encounter slots (all regions; review Johto/Kanto accessibility)")
     if not count:
         print(f"WARNING: {pokemon} has no direct wild encounter in current live encounters. Do not claim independent catchability yet.")
+print("PASS: female-only Violet Ralts + instant removal of Ralts overworld sprite after gift")
 print("PASS: Violet Ralts gift + Steven Treecko/Beldum/Bagon choices and full-storage retry safeguards are in source")
