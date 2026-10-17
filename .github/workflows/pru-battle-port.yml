@@ -143,6 +143,33 @@ jobs:
             tail -n 55 /tmp/pru-build.log
             exit 1
           fi
+      - name: Audit actual compiled PRU binary and mark distinct test header
+        run: |
+          arm-none-eabi-nm -n pokehns.elf > PRU-QA-symbols.sym
+          python3 tools/pru/verify_compiled_rom.py
+      - name: Boot the compiled ROM in mGBA and capture gameplay evidence
+        if: github.ref_name == 'pru/noxichu-last-wish-title-test-20261017'
+        run: |
+          set -e
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends xvfb mgba-sdl ffmpeg
+          mkdir -p PRU-QA
+          Xvfb :99 -screen 0 1024x768x24 -nolisten tcp > PRU-QA/xvfb.log 2>&1 &
+          export DISPLAY=:99 SDL_VIDEODRIVER=x11 SDL_AUDIODRIVER=dummy
+          sleep 2
+          mgba -3 pokehns.gba > PRU-QA/mgba.log 2>&1 &
+          EMU_PID=$!
+          sleep 6
+          kill -0 "$EMU_PID" || (cat PRU-QA/mgba.log; exit 1)
+          ffmpeg -hide_banner -loglevel error -f x11grab -video_size 1024x768 -framerate 1 -i :99.0 -t 90 -c:v libx264 -preset ultrafast -pix_fmt yuv420p PRU-QA/boot-evidence.mp4
+          kill "$EMU_PID" || true
+      - uses: actions/upload-artifact@v4
+        if: always() && github.ref_name == 'pru/noxichu-last-wish-title-test-20261017'
+        with:
+          name: PRU-MGBA-BOOT-EVIDENCE
+          path: PRU-QA/
+          if-no-files-found: warn
+          retention-days: 14
       - name: Package PRU ROM for testing
         run: |
           cp pokehns.gba PRU-Consolidated-WIP.gba
