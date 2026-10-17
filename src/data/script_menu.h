@@ -1222,11 +1222,12 @@ static const struct MenuAction MultichoiceList_ElderQuiz5[] =
     {gText_Weak},
     {gText_Both},
 };
-static const struct MenuAction MultichoiceList_HoennStarters[] = 
+// PRU: Steven's one-time Silph Co. choice is no longer three Hoenn starters.
+static const struct MenuAction MultichoiceList_HoennStarters[] =
 {
-    {gText_GreenStone},
-    {gText_RedStone},
-    {gText_BlueStone},
+    {COMPOUND_STRING("TREECKO")},
+    {COMPOUND_STRING("BELDUM")},
+    {COMPOUND_STRING("BAGON")},
 };
 
 static const struct MenuAction MultichoiceList_MomMenu[] =
