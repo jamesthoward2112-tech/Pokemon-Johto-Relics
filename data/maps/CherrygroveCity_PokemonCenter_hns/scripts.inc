@@ -246,8 +246,8 @@ PRU_ChanseyTrainer_End::
 	end
 
 PRU_ChanseyTrainer_Text_Offer:
-	.string "CHANSEY wants to train!\\p"
-	.string "Battle a pair of CHANSEY\\n"
+	.string "CHANSEY wants to train!\p"
+	.string "Battle a pair of CHANSEY\n"
 	.string "in a DOUBLE BATTLE?$"
 
 PRU_ChanseyTrainer_Text_NeedTwo:
