@@ -44,3 +44,8 @@ Explicit GitHub Actions rebuild requested **after** the Red rematch script linki
 Build procedure: original Emerald intro -> PRL Last Wish Celebi/Jirachi scene -> black fade -> approved 240x160 Noxichu cavern title, separately animated flashing PRESS START. Use `tools/pru/build_noxichu_intro_trial.py` to patch the temporary runner checkout, then run `make hns`, and publish artifact `PRU-Noxichu-LastWish-TEST` with GBA and SHA-256. CI source/build green is not proof of emulator animation playback; test that separately.
 
 This file is a configured push-path CI trigger: prior map-only Red fix did **not** match the workflow's push path filter, so this separate update forces a fresh build of the repaired head. Do not modify `pjr-rebuild`.
+
+
+## 17 October — PRU Johto/Kanto title and legendary persistence compile retry
+
+Build branch `pru/noxichu-last-wish-title-test-20261017` after source fixes for Hall of Fame/Champions Room. Source checks passed in run 39022869046 but make hns failed on incorrect doubled backslashes in newly added GBA dialogue at ChampionsRoom line 441. Corrected source in commits `b699f141` and `1f507eae`; strengthened `tools/pru/check_pretest_story.py` with literal-backslash validation and the first Silver battle. Verify build and ROM artifact, not just static checks. This is a new build of the title-approved Last Wish-only PRU test variant; no Gengar or Emerald animations. Preserve legacy `pjr-rebuild`.
