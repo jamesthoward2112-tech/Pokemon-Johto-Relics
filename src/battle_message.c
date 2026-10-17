@@ -97,6 +97,8 @@ static const u8 sText_TwoWildPkmnAppeared[] = _("Oh! A wild {B_OPPONENT_MON1_NAM
 static const u8 sText_GhostAppearedCantId[] = _("The GHOST appeared!\pDarn!\nThe GHOST can't be ID'd!\p");
 static const u8 sText_TheGhostAppeared[] = _("The GHOST appeared!\p");
 static const u8 sText_Trainer1WantsToBattle[] = _("You are challenged by {B_TRAINER1_NAME_WITH_CLASS}!\p");
+static const u8 sText_PRUChanseyWantsToTrain[] = _("Chansey wants to train!\\p");
+static const u8 sText_PRUChanseySendsDuo[] = _("The two CHANSEY are ready!");
 static const u8 sText_LinkTrainerWantsToBattle[] = _("You are challenged by {B_LINK_OPPONENT1_NAME}!");
 static const u8 sText_TwoLinkTrainersWantToBattle[] = _("You are challenged by {B_LINK_OPPONENT1_NAME} and {B_LINK_OPPONENT2_NAME}!");
 static const u8 sText_Trainer1SentOutPkmn[] = _("{B_TRAINER1_NAME_WITH_CLASS} sent out {B_OPPONENT_MON1_NAME}!");
@@ -2469,6 +2471,11 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
             else
                 stringPtr = sText_WildPkmnAppeared;
         }
+        // PRU's nurse-side Chansey trainer uses a custom portrait and dialogue.
+        if (TRAINER_BATTLE_PARAM.opponentA >= TRAINER_PRU_CHANSEY_07_HNS
+         && TRAINER_BATTLE_PARAM.opponentA <= TRAINER_PRU_CHANSEY_100_HNS
+         && (gBattleTypeFlags & BATTLE_TYPE_TRAINER))
+            stringPtr = sText_PRUChanseyWantsToTrain;
         break;
     case STRINGID_INTROSENDOUT: // poke first send-out
         if (BattlerIsPlayer(battler) || BattlerIsPlayer(BATTLE_PARTNER(battler))
@@ -2531,6 +2538,11 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
                     stringPtr = sText_LinkTrainerSentOutPkmn;
             }
         }
+        if ((gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+         && TRAINER_BATTLE_PARAM.opponentA >= TRAINER_PRU_CHANSEY_07_HNS
+         && TRAINER_BATTLE_PARAM.opponentA <= TRAINER_PRU_CHANSEY_100_HNS
+         && BattlerIsOpponent(battler))
+            stringPtr = sText_PRUChanseySendsDuo;
         break;
     case STRINGID_RETURNMON: // sending poke to ball msg
         if ((GetBattlerPosition(battler) & BIT_FLANK) == B_FLANK_LEFT) // battler 0 and 1
