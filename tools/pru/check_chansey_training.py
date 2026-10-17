@@ -59,7 +59,8 @@ for index, level in enumerate(levels):
             assert line in ("- Memento", "- Heal Pulse"), (code, line)
     assert f"cleartrainerflag {code}" in HANDLERS, code
     assert f"trainerbattle_double {code}," in HANDLERS, code
-assert "#define TRAINERS_COUNT_HNS                       675" in OPPONENTS
+assert "#define TRAINER_PRU_CHANSEY_100_HNS           674" in OPPONENTS
+assert "#define TRAINERS_COUNT_HNS                       679" in OPPONENTS
 # Prevent the specific in-game regression: the old one-line "Chaan! Sii!"
 # must never be compiled as the active Chansey greeting again.
 assert 'CHANSEY: Chaan! Sii!' not in HANDLERS
