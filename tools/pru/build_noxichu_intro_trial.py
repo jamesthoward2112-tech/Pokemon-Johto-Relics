@@ -116,12 +116,12 @@ def patch_boot_flow():
     # HnS has EXPANSION_INTRO enabled: that route plays the Gengar intro
     # and never calls MainCB2_EndIntro. Select native Emerald scenes 1-3
     # for this isolated PRU test, preserving the expansion path elsewhere.
-    expansion_branch = ("#if EXPANSION_INTRO == TRUE\\n"
-                        "        SetMainCallback2(CB2_ExpansionIntro);\\n"
-                        "        CreateTask(Task_HandleExpansionIntro, 0);\\n"
-                        "#else\\n"
-                        "        CreateTask(Task_Scene1_Load, 0);\\n"
-                        "        SetMainCallback2(MainCB2_Intro);\\n"
+    expansion_branch = ("#if EXPANSION_INTRO == TRUE\n"
+                        "        SetMainCallback2(CB2_ExpansionIntro);\n"
+                        "        CreateTask(Task_HandleExpansionIntro, 0);\n"
+                        "#else\n"
+                        "        CreateTask(Task_Scene1_Load, 0);\n"
+                        "        SetMainCallback2(MainCB2_Intro);\n"
                         "#endif")
     assert source.count(expansion_branch) == 1, "Emerald/Expansion intro dispatch has changed"
     source = source.replace(expansion_branch,
