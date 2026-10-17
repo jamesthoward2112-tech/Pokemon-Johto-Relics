@@ -27,6 +27,7 @@ GoldenrodCity_RadioTower_4F4_EventScript_Sign2::
 GoldenrodCity_RadioTower_4F4_EventScript_FaceJessieJames::
 	applymovement LOCALID_RADIO4F_JAMES, Common_Movement_FacePlayer
 	applymovement LOCALID_RADIO4F_JESSIE, Common_Movement_FacePlayer
+	applymovement 7, Common_Movement_FacePlayer
 	waitmovementall
 	return
 
@@ -37,6 +38,7 @@ GoldenrodRaidoTower4_EventScript_Grunt28::
 	msgbox GoldenrodCity_RadioTower_4F4_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
 	removeobject LOCALID_RADIO4F_JAMES
 	removeobject LOCALID_RADIO4F_JESSIE
+	removeobject 7
 	end
 
 GoldenrodRaidoTower4_EventScript_Grunt9::
@@ -46,6 +48,7 @@ GoldenrodRaidoTower4_EventScript_Grunt9::
 	msgbox GoldenrodCity_RadioTower_4F4_Text_JessieJamesAfter, MSGBOX_AUTOCLOSE
 	removeobject LOCALID_RADIO4F_JAMES
 	removeobject LOCALID_RADIO4F_JESSIE
+	removeobject 7
 	end
 
 GoldenrodRaidoTower4_EventScript_Proton::
