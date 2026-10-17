@@ -64,3 +64,8 @@ Trigger source + full HNS ROM build after 21 two-Chansey per-centre teams were a
 ## 17 Oct PRU repeatable nurse-Chansey & rare gifts build
 
 Explicit full runner rebuild requested after nurse-side Chansey double tiers in 26 centers, trainerproc-safe 21 trainer records, corrected `trainerbattle_double` encounter handling and source checks. Violet rare Ralts gift replaces misleading Chikorita clue; Steven now offers Treecko/Beldum/Bagon in Silph Co with full PC retry. Run `tools/pru/check_chansey_training.py` and `tools/pru/check_rare_gifts.py` before compile and report independent wild encounter coverage. Preserve approved Last Wish + Noxichu title. Deliver verified direct .gba, not GitHub link.
+
+
+## 17 October — trainerproc separator repair and current rare gift + doubles build
+
+Rebuild after `f0e8833041bfc78178268b35757e20ca0408b238`, removing the unsupported mid-file C-style comment between the last PJR trainer party and the 21 PRU Chansey doubles parties. Source tests now expect the actual `trainerbattle_double` command and usable-party checks. Include live Violet Ralts replacing former Chikorita, Saffron Steven Treecko/Beldum/Bagon gift choice, and approved Last Wish-only Noxichu title. A previous run failed while reading the additional trainer.party records; do not distribute a ROM unless new compile completes.
