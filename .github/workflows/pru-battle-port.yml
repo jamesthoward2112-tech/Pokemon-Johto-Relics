@@ -24,6 +24,8 @@ on:
       - tools/pru/install_prl_duo_assets.py
       - assets/prl_duo_20261011.json
       - include/battle_transition.h
+      - include/constants/items.h
+      - src/data/items.h
       - include/constants/opponents_hns.h
       - src/battle_setup.c
       - src/battle_transition.c
