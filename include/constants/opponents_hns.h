@@ -677,7 +677,30 @@
 
 #define TRAINER_JESSIE_JAMES_TINTOWER_HNS        653
 
-#define TRAINERS_COUNT_HNS                       654
+// PRU nurse-side repeatable Chansey training double battles, append-only IDs.
+#define TRAINER_PRU_CHANSEY_07_HNS           654
+#define TRAINER_PRU_CHANSEY_12_HNS           655
+#define TRAINER_PRU_CHANSEY_15_HNS           656
+#define TRAINER_PRU_CHANSEY_20_HNS           657
+#define TRAINER_PRU_CHANSEY_26_HNS           658
+#define TRAINER_PRU_CHANSEY_31_HNS           659
+#define TRAINER_PRU_CHANSEY_37_HNS           660
+#define TRAINER_PRU_CHANSEY_40_HNS           661
+#define TRAINER_PRU_CHANSEY_44_HNS           662
+#define TRAINER_PRU_CHANSEY_50_HNS           663
+#define TRAINER_PRU_CHANSEY_60_HNS           664
+#define TRAINER_PRU_CHANSEY_64_HNS           665
+#define TRAINER_PRU_CHANSEY_68_HNS           666
+#define TRAINER_PRU_CHANSEY_71_HNS           667
+#define TRAINER_PRU_CHANSEY_75_HNS           668
+#define TRAINER_PRU_CHANSEY_78_HNS           669
+#define TRAINER_PRU_CHANSEY_82_HNS           670
+#define TRAINER_PRU_CHANSEY_85_HNS           671
+#define TRAINER_PRU_CHANSEY_90_HNS           672
+#define TRAINER_PRU_CHANSEY_95_HNS           673
+#define TRAINER_PRU_CHANSEY_100_HNS           674
+
+#define TRAINERS_COUNT_HNS                       675
 #define MAX_TRAINERS_COUNT_HNS                   864
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_HNS_H
