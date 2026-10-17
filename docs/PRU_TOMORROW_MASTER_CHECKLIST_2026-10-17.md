@@ -83,3 +83,11 @@ Recorded 16 October 2026. **Pre-test source/content phase.** User explicitly wan
 5. Build one consolidated ROM, then fresh-start emulator gameplay testing; update this checklist with exact verified checkpoints.
 
 **Do not request unnecessary approval every step.** User wants progress updates during Work sessions and efficient preservation of credits. If new decisions are material, use sensible defaults and record them rather than blocking. The user's next gameplay test is deliberately on hold until core content is ready.
+
+### 17 October — Chansey portrait and breeding-centre move expert build passed
+- [x] Use user-supplied twin Nurse Chansey image, indexed 64x64, as dedicated trainer portrait for all 21 training tiers.
+- [x] Override intro with "Chansey wants to train!" and use Chansey-only send-out text, replacing visible Beauty trainer portrait.
+- [x] Place a new Egg/Tutor Move Expert in Route 34 Day-Care, using existing Move Relearner states and party/PC chooser.
+- [x] Full GitHub CI ROM build succeeded (run 39029758140), 32 MB test GBA sha256 72fab2b8623d74d03b0cec2c1ecfc071fbccd05077f51554f64efeda8707c590.
+- [ ] Emulator QA: verify nurse portrait and intro, repeated double battles, full tutorial menus, NPC accessibility at x7 y7, and any remaining human-class battle text.
+
