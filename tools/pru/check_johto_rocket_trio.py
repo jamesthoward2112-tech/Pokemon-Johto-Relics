@@ -29,16 +29,25 @@ assert_actor(well["object_events"], 10, "OBJ_EVENT_GFX_JAMES_HNS")
 assert_actor(well["object_events"], 11, "OBJ_EVENT_GFX_JESSIE_HNS")
 assert_actor(well["object_events"], 28, "OBJ_EVENT_GFX_MON_BASE+SPECIES_MEOWTH")
 assert well["object_events"][27]["flag"] == "FLAG_TEMP_1"
+# Template actors must spawn close enough to render when the trigger fires.
+assert (well["object_events"][9]["x"], well["object_events"][9]["y"]) == (28, 13)
+assert (well["object_events"][10]["x"], well["object_events"][10]["y"]) == (27, 13)
+assert (well["object_events"][27]["x"], well["object_events"][27]["y"]) == (27, 12)
 coords = {
     (ev["x"], ev["y"]) for ev in well["coord_events"]
     if ev.get("script") == "SlowpokeWell_B1F_EventScript_JessieJamesTrigger"
 }
 assert coords == {(26, 15), (27, 15), (28, 15)}, coords
 assert "getplayerxy VAR_0x8004, VAR_0x8005" in well_script
-assert "setobjectxy 10, VAR_0x8004, 8" in well_script
-assert "setobjectxy 11, VAR_0x8006, 8" in well_script
-assert "setobjectxy 28, VAR_0x8004, 7" in well_script
-assert well_script.count("applymovement 28, ") >= 3
+assert "setobjectxy 10, VAR_0x8004, 13" in well_script
+assert "setobjectxy 11, VAR_0x8006, 13" in well_script
+assert "setobjectxy 28, VAR_0x8004, 12" in well_script
+assert well_script.count("applymovement 28, ") == 2
+approach_steps = well_script.split("SlowpokeWell_B1F_Movement_JessieJamesRunIn:\n", 1)[1].split("\tstep_end", 1)[0]
+assert approach_steps == "\twalk_faster_down\n", approach_steps
+assert "SlowpokeWell_B1F_Movement_JessieJamesRunOut" not in well_script
+assert "applymovement 10, SlowpokeWell_B1F_Movement_JessieJamesRunOut" not in well_script
+assert "fadescreen FADE_TO_BLACK\n\tremoveobject 10\n\tremoveobject 11\n\tremoveobject 28" in well_script
 assert "trainerbattle_double TRAINER_GRUNT_21_HNS" in well_script
 assert "setflag FLAG_PJR_JESSIE_JAMES_1_DEFEATED" in well_script
 assert "removeobject 28" in well_script
@@ -136,4 +145,4 @@ for trainer in (
 assert "Nimbeon @ Sitrus Berry" in party
 assert "Eeveeon @ Sitrus Berry" in party
 
-print("PASS: Johto Rocket trio scenes, PRL duo introductions, and Steevee/Neevee donor teams are wired and source-complete.")
+print("PASS: Johto Rocket trio staged one tile ahead with visible Meowth template and no post-battle backwards walk; PRL duo assets and twins source wired (emulator scene QA still required).")
