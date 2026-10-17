@@ -80,7 +80,7 @@ def install_last_wish():
             for name, sha in expected.items():
                 content = archive.read(prefix + name)
                 digest = hashlib.sha1(
-                    b"blob " + str(len(content)).encode() + b"\\0" + content
+                    b"blob " + str(len(content)).encode() + b"\0" + content
                 ).hexdigest()
                 assert digest == sha, f"Donor original hash mismatch: {name}"
                 (dest / name).write_bytes(content)
