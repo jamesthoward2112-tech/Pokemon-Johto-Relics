@@ -57,7 +57,8 @@ for index, level in enumerate(levels):
     for line in section.splitlines():
         if line.startswith("- "):
             assert line in ("- Memento", "- Heal Pulse"), (code, line)
-    assert f"trainerbattle_no_intro {code}" in HANDLERS, code
+    assert f"cleartrainerflag {code}" in HANDLERS, code
+    assert f"trainerbattle_double {code}," in HANDLERS, code
 assert "#define TRAINERS_COUNT_HNS                       675" in OPPONENTS
 assert "MSGBOX_YESNO" in HANDLERS
 assert "CalculatePlayerPartyCount" in HANDLERS
