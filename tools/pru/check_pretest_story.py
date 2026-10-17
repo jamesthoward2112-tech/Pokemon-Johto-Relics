@@ -151,12 +151,12 @@ import re
 gift_species = re.compile(r"SPECIES_(?:CHIKORITA|TORCHIC|MUDKIP|TREECKO)\b")
 gift_ops = re.compile(r"\b(?:givemon|giveegg|createmon)\b")
 gift_matches = 0
-for gift_map in sorted(active_files):
+for gift_map in sorted(map_dir.glob("*/scripts.inc")):
     gift_lines = gift_map.read_text(errors="replace").splitlines()
     for number, gift_line in enumerate(gift_lines, 1):
         if gift_species.search(gift_line):
             gift_matches += 1
-            print(f"GIFT_SPECIES_SCAN {gift_map.relative_to(root)}:{number}: {gift_line.strip()}")
-        elif gift_ops.search(gift_line) and not gift_line.strip().startswith("@"):
+            print(f"GIFT_SPECIES_SCAN {gift_map.relative_to(root)}:{number}: {gift_line.strip()[:180]}")
+        elif gift_map.parent.name.endswith("_hns") and gift_ops.search(gift_line) and not gift_line.strip().startswith("@"):
             print(f"GIFT_OP_SCAN {gift_map.relative_to(root)}:{number}: {gift_line.strip()[:120]}")
 print(f"GIFT_SCAN_COMPLETE target_species_lines={gift_matches}")
