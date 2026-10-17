@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Reproducible *test-only* PRU boot/title assembly.
 
-Flow: native copyright/startup -> original Last Wish Scene 0 -> black fade
+Flow: short native copyright/startup -> original Last Wish Scene 0 -> black fade
 -> approved Noxichu cavern art -> native flashing PRESS START.
 Executed by GitHub Actions before make hns; normal source branches untouched.
 """
@@ -14,7 +14,7 @@ import ast
 import subprocess
 import tempfile
 import zipfile
-from PIL import Image
+from PIL import Image, ImageEnhance, ImageFilter
 
 PRL_REPO = "jamesthoward2112-tech/Pokemon-Relic-Legacy"
 PRL_COMMIT = "744d4c2fd3b352bbb76a917efa7b440b43730e98"
@@ -154,13 +154,23 @@ def install_title_art():
     assert hashlib.sha256(jpg).hexdigest() == '0ea8c588161dc79307115d06054cfbbab1ab1588bd73fbd839a13f8a00837128'
     frame = Image.open(io.BytesIO(jpg)).convert("RGB")
     assert frame.size == (240, 160), frame.size
-    # GBA Mode 4: exact 240*160 8bpp indices + 256 RGB555 palette.
-    indexed = frame.quantize(colors=240, method=Image.Quantize.MEDIANCUT,
+    # The only archived title donor is a 240x160 JPEG. Restore crisp edge
+    # definition before palette conversion; we cannot invent extra source
+    # resolution, but can avoid unnecessary softening and use all 256 colours.
+    qa = Path("PRU-QA")
+    qa.mkdir(exist_ok=True)
+    frame.save(qa / "title-original-source.png")
+    frame = frame.filter(ImageFilter.UnsharpMask(radius=0.70, percent=170, threshold=2))
+    frame = ImageEnhance.Contrast(frame).enhance(1.055)
+    indexed = frame.quantize(colors=256, method=Image.Quantize.MEDIANCUT,
                              dither=Image.Dither.NONE)
+    indexed.save(qa / "title-updated-256-palette.png")
+    indexed.resize((960, 640), Image.Resampling.NEAREST).save(
+        qa / "title-updated-preview-4x.png")
     raw = indexed.tobytes()
     assert len(raw) == 38400
     palette = indexed.getpalette()
-    assert palette is not None and len(palette) >= 240 * 3
+    assert palette is not None and len(palette) >= 256 * 3
     # Pillow provides exactly the requested number of palette entries, not 256.
     palette = palette + [0] * (256 * 3 - len(palette))
     pal_bytes = bytearray()
@@ -172,7 +182,7 @@ def install_title_art():
     TITLE_DIR.mkdir(parents=True, exist_ok=True)
     (TITLE_DIR / "PJR_TitleScreen_Mode4.8bpp").write_bytes(raw)
     (TITLE_DIR / "PJR_TitleScreen_Mode4.gbapal").write_bytes(pal_bytes)
-    print("TITLE_ART_PASS 240x160, 8bpp, 256 palette entries")
+    print("TITLE_ART_PASS 240x160, 8bpp, sharpened JPEG source, 256 indexed RGB555 palette entries")
 
 def patch_title():
     path = "src/title_screen.c"
