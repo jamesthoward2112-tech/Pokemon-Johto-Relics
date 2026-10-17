@@ -57,12 +57,10 @@ def install_last_wish():
     # PRU's pokeemerald-expansion fork predates PRL's INCGFX compile macro.
     # Convert donor references to ordinary INCBIN targets built by gbagfx.
     import re
-    code = re.sub(
-        r'INCGFX_U16\\("([^"]+)\\.png", "\\.gbapal"\\)',
-        r'INCBIN_U16("\\1.gbapal")', code)
-    code = re.sub(
-        r'INCGFX_U32\\("([^"]+)\\.png", "\\.4bpp\\.smol"\\)',
-        r'INCBIN_U32("\\1.4bpp.smol")', code)
+    code = re.sub(r'INCGFX_U16\("([^"]+)\.png", "\.gbapal"\)',
+                  r'INCBIN_U16("\1.gbapal")', code)
+    code = re.sub(r'INCGFX_U32\("([^"]+)\.png", "\.4bpp\.smol"\)',
+                  r'INCBIN_U32("\1.4bpp.smol")', code)
     assert "INCGFX_U16" not in code and "INCGFX_U32" not in code
     # PRU m4a wrappers take gbsEnabled as their second parameter.
     code = code.replace('m4aSongNumStart(MUS_INTRO);',
