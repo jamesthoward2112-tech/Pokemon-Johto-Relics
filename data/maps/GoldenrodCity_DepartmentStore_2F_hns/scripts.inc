@@ -65,32 +65,6 @@ GoldenrodDeptStore2_Pokemart:
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_GREAT_BALL
 	.2byte ITEM_ULTRA_BALL
-	.2byte ITEM_FIRE_STONE
-	.2byte ITEM_WATER_STONE
-	.2byte ITEM_THUNDER_STONE
-	.2byte ITEM_LEAF_STONE
-	.2byte ITEM_ICE_STONE
-	.2byte ITEM_SHINY_STONE
-	.2byte ITEM_DUSK_STONE
-	.2byte ITEM_EXPERT_BELT
-	.2byte ITEM_SILVER_POWDER
-	.2byte ITEM_SOFT_SAND
-	.2byte ITEM_METAL_COAT
-	.2byte ITEM_HARD_STONE
-	.2byte ITEM_POISON_BARB
-	.2byte ITEM_DRAGON_FANG
-	.2byte ITEM_THICK_CLUB
-	.2byte ITEM_MIRACLE_SEED
-	.2byte ITEM_CHARCOAL
-	.2byte ITEM_MYSTIC_WATER
-	.2byte ITEM_LINKING_CORD
-	.2byte ITEM_ANCIENT_SHELL
-	.2byte ITEM_FOSSIL_BARK
-	.2byte ITEM_ANCIENT_TUSK
-	.2byte ITEM_FROST_MIRROR
-	.2byte ITEM_ANCIENT_HORN
-	.2byte ITEM_ANCIENT_PLUME
-	.2byte ITEM_ANCIENT_BELL
 	.2byte ITEM_POTION
 	.2byte ITEM_SUPER_POTION
 	.2byte ITEM_HYPER_POTION
@@ -106,6 +80,130 @@ GoldenrodDeptStore2_Pokemart:
 	.2byte ITEM_REPEL
 	.2byte ITEM_SUPER_REPEL
 	.2byte ITEM_MAX_REPEL
+	pokemartlistend
+
+GoldenrodDeptStore2_EventScript_RockShop::
+	lock
+	faceplayer
+	msgbox GoldenrodDeptStore2_Text_RockShopWelcome, MSGBOX_DEFAULT
+	message gText_HowMayIServeYou
+	waitmessage
+	goto_if_set FLAG_BADGE08_GET, GoldenrodDeptStore2_EventScript_RockShopAllStock
+	goto_if_set FLAG_BADGE04_GET, GoldenrodDeptStore2_EventScript_RockShopExpandedStock
+	pokemart GoldenrodDeptStore2_RockShop
+	goto GoldenrodDeptStore2_EventScript_RockShopFinish
+
+GoldenrodDeptStore2_EventScript_RockShopExpandedStock::
+	pokemart GoldenrodDeptStore2_RockShopFourBadges
+	goto GoldenrodDeptStore2_EventScript_RockShopFinish
+
+GoldenrodDeptStore2_EventScript_RockShopAllStock::
+	pokemart GoldenrodDeptStore2_RockShopEightBadges
+	goto GoldenrodDeptStore2_EventScript_RockShopFinish
+
+GoldenrodDeptStore2_EventScript_RockShopFinish::
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	end
+
+GoldenrodDeptStore2_Text_RockShopWelcome:
+	.string "Welcome to the ROCK SHOP!\p"
+	.string "More items unlock as you earn\l"
+	.string "GYM BADGES.$"
+
+	.align 2
+GoldenrodDeptStore2_RockShop:
+	.2byte ITEM_FIRE_STONE
+	.2byte ITEM_WATER_STONE
+	.2byte ITEM_THUNDER_STONE
+	.2byte ITEM_LEAF_STONE
+	.2byte ITEM_MOON_STONE
+	.2byte ITEM_SUN_STONE
+	pokemartlistend
+
+	.align 2
+GoldenrodDeptStore2_RockShopFourBadges:
+	.2byte ITEM_FIRE_STONE
+	.2byte ITEM_WATER_STONE
+	.2byte ITEM_THUNDER_STONE
+	.2byte ITEM_LEAF_STONE
+	.2byte ITEM_MOON_STONE
+	.2byte ITEM_SUN_STONE
+	.2byte ITEM_ICE_STONE
+	.2byte ITEM_SHINY_STONE
+	.2byte ITEM_DUSK_STONE
+	.2byte ITEM_DAWN_STONE
+	.2byte ITEM_OVAL_STONE
+	.2byte ITEM_KINGS_ROCK
+	.2byte ITEM_METAL_COAT
+	.2byte ITEM_DRAGON_SCALE
+	.2byte ITEM_UPGRADE
+	.2byte ITEM_DEEP_SEA_TOOTH
+	.2byte ITEM_DEEP_SEA_SCALE
+	.2byte ITEM_LINKING_CORD
+	.2byte ITEM_EXPERT_BELT
+	.2byte ITEM_SILVER_POWDER
+	.2byte ITEM_SOFT_SAND
+	.2byte ITEM_HARD_STONE
+	.2byte ITEM_POISON_BARB
+	.2byte ITEM_DRAGON_FANG
+	.2byte ITEM_THICK_CLUB
+	.2byte ITEM_SPELL_TAG
+	.2byte ITEM_MIRACLE_SEED
+	.2byte ITEM_CHARCOAL
+	.2byte ITEM_MYSTIC_WATER
+	pokemartlistend
+
+	.align 2
+GoldenrodDeptStore2_RockShopEightBadges:
+	.2byte ITEM_FIRE_STONE
+	.2byte ITEM_WATER_STONE
+	.2byte ITEM_THUNDER_STONE
+	.2byte ITEM_LEAF_STONE
+	.2byte ITEM_MOON_STONE
+	.2byte ITEM_SUN_STONE
+	.2byte ITEM_ICE_STONE
+	.2byte ITEM_SHINY_STONE
+	.2byte ITEM_DUSK_STONE
+	.2byte ITEM_DAWN_STONE
+	.2byte ITEM_OVAL_STONE
+	.2byte ITEM_KINGS_ROCK
+	.2byte ITEM_METAL_COAT
+	.2byte ITEM_DRAGON_SCALE
+	.2byte ITEM_UPGRADE
+	.2byte ITEM_DEEP_SEA_TOOTH
+	.2byte ITEM_DEEP_SEA_SCALE
+	.2byte ITEM_LINKING_CORD
+	.2byte ITEM_EXPERT_BELT
+	.2byte ITEM_SILVER_POWDER
+	.2byte ITEM_SOFT_SAND
+	.2byte ITEM_HARD_STONE
+	.2byte ITEM_POISON_BARB
+	.2byte ITEM_DRAGON_FANG
+	.2byte ITEM_THICK_CLUB
+	.2byte ITEM_SPELL_TAG
+	.2byte ITEM_MIRACLE_SEED
+	.2byte ITEM_CHARCOAL
+	.2byte ITEM_MYSTIC_WATER
+	.2byte ITEM_DUBIOUS_DISC
+	.2byte ITEM_PROTECTOR
+	.2byte ITEM_ELECTIRIZER
+	.2byte ITEM_MAGMARIZER
+	.2byte ITEM_PRISM_SCALE
+	.2byte ITEM_REAPER_CLOTH
+	.2byte ITEM_RAZOR_CLAW
+	.2byte ITEM_RAZOR_FANG
+	.2byte ITEM_GALARICA_CUFF
+	.2byte ITEM_GALARICA_WREATH
+	.2byte ITEM_BLACK_AUGURITE
+	.2byte ITEM_PEAT_BLOCK
+	.2byte ITEM_ANCIENT_SHELL
+	.2byte ITEM_FOSSIL_BARK
+	.2byte ITEM_ANCIENT_TUSK
+	.2byte ITEM_FROST_MIRROR
+	.2byte ITEM_ANCIENT_HORN
+	.2byte ITEM_ANCIENT_PLUME
+	.2byte ITEM_ANCIENT_BELL
 	pokemartlistend
 
 GoldenrodDeptStore_EventScript_VendingMachine::
@@ -249,4 +347,4 @@ GoldenrodDeptStore_Text_DecidedAgainstBuyingDrink:
 
 GoldenrodDeptStore_Text_2FDirectory:
     .string "Your Travel Companion\p"
-    .string "2F TRAINER'S MARKET$"
+    .string "2F MARKET / ROCK SHOP$"

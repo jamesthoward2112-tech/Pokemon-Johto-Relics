@@ -1,0 +1,40 @@
+name: PRU Encounter Ecology Gate
+
+on:
+  push:
+    branches:
+      - pru/encounter-ecology-20261016
+  pull_request:
+    branches:
+      - pru/ultimate-pokedex-encounters-20261016
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  encounter-policy:
+    name: Wild table policy and parity
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout encounters-only integration branch
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check Python syntax
+        run: python -m py_compile tools/pru/check_encounter_ecology.py
+      - name: Validate HNS encounters, starter access, relic exclusion and habitat restoration
+        run: python tools/pru/check_encounter_ecology.py
+      - name: Source-audit nine ordinary acquisition chains
+        run: python tools/pru/check_nine_acquisition.py
+      - name: Check nine ordinary acquisition routes and evolution branches
+        run: python tools/pru/check_nine_acquisition_routes.py
+      - name: Verify dedicated Goldenrod Rock Shop and evolution-item stock
+        run: python tools/pru/check_rock_shop.py
+      - name: Explain gameplay build dependency
+        run: |
+          echo "Static encounter data gate only."
+          echo "Full PRU build must merge the separate 19-species/PRL battle-engine integration branch first."
+          echo "Legendary static encounters intentionally excluded."
