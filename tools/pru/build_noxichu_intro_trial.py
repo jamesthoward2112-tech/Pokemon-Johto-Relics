@@ -130,6 +130,8 @@ def install_title_art():
     assert len(raw) == 38400
     palette = indexed.getpalette()
     assert palette is not None and len(palette) >= 240 * 3
+    # Pillow provides exactly the requested number of palette entries, not 256.
+    palette = palette + [0] * (256 * 3 - len(palette))
     pal_bytes = bytearray()
     for i in range(256):
         r,g,b = palette[3*i:3*i+3]
