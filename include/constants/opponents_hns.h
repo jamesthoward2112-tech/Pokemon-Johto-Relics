@@ -700,7 +700,13 @@
 #define TRAINER_PRU_CHANSEY_95_HNS           673
 #define TRAINER_PRU_CHANSEY_100_HNS           674
 
-#define TRAINERS_COUNT_HNS                       675
+// PRL recurring Steevee & Neevee trainer twins; append-only for save compatibility.
+#define TRAINER_STEEVE_NEEVEE_ROUTE3_HNS       675
+#define TRAINER_STEEVE_NEEVEE_SS_ANNE_HNS      676
+#define TRAINER_STEEVE_NEEVEE_TOWER_HNS        677
+#define TRAINER_STEEVE_NEEVEE_ROUTE23_HNS      678
+
+#define TRAINERS_COUNT_HNS                       679
 #define MAX_TRAINERS_COUNT_HNS                   864
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_HNS_H

@@ -16623,3 +16623,167 @@ Level: 100
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Heal Pulse
 - Memento
+
+=== TRAINER_STEEVE_NEEVEE_ROUTE3_HNS ===
+Name: STEEVEE
+Class: Twins Hns
+Pic: Twins Hns
+Gender: Male
+Music: Hg Girl 2
+Double Battle: Yes
+AI: Check Bad Move / Try To Faint
+
+Eevee
+Level: 16
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Tackle
+- Tail Whip
+- Sand Attack
+- Growl
+
+Eevee
+Level: 16
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Tackle
+- Helping Hand
+- Sand Attack
+- Growl
+
+=== TRAINER_STEEVE_NEEVEE_SS_ANNE_HNS ===
+Name: STEEVEE
+Class: Twins Hns
+Pic: Twins Hns
+Gender: Male
+Music: Hg Girl 2
+Double Battle: Yes
+AI: Check Bad Move / Try To Faint
+
+Vaporeon @ Oran Berry
+Level: 26
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- Water Gun
+- Quick Attack
+- Tail Whip
+- Sand Attack
+
+Jolteon @ Oran Berry
+Level: 26
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- Thundershock
+- Quick Attack
+- Sand Attack
+- Tail Whip
+
+Eevee
+Level: 25
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- Quick Attack
+- Helping Hand
+- Sand Attack
+- Growl
+
+Eevee
+Level: 25
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- Tackle
+- Quick Attack
+- Tail Whip
+- Helping Hand
+
+=== TRAINER_STEEVE_NEEVEE_TOWER_HNS ===
+Name: STEEVEE
+Class: Twins Hns
+Pic: Twins Hns
+Gender: Male
+Music: Hg Girl 2
+Double Battle: Yes
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Flareon @ Sitrus Berry
+Level: 37
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Fire Spin
+- Ember
+- Quick Attack
+- Bite
+
+Omeon @ Sitrus Berry
+Level: 37
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Shadow Ball
+- Bite
+- Confuse Ray
+- Quick Attack
+
+Espeon @ Sitrus Berry
+Level: 37
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Psybeam
+- Quick Attack
+- Swift
+- Reflect
+
+Umbreon @ Sitrus Berry
+Level: 36
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Bite
+- Quick Attack
+- Confuse Ray
+- Moonlight
+
+=== TRAINER_STEEVE_NEEVEE_ROUTE23_HNS ===
+Name: STEEVEE
+Class: Twins Hns
+Pic: Twins Hns
+Gender: Male
+Music: Hg Girl 2
+Double Battle: Yes
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Vaporeon @ Sitrus Berry
+Level: 61
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Surf
+- Aurora Beam
+- Bite
+- Acid Armor
+
+Jolteon @ Sitrus Berry
+Level: 61
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Thunderbolt
+- Double Kick
+- Quick Attack
+- Thunder Wave
+
+Flareon @ Sitrus Berry
+Level: 62
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Flamethrower
+- Fire Spin
+- Bite
+- Quick Attack
+
+Toxeon @ Sitrus Berry
+Level: 62
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Poison Jab
+- Bite
+- Toxic
+- Quick Attack
+
+Nimbeon @ Sitrus Berry
+Level: 63
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Air Slash
+- Roost
+- Tailwind
+- Icy Wind
+
+Eeveeon @ Sitrus Berry
+Level: 64
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Eevoboost
+- Hyper Voice
+- Double-Edge
+- Baton Pass

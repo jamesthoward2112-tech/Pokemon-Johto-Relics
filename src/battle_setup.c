@@ -1141,6 +1141,22 @@ enum BattleTransition GetTrainerBattleTransition(void)
     u32 trainerId = SanitizeTrainerId(TRAINER_BATTLE_PARAM.opponentA);
     enum TrainerClassID trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
 
+#if IS_HNS
+    switch (trainerId)
+    {
+    case TRAINER_GRUNT_21_HNS:
+    case TRAINER_GRUNT_10_HNS:
+    case TRAINER_GRUNT_9_HNS:
+    case TRAINER_JESSIE_JAMES_TINTOWER_HNS:
+        return B_TRANSITION_JESSIE_JAMES;
+    case TRAINER_STEEVE_NEEVEE_ROUTE3_HNS:
+    case TRAINER_STEEVE_NEEVEE_SS_ANNE_HNS:
+    case TRAINER_STEEVE_NEEVEE_TOWER_HNS:
+    case TRAINER_STEEVE_NEEVEE_ROUTE23_HNS:
+        return B_TRANSITION_EEVEE_TWINS;
+    }
+#endif
+
     if (DoesTrainerHaveMugshot(trainerId))
         return B_TRANSITION_MUGSHOT;
 
