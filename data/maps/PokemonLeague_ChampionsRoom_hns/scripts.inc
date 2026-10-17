@@ -438,14 +438,14 @@ PokemonLeague_ChampionsRoom_Text_RematchMaryNoInterview:
 @ Replays of the Johto championship before eight Kanto badges must not
 @ falsely award Kanto Champion status, even though Lance uses a harder team.
 PokemonLeague_ChampionsRoom_Text_JohtoRematchBattleIntro:
-    .string "LANCE: Back for another challenge?\\p"
-    .string "You have already proven your\\n"
-    .string "strength across JOHTO.\\p"
-    .string "But a true champion never stops\\n"
-    .string "learning. Neither have I.\\p"
-    .string "Show me how far your team has\\n"
+    .string "LANCE: Back for another challenge?\p"
+    .string "You have already proven your\n"
+    .string "strength across JOHTO.\p"
+    .string "But a true champion never stops\n"
+    .string "learning. Neither have I.\p"
+    .string "Show me how far your team has\n"
     .string "come, {PLAYER}!$"
 
 PokemonLeague_ChampionsRoom_Text_JohtoRematchMaryInterview:
-    .string "MARY: Another incredible victory\\n"
+    .string "MARY: Another incredible victory\n"
     .string "for JOHTO's LEAGUE CHAMPION!$"
