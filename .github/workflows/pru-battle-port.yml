@@ -2,9 +2,12 @@ name: PRU consolidated integration build
 
 on:
   push:
-    branches: [pru/complete-selective-integration-20261016, pru/pretest-story-services-20261016]
+    branches: [pru/complete-selective-integration-20261016, pru/pretest-story-services-20261016, pru/noxichu-last-wish-title-test-20261017]
     paths:
       - docs/PRU_CI_TRIGGER.md
+      - tools/pru/build_noxichu_intro_trial.py
+      - assets/pru_title/**
+      - .github/workflows/pru-battle-port.yml
   workflow_dispatch:
 
 permissions:
@@ -103,6 +106,9 @@ jobs:
         run: python3 tools/check_pjr_tintower_shortcut.py
       - name: Convert approved RGBA donor sprites to indexed GBA art
         run: python3 tools/pru/prepare_external_donor_art.py
+      - name: Assemble original Hoenn's Last Wish and approved Noxichu title
+        if: github.ref_name == 'pru/noxichu-last-wish-title-test-20261017'
+        run: python3 tools/pru/build_noxichu_intro_trial.py
       - name: Build PRU consolidated integration
         run: |
           if make hns -j2 -O > /tmp/pru-build.log 2>&1; then
@@ -114,7 +120,7 @@ jobs:
             tail -n 55 /tmp/pru-build.log
             exit 1
           fi
-      - name: Package PJR Beta
+      - name: Package PRU ROM for testing
         run: |
           cp pokehns.gba PRU-Consolidated-WIP.gba
           arm-none-eabi-nm -n pokehns.elf > PRU-Consolidated-WIP.sym
@@ -128,5 +134,20 @@ jobs:
             PRU-Consolidated-WIP.sym
             PRU-Consolidated-WIP-SHA256.txt
             PRU-Consolidated-WIP-Commit.txt
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Package approved Noxichu + Last Wish title test
+        if: github.ref_name == 'pru/noxichu-last-wish-title-test-20261017'
+        run: |
+          cp pokehns.gba PRU-Noxichu-LastWish-TEST.gba
+          sha256sum PRU-Noxichu-LastWish-TEST.gba > PRU-Noxichu-LastWish-TEST.sha256
+      - uses: actions/upload-artifact@v4
+        if: github.ref_name == 'pru/noxichu-last-wish-title-test-20261017'
+        with:
+          name: PRU-Noxichu-LastWish-TEST
+          path: |
+            PRU-Noxichu-LastWish-TEST.gba
+            PRU-Noxichu-LastWish-TEST.sha256
           if-no-files-found: error
           retention-days: 14
