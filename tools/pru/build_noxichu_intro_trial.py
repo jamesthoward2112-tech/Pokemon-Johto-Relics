@@ -113,9 +113,8 @@ def patch_boot_flow():
         old,
         "#elif IS_HNS\n    // PRU test: use the native copyright/startup below.\n#endif",
     )
-    # Launch Last Wish directly after the copyright/startup sequence.
-    # Both the Gengar Expansion intro AND the Emerald biking/Groudon/Rayquaza
-    # montage are deliberately removed from this PRU test ROM.
+    # Keep the native Emerald movie first, then the original Celebi/Jirachi
+    # Last Wish scene when MainCB2_EndIntro finishes. Avoid HnS's Gengar intro.
     expansion_branch = ("#if EXPANSION_INTRO == TRUE\n"
                         "        SetMainCallback2(CB2_ExpansionIntro);\n"
                         "        CreateTask(Task_HandleExpansionIntro, 0);\n"
@@ -125,9 +124,10 @@ def patch_boot_flow():
                         "#endif")
     assert source.count(expansion_branch) == 1, "Intro dispatch has changed"
     source = source.replace(expansion_branch,
-                            "        // PRU: Last Wish is the only intro movie.\n"
-                            "        SetMainCallback2(CB2_InitPRUHwlScene0);")
-    print("INTRO_DISPATCH_PASS startup -> Last Wish, no Emerald/Gengar movie")
+                            "        // PRU: Emerald movie, then Last Wish.\n"
+                            "        CreateTask(Task_Scene1_Load, 0);\n"
+                            "        SetMainCallback2(MainCB2_Intro);")
+    print("INTRO_DISPATCH_PASS startup -> Emerald movie -> Last Wish -> Noxichu")
     old = ("static void MainCB2_EndIntro(void)\n"
            "{\n"
            "    if (!UpdatePaletteFade())\n"
