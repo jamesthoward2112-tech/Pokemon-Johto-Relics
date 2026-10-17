@@ -7214,7 +7214,7 @@ Mugshot: Light Blue
 Items: Potion
 
 Hoothoot
-Level: 9
+Level: 12
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Peck
 - Hypnosis
@@ -7222,15 +7222,23 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Tackle
 
 Natu
-Level: 10
+Level: 13
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Peck
 - Confusion
 - Night Shade
 - Leer
 
+Skarmet @ Oran Berry
+Level: 14
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Peck
+- Metal Claw
+- Swift
+- Roost
+
 Pidgeotto @ Sitrus Berry
-Level: 12
+Level: 16
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Gust
 - Quick Attack
@@ -7256,13 +7264,13 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Hypnosis
 - Dream Eater
 
-Skarmory
+Skarmadon @ Metal Coat
 Level: 63
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Stealth Rock
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Drill Peck
-- Metal Sound
 - Steel Wing
+- Iron Defense
+- Rock Slide
 
 Swellow @ Focus Band
 Level: 63
@@ -7308,7 +7316,7 @@ Mugshot: Green
 Items: Potion / Potion
 
 Pineco
-Level: 15
+Level: 18
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Pin Missile
 - Headbutt
@@ -7316,7 +7324,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Harden
 
 Ledian
-Level: 15
+Level: 19
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Thunder Punch
 - Comet Punch
@@ -7324,15 +7332,23 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Reflect
 
 Spinarak
-Level: 15
+Level: 19
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Poison Sting
 - String Shot
 - Scary Face
 - Night Shade
 
+Scarabub @ Oran Berry
+Level: 20
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Bug Bite
+- Pin Missile
+- Headbutt
+- Leer
+
 Scyther @ Berry Juice
-Level: 16
+Level: 22
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Quick Attack
 - Fury Cutter
@@ -7382,13 +7398,13 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Iron Head
 - Swords Dance
 
-Shedinja
+Heracurion @ Black Belt
 Level: 65
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Phantom Force
-- Bug Buzz
-- Grudge
-- Sand Attack
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Brick Break
+- X Scissor
+- Rock Slide
+- Swords Dance
 
 Scyther @ Scope Lens
 Level: 65
@@ -7410,7 +7426,7 @@ Mugshot: Pink
 Items: Super Potion / Potion
 
 Clefairy
-Level: 20
+Level: 23
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 - Headbutt
 - Charm
@@ -7418,7 +7434,7 @@ IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 - Metronome
 
 Teddiursa
-Level: 20
+Level: 24
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 - Fury Swipes
 - Fake Tears
@@ -7426,15 +7442,23 @@ IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 - Mud Slap
 
 Aipom
-Level: 20
+Level: 24
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 - Fake Out
 - Swift
 - Sand Attack
 - Fury Swipes
 
+Mootiny @ Oran Berry
+Level: 25
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Stomp
+- Defense Curl
+- Rollout
+- Growl
+
 Miltank @ Sitrus Berry
-Level: 21
+Level: 27
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 - Rollout
 - Attract
@@ -7513,32 +7537,40 @@ Items: Super Potion / Super Potion
 
 Haunter
 Ability: Levitate
-Level: 24
+Level: 29
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Hypnosis
 - Nightmare
 - Curse
 - Night Shade
 
-Stantler
-Level: 23
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Swift
-- Hypnosis
-- Nightmare
-- Leer
-
 Misdreavus
-Level: 24
+Level: 30
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Shadow Ball
 - Pain Split
 - Perish Song
 - Psywave
 
+Sableye
+Level: 30
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Shadow Claw
+- Fake Out
+- Foul Play
+- Confuse Ray
+
+Maroghost @ Spell Tag
+Level: 31
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Bonemerang
+- Shadow Punch
+- Will O Wisp
+- Rock Tomb
+
 Gengar @ Sitrus Berry
 Ability: Levitate
-Level: 25
+Level: 33
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Hypnosis
 - Shadow Ball
@@ -7564,13 +7596,13 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Shadow Claw
 - Power Gem
 
-Wyrdeer @ Silk Scarf
+Maroghost @ Spell Tag
 Level: 63
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Jump Kick
-- Psyshield Bash
-- Hypnosis
-- Headbutt
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Bonemerang
+- Shadow Punch
+- Will O Wisp
+- Rock Tomb
 
 Gengar @ Spell Tag
 Ability: Levitate
@@ -7618,7 +7650,7 @@ Mugshot: Light Blue
 Items: Super Potion / Super Potion
 
 Dewgong
-Level: 31
+Level: 34
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Aqua Ring
 - Aurora Beam
@@ -7626,7 +7658,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Aqua Jet
 
 Sneasel
-Level: 32
+Level: 35
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Faint Attack
 - Metal Claw
@@ -7634,23 +7666,23 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Avalanche
 
 Jynx
-Level: 31
+Level: 35
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Ice Punch
 - Psychic
 - Rain Dance
 - Lovely Kiss
 
-Delibird
-Level: 32
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Jollibird @ Never Melt Ice
+Level: 36
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Ice Beam
+- Dazzling Gleam
 - Icy Wind
-- Aerial Ace
-- Present
-- Ice Shard
+- Roost
 
 Piloswine @ Sitrus Berry
-Level: 33
+Level: 38
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Headbutt
 - Earthquake
@@ -7708,13 +7740,13 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Thrash
 - Ice Fang
 
-Glalie
+Mystynx @ Never Melt Ice
 Level: 65
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Sheer Cold
-- Crunch
-- Dark Pulse
-- Blizzard
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Ice Beam
+- Dazzling Gleam
+- Psychic
+- Lovely Kiss
 
 === TRAINER_PRYCE_1_2_HNS ===
 Name: PRYCE
@@ -7728,7 +7760,7 @@ Mugshot: Light Blue
 Items: Full Restore / Full Restore
 
 Cloyster
-Level: 33
+Level: 37
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Surf
 - Spikes
@@ -7736,7 +7768,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Rain Dance
 
 Sneasel
-Level: 34
+Level: 38
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Faint Attack
 - Metal Claw
@@ -7744,23 +7776,23 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Ice Punch
 
 Jynx
-Level: 33
+Level: 38
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Ice Punch
 - Psychic
 - Rain Dance
 - Lovely Kiss
 
-Dewgong
-Level: 34
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Brine
-- Aurora Beam
-- Snore
-- Rest
+Jollibird @ Never Melt Ice
+Level: 39
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Ice Beam
+- Dazzling Gleam
+- Icy Wind
+- Roost
 
 Piloswine @ Sitrus Berry
-Level: 35
+Level: 41
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Headbutt
 - Earthquake
@@ -7779,7 +7811,7 @@ Mugshot: Light Blue
 Items: Full Restore / Full Restore
 
 Cloyster
-Level: 37
+Level: 41
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Surf
 - Spikes
@@ -7787,31 +7819,31 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Rain Dance
 
 Sneasel
-Level: 37
+Level: 41
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Faint Attack
 - Metal Claw
 - Reflect
 - Blizzard
 
-Jynx
-Level: 37
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Ice Punch
+Mystynx @ Never Melt Ice
+Level: 42
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Ice Beam
+- Dazzling Gleam
 - Psychic
-- Shadow Ball
 - Lovely Kiss
 
-Dewgong
-Level: 37
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Aqua Tail
-- Aurora Beam
-- Snore
-- Rest
+Jollibird @ Never Melt Ice
+Level: 42
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Ice Beam
+- Dazzling Gleam
+- Icy Wind
+- Roost
 
 Mamoswine @ Sitrus Berry
-Level: 38
+Level: 44
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Take Down
 - Earthquake
@@ -7830,23 +7862,15 @@ Mugshot: Yellow
 Items: Super Potion / Super Potion
 
 Skarmory
-Level: 35
+Level: 38
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Spikes
 - Drill Peck
 - Swagger
 - Steel Wing
 
-Corsola
-Level: 35
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Rain Dance
-- Brine
-- Recover
-- Ancient Power
-
 Magneton
-Level: 35
+Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Thunderbolt
 - Tri Attack
@@ -7854,15 +7878,23 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Thunder
 
 Scizor @ Focus Band
-Level: 36
+Level: 40
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Bullet Punch
 - Metal Claw
 - Agility
 - Swords Dance
 
+Skarmadon @ Metal Coat
+Level: 41
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Drill Peck
+- Steel Wing
+- Iron Defense
+- Rock Slide
+
 Steelix @ Quick Claw
-Level: 36
+Level: 43
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Crunch
 - Earthquake
@@ -7896,13 +7928,13 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Baton Pass
 - Play Rough
 
-Corsola
+Skarmadon @ Metal Coat
 Level: 63
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Rain Dance
-- Surf
-- Aqua Ring
-- Power Gem
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Drill Peck
+- Steel Wing
+- Iron Defense
+- Rock Slide
 
 Magnezone
 Level: 64
@@ -7940,23 +7972,15 @@ Mugshot: Yellow
 Items: Full Restore / Full Restore
 
 Skarmory
-Level: 35
+Level: 38
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Spikes
 - Drill Peck
 - Swagger
 - Steel Wing
 
-Corsola
-Level: 35
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Rain Dance
-- Brine
-- Aqua Ring
-- Ancient Power
-
 Magneton
-Level: 35
+Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Thunderbolt
 - Tri Attack
@@ -7964,15 +7988,23 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Thunder
 
 Scizor @ Focus Band
-Level: 36
+Level: 40
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Bullet Punch
 - Metal Claw
 - Agility
 - Swords Dance
 
+Skarmadon @ Metal Coat
+Level: 41
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Drill Peck
+- Steel Wing
+- Iron Defense
+- Rock Slide
+
 Steelix @ Quick Claw
-Level: 36
+Level: 43
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Crunch
 - Earthquake
@@ -7991,23 +8023,15 @@ Mugshot: Yellow
 Items: Full Restore / Full Restore
 
 Skarmory
-Level: 37
+Level: 40
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Spikes
 - Drill Peck
 - Swagger
 - Steel Wing
 
-Corsola
-Level: 37
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Rain Dance
-- Surf
-- Aqua Ring
-- Ancient Power
-
 Magnezone
-Level: 37
+Level: 41
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Thunderbolt
 - Tri Attack
@@ -8015,15 +8039,23 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Gyro Ball
 
 Scizor @ Focus Band
-Level: 38
+Level: 42
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - X Scissor
 - Metal Claw
 - Agility
 - Swords Dance
 
+Skarmadon @ Metal Coat
+Level: 43
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Drill Peck
+- Steel Wing
+- Iron Defense
+- Rock Slide
+
 Steelix @ Quick Claw
-Level: 38
+Level: 45
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Crunch
 - Earthquake
@@ -8042,7 +8074,7 @@ Mugshot: Orange
 Items: Super Potion / Super Potion
 
 Hitmontop
-Level: 30
+Level: 34
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Triple Kick
 - Rolling Kick
@@ -8050,23 +8082,31 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Pursuit
 
 Primeape
-Level: 29
+Level: 35
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Low Kick
 - Karate Chop
 - Ice Punch
 - Rage
 
-Sudowoodo
-Level: 30
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Pinsir
+Level: 36
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Brick Break
+- X Scissor
 - Rock Slide
-- Wood Hammer
-- Low Kick
-- Faint Attack
+- Swords Dance
+
+Heracurion @ Black Belt
+Level: 37
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Brick Break
+- X Scissor
+- Rock Slide
+- Swords Dance
 
 Poliwrath @ Black Belt
-Level: 31
+Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Hypnosis
 - Mind Reader
@@ -8116,13 +8156,13 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Hi Jump Kick
 - Rolling Kick
 
-Breloom
+Heracurion @ Black Belt
 Level: 65
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Mach Punch
-- Seed Bomb
-- Sky Uppercut
-- Drain Punch
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Brick Break
+- X Scissor
+- Rock Slide
+- Swords Dance
 
 Poliwrath @ Sitrus Berry
 Level: 65
@@ -8144,23 +8184,15 @@ Mugshot: Orange
 Items: Full Restore / Full Restore
 
 Hitmontop
-Level: 35
+Level: 37
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Triple Kick
 - Rolling Kick
 - Dig
 - Pursuit
 
-Sudowoodo
-Level: 35
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Rock Slide
-- Wood Hammer
-- Low Kick
-- Faint Attack
-
 Primeape
-Level: 34
+Level: 37
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Low Kick
 - Karate Chop
@@ -8168,15 +8200,23 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Rage Fist
 
 Pinsir
-Level: 35
+Level: 38
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Brick Break
 - X Scissor
 - Vice Grip
 - Harden
 
+Heracurion @ Black Belt
+Level: 39
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Brick Break
+- X Scissor
+- Rock Slide
+- Swords Dance
+
 Poliwrath @ Black Belt
-Level: 36
+Level: 41
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Hypnosis
 - Mind Reader
@@ -8195,23 +8235,15 @@ Mugshot: Orange
 Items: Full Restore / Full Restore
 
 Hitmontop
-Level: 37
+Level: 40
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Triple Kick
 - Rolling Kick
 - Dig
 - Pursuit
 
-Sudowoodo
-Level: 37
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Rock Slide
-- Wood Hammer
-- Low Kick
-- Faint Attack
-
 Annihilape
-Level: 37
+Level: 40
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Shadow Punch
 - Brick Break
@@ -8219,15 +8251,23 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Rage Fist
 
 Pinsir
-Level: 37
+Level: 41
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Submission
 - X Scissor
 - Strength
 - Swords Dance
 
+Heracurion @ Black Belt
+Level: 42
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Brick Break
+- X Scissor
+- Rock Slide
+- Swords Dance
+
 Poliwrath @ Black Belt
-Level: 38
+Level: 44
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Ice Punch
 - Hypnosis
@@ -8246,7 +8286,7 @@ Mugshot: Blue
 Items: Full Restore / Full Restore
 
 Dragonair
-Level: 42
+Level: 47
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Thunder Wave
 - Thunderbolt
@@ -8254,7 +8294,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Dragon Tail
 
 Gyarados @ Focus Band
-Level: 43
+Level: 48
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Bite
 - Waterfall
@@ -8262,23 +8302,31 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Ice Fang
 
 Lapras @ Chesto Berry
-Level: 43
+Level: 48
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Brine
 - Ice Beam
 - Body Slam
 - Rest
 
-Dudunsparce @ Sitrus Berry
-Level: 44
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Glare
-- Ancient Power
-- Rest
-- Poison Jab
+Mawyrm @ Metal Coat
+Level: 49
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Dragon Claw
+- Iron Head
+- Crunch
+- Dragon Dance
+
+Shelgon
+Level: 50
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Dragon Claw
+- Rock Tomb
+- Protect
+- Headbutt
 
 Kingdra @ Leftovers
-Level: 45
+Level: 52
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Agility
 - Surf
@@ -8312,13 +8360,13 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Fly
 - Dragon Dance
 
-Dudunsparce
+Mawyrm @ Metal Coat
 Level: 63
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Yawn
-- Glare
-- Poison Jab
-- Hyper Drill
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Dragon Claw
+- Iron Head
+- Crunch
+- Dragon Dance
 
 Shelgon @ Sitrus Berry
 Level: 64
@@ -14752,13 +14800,13 @@ IVs: 0 Atk
 - Calm Mind  
 - Hyper Voice  
 
-Skarmory  
-Ability: Keen Eye  
-Level: 69 
-- Drill Peck  
-- Steel Wing  
-- Stealth Rock  
-- Autotomize  
+Skarmadon @ Metal Coat
+Level: 69
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Drill Peck
+- Steel Wing
+- Iron Defense
+- Rock Slide
 
 Swellow @ Flame Orb  
 Ability: Guts  
@@ -14791,7 +14839,7 @@ IVs: 0 Atk
 - Hurricane  
 - Brine  
 - Feather Dance  
-- Roost  
+- Roost
 
 === TRAINER_BUGSY_POSTOBC_HNS ===
 Name: BUGSY
@@ -14839,13 +14887,13 @@ IVs: 0 Atk
 - Psychic  
 - Signal Beam  
 
-Shedinja @ Focus Sash  
-Ability: Wonder Guard  
-Level: 71 
-- Phantom Force  
-- X-Scissor  
-- Hone Claws  
-- Sand Attack  
+Heracurion @ Black Belt
+Level: 71
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Brick Break
+- X Scissor
+- Rock Slide
+- Swords Dance
 
 Scizor @ Scope Lens  
 Ability: Technician  
@@ -14853,7 +14901,7 @@ Level: 69
 - Bullet Punch  
 - Bug Bite  
 - Swords Dance  
-- Roost  
+- Roost
 
 === TRAINER_WHITNEY_POSTOBC_HNS ===
 Name: WHITNEY
@@ -14936,13 +14984,13 @@ IVs: 0 Atk
 - Power Gem  
 - Night Shade  
 
-Wyrdeer @ Silk Scarf  
-Ability: Sap Sipper  
+Maroghost @ Spell Tag
 Level: 70
-- Psyshield Bash  
-- Megahorn  
-- Hypnosis  
-- Body Slam  
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Bonemerang
+- Shadow Punch
+- Will O Wisp
+- Rock Tomb
 
 Dusknoir  
 Ability: Pressure  
@@ -14978,7 +15026,7 @@ IVs: 0 Atk
 - Hex  
 - Hypnosis  
 - Dream Eater  
-- Thunderbolt  
+- Thunderbolt
 
 === TRAINER_CHUCK_POSTOBC_HNS ===
 Name: CHUCK
@@ -14999,13 +15047,13 @@ Level: 70
 - Ice Punch  
 - Mach Punch  
 
-Medicham  
-Ability: Pure Power  
-Level: 70 
-- Acupressure  
-- Stored Power  
-- High Jump Kick  
-- Detect  
+Heracurion @ Black Belt
+Level: 70
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Brick Break
+- X Scissor
+- Rock Slide
+- Swords Dance
 
 Annihilape  
 Ability: Vital Spirit  
@@ -15037,7 +15085,7 @@ Level: 71
 - Liquidation  
 - Submission  
 - Belly Drum  
-- Skull Bash  
+- Skull Bash
 
 === TRAINER_JASMINE_POSTOBC_HNS ===
 Name: JASMINE
@@ -15066,14 +15114,13 @@ Level: 72
 - Iron Head  
 - Spikes  
 
-Corsola @ Damp Rock  
-Ability: Regenerator  
+Skarmadon @ Metal Coat
 Level: 70
-IVs: 0 Atk  
-- Rain Dance  
-- Power Gem  
-- Aqua Ring  
-- Surf  
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Drill Peck
+- Steel Wing
+- Iron Defense
+- Rock Slide
 
 Magnezone  
 Ability: Analytic  
@@ -15100,7 +15147,7 @@ Level: 70
 - Head Smash  
 - Earthquake  
 - Dragon Dance  
-- Heavy Slam  
+- Heavy Slam
 
 === TRAINER_PRYCE_POSTOBC_HNS ===
 Name: PRYCE
@@ -15121,14 +15168,13 @@ Level: 70
 - Beat Up  
 - Icicle Crash  
 
-Mr. Rime  
-Ability: Ice Body  
+Mystynx @ Never Melt Ice
 Level: 71
-IVs: 0 Atk  
-- Teeter Dance  
-- Snowscape  
-- Psyshock  
-- Trick Room  
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Ice Beam
+- Dazzling Gleam
+- Psychic
+- Lovely Kiss
 
 Ninetales-Alola @ Light Clay  
 Ability: Snow Warning  
@@ -15163,7 +15209,7 @@ IVs: 0 Atk
 - Shadow Ball  
 - Blizzard  
 - Will-O-Wisp  
-- Pain Split  
+- Pain Split
 
 === TRAINER_CLAIR_POSTOBC_HNS ===
 Name: CLAIR
@@ -15184,13 +15230,13 @@ Level: 71
 - Aqua Tail  
 - Light Screen  
 
-Dudunsparce  
-Ability: Serene Grace  
-Level: 69 
-- Charge Beam  
-- Boomburst  
-- Poison Jab  
-- Tailwind  
+Mawyrm @ Metal Coat
+Level: 69
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Dragon Claw
+- Iron Head
+- Crunch
+- Dragon Dance
 
 Exeggutor-Alola @ Sitrus Berry  
 Ability: Harvest  
@@ -15223,7 +15269,7 @@ Level: 70
 - Extreme Speed  
 - Dragon Pulse  
 - Flamethrower  
-- Hyper Beam  
+- Hyper Beam
 
 === TRAINER_BROCK_POSTOBC_HNS ===
 Name: BROCK
