@@ -148,8 +148,8 @@ print("Wrote PRU-Pretest-Story-Scan.md")
 # Gift inventory: find real HNS event sources, rather than assuming the old
 # PRL/Kanto gift spreadsheet describes this Johto-first playable branch.
 import re
-gift_species = re.compile(r"SPECIES_(?:CHIKORITA|TORCHIC|MUDKIP|TREECKO)\\b")
-gift_ops = re.compile(r"\\b(?:givemon|giveegg|createmon)\\b")
+gift_species = re.compile(r"SPECIES_(?:CHIKORITA|TORCHIC|MUDKIP|TREECKO)\b")
+gift_ops = re.compile(r"\b(?:givemon|giveegg|createmon)\b")
 gift_matches = 0
 for gift_map in sorted(active_files):
     gift_lines = gift_map.read_text(errors="replace").splitlines()
