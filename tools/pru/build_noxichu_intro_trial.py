@@ -10,6 +10,10 @@ import base64
 import hashlib
 import io
 import urllib.request
+import ast
+import subprocess
+import tempfile
+import zipfile
 from PIL import Image
 
 PRL_REPO = "jamesthoward2112-tech/Pokemon-Relic-Legacy"
@@ -55,11 +59,33 @@ def install_last_wish():
 
     helper = fetch_prl(PRL_HELPER).decode("utf-8")
     assert "BLOBS =" in helper and "HOENN-S-LAST-WISH-project" in helper
-    helper_path = Path("tools/pru/pru_download_hwl_art.py")
-    helper_path.write_text(helper)
-    # Running the actual donor validator downloads all 20 source art/map assets.
-    import subprocess
-    subprocess.run(["python3", str(helper_path)], check=True)
+    module = ast.parse(helper)
+    expected = next(ast.literal_eval(n.value) for n in module.body
+                    if isinstance(n, ast.Assign)
+                    and any(isinstance(t, ast.Name) and t.id == "BLOBS"
+                            for t in n.targets))
+    # The original donor pinned commit was replaced by the author.
+    # Recover the exact verified donor sources from the successful
+    # 8 Oct 2026 PRL GitHub Actions export artifact, still retained.
+    with tempfile.TemporaryDirectory() as temp:
+        subprocess.run(["gh", "run", "download", "37778386335",
+                        "--repo", PRL_REPO, "--name", "PRL-Original-Intro-Donors",
+                        "--dir", temp], check=True)
+        outer = Path(temp) / "Hoenns_Last_Wish_Opening_Scenes_0_to_3.zip"
+        assert outer.is_file(), f"Missing original donor nested archive: {outer}"
+        with zipfile.ZipFile(outer) as archive:
+            prefix = "Hoenns_Last_Wish_Opening_Scenes_0_to_3/graphics/intro/scene_0/"
+            dest = Path("graphics/intro/prl_hwl")
+            dest.mkdir(parents=True, exist_ok=True)
+            for name, sha in expected.items():
+                content = archive.read(prefix + name)
+                digest = hashlib.sha1(
+                    b"blob " + str(len(content)).encode() + b"\\0" + content
+                ).hexdigest()
+                assert digest == sha, f"Donor original hash mismatch: {name}"
+                (dest / name).write_bytes(content)
+                print("ARCHIVED_DONOR_VERIFIED", name, digest)
+    assert len(expected) == 20
     for art in ("celebi.png", "jirachi.png", "bg00.png", "moon.png"):
         assert Path("graphics/intro/prl_hwl", art).is_file()
 
