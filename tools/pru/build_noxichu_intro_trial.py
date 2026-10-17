@@ -148,41 +148,33 @@ def patch_boot_flow():
     print("BOOT_FLOW_PASS short startup -> Jirachi/Celebi -> PRU title")
 
 def install_title_art():
-    parts = sorted(ASSET_B64.parent.glob(ASSET_B64.name + '.part*'))
-    assert len(parts) == 3, f"Expected three approved artwork payload parts, found {len(parts)}"
-    jpg = base64.b64decode(''.join(''.join(p.read_text().split()) for p in parts), validate=True)
-    assert hashlib.sha256(jpg).hexdigest() == '0ea8c588161dc79307115d06054cfbbab1ab1588bd73fbd839a13f8a00837128'
-    frame = Image.open(io.BytesIO(jpg)).convert("RGB")
-    assert frame.size == (240, 160), frame.size
-    # The only archived title donor is a 240x160 JPEG. Restore crisp edge
-    # definition before palette conversion; we cannot invent extra source
-    # resolution, but can avoid unnecessary softening and use all 256 colours.
+    # Approved pixel-art master: user's exact 1536x1024 PNG, not an earlier JPEG.
+    # A 240x160 indexed 256-colour RGB555-ready conversion is committed losslessly.
+    # The full-size original is archived at /PRU/Title Assets in the user's Library.
+    path = Path("assets/pru_title/noxichu_cavern_master_240x160.png")
+    data = path.read_bytes()
+    assert hashlib.sha256(data).hexdigest() == "0f858bbbae95e1468c2e5d89436b19c2c5e28564b77d9429b5e15cae896d0434"
+    indexed = Image.open(io.BytesIO(data))
+    assert indexed.size == (240, 160) and indexed.mode == "P", (indexed.size, indexed.mode)
+    assert len(indexed.getcolors(maxcolors=256)) <= 256
     qa = Path("PRU-QA")
     qa.mkdir(exist_ok=True)
-    frame.save(qa / "title-original-source.png")
-    frame = frame.filter(ImageFilter.UnsharpMask(radius=0.70, percent=170, threshold=2))
-    frame = ImageEnhance.Contrast(frame).enhance(1.055)
-    indexed = frame.quantize(colors=256, method=Image.Quantize.MEDIANCUT,
-                             dither=Image.Dither.NONE)
-    indexed.save(qa / "title-updated-256-palette.png")
-    indexed.resize((960, 640), Image.Resampling.NEAREST).save(
-        qa / "title-updated-preview-4x.png")
+    indexed.save(qa / "title-new-lossless-256-palette.png")
+    indexed.resize((960,640), Image.Resampling.NEAREST).save(qa / "title-new-preview-4x.png")
     raw = indexed.tobytes()
     assert len(raw) == 38400
     palette = indexed.getpalette()
-    assert palette is not None and len(palette) >= 256 * 3
-    # Pillow provides exactly the requested number of palette entries, not 256.
-    palette = palette + [0] * (256 * 3 - len(palette))
-    pal_bytes = bytearray()
+    assert palette and len(palette) >= 256 * 3
+    out_pal = bytearray()
     for i in range(256):
-        r,g,b = palette[3*i:3*i+3]
+        r, g, b = palette[3*i:3*i+3]
         rgb555 = (r >> 3) | ((g >> 3) << 5) | ((b >> 3) << 10)
-        pal_bytes += rgb555.to_bytes(2, "little")
-    assert len(pal_bytes) == 512
+        out_pal.extend(rgb555.to_bytes(2, "little"))
+    assert len(out_pal) == 512
     TITLE_DIR.mkdir(parents=True, exist_ok=True)
     (TITLE_DIR / "PJR_TitleScreen_Mode4.8bpp").write_bytes(raw)
-    (TITLE_DIR / "PJR_TitleScreen_Mode4.gbapal").write_bytes(pal_bytes)
-    print("TITLE_ART_PASS 240x160, 8bpp, sharpened JPEG source, 256 indexed RGB555 palette entries")
+    (TITLE_DIR / "PJR_TitleScreen_Mode4.gbapal").write_bytes(out_pal)
+    print("TITLE_ART_PASS exact original master -> lossless indexed 240x160, 256 colours, RGB555; no JPEG or extra sharpness")
 
 def patch_title():
     path = "src/title_screen.c"
