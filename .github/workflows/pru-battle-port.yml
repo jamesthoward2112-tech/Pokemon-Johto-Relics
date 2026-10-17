@@ -12,6 +12,10 @@ on:
       - .github/workflows/pru-battle-port.yml
   workflow_dispatch:
 
+concurrency:
+  group: pru-test-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
