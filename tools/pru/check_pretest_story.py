@@ -70,16 +70,35 @@ assert "PalletTown_Lab_Text_OakResonanceResearch:" in oak
 assert "msgbox PalletTown_Lab_Text_OakResonanceResearch" in oak
 assert "FLAG_IS_CHAMPION" in hof
 
+# PRU championship progression: do not turn a Johto League replay into a
+# Kanto victory before every Kanto Gym badge has actually been earned.
+champions_room = (map_dir / "PokemonLeague_ChampionsRoom_hns" / "scripts.inc").read_text()
+all_kanto_badges = [f"FLAG_BADGE{n:02d}_GET" for n in range(9, 17)]
+hof_clear = hof.split("PokemonLeague_HallOfFame_EventScript_SetGameClearFlags::", 1)[1].split(
+    "PokemonLeague_HallOfFame_EventScript_SpawnAlolaMons::", 1)[0]
+for badge in all_kanto_badges:
+    assert (f"goto_if_unset {badge}, PokemonLeague_HallOfFame_EventScript_KantoAlreadyAwarded"
+            in hof_clear), badge
+    assert (f"goto_if_unset {badge}, PokemonLeague_HallOfFame_EventScript_JohtoRematchText"
+            in hof), badge
+    assert (f"goto_if_unset {badge}, PokemonLeague_WillsRoom_EventScript_LanceRematchJohto"
+            in champions_room), badge
+    assert (f"goto_if_unset {badge}, PokemonLeague_ChampionsRoom_EventScript_JohtoRematchInterview"
+            in champions_room), badge
+assert "goto_if_set FLAG_IS_KANTO_CHAMPION, PokemonLeague_HallOfFame_EventScript_KantoAlreadyAwarded" in hof_clear
+assert hof_clear.index("goto_if_unset FLAG_BADGE16_GET") < hof_clear.index("setflag FLAG_IS_KANTO_CHAMPION")
+assert "PokemonLeague_HallOfFame_JohtoRematch_LanceText:" in hof
+assert "PokemonLeague_ChampionsRoom_Text_JohtoRematchBattleIntro:" in champions_room
+assert "PokemonLeague_ChampionsRoom_Text_JohtoRematchMaryInterview:" in champions_room
+for permanent in ("FLAG_CAUGHT_MEW", "FLAG_CAUGHT_ENTEI", "FLAG_CAUGHT_RAIKOU",
+                  "FLAG_BATTLED_DEOXYS", "FLAG_DEFEATED_DEOXYS",
+                  "FLAG_SUMMONED_MTMOON_JIRACHI"):
+    assert f"clearflag {permanent}" not in hof, permanent
+
 # For transparent QA: unresolved previously inherited PJR event problems.
 warnings = []
-if "clearflag FLAG_CAUGHT_MEW" in hof:
-    warnings.append("Hall of Fame repeats reset caught-Mew flag; fix as separate legendary/league progression task.")
-if "clearflag FLAG_CAUGHT_ENTEI" in hof or "clearflag FLAG_CAUGHT_RAIKOU" in hof:
-    warnings.append("Hall of Fame reinitialises caught roaming beast flags; guard against repeat grants.")
 if "giveitem ITEM_ANCIENT_RAINBOW_CREST\n\tsetflag FLAG_PJR_GOT_RAINBOW_CREST" in crest:
     warnings.append("Red's Ancient Rainbow Crest handoff does not check bag-full outcome.")
-if "setflag FLAG_IS_KANTO_CHAMPION" in hof:
-    warnings.append("Confirm rematch promotion to Kanto Champion is gated by 16 badges, not only a replay.")
 
 # Machine-scan EVERY HNS map dialogue file for dead Kanto-first or sequel phrases.
 candidates = {
@@ -111,7 +130,7 @@ report.write_text(
     encoding="utf-8"
 )
 assert not hits, hits
-print(f"PASS: first-adventure opening, passive fossils, Pikachu, original egg and relic order; scanned {len(active_files)} HNS map scripts.")
+print(f"PASS: first-adventure opening, passive fossils, Pikachu, egg, relic order, Kanto badge gates and permanent legend flags; scanned {len(active_files)} HNS map scripts.")
 for line in warnings:
     print("TRACKED:", line)
 print("Wrote PRU-Pretest-Story-Scan.md")
