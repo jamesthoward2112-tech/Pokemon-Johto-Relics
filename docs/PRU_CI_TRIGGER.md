@@ -79,3 +79,8 @@ Rebuild after restoring exact 64×64 indexed two-nurse Chansey sprite at `assets
 ### Retry after trainer intro source-control-character fix
 
 CI run `39029394627` failed because the newly introduced battle message mistakenly used a doubled `\\p` escape. Corrected in commit `4ea97bdd3fa658df3002ef1bb06b41b3810e60fa` to one GBA `\p`, and the separate palette asset SHA validation has passed. Re-run all source + linker steps against this HEAD.
+
+
+### Retry after fixing Day-Care text escapes
+
+CI run `39029526816` passed PNG asset checks and battle-message compilation but failed in `Route34_DayCare_hns/scripts.inc` because new NPC text incorrectly had doubled control backslashes. Commit `1157d5eacb2f90655531372932a69a59c34dd5d9` corrected nine instances to GBA-compatible single `\n` / `\p` escapes. Rebuild the approved title+Chansey+Breeding Centre ROM now.
