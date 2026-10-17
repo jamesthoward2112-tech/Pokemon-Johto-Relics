@@ -11,7 +11,7 @@ assert len(rom) == 32 * 1024 * 1024, "Unexpected ROM length"
 
 # Distinct internal name/version for this QA release, without changing BPEE
 # game code used to associate existing compatible save files.
-rom[0xA0:0xAC] = b"PRU OCT17 QA"
+rom[0xA0:0xAC] = b"PRU OCT17 V2"
 rom[0xBC] = 1
 rom[0xBD] = (-(sum(rom[0xA0:0xBD]) + 0x19)) & 0xFF
 ROM_PATH.write_bytes(rom)
@@ -70,12 +70,17 @@ for time in ("Day", "Night"):
     )
     print(f"BINARY_PASS: Route 30 {time}, Poochyena {matches}")
 
-# Confirm the final Emerald movie hands off to the linked Last Wish callback.
-ending = addr("MainCB2_EndIntro")
+# Prove the *startup itself* dispatches to Last Wish (no Emerald movie).
+# Looking only at MainCB2_EndIntro had wrongly passed the previous broken build.
+copyright = addr("SetUpCopyrightScreen")
 last_wish_thumb = (symbols["CB2_InitPRUHwlScene0"] | 1).to_bytes(4, "little")
-assert last_wish_thumb in rom[ending:ending + 192], (
-    "Emerald end callback does not point at Last Wish"
-)
+emerald_scene_thumb = (symbols["Task_Scene1_Load"] | 1).to_bytes(4, "little")
+copyright_code = rom[copyright:copyright + 4096]
+assert last_wish_thumb in copyright_code, "Startup does NOT call Last Wish directly"
+assert emerald_scene_thumb not in copyright_code, "Vanilla Emerald intro still referenced by startup"
 assert "gTrainerFrontPic_ChanseyTwins" in symbols, "Custom Chansey portrait not linked"
-print("BINARY_PASS: Emerald -> Last Wish callback and Chansey trainer art are linked")
-print("PRU_QA_HEADER: PRU OCT17 QA; BPEE preserved; GBA complement valid")
+source = Path("src/intro.c").read_text()
+assert "CreateTask(Task_Scene1_Load, 0);" not in source, "Vanilla Emerald movie still callable in copyright startup"
+assert "SetMainCallback2(CB2_InitPRUHwlScene0);" in source, "Last Wish dispatcher not linked"
+print("BINARY_PASS: short startup -> Last Wish, no vanilla Emerald movie; custom Chansey portrait linked")
+print("PRU_QA_HEADER: PRU OCT17 V2; BPEE preserved; GBA complement valid")
