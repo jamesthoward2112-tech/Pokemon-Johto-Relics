@@ -69,3 +69,8 @@ Explicit full runner rebuild requested after nurse-side Chansey double tiers in 
 ## 17 October — trainerproc separator repair and current rare gift + doubles build
 
 Rebuild after `f0e8833041bfc78178268b35757e20ca0408b238`, removing the unsupported mid-file C-style comment between the last PJR trainer party and the 21 PRU Chansey doubles parties. Source tests now expect the actual `trainerbattle_double` command and usable-party checks. Include live Violet Ralts replacing former Chikorita, Saffron Steven Treecko/Beldum/Bagon gift choice, and approved Last Wish-only Noxichu title. A previous run failed while reading the additional trainer.party records; do not distribute a ROM unless new compile completes.
+
+
+## 17 October — direct Chansey portrait + Breeding Centre move expert rebuild
+
+Rebuild after restoring exact 64×64 indexed two-nurse Chansey sprite at `assets/pru_chansey/twins_front_64.png.b64` (SHA256 55452b964a24dc7cd5098f90ca2bba69325c1c8a9d381ddb4a5824e0e681267b), dedicated trainer pic, 'Chansey wants to train!' native battle intro, and Route34 Day-Care Egg/Tutor move expert. Preserve Last Wish → Noxichu title. Before claiming tested: verify successful full hns linker + emulator intro and move selection; package direct .gba.
