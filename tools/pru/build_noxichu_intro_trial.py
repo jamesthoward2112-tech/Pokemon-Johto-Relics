@@ -54,6 +54,21 @@ def install_last_wish():
     assert 'void CB2_InitPRLHwlScene0(void)' in code
     code = code.replace("#if defined(FIRERED)", "#if IS_HNS", 1)
     code = code.replace("CB2_InitPRLHwlScene0", "CB2_InitPRUHwlScene0")
+    # PRU's pokeemerald-expansion fork predates PRL's INCGFX compile macro.
+    # Convert donor references to ordinary INCBIN targets built by gbagfx.
+    import re
+    code = re.sub(
+        r'INCGFX_U16\\("([^"]+)\\.png", "\\.gbapal"\\)',
+        r'INCBIN_U16("\\1.gbapal")', code)
+    code = re.sub(
+        r'INCGFX_U32\\("([^"]+)\\.png", "\\.4bpp\\.smol"\\)',
+        r'INCBIN_U32("\\1.4bpp.smol")', code)
+    assert "INCGFX_U16" not in code and "INCGFX_U32" not in code
+    # PRU m4a wrappers take gbsEnabled as their second parameter.
+    code = code.replace('m4aSongNumStart(MUS_INTRO);',
+                        'm4aSongNumStart(MUS_INTRO, FALSE);')
+    code = code.replace('m4aSongNumStop(MUS_INTRO);',
+                        'm4aSongNumStop(MUS_INTRO, FALSE);')
     # Retain original scene cleanup and fade-out to title.
     Path("src/pru_hwl_intro.c").write_text(code)
 
