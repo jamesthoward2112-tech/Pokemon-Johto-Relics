@@ -3435,7 +3435,10 @@ u32 GetMonPersonality(u16 species, u8 gender, u8 nature, u8 unownLetter)
     }
     while ((nature != GetNatureFromPersonality(personality) && nature != NATURE_RANDOM)
             || (gender != GetGenderFromSpeciesAndPersonality(species, personality) && gender != MON_GENDER_RANDOM)
-            || ((actualLetter != unownLetter - 1) && unownLetter > 0));
+            || ((actualLetter != unownLetter - 1) && unownLetter > 0)
+            // The special I-UNOWN/Eye-Unown graphics are reserved for the Relic
+            // story encounter. Ordinary wild UNOWN must never randomize into it.
+            || (species == SPECIES_UNOWN && unownLetter == RANDOM_UNOWN_LETTER && actualLetter == 8));
     return personality;
 }
 
@@ -4273,7 +4276,11 @@ u32 GetUnownSpeciesId(u32 personality)
 {
     u16 unownLetter = GetUnownLetterByPersonality(personality);
 
-    if (unownLetter == 0)
+    // Old saves can contain a regular UNOWN with the I-form personality.
+    // That must not borrow the Relic-exclusive Eye-Unown graphics.
+    // New regular encounters reroll I above; use the base sprite as a
+    // compatibility fallback for existing saves.
+    if (unownLetter == 0 || unownLetter == 8)
         return SPECIES_UNOWN;
     return unownLetter + SPECIES_UNOWN_B - 1;
 }
