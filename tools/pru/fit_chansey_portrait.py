@@ -21,7 +21,7 @@ transparency = art.info.get("transparency", 0)
 assert transparency == 0, f"Expected index-0 transparency, got {transparency}"
 ( QA / "chansey-before.png").write_bytes(SOURCE.read_bytes())
 # Index zero is the transparent GBA palette colour.
-mask = art.point([0] + [255] * 255).convert("L")
+mask = Image.frombytes("L", art.size, bytes(255 if pixel else 0 for pixel in art.getdata()))
 bbox = mask.getbbox()
 assert bbox, "Chansey picture unexpectedly empty"
 cropped = art.crop(bbox)
