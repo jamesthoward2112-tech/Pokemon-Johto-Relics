@@ -23,14 +23,25 @@ the usual generic Rocket battle header. The combined portrait remains intact.
 
 ### Slowpoke Well B1F
 - Keep trigger coordinates (26,15), (27,15), (28,15).
-- Read player X; place James at player's X and Jessie beside him (within
-  corridor X 26..28), then walk both from the north until one tile ahead.
-- Add Meowth as map object 28, behind the two, moving and facing with them.
-- Preserve single persistent `TRAINER_GRUNT_21_HNS` double battle, normal
-  no-rematch flag `FLAG_PJR_JESSIE_JAMES_1_DEFEATED`, Kurt/Proton and legacy
-  Rocket rescue logic.
-- Shorten post-battle marching from six tiles to three and fade the trio away
-  as a group, avoiding the prolonged backtracking sequence.
+- On each trigger, obtain player X and stage James at (player X,13),
+  Jessie beside him (X=26..28), and Meowth directly behind at (player X,12).
+- All three advance **one** tile to Y=14/13, so James is directly ahead
+  of the player at Y=15 rather than an offset side encounter.
+- Map templates now start in the visible scene (James 28,13; Jessie 27,13;
+  Meowth 27,12) instead of at Y=7/8, reducing risk of failed late object
+  spawning before the scripted repositioning.
+- After farewell dialogue, turn trio and fade to black before removing all
+  three. No visible three/six-tile backwards walk.
+- Preserve the existing double battle, no-rematch flag, and Kurt/Proton logic.
+
+**Field-testing correction:** An Android emulator recording supplied after
+Actions run `39070341757` showed Jessie and James alongside the player,
+Meowth absent, and the same long approach and retreat. Consequently that
+previous build is **not** accepted as scene-verified. The recording's
+post-battle character positions also resemble the original fixed-X layout;
+compare the game's actual `PRU-Consolidated-WIP-Commit.txt` marker with the
+tested ROM before treating that clip as proof of the new source build.
+The follow-up source fix and static checks do **not** replace gameplay QA.
 
 ### Goldenrod Underground Switches
 - Branch approach by entry side X=18 or X=24 rather than always running left.
@@ -57,9 +68,11 @@ GitHub Actions must compile `pokehns.gba` and publish
 **Still requires emulator gameplay testing with appropriate Johto progress:**
 
 1. Enter Slowpoke Well via each of the three X=26/27/28 trigger tiles and
-   check walk-in placement (no side overlap or sprites passing through walls).
-2. Check the three visible characters turn towards the player, remain
-   until dialogue/battle, and withdraw together without backpedal artifacts.
+   check the short one-step approach and James directly ahead of the player
+   (no side overlap or sprites passing through walls).
+2. Confirm Meowth visibly spawns at all three entries, remains behind the
+   trainers until battle, and vanishes alongside them in the fade without a
+   backwards exit. Check gameplay footage, not only map/script assertions.
 3. Check one-Pokémon party is warned and can return for a proper double
    battle; verify two-Pokémon double battle, combined portrait and outcome.
 4. Check Kurt/Proton rescue, hide flags, map reloads, old progressed saves,
