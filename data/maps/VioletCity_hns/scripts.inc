@@ -506,7 +506,7 @@ VioletCity_EventScript_PJRGiftChikorita::
 	goto_if_eq VAR_RESULT, NO, VioletCity_EventScript_PRU_RaltsDeclined
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_RALTS
 	bufferspeciesname STR_VAR_1, SPECIES_RALTS
-	givemon SPECIES_RALTS, 8
+	givemon SPECIES_RALTS, 8, gender=MON_FEMALE
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, VioletCity_EventScript_PRU_RaltsGiven
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, VioletCity_EventScript_PRU_RaltsGiven
 	msgbox VioletCity_EventScript_PRU_RaltsNoRoomText, MSGBOX_DEFAULT
@@ -517,6 +517,7 @@ VioletCity_EventScript_PJRGiftChikorita::
 VioletCity_EventScript_PRU_RaltsGiven::
 	call Common_EventScript_GiftMon
 	setflag FLAG_PJR_GOT_CHIKORITA
+	removeobject LOCALID_PJR_GIFT_CHIKORITA
 	msgbox VioletCity_EventScript_PRU_RaltsThanksText, MSGBOX_DEFAULT
 	closemessage
 	release
