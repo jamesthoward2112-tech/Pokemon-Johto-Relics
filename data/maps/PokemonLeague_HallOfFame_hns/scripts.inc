@@ -249,9 +249,9 @@ PokemonLeague_HallOfFame_Rematch_LanceText:
 @ Johto League rematches are allowed before all Kanto badges. They are
 @ championship defenses, NOT proof of a Kanto championship.
 PokemonLeague_HallOfFame_JohtoRematch_LanceText:
-    .string "LANCE: Once again, you've earned\\n"
-    .string "your place among JOHTO's finest.\\p"
-    .string "Your partners have grown, yet your\\n"
-    .string "bond is as strong as ever.\\p"
-    .string "Let us record this LEAGUE victory,\\n"
+    .string "LANCE: Once again, you've earned\n"
+    .string "your place among JOHTO's finest.\p"
+    .string "Your partners have grown, yet your\n"
+    .string "bond is as strong as ever.\p"
+    .string "Let us record this LEAGUE victory,\n"
     .string "{PLAYER}, and your trusted team!$"
