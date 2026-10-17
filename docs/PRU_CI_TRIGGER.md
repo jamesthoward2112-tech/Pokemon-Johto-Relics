@@ -59,3 +59,8 @@ Run live HNS and donor map-script gift audit for Chikorita, Torchic, Mudkip and 
 ## 17 October — nurse-side Chansey doubles CI regression
 
 Trigger source + full HNS ROM build after 21 two-Chansey per-centre teams were appended (levels 7–100) and nurse-side NPC interactions routed to level-specific labels. Specific fix `cc998283768519f0f1b776c7a02146ca7a859dfb`: all 21 battle entry points now use `trainerbattle_double` with built-in insufficient-usable-party handling, append-only trainer IDs 654–674, `cleartrainerflag` on each interaction to ensure rematches, and 0 prize-money payout (EXP-only). New source assertions are in `tools/pru/check_pretest_story.py`. Retain user-approved Last Wish → Noxichu title, do not re-add Emerald/Gengar. Also inspect GIFT_SPECIES_SCAN output to find live Chikorita/Torchic/Mudkip gift events; no blanket replacements until event scripts identified.
+
+
+## 17 Oct PRU repeatable nurse-Chansey & rare gifts build
+
+Explicit full runner rebuild requested after nurse-side Chansey double tiers in 26 centers, trainerproc-safe 21 trainer records, corrected `trainerbattle_double` encounter handling and source checks. Violet rare Ralts gift replaces misleading Chikorita clue; Steven now offers Treecko/Beldum/Bagon in Silph Co with full PC retry. Run `tools/pru/check_chansey_training.py` and `tools/pru/check_rare_gifts.py` before compile and report independent wild encounter coverage. Preserve approved Last Wish + Noxichu title. Deliver verified direct .gba, not GitHub link.
