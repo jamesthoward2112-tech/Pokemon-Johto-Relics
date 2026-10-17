@@ -1,5 +1,14 @@
 # PRU Work Resume Checkpoint
 
+## 18 October 2026 — 444-species source registration and summary numbering audit
+
+- **Branch:** `pru/444-species-dex-audit-20261018`, stacked on draft `pru/move-expert-stones-tm-labels-20261017` (PR #14). **Draft PR #15**: https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/pull/15
+- **Source verified:** all **444/444** entries from the approved 16 October canonical CSV have a unique `SPECIES_*` constant and a single registered SpeciesInfo record, with Castform/Deoxys aliases resolved. This is NOT a claim that all 444 have implemented encounter paths.
+- **Bug/fix:** HNS summary originally used Johto Dex numbers before National unlock, giving no number for Grovyle, Mightyena and Gardevoir. Committed `src/data/pokemon/pru_dex_order.h` and an HNS-only `SpeciesToPokedexNum` 444 index with safe battle-only form fallback: **Charaxis #008, Grovyle #285, Mightyena #297, Gardevoir #318**.
+- **GitHub CI:** `tools/pru/check_444_species_dex.py` added as a source assertion step to the consolidated full GitHub Actions HNS build; workflow also preserves base's Rocket/title and 25 Ancient Stone evolutions. The **new ROM is NOT yet verified compiled**.
+- **Remaining blocking tasks:** native HGSS Pokédex UI and seen/caught flag schema still use inherited National/Johto IDs, so the 444 entries are not separately tracked as registered/caught; separate real Seviian Noibat/Noivern variant implementation and approved sprites missing; legendary encounter event placement pending; in-game summary and icon validation pending. Do not overclaim all 444 as playable until these gates pass.
+- **Preserve:** existing `CREDITS.md`, pinned donors, #14 fixes, Rocket scenes, Last Wish/Noxichu and original playable ROM builds. Detailed audit in `docs/PRU_444_SPECIES_SOURCE_AUDIT_20261018.md`.
+
 ## 17 October 2026 — Johto Rocket trio and PRL duo integration (build in progress)
 
 - **Working branch:** `pru/johto-rocket-trio-fix-20261017`, based on the latest usable PRU checkpoint branch `pru/noxichu-last-wish-title-test-20261017`. Pinned authoritative PRL donor remains commit `6ee9b984521ac6f2beaf995f771a726379e55c88`; approved duo-intro asset pack comes from PRL branch `prl/approved-duo-intros-jj-finale-20261011`, blob `8e13a0133d2abe1687c9eb74d2cba7366ac8dc93`.
