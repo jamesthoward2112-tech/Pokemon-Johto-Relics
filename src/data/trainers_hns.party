@@ -16135,7 +16135,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Fake Out
 
 
-// PRU: repeatable nurse-side Chansey training double battles.
+/* PRU nurse-side Chansey double training */
 
 === TRAINER_PRU_CHANSEY_07_HNS ===
 Name: CHANSEY
