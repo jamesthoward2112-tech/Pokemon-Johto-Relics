@@ -217,6 +217,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .levelUpLearnset = sSceptileLevelUpLearnset,
         .teachableLearnset = sSceptileTeachableLearnset,
         .formSpeciesIdTable = sSceptileFormSpeciesIdTable,
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_SCEPTITAN, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .formChangeTable = sSceptileFormChangeTable,
     },
 
@@ -552,6 +553,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .levelUpLearnset = sBlazikenLevelUpLearnset,
         .teachableLearnset = sBlazikenTeachableLearnset,
         .formSpeciesIdTable = sBlazikenFormSpeciesIdTable,
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_SOLAZIKEN, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .formChangeTable = sBlazikenFormChangeTable,
     },
 
@@ -851,6 +853,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .levelUpLearnset = sSwampertLevelUpLearnset,
         .teachableLearnset = sSwampertTeachableLearnset,
         .formSpeciesIdTable = sSwampertFormSpeciesIdTable,
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_SWAMPLITH, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .formChangeTable = sSwampertFormChangeTable,
     },
 
@@ -1080,6 +1083,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             gShinyOverworldPalette_Mightyena
         )
         .levelUpLearnset = sMightyenaLevelUpLearnset,
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_SKULBERUS, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .teachableLearnset = sMightyenaTeachableLearnset,
     },
 #endif //P_FAMILY_POOCHYENA
@@ -2926,6 +2930,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .levelUpLearnset = sGardevoirLevelUpLearnset,
         .teachableLearnset = sGardevoirTeachableLearnset,
         .formSpeciesIdTable = sGardevoirFormSpeciesIdTable,
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_VALKYVOIR, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .formChangeTable = sGardevoirFormChangeTable,
     },
 
@@ -4685,6 +4690,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .teachableLearnset = sSableyeTeachableLearnset,
         .eggMoveLearnset = sSableyeEggMoveLearnset,
         .formSpeciesIdTable = sSableyeFormSpeciesIdTable,
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_GEMIGOYLE, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .formChangeTable = sSableyeFormChangeTable,
     },
 
@@ -4844,6 +4850,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .teachableLearnset = sMawileTeachableLearnset,
         .eggMoveLearnset = sMawileEggMoveLearnset,
         .formSpeciesIdTable = sMawileFormSpeciesIdTable,
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_MAWYRM, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .formChangeTable = sMawileFormChangeTable,
     },
 
@@ -7128,6 +7135,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         )
         .levelUpLearnset = sTorkoalLevelUpLearnset,
         .teachableLearnset = sTorkoalTeachableLearnset,
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_TORKALDERA, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .eggMoveLearnset = sTorkoalEggMoveLearnset,
     },
 #endif //P_FAMILY_TORKOAL
@@ -7752,6 +7760,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             sAnimTable_Following
         )
         .levelUpLearnset = sCacturneLevelUpLearnset,
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_CACTOMB, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .teachableLearnset = sCacturneTeachableLearnset,
     },
 #endif //P_FAMILY_CACNEA
@@ -10198,6 +10207,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         )
         .levelUpLearnset = sTropiusLevelUpLearnset,
         .teachableLearnset = sTropiusTeachableLearnset,
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_TROPISAUR, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .eggMoveLearnset = sTropiusEggMoveLearnset,
     },
 #endif //P_FAMILY_TROPIUS
@@ -11556,6 +11566,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         )
         .levelUpLearnset = sRelicanthLevelUpLearnset,
         .teachableLearnset = sRelicanthTeachableLearnset,
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_COELOSSUS, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .eggMoveLearnset = sRelicanthEggMoveLearnset,
     },
 #endif //P_FAMILY_RELICANTH
