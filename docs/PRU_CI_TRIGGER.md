@@ -100,3 +100,7 @@ Chansey portrait and Route 34 Egg/Tutor NPC.
 GitHub Actions must scan every existing Chansey overworld object, not just the curated 26. Fail early and print any unexpected map-to-script links before running the expensive ROM compiler.
 
 QA exception: TestMap1_hns has an intentionally unreachable Chansey placeholder with NULL script; exclude only this debug map from compiled event coverage. Recompile and capture full introduction in mGBA.
+
+
+### Johto Gym leader rebalance — source + full ROM compile (17 October)
+Rebuild PRU after commit b3a89998b37c7ca60a54850da82dba9bc466cfde updates all eight Johto leaders, badge-order conditional teams and rematch Relic species in src/data/trainers_hns.party. Verify trainerproc, complete make hns, packaged 32-MiB ROM, and preserved Noxichu Last Wish, Chansey, rare-gift systems. Details: docs/PRU_JOHTO_GYM_AUDIT_20261017.md. Reward scripts already contain 10,000 bonus, TM and special item for each gym; in-game full-bag retry QA remains outstanding.
