@@ -117,6 +117,18 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 tools/pru/build_noxichu_intro_trial.py
+      - name: Restore approved 64x64 twin Chansey GBA trainer portrait
+        if: github.ref_name == 'pru/noxichu-last-wish-title-test-20261017'
+        run: |
+          base64 -d assets/pru_chansey/twins_front_64.png.b64 > graphics/trainers/front_pics/pru_chansey_twins.png
+          echo "55452b964a24dc7cd5098f90ca2bba69325c1c8a9d381ddb4a5824e0e681267b  graphics/trainers/front_pics/pru_chansey_twins.png" | sha256sum -c -
+          python3 - <<'PY'
+          from PIL import Image
+          img = Image.open('graphics/trainers/front_pics/pru_chansey_twins.png')
+          assert img.size == (64,64) and img.mode == 'P'
+          assert len(img.getcolors()) <= 16
+          print('PRU_CHANSEY_ASSET_PASS: indexed 64x64 <=16 colours')
+          PY
       - name: Build PRU consolidated integration
         run: |
           if make hns -j2 -O > /tmp/pru-build.log 2>&1; then
