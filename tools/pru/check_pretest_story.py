@@ -43,6 +43,11 @@ assert "NewBarkTown_Lab_EventScript_Elm_Togepi_Seen::" in lab
 assert "giveegg SPECIES_TOGEPI" in (map_dir / "VioletCity_PokemonCenter_hns" / "scripts.inc").read_text()
 assert "These fossils also give" in lab
 
+# Elm's fixed Pikachu starter must match Silver's live first-rival Cyndaquil team.
+silver = (map_dir / "CherrygroveCity_hns" / "scripts.inc").read_text()
+assert "goto_if_eq VAR_STARTER_MON, 0, CherryGroveCity_Silver_Battle_Cyndaquil" in silver
+assert "trainerbattle_no_intro TRAINER_RIVAL_CYNDAQUIL_1_HNS" in silver
+
 flags = (
     "FLAG_PJR_RELIC_RAIKOU", "FLAG_PJR_RELIC_ENTEI",
     "FLAG_PJR_RELIC_LUGIA", "FLAG_PJR_RELIC_UNOWN_I",
@@ -90,6 +95,11 @@ assert hof_clear.index("goto_if_unset FLAG_BADGE16_GET") < hof_clear.index("setf
 assert "PokemonLeague_HallOfFame_JohtoRematch_LanceText:" in hof
 assert "PokemonLeague_ChampionsRoom_Text_JohtoRematchBattleIntro:" in champions_room
 assert "PokemonLeague_ChampionsRoom_Text_JohtoRematchMaryInterview:" in champions_room
+# GBA script strings use exactly one literal backslash for text/control escapes.
+for segment in (hof.split("@ Johto League rematches are allowed", 1)[1],
+                champions_room.split("@ Replays of the Johto championship", 1)[1]):
+    assert not any(chr(92) * 2 in line for line in segment.splitlines()
+                   if ".string" in line), "Incorrectly doubled script text escape"
 for permanent in ("FLAG_CAUGHT_MEW", "FLAG_CAUGHT_ENTEI", "FLAG_CAUGHT_RAIKOU",
                   "FLAG_BATTLED_DEOXYS", "FLAG_DEFEATED_DEOXYS",
                   "FLAG_SUMMONED_MTMOON_JIRACHI"):
