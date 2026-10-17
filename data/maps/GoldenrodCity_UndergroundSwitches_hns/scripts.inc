@@ -501,15 +501,34 @@ GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesTrigger::
 	goto_if_set FLAG_PJR_JESSIE_JAMES_2_DEFEATED, GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesAlreadyDefeated
 	lockall
 	clearflag FLAG_TEMP_1
+	// The four triggers flank the encounter. Approach from whichever
+	// side is opposite the player, not always from the right.
+	getplayerxy VAR_0x8004, VAR_0x8005
+	goto_if_eq VAR_0x8004, 24, GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesFromLeft
+	setvar VAR_TEMP_4, 0
 	setobjectxy LOCALID_UNDERGROUND_JESSIE, 22, 3
 	setobjectxy LOCALID_UNDERGROUND_JAMES, 23, 3
 	setobjectxy 11, 22, 4
+	goto GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesStage
+GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesFromLeft::
+	setvar VAR_TEMP_4, 1
+	setobjectxy LOCALID_UNDERGROUND_JESSIE, 20, 3
+	setobjectxy LOCALID_UNDERGROUND_JAMES, 21, 3
+	setobjectxy 11, 20, 4
+GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesStage::
 	addobject LOCALID_UNDERGROUND_JESSIE
 	addobject LOCALID_UNDERGROUND_JAMES
 	addobject 11
+	goto_if_eq VAR_TEMP_4, 1, GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesRunFromLeft
 	applymovement LOCALID_UNDERGROUND_JESSIE, GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunIn
 	applymovement LOCALID_UNDERGROUND_JAMES, GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunIn
 	applymovement 11, GoldenrodCity_UndergroundSwitches_Movement_MeowthRunIn
+	goto GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesRunInDone
+GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesRunFromLeft::
+	applymovement LOCALID_UNDERGROUND_JESSIE, GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunInEast
+	applymovement LOCALID_UNDERGROUND_JAMES, GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunInEast
+	applymovement 11, GoldenrodCity_UndergroundSwitches_Movement_MeowthRunInEast
+GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesRunInDone::
 	waitmovementall
 	applymovement LOCALID_UNDERGROUND_JESSIE, Common_Movement_FacePlayer
 	applymovement LOCALID_UNDERGROUND_JAMES, Common_Movement_FacePlayer
@@ -532,6 +551,7 @@ GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesBattle::
 	setflag FLAG_PJR_JESSIE_JAMES_2_DEFEATED
 	msgbox GoldenrodUnderground_Text_JessieJamesAfter, MSGBOX_DEFAULT
 	closemessage
+	goto_if_eq VAR_TEMP_4, 1, GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesEscapeWest
 	turnobject LOCALID_UNDERGROUND_JESSIE, DIR_EAST
 	turnobject LOCALID_UNDERGROUND_JAMES, DIR_EAST
 	turnobject 11, DIR_EAST
@@ -539,6 +559,16 @@ GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesBattle::
 	applymovement LOCALID_UNDERGROUND_JESSIE, GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunOut
 	applymovement LOCALID_UNDERGROUND_JAMES, GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunOut
 	applymovement 11, GoldenrodCity_UndergroundSwitches_Movement_MeowthRunOut
+	goto GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesEscapeDone
+GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesEscapeWest::
+	turnobject LOCALID_UNDERGROUND_JESSIE, DIR_WEST
+	turnobject LOCALID_UNDERGROUND_JAMES, DIR_WEST
+	turnobject 11, DIR_WEST
+	delay 8
+	applymovement LOCALID_UNDERGROUND_JESSIE, GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunOutWest
+	applymovement LOCALID_UNDERGROUND_JAMES, GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunOutWest
+	applymovement 11, GoldenrodCity_UndergroundSwitches_Movement_MeowthRunOutWest
+GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesEscapeDone::
 	waitmovementall
 	removeobject LOCALID_UNDERGROUND_JESSIE
 	removeobject LOCALID_UNDERGROUND_JAMES
@@ -569,6 +599,26 @@ GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunOut:
 	step_end
 
 // Meowth travels just behind the pair, so he does not occupy a trigger tile.
+GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunInEast:
+	walk_faster_right
+	walk_faster_right
+	step_end
+
+GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunOutWest:
+	walk_faster_left
+	walk_faster_left
+	step_end
+
+GoldenrodCity_UndergroundSwitches_Movement_MeowthRunInEast:
+	walk_faster_right
+	walk_faster_right
+	step_end
+
+GoldenrodCity_UndergroundSwitches_Movement_MeowthRunOutWest:
+	walk_faster_left
+	walk_faster_left
+	step_end
+
 GoldenrodCity_UndergroundSwitches_Movement_MeowthRunIn:
 	walk_faster_left
 	walk_faster_left
