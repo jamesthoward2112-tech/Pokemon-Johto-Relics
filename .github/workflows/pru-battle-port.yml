@@ -2,7 +2,7 @@ name: PRU consolidated integration build
 
 on:
   push:
-    branches: [pru/complete-selective-integration-20261016, pru/pretest-story-services-20261016, pru/noxichu-last-wish-title-test-20261017]
+    branches: [pru/complete-selective-integration-20261016, pru/pretest-story-services-20261016, pru/noxichu-last-wish-title-test-20261017, pru/johto-rocket-trio-fix-20261017]
     paths:
       - docs/PRU_CI_TRIGGER.md
       - tools/pru/build_noxichu_intro_trial.py
@@ -15,6 +15,10 @@ on:
       - assets/pru_chansey/**
       - assets/pru_title/**
       - .github/workflows/pru-battle-port.yml
+      - data/maps/SlowpokeWell_B1F_hns/**
+      - data/maps/GoldenrodCity_UndergroundSwitches_hns/**
+      - data/maps/GoldenrodCity_RadioTower_4F_hns/**
+      - tools/pru/check_johto_rocket_trio.py
   workflow_dispatch:
 
 concurrency:
@@ -52,6 +56,9 @@ jobs:
       - name: Verify PRU rare optional gift replacements
         if: github.ref_name == 'pru/noxichu-last-wish-title-test-20261017'
         run: python3 tools/pru/check_rare_gifts.py
+      - name: Verify PRU Johto Team Rocket encounter wiring
+        if: github.ref_name == 'pru/johto-rocket-trio-fix-20261017'
+        run: python3 tools/pru/check_johto_rocket_trio.py
       - name: Verify PRL signature move integration
         run: |
           python3 - <<'PY'
