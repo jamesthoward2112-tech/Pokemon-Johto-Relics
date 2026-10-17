@@ -54,3 +54,8 @@ Build branch `pru/noxichu-last-wish-title-test-20261017` after source fixes for 
 ## 17 Oct PRU gift inventory
 
 Run live HNS and donor map-script gift audit for Chikorita, Torchic, Mudkip and Treecko before selecting balanced replacement NPC gifts. Print source paths/lines; follow with specific changes on this preserved title/story branch.
+
+
+## 17 October — nurse-side Chansey doubles CI regression
+
+Trigger source + full HNS ROM build after 21 two-Chansey per-centre teams were appended (levels 7–100) and nurse-side NPC interactions routed to level-specific labels. Specific fix `cc998283768519f0f1b776c7a02146ca7a859dfb`: all 21 battle entry points now use `trainerbattle_double` with built-in insufficient-usable-party handling, append-only trainer IDs 654–674, `cleartrainerflag` on each interaction to ensure rematches, and 0 prize-money payout (EXP-only). New source assertions are in `tools/pru/check_pretest_story.py`. Retain user-approved Last Wish → Noxichu title, do not re-add Emerald/Gengar. Also inspect GIFT_SPECIES_SCAN output to find live Chikorita/Torchic/Mudkip gift events; no blanket replacements until event scripts identified.
