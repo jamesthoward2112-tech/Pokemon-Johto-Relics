@@ -19,6 +19,14 @@ on:
       - data/maps/GoldenrodCity_UndergroundSwitches_hns/**
       - data/maps/GoldenrodCity_RadioTower_4F_hns/**
       - tools/pru/check_johto_rocket_trio.py
+      - tools/pru/install_prl_duo_assets.py
+      - assets/prl_duo_20261011.json
+      - include/battle_transition.h
+      - include/constants/opponents_hns.h
+      - src/battle_setup.c
+      - src/battle_transition.c
+      - src/data/trainers_hns.party
+      - src/data/pokemon/species_info/gen_1_families.h
   workflow_dispatch:
 
 concurrency:
@@ -56,7 +64,10 @@ jobs:
       - name: Verify PRU rare optional gift replacements
         if: (github.ref_name == 'pru/noxichu-last-wish-title-test-20261017' || github.ref_name == 'pru/johto-rocket-trio-fix-20261017')
         run: python3 tools/pru/check_rare_gifts.py
-      - name: Verify PRU Johto Team Rocket encounter wiring
+      - name: Install approved PRL Jessie/James and Steevee/Neevee intros
+        if: github.ref_name == 'pru/johto-rocket-trio-fix-20261017'
+        run: python3 tools/pru/install_prl_duo_assets.py
+      - name: Verify PRU Johto Team Rocket and PRL duo integration
         if: github.ref_name == 'pru/johto-rocket-trio-fix-20261017'
         run: python3 tools/pru/check_johto_rocket_trio.py
       - name: Verify PRL signature move integration
