@@ -60,6 +60,12 @@ for index, level in enumerate(levels):
     assert f"cleartrainerflag {code}" in HANDLERS, code
     assert f"trainerbattle_double {code}," in HANDLERS, code
 assert "#define TRAINERS_COUNT_HNS                       675" in OPPONENTS
+# Prevent the specific in-game regression: the old one-line "Chaan! Sii!"
+# must never be compiled as the active Chansey greeting again.
+assert 'CHANSEY: Chaan! Sii!' not in HANDLERS
+assert 'CHANSEY wants to train!' in HANDLERS
+assert 'CherryGrove_Pokecenter_Chansey::' in HANDLERS
+assert 'call PRU_ChanseyTrainer_Offer' in HANDLERS
 assert "MSGBOX_YESNO" in HANDLERS
 assert "trainerbattle_double" in HANDLERS  # engine checks usable double-battle party
 assert "PRU_ChanseyTrainer_Text_NeedTwo" in HANDLERS
