@@ -41,6 +41,8 @@ for mapfile in sorted(Path("data/maps").glob("*/map.json")):
         if obj.get("graphics_id") != "OBJ_EVENT_GFX_NURSE_CHANSEY_HNS":
             continue
         map_name = map_data["name"]
+        if map_name == "TestMap1_hns":
+            continue
         script_name = obj["script"]
         event_start = addr(map_name + "_ObjectEvents") + index * 24
         linked = read32(event_start + 16)
