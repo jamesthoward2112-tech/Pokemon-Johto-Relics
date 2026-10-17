@@ -2792,7 +2792,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sArbokLevelUpLearnset,
         .teachableLearnset = sArbokTeachableLearnset,
         // Original Kanto Ultimate donor: level 40 Arbok -> Adnokana.
-        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_ADNOKANA}),
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_ADNOKANA, CONDITIONS({IF_MIN_LEVEL, 45})}),
     },
 #endif //P_FAMILY_EKANS
 
@@ -15082,7 +15082,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .teachableLearnset = sWeezingTeachableLearnset,
         // PRU: original Level 40 Cheauking and alternate Thunder Stone Frytning.
         .evolutions = EVOLUTION(
-            {EVO_LEVEL, 40, SPECIES_CHEAUKING},
+            {EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_CHEAUKING, CONDITIONS({IF_MIN_LEVEL, 45})},
             {EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_FRYTNING}),
         .formSpeciesIdTable = sWeezingFormSpeciesIdTable,
     },
@@ -17379,7 +17379,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         .levelUpLearnset = sJynxLevelUpLearnset,
         .teachableLearnset = sJynxTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_MYSTYNX, CONDITIONS({IF_HOLD_ITEM, ITEM_FROST_MIRROR})}),
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_MYSTYNX, CONDITIONS({IF_MIN_LEVEL, 45})}),
     },
 #endif //P_FAMILY_JYNX
 
