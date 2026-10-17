@@ -6,6 +6,8 @@ on:
     paths:
       - docs/PRU_CI_TRIGGER.md
       - tools/pru/build_noxichu_intro_trial.py
+      - tools/pru/fit_chansey_portrait.py
+      - tools/pru/verify_compiled_rom.py
       - assets/pru_title/**
       - .github/workflows/pru-battle-port.yml
   workflow_dispatch:
@@ -132,6 +134,7 @@ jobs:
           assert len(img.getcolors()) <= 16
           print('PRU_CHANSEY_ASSET_PASS: indexed 64x64 <=16 colours')
           PY
+          python3 tools/pru/fit_chansey_portrait.py
       - name: Build PRU consolidated integration
         run: |
           if make hns -j2 -O > /tmp/pru-build.log 2>&1; then
