@@ -89,7 +89,7 @@ MtSilver_SummitDay_EventScript_CrestFullBag::
 	return
 
 MtSilver_SummitDay_EventScript_CheckPendingCrest::
-	goto_if_set FLAG_PJR_GOT_RAINBOW_CREST, MtSilver_SummitDay_EventScript_RedAlreadyRewarded
+	goto_if_set FLAG_PJR_GOT_RAINBOW_CREST, MtSilver_SummitDay_EventScript_RedBattleNormal
 	msgbox MtSilver_SummitDay_Text_CrestPending, MSGBOX_DEFAULT
 	call MtSilver_SummitDay_EventScript_AwardCrest
 	call_if_set FLAG_PJR_GOT_RAINBOW_CREST, MtSilver_SummitDay_EventScript_UnlockRelicHoOh
