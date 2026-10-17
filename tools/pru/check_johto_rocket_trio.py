@@ -5,6 +5,7 @@ Checks the source-level scene contract. A green result is not a gameplay
 emulator test; the workflow compiles the full HNS ROM separately.
 """
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -106,8 +107,8 @@ for trainer in (
 opponents = read("include/constants/opponents_hns.h")
 species = read("include/constants/species.h")
 eevee_family = read("src/data/pokemon/species_info/gen_1_families.h")
-assert "#define SPECIES_EEVEEON 1637" in species
-assert "#define SPECIES_NIMBEON 1638" in species
+assert re.search(r"^#define SPECIES_EEVEEON\\s+1637$", species, re.MULTILINE)
+assert re.search(r"^#define SPECIES_NIMBEON\\s+1638$", species, re.MULTILINE)
 assert "{EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_EEVEEON}" in eevee_family
 assert "{EVO_LEVEL, 0, SPECIES_NIMBEON, CONDITIONS({IF_NOT_TIME, TIME_NIGHT}, {IF_HOLD_ITEM, ITEM_SHARP_BEAK})}" in eevee_family
 for filename in (
