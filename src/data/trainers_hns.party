@@ -16133,3 +16133,447 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Extreme Speed
 - Iron Tail
 - Fake Out
+
+
+// PRU: repeatable nurse-side Chansey training double battles.
+
+=== TRAINER_PRU_CHANSEY_07_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_12_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_15_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 15
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 15
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_20_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_26_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_31_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 31
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 31
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_37_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 37
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 37
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_40_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 40
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 40
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_44_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 44
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 44
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_50_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 50
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 50
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_60_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 60
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 60
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_64_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 64
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 64
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_68_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 68
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 68
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_71_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 71
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 71
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_75_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 75
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 75
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_78_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 78
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 78
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_82_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 82
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 82
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_85_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 85
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 85
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_90_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 90
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 90
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_95_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 95
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 95
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
+
+=== TRAINER_PRU_CHANSEY_100_HNS ===
+Name: CHANSEY
+Class: Beauty Hns
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Basic Trainer
+
+Chansey
+Level: 100
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Memento
+- Heal Pulse
+
+Chansey
+Level: 100
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Heal Pulse
+- Memento
