@@ -102,6 +102,18 @@ def check(path: Path, require_engine: bool) -> None:
             require(any(n == name and 2 <= lo <= hi <= 9 for row in rows
                         for n, lo, hi in row),
                     f"Early unobtainable pre-evolution: {name} ({map_id})")
+    # Route 30 should offer Poochyena early in both day/night grass tables,
+    # without displacing the traditional starter-line encounters.
+    route30_variants = [e for e in entries if e["map"] == "MAP_ROUTE30_HNS"]
+    require(len(route30_variants) == 2, "Route 30 needs both day and night encounter tables")
+    for variant in route30_variants:
+        slots = variant["land_mons"]["mons"]
+        require(slots[8] == {"min_level": 3, "max_level": 4, "species": "SPECIES_POOCHYENA"},
+                f"Route 30 Poochyena Lv3-4 4% encounter missing: {variant['base_label']}")
+        require(any(s["species"] == "SPECIES_CYNDAQUIL" for s in slots)
+                and any(s["species"] == "SPECIES_TREECKO" for s in slots),
+                f"Route 30 starter habitats changed: {variant['base_label']}")
+
     for map_id in EARLY_MAPS:
         for row in land.get(map_id, []):
             for name, lo, hi in row:
