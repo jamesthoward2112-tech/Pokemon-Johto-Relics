@@ -63,8 +63,8 @@ assert radio["object_events"][6]["flag"] == "FLAG_PJR_JESSIE_JAMES_3_DEFEATED"
 assert radio_script.count("trainerbattle_double TRAINER_GRUNT_9_HNS") == 2
 assert radio_script.count("removeobject 7") == 2
 
-# The existing James trainer art is the PRL combined Jessie & James picture;
-# their animated overworld pictures and Meowth source sprite are all retained.
+# Jessie and James retain their trainer/overworld art; Meowth uses the normal
+# species overworld sheet, so these scenes do not alter wild Meowth.
 party = read("src/data/trainers_hns.party")
 gfx = read("src/data/graphics/trainers.h")
 for trainer in ("TRAINER_GRUNT_21_HNS", "TRAINER_GRUNT_10_HNS", "TRAINER_GRUNT_9_HNS"):
@@ -82,4 +82,53 @@ for filename in (
 ):
     assert (ROOT / filename).is_file(), filename
 
-print("PASS: Slowpoke, Underground and Radio Tower Rocket trio scenes have PRL art, Meowth and persistent double-battle wiring.")
+# PRL's approved duo-introduction art and transition routing.
+transition_ids = read("include/battle_transition.h")
+transition_src = read("src/battle_transition.c")
+battle_setup = read("src/battle_setup.c")
+for token in ("B_TRANSITION_JESSIE_JAMES", "B_TRANSITION_EEVEE_TWINS"):
+    assert token in transition_ids, token
+    assert token in transition_src, token
+for asset in ("jessie_james", "eevee_twins"):
+    for suffix in ("4bpp", "bin", "gbapal"):
+        assert f'graphics/battle_transitions/prl/{asset}.{suffix}' in transition_src
+assert (ROOT / "assets/prl_duo_20261011.json").is_file()
+assert (ROOT / "tools/pru/install_prl_duo_assets.py").is_file()
+for trainer in (
+    "TRAINER_GRUNT_21_HNS", "TRAINER_GRUNT_10_HNS", "TRAINER_GRUNT_9_HNS",
+    "TRAINER_JESSIE_JAMES_TINTOWER_HNS",
+):
+    assert f"case {trainer}:" in battle_setup, trainer
+
+# Steevee and Neevee are the recurring PRL trainer twins, not species. Their
+# signature Eeveelutions already occupy collision-free PRU IDs in the 444-dex;
+# this phase connects the missing donor evolutions, teams and duo transition.
+opponents = read("include/constants/opponents_hns.h")
+species = read("include/constants/species.h")
+eevee_family = read("src/data/pokemon/species_info/gen_1_families.h")
+assert "#define SPECIES_EEVEEON 1637" in species
+assert "#define SPECIES_NIMBEON 1638" in species
+assert "{EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_EEVEEON}" in eevee_family
+assert "{EVO_LEVEL, 0, SPECIES_NIMBEON, CONDITIONS({IF_NOT_TIME, TIME_NIGHT}, {IF_HOLD_ITEM, ITEM_SHARP_BEAK})}" in eevee_family
+for filename in (
+    "graphics/pokemon/eeveeon/front.png", "graphics/pokemon/eeveeon/back.png",
+    "graphics/pokemon/eeveeon/icon.png", "graphics/pokemon/eeveeon/normal.pal",
+    "graphics/pokemon/eeveeon/shiny.pal", "graphics/pokemon/nimbeon/front.png",
+    "graphics/pokemon/nimbeon/back.png", "graphics/pokemon/nimbeon/icon.png",
+    "graphics/pokemon/nimbeon/normal.pal", "graphics/pokemon/nimbeon/shiny.pal",
+):
+    assert (ROOT / filename).is_file(), filename
+for trainer in (
+    "TRAINER_STEEVE_NEEVEE_ROUTE3_HNS", "TRAINER_STEEVE_NEEVEE_SS_ANNE_HNS",
+    "TRAINER_STEEVE_NEEVEE_TOWER_HNS", "TRAINER_STEEVE_NEEVEE_ROUTE23_HNS",
+):
+    assert trainer in opponents, trainer
+    block = party.split(f"=== {trainer} ===", 1)[1].split("=== ", 1)[0]
+    assert "Name: STEEVEE" in block, trainer
+    assert "Class: Twins Hns" in block, trainer
+    assert "Double Battle: Yes" in block, trainer
+    assert f"case {trainer}:" in battle_setup, trainer
+assert "Nimbeon @ Sitrus Berry" in party
+assert "Eeveeon @ Sitrus Berry" in party
+
+print("PASS: Johto Rocket trio scenes, PRL duo introductions, and Steevee/Neevee donor teams are wired and source-complete.")
