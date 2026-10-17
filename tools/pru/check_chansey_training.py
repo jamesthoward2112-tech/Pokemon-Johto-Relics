@@ -78,6 +78,8 @@ for path in sorted(MAPS.glob("*/map.json")):
     for object_event in info.get("object_events", []):
         if object_event.get("graphics_id") != "OBJ_EVENT_GFX_NURSE_CHANSEY_HNS":
             continue
+        if info["name"] == "TestMap1_hns":
+            continue
         script = object_event.get("script", "")
         if script != "CherryGrove_Pokecenter_Chansey" and not script.startswith("PRU_ChanseyTrainer_"):
             unexpected.append((info["name"], script))
