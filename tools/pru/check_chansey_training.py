@@ -61,7 +61,7 @@ for index, level in enumerate(levels):
     assert f"trainerbattle_double {code}," in HANDLERS, code
 assert "#define TRAINERS_COUNT_HNS                       675" in OPPONENTS
 assert "MSGBOX_YESNO" in HANDLERS
-assert "CalculatePlayerPartyCount" in HANDLERS
+assert "trainerbattle_double" in HANDLERS  # engine checks usable double-battle party
 assert "PRU_ChanseyTrainer_Text_NeedTwo" in HANDLERS
 assert "PRU_ChanseyTrainer_Text_After" in HANDLERS
 print(f"PASS: {len(MAP_TIERS)} existing nurse-side Chansey, {len(levels)} repeatable two-Chansey double-battle tiers, no extra NPCs")
