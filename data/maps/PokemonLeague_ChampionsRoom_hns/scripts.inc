@@ -52,11 +52,24 @@ PokemonLeague_WillsRoom_EventScript_Lance::
 	goto PokemonLeague_WillsRoom_EventScript_LanceOnDefeatJohto
 
 PokemonLeague_WillsRoom_EventScript_LanceRematch::
+	goto_if_unset FLAG_BADGE09_GET, PokemonLeague_WillsRoom_EventScript_LanceRematchJohto
+	goto_if_unset FLAG_BADGE10_GET, PokemonLeague_WillsRoom_EventScript_LanceRematchJohto
+	goto_if_unset FLAG_BADGE11_GET, PokemonLeague_WillsRoom_EventScript_LanceRematchJohto
+	goto_if_unset FLAG_BADGE12_GET, PokemonLeague_WillsRoom_EventScript_LanceRematchJohto
+	goto_if_unset FLAG_BADGE13_GET, PokemonLeague_WillsRoom_EventScript_LanceRematchJohto
+	goto_if_unset FLAG_BADGE14_GET, PokemonLeague_WillsRoom_EventScript_LanceRematchJohto
+	goto_if_unset FLAG_BADGE15_GET, PokemonLeague_WillsRoom_EventScript_LanceRematchJohto
+	goto_if_unset FLAG_BADGE16_GET, PokemonLeague_WillsRoom_EventScript_LanceRematchJohto
 	goto_if_unset FLAG_IS_KANTO_CHAMPION, PokemonLeague_WillsRoom_EventScript_LanceRematchStandard
 	goto_if_ge VAR_SINJOH_STORYLINE, 13, PokemonLeague_WillsRoom_EventScript_LanceRematchPostOBC
 
+PokemonLeague_WillsRoom_EventScript_LanceRematchJohto::
+	msgbox PokemonLeague_ChampionsRoom_Text_JohtoRematchBattleIntro, MSGBOX_DEFAULT
+	goto PokemonLeague_WillsRoom_EventScript_LanceRematchStandardBattle
+
 PokemonLeague_WillsRoom_EventScript_LanceRematchStandard::
 	msgbox PokemonLeague_ChampionsRoom_Text_RematchBattleIntro, MSGBOX_DEFAULT
+PokemonLeague_WillsRoom_EventScript_LanceRematchStandardBattle::
 	setflag FLAG_TEMP_3
 	setflag FLAG_TEMP_5
 	trainerbattle_no_intro TRAINER_LANCE_2_HNS, PokemonLeague_ChampionsRoom_Text_BattleWin
@@ -176,7 +189,19 @@ PokemonLeague_WillsRoom_EventScript_LanceOnDefeatKanto::
 	msgbox PokemonLeague_ChampionsRoom_Text_RematchOakCongratulations, MSGBOX_DEFAULT
 	applymovement LOCALID_LEAGUE_MARY, PokemonLeague_ChampionsRoom_Movement_MaryInterview
 	waitmovement 0
+	goto_if_unset FLAG_BADGE09_GET, PokemonLeague_ChampionsRoom_EventScript_JohtoRematchInterview
+	goto_if_unset FLAG_BADGE10_GET, PokemonLeague_ChampionsRoom_EventScript_JohtoRematchInterview
+	goto_if_unset FLAG_BADGE11_GET, PokemonLeague_ChampionsRoom_EventScript_JohtoRematchInterview
+	goto_if_unset FLAG_BADGE12_GET, PokemonLeague_ChampionsRoom_EventScript_JohtoRematchInterview
+	goto_if_unset FLAG_BADGE13_GET, PokemonLeague_ChampionsRoom_EventScript_JohtoRematchInterview
+	goto_if_unset FLAG_BADGE14_GET, PokemonLeague_ChampionsRoom_EventScript_JohtoRematchInterview
+	goto_if_unset FLAG_BADGE15_GET, PokemonLeague_ChampionsRoom_EventScript_JohtoRematchInterview
+	goto_if_unset FLAG_BADGE16_GET, PokemonLeague_ChampionsRoom_EventScript_JohtoRematchInterview
 	msgbox PokemonLeague_ChampionsRoom_Text_RematchMaryInterview, MSGBOX_DEFAULT
+	goto PokemonLeague_ChampionsRoom_EventScript_RematchInterviewDone
+PokemonLeague_ChampionsRoom_EventScript_JohtoRematchInterview::
+	msgbox PokemonLeague_ChampionsRoom_Text_JohtoRematchMaryInterview, MSGBOX_DEFAULT
+PokemonLeague_ChampionsRoom_EventScript_RematchInterviewDone::
 	closemessage
 	applymovement LOCALID_LEAGUE_LANCE, PokemonLeague_ChampionsRoom_Movement_LanceAnxious
 	waitmovement 0
@@ -409,3 +434,18 @@ PokemonLeague_ChampionsRoom_Text_RematchMaryNoInterview:
     .string "MARY: Come on! You can't blow off\n"
     .string "the interview AGAIN!$"
 
+
+@ Replays of the Johto championship before eight Kanto badges must not
+@ falsely award Kanto Champion status, even though Lance uses a harder team.
+PokemonLeague_ChampionsRoom_Text_JohtoRematchBattleIntro:
+    .string "LANCE: Back for another challenge?\\p"
+    .string "You have already proven your\\n"
+    .string "strength across JOHTO.\\p"
+    .string "But a true champion never stops\\n"
+    .string "learning. Neither have I.\\p"
+    .string "Show me how far your team has\\n"
+    .string "come, {PLAYER}!$"
+
+PokemonLeague_ChampionsRoom_Text_JohtoRematchMaryInterview:
+    .string "MARY: Another incredible victory\\n"
+    .string "for JOHTO's LEAGUE CHAMPION!$"
