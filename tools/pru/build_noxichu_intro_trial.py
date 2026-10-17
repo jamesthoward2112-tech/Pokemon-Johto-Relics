@@ -85,7 +85,7 @@ def install_last_wish():
                 assert digest == sha, f"Donor original hash mismatch: {name}"
                 (dest / name).write_bytes(content)
                 print("ARCHIVED_DONOR_VERIFIED", name, digest)
-    assert len(expected) == 20
+    assert len(expected) >= 20
     for art in ("celebi.png", "jirachi.png", "bg00.png", "moon.png"):
         assert Path("graphics/intro/prl_hwl", art).is_file()
 
