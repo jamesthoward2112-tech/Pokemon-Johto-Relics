@@ -91,8 +91,10 @@ def patch_boot_flow():
     print("BOOT_FLOW_PASS Emerald -> Last Wish -> PRU title")
 
 def install_title_art():
-    assert ASSET_B64.is_file(), f"Approved artwork payload missing: {ASSET_B64}"
-    jpg = base64.b64decode("".join(ASSET_B64.read_text().split()), validate=True)
+    parts = sorted(ASSET_B64.parent.glob(ASSET_B64.name + '.part*'))
+    assert len(parts) == 3, f"Expected three approved artwork payload parts, found {len(parts)}"
+    jpg = base64.b64decode(''.join(''.join(p.read_text().split()) for p in parts), validate=True)
+    assert hashlib.sha256(jpg).hexdigest() == '0ea8c588161dc79307115d06054cfbbab1ab1588bd73fbd839a13f8a00837128'
     frame = Image.open(io.BytesIO(jpg)).convert("RGB")
     assert frame.size == (240, 160), frame.size
     # GBA Mode 4: exact 240*160 8bpp indices + 256 RGB555 palette.
