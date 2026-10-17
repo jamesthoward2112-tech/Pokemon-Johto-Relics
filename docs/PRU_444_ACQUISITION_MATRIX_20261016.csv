@@ -294,7 +294,7 @@ PRU_No,Name,Species_Constant,Category,Donor_Tier,Acquisition_Status,HNS_Wild_Slo
 293,Marshtomp,SPECIES_MARSHTOMP,Standard Kanto–Johto–Hoenn,PRL-Hoenn,WILD_SOURCE_STAGED,1,UNION_CAVE_B2F,21,23,land_mons,MUDKIP,0,
 294,Swampert,SPECIES_SWAMPERT,Standard Kanto–Johto–Hoenn,PRL-Hoenn,EVOLUTION_QA,0,,,,,MARSHTOMP,1,
 295,Swamplith,SPECIES_SWAMPLITH,PRU custom / exception,PRL-custom,RELIC_EVOLUTION_QA,0,,,,,,,
-296,Poochyena,SPECIES_POOCHYENA,Standard Kanto–Johto–Hoenn,PRL-Hoenn,WILD_SOURCE_STAGED,2,ROUTE1,42,46,land_mons,,0,
+296,Poochyena,SPECIES_POOCHYENA,Standard Kanto–Johto–Hoenn,PRL-Hoenn,WILD_SOURCE_STAGED,4,ROUTE1;ROUTE30,3,46,land_mons,,0,Johto Route 30 Lv3-4 day and night (4% of grass encounters per variant); Kanto Route 1 Lv42-46 retained
 297,Mightyena,SPECIES_MIGHTYENA,Standard Kanto–Johto–Hoenn,PRL-Hoenn,EVOLUTION_QA,0,,,,,POOCHYENA,1,
 298,Skulberus,SPECIES_SKULBERUS,PRU custom / exception,PRL-custom,RELIC_EVOLUTION_QA,0,,,,,,,
 299,Zigzagoon,SPECIES_ZIGZAGOON,Standard Kanto–Johto–Hoenn,PRL-Hoenn,WILD_SOURCE_STAGED,2,ROUTE2,43,47,land_mons,,0,
