@@ -84,3 +84,14 @@ CI run `39029394627` failed because the newly introduced battle message mistaken
 ### Retry after fixing Day-Care text escapes
 
 CI run `39029526816` passed PNG asset checks and battle-message compilation but failed in `Route34_DayCare_hns/scripts.inc` because new NPC text incorrectly had doubled control backslashes. Commit `1157d5eacb2f90655531372932a69a59c34dd5d9` corrected nine instances to GBA-compatible single `\n` / `\p` escapes. Rebuild the approved title+Chansey+Breeding Centre ROM now.
+
+
+### Route 30 Poochyena and Chansey training regression rebuild (17 Oct)
+
+Following user emulator QA, retain repeatable twin Chansey battles in nurse-side
+Pokémon Centre NPCs. Replace orphan “Chaan! Sii!” text with the yes/no
+“CHANSEY wants to train!” script; use single GBA control escapes (CI run
+39032035606 had failed because of doubled escaping). Include Route 30 low-level
+Poochyena (Lv3–5), applied by tools/pru/add_route30_poochyena.py before compiling.
+Do not distribute until an hns build passes. Preserve Noxichu/Last Wish title,
+Chansey portrait and Route 34 Egg/Tutor NPC.
