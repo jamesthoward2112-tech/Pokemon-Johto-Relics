@@ -8,6 +8,10 @@ on:
       - tools/pru/build_noxichu_intro_trial.py
       - tools/pru/fit_chansey_portrait.py
       - tools/pru/verify_compiled_rom.py
+      - src/pokemon.c
+      - data/maps/VioletCity_hns/scripts.inc
+      - tools/pru/check_rare_gifts.py
+      - assets/pru_chansey/**
       - assets/pru_title/**
       - .github/workflows/pru-battle-port.yml
   workflow_dispatch:
@@ -126,19 +130,38 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 tools/pru/build_noxichu_intro_trial.py
-      - name: Restore approved 64x64 twin Chansey GBA trainer portrait
+      - name: Install approved softer natural-proportion twin Chansey trainer art
         if: github.ref_name == 'pru/noxichu-last-wish-title-test-20261017'
         run: |
-          base64 -d assets/pru_chansey/twins_front_64.png.b64 > graphics/trainers/front_pics/pru_chansey_twins.png
-          echo "55452b964a24dc7cd5098f90ca2bba69325c1c8a9d381ddb4a5824e0e681267b  graphics/trainers/front_pics/pru_chansey_twins.png" | sha256sum -c -
+          base64 -d assets/pru_chansey/approved_natural_64.png.b64 > graphics/trainers/front_pics/pru_chansey_twins.png
+          echo "aabcca878b1e775d67886aa869e386fc9af99176945af1c377924654393123b1  graphics/trainers/front_pics/pru_chansey_twins.png" | sha256sum -c -
           python3 - <<'PY'
+          from pathlib import Path
           from PIL import Image
           img = Image.open('graphics/trainers/front_pics/pru_chansey_twins.png')
           assert img.size == (64,64) and img.mode == 'P'
-          assert len(img.getcolors()) <= 16
-          print('PRU_CHANSEY_ASSET_PASS: indexed 64x64 <=16 colours')
+          assert img.info.get('transparency') == 0
+          assert 1 <= len(img.getcolors()) <= 16
+          assert img.getbbox() is not None
+          Path('PRU-QA').mkdir(exist_ok=True)
+          img.save('PRU-QA/approved-soft-chansey-64x64.png')
+          print('PRU_CHANSEY_APPROVED_SOFT_PASS: true 64x64 indexed, palette slot 0 transparent, original proportions')
           PY
-          python3 tools/pru/fit_chansey_portrait.py
+      - name: Audit Eye-Unown donor image and palette
+        if: github.ref_name == 'pru/noxichu-last-wish-title-test-20261017'
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          Path('PRU-QA').mkdir(exist_ok=True)
+          for name in ('front.png', 'back.png', 'shiny_front.png', 'shiny_back.png', 'icon.png'):
+              path = Path('graphics/pokemon/unown_eye') / name
+              if not path.exists():
+                  continue
+              image = Image.open(path)
+              print('EYE_UNOWN_ASSET', name, image.mode, image.size, 'used-colours', len(image.convert('RGB').getcolors(maxcolors=100000) or []))
+              image.save(Path('PRU-QA') / ('eye-unown-' + name))
+          PY
       - name: Build PRU consolidated integration
         run: |
           if make hns -j2 -O > /tmp/pru-build.log 2>&1; then
