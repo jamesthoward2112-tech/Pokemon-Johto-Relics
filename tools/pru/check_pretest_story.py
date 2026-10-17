@@ -183,6 +183,14 @@ for loc in ("CherrygroveCity", "VioletCity", "AzaleaTown", "GoldenrodCity"):
     assert chanseys[0]["script"] == "CherryGrove_Pokecenter_Chansey" or chanseys[0]["script"].startswith("PRU_ChanseyTrainer_Lv"), loc
 money = (root / "src" / "battle_script_commands.c").read_text()
 assert "trainerId >= TRAINER_PRU_CHANSEY_07_HNS && trainerId <= TRAINER_PRU_CHANSEY_100_HNS" in money
-assert "TRAINERS_COUNT_HNS                       675" in chansey_ids
+assert "TRAINER_PRU_CHANSEY_100_HNS           674" in chansey_ids
+for expected_id, trainer in enumerate((
+    "TRAINER_STEEVE_NEEVEE_ROUTE3_HNS",
+    "TRAINER_STEEVE_NEEVEE_SS_ANNE_HNS",
+    "TRAINER_STEEVE_NEEVEE_TOWER_HNS",
+    "TRAINER_STEEVE_NEEVEE_ROUTE23_HNS",
+), start=675):
+    assert f"#define {trainer}" in chansey_ids and str(expected_id) in chansey_ids.split(trainer, 1)[1].splitlines()[0]
+assert "TRAINERS_COUNT_HNS                       679" in chansey_ids
 print("PASS: 21 nurse-side Chansey tiers: repeatable genuine double battles, 2 Chansey each, no money.")
 
