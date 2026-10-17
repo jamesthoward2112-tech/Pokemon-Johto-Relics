@@ -108,6 +108,8 @@ jobs:
         run: python3 tools/pru/prepare_external_donor_art.py
       - name: Assemble original Hoenn's Last Wish and approved Noxichu title
         if: github.ref_name == 'pru/noxichu-last-wish-title-test-20261017'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: python3 tools/pru/build_noxichu_intro_trial.py
       - name: Build PRU consolidated integration
         run: |
