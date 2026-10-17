@@ -8031,8 +8031,42 @@ u8 GetLevelUpMovesBySpecies(u16 species, u16 *moves)
      return numMoves;
 }
 
+#include "data/pokemon/pru_dex_order.h"
+
 u16 SpeciesToPokedexNum(u16 species)
 {
+    // PRU has 444 approved, individually numbered Pokémon. The inherited Johto
+    // regional Dex returns 0 for many Hoenn species; the inherited National Dex
+    // reuses the base number for genuine Relic evolutions. Neither is the PRU Dex.
+    if (IS_HNS)
+    {
+        u16 i;
+        u16 originalSpecies = SanitizeSpeciesId(species);
+        u16 baseSpecies;
+
+        if (originalSpecies == SPECIES_NONE)
+            return 0xFFFF;
+
+        for (i = 0; i < PRU_DEX_COUNT; i++)
+        {
+            if (sPruDexSpecies[i] == originalSpecies)
+                return i + 1;
+        }
+
+        // Non-canonical battle-only forms retain their base Pokémon's number;
+        // they must NOT create a new entry among the 444 approved species.
+        baseSpecies = NationalPokedexNumToSpecies(gSpeciesInfo[originalSpecies].natDexNum);
+        if (baseSpecies != SPECIES_NONE)
+        {
+            for (i = 0; i < PRU_DEX_COUNT; i++)
+            {
+                if (sPruDexSpecies[i] == baseSpecies)
+                    return i + 1;
+            }
+        }
+        return 0xFFFF;
+    }
+
     if (IsNationalPokedexEnabled())
     {
         return SpeciesToObtainablePokedexNum(species);
