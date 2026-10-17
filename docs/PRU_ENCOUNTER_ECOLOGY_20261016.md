@@ -22,6 +22,7 @@ Exact fields in `src/data/wild_encounters.json`, only `_HNS` Johto/Kanto variant
 | Route 32, day and night | Preserve common original Wooper and add Paldean Wooper as a **distinct** rare entry | Lv6–7, 1% land slot in each variant |
 | Ruins of Alph outside, day and night | Keep original Wooper in suitable slots, add rare Paldean Wooper | Lv5–6, 1% land slot in each variant |
 | Ruins of Alph water, both variants; Union Cave B2F water | Retain ordinary Quagsire in other water slots, allow rare Clodsire | Lv20–24, 1% water slot in each variant |
+| Route 30, day and night | Add early Poochyena without removing Cyndaquil/Treecko; retain Weedle and Poliwag via other slots | Lv3–4, **4%** of grass encounters per variant |
 | Dark Cave south side (early Violet entrance) | Remove both inappropriate beginner **Larvitar Lv2–4** slots; add **Gemlin** and low-level Dunsparce | Gemlin Lv4–5, 4% land slot |
 | Burned Tower B1F, night | Add a separate **wild Sableye**, retaining Magmar in remaining slots | Lv19–21, 1% land slot |
 | Ruins of Alph outside, night | Add low-level **Cleffa**; retain existing Clefairy, Wooper and Unown elsewhere | Lv5–6, 1% land slot |
@@ -34,6 +35,7 @@ Exact fields in `src/data/wild_encounters.json`, only `_HNS` Johto/Kanto variant
 - The 34 Wooper and 119 Quagsire PJR wild entries had been replaced 1:1 with Paldean Wooper / Clodsire on the earlier PRU branch. The selective correction preserves the original habitats instead of removing the Paldean line.
 - Final HNS source counts after edits: **Wooper 32, Quagsire 116, Paldean Wooper 4, Clodsire 3**, plus **Gemlin 1, Cleffa 1, Scarabub 2, Skarmet 2, Mootiny 2**; Sableye rises from 3 to 4 slots; Larvitar remains in **5** late-game slots.
 - All 12 previously approved traditional/PJR starter-stage catch locations remain in early Johto at Lv2–9, including day/night where defined; their original low-level locations were not displaced. A new Gemlin early location is staged.
+- Poochyena is now staged on Johto Route 30 at Lv3–4 in both day and night grass tables (4% each), alongside its existing Kanto Route 1 Lv42–46 encounters.
 - Normal Kanto Pidgey/Rattata early-species habitats and late-game progression are intact; **no legendary encounter script or overworld event was edited**.
 - Existing optional gifts, eggs, event flags, trainers and all non-`_HNS` wild tables were untouched.
 
