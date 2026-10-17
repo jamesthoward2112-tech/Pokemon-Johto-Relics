@@ -113,8 +113,9 @@ def patch_boot_flow():
         old,
         "#elif IS_HNS\n    // PRU test: use the native copyright/startup below.\n#endif",
     )
-    # Keep the native Emerald movie first, then the original Celebi/Jirachi
-    # Last Wish scene when MainCB2_EndIntro finishes. Avoid HnS's Gengar intro.
+    # Preserve the short native startup/copyright and go STRAIGHT into
+    # the original Last Wish. Do not start Scene 1: it is the full Emerald
+    # bicycle/Groudon/Kyogre/Rayquaza montage that the user rejected.
     expansion_branch = ("#if EXPANSION_INTRO == TRUE\n"
                         "        SetMainCallback2(CB2_ExpansionIntro);\n"
                         "        CreateTask(Task_HandleExpansionIntro, 0);\n"
@@ -123,11 +124,13 @@ def patch_boot_flow():
                         "        SetMainCallback2(MainCB2_Intro);\n"
                         "#endif")
     assert source.count(expansion_branch) == 1, "Intro dispatch has changed"
-    source = source.replace(expansion_branch,
-                            "        // PRU: Emerald movie, then Last Wish.\n"
-                            "        CreateTask(Task_Scene1_Load, 0);\n"
-                            "        SetMainCallback2(MainCB2_Intro);")
-    print("INTRO_DISPATCH_PASS startup -> Emerald movie -> Last Wish -> Noxichu")
+    source = source.replace(
+        expansion_branch,
+        "        // PRU: Last Wish plays straight after short copyright startup.\n"
+        "        SetMainCallback2(CB2_InitPRUHwlScene0);")
+    assert "CreateTask(Task_Scene1_Load, 0);" not in source, "Vanilla Emerald movie still reachable"
+    print("INTRO_DISPATCH_PASS startup -> Last Wish (no Emerald montage)")
+
     old = ("static void MainCB2_EndIntro(void)\n"
            "{\n"
            "    if (!UpdatePaletteFade())\n"
@@ -142,7 +145,7 @@ def patch_boot_flow():
            "}")
     assert source.count(old) == 1
     intro.write_text(source.replace(old, new))
-    print("BOOT_FLOW_PASS startup -> Last Wish -> PRU title (no Emerald/Gengar montage)")
+    print("BOOT_FLOW_PASS short startup -> Jirachi/Celebi -> PRU title")
 
 def install_title_art():
     parts = sorted(ASSET_B64.parent.glob(ASSET_B64.name + '.part*'))
