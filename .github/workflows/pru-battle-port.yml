@@ -18,6 +18,7 @@ on:
       - data/maps/SlowpokeWell_B1F_hns/**
       - data/maps/GoldenrodCity_UndergroundSwitches_hns/**
       - data/maps/GoldenrodCity_RadioTower_4F_hns/**
+      - tools/pru/check_pretest_story.py
       - tools/pru/check_johto_rocket_trio.py
       - tools/pru/install_prl_duo_assets.py
       - assets/prl_duo_20261011.json
