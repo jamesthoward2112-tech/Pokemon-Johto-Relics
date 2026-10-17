@@ -74,3 +74,8 @@ Rebuild after `f0e8833041bfc78178268b35757e20ca0408b238`, removing the unsupport
 ## 17 October — direct Chansey portrait + Breeding Centre move expert rebuild
 
 Rebuild after restoring exact 64×64 indexed two-nurse Chansey sprite at `assets/pru_chansey/twins_front_64.png.b64` (SHA256 55452b964a24dc7cd5098f90ca2bba69325c1c8a9d381ddb4a5824e0e681267b), dedicated trainer pic, 'Chansey wants to train!' native battle intro, and Route34 Day-Care Egg/Tutor move expert. Preserve Last Wish → Noxichu title. Before claiming tested: verify successful full hns linker + emulator intro and move selection; package direct .gba.
+
+
+### Retry after trainer intro source-control-character fix
+
+CI run `39029394627` failed because the newly introduced battle message mistakenly used a doubled `\\p` escape. Corrected in commit `4ea97bdd3fa658df3002ef1bb06b41b3810e60fa` to one GBA `\p`, and the separate palette asset SHA validation has passed. Re-run all source + linker steps against this HEAD.
