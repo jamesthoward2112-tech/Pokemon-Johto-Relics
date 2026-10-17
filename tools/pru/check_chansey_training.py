@@ -70,4 +70,19 @@ assert "MSGBOX_YESNO" in HANDLERS
 assert "trainerbattle_double" in HANDLERS  # engine checks usable double-battle party
 assert "PRU_ChanseyTrainer_Text_NeedTwo" in HANDLERS
 assert "PRU_ChanseyTrainer_Text_After" in HANDLERS
+# Scan *every* compiled map, not only the curated tier list.
+# A stray nurse-side Chansey with an old greeting must be found before make.
+unexpected = []
+for path in sorted(MAPS.glob("*/map.json")):
+    info = json.loads(path.read_text())
+    for object_event in info.get("object_events", []):
+        if object_event.get("graphics_id") != "OBJ_EVENT_GFX_NURSE_CHANSEY_HNS":
+            continue
+        script = object_event.get("script", "")
+        if script != "CherryGrove_Pokecenter_Chansey" and not script.startswith("PRU_ChanseyTrainer_"):
+            unexpected.append((info["name"], script))
+if unexpected:
+    for name, script in unexpected:
+        print(f"UNWIRED_CHANSEY_MAP: {name} -> {script}")
+    raise SystemExit(f"FAIL: {len(unexpected)} unused/old Chansey dialogue scripts")
 print(f"PASS: {len(MAP_TIERS)} existing nurse-side Chansey, {len(levels)} repeatable two-Chansey double-battle tiers, no extra NPCs")
