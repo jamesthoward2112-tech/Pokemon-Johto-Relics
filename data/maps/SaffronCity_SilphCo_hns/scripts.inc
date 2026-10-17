@@ -37,23 +37,34 @@ SaffronCity_SilphCo_EventScript_TreeckoChosen::
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TREECKO
 	bufferspeciesname STR_VAR_1, SPECIES_TREECKO
 	msgbox SaffronCity_SilphCo_Text_Steven3, MSGBOX_DEFAULT
-	givemon SPECIES_TREECKO, 5
-	call Common_EventScript_GiftMon
-	goto SaffronCity_SilphCo_EventScript_AfterStarterGiven
+	givemon SPECIES_TREECKO, 10
+	goto SaffronCity_SilphCo_EventScript_CheckGiftSuccess
 SaffronCity_SilphCo_EventScript_TorchicChosen::
 	closemessage
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TORCHIC
-	bufferspeciesname STR_VAR_1, SPECIES_TORCHIC
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_BELDUM
+	bufferspeciesname STR_VAR_1, SPECIES_BELDUM
 	msgbox SaffronCity_SilphCo_Text_Steven3, MSGBOX_DEFAULT
-	givemon SPECIES_TORCHIC, 5
-	call Common_EventScript_GiftMon
-	goto SaffronCity_SilphCo_EventScript_AfterStarterGiven
+	givemon SPECIES_BELDUM, 10
+	goto SaffronCity_SilphCo_EventScript_CheckGiftSuccess
 SaffronCity_SilphCo_EventScript_MudkipChosen::
 	closemessage
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_MUDKIP
-	bufferspeciesname STR_VAR_1, SPECIES_MUDKIP
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_BAGON
+	bufferspeciesname STR_VAR_1, SPECIES_BAGON
 	msgbox SaffronCity_SilphCo_Text_Steven3, MSGBOX_DEFAULT
-	givemon SPECIES_MUDKIP, 5
+	givemon SPECIES_BAGON, 10
+	goto SaffronCity_SilphCo_EventScript_CheckGiftSuccess
+
+@ Do not remove Steven or consume the one-time flag when the gift could not
+@ enter either the party or Pokemon Storage. All choices share this check.
+SaffronCity_SilphCo_EventScript_CheckGiftSuccess::
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, SaffronCity_SilphCo_EventScript_GiftSucceeded
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, SaffronCity_SilphCo_EventScript_GiftSucceeded
+	msgbox SaffronCity_SilphCo_Text_StorageFull, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+SaffronCity_SilphCo_EventScript_GiftSucceeded::
 	call Common_EventScript_GiftMon
 	goto SaffronCity_SilphCo_EventScript_AfterStarterGiven
 
@@ -98,20 +109,20 @@ SaffronCity_SilphCo_Text_Steven1:
 	.string "I see...\n"
 	.string "I'll be on my way. See you soon.$"
 SaffronCity_SilphCo_Text_Steven2:
-	.string "STEVEN: You are... I remember your\n"
-	.string "eyes.\p"
-	.string "When I see a trainer whose eyes\n"
-	.string "twinkle, I always remember.\p"
-	.string "You have a POKéDEX! So you are\n"
-	.string "also in search of POKéMON!\l"
-	.string "Let me see...\p"
-	.string "I think I can help you with that.\p"
-	.string "Let's say that you have stones in\n"
-	.string "front of you. Which color would\l"
-	.string " you pick?$"
+	.string "STEVEN: I spent years studying\n"
+	.string "rare POKéMON and ancient stone.\p"
+	.string "You have the eyes of a TRAINER\n"
+	.string "who can raise something special.\p"
+	.string "I have three unusual partners.\n"
+	.string "Which would you choose?$"
 SaffronCity_SilphCo_Text_Steven3:
 	.string "You chose correctly! I'll give you\n"
 	.string "{STR_VAR_1}!$"
+SaffronCity_SilphCo_Text_StorageFull:
+	.string "Your party and PC are full.\n"
+	.string "Return when there's room.\p"
+	.string "I'll keep the POKéMON safe.$"
+
 SaffronCity_SilphCo_Text_Steven4:
 	.string "Take good care of it. Your caring\n"
 	.string "for it will make me very happy.$"
