@@ -8,7 +8,7 @@ def read(path):
 
 base = Path("src/data/pokemon/species_info")
 groups = {
-    "gen_1_families.h": ["MYSTYNX", "ADNOKANA", "CHEAUKING"],
+    "gen_1_families.h": ["MYSTYNX", "ADNOKANA", "CHEAUKING", "CHARAXIS"],
     "gen_2_families.h": [
         "FAERANIUM", "PYROCLAST", "FERALODON", "SUDOWARDEN",
         "KABLOWFISH", "SHUCKOLOSSE", "HERACURION", "SKARMADON",
@@ -35,6 +35,9 @@ for old in (
 
 enums = read("include/constants/pokemon.h")
 engine = read("src/pokemon.c")
+assert "#define SPECIES_CHARAXIS" in read("include/constants/species.h")
+assert "PJR_RED_SPECIES(SPECIES_CHARAXIS" in read("src/data/pokemon/species_info/pjr_families.h")
+assert "ABILITY_GALE_WINGS, \"CHARAXIS\"" in read("src/data/pokemon/species_info/pjr_families.h")
 assert "IF_MIN_LEVEL," in enums
 assert "case IF_MIN_LEVEL:" in engine
 assert "GetMonData(mon, MON_DATA_LEVEL) >= params[i].arg1" in engine
@@ -68,7 +71,7 @@ for kind, name, value in named:
     assert len(value) <= 14, (kind, name, value)
 assert "TM CASE" in items
 
-print("PASS: 24 level-45 Ancient Stone Relic evolutions, Eevee/Frytning preserved,")
+print("PASS: 25 level-45 Ancient Stone Relic evolutions, Eevee/Frytning preserved,")
 print("      legacy catalysts off Mart shelves, Moon/Ancient Stones available,")
 print("      free Egg/Tutor eligibility gates removed, 59 TMs/HMs show move names.")
-print("NOTE: Charizard permanent Relic evolution is not included: no target species exists.")
+print("PASS: Charizard -> registered Charaxis (ID 1603) requires Lv45 Ancient Stone.")
