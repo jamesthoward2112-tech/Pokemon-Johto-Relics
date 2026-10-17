@@ -12,11 +12,11 @@ Recorded 16 October 2026. **Pre-test source/content phase.** User explicitly wan
 
 ## P0B — IMMEDIATELY AFTER POINT 1: NEW TITLE SCREEN AND TITLE ANIMATION
 
-- [ ] **New PRU title screen** — Noxichu in a mysterious **Relic-looking cave**: ancient carved stones, luminous Resonance runes/crystals and archaeological ambience, not a generic cave. Display **Pokémon Relics Ultimate** branding.
+- [x] **New PRU title screen** — Noxichu in a mysterious **Relic-looking cave**: ancient carved stones, luminous Resonance runes/crystals and archaeological ambience, not a generic cave. Display **Pokémon Relics Ultimate** branding.
 - [ ] **Authoritative asset MUST be the latest approved NEW Noxichu battle/front/side art from PRL** (October 2026 pack), not PJR/PKR's old sprites. Pin source branch, commit, exact file path, dimensions, palette and checksum; confirm current PRU installed sprite is latest.
 - [ ] **Donor evidence found 16 Oct:** PRL PR108 commit `6ee9b984521ac6f2beaf995f771a726379e55c88` contains `graphics/pokemon/noxichu/front.png` blob `7e866622e368249babadc1382dea74902ddba960`, back `3d8f20356388bc46839f4f84d43c04c8977338bd`, icon `5bd90fbf7339e86f6f44e5697230a9b016e075d0`. Current PRU has DIFFERENT `noxichu/front.png` blob `6c65947e8439c19686d89dd9040808c4e11c4549`, back `e7f2fc8c8f454c002bee46f4d286d22db4073c76`, and no Noxichu icon in that asset folder: **active PRU must be checked against approved latest PRL art; do not claim updated art already installed.**
 - [ ] **Remove stale Noxichu usage entirely**: enumerate and compare every occurrence of old Noxichu graphics (front, back, icon, shiny, alternate portraits, overworld, follower, title, trainer teams/icons, menus, demo art, hard-coded pointer tables). Replace with the new approved asset wherever applicable; use vanilla overworld fallback only if no approved updated overworld. Do not delete unreferenced donor-source/attribution files without verifying no references; unused archival files are distinguishable from the runtime. Automated negative-reference check required.
-- [ ] **New title animation** — look for a suitable reusable donor animation first, as successfully done for PRL; adapt it with a cave reveal, pulsing Resonance, NEW Noxichu, polished Pokémon Relics Ultimate logo and GBA frame/palette/VRAM budgets. **If no better donor is suitable, explicitly use PRL's approved Jirachi/Celebi animation sequence as fallback.** Confirm title plays/loops from fresh boot without corruption. This is game-ready art/code work, not a concept illustration.
+- [x] **New title animation** — look for a suitable reusable donor animation first, as successfully done for PRL; adapt it with a cave reveal, pulsing Resonance, NEW Noxichu, polished Pokémon Relics Ultimate logo and GBA frame/palette/VRAM budgets. **If no better donor is suitable, explicitly use PRL's approved Jirachi/Celebi animation sequence as fallback.** Confirm title plays/loops from fresh boot without corruption. This is game-ready art/code work, not a concept illustration.
 - [ ] Check title source/credits/palette donor attribution, internal ROM identity and emulator playback; release is blocked until verified.
 - [ ] **Priority order:** finish complete point 1 (Elm + Relic dialogue), then this title work BEFORE all remaining P0 items.
 
@@ -38,6 +38,14 @@ Recorded 16 October 2026. **Pre-test source/content phase.** User explicitly wan
 - [ ] **All 16 Gym leaders + rematches/Ultimate variants**: audit live HNS `trainers_hns.party` and reachable `data/maps/*Gym_hns/scripts.inc`. Check teams, levels, moves, forms, ability, items, battle format, AI and branch flags. Johto first gyms should have smooth progression; Chuck/Jasmine/Pryce intentionally have conditional order-dependent teams. Validate rematches, six-mon teams, unique custom/Relic species where approved, and ultimate paired Gym battles without 12-slot engine overflow.
 - [ ] **Gym rewards**: enforce the intended **badge + correct reusable TM + appropriate type item + 10,000 prize money** on all 16 first clears (not on ordinary rematches). Live inspection shows the first eight Johto Gyms generally implement type item + 10,000, but several Kanto Gym scripts currently give only badge + TM (and Surge offers TM *or* Thunder Stone). Reconcile all 16 and prevent duplicate payouts, bag-full loss and broken badge/field progression. Preserve correct post-battle scenes and rematch teleport/statues.
 - [ ] After source fixes, run targeted static checks then explicit CI build only at deliberate checkpoint; retrieve actual ROM/artifact hash. Do not claim gameplay tested until emulator QA.
+
+
+### 17 October source progress (approved title → League flag safety)
+
+- Title sequence approved by user in emulator: Last Wish Celebi/Jirachi → Noxichu cave / flashing PRESS START, without Emerald or Gengar movie. Source and branch `c38745c`; this is a title-sequence approval, NOT an audit of all Noxichu battle/menu sprites.
+- Elm automatic Pikachu, passive fossils, Silver Cyndaquil branch, Mystery Egg/Togepi are source verified (not yet full fresh-save runtime QA).
+- Hall of Fame and Champions Room rewritten so Johto championship replays do not proclaim a Kanto title without all eight Kanto badges; previously caught Mew/Entei/Raikou and defeated Mew/Deoxys/Jirachi event states cannot be wiped on replay. Static asserts added; CI compilation/run `39022869046` must be checked for final pass.
+- Still open: verify Silver physically stole a stored Pokémon (not one of the fossils); event-map text overflow, badge-gated gift/legend catch retry, and all P0 recurring trainers/shops/centres.
 
 ## P1 — Already pending from PRU consolidated integration and acquisition work
 
