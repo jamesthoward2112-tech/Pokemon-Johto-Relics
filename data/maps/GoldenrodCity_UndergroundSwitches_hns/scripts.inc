@@ -503,13 +503,17 @@ GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesTrigger::
 	clearflag FLAG_TEMP_1
 	setobjectxy LOCALID_UNDERGROUND_JESSIE, 22, 3
 	setobjectxy LOCALID_UNDERGROUND_JAMES, 23, 3
+	setobjectxy 11, 22, 4
 	addobject LOCALID_UNDERGROUND_JESSIE
 	addobject LOCALID_UNDERGROUND_JAMES
+	addobject 11
 	applymovement LOCALID_UNDERGROUND_JESSIE, GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunIn
 	applymovement LOCALID_UNDERGROUND_JAMES, GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunIn
+	applymovement 11, GoldenrodCity_UndergroundSwitches_Movement_MeowthRunIn
 	waitmovementall
 	applymovement LOCALID_UNDERGROUND_JESSIE, Common_Movement_FacePlayer
 	applymovement LOCALID_UNDERGROUND_JAMES, Common_Movement_FacePlayer
+	applymovement 11, Common_Movement_FacePlayer
 	waitmovementall
 	setvar VAR_TEMP_3, 1
 	releaseall
@@ -530,12 +534,15 @@ GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesBattle::
 	closemessage
 	turnobject LOCALID_UNDERGROUND_JESSIE, DIR_EAST
 	turnobject LOCALID_UNDERGROUND_JAMES, DIR_EAST
+	turnobject 11, DIR_EAST
 	delay 8
 	applymovement LOCALID_UNDERGROUND_JESSIE, GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunOut
 	applymovement LOCALID_UNDERGROUND_JAMES, GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunOut
+	applymovement 11, GoldenrodCity_UndergroundSwitches_Movement_MeowthRunOut
 	waitmovementall
 	removeobject LOCALID_UNDERGROUND_JESSIE
 	removeobject LOCALID_UNDERGROUND_JAMES
+	removeobject 11
 	setflag FLAG_TEMP_1
 	setvar VAR_TEMP_3, 1
 	releaseall
@@ -545,6 +552,7 @@ GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesAlreadyDefeated::
 	setflag FLAG_TEMP_1
 	removeobject LOCALID_UNDERGROUND_JESSIE
 	removeobject LOCALID_UNDERGROUND_JAMES
+	removeobject 11
 	setvar VAR_TEMP_3, 1
 	end
 
@@ -556,6 +564,17 @@ GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunIn:
 
 GoldenrodCity_UndergroundSwitches_Movement_JessieJamesRunOut:
 	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	step_end
+
+// Meowth travels just behind the pair, so he does not occupy a trigger tile.
+GoldenrodCity_UndergroundSwitches_Movement_MeowthRunIn:
+	walk_faster_left
+	walk_faster_left
+	step_end
+
+GoldenrodCity_UndergroundSwitches_Movement_MeowthRunOut:
 	walk_faster_right
 	walk_faster_right
 	step_end
