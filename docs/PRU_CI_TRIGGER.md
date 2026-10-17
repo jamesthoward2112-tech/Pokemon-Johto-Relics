@@ -98,3 +98,5 @@ Chansey portrait and Route 34 Egg/Tutor NPC.
 
 ### Full nurse-side Chansey map sweep (17 Oct)
 GitHub Actions must scan every existing Chansey overworld object, not just the curated 26. Fail early and print any unexpected map-to-script links before running the expensive ROM compiler.
+
+QA exception: TestMap1_hns has an intentionally unreachable Chansey placeholder with NULL script; exclude only this debug map from compiled event coverage. Recompile and capture full introduction in mGBA.
