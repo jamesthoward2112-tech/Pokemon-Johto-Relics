@@ -608,3 +608,91 @@ Route34_DayCare_Text_YoullBeLeftWithJustOne:
 	.string "me, you'll be left with just one.\p"
 	.string "You will be better off if you catch\n"
 	.string "some more, I dare say.$"
+
+
+@ PRU Breeding Centre move expert: free, repeatable Egg/Tutor moves from
+@ existing expansion Move Relearner UI. Selection also supports PC Pokémon.
+@ The original Day-Care and Odd Egg gift scripts are not modified.
+Route34_DayCare_EventScript_PRUMoveExpert::
+	lock
+	faceplayer
+	msgbox Route34_DayCare_Text_PRUExpertIntro, MSGBOX_DEFAULT
+	msgbox Route34_DayCare_Text_PRUExpertEggOffer, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Route34_DayCare_EventScript_PRUExpertEggMoves
+	msgbox Route34_DayCare_Text_PRUExpertTutorOffer, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Route34_DayCare_EventScript_PRUExpertTutorMoves
+	goto Route34_DayCare_EventScript_PRUExpertDone
+
+Route34_DayCare_EventScript_PRUExpertEggMoves::
+	setmoverelearnerstate MOVE_RELEARNER_EGG_MOVES
+	goto Route34_DayCare_EventScript_PRUExpertChooseMon
+
+Route34_DayCare_EventScript_PRUExpertTutorMoves::
+	setmoverelearnerstate MOVE_RELEARNER_TUTOR_MOVES
+	goto Route34_DayCare_EventScript_PRUExpertChooseMon
+
+Route34_DayCare_EventScript_PRUExpertChooseMon::
+	msgbox Route34_DayCare_Text_PRUExpertChooseMon, MSGBOX_DEFAULT
+	chooseboxmon SELECT_PC_MON_MOVE_RELEARNER
+	waitstate
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, Route34_DayCare_EventScript_PRUExpertDone
+	special IsSelectedMonEgg
+	goto_if_eq VAR_RESULT, TRUE, Route34_DayCare_EventScript_PRUExpertCannotTeachEgg
+	special HasMovesToRelearn
+	goto_if_eq VAR_RESULT, FALSE, Route34_DayCare_EventScript_PRUExpertNoMoves
+	msgbox Route34_DayCare_Text_PRUExpertChooseMove, MSGBOX_DEFAULT
+	special TeachMoveRelearnerMove
+	waitstate
+	goto_if_eq VAR_0x8004, 0, Route34_DayCare_EventScript_PRUExpertChooseMon
+	msgbox Route34_DayCare_Text_PRUExpertTaughtMove, MSGBOX_DEFAULT
+	goto Route34_DayCare_EventScript_PRUExpertChooseMon
+
+Route34_DayCare_EventScript_PRUExpertCannotTeachEgg::
+	msgbox Route34_DayCare_Text_PRUExpertCannotTeachEgg, MSGBOX_DEFAULT
+	goto Route34_DayCare_EventScript_PRUExpertChooseMon
+
+Route34_DayCare_EventScript_PRUExpertNoMoves::
+	msgbox Route34_DayCare_Text_PRUExpertNoMoves, MSGBOX_DEFAULT
+	goto Route34_DayCare_EventScript_PRUExpertChooseMon
+
+Route34_DayCare_EventScript_PRUExpertDone::
+	msgbox Route34_DayCare_Text_PRUExpertGoodbye, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+Route34_DayCare_Text_PRUExpertIntro:
+	.string "I'm the BREEDING CENTRE's\\n"
+	.string "MOVE EXPERT!\\p"
+	.string "I can teach EGG MOVES and\\n"
+	.string "special TUTOR MOVES, for free.$"
+
+Route34_DayCare_Text_PRUExpertEggOffer:
+	.string "Would you like to learn\\n"
+	.string "some EGG MOVES?$"
+
+Route34_DayCare_Text_PRUExpertTutorOffer:
+	.string "How about TUTOR MOVES\\n"
+	.string "instead?$"
+
+Route34_DayCare_Text_PRUExpertChooseMon:
+	.string "Choose a POKéMON from your\\n"
+	.string "party or PC.$"
+
+Route34_DayCare_Text_PRUExpertChooseMove:
+	.string "Which move shall I teach?$"
+
+Route34_DayCare_Text_PRUExpertCannotTeachEgg:
+	.string "An EGG must hatch before\\n"
+	.string "I can teach it moves.$"
+
+Route34_DayCare_Text_PRUExpertNoMoves:
+	.string "No more moves of this kind\\n"
+	.string "are available for it.$"
+
+Route34_DayCare_Text_PRUExpertTaughtMove:
+	.string "Great! Another move learned!$"
+
+Route34_DayCare_Text_PRUExpertGoodbye:
+	.string "Come back whenever you need\\n"
+	.string "some new moves!$"
