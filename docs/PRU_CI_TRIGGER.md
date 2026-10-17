@@ -35,3 +35,12 @@ Compile all latest **source changes** (fossils + Pikachu, Elm/Oak dialogue, 7-Re
 ## Pre-test Relic story build 3 (2026-10-16)
 
 The prior build [38964900754](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/38964900754) failed only because `tools/check_pjr_tintower_shortcut.py` still expected the old unsafe Crest/Alphoracle flag backfill from reachable TinTower 1F entrance statues. We kept the actual 4 wired statue coordinates and Rocket/Ho-Oh scenes but replaced the invalid test assertions with real-catch/real-item gates. Run complete original static checks and `make hns` again; do not confuse compilation with emulator QA.
+
+
+## PRU Noxichu + Last Wish boot-title trial — 17 October 2026
+
+Explicit GitHub Actions rebuild requested **after** the Red rematch script linking repair, commit `26fe000f22658ac25f33237bb5ff29588036533e`. Target branch: `pru/noxichu-last-wish-title-test-20261017`.
+
+Build procedure: original Emerald intro -> PRL Last Wish Celebi/Jirachi scene -> black fade -> approved 240x160 Noxichu cavern title, separately animated flashing PRESS START. Use `tools/pru/build_noxichu_intro_trial.py` to patch the temporary runner checkout, then run `make hns`, and publish artifact `PRU-Noxichu-LastWish-TEST` with GBA and SHA-256. CI source/build green is not proof of emulator animation playback; test that separately.
+
+This file is a configured push-path CI trigger: prior map-only Red fix did **not** match the workflow's push path filter, so this separate update forces a fresh build of the repaired head. Do not modify `pjr-rebuild`.
