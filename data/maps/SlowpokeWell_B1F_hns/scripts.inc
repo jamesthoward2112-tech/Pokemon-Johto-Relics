@@ -53,16 +53,30 @@ SlowpokeWell_B1F_EventScript_Kurt::
 SlowpokeWell_B1F_EventScript_JessieJamesTrigger::
 	goto_if_set FLAG_PJR_JESSIE_JAMES_1_DEFEATED, SlowpokeWell_B1F_EventScript_JessieJamesAlreadyDefeated
 	lockall
+	// The player can enter this trigger at x=26, 27 or 28. Keep James
+	// directly in front of them, with Jessie alongside and Meowth behind.
+	getplayerxy VAR_0x8004, VAR_0x8005
+	copyvar VAR_0x8006, VAR_0x8004
+	goto_if_eq VAR_0x8004, 28, SlowpokeWell_B1F_EventScript_JessieJamesApproachFromRight
+	addvar VAR_0x8006, 1
+	goto SlowpokeWell_B1F_EventScript_JessieJamesApproachReady
+SlowpokeWell_B1F_EventScript_JessieJamesApproachFromRight::
+	subvar VAR_0x8006, 1
+SlowpokeWell_B1F_EventScript_JessieJamesApproachReady::
 	clearflag FLAG_TEMP_1
 	addobject 10
 	addobject 11
-	setobjectxy 10, 28, 8
-	setobjectxy 11, 27, 8
+	addobject 28
+	setobjectxy 10, VAR_0x8004, 8
+	setobjectxy 11, VAR_0x8006, 8
+	setobjectxy 28, VAR_0x8004, 7
 	applymovement 10, SlowpokeWell_B1F_Movement_JessieJamesRunIn
 	applymovement 11, SlowpokeWell_B1F_Movement_JessieJamesRunIn
+	applymovement 28, SlowpokeWell_B1F_Movement_JessieJamesRunIn
 	waitmovementall
 	applymovement 10, Common_Movement_FacePlayer
 	applymovement 11, Common_Movement_FacePlayer
+	applymovement 28, Common_Movement_FacePlayer
 	waitmovementall
 	setvar VAR_TEMP_0, 1
 	releaseall
@@ -82,14 +96,21 @@ SlowpokeWell_B1F_EventScript_JessieJamesBattle::
 SlowpokeWell_B1F_EventScript_JessieJamesAfterBattle::
 	msgbox SlowpokeWell_B1F_Text_JessieJamesAfter, MSGBOX_DEFAULT
 	closemessage
+	// The trio turns away and flees together, then vanishes into the cave
+	// rather than backpedalling six tiles while the player watches.
 	turnobject 10, DIR_NORTH
 	turnobject 11, DIR_NORTH
+	turnobject 28, DIR_NORTH
 	delay 8
 	applymovement 10, SlowpokeWell_B1F_Movement_JessieJamesRunOut
 	applymovement 11, SlowpokeWell_B1F_Movement_JessieJamesRunOut
+	applymovement 28, SlowpokeWell_B1F_Movement_JessieJamesRunOut
 	waitmovementall
+	fadescreen FADE_TO_BLACK
 	removeobject 10
 	removeobject 11
+	removeobject 28
+	fadescreen FADE_FROM_BLACK
 	setflag FLAG_PJR_JESSIE_JAMES_1_DEFEATED
 	setflag FLAG_TEMP_1
 	setvar VAR_TEMP_0, 1
@@ -150,9 +171,6 @@ SlowpokeWell_B1F_Movement_JessieJamesRunIn:
 	step_end
 
 SlowpokeWell_B1F_Movement_JessieJamesRunOut:
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
 	walk_faster_up
 	walk_faster_up
 	walk_faster_up
