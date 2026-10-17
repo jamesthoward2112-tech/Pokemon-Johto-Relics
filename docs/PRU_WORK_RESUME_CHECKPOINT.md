@@ -218,3 +218,11 @@ The separate `pru/encounter-ecology-20261016` branch and [PR #10](https://github
 - The full 444-row acquisition matrix now marks these nine `EVOLUTION_DEFINED_QA_PENDING` rather than unresolved.
 - Detailed report: `docs/PRU_ENCOUNTER_ECOLOGY_20261016.md`; follow-up branch tip at time of note: `330bc40411ef8d7181e89912b4ae544dbbacd1e2`.
 - **Handoff:** after recovering and pushing Work's unpublished source, selectively merge/cherry-pick PR #10 into the consolidated integration branch, resolve the `SPECIES_GEMLIN` dependency, then compile and emulator-test. Avoid source-file replacement that drops Work's newly ported species data.
+
+## 17 Oct 2026 — VERIFIED GREEN: Twin-Chansey portrait + Route 34 move specialist
+
+- Nurse-hat twin Chansey artwork converted from the user-supplied image to a 64×64 indexed 16-colour PNG. Source: assets/pru_chansey/twins_front_64.png.b64, SHA-256 55452b964a24dc7cd5098f90ca2bba69325c1c8a9d381ddb4a5824e0e681267b. The new TRAINER_PIC_FRONT_CHANSEY_TWINS entry is loaded before compilation and assigned to all 21 Chansey-tier trainers instead of Beauty.
+- Battle-message override for trainer IDs 654–674: "Chansey wants to train!" and a nonhuman Chansey send-out message, retaining repeatable two-Chansey double battles. The trainer class remains Beauty Hns internally for parser compatibility; other untested battle messages may still use it.
+- Route34_DayCare_hns now has a Scientist Move Expert at (7,7), offering free Egg and Tutor moves from party/PC via existing Move Relearner engine. The original Day-Care and Odd Egg events remain. Actual NPC placement and menu behaviour need emulator QA.
+- GitHub Actions run 39029758140 GREEN at build commit df4bcd1a967af04adf08b5202768867b54812e4f: full make hns, artifact 12100017409, ROM SHA256 72fab2b8623d74d03b0cec2c1ecfc071fbccd05077f51554f64efeda8707c590, 33,554,432 bytes. Direct ROM provided: PRU-Chansey-Twins-Egg-Tutor-TEST.gba. Approved Last Wish to Noxichu intro preserved. Gameplay must still be tested in Pizza Boy A.
+
