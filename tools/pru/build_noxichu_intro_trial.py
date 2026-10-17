@@ -51,6 +51,7 @@ def install_last_wish():
     assert '#if defined(FIRERED)' in code
     assert 'graphics/intro/prl_hwl/celebi.png' in code
     assert 'graphics/intro/prl_hwl/jirachi.png' in code
+    assert 'S0_LAUNCH_SPRITES' in code and 'S0_LAUNCH_SPRITES2' in code, "Both Celebi/Jirachi fly-pasts must be preserved"
     assert 'void CB2_InitPRLHwlScene0(void)' in code
     code = code.replace("#if defined(FIRERED)", "#if IS_HNS", 1)
     code = code.replace("CB2_InitPRLHwlScene0", "CB2_InitPRUHwlScene0")
@@ -148,12 +149,13 @@ def patch_boot_flow():
     print("BOOT_FLOW_PASS short startup -> Jirachi/Celebi -> PRU title")
 
 def install_title_art():
-    # Approved pixel-art master: user's exact 1536x1024 PNG, not an earlier JPEG.
-    # A 240x160 indexed 256-colour RGB555-ready conversion is committed losslessly.
-    # The full-size original is archived at /PRU/Title Assets in the user's Library.
-    path = Path("assets/pru_title/noxichu_cavern_master_240x160.png")
+    # EXACT approved Oct 17 GBA conversion with preserved Noxichu eye reds.
+    # Its 240x160 indexed pixels and 256-colour RGB555 palette are committed
+    # as-is: do not resize, sharpen, recompress from JPG, or requantize.
+    # The approved 4x preview and original PNG are archived in /PRU/Title Assets.
+    path = Path("assets/pru_title/Noxichu_Title_GBA_240x160_256colour.png")
     data = path.read_bytes()
-    assert hashlib.sha256(data).hexdigest() == "0f858bbbae95e1468c2e5d89436b19c2c5e28564b77d9429b5e15cae896d0434"
+    assert hashlib.sha256(data).hexdigest() == "0cfdc68858e6818c771dd10e3d79b41a41658f642c0aaec7cd017b2cc60a2c64"
     indexed = Image.open(io.BytesIO(data))
     assert indexed.size == (240, 160) and indexed.mode == "P", (indexed.size, indexed.mode)
     assert len(indexed.getcolors(maxcolors=256)) <= 256
@@ -174,7 +176,7 @@ def install_title_art():
     TITLE_DIR.mkdir(parents=True, exist_ok=True)
     (TITLE_DIR / "PJR_TitleScreen_Mode4.8bpp").write_bytes(raw)
     (TITLE_DIR / "PJR_TitleScreen_Mode4.gbapal").write_bytes(out_pal)
-    print("TITLE_ART_PASS exact original master -> lossless indexed 240x160, 256 colours, RGB555; no JPEG or extra sharpness")
+    print("TITLE_ART_PASS Oct 17 APPROVED image SHA256=0cfdc68858e6818c771dd10e3d79b41a41658f642c0aaec7cd017b2cc60a2c64, GBA indexed 240x160 RGB555; NO image transformations")
 
 def patch_title():
     path = "src/title_screen.c"

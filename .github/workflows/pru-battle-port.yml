@@ -208,6 +208,14 @@ jobs:
           kill -0 "$EMU_PID" || (cat PRU-QA/mgba.log; exit 1)
           ffmpeg -hide_banner -loglevel error -f x11grab -video_size 1024x768 -framerate 1 -i :99.0 -t 90 -c:v libx264 -preset ultrafast -pix_fmt yuv420p PRU-QA/boot-evidence.mp4
           kill "$EMU_PID" || true
+          # Screenshot the two KNOWN Celebi/Jirachi passes (verified in run #76).
+          # A boot-only process check missed these frames in earlier reviews.
+          ffmpeg -hide_banner -loglevel error -y -ss 9 -i PRU-QA/boot-evidence.mp4 -frames:v 1 PRU-QA/celebi-jirachi-forest.png
+          ffmpeg -hide_banner -loglevel error -y -ss 17 -i PRU-QA/boot-evidence.mp4 -frames:v 1 PRU-QA/celebi-jirachi-moon.png
+          ffmpeg -hide_banner -loglevel error -y -ss 35 -i PRU-QA/boot-evidence.mp4 -frames:v 1 PRU-QA/noxichu-title-visible.png
+          test -s PRU-QA/celebi-jirachi-forest.png
+          test -s PRU-QA/celebi-jirachi-moon.png
+          test -s PRU-QA/noxichu-title-visible.png
       - uses: actions/upload-artifact@v4
         if: always() && github.ref_name == 'pru/noxichu-last-wish-title-test-20261017'
         with:
