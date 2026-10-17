@@ -6277,6 +6277,10 @@ static void Cmd_hitanimation(void)
 
 static u32 GetTrainerMoneyToGive(u16 trainerId)
 {
+    // PRU: Chansey training grants EXP, never repeatable cash rewards.
+    if (IS_HNS && trainerId >= TRAINER_PRU_CHANSEY_07_HNS && trainerId <= TRAINER_PRU_CHANSEY_100_HNS)
+        return 0;
+
     u32 lastMonLevel = 0;
     u32 moneyReward;
     u8 trainerMoney = 0;

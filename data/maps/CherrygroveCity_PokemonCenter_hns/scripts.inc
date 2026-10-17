@@ -38,7 +38,8 @@ CherryGrove_Pokecenter_Chansey::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_07_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_07_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_07_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv12::
@@ -46,7 +47,8 @@ PRU_ChanseyTrainer_Lv12::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_12_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_12_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_12_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv15::
@@ -54,7 +56,8 @@ PRU_ChanseyTrainer_Lv15::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_15_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_15_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_15_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv20::
@@ -62,7 +65,8 @@ PRU_ChanseyTrainer_Lv20::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_20_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_20_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_20_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv26::
@@ -70,7 +74,8 @@ PRU_ChanseyTrainer_Lv26::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_26_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_26_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_26_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv31::
@@ -78,7 +83,8 @@ PRU_ChanseyTrainer_Lv31::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_31_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_31_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_31_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv37::
@@ -86,7 +92,8 @@ PRU_ChanseyTrainer_Lv37::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_37_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_37_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_37_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv40::
@@ -94,7 +101,8 @@ PRU_ChanseyTrainer_Lv40::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_40_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_40_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_40_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv44::
@@ -102,7 +110,8 @@ PRU_ChanseyTrainer_Lv44::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_44_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_44_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_44_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv50::
@@ -110,7 +119,8 @@ PRU_ChanseyTrainer_Lv50::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_50_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_50_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_50_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv60::
@@ -118,7 +128,8 @@ PRU_ChanseyTrainer_Lv60::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_60_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_60_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_60_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv64::
@@ -126,7 +137,8 @@ PRU_ChanseyTrainer_Lv64::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_64_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_64_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_64_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv68::
@@ -134,7 +146,8 @@ PRU_ChanseyTrainer_Lv68::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_68_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_68_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_68_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv71::
@@ -142,7 +155,8 @@ PRU_ChanseyTrainer_Lv71::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_71_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_71_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_71_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv75::
@@ -150,7 +164,8 @@ PRU_ChanseyTrainer_Lv75::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_75_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_75_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_75_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv78::
@@ -158,7 +173,8 @@ PRU_ChanseyTrainer_Lv78::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_78_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_78_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_78_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv82::
@@ -166,7 +182,8 @@ PRU_ChanseyTrainer_Lv82::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_82_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_82_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_82_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv85::
@@ -174,7 +191,8 @@ PRU_ChanseyTrainer_Lv85::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_85_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_85_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_85_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv90::
@@ -182,7 +200,8 @@ PRU_ChanseyTrainer_Lv90::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_90_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_90_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_90_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv95::
@@ -190,7 +209,8 @@ PRU_ChanseyTrainer_Lv95::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_95_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_95_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_95_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Lv100::
@@ -198,7 +218,8 @@ PRU_ChanseyTrainer_Lv100::
 	faceplayer
 	call PRU_ChanseyTrainer_Offer
 	goto_if_eq VAR_RESULT, FALSE, PRU_ChanseyTrainer_End
-	trainerbattle_no_intro TRAINER_PRU_CHANSEY_100_HNS, PRU_ChanseyTrainer_Text_Victory
+	cleartrainerflag TRAINER_PRU_CHANSEY_100_HNS
+	trainerbattle_double TRAINER_PRU_CHANSEY_100_HNS, PRU_ChanseyTrainer_Text_BattleIntro, PRU_ChanseyTrainer_Text_Victory, PRU_ChanseyTrainer_Text_NeedTwo, PRU_ChanseyTrainer_Won
 	goto PRU_ChanseyTrainer_Won
 
 PRU_ChanseyTrainer_Offer::
@@ -206,9 +227,7 @@ PRU_ChanseyTrainer_Offer::
 	waitmoncry
 	msgbox PRU_ChanseyTrainer_Text_Offer, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, PRU_ChanseyTrainer_OfferDeclined
-	@ A double battle needs two usable party members; no softlock on first Pikachu.
-	specialvar VAR_RESULT, CalculatePlayerPartyCount
-	goto_if_lt VAR_RESULT, 2, PRU_ChanseyTrainer_NeedTwo
+	@ trainerbattle_double checks for two USABLE battle Pokémon and shows NeedTwo.
 	setvar VAR_RESULT, TRUE
 	return
 PRU_ChanseyTrainer_OfferDeclined::
@@ -234,6 +253,9 @@ PRU_ChanseyTrainer_Text_Offer:
 PRU_ChanseyTrainer_Text_NeedTwo:
 	.string "Bring at least two POKéMON\n"
 	.string "for a DOUBLE BATTLE.$"
+
+PRU_ChanseyTrainer_Text_BattleIntro:
+	.string "CHANSEY: Let's train together!$"
 
 PRU_ChanseyTrainer_Text_Victory:
 	.string "CHANSEY: Chan-chaa!$"

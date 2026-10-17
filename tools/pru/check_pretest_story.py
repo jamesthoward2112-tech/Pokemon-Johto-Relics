@@ -160,3 +160,29 @@ for gift_map in sorted(map_dir.glob("*/scripts.inc")):
         elif gift_map.parent.name.endswith("_hns") and gift_ops.search(gift_line) and not gift_line.strip().startswith("@"):
             print(f"GIFT_OP_SCAN {gift_map.relative_to(root)}:{number}: {gift_line.strip()[:120]}")
 print(f"GIFT_SCAN_COMPLETE target_species_lines={gift_matches}")
+
+# Repeated nurse-side Chansey service: genuine two-Pokémon double battle,
+# level tiers are bound per centre, never gives money or saves defeat flags.
+chansey_source = (map_dir / "CherrygroveCity_PokemonCenter_hns" / "scripts.inc").read_text()
+chansey_parties = (root / "src" / "data" / "trainers_hns.party").read_text()
+chansey_ids = (root / "include" / "constants" / "opponents_hns.h").read_text()
+chansey_levels = [7, 12, 15, 20, 26, 31, 37, 40, 44, 50, 60, 64, 68, 71, 75, 78, 82, 85, 90, 95, 100]
+for level in chansey_levels:
+    name = f"TRAINER_PRU_CHANSEY_{level:02d}_HNS"
+    assert f"cleartrainerflag {name}" in chansey_source, name
+    assert f"trainerbattle_double {name}, " in chansey_source, name
+    assert name in chansey_ids
+    part = chansey_parties.split(f"=== {name} ===", 1)[1].split("=== ", 1)[0]
+    assert part.count("\nChansey\n") == 2, name
+    assert "Double Battle: Yes" in part, name
+    assert part.count("- Memento") == 2 and part.count("- Heal Pulse") == 2, name
+for loc in ("CherrygroveCity", "VioletCity", "AzaleaTown", "GoldenrodCity"):
+    m = json.loads((map_dir / f"{loc}_PokemonCenter_hns" / "map.json").read_text())
+    chanseys = [o for o in m["object_events"] if o["graphics_id"] == "OBJ_EVENT_GFX_NURSE_CHANSEY_HNS"]
+    assert len(chanseys) == 1, loc
+    assert chanseys[0]["script"] == "CherryGrove_Pokecenter_Chansey" or chanseys[0]["script"].startswith("PRU_ChanseyTrainer_Lv"), loc
+money = (root / "src" / "battle_script_commands.c").read_text()
+assert "trainerId >= TRAINER_PRU_CHANSEY_07_HNS && trainerId <= TRAINER_PRU_CHANSEY_100_HNS" in money
+assert "TRAINERS_COUNT_HNS                       675" in chansey_ids
+print("PASS: 21 nurse-side Chansey tiers: repeatable genuine double battles, 2 Chansey each, no money.")
+
