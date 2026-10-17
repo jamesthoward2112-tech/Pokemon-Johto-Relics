@@ -35,6 +35,9 @@ jobs:
       - name: Verify repeatable PRU Chansey training doubles
         if: github.ref_name == 'pru/noxichu-last-wish-title-test-20261017'
         run: python3 tools/pru/check_chansey_training.py
+      - name: Verify PRU rare optional gift replacements
+        if: github.ref_name == 'pru/noxichu-last-wish-title-test-20261017'
+        run: python3 tools/pru/check_rare_gifts.py
       - name: Verify PRL signature move integration
         run: |
           python3 - <<'PY'
