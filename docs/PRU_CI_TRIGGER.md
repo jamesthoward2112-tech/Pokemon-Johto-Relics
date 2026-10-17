@@ -95,3 +95,6 @@ Pokémon Centre NPCs. Replace orphan “Chaan! Sii!” text with the yes/no
 Poochyena (Lv3–5), applied by tools/pru/add_route30_poochyena.py before compiling.
 Do not distribute until an hns build passes. Preserve Noxichu/Last Wish title,
 Chansey portrait and Route 34 Egg/Tutor NPC.
+
+### Full nurse-side Chansey map sweep (17 Oct)
+GitHub Actions must scan every existing Chansey overworld object, not just the curated 26. Fail early and print any unexpected map-to-script links before running the expensive ROM compiler.
