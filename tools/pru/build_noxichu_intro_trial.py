@@ -1,0 +1,156 @@
+#!/usr/bin/env python3
+"""Reproducible *test-only* PRU boot/title assembly.
+
+Flow: native pokeemerald intro -> original Last Wish Scene 0 -> black fade
+-> approved Noxichu cavern art -> native flashing PRESS START.
+Executed by GitHub Actions before make hns; normal source branches untouched.
+"""
+from pathlib import Path
+import base64
+import hashlib
+import io
+import urllib.request
+from PIL import Image
+
+PRL_REPO = "jamesthoward2112-tech/Pokemon-Relic-Legacy"
+PRL_COMMIT = "744d4c2fd3b352bbb76a917efa7b440b43730e98"
+PRL_C_FILE = "src/prl_intro_trial.c"
+PRL_HELPER = "tools/prl/prepare_hwl_scene0.py"
+BASE = "https://raw.githubusercontent.com"
+ASSET_B64 = Path("assets/pru_title/noxichu_relic_cavern_240.jpg.b64")
+TITLE_DIR = Path("graphics/title_screen/pjr")
+
+def fetch_prl(path):
+    url = f"{BASE}/{PRL_REPO}/{PRL_COMMIT}/{path}"
+    with urllib.request.urlopen(
+        urllib.request.Request(url, headers={"User-Agent": "PRU-title-build"}),
+        timeout=65,
+    ) as r:
+        content = r.read()
+    print("DONOR_FETCH", path, len(content),
+          hashlib.sha256(content).hexdigest())
+    return content
+
+def replace_exact(path, old, new):
+    target = Path(path)
+    original = target.read_text()
+    assert original.count(old) == 1, (
+        f"Expected exactly one replacement target in {path}: {old[:90]!r}, "
+        f"found {original.count(old)}"
+    )
+    target.write_text(original.replace(old, new))
+    print("PATCH_PASS", path, old[:80].replace("\n", " "))
+
+def install_last_wish():
+    # The final PRL branch retains ORIGINAL donor Celebi/Jirachi sprites.
+    code = fetch_prl(PRL_C_FILE).decode("utf-8")
+    assert '#if defined(FIRERED)' in code
+    assert 'graphics/intro/prl_hwl/celebi.png' in code
+    assert 'graphics/intro/prl_hwl/jirachi.png' in code
+    assert 'void CB2_InitPRLHwlScene0(void)' in code
+    code = code.replace("#if defined(FIRERED)", "#if IS_HNS", 1)
+    code = code.replace("CB2_InitPRLHwlScene0", "CB2_InitPRUHwlScene0")
+    # Retain original scene cleanup and fade-out to title.
+    Path("src/pru_hwl_intro.c").write_text(code)
+
+    helper = fetch_prl(PRL_HELPER).decode("utf-8")
+    assert "BLOBS =" in helper and "HOENN-S-LAST-WISH-project" in helper
+    helper_path = Path("tools/pru/pru_download_hwl_art.py")
+    helper_path.write_text(helper)
+    # Running the actual donor validator downloads all 20 source art/map assets.
+    import subprocess
+    subprocess.run(["python3", str(helper_path)], check=True)
+    for art in ("celebi.png", "jirachi.png", "bg00.png", "moon.png"):
+        assert Path("graphics/intro/prl_hwl", art).is_file()
+
+def patch_boot_flow():
+    intro = Path("src/intro.c")
+    source = intro.read_text()
+    # Bypass only the HNS copyright/intro dispatch for this test variant;
+    # fall through to the preserved vanilla Emerald copyright/startup.
+    old = "#elif IS_HNS\n    return SetUpCopyrightScreenHns();\n#endif"
+    assert source.count(old) == 1
+    source = source.replace(
+        old,
+        "#elif IS_HNS\n    // PRU test: use the normal Emerald opening below.\n#endif",
+    )
+    old = ("static void MainCB2_EndIntro(void)\n"
+           "{\n"
+           "    if (!UpdatePaletteFade())\n"
+           "        SetMainCallback2(CB2_InitTitleScreen);\n"
+           "}")
+    new = ("void CB2_InitPRUHwlScene0(void);\n"
+           "\n"
+           "static void MainCB2_EndIntro(void)\n"
+           "{\n"
+           "    if (!UpdatePaletteFade())\n"
+           "        SetMainCallback2(CB2_InitPRUHwlScene0);\n"
+           "}")
+    assert source.count(old) == 1
+    intro.write_text(source.replace(old, new))
+    print("BOOT_FLOW_PASS Emerald -> Last Wish -> PRU title")
+
+def install_title_art():
+    assert ASSET_B64.is_file(), f"Approved artwork payload missing: {ASSET_B64}"
+    jpg = base64.b64decode("".join(ASSET_B64.read_text().split()), validate=True)
+    frame = Image.open(io.BytesIO(jpg)).convert("RGB")
+    assert frame.size == (240, 160), frame.size
+    # GBA Mode 4: exact 240*160 8bpp indices + 256 RGB555 palette.
+    indexed = frame.quantize(colors=240, method=Image.Quantize.MEDIANCUT,
+                             dither=Image.Dither.NONE)
+    raw = indexed.tobytes()
+    assert len(raw) == 38400
+    palette = indexed.getpalette()
+    assert palette is not None and len(palette) >= 240 * 3
+    pal_bytes = bytearray()
+    for i in range(256):
+        r,g,b = palette[3*i:3*i+3]
+        rgb555 = (r >> 3) | ((g >> 3) << 5) | ((b >> 3) << 10)
+        pal_bytes += rgb555.to_bytes(2, "little")
+    assert len(pal_bytes) == 512
+    TITLE_DIR.mkdir(parents=True, exist_ok=True)
+    (TITLE_DIR / "PJR_TitleScreen_Mode4.8bpp").write_bytes(raw)
+    (TITLE_DIR / "PJR_TitleScreen_Mode4.gbapal").write_bytes(pal_bytes)
+    print("TITLE_ART_PASS 240x160, 8bpp, 256 palette entries")
+
+def patch_title():
+    path = "src/title_screen.c"
+    # Preserve the separately animated sprite for PRESS START.
+    replace_exact(path,
+        "        LoadPjrTitlePaletteBrightened();",
+        "        LoadPalette(sPjrTitlePalette, BG_PLTT_ID(0), sizeof(sPjrTitlePalette));")
+    replace_exact(path,
+        "        CreatePressStartBanner(START_BANNER_X, 138);\n"
+        "        CreateTask(Task_PjrTitleScreenInput, 0);",
+        "        CreatePressStartBanner(START_BANNER_X, 138);\n"
+        "        CreateTask(Task_PjrTitleScreenInput, 0);")
+    # The above equality no-op intentionally checks the native blinking
+    # PRESS START path is preserved. Begin black -> normal palette fade.
+    replace_exact(path,
+        "        SetVBlankCallback(VBlankCB);\n"
+        "        SetMainCallback2(MainCB2);\n"
+        "        gMain.state++;\n"
+        "        break;\n"
+        "    }\n"
+        "}\n"
+        "\n"
+        "static void Task_PjrTitleScreenInput",
+        "        SetVBlankCallback(VBlankCB);\n"
+        "        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);\n"
+        "        SetMainCallback2(MainCB2);\n"
+        "        gMain.state++;\n"
+        "        break;\n"
+        "    }\n"
+        "}\n"
+        "\n"
+        "static void Task_PjrTitleScreenInput")
+    print("TITLE_FLOW_PASS Last Wish black fade -> approved art with flashing sprite")
+
+def main():
+    install_last_wish()
+    patch_boot_flow()
+    install_title_art()
+    patch_title()
+
+if __name__ == "__main__":
+    main()
