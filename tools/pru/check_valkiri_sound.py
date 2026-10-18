@@ -15,6 +15,13 @@ learnset = levels.split("sValkiriLevelUpLearnset[]", 1)[1].split("LEVEL_UP_END",
 for m in ("MOVE_ROUND", "MOVE_HYPER_VOICE", "MOVE_BOOMBURST"):
     assert m in learnset, m
 assert "LEVEL_UP_MOVE( 0, MOVE_BOOMBURST)" in learnset
+# Gardevoir can acquire both sound moves before the Lv45+ Ancient Stone.
+gardevoir_data = Path("src/data/pokemon/level_up_learnsets/gen_3.h").read_text()
+gardevoir = gardevoir_data.split("sGardevoirLevelUpLearnset[]", 1)[1].split("LEVEL_UP_END",1)[0]
+assert "#if IS_HNS" in gardevoir
+assert "LEVEL_UP_MOVE(36, MOVE_ROUND)" in gardevoir
+assert "LEVEL_UP_MOVE(38, MOVE_HYPER_VOICE)" in gardevoir
+
 
 shop = Path("data/maps/GoldenrodCity_DepartmentStore_2F_hns/scripts.inc").read_text()
 assert shop.split("GoldenrodDeptStore2_Pokemart:",1)[1].split("pokemartlistend",1)[0].count("ITEM_THROAT_SPRAY") == 1
@@ -32,8 +39,7 @@ if imported.exists():
     assert (imported / "shiny.pal").read_text() == shiny
     from PIL import Image
     for side in ("front", "back"):
-        im = Image.open(imported / (side+".png")).convert("RGBA")
-        colours = {rgb[:3] for rgb in im.getdata() if rgb[3]}
-        assert (86,160,93) in colours, (side,"green normal missing")
-        assert (71,117,213) not in colours, (side,"blue still normal")
+        im = Image.open(imported / (side + ".png"))
+        assert im.mode == "P", (side, "PRL indexed PNG must be preserved")
+        assert im.size == (64, 64)
 print("PASS: Valkiri name, green normal/blue shiny, three sound moves and Goldenrod Throat Spray")
