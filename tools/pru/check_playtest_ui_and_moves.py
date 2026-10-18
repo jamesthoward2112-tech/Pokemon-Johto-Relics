@@ -87,6 +87,19 @@ for gen in (1, 2, 3):
 pjr = read("src/data/pokemon/species_info/pjr_families.h")
 assert '.speciesName = _("Scarabub")' in pjr
 assert '"Feralodon", CRY_FERALIGATR' in pjr
+# PJR's six Red Relics use macro-injected species names, not .speciesName
+# literals.  Existing save party data stores NOXICHU in uppercase; the
+# GetBoxMonData nickname getter will now show Noxichu, not NOXICHU.
+red_relics = {
+    "EDENSAUR": "Edensaur", "CHARAXIS": "Charaxis",
+    "FORTOTOISE": "Fortotoise", "KHANG": "Khang",
+    "NOLAX": "Nolax", "NOXICHU": "Noxichu",
+}
+for token, proper in red_relics.items():
+    expr = rf'PJR_RED_SPECIES\(SPECIES_{token},[\s\S]*?ABILITY_[A-Z0-9_]+, "([^"]+)", CRY_'
+    matched = re.search(expr, pjr)
+    assert matched and matched.group(1) == proper, (token, matched.group(1) if matched else None)
+
 assert not re.search(r'\.speciesName\s*=\s*_\("[A-Z][A-Z -]*"\)', pjr), "legacy PJR allcaps species"
 pru = read("src/data/pokemon/species_info/pru_custom.h")
 assert '.speciesName = _("Valkiri")' in pru
