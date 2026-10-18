@@ -18859,7 +18859,27 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .eggMoveLearnset = sEeveeEggMoveLearnset,
         .formSpeciesIdTable = sEeveeFormSpeciesIdTable,
         .formChangeTable = sEeveeFormChangeTable,
-        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_EEVEEON},
+        // HNS/PRU: one directly used, obtainable item per approved Eeveelution.
+        // No happiness, time, gender, location, or held-item leveling.
+        .evolutions = EVOLUTION(
+                            #if IS_HNS
+                                {EVO_ITEM, ITEM_WATER_STONE, SPECIES_VAPOREON},
+                                {EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_JOLTEON},
+                                {EVO_ITEM, ITEM_FIRE_STONE, SPECIES_FLAREON},
+                                {EVO_ITEM, ITEM_SUN_STONE, SPECIES_ESPEON},
+                                {EVO_ITEM, ITEM_MOON_STONE, SPECIES_UMBREON},
+                                {EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_EEVEEON},
+                                {EVO_ITEM, ITEM_SHINY_STONE, SPECIES_NIMBEON},
+                                {EVO_ITEM, ITEM_DUSK_STONE, SPECIES_OMEON},
+                                {EVO_ITEM, ITEM_EXPERT_BELT, SPECIES_CHAMPEON},
+                                {EVO_ITEM, ITEM_SILVER_POWDER, SPECIES_LEPIDEON},
+                                {EVO_ITEM, ITEM_SOFT_SAND, SPECIES_SPHYNXEON},
+                                {EVO_ITEM, ITEM_METAL_COAT, SPECIES_GUARDEON},
+                                {EVO_ITEM, ITEM_HARD_STONE, SPECIES_OBSIDEON},
+                                {EVO_ITEM, ITEM_POISON_BARB, SPECIES_TOXEON},
+                                {EVO_ITEM, ITEM_DRAGON_FANG, SPECIES_DRAKEON}
+                            #else
+{EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_EEVEEON},
                                 {EVO_LEVEL, 0, SPECIES_NIMBEON, CONDITIONS({IF_NOT_TIME, TIME_NIGHT}, {IF_HOLD_ITEM, ITEM_SHARP_BEAK})},
                                 {EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_JOLTEON},
                                 {EVO_ITEM, ITEM_WATER_STONE, SPECIES_VAPOREON},
@@ -18897,6 +18917,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
                                 {EVO_LEVEL, 0, SPECIES_UMBREON, CONDITIONS({IF_MIN_FRIENDSHIP, FRIENDSHIP_EVO_THRESHOLD}, {IF_TIME, TIME_NIGHT})},
                             #endif
                                 {EVO_ITEM, ITEM_DUSK_STONE, SPECIES_OMEON}
+                            #endif
                             ),
     },
 
