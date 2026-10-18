@@ -109,3 +109,8 @@ Rebuild PRU after commit b3a89998b37c7ca60a54850da82dba9bc466cfde updates all ei
 ## 18 October 2026 — PRU 444-only Eeveelution full ROM build
 
 Explicit user-requested GitHub Actions rebuild on `pru/canonical-444-eevee-simple-items-20261018` after PR #17 registered all 15 Eevee item routes, PRU-only item-use behavior, 444 target whitelist, and Goldenrod shop stock. Run `tools/pru/check_canonical_eeveelutions.py` plus existing 444-species and 54-custom-evolution checks, then full `make hns`, compiled ROM audit, mGBA title boot capture, and upload `PRU-Consolidated-WIP` and `PRU-Noxichu-LastWish-TEST` with SHA256. Preserve all credits and prior verified ROMs. Compilation and boot evidence do not certify in-game stone consumption or Pokédex seen/caught tracking.
+
+
+## 18 October 2026 — Valkiri move progression and original art palette-only build
+
+Use the latest commit on `pru/prl-sprite-position-icons-tm-20261018`. The user approved retaining unmodified GBA front/back/indexed sprite pixels and only reversing Valkiri normal/shiny palette assignments, green normal and blue shiny. Gardevoir learns Round at Lv36 and Hyper Voice at Lv38 (HNS only), so both are obtainable before the Lv45 Ancient Stone evolution. Valkiri learns Boomburst on evolution, with a Lv55 reacquisition, preserving original species ID. Verify Noxichu icon palette, 100 TM/HM name labels, PRL sprite positioning, and Goldenrod 2F Throat Spray stock at ₽10,000. Run `tools/pru/check_valkiri_sound.py`, full `make hns`, binary audit and emulator boot. Publish direct `.gba` to user, never a ZIP.
