@@ -4184,7 +4184,9 @@ static void Task_SwitchScreensFromAreaScreen(u8 taskId)
             gTasks[taskId].func = Task_LoadInfoScreen;
             break;
         case 2:
-            if (!sPokedexListItem->owned)
+            // PRU: seen Pokémon can inspect their evolution routes before capture.
+            // Preserve the original caught-only behaviour outside Heart & Soul.
+            if (!sPokedexListItem->owned && (!IS_HNS || !sPokedexListItem->seen))
                 PlaySE(SE_FAILURE);
             else
                 gTasks[taskId].func = Task_LoadStatsScreen;
@@ -5211,7 +5213,8 @@ static void Task_HandleStatsScreenInput(u8 taskId)
     }
     if ((JOY_NEW(DPAD_RIGHT) || (JOY_NEW(R_BUTTON) && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_LR)))
     {
-        if (!sPokedexListItem->owned)
+        // PRU: expose relic evolution methods for seen (not just caught) Pokémon.
+        if (!sPokedexListItem->owned && (!IS_HNS || !sPokedexListItem->seen))
             PlaySE(SE_FAILURE);
         else
         {
@@ -6750,7 +6753,10 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 dept
                 break;
             case EVO_ITEM:
                 CopyItemName(evolutions[i].param, gStringVar2);
-                StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("{STR_VAR_2} is used"));
+                if (IS_HNS)
+                    StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Use {STR_VAR_2}"));
+                else
+                    StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("{STR_VAR_2} is used"));
                 break;
             case EVO_SPLIT_FROM_EVO:
                 StringCopy(gStringVar4, COMPOUND_STRING("Splits from "));
