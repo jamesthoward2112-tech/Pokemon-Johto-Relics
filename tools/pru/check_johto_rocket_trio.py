@@ -67,30 +67,47 @@ assert underground_script.count("removeobject 11") >= 2
 radio = map_file("GoldenrodCity_RadioTower_4F_hns")
 radio_script = read("data/maps/GoldenrodCity_RadioTower_4F_hns/scripts.inc")
 assert_actor(radio["object_events"], 7, "OBJ_EVENT_GFX_MON_BASE+SPECIES_MEOWTH")
-assert (radio["object_events"][6]["x"], radio["object_events"][6]["y"]) == (16, 11)
-assert radio["object_events"][6]["flag"] == "FLAG_PJR_JESSIE_JAMES_3_DEFEATED"
-# Radio Tower's previous one-tile vision never intercepted the player;
-# its Meowth also wandered off even before the battle.  Make the encounter
-# coordinate-driven and treat all three actors as one locked cutscene.
 radio_events = radio["object_events"]
-assert radio_events[1]["trainer_type"] == "TRAINER_TYPE_NONE"
-assert radio_events[4]["trainer_type"] == "TRAINER_TYPE_NONE"
-assert radio_events[6]["movement_type"] == "MOVEMENT_TYPE_FACE_UP"
+# When stepping up the Radio Tower 3F -> 4F left staircase, no member of
+# the trio should be visible or require manual talking before the cutscene.
+for local_id, pos in ((5, (14, 11)), (2, (15, 11)), (7, (16, 11))):
+    actor = radio_events[local_id - 1]
+    assert actor["flag"] == "FLAG_TEMP_1", (local_id, actor["flag"])
+    assert actor["trainer_type"] == "TRAINER_TYPE_NONE"
+    assert actor["movement_type"] == "MOVEMENT_TYPE_FACE_UP"
+    assert (actor["x"], actor["y"]) == pos, (local_id, pos)
+stair_trigger_tiles = {(10, 5), (11, 5), (9, 6), (10, 6),
+                       (11, 6), (9, 7), (10, 7)}
 radio_intercepts = {(e["x"], e["y"]) for e in radio["coord_events"]
                     if e.get("script") == "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTrigger"}
-assert radio_intercepts == {(14, 9), (15, 9), (12, 11), (18, 11),
-                            (13, 10), (16, 10), (14, 12), (15, 12)}
-assert radio_script.count("trainerbattle_double TRAINER_GRUNT_9_HNS") == 1
+assert radio_intercepts == stair_trigger_tiles, radio_intercepts
 assert "MAP_SCRIPT_ON_TRANSITION, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTransition" in radio_script
-assert "setvar VAR_TEMP_3, 1" in radio_script
-assert "getplayerxy VAR_0x8004, VAR_0x8005" in radio_script
-for move in ("ApproachNorth", "ApproachWest", "ApproachEast"):
-    assert f"GoldenrodCity_RadioTower_4F4_Movement_{move}" in radio_script
+assert "setflag FLAG_TEMP_1" in radio_script
+assert "call_if_unset FLAG_PJR_JESSIE_JAMES_3_DEFEATED" in radio_script
+assert radio_script.count("trainerbattle_double TRAINER_GRUNT_9_HNS") == 1
+assert "clearflag FLAG_TEMP_1\n\taddobject 5\n\taddobject 2\n\taddobject 7" in radio_script
+for local_id in (5, 2, 7):
+    assert f"applymovement {local_id}, GoldenrodCity_RadioTower_4F4_Movement_RushNorth" in radio_script
+    assert f"applymovement {local_id}, GoldenrodCity_RadioTower_4F4_Movement_RushWest" in radio_script
+    assert f"applymovement {local_id}, GoldenrodCity_RadioTower_4F4_Movement_EscapeEast" in radio_script
+    assert f"applymovement {local_id}, GoldenrodCity_RadioTower_4F4_Movement_EscapeSouth" in radio_script
+for name, step, count in (("RushNorth", "walk_faster_up", 4),
+                          ("RushWest", "walk_faster_left", 3),
+                          ("EscapeEast", "walk_faster_right", 3),
+                          ("EscapeSouth", "walk_faster_down", 4)):
+    section = radio_script.split(f"GoldenrodCity_RadioTower_4F4_Movement_{name}:\n", 1)[1].split("\tstep_end", 1)[0]
+    assert section.count("\t" + step + "\n") == count, (name, section)
 assert "trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen" in radio_script
 assert "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle" in radio_script
-assert "fadescreen FADE_TO_BLACK\n\tremoveobject 2\n\tremoveobject 5\n\tremoveobject 7" in radio_script
-assert "setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED" in radio_script
-assert "releaseall" in radio_script
+retreat = radio_script.split("GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle::", 1)[1].split("GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAlreadyDefeated::", 1)[0]
+assert "FADE_TO_BLACK" not in retreat and "FADE_FROM_BLACK" not in retreat
+assert retreat.index("applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_EscapeEast") < retreat.index("applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_EscapeEast") < retreat.index("applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_EscapeEast")
+assert retreat.index("waitmovementall") < retreat.index("removeobject 2")
+for local_id in (2, 5, 7):
+    assert f"removeobject {local_id}" in retreat
+assert "setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED" in retreat
+assert "setflag FLAG_TEMP_1" in retreat
+assert "releaseall" in retreat
 
 # Jessie and James retain their trainer/overworld art; Meowth uses the normal
 # species overworld sheet, so these scenes do not alter wild Meowth.
@@ -165,4 +182,4 @@ for trainer in (
 assert "Nimbeon @ Sitrus Berry" in party
 assert "Eeveeon @ Sitrus Berry" in party
 
-print("PASS: Johto Rocket trio staged one tile ahead with visible Meowth template and no post-battle backwards walk; PRL duo assets and twins source wired (emulator scene QA still required).")
+print("PASS: Johto Rockets including invisible Radio Tower 4F stair ambush and physical escape; PRL intro and twins wired (in-game scene QA still required).")
