@@ -4484,6 +4484,24 @@ static ALWAYS_INLINE bool32 IsEggOrBadEgg(struct BoxPokemon *boxMon)
  * safety we have a GetBoxMonData macro (in include/pokemon.h) which
  * dispatches to either GetBoxMonData2 or GetBoxMonData3 based on the
  * number of arguments. */
+// PRU displays old unsurnamed save Pokémon using the newly standardised
+// species casing, without rewriting encrypted save data or altering nicknames.
+static bool8 PruNameMatchesSpeciesIgnoringCase(const u8 *stored, const u8 *canonical)
+{
+    while (*stored != EOS && *canonical != EOS)
+    {
+        u8 left = *stored++;
+        u8 right = *canonical++;
+        if (left >= CHAR_A && left <= CHAR_Z)
+            left += CHAR_a - CHAR_A;
+        if (right >= CHAR_A && right <= CHAR_Z)
+            right += CHAR_a - CHAR_A;
+        if (left != right)
+            return FALSE;
+    }
+    return *stored == EOS && *canonical == EOS;
+}
+
 u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
 {
     s32 i;
@@ -4565,6 +4583,17 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
                 }
 
                 data[retVal] = EOS;
+                // Previous PRU/PJR saves stored unnicknamed Pokémon in all caps.
+                // Only matching default species names change in displayed text.
+                if (IS_HNS && field == MON_DATA_NICKNAME && boxMon->language == GAME_LANGUAGE)
+                {
+                    const u8 *canonical = GetSpeciesName(GetSubstruct0(boxMon)->species);
+                    if (PruNameMatchesSpeciesIgnoringCase(data, canonical))
+                    {
+                        StringCopy(data, canonical);
+                        retVal = StringLength(data);
+                    }
+                }
             }
             break;
         }
@@ -7718,7 +7747,7 @@ void EvolutionRenameMon(struct Pokemon *mon, u16 oldSpecies, u16 newSpecies)
     u8 language;
     GetMonData(mon, MON_DATA_NICKNAME, gStringVar1);
     language = GetMonData(mon, MON_DATA_LANGUAGE, &language);
-    if (language == GAME_LANGUAGE && !StringCompare(GetSpeciesName(oldSpecies), gStringVar1))
+    if (language == GAME_LANGUAGE && PruNameMatchesSpeciesIgnoringCase(GetSpeciesName(oldSpecies), gStringVar1))
         SetMonData(mon, MON_DATA_NICKNAME, GetSpeciesName(newSpecies));
 }
 
