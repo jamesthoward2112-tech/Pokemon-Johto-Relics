@@ -82,16 +82,16 @@ assert 'kind == "Icon" and slug in NORMALIZED_EEVEE_ICONS' in sync
 # Every PRU canonical species and move must use the same display casing.
 for gen in (1, 2, 3):
     families = read(f"src/data/pokemon/species_info/gen_{gen}_families.h")
-    names = re.findall(r'\\.speciesName\\s*=\\s*_\\("([^"]+)"\\)', families)
+    names = re.findall(r'\.speciesName\s*=\s*_\("([^"]+)"\)', families)
     assert names and not any(n.isupper() and any(c.isalpha() for c in n) for n in names), f"Gen {gen} species uppercase"
 pjr = read("src/data/pokemon/species_info/pjr_families.h")
 assert '.speciesName = _("Scarabub")' in pjr
 assert '"Feralodon", CRY_FERALIGATR' in pjr
-assert not re.search(r'\\.speciesName\\s*=\\s*_\\("[A-Z][A-Z -]*"\\)', pjr), "legacy PJR allcaps species"
+assert not re.search(r'\.speciesName\s*=\s*_\("[A-Z][A-Z -]*"\)', pjr), "legacy PJR allcaps species"
 pru = read("src/data/pokemon/species_info/pru_custom.h")
 assert '.speciesName = _("Valkiri")' in pru
 assert '.speciesName = _("Skulberus")' in pru
-move_names = re.findall(r'\\.name\\s*=\\s*(?:COMPOUND_STRING|_)\\("([^"]+)"\\)', moves)
+move_names = re.findall(r'\.name\s*=\s*(?:COMPOUND_STRING|_)\("([^"]+)"\)', moves)
 assert len(move_names) >= 950
 assert all(name == name.upper() for name in move_names), "some move names not uppercase"
 pokemon_src = read("src/pokemon.c")
