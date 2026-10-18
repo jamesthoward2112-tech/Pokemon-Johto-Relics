@@ -429,3 +429,25 @@ jobs:
               --notes "Direct 32 MiB GBA. Source regressions, full make hns, compiled ROM audit and mGBA boot required before release. In-game visual QA pending." \
               --prerelease
           fi
+
+
+      - name: Publish verified direct .gba for combined PRU Boomburst and Rocket playtest fixes
+        if: github.ref_name == 'pru/consolidated-rocket-feralodon-fear-20261018'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: pru-boomburst-rocket-fear-casing-2026-10-18
+          ROM: Pokemon-Relics-Ultimate-Boomburst-Rocket-Fixes-2026-10-18.gba
+        run: |
+          test "$(stat -c %s pokehns.gba)" -eq 33554432
+          cp pokehns.gba "$ROM"
+          sha256sum "$ROM"
+          if gh release view "$TAG" --repo "${{ github.repository }}" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$ROM" --clobber --repo "${{ github.repository }}"
+          else
+            gh release create "$TAG" "$ROM" \
+              --repo "${{ github.repository }}" \
+              --target "$GITHUB_SHA" \
+              --title "PRU Boomburst enemies-only, Radio Tower Rockets, Fear and UI fixes" \
+              --notes "Direct 32 MiB GBA, no ZIP. Includes PR #24/25 moves/icons/casing/ability fixes, Radio Tower Jessie-James-Meowth interception, Scary Face Fear and enemy-only 140 BP Boomburst. Pending independent gameplay QA. Feralodon's requested non-black sprite remains unresolved: PJR Beta donor image is also black; no unapproved recolour applied." \
+              --prerelease
+          fi
