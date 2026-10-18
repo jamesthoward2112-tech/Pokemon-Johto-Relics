@@ -45,8 +45,8 @@ assert 'COMPOUND_STRING("Dark moves strike first\\nat full HP.")' in ability
 # shorten just the ability observed during the playtest.
 summary = read("src/pokemon_summary_screen.c")
 assert "WrapPruAbilitySummaryText(gAbilitiesInfo[ability].description)" in summary
-assert "GetStringWidth(FONT_SMALL, &sPruAbilitySummaryText[lineStart], 0)" in summary
-assert "PrintTextOnWindowWithFont(windowId, sPruAbilitySummaryText, 0, 14, 0, 0, FONT_SMALL)" in summary
+assert "GetStringWidth(FONT_SMALL_NARROWER, &sPruAbilitySummaryText[lineStart], 0)" in summary
+assert "PrintTextOnWindowWithFont(windowId, sPruAbilitySummaryText, 0, 14, 0, 0, FONT_SMALL_NARROWER)" in summary
 assert "sPruAbilitySummaryText[breakAt] = CHAR_NEWLINE" in summary
 assert "if (IS_HNS)" in summary
 assert re.search(r"\[PSS_DATA_WINDOW_INFO_ABILITY\][\s\S]*?\.height = 5,[\s\S]*?\.baseBlock = 503", summary)
@@ -77,5 +77,28 @@ for slug in slugs:
     assert color_type == 3 and depth in (1, 2, 4, 8), (slug, depth, color_type)
     assert f'"{slug}"' in sync, f"donor sync bypass missing {slug}"
 assert 'kind == "Icon" and slug in NORMALIZED_EEVEE_ICONS' in sync
+
+
+# Every PRU canonical species and move must use the same display casing.
+for gen in (1, 2, 3):
+    families = read(f"src/data/pokemon/species_info/gen_{gen}_families.h")
+    names = re.findall(r'\\.speciesName\\s*=\\s*_\\("([^"]+)"\\)', families)
+    assert names and not any(n.isupper() and any(c.isalpha() for c in n) for n in names), f"Gen {gen} species uppercase"
+pjr = read("src/data/pokemon/species_info/pjr_families.h")
+assert '.speciesName = _("Scarabub")' in pjr
+assert '"Feralodon", CRY_FERALIGATR' in pjr
+assert not re.search(r'\\.speciesName\\s*=\\s*_\\("[A-Z][A-Z -]*"\\)', pjr), "legacy PJR allcaps species"
+pru = read("src/data/pokemon/species_info/pru_custom.h")
+assert '.speciesName = _("Valkiri")' in pru
+assert '.speciesName = _("Skulberus")' in pru
+move_names = re.findall(r'\\.name\\s*=\\s*(?:COMPOUND_STRING|_)\\("([^"]+)"\\)', moves)
+assert len(move_names) >= 950
+assert all(name == name.upper() for name in move_names), "some move names not uppercase"
+pokemon_src = read("src/pokemon.c")
+assert "PruNameMatchesSpeciesIgnoringCase" in pokemon_src
+assert "field == MON_DATA_NICKNAME && boxMon->language == GAME_LANGUAGE" in pokemon_src
+assert "if (PruNameMatchesSpeciesIgnoringCase(data, canonical))" in pokemon_src
+assert "PruNameMatchesSpeciesIgnoringCase(GetSpeciesName(oldSpecies), gStringVar1)" in pokemon_src
+assert "lines < 3" in summary
 
 print("PRU_PLAYTEST_FIXES_PASS: 5 move descriptions, Skulberus evolution, voice relearning, Stygian Rush summary, 10 Eeveelution party icons")
