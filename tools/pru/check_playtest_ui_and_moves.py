@@ -41,6 +41,19 @@ assert "LEVEL_UP_MOVE(0, MOVE_SHADOW_FANGS)" in skulberus, "missing Skulberus on
 ability = read("src/data/abilities.h")
 assert 'COMPOUND_STRING("Dark moves strike first\\nat full HP.")' in ability
 
+# One shared window fix must cover every original and custom ability, not
+# shorten just the ability observed during the playtest.
+summary = read("src/pokemon_summary_screen.c")
+assert "WrapPruAbilitySummaryText(gAbilitiesInfo[ability].description)" in summary
+assert "GetStringWidth(FONT_SMALL, &sPruAbilitySummaryText[lineStart], 0)" in summary
+assert "PrintTextOnWindowWithFont(windowId, sPruAbilitySummaryText, 0, 14, 0, 0, FONT_SMALL)" in summary
+assert "sPruAbilitySummaryText[breakAt] = CHAR_NEWLINE" in summary
+assert "if (IS_HNS)" in summary
+assert re.search(r"\\[PSS_DATA_WINDOW_INFO_ABILITY\\][\\s\\S]*?\\.height = 5,[\\s\\S]*?\\.baseBlock = 503", summary)
+assert re.search(r"\\[PSS_DATA_WINDOW_INFO_MEMO\\][\\s\\S]*?\\.baseBlock = 593", summary)
+abilities = read("src/data/abilities.h")
+assert len(re.findall(r"^\\s*\\[ABILITY_[A-Z0-9_]+\\]\\s*=", abilities, re.M)) > 300
+
 relearner = read("src/move_relearner.c")
 assert "gMoveRelearnerState == MOVE_RELEARNER_LEVEL_UP_MOVES" in relearner
 assert "GetBoxMonData(boxmon, MON_DATA_SPECIES_OR_EGG) == SPECIES_GARDEVOIR" in relearner
