@@ -2535,7 +2535,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_STYGIAN_RUSH] =
     {
         .name = _("Stygian Rush"),
-        .description = COMPOUND_STRING("Dark moves gain priority at full HP."),
+        .description = COMPOUND_STRING("Dark moves strike first\nat full HP."),
         .aiRating = 7,
     },
 
