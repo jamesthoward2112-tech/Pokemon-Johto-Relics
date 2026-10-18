@@ -9067,8 +9067,14 @@ const struct ItemInfo gItemsInfo[] =
             "Poison-type moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
+    #if IS_HNS
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
+        .effect = gItemEffect_EvoItem,
+    #else
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+    #endif
         .secondaryId = TYPE_POISON,
         .flingPower = 70,
         .iconPic = gItemIcon_PoisonBarb,
@@ -9088,8 +9094,14 @@ const struct ItemInfo gItemsInfo[] =
             "Ground-type moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
+    #if IS_HNS
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
+        .effect = gItemEffect_EvoItem,
+    #else
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+    #endif
         .secondaryId = TYPE_GROUND,
         .flingPower = 10,
         .iconPic = gItemIcon_Sand,
@@ -9145,8 +9157,14 @@ const struct ItemInfo gItemsInfo[] =
             "Bug-type moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
+    #if IS_HNS
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
+        .effect = gItemEffect_EvoItem,
+    #else
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+    #endif
         .secondaryId = TYPE_BUG,
         .flingPower = 10,
         .iconPic = gItemIcon_SilverPowder,
@@ -9162,8 +9180,14 @@ const struct ItemInfo gItemsInfo[] =
         .description = sRockIncenseDesc,
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
+    #if IS_HNS
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
+        .effect = gItemEffect_EvoItem,
+    #else
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+    #endif
         .secondaryId = TYPE_ROCK,
         .flingPower = 100,
         .iconPic = gItemIcon_HardStone,
@@ -9202,8 +9226,14 @@ const struct ItemInfo gItemsInfo[] =
             "Dragon-type moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
+    #if IS_HNS
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
+        .effect = gItemEffect_EvoItem,
+    #else
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+    #endif
         .secondaryId = TYPE_DRAGON,
         .flingPower = 70,
         .iconPic = gItemIcon_DragonFang,
@@ -9250,8 +9280,13 @@ const struct ItemInfo gItemsInfo[] =
             "Steel-type moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
+    #if IS_HNS
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
+    #else
         .type = EVO_HELD_ITEM_TYPE,
         .fieldUseFunc = EVO_HELD_ITEM_FIELD_FUNC,
+    #endif
         .effect = gItemEffect_EvoItem,
         .secondaryId = TYPE_STEEL,
         .flingPower = 30,
@@ -10132,8 +10167,14 @@ const struct ItemInfo gItemsInfo[] =
             "effective moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_HELD_ITEM,
+    #if IS_HNS
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
+        .effect = gItemEffect_EvoItem,
+    #else
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+    #endif
         .flingPower = 10,
         .iconPic = gItemIcon_ExpertBelt,
         .iconPalette = gItemIconPalette_ExpertBelt,
