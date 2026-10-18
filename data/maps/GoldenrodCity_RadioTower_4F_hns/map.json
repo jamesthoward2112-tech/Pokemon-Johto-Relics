@@ -39,7 +39,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "GoldenrodRaidoTower4_EventScript_Grunt9",
-      "flag": "FLAG_PJR_JESSIE_JAMES_3_DEFEATED"
+      "flag": "FLAG_TEMP_1"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FAT_MAN_HNS",
@@ -79,7 +79,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "GoldenrodRaidoTower4_EventScript_Grunt28",
-      "flag": "FLAG_PJR_JESSIE_JAMES_3_DEFEATED"
+      "flag": "FLAG_TEMP_1"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PROTON_HNS",
@@ -105,7 +105,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "GoldenrodCity_RadioTower_4F4_EventScript_Meowth",
-      "flag": "FLAG_PJR_JESSIE_JAMES_3_DEFEATED"
+      "flag": "FLAG_TEMP_1"
     }
   ],
   "warp_events": [
@@ -159,8 +159,8 @@
     },
     {
       "type": "trigger",
-      "x": 14,
-      "y": 9,
+      "x": 10,
+      "y": 5,
       "elevation": 0,
       "var": "VAR_TEMP_3",
       "var_value": "0",
@@ -168,8 +168,8 @@
     },
     {
       "type": "trigger",
-      "x": 15,
-      "y": 9,
+      "x": 11,
+      "y": 5,
       "elevation": 0,
       "var": "VAR_TEMP_3",
       "var_value": "0",
@@ -177,8 +177,8 @@
     },
     {
       "type": "trigger",
-      "x": 12,
-      "y": 11,
+      "x": 9,
+      "y": 6,
       "elevation": 0,
       "var": "VAR_TEMP_3",
       "var_value": "0",
@@ -186,8 +186,8 @@
     },
     {
       "type": "trigger",
-      "x": 18,
-      "y": 11,
+      "x": 10,
+      "y": 6,
       "elevation": 0,
       "var": "VAR_TEMP_3",
       "var_value": "0",
@@ -195,8 +195,8 @@
     },
     {
       "type": "trigger",
-      "x": 13,
-      "y": 10,
+      "x": 11,
+      "y": 6,
       "elevation": 0,
       "var": "VAR_TEMP_3",
       "var_value": "0",
@@ -204,8 +204,8 @@
     },
     {
       "type": "trigger",
-      "x": 16,
-      "y": 10,
+      "x": 9,
+      "y": 7,
       "elevation": 0,
       "var": "VAR_TEMP_3",
       "var_value": "0",
@@ -213,17 +213,8 @@
     },
     {
       "type": "trigger",
-      "x": 14,
-      "y": 12,
-      "elevation": 0,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 15,
-      "y": 12,
+      "x": 10,
+      "y": 7,
       "elevation": 0,
       "var": "VAR_TEMP_3",
       "var_value": "0",
