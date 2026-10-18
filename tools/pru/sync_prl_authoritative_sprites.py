@@ -23,7 +23,7 @@ KINDS = {
     "Palette": "normal.gbapal", "ShinyPalette": "shiny.gbapal",
     "Icon": "icon.4bpp",
 }
-REQUIRED = {"noxichu", "edensaur", "charaxis", "fortotoise", "khang", "nolax"}
+REQUIRED = {"noxichu", "edensaur", "charaxis", "fortotoise", "khang", "nolax", "pinsirex"}
 NOXICHU_BLOBS = {
     "front.png": "7e866622e368249babadc1382dea74902ddba960",
     "back.png": "3d8f20356388bc46839f4f84d43c04c8977338bd",
@@ -54,7 +54,7 @@ def donor_assets(data: tuple[str, str]):
 def main():
     # Canonical PRL species list, not names guessed from unrelated sprite folders.
     donor_species = request("src/data/pokemon/species_info/prl_custom.h").decode()
-    names = sorted(set(re.findall(r"\[SPECIES_([A-Z0-9_]+)\]\s*=", donor_species)))
+    names = sorted(set(re.findall(r"\[SPECIES_([A-Z0-9_]+)\]\s*=", donor_species)) | {"NOXICHU"})
     headers = {str(path): path.read_text() for path in GFX_HEADERS}
     active = []
     for name in names:
