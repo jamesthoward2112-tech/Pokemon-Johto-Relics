@@ -3,7 +3,7 @@ GoldenrodCity_RadioTower_4F_hns_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesLoad
 	.byte 0
 
-// Always hide Jessie, James and Meowth before NPC rendering; never summon them.
+// Legacy temporary hide flag does not affect the trio: native trainers use persistent victory flags.
 GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesLoad::
 	setflag FLAG_TEMP_1
 	end
@@ -36,35 +36,25 @@ GoldenrodCity_RadioTower_4F4_EventScript_Sign2::
 	release
 	end
 
-// No Jessie, James or Meowth overworld objects are summoned. A step near
-// the left stairs starts the existing custom-transition double battle.
-GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTrigger::
-	goto_if_set FLAG_PJR_JESSIE_JAMES_3_DEFEATED, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAlreadyDefeated
-	goto GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesBattle
-
-// Dormant event entrypoints kept for compatibility with map data.
-GoldenrodRaidoTower4_EventScript_Grunt28::
-	goto GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTrigger
+// PRL-style encounter: Jessie and James are separate native trainer NPCs,
+// but either one triggers the SAME two-Pokemon Jessie/James double battle.
 GoldenrodRaidoTower4_EventScript_Grunt9::
-	goto GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTrigger
+	trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen, GoldenrodCity_RadioTower_4F4_Text_JessieJamesBeaten, GoldenrodCity_RadioTower_4F4_Text_JessieJamesNeedTwo, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle, localId=LOCALID_RADIO4F_JAMES
+	end
 
-GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesBattle::
-	trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen, GoldenrodCity_RadioTower_4F4_Text_JessieJamesBeaten, GoldenrodCity_RadioTower_4F4_Text_JessieJamesNeedTwo, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle
-	goto GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle
+GoldenrodRaidoTower4_EventScript_Grunt28::
+	trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen, GoldenrodCity_RadioTower_4F4_Text_JessieJamesBeaten, GoldenrodCity_RadioTower_4F4_Text_JessieJamesNeedTwo, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle, localId=LOCALID_RADIO4F_JESSIE
+	end
 
 GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle::
 	lockall
 	setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED
-	setflag FLAG_TEMP_1
-	setvar VAR_TEMP_3, 1
 	msgbox GoldenrodCity_RadioTower_4F4_Text_JessieJamesAfter, MSGBOX_DEFAULT
 	closemessage
+	removeobject 2
+	removeobject 5
+	removeobject 7
 	releaseall
-	end
-
-GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAlreadyDefeated::
-	setflag FLAG_TEMP_1
-	setvar VAR_TEMP_3, 1
 	end
 
 GoldenrodRaidoTower4_EventScript_Proton::

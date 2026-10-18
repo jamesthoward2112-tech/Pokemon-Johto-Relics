@@ -456,8 +456,8 @@ jobs:
         if: github.ref_name == 'pru/radio4f-stair-ambush-noxichu-20261018'
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: pru-rocket-invisible-mega-feraligatr-2026-10-18
-          ROM: Pokemon-Relics-Ultimate-Rocket-Clean-Mega-Feraligatr-2026-10-18.gba
+          TAG: pru-rocket-prl-duo-native-2026-10-18
+          ROM: Pokemon-Relics-Ultimate-PRL-Style-Rocket-Duo-2026-10-18.gba
         run: |
           test "$(stat -c %s pokehns.gba)" -eq 33554432
           cp pokehns.gba "$ROM"
@@ -468,7 +468,7 @@ jobs:
             gh release create "$TAG" "$ROM" \
               --repo "${{ github.repository }}" \
               --target "$GITHUB_SHA" \
-              --title "PRU invisible Jessie and James battles and temporary Mega Feraligatr Feralodon" \
-              --notes "Direct 32 MiB GBA. Jessie and James and Meowth overworld appearances are deliberately suppressed in all three Johto encounters: Slowpoke Well, Goldenrod Underground and Radio Tower 4F. Coordinate steps automatically launch Jessie and James double battles and the custom PRL introduction without moving or revealing any NPC. Victory flags persist, and previous-save wins are recognised. Retains enemies-only 140 BP Boomburst, Scary Face Fear, name/move casing, custom ability and UI improvements. Feralodon temporarily uses Mega Feraligatr front/back/icon and palettes. Full make hns, static regression, ROM audit and mGBA boot required before publishing; live save encounter QA still pending. No ZIP." \
+              --title "PRU PRL-style individual Jessie and James NPCs, shared double battles and Mega Feraligatr Feralodon" \
+              --notes "Direct 32 MiB GBA. PRL-authoritative behaviour: Jessie and James are separate static trainer overworld NPCs in Slowpoke Well, Goldenrod Underground and Radio Tower 4F, and either can initiate the same Jessie/James double battle using an explicit localId. Meowth is a separate stationary sprite. Native trainer sight and facing replace the broken forced cutscene. Winning hides all three; persistent flags honour previous-save victories. Custom PRL battle introduction preserved. Retains enemies-only 140 BP Boomburst, Scary Face Fear, name/move casing, custom ability and UI improvements. Feralodon temporarily uses Mega Feraligatr front/back/icon and palettes. Full make hns, static regression, ROM audit and mGBA boot required before publishing; live save encounter QA still pending. No ZIP." \
               --prerelease
           fi

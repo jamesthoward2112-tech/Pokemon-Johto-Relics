@@ -54,30 +54,24 @@ SlowpokeWell_B1F_EventScript_Kurt::
 	closemessage
 	end
 
-// Invisible coordinate challenge. No NPC reveal or retreat animation.
-SlowpokeWell_B1F_EventScript_JessieJamesTrigger::
-	goto_if_set FLAG_PJR_JESSIE_JAMES_1_DEFEATED, SlowpokeWell_B1F_EventScript_JessieJamesAlreadyDefeated
-	goto SlowpokeWell_B1F_EventScript_JessieJamesBattle
-
+// PRL-style native trainer: either Jessie or James starts the shared duo.
 SlowpokeWell_B1F_EventScript_JessieJamesInteract::
-	goto SlowpokeWell_B1F_EventScript_JessieJamesTrigger
+	trainerbattle_double TRAINER_GRUNT_21_HNS, SlowpokeWell_B1F_Text_JessieJamesSeen, SlowpokeWell_B1F_Text_JessieJamesBeaten, SlowpokeWell_B1F_Text_JessieJamesNeedTwo, SlowpokeWell_B1F_EventScript_JessieJamesAfterBattle, localId=10
+	end
 
-SlowpokeWell_B1F_EventScript_JessieJamesBattle::
-	trainerbattle_double TRAINER_GRUNT_21_HNS, SlowpokeWell_B1F_Text_JessieJamesSeen, SlowpokeWell_B1F_Text_JessieJamesBeaten, SlowpokeWell_B1F_Text_JessieJamesNeedTwo, SlowpokeWell_B1F_EventScript_JessieJamesAfterBattle
-	goto SlowpokeWell_B1F_EventScript_JessieJamesAfterBattle
+SlowpokeWell_B1F_EventScript_JessieJamesJessie::
+	trainerbattle_double TRAINER_GRUNT_21_HNS, SlowpokeWell_B1F_Text_JessieJamesSeen, SlowpokeWell_B1F_Text_JessieJamesBeaten, SlowpokeWell_B1F_Text_JessieJamesNeedTwo, SlowpokeWell_B1F_EventScript_JessieJamesAfterBattle, localId=11
+	end
 
 SlowpokeWell_B1F_EventScript_JessieJamesAfterBattle::
 	lockall
 	setflag FLAG_PJR_JESSIE_JAMES_1_DEFEATED
-	setflag FLAG_TEMP_1
-	setvar VAR_TEMP_0, 1
 	msgbox SlowpokeWell_B1F_Text_JessieJamesAfter, MSGBOX_DEFAULT
 	closemessage
+	removeobject 10
+	removeobject 11
+	removeobject 28
 	releaseall
-	end
-
-SlowpokeWell_B1F_EventScript_JessieJamesAlreadyDefeated::
-	setvar VAR_TEMP_0, 1
 	end
 
 SlowpokeWell_B1F_EventScript_Eto::

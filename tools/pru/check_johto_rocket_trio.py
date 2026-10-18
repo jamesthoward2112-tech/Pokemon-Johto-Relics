@@ -22,58 +22,43 @@ def assert_actor(events, local_id, graphics):
     assert events[local_id - 1]["graphics_id"] == graphics, (local_id, graphics)
 
 
-# Three Rocket encounters are automatic, invisible step triggers.
-# Physical templates remain for stable local IDs but are NEVER rendered.
-scenes = (
-    ("SlowpokeWell_B1F_hns", (10, 11, 28), "VAR_TEMP_0",
-     "SlowpokeWell_B1F_EventScript_JessieJamesTrigger", "TRAINER_GRUNT_21_HNS",
-     "FLAG_PJR_JESSIE_JAMES_1_DEFEATED", 3),
-    ("GoldenrodCity_UndergroundSwitches_hns", (3, 6, 11), "VAR_TEMP_3",
-     "GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesTrigger", "TRAINER_GRUNT_10_HNS",
-     "FLAG_PJR_JESSIE_JAMES_2_DEFEATED", 4),
-    ("GoldenrodCity_RadioTower_4F_hns", (2, 5, 7), "VAR_TEMP_3",
-     "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTrigger", "TRAINER_GRUNT_9_HNS",
-     "FLAG_PJR_JESSIE_JAMES_3_DEFEATED", 7),
+# PRL donor pattern: individual trainers, one double-battle opponent, with
+# explicit localId= per actor. No scripted walk-in, forced facing or run-away.
+scenes=(
+    ("SlowpokeWell_B1F_hns",(10,11,28),("10","11"),"TRAINER_GRUNT_21_HNS","FLAG_PJR_JESSIE_JAMES_1_DEFEATED","SlowpokeWell_B1F_EventScript_JessieJamesTrigger"),
+    ("GoldenrodCity_UndergroundSwitches_hns",(3,6,11),("LOCALID_UNDERGROUND_JAMES","LOCALID_UNDERGROUND_JESSIE"),"TRAINER_GRUNT_10_HNS","FLAG_PJR_JESSIE_JAMES_2_DEFEATED","GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesTrigger"),
+    ("GoldenrodCity_RadioTower_4F_hns",(2,5,7),("LOCALID_RADIO4F_JAMES","LOCALID_RADIO4F_JESSIE"),"TRAINER_GRUNT_9_HNS","FLAG_PJR_JESSIE_JAMES_3_DEFEATED","GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTrigger"),
 )
-for map_name, local_ids, var, trigger_name, trainer_id, win_flag, expected_coords in scenes:
-    data = map_file(map_name)
-    script = read(f"data/maps/{map_name}/scripts.inc")
-    events = [data["object_events"][i-1] for i in local_ids]
-    assert all(ev["flag"] == "FLAG_TEMP_1" for ev in events), map_name
-    assert all(ev["trainer_type"] == "TRAINER_TYPE_NONE" for ev in events), map_name
-    triggers = [e for e in data["coord_events"] if e.get("script") == trigger_name]
-    assert len(triggers) == expected_coords, (map_name, len(triggers))
-    assert all(e["var"] == var and str(e["var_value"]) == "0" for e in triggers), map_name
-    assert "setflag FLAG_TEMP_1" in script, map_name
-    assert "clearflag FLAG_TEMP_1" not in script, f"Rocket sprite reveal must never happen: {map_name}"
+for name,ids,local_ids,trainer,flag,old_trigger in scenes:
+    mapdata=map_file(name)
+    script=read(f"data/maps/{name}/scripts.inc")
+    james,jessie,meowth=(mapdata["object_events"][id-1] for id in ids)
+    assert all(obj["flag"]==flag for obj in (james,jessie,meowth)),name
+    assert all(obj["trainer_type"]=="TRAINER_TYPE_NORMAL" for obj in (james,jessie)),name
+    assert meowth["trainer_type"]=="TRAINER_TYPE_NONE",name
+    assert all(obj["movement_type"].startswith("MOVEMENT_TYPE_FACE_") for obj in (james,jessie,meowth)),name
+    assert all(int(obj["trainer_sight_or_berry_tree_id"])>=1 for obj in (james,jessie)),name
+    assert not any(e.get("script")==old_trigger for e in mapdata["coord_events"]),name
+    assert f"checktrainerflag {trainer}" in script,name
+    assert f"cleartrainerflag {trainer}" not in script,name
+    assert script.count(f"trainerbattle_double {trainer},")==2,(name,"battle count")
     for local_id in local_ids:
-        # No movement/removal/forced facing, no summoned actor.
-        assert f"addobject {local_id}\\n" not in script.split("EventScript_JessieJamesTrigger::",1)[1].split("EventScript_JessieJamesAlreadyDefeated::",1)[0], map_name
-    assert f"checktrainerflag {trainer_id}" in script, f"previous-win compatibility: {map_name}"
-    assert f"cleartrainerflag {trainer_id}" not in script, f"do not rearm old saves: {map_name}"
-    assert script.count(f"trainerbattle_double {trainer_id},") == 1, map_name
-    battle = script.split("EventScript_JessieJamesBattle::",1)[1].split("EventScript_JessieJamesAfterBattle::",1)[0]
-    assert "EventScript_JessieJamesAfterBattle" in battle, map_name
-    victory = script.split("EventScript_JessieJamesAfterBattle::",1)[1].split("EventScript_JessieJamesAlreadyDefeated::",1)[0]
-    assert f"setflag {win_flag}" in victory, map_name
-    assert "applymovement" not in victory and "turnobject" not in victory and "removeobject" not in victory, map_name
-    assert "releaseall" in victory, map_name
+        assert f"localId={local_id}" in script,(name,local_id)
+    assert f"setflag {flag}" in script
+    victory=script.split("EventScript_JessieJamesAfterBattle::",1)[1].split("\n\tend",1)[0]
+    assert "removeobject" in victory and "applymovement" not in victory,name
+    assert "setflag "+flag in victory,name
 
-battle_setup = read("src/battle_setup.c")
-trainer_scripts = read("data/scripts/trainer_battle.inc")
-event_headers = read("include/event_scripts.h")
-block = battle_setup.split("case TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE:",1)[1].split("return EventScript_TryDoDoubleTrainerBattle;",1)[0]
-for trainer_id in ("TRAINER_GRUNT_21_HNS", "TRAINER_GRUNT_10_HNS", "TRAINER_GRUNT_9_HNS"):
-    assert f"case {trainer_id}:" in block, trainer_id
-assert "return EventScript_TryDoInvisibleRocketDoubleBattle;" in block
-assert "#if IS_HNS" in block
-assert "EventScript_TryDoInvisibleRocketDoubleBattle[]" in event_headers
-intro = trainer_scripts.split("EventScript_TryDoInvisibleRocketDoubleBattle::",1)[1].split("EventScript_TryDoDoubleTrainerBattle::",1)[0]
-assert "lockall" in intro and "HasEnoughMonsForDoubleBattle" in intro
-assert "EventScript_ShowTrainerIntroMsg" in intro and "GetTrainerFlag" in intro
-assert "faceplayer" not in intro and "reveal_trainer" not in intro and "SetTrainerFacingDirection" not in intro
-assert "EventScript_NotEnoughMonsForInvisibleRocketDoubleBattle::" in intro
-assert "releaseall" in intro and "gotopostbattlescript" in intro
+macro=read("asm/macros/event.inc")
+block=macro.split(".macro trainerbattle_double ",1)[1].split(".endm",1)[0]
+assert "localId=LOCALID_NONE" in block
+assert all((mode+", \\localId") in block for mode in (
+    "TRAINER_BATTLE_DOUBLE","TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE","TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC"))
+source=read("src/battle_setup.c")
+step=source.split("case TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE:",1)[1].split("return EventScript_TryDoDoubleTrainerBattle;",1)[0]
+assert "EventScript_TryDoInvisibleRocketDoubleBattle" not in step
+assert "SetMapVarsToTrainerA();" in step
+assert "EventScript_TryDoInvisibleRocketDoubleBattle" not in read("include/event_scripts.h")
 
 # Jessie and James retain their trainer/overworld art; Meowth uses the normal
 # species overworld sheet, so these scenes do not alter wild Meowth.
@@ -148,4 +133,4 @@ for trainer in (
 assert "Nimbeon @ Sitrus Berry" in party
 assert "Eeveeon @ Sitrus Berry" in party
 
-print("PASS: all 3 Johto Rocket encounters trigger invisible double battles, retain PRL intro, and never spawn/walk NPCs (live-save QA pending).")
+print("PASS: three Johto Rocket encounters use PRL-style individual trainer actors sharing each duo's double battle ID; no forced movement (live-save QA pending).")

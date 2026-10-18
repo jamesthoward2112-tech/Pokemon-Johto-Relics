@@ -1430,17 +1430,6 @@ const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
     case TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE:
     case TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC:
         SetMapVarsToTrainerA();
-#if IS_HNS
-        // Only Johto Jessie/James uses an invisible automatic double battle.
-        // The usual NPC reveal/facing prelude is invalid without an actor.
-        switch (TRAINER_BATTLE_PARAM.opponentA)
-        {
-        case TRAINER_GRUNT_21_HNS: // Slowpoke Well
-        case TRAINER_GRUNT_10_HNS: // Goldenrod Underground
-        case TRAINER_GRUNT_9_HNS:  // Radio Tower 4F
-            return EventScript_TryDoInvisibleRocketDoubleBattle;
-        }
-#endif
         return EventScript_TryDoDoubleTrainerBattle;
 #if FREE_MATCH_CALL == FALSE
     case TRAINER_BATTLE_REMATCH_DOUBLE:
