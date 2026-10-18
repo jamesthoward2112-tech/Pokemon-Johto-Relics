@@ -645,7 +645,7 @@ static const struct WindowTemplate sPageInfoTemplate[] =
         .tilemapLeft = 11,
         .tilemapTop = 9,
         .width = 18,
-        // Five tile rows allow two readable description lines beneath the name.
+        // Five tile rows fit one 14px name and three 8px description lines.
         .height = 5,
         .paletteNum = 6,
         .baseBlock = 503,
@@ -3793,8 +3793,9 @@ static void PrintMonOTID(void)
     }
 }
 
-// On PRU, the old one-line ability summary clipped many custom abilities.
-// Wrap by actual GBA font pixel width, not a fragile per-ability word count.
+// PRU ability summary: the 8px compact font supports up to three full
+// description lines below the name within the original 40px ability window.
+// Wrap by real rendered font pixel width, never truncate at two lines.
 // The dedicated static buffer remains valid until the instant text printer ends.
 #define PRU_ABILITY_DESC_WIDTH 140
 static u8 sPruAbilitySummaryText[128];
@@ -3820,8 +3821,8 @@ static void WrapPruAbilitySummaryText(const u8 *source)
         }
         if (c == CHAR_SPACE)
             breakAt = out - 1;
-        if (GetStringWidth(FONT_SMALL, &sPruAbilitySummaryText[lineStart], 0) > PRU_ABILITY_DESC_WIDTH
-            && breakAt >= lineStart && lines < 2)
+        if (GetStringWidth(FONT_SMALL_NARROWER, &sPruAbilitySummaryText[lineStart], 0) > PRU_ABILITY_DESC_WIDTH
+            && breakAt >= lineStart && lines < 3)
         {
             sPruAbilitySummaryText[breakAt] = CHAR_NEWLINE;
             lineStart = breakAt + 1;
@@ -3851,7 +3852,7 @@ static void PrintMonAbilityDescription(void)
     if (IS_HNS)
     {
         WrapPruAbilitySummaryText(gAbilitiesInfo[ability].description);
-        PrintTextOnWindowWithFont(windowId, sPruAbilitySummaryText, 0, 14, 0, 0, FONT_SMALL);
+        PrintTextOnWindowWithFont(windowId, sPruAbilitySummaryText, 0, 14, 0, 0, FONT_SMALL_NARROWER);
     }
     else
         PrintTextOnWindow(windowId, gAbilitiesInfo[ability].description, 0, 17, 0, 0);
