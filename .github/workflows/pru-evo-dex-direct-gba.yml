@@ -1,0 +1,51 @@
+name: Publish PRU EVO Dex direct GBA
+
+on:
+  push:
+    branches:
+      - pru/pokedex-evo-discovery-20261018
+    paths:
+      - .github/workflows/pru-evo-dex-direct-gba.yml
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  direct-gba:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the existing, successfully verified EVO ROM artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/pru-evo-rom
+          gh run download 39147835217 --repo "${{ github.repository }}" --name PRU-Consolidated-WIP --dir /tmp/pru-evo-rom
+
+      - name: Verify original ROM checksum, length and source commit
+        run: |
+          cd /tmp/pru-evo-rom
+          test -s PRU-Consolidated-WIP.gba
+          test "$(stat -c %s PRU-Consolidated-WIP.gba)" -eq 33554432
+          sha256sum --check PRU-Consolidated-WIP-SHA256.txt
+          test "$(tr -d '\r\n' < PRU-Consolidated-WIP-Commit.txt)" = "a86e5573d46bdfed2259760138c7994bd640bb22"
+          cp PRU-Consolidated-WIP.gba Pokemon-Relics-Ultimate-EVO-Dex-2026-10-18.gba
+          sha256sum Pokemon-Relics-Ultimate-EVO-Dex-2026-10-18.gba
+
+      - name: Upload an unpackaged GBA directly to GitHub Releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: pru-evo-dex-test-2026-10-18
+          ROM: /tmp/pru-evo-rom/Pokemon-Relics-Ultimate-EVO-Dex-2026-10-18.gba
+        run: |
+          if gh release view "$TAG" --repo "${{ github.repository }}" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$ROM" --clobber --repo "${{ github.repository }}"
+          else
+            gh release create "$TAG" "$ROM" \
+              --repo "${{ github.repository }}" \
+              --target "a86e5573d46bdfed2259760138c7994bd640bb22" \
+              --title "PRU - Discoverable Pokédex EVO tab test" \
+              --notes "Direct 32 MiB .gba; Pokédex EVO page for seen Pokémon, readable stone and level requirements. Compiled and mGBA boot-verified in Actions run 39147835217. Live Pokédex navigation still needs gameplay QA. Includes existing Steevee and Neevee integration." \
+              --prerelease
+          fi
