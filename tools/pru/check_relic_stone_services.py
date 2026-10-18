@@ -41,6 +41,10 @@ assert "ABILITY_GALE_WINGS, \"CHARAXIS\"" in read("src/data/pokemon/species_info
 assert "IF_MIN_LEVEL," in enums
 assert "case IF_MIN_LEVEL:" in engine
 assert "GetMonData(mon, MON_DATA_LEVEL) >= params[i].arg1" in engine
+# The Pokédex evolution info must describe the level gate as well as compile cleanly.
+pokedex = read("src/pokedex_plus_hgss.c")
+assert "case IF_MIN_LEVEL:" in pokedex
+assert 'COMPOUND_STRING("Lv ")' in pokedex
 # Keep the previously verified unique Eeveeon evolution and the Thunder Stone Frytning alternative.
 gen1 = read(base / "gen_1_families.h")
 assert "{EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_EEVEEON}" in gen1
