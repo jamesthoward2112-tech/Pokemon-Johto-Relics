@@ -37,7 +37,7 @@ enums = read("include/constants/pokemon.h")
 engine = read("src/pokemon.c")
 assert "#define SPECIES_CHARAXIS" in read("include/constants/species.h")
 assert "PJR_RED_SPECIES(SPECIES_CHARAXIS" in read("src/data/pokemon/species_info/pjr_families.h")
-assert "ABILITY_GALE_WINGS, \"CHARAXIS\"" in read("src/data/pokemon/species_info/pjr_families.h")
+assert "ABILITY_GALE_WINGS, \"Charaxis\"" in read("src/data/pokemon/species_info/pjr_families.h")
 assert "IF_MIN_LEVEL," in enums
 assert "case IF_MIN_LEVEL:" in engine
 assert "GetMonData(mon, MON_DATA_LEVEL) >= params[i].arg1" in engine
