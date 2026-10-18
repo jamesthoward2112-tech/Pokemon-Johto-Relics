@@ -98,15 +98,26 @@ def main():
         # only blue-to-green palette entries differ.
         assert blue != green and len({p for p in green if p not in blue}) > 2
         for name in ("front.png", "back.png"):
-            img = Image.open(BytesIO(assets[name])).convert("RGBA")
-            pixels = list(img.getdata())
-            assert img.size == (64, 64)
+            source = Image.open(BytesIO(assets[name])).convert("RGBA")
+            pixels = list(source.getdata())
+            assert source.size == (64, 64)
             assert {p[:3] for p in pixels if p[3]}.issubset(set(blue))
-            new_pixels = [(*colour_map.get(p[:3], p[:3]), p[3]) if p[3] else p
-                          for p in pixels]
-            img.putdata(new_pixels)
+            # gbagfx requires indexed PNG (colour type 3): RGBA PNGs are rejected.
+            # Explicitly preserve PRL donor index mapping, including the opaque
+            # black shared with the transparent slot in its original palette.
+            index_for_opaque = {}
+            for index, rgb in enumerate(blue):
+                if index > 0:
+                    index_for_opaque[rgb] = index
+            indexed = Image.new("P", source.size)
+            indexed.putpalette([component for rgb in green for component in rgb] + [0] * (768 - 48))
+            indexed.putdata([
+                0 if p[3] == 0 else index_for_opaque[p[:3]]
+                for p in pixels
+            ])
+            indexed.info["transparency"] = 0
             output = BytesIO()
-            img.save(output, format="PNG")
+            indexed.save(output, format="PNG")
             assets[name] = output.getvalue()
         assets["normal.pal"] = green_palette
         assets["shiny.pal"] = blue_palette
