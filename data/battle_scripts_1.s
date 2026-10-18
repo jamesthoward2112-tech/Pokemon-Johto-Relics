@@ -2481,7 +2481,19 @@ BattleScript_StatDownPrintString::
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_StatDownEnd::
+#if IS_HNS
+	// PRU Scary Face retains its -2 Speed drop and now also inflicts
+	// Fear on a successful hit (including a target already at -6 Speed).
+	// Do not apply Fear on misses or blocked status moves.
+	jumpifhalfword CMP_EQUAL, gCurrentMove, MOVE_SCARY_FACE, BattleScript_PRU_ScaryFaceFear
+#endif
 	goto BattleScript_MoveEnd
+
+#if IS_HNS
+BattleScript_PRU_ScaryFaceFear::
+	seteffectprimary BS_ATTACKER, BS_TARGET, MOVE_EFFECT_FEAR
+	goto BattleScript_MoveEnd
+#endif
 
 BattleScript_MirrorArmorReflect::
 	pause B_WAIT_TIME_SHORT

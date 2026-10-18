@@ -69,8 +69,28 @@ radio_script = read("data/maps/GoldenrodCity_RadioTower_4F_hns/scripts.inc")
 assert_actor(radio["object_events"], 7, "OBJ_EVENT_GFX_MON_BASE+SPECIES_MEOWTH")
 assert (radio["object_events"][6]["x"], radio["object_events"][6]["y"]) == (16, 11)
 assert radio["object_events"][6]["flag"] == "FLAG_PJR_JESSIE_JAMES_3_DEFEATED"
-assert radio_script.count("trainerbattle_double TRAINER_GRUNT_9_HNS") == 2
-assert radio_script.count("removeobject 7") == 2
+# Radio Tower's previous one-tile vision never intercepted the player;
+# its Meowth also wandered off even before the battle.  Make the encounter
+# coordinate-driven and treat all three actors as one locked cutscene.
+radio_events = radio["object_events"]
+assert radio_events[1]["trainer_type"] == "TRAINER_TYPE_NONE"
+assert radio_events[4]["trainer_type"] == "TRAINER_TYPE_NONE"
+assert radio_events[6]["movement_type"] == "MOVEMENT_TYPE_FACE_UP"
+radio_intercepts = {(e["x"], e["y"]) for e in radio["coord_events"]
+                    if e.get("script") == "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTrigger"}
+assert radio_intercepts == {(14, 9), (15, 9), (12, 11), (18, 11),
+                            (13, 10), (16, 10), (14, 12), (15, 12)}
+assert radio_script.count("trainerbattle_double TRAINER_GRUNT_9_HNS") == 1
+assert "MAP_SCRIPT_ON_TRANSITION, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTransition" in radio_script
+assert "setvar VAR_TEMP_3, 1" in radio_script
+assert "getplayerxy VAR_0x8004, VAR_0x8005" in radio_script
+for move in ("ApproachNorth", "ApproachWest", "ApproachEast"):
+    assert f"GoldenrodCity_RadioTower_4F4_Movement_{move}" in radio_script
+assert "trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen" in radio_script
+assert "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle" in radio_script
+assert "fadescreen FADE_TO_BLACK\n\tremoveobject 2\n\tremoveobject 5\n\tremoveobject 7" in radio_script
+assert "setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED" in radio_script
+assert "releaseall" in radio_script
 
 # Jessie and James retain their trainer/overworld art; Meowth uses the normal
 # species overworld sheet, so these scenes do not alter wild Meowth.

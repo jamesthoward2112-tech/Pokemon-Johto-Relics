@@ -5053,9 +5053,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     [MOVE_SCARY_FACE] =
     {
         .name = COMPOUND_STRING("SCARY FACE"),
-        .description = COMPOUND_STRING(
-            "Frightens with a scary face\n"
-            "to sharply reduce Speed."),
+        .description = COMPOUND_STRING("Sharply lowers Speed;\ninflicts Fear on the target."),
         .effect = EFFECT_SPEED_DOWN_2,
         .power = 0,
         .type = TYPE_NORMAL,
@@ -15231,14 +15229,13 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("BOOMBURST"),
         .description = COMPOUND_STRING(
-            "Attacks everything with a\n"
-            "destructive sound wave."),
+            "Blasts both opposing foes\nwith a destructive sound."),
         .effect = EFFECT_HIT,
         .power = 140,
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .pp = 10,
-        .target = TARGET_FOES_AND_ALLY,
+        .target = TARGET_BOTH, // PRU: spread to both enemies, never the ally
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .ignoresSubstitute = B_UPDATED_MOVE_FLAGS >= GEN_6,
