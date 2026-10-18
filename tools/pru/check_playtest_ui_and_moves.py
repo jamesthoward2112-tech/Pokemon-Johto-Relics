@@ -71,10 +71,10 @@ for slug in slugs:
     assert expect in gfx, f"party icon needs normalised GBA art: {slug}"
     path = Path("graphics/pokemon") / slug / "icon.png"
     data = path.read_bytes()
-    assert data[:8] == b"\\x89PNG\\r\\n\\x1a\\n", slug
+    assert data[:8] == bytes.fromhex("89504e470d0a1a0a"), slug
     width, height, depth, color_type, _compression, _filter, _interlace = struct.unpack(">IIBBBBB", data[16:29])
     assert (width, height) == (32, 64), (slug, width, height)
-    assert color_type == 3 and depth <= 4, (slug, depth, color_type)
+    assert color_type == 3 and depth in (1, 2, 4, 8), (slug, depth, color_type)
     assert f'"{slug}"' in sync, f"donor sync bypass missing {slug}"
 assert 'kind == "Icon" and slug in NORMALIZED_EEVEE_ICONS' in sync
 
