@@ -8,16 +8,16 @@ def read(path):
 
 base = Path("src/data/pokemon/species_info")
 groups = {
-    "gen_1_families.h": ["MYSTYNX", "ADNOKANA", "CHEAUKING", "CHARAXIS"],
+    "gen_1_families.h": ["MYSTYNX", "ADNOKANA", "CHEAUKING", "CHARAXIS", "EDENSAUR", "FORTOTOISE", "KHANG", "NOLAX"],
     "gen_2_families.h": [
-        "FAERANIUM", "PYROCLAST", "FERALODON", "SUDOWARDEN",
+        "FAERANIUM", "PYROCLAST", "FERALODON",
         "KABLOWFISH", "SHUCKOLOSSE", "HERACURION", "SKARMADON",
         "DONPHALANX", "MILTITAN",
     ],
     "gen_3_families.h": [
         "VALKYVOIR", "SCEPTITAN", "SOLAZIKEN", "SWAMPLITH",
         "SKULBERUS", "GEMIGOYLE", "MAWYRM", "TORKALDERA",
-        "CACTOMB", "TROPISAUR", "COELOSSUS",
+        "CACTOMB", "TROPISAUR",
     ],
 }
 for file, targets in groups.items():
@@ -41,6 +41,15 @@ assert "ABILITY_GALE_WINGS, \"CHARAXIS\"" in read("src/data/pokemon/species_info
 assert "IF_MIN_LEVEL," in enums
 assert "case IF_MIN_LEVEL:" in engine
 assert "GetMonData(mon, MON_DATA_LEVEL) >= params[i].arg1" in engine
+pokedex = read("src/pokedex_plus_hgss.c")
+assert "case IF_MIN_LEVEL:" in pokedex
+assert 'COMPOUND_STRING("Lv ")' in pokedex
+# Pikachu has a separate Moon Stone route, not subject to the Relic Lv45 restriction.
+assert "{EVO_ITEM, ITEM_MOON_STONE, SPECIES_NOXICHU}" in read(base / "gen_1_families.h")
+assert "{EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_RAICHU" in read(base / "gen_1_families.h")
+# Excluded or independent species are not ordinary stone evolutions.
+assert "SPECIES_COELOSSUS" not in read(base / "gen_3_families.h")
+assert "SPECIES_SUDOWARDEN" not in read(base / "gen_2_families.h")
 # Keep the previously verified unique Eeveeon evolution and the Thunder Stone Frytning alternative.
 gen1 = read(base / "gen_1_families.h")
 assert "{EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_EEVEEON}" in gen1
@@ -71,7 +80,8 @@ for kind, name, value in named:
     assert len(value) <= 14, (kind, name, value)
 assert "TM CASE" in items
 
-print("PASS: 25 level-45 Ancient Stone Relic evolutions, Eevee/Frytning preserved,")
+print("PASS: 27 canonical level-45 Ancient Stone Relic evolutions, Eevee/Frytning preserved,")
 print("      legacy catalysts off Mart shelves, Moon/Ancient Stones available,")
 print("      free Egg/Tutor eligibility gates removed, 59 TMs/HMs show move names.")
-print("PASS: Charizard -> registered Charaxis (ID 1603) requires Lv45 Ancient Stone.")
+print("PASS: Charizard -> Charaxis and 26 other canonical Lv45 Ancient Stone evolutions.")
+print("PASS: Pikachu -> Noxichu by Moon Stone; separate Coelossus and removed Sudowarden.")
