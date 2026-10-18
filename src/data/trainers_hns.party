@@ -16633,21 +16633,37 @@ Music: Hg Girl 2
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint
 
-Eevee
-Level: 16
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-- Tackle
-- Tail Whip
+Eevee @ Oran Berry
+Level: 30
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- Quick Attack
+- Bite
 - Sand Attack
-- Growl
-
-Eevee
-Level: 16
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-- Tackle
 - Helping Hand
-- Sand Attack
-- Growl
+
+Eevee @ Oran Berry
+Level: 30
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- Swift
+- Quick Attack
+- Tail Whip
+- Helping Hand
+
+Espeon @ Oran Berry
+Level: 31
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- Psybeam
+- Quick Attack
+- Swift
+- Reflect
+
+Umbreon @ Oran Berry
+Level: 32
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- Bite
+- Quick Attack
+- Confuse Ray
+- Moonlight
 
 === TRAINER_STEEVE_NEEVEE_SS_ANNE_HNS ===
 Name: STEEVEE
@@ -16658,37 +16674,37 @@ Music: Hg Girl 2
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint
 
-Vaporeon @ Oran Berry
-Level: 26
-IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
-- Water Gun
+Vaporeon @ Sitrus Berry
+Level: 38
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Water Pulse
 - Quick Attack
-- Tail Whip
-- Sand Attack
+- Bite
+- Acid Armor
 
-Jolteon @ Oran Berry
-Level: 26
-IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
-- Thundershock
+Jolteon @ Sitrus Berry
+Level: 38
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Thunderbolt
+- Double Kick
 - Quick Attack
-- Sand Attack
-- Tail Whip
+- Thunder Wave
 
-Eevee
-Level: 25
-IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+Flareon @ Sitrus Berry
+Level: 39
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Flame Wheel
 - Quick Attack
-- Helping Hand
-- Sand Attack
-- Growl
+- Bite
+- Fire Spin
 
-Eevee
-Level: 25
-IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
-- Tackle
+Omeon @ Sitrus Berry
+Level: 40
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Shadow Ball
+- Bite
+- Confuse Ray
 - Quick Attack
-- Tail Whip
-- Helping Hand
 
 === TRAINER_STEEVE_NEEVEE_TOWER_HNS ===
 Name: STEEVEE
@@ -16700,15 +16716,15 @@ Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Flareon @ Sitrus Berry
-Level: 37
+Level: 44
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
-- Fire Spin
-- Ember
-- Quick Attack
+- Flamethrower
 - Bite
+- Quick Attack
+- Fire Spin
 
 Omeon @ Sitrus Berry
-Level: 37
+Level: 44
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Shadow Ball
 - Bite
@@ -16716,7 +16732,7 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Quick Attack
 
 Espeon @ Sitrus Berry
-Level: 37
+Level: 45
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Psybeam
 - Quick Attack
@@ -16724,12 +16740,28 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Reflect
 
 Umbreon @ Sitrus Berry
-Level: 36
+Level: 45
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Bite
 - Quick Attack
 - Confuse Ray
 - Moonlight
+
+Toxeon @ Sitrus Berry
+Level: 46
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Poison Jab
+- Bite
+- Toxic
+- Quick Attack
+
+Nimbeon @ Sitrus Berry
+Level: 47
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Air Slash
+- Roost
+- Tailwind
+- Icy Wind
 
 === TRAINER_STEEVE_NEEVEE_ROUTE23_HNS ===
 Name: STEEVEE

@@ -1,3 +1,13 @@
+Route3_EventScript_Steevee::
+	trainerbattle_double TRAINER_STEEVE_NEEVEE_KANTO_ROUTE3_HNS, Route3_Text_SteeveeSeen, Route3_Text_TwinsBeaten, Route104_Text_GinaNotEnoughMons
+	msgbox Route3_Text_SteeveeAfter, MSGBOX_AUTOCLOSE
+	end
+
+Route3_EventScript_Neevee::
+	trainerbattle_double TRAINER_STEEVE_NEEVEE_KANTO_ROUTE3_HNS, Route3_Text_NeeveeSeen, Route3_Text_TwinsBeaten, Route104_Text_GinaNotEnoughMons
+	msgbox Route3_Text_NeeveeAfter, MSGBOX_AUTOCLOSE
+	end
+
 Route3_hns_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route3_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, SetTimeEncounters
@@ -75,4 +85,26 @@ Route3_Text_FirebreatherBurt_AfterBattle:
 Route3_Text_MtMoonSquareSign:
 	.string "MT.MOON SQUARE\p"
 	.string "Just go up the stairs.$"
+
+Route3_Text_SteeveeSeen:
+	.string "STEEVEE: KANTO at last!\p"
+	.string "NEEVEE: Our EEVEE family is\n"
+	.string "stronger than ever!$"
+
+Route3_Text_NeeveeSeen:
+	.string "NEEVEE: Our ultimate doubles\n"
+	.string "team is ready!\p"
+	.string "STEEVEE: One more battle!$"
+
+Route3_Text_TwinsBeaten:
+	.string "STEEVEE: What an amazing match!\p"
+	.string "NEEVEE: You're incredible!$"
+
+Route3_Text_SteeveeAfter:
+	.string "STEEVEE: Our EEVEE team keeps\n"
+	.string "growing. Thanks for battling!$"
+
+Route3_Text_NeeveeAfter:
+	.string "NEEVEE: Our next discovery is\n"
+	.string "just around the corner!$"
 

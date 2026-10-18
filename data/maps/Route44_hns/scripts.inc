@@ -1,3 +1,13 @@
+Route44_EventScript_Steevee::
+	trainerbattle_double TRAINER_STEEVE_NEEVEE_ROUTE44_HNS, Route44_Text_SteeveeSeen, Route44_Text_TwinsBeaten, Route104_Text_GinaNotEnoughMons
+	msgbox Route44_Text_SteeveeAfter, MSGBOX_AUTOCLOSE
+	end
+
+Route44_EventScript_Neevee::
+	trainerbattle_double TRAINER_STEEVE_NEEVEE_ROUTE44_HNS, Route44_Text_NeeveeSeen, Route44_Text_TwinsBeaten, Route104_Text_GinaNotEnoughMons
+	msgbox Route44_Text_NeeveeAfter, MSGBOX_AUTOCLOSE
+	end
+
 Route44_hns_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route44_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, SetTimeEncounters
@@ -257,4 +267,25 @@ Route44_Text_Sign1:
 Route44_Text_Sign2:
     .string "ROUTE 44\p"
     .string "MAHOGANY TOWN - BLACKTHORN CITY$"
+
+Route44_Text_SteeveeSeen:
+	.string "STEEVEE: Our team has changed!\p"
+	.string "NEEVEE: Meet our RELIC partners!$"
+
+Route44_Text_NeeveeSeen:
+	.string "NEEVEE: The old stones held\n"
+	.string "secrets about EEVEE!\p"
+	.string "STEEVEE: See what we found!$"
+
+Route44_Text_TwinsBeaten:
+	.string "STEEVEE: Even our RELICS lost!\p"
+	.string "NEEVEE: Not our last battle!$"
+
+Route44_Text_SteeveeAfter:
+	.string "STEEVEE: After the LEAGUE,\n"
+	.string "we're heading for KANTO!$"
+
+Route44_Text_NeeveeAfter:
+	.string "NEEVEE: We'll train across KANTO.\n"
+	.string "Find us for the final match!$"
 

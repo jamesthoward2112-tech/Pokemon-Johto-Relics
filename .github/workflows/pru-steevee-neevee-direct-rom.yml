@@ -1,0 +1,55 @@
+name: Publish direct PRU Eevee twins GBA
+
+on:
+  push:
+    branches:
+      - pru/steevee-neevee-encounters-20261018
+    paths:
+      - .github/workflows/pru-steevee-neevee-direct-rom.yml
+
+permissions:
+  contents: write
+  actions: read
+  pull-requests: write
+
+jobs:
+  publish-direct-rom:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require verified Steevee and Neevee compiled build
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          conclusion="$(gh run view 39126732092 --repo "$GITHUB_REPOSITORY" --json conclusion --jq '.conclusion')"
+          echo "Verified source build conclusion: $conclusion"
+          test "$conclusion" = success
+          source_sha="$(gh run view 39126732092 --repo "$GITHUB_REPOSITORY" --json headSha --jq '.headSha')"
+          echo "Verified binary was built from commit: $source_sha"
+          test "$source_sha" = "2f7122d692f676ac14665e43f7d0f5477d7ad59e"
+      - name: Retrieve verified GBA and publish non-ZIP prerelease
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/eevee_twins_rom"
+          gh run download 39126732092 --repo "$GITHUB_REPOSITORY" --name PRU-Consolidated-WIP --dir "$RUNNER_TEMP/eevee_twins_rom"
+          test "$(find "$RUNNER_TEMP/eevee_twins_rom" -type f -name '*.gba' | wc -l)" -eq 1
+          original="$(find "$RUNNER_TEMP/eevee_twins_rom" -type f -name '*.gba' -print -quit)"
+          rom="$RUNNER_TEMP/Pokemon-Relics-Ultimate-Steevee-Neevee-2026-10-18.gba"
+          cp "$original" "$rom"
+          test "$(stat -c%s "$rom")" -eq 33554432
+          sha256sum "$rom"
+          tag="pru-steevee-neevee-2026-10-18"
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$tag" "$rom" --repo "$GITHUB_REPOSITORY" --clobber
+          else
+            gh release create "$tag" "$rom" --repo "$GITHUB_REPOSITORY" \
+              --target 2f7122d692f676ac14665e43f7d0f5477d7ad59e \
+              --title "Pokémon Relics Ultimate — Steevee & Neevee encounters test ROM" \
+              --notes "Verified PRU build from GitHub Actions run 39126732092. Adds Steevee & Neevee as recurring double-battle opponents on Johto Routes 37, 47 and 44, and Kanto Route 3, with their imported PRL custom battle intro and gradually stronger Eeveelutions. Includes completed full Johto difficulty rebalance, Valkiri and existing Relics. ROM is 32 MiB; actual in-game fight QA is still outstanding. Source: PR #20." \
+              --prerelease
+          fi
+          gh release view "$tag" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[] | [.name,.size,.url] | @tsv'
