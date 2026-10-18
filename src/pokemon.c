@@ -7120,6 +7120,26 @@ static bool32 IsSpeciesAlreadyEvolved(u32 species)
     return FALSE;
 }
 
+// PRU has an explicitly approved 444-species roster. Generation 4+ source
+// definitions remain available for donor/PRU exceptions, but may not create
+// accidental evolutions into species outside the approved game.
+#include "data/pokemon/pru_dex_order.h"
+
+static bool32 IsPruApprovedEvolutionTarget(u32 species)
+{
+    u16 i;
+
+    if (!IS_HNS)
+        return TRUE;
+
+    for (i = 0; i < PRU_DEX_COUNT; i++)
+    {
+        if (sPruDexSpecies[i] == species)
+            return TRUE;
+    }
+    return FALSE;
+}
+
 u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 evolutionItem, struct Pokemon *tradePartner, bool32 *canStopEvo, enum EvoState evoState)
 {
     int i;
@@ -7201,7 +7221,8 @@ u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
         for (i = 0; evolutions[i].method != EVOLUTIONS_END; i++)
         {
             bool32 conditionsMet = FALSE;
-            if (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_NONE)
+            if (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_NONE
+             || !IsPruApprovedEvolutionTarget(evolutions[i].targetSpecies))
                 continue;
 
             if (eeveeReservedTarget != SPECIES_NONE
@@ -7235,7 +7256,8 @@ u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
         for (i = 0; evolutions[i].method != EVOLUTIONS_END; i++)
         {
             bool32 conditionsMet = FALSE;
-            if (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_NONE)
+            if (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_NONE
+             || !IsPruApprovedEvolutionTarget(evolutions[i].targetSpecies))
                 continue;
 
             switch (evolutions[i].method)
@@ -7260,7 +7282,8 @@ u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
         for (i = 0; evolutions[i].method != EVOLUTIONS_END; i++)
         {
             bool32 conditionsMet = FALSE;
-            if (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_NONE)
+            if (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_NONE
+             || !IsPruApprovedEvolutionTarget(evolutions[i].targetSpecies))
                 continue;
 
             switch (evolutions[i].method)
@@ -7288,7 +7311,8 @@ u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
         for (i = 0; evolutions[i].method != EVOLUTIONS_END; i++)
         {
             bool32 conditionsMet = FALSE;
-            if (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_NONE)
+            if (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_NONE
+             || !IsPruApprovedEvolutionTarget(evolutions[i].targetSpecies))
                 continue;
 
             switch (evolutions[i].method)
@@ -7313,7 +7337,8 @@ u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
         for (i = 0; evolutions[i].method != EVOLUTIONS_END; i++)
         {
             bool32 conditionsMet = FALSE;
-            if (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_NONE)
+            if (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_NONE
+             || !IsPruApprovedEvolutionTarget(evolutions[i].targetSpecies))
                 continue;
 
             switch (evolutions[i].method)
@@ -7337,7 +7362,8 @@ u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
     case EVO_MODE_SCRIPT_TRIGGER:
         for (i = 0; evolutions[i].method != EVOLUTIONS_END; i++)
         {
-            if (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_NONE)
+            if (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_NONE
+             || !IsPruApprovedEvolutionTarget(evolutions[i].targetSpecies))
                 continue;
             if (evolutions[i].method != EVO_SCRIPT_TRIGGER)
                 continue;
@@ -7367,6 +7393,10 @@ u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
     if (RandomizerFeatureEnabled(RANDOMIZE_EVOLUTIONS) && targetSpecies != SPECIES_NONE)
         targetSpecies = RandomizeEvolution(targetSpecies, species);
 #endif
+
+    // Also guard randomized and script-driven targets at the final boundary.
+    if (targetSpecies != SPECIES_NONE && !IsPruApprovedEvolutionTarget(targetSpecies))
+        return SPECIES_NONE;
 
     return targetSpecies;
 }
@@ -8031,7 +8061,6 @@ u8 GetLevelUpMovesBySpecies(u16 species, u16 *moves)
      return numMoves;
 }
 
-#include "data/pokemon/pru_dex_order.h"
 
 u16 SpeciesToPokedexNum(u16 species)
 {
