@@ -133,3 +133,13 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 - [Data Files](https://www.pokecommunity.com/showthread.php?t=417909)
 - [Complete FireRed Upgrade](https://github.com/Skeli789/Complete-Fire-Red-Upgrade)
 - [pokeemerald](https://github.com/pret/pokeemerald/)
+
+
+### PRU Jessie & James overworld artwork (19 October 2026)
+
+Full 9-frame Jessie and James directional/walking sprites and their RGB555 palettes
+were extracted from *Pokémon Team Rocket Jessie & James* (FireRed/BPRE), by
+**MrNightology**, via the user's uploaded `TR-J&J-FINAL.gba` and the archived
+`PRL_Team_Rocket_COMPLETE_Donor_Bank_2026-10-09.zip`. Source sprite bytes
+were retained without alteration. Further individual graphic artist credits
+and redistribution terms remain to be verified.
