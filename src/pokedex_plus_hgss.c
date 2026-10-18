@@ -51,6 +51,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "config/pokedex_plus_hgss.h"
+#include "data/pokemon/pru_dex_order.h"
 #include "randomizer.h"
 
 enum
@@ -287,6 +288,24 @@ static const u32 sPokedexPlusHGSS_ScreenSearchNational_Tilemap[] = INCBIN_U32("g
 
 // for evolution method listings
 #define MAX_EVO_METHOD_LINES 10
+#define PRU_EEVEE_EVOS_PER_PAGE 5
+#define PRU_EEVEE_EVO_PAGES 3
+
+// Only the approved 444 species are eligible for PRU's evolution guide.
+// Use the same frozen roster as the engine's actual evolution guard.
+static bool32 IsPruEvoDexSpecies(u32 species)
+{
+    u16 i;
+
+    if (!IS_HNS)
+        return TRUE;
+    for (i = 0; i < PRU_DEX_COUNT; i++)
+    {
+        if (sPruDexSpecies[i] == species)
+            return TRUE;
+    }
+    return FALSE;
+}
 
 // Coordinates of the Pokémon sprite on its page (info/cry screens)
 #define MON_PAGE_X 48
@@ -382,6 +401,7 @@ struct EvoScreenData
     bool8 seen[10];
     u8 menuPos;
     u8 arrowSpriteId;
+    u8 eeveePage; // PRU's 15 Eeveelutions are displayed five at a time.
     bool8 isMega;
     u32 arrowSpriteDist[10];
 };
@@ -6189,6 +6209,8 @@ static void Task_LoadEvolutionScreen(u8 taskId)
             u32 species = NationalPokedexNumToSpeciesHGSS(sPokedexListItem->dexNum);
             u32 personality = GetPokedexMonPersonality(species);
             sPokedexView->selectedScreen = EVO_SCREEN;
+            if (sPokedexView->screenSwitchState != 4)
+                sPokedexView->sEvoScreenData.eeveePage = 0;
             ResetEvoScreenDataStruct();
             //Icon
             FreeMonIconPalettes(); //Free space for new pallete
@@ -6269,6 +6291,22 @@ static void Task_LoadEvolutionScreen(u8 taskId)
 
 static void Task_HandleEvolutionScreenInput(u8 taskId)
 {
+    // Eevee has 15 approved PRU branches. Scroll three pages of five instead
+    // of drawing past the 10-line / 8-icon limits of the inherited HGSS UI.
+    if (IS_HNS && NationalPokedexNumToSpeciesHGSS(sPokedexListItem->dexNum) == SPECIES_EEVEE
+        && (JOY_NEW(DPAD_UP) || JOY_NEW(DPAD_DOWN)))
+    {
+        if (JOY_NEW(DPAD_DOWN))
+            sPokedexView->sEvoScreenData.eeveePage = (sPokedexView->sEvoScreenData.eeveePage + 1) % PRU_EEVEE_EVO_PAGES;
+        else
+            sPokedexView->sEvoScreenData.eeveePage = (sPokedexView->sEvoScreenData.eeveePage + PRU_EEVEE_EVO_PAGES - 1) % PRU_EEVEE_EVO_PAGES;
+        sPokedexView->screenSwitchState = 4;
+        BeginNormalPaletteFade(0xFFFFFFEB, 0, 0, 0x10, RGB_BLACK);
+        gTasks[taskId].func = Task_SwitchScreensFromEvolutionScreen;
+        PlaySE(SE_PIN);
+        return;
+    }
+
     //Switch to forms screen, Pokemon Expansion only (rhh)
     if (JOY_NEW(START_BUTTON))
     {
@@ -6497,7 +6535,7 @@ static u8 PrintPreEvolutions(u8 taskId, u16 species)
     //Calculate previous evolution
     for (i = 0; i < NUM_SPECIES; i++)
     {
-        if (!IsSpeciesEnabled(i))
+        if (!IsSpeciesEnabled(i) || !IsPruEvoDexSpecies(i))
             continue;
 
         const struct Evolution *evolutions = GetSpeciesEvolutions(i);
@@ -6546,7 +6584,7 @@ static u8 PrintPreEvolutions(u8 taskId, u16 species)
     {
         for (i = 0; i < NUM_SPECIES; i++)
         {
-            if (!IsSpeciesEnabled(i))
+            if (!IsSpeciesEnabled(i) || !IsPruEvoDexSpecies(i))
                 continue;
 
             const struct Evolution *evolutions = GetSpeciesEvolutions(i);
@@ -6679,7 +6717,7 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 dept
     for (i = 0; i < times; i++)
     {
         targetSpecies = evolutions[i].targetSpecies;
-        if (!IsSpeciesEnabled(targetSpecies))
+        if (!IsSpeciesEnabled(targetSpecies) || !IsPruEvoDexSpecies(targetSpecies))
             continue;
 
 #if RANDOMIZER_AVAILABLE
@@ -6688,6 +6726,11 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 dept
 #endif
 
         if (targetSpecies == baseSpecies)
+            continue;
+
+        if (IS_HNS && baseSpecies == SPECIES_EEVEE && depth == 0
+            && (i < sPokedexView->sEvoScreenData.eeveePage * PRU_EEVEE_EVOS_PER_PAGE
+             || i >= (sPokedexView->sEvoScreenData.eeveePage + 1) * PRU_EEVEE_EVOS_PER_PAGE))
             continue;
 
         left = !left;
@@ -7069,8 +7112,14 @@ static void Task_SwitchScreensFromEvolutionScreen(u8 taskId)
         }
         FreeAndDestroyMonPicSprite(gTasks[taskId].tMonSpriteId);
 
+        if (sPokedexView->sEvoScreenData.numSeen > 0)
+            DestroySprite(&gSprites[sPokedexView->sEvoScreenData.arrowSpriteId]);
+
         switch (sPokedexView->screenSwitchState)
         {
+        case 4:
+            gTasks[taskId].func = Task_LoadEvolutionScreen;
+            break;
         case 1:
             gTasks[taskId].func = Task_LoadStatsScreen;
             break;
