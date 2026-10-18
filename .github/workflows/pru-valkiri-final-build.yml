@@ -17,6 +17,7 @@ on:
       - src/data/graphics/pjr.h
       - src/data/graphics/pru_pokemon.h
       - src/move_relearner.c
+      - src/pokemon_summary_screen.c
       - src/data/pokemon/level_up_learnsets/pru.h
       - tools/pru/check_playtest_ui_and_moves.py
       - tools/pru/sync_prl_authoritative_sprites.py
