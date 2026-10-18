@@ -568,7 +568,8 @@ enum
     PAL_STATUS_PAR,
     PAL_STATUS_SLP,
     PAL_STATUS_FRZ,
-    PAL_STATUS_BRN
+    PAL_STATUS_BRN,
+    PAL_STATUS_BLD
 };
 
 static const u16 sStatusIconColors[] =
@@ -578,6 +579,38 @@ static const u16 sStatusIconColors[] =
     [PAL_STATUS_SLP] = RGB(20, 20, 17),
     [PAL_STATUS_FRZ] = RGB(17, 22, 28),
     [PAL_STATUS_BRN] = RGB(28, 14, 10),
+    [PAL_STATUS_BLD] = RGB(28, 5, 7), // PRU dark crimson
+};
+
+// PRU/HNS: readable crimson BLD indicator for all four battle healthboxes.
+// Three 8x8 4bpp tiles per battler, with the same per-battler palette slots
+// (12..15) used by the engine's ordinary poison/burn/paralysis indicators.
+static const u32 sPruBleedingStatusGfx[4][24] =
+{
+    {
+        0x000cccc0, 0x00c000c0, 0x00c000c0, 0x000cccc0, 0x00c000c0, 0x00c000c0,
+0x000cccc0, 0x00000000, 0xc000000c, 0xc000000c, 0xc000000c, 0xc000000c,
+0xc000000c, 0xc000000c, 0xc00ccccc, 0x00000000, 0x00000ccc, 0x0000c000,
+0x0000c000, 0x0000c000, 0x0000c000, 0x0000c000, 0x00000ccc, 0x00000000
+    },
+    {
+        0x000dddd0, 0x00d000d0, 0x00d000d0, 0x000dddd0, 0x00d000d0, 0x00d000d0,
+0x000dddd0, 0x00000000, 0xd000000d, 0xd000000d, 0xd000000d, 0xd000000d,
+0xd000000d, 0xd000000d, 0xd00ddddd, 0x00000000, 0x00000ddd, 0x0000d000,
+0x0000d000, 0x0000d000, 0x0000d000, 0x0000d000, 0x00000ddd, 0x00000000
+    },
+    {
+        0x000eeee0, 0x00e000e0, 0x00e000e0, 0x000eeee0, 0x00e000e0, 0x00e000e0,
+0x000eeee0, 0x00000000, 0xe000000e, 0xe000000e, 0xe000000e, 0xe000000e,
+0xe000000e, 0xe000000e, 0xe00eeeee, 0x00000000, 0x00000eee, 0x0000e000,
+0x0000e000, 0x0000e000, 0x0000e000, 0x0000e000, 0x00000eee, 0x00000000
+    },
+    {
+        0x000ffff0, 0x00f000f0, 0x00f000f0, 0x000ffff0, 0x00f000f0, 0x00f000f0,
+0x000ffff0, 0x00000000, 0xf000000f, 0xf000000f, 0xf000000f, 0xf000000f,
+0xf000000f, 0xf000000f, 0xf00fffff, 0x00000000, 0x00000fff, 0x0000f000,
+0x0000f000, 0x0000f000, 0x0000f000, 0x0000f000, 0x00000fff, 0x00000000
+    }
 };
 
 static const struct WindowTemplate sHealthboxWindowTemplate = {
@@ -1960,6 +1993,11 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
     {
         statusGfxPtr = GetHealthboxElementGfxPtr(GetStatusIconForBattlerId(HEALTHBOX_GFX_STATUS_PRZ_BATTLER0, battler));
         statusPalId = PAL_STATUS_PAR;
+    }
+    else if (IS_HNS && (status & STATUS1_BLEED))
+    {
+        statusGfxPtr = (const u8 *)sPruBleedingStatusGfx[battler];
+        statusPalId = PAL_STATUS_BLD;
     }
     else
     {

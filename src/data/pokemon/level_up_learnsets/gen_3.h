@@ -5914,6 +5914,11 @@ static const struct LevelUpMove sGardevoirLevelUpLearnset[] = {
     LEVEL_UP_MOVE(38, MOVE_HYPER_VOICE),
 #endif
     LEVEL_UP_MOVE(42, MOVE_FUTURE_SIGHT),
+#if IS_HNS
+    // Catch-up for PRU saves already above the newly introduced Lv36/38 moves.
+    LEVEL_UP_MOVE(43, MOVE_ROUND),
+    LEVEL_UP_MOVE(43, MOVE_HYPER_VOICE),
+#endif
     LEVEL_UP_MOVE(51, MOVE_HYPNOSIS),
     LEVEL_UP_MOVE(60, MOVE_DREAM_EATER),
     LEVEL_UP_END
