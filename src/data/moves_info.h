@@ -23547,7 +23547,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_EDEN_BLOOM] =
     {
-        .name = COMPOUND_STRING("Eden Bloom"),
+        .name = COMPOUND_STRING("EDEN BLOOM"),
         .description = COMPOUND_STRING("A sacred bloom strikes the\nfoe. May cause poisoning."),
         .effect = EFFECT_HIT,
         .power = 95,
@@ -23563,7 +23563,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_SCORCHWING] =
     {
-        .name = COMPOUND_STRING("Scorch Wings"),
+        .name = COMPOUND_STRING("SCORCH WINGS"),
         .description = COMPOUND_STRING("Scorching wings strike the\nfoe. May cause a burn."),
         .effect = EFFECT_HIT,
         .power = 95,
@@ -23580,7 +23580,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_BASTION_CANNON] =
     {
-        .name = COMPOUND_STRING("Bastion Cannon"),
+        .name = COMPOUND_STRING("BASTION CANNON"),
         .description = COMPOUND_STRING("A mighty steel blast that\nmay boost user's Defense."),
         .effect = EFFECT_HIT,
         .power = 95,
@@ -23596,7 +23596,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_EERIE_FOG] =
     {
-        .name = COMPOUND_STRING("Eerie Fog"),
+        .name = COMPOUND_STRING("EERIE FOG"),
         .description = COMPOUND_STRING("Summons an eerie fog for eight turns."),
         .effect = EFFECT_WEATHER,
         .power = 0,
@@ -23616,7 +23616,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // PRU: exact PRL signatures, adapted to native PJR effect structs.
     [MOVE_SEISMIC_SLAM] =
     {
-        .name = COMPOUND_STRING("Seismic Slam"),
+        .name = COMPOUND_STRING("SEISMIC SLAM"),
         .description = COMPOUND_STRING("Shatters the earth.\nThe user takes recoil."),
         .effect = EFFECT_RECOIL,
         .power = 120,
@@ -23633,7 +23633,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_SOIL_DRAIN] =
     {
-        .name = COMPOUND_STRING("Soil Drain"),
+        .name = COMPOUND_STRING("SOIL DRAIN"),
         .description = COMPOUND_STRING("Drains power through soil.\nHeals half damage dealt."),
         .effect = EFFECT_ABSORB,
         .power = 75,
@@ -23649,7 +23649,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_BRAVADO] =
     {
-        .name = COMPOUND_STRING("Bravado"),
+        .name = COMPOUND_STRING("BRAVADO"),
         .description = COMPOUND_STRING("Boosted if burned,\npoisoned or paralyzed."),
         .effect = EFFECT_FACADE,
         .power = 70,
@@ -23665,7 +23665,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_RAGING_SOULS] =
     {
-        .name = COMPOUND_STRING("Raging Souls"),
+        .name = COMPOUND_STRING("RAGING SOULS"),
         .description = COMPOUND_STRING("Ghostly surge that\nsharply drops Sp. Atk."),
         .effect = EFFECT_HIT,
         .power = 130,
@@ -23684,7 +23684,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_BEATDOWN] =
     {
-        .name = COMPOUND_STRING("Beatdown"),
+        .name = COMPOUND_STRING("BEATDOWN"),
         .description = COMPOUND_STRING("A dark flurry that\nhits two to five times."),
         .effect = EFFECT_HIT,
         .power = 25,
@@ -23701,7 +23701,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_TAKE_FLIGHT] =
     {
-        .name = COMPOUND_STRING("Take Flight"),
+        .name = COMPOUND_STRING("TAKE FLIGHT"),
         .description = COMPOUND_STRING("Strikes with wind,\nthen switches user out."),
         .effect = EFFECT_HIT_ESCAPE,
         .power = 60,
@@ -23717,7 +23717,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_INSECT_IMPACT] =
     {
-        .name = COMPOUND_STRING("Insect Impact"),
+        .name = COMPOUND_STRING("INSECT IMPACT"),
         .description = COMPOUND_STRING("A hard bug punch that\nmay lower Defense."),
         .effect = EFFECT_HIT,
         .power = 80,
@@ -23739,7 +23739,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // PRU Bleeding-enabled original PRL move effects.
     [MOVE_RIP_AND_TEAR] =
     {
-        .name = COMPOUND_STRING("Rip and Tear"),
+        .name = COMPOUND_STRING("RIP AND TEAR"),
         .description = COMPOUND_STRING("Rips the target, lowering its Speed and possibly causing bleeding."),
         .effect = EFFECT_HIT, .power = 110, .type = TYPE_DARK, .accuracy = 90,
         .pp = 5, .target = TARGET_SELECTED, .priority = 0,
@@ -23752,7 +23752,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_IRON_FANGS] =
     {
-        .name = COMPOUND_STRING("Iron Fangs"),
+        .name = COMPOUND_STRING("IRON FANGS"),
         .description = COMPOUND_STRING("Steel fangs smash\nthrough barriers."),
         .effect = EFFECT_HIT,
         .power = 85,
@@ -23778,7 +23778,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // authentic: Eevoboost. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_EEVOBOOST] =
     {
-        .name = COMPOUND_STRING("Eevoboost"),
+        .name = COMPOUND_STRING("EEVOBOOST"),
         .description = COMPOUND_STRING("Boosts all five stats."),
         .effect = EFFECT_PRU_EEVOBOOST,
         .power = 0,
@@ -23797,7 +23797,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // partial: Lovely Bite. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_LOVELY_BITE] =
     {
-        .name = COMPOUND_STRING("Lovely Bite"),
+        .name = COMPOUND_STRING("LOVELY BITE"),
         .description = COMPOUND_STRING("A bite that may charm."),
         .effect = EFFECT_HIT,
         .power = 85,
@@ -23818,7 +23818,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // partial: Shadow Fangs. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_SHADOW_FANGS] =
     {
-        .name = COMPOUND_STRING("Shadow Fangs"),
+        .name = COMPOUND_STRING("SHADOW FANGS"),
         .description = COMPOUND_STRING("Fangs with a curse."),
         .effect = EFFECT_HIT,
         .power = 80,
@@ -23839,7 +23839,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // numeric: Angry Swarm. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_ANGRY_SWARM] =
     {
-        .name = COMPOUND_STRING("Angry Swarm"),
+        .name = COMPOUND_STRING("ANGRY SWARM"),
         .description = COMPOUND_STRING("An angry bug swarm."),
         .effect = EFFECT_HIT,
         .power = 80,
@@ -23855,7 +23855,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // numeric: Chrome Ball. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_CHROME_BALL] =
     {
-        .name = COMPOUND_STRING("Chrome Ball"),
+        .name = COMPOUND_STRING("CHROME BALL"),
         .description = COMPOUND_STRING("Hurls a chrome ball."),
         .effect = EFFECT_HIT,
         .power = 90,
@@ -23871,7 +23871,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // numeric: Corner. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_CORNER] =
     {
-        .name = COMPOUND_STRING("Corner"),
+        .name = COMPOUND_STRING("CORNER"),
         .description = COMPOUND_STRING("Corners the target."),
         .effect = EFFECT_HIT,
         .power = 80,
@@ -23887,7 +23887,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // numeric: Dark Resolve. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_DARK_RESOLVE] =
     {
-        .name = COMPOUND_STRING("Dark Resolve"),
+        .name = COMPOUND_STRING("DARK RESOLVE"),
         .description = COMPOUND_STRING("Dark energy erupts."),
         .effect = EFFECT_HIT,
         .power = 130,
@@ -23903,7 +23903,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // numeric: Deadly Toxin. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_DEADLY_TOXIN] =
     {
-        .name = COMPOUND_STRING("Deadly Toxin"),
+        .name = COMPOUND_STRING("DEADLY TOXIN"),
         .description = COMPOUND_STRING("A concentrated toxin."),
         .effect = EFFECT_HIT,
         .power = 120,
@@ -23919,7 +23919,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // numeric: Grimebuster. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_GRIMEBUSTER] =
     {
-        .name = COMPOUND_STRING("Grimebuster"),
+        .name = COMPOUND_STRING("GRIMEBUSTER"),
         .description = COMPOUND_STRING("Powerful grime strikes."),
         .effect = EFFECT_HIT,
         .power = 130,
@@ -23935,7 +23935,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // status_compat: Infection. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_INFECTION] =
     {
-        .name = COMPOUND_STRING("Infection"),
+        .name = COMPOUND_STRING("INFECTION"),
         .description = COMPOUND_STRING("Spreads infection."),
         .effect = EFFECT_NON_VOLATILE_STATUS,
         .power = 0,
@@ -23952,7 +23952,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // status_compat: Life Drain. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_LIFE_DRAIN] =
     {
-        .name = COMPOUND_STRING("Life Drain"),
+        .name = COMPOUND_STRING("LIFE DRAIN"),
         .description = COMPOUND_STRING("Drains target HP."),
         .effect = EFFECT_ABSORB,
         .power = 60,
@@ -23969,7 +23969,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // numeric: Metal Blast. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_METAL_BLAST] =
     {
-        .name = COMPOUND_STRING("Metal Blast"),
+        .name = COMPOUND_STRING("METAL BLAST"),
         .description = COMPOUND_STRING("A fierce metal strike."),
         .effect = EFFECT_HIT,
         .power = 120,
@@ -23985,7 +23985,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // status_compat: Neurotoxin. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_NEUROTOXIN] =
     {
-        .name = COMPOUND_STRING("Neurotoxin"),
+        .name = COMPOUND_STRING("NEUROTOXIN"),
         .description = COMPOUND_STRING("Toxic nerve agent."),
         .effect = EFFECT_NON_VOLATILE_STATUS,
         .power = 0,
@@ -24002,7 +24002,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // numeric: Possess. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_POSSESS] =
     {
-        .name = COMPOUND_STRING("Possess"),
+        .name = COMPOUND_STRING("POSSESS"),
         .description = COMPOUND_STRING("A haunting assault."),
         .effect = EFFECT_HIT,
         .power = 120,
@@ -24018,7 +24018,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // numeric: Quick Turn. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_QUICK_TURN] =
     {
-        .name = COMPOUND_STRING("Quick Turn"),
+        .name = COMPOUND_STRING("QUICK TURN"),
         .description = COMPOUND_STRING("A sharp dragon turn."),
         .effect = EFFECT_HIT,
         .power = 70,
@@ -24034,7 +24034,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // status_compat: Shadow Clamp. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_SHADOW_CLAMP] =
     {
-        .name = COMPOUND_STRING("Shadow Clamp"),
+        .name = COMPOUND_STRING("SHADOW CLAMP"),
         .description = COMPOUND_STRING("Ghostly binding attack."),
         .effect = EFFECT_HIT,
         .power = 90,
@@ -24050,7 +24050,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // numeric: Smogscreen. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_SMOGSCREEN] =
     {
-        .name = COMPOUND_STRING("Smogscreen"),
+        .name = COMPOUND_STRING("SMOGSCREEN"),
         .description = COMPOUND_STRING("A blast of thick smog."),
         .effect = EFFECT_HIT,
         .power = 65,
@@ -24066,7 +24066,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // numeric: Soulshock. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_SOULSHOCK] =
     {
-        .name = COMPOUND_STRING("Soulshock"),
+        .name = COMPOUND_STRING("SOULSHOCK"),
         .description = COMPOUND_STRING("A ghostly body blow."),
         .effect = EFFECT_HIT,
         .power = 65,
@@ -24082,7 +24082,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // status_compat: Stink Spray. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_STINK_SPRAY] =
     {
-        .name = COMPOUND_STRING("Stink Spray"),
+        .name = COMPOUND_STRING("STINK SPRAY"),
         .description = COMPOUND_STRING("A blinding stench."),
         .effect = EFFECT_ACCURACY_DOWN,
         .power = 0,
@@ -24098,7 +24098,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // numeric: Vengeance. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_VENGEANCE] =
     {
-        .name = COMPOUND_STRING("Vengeance"),
+        .name = COMPOUND_STRING("VENGEANCE"),
         .description = COMPOUND_STRING("Retaliates with spite."),
         .effect = EFFECT_HIT,
         .power = 60,
@@ -24114,7 +24114,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // numeric: Vile Venom. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_VILE_VENOM] =
     {
-        .name = COMPOUND_STRING("Vile Venom"),
+        .name = COMPOUND_STRING("VILE VENOM"),
         .description = COMPOUND_STRING("Potent venom strike."),
         .effect = EFFECT_HIT,
         .power = 95,
@@ -24130,7 +24130,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // approved_fallback: Assimilate. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_ASSIMILATE] =
     {
-        .name = COMPOUND_STRING("Assimilate"),
+        .name = COMPOUND_STRING("ASSIMILATE"),
         .description = COMPOUND_STRING("Absorbs the target."),
         .effect = EFFECT_ABSORB,
         .power = 75,
@@ -24147,7 +24147,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // approved_fallback: Sparklingsky. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_SPARKLINGSKY] =
     {
-        .name = COMPOUND_STRING("Sparklingsky"),
+        .name = COMPOUND_STRING("SPARKLINGSKY"),
         .description = COMPOUND_STRING("Explosive fire power."),
         .effect = EFFECT_MAX_HP_50_RECOIL,
         .power = 200,
@@ -24163,7 +24163,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // approved_fallback: Super Glitch. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_SUPER_GLITCH] =
     {
-        .name = COMPOUND_STRING("Super Glitch"),
+        .name = COMPOUND_STRING("SUPER GLITCH"),
         .description = COMPOUND_STRING("An unstable strike."),
         .effect = EFFECT_HIT,
         .power = 250,
@@ -24179,7 +24179,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     // approved_fallback: Terror Wave. See docs/PRU_CUSTOM_MOVE_INTEGRATION_BACKLOG.md
     [MOVE_TERROR_WAVE] =
     {
-        .name = COMPOUND_STRING("Terror Wave"),
+        .name = COMPOUND_STRING("TERROR WAVE"),
         .description = COMPOUND_STRING("A terrifying wave."),
         .effect = EFFECT_HIT,
         .power = 110,
