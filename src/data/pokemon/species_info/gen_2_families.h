@@ -225,7 +225,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sMeganiumLevelUpLearnset,
         .teachableLearnset = sMeganiumTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 45, SPECIES_FAERANIUM, CONDITIONS({IF_HOLD_ITEM, ITEM_MIRACLE_SEED})}),
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_FAERANIUM, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .formSpeciesIdTable = sMeganiumFormSpeciesIdTable,
         .formChangeTable = sMeganiumFormChangeTable,
     },
@@ -506,7 +506,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sTyphlosionLevelUpLearnset,
         .teachableLearnset = sTyphlosionTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 45, SPECIES_PYROCLAST, CONDITIONS({IF_HOLD_ITEM, ITEM_CHARCOAL})}),
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_PYROCLAST, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .formSpeciesIdTable = sTyphlosionFormSpeciesIdTable,
     },
 
@@ -807,7 +807,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sFeraligatrLevelUpLearnset,
         .teachableLearnset = sFeraligatrTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 45, SPECIES_FERALODON, CONDITIONS({IF_HOLD_ITEM, ITEM_MYSTIC_WATER})}),
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_FERALODON, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .formSpeciesIdTable = sFeraligatrFormSpeciesIdTable,
         .formChangeTable = sFeraligatrFormChangeTable,
     },
@@ -2708,7 +2708,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sSudowoodoLevelUpLearnset,
         .teachableLearnset = sSudowoodoTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_SUDOWARDEN, CONDITIONS({IF_HOLD_ITEM, ITEM_FOSSIL_BARK})}),
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_SUDOWARDEN, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .eggMoveLearnset = sSudowoodoEggMoveLearnset,
     },
 #endif //P_FAMILY_SUDOWOODO
@@ -5304,7 +5304,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sQwilfishTeachableLearnset,
         .eggMoveLearnset = sQwilfishEggMoveLearnset,
         .formSpeciesIdTable = sQwilfishFormSpeciesIdTable,
-        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_KABLOWFISH, CONDITIONS({IF_HOLD_ITEM, ITEM_METAL_COAT})}),
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_KABLOWFISH, CONDITIONS({IF_MIN_LEVEL, 45})}),
     },
 
 #if P_HISUIAN_FORMS
@@ -5531,7 +5531,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sShuckleLevelUpLearnset,
         .teachableLearnset = sShuckleTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_SHUCKOLOSSE, CONDITIONS({IF_HOLD_ITEM, ITEM_ANCIENT_SHELL})}),
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_SHUCKOLOSSE, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .eggMoveLearnset = sShuckleEggMoveLearnset,
     },
 #endif //P_FAMILY_SHUCKLE
@@ -5619,7 +5619,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sHeracrossLevelUpLearnset,
         .teachableLearnset = sHeracrossTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_HERACURION, CONDITIONS({IF_HOLD_ITEM, ITEM_ANCIENT_HORN})}),
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_HERACURION, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .eggMoveLearnset = sHeracrossEggMoveLearnset,
         .formSpeciesIdTable = sHeracrossFormSpeciesIdTable,
         .formChangeTable = sHeracrossFormChangeTable,
@@ -7415,7 +7415,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sSkarmoryLevelUpLearnset,
         .teachableLearnset = sSkarmoryTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_SKARMADON, CONDITIONS({IF_HOLD_ITEM, ITEM_ANCIENT_PLUME})}),
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_SKARMADON, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .eggMoveLearnset = sSkarmoryEggMoveLearnset,
         .formSpeciesIdTable = sSkarmoryFormSpeciesIdTable,
         .formChangeTable = sSkarmoryFormChangeTable,
@@ -7864,7 +7864,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sDonphanLevelUpLearnset,
         .teachableLearnset = sDonphanTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_DONPHALANX, CONDITIONS({IF_HOLD_ITEM, ITEM_ANCIENT_TUSK})}),
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_DONPHALANX, CONDITIONS({IF_MIN_LEVEL, 45})}),
     },
 #endif //P_FAMILY_PHANPY
 
@@ -8157,7 +8157,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sMiltankLevelUpLearnset,
         .teachableLearnset = sMiltankTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_MILTITAN, CONDITIONS({IF_HOLD_ITEM, ITEM_ANCIENT_BELL})}),
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ANCIENT_STONE, SPECIES_MILTITAN, CONDITIONS({IF_MIN_LEVEL, 45})}),
         .eggMoveLearnset = sMiltankEggMoveLearnset,
     },
 #endif //P_FAMILY_MILTANK

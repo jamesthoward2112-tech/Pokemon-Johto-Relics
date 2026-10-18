@@ -1209,9 +1209,8 @@ static u32 GetRelearnerLevelUpMoves(struct BoxPokemon *mon, u16 *moves)
 
 static u32 GetRelearnerEggMoves(struct BoxPokemon *mon, u16 *moves)
 {
-    if (!FlagGet(P_FLAG_EGG_MOVES) && !P_ENABLE_MOVE_RELEARNERS)
-        return 0;
-
+    // PRU Route 34 Move Expert offers this move category for free, regardless
+    // of the optional global relearner flags. Species compatibility still applies.
     u32 species = GetBoxMonData(mon, MON_DATA_SPECIES_OR_EGG);
 
     if (species == SPECIES_EGG)
@@ -1276,9 +1275,8 @@ static u32 GetRelearnerTMMoves(struct BoxPokemon *mon, u16 *moves)
 
 static u32 GetRelearnerTutorMoves(struct BoxPokemon *mon, u16 *moves)
 {
-    if (!FlagGet(P_FLAG_TUTOR_MOVES) && !P_ENABLE_MOVE_RELEARNERS)
-        return 0;
-
+    // PRU Route 34 Move Expert offers this move category for free, regardless
+    // of the optional global relearner flags. Species compatibility still applies.
     u32 species = GetBoxMonData(mon, MON_DATA_SPECIES_OR_EGG);
 
     if (species == SPECIES_EGG)
@@ -1358,9 +1356,8 @@ static bool32 HasRelearnerLevelUpMoves(struct BoxPokemon *boxMon)
 
 static bool32 HasRelearnerEggMoves(struct BoxPokemon *boxMon)
 {
-    if (!FlagGet(P_FLAG_EGG_MOVES) && !P_ENABLE_MOVE_RELEARNERS)
-        return FALSE;
-
+    // PRU Route 34 Move Expert offers this move category for free, regardless
+    // of the optional global relearner flags. Species compatibility still applies.
     u32 species = GetBoxMonData(boxMon, MON_DATA_SPECIES_OR_EGG);
 
     if (species == SPECIES_EGG)
@@ -1416,9 +1413,8 @@ static bool32 HasRelearnerTMMoves(struct BoxPokemon *boxMon)
 
 static bool32 HasRelearnerTutorMoves(struct BoxPokemon *boxMon)
 {
-    if (!FlagGet(P_FLAG_TUTOR_MOVES) && !P_ENABLE_MOVE_RELEARNERS)
-        return FALSE;
-
+    // PRU Route 34 Move Expert offers this move category for free, regardless
+    // of the optional global relearner flags. Species compatibility still applies.
     u32 species = GetBoxMonData(boxMon, MON_DATA_SPECIES_OR_EGG);
 
     if (species == SPECIES_EGG)

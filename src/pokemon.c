@@ -6842,6 +6842,10 @@ bool32 DoesMonMeetAdditionalConditions(struct Pokemon *mon, const struct Evoluti
             if (GetTimeOfDay() != params[i].arg1)
                 currentCondition = TRUE;
             break;
+        case IF_MIN_LEVEL:
+            if (GetMonData(mon, MON_DATA_LEVEL) >= params[i].arg1)
+                currentCondition = TRUE;
+            break;
         case IF_HOLD_ITEM:
             if (heldItem == params[i].arg1)
             {
