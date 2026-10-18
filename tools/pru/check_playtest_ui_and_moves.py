@@ -103,7 +103,7 @@ assert "lines < 3" in summary
 
 
 # Scary Face is a true Fear-causing status move, not a mere Speed drop.
-scary_face = re.search(r'^\\s*\\[MOVE_SCARY_FACE\\]\\s*=\\s*\\{([\\s\\S]*?)^\\s*\\},', moves, re.M)
+scary_face = re.search(r'^\s*\[MOVE_SCARY_FACE\]\s*=\s*\{([\s\S]*?)^\s*\},', moves, re.M)
 assert scary_face, "Scary Face missing"
 assert ".effect = EFFECT_SPEED_DOWN_2" in scary_face.group(1), "Speed -2 must remain"
 assert "inflicts Fear on the target" in scary_face.group(1), "missing Fear tooltip"
