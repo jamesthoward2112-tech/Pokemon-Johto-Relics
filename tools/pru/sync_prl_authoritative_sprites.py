@@ -65,7 +65,8 @@ def main():
         if any("gMonFrontPic_" + symbol + "[]" in source for source in headers.values()):
             active.append((symbol, slug))
     print("PRL canonical species", len(names), "PRU active graphics", len(active))
-    assert REQUIRED.issubset({slug for _, slug in active}), "Required PRL Relic graphics symbols missing"
+    print("Active PRL sprite slugs:", sorted(slug for _, slug in active))
+    assert REQUIRED.issubset({slug for _, slug in active}), "Required PRL Relic graphics symbols missing: " + repr(sorted(REQUIRED - {slug for _, slug in active}))
 
     manifest = []
     failures = []
