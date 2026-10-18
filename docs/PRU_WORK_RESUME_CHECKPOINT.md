@@ -1,5 +1,15 @@
 # PRU Work Resume Checkpoint
 
+## 18 October 2026 — verified PRU full build, Valkiri move progression and art palette swap
+
+- **Build/verification:** final commit `b3c1b836ef32c1d16d38f2b76758f6c474a75417` on `pru/prl-sprite-position-icons-tm-20261018`; GitHub Actions run [39120916466](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/actions/runs/39120916466) GREEN. Static audits, 444 whitelist checks, full `make hns`, compiled-ROM verification and mGBA boot passed. Artifact `PRU-Consolidated-WIP` ID 12133819672, 32 MiB raw `.gba`, SHA256 `32e1b3987488c2678416cd5402e9d44d98bf9fab0af6ddcd77188ecd3bd6118d`. Direct uncompressed ROM delivered; user requests **never a ZIP for ROMs unless explicitly asked**.
+- **Valkiri #319:** species constant stays `SPECIES_VALKYVOIR`; display name `Valkiri` and canonical CSV #319 updated (no renumbering). Reused exact approved indexed PRL front/back art **without recolouring**; RelicDex green shiny palette assigned to PRU normal, original blue palette assigned to shiny.
+- **Natural learnsets:** `Gardevoir` now gets Round Lv36 + Hyper Voice Lv38 in HNS, allowing both before mandatory Lv45 Ancient Stone; Valkiri has Boomburst at evolution (Lv0) and Lv55. Valkiri's level-up list also includes Round / Hyper Voice for relearning; Pixilate untouched. Throat Spray uses native `HOLD_EFFECT_THROAT_SPRAY` and is stocked at Goldenrod Dept Store 2F for ₽10,000.
+- **Prior 17–18 Oct stacked fixes included:** 50 PRL authoritative sprite packs, special Noxichu party icon palette and icon slots, donor front/back position offsets, six PRL evolution moves (Noxichu, Edensaur, Charaxis, Fortotoise, Khang, Nolax), correctly named 92 TMs + 8 HMs, Johto Rocket Jessie/James/Meowth fixes, trainer twins Steevee/Neevee, Last Wish intro, 444 species source registration & summary numbers, 54 custom evolution target audit, 27 valid Lv45 Ancient Stone Relic routes, 15 simple Eeveelution methods, Chansey grinding and Egg/Tutor access.
+- **User-tested only on earlier Goldenrod ROMs:** available stones, Whitney team, Chansey training, Noxichu evolution. **Not yet gameplay-tested on this build:** Valkiri sound-move learn prompts, green/blue normal/shiny in battle, Noxichu PC/party icon, all shifted sprite placement, all TM names in UI, Throat Spray shop/use, Rocket scenes, stone consumption, or old-save compatibility. 444 independently tracked seen/caught flags, forms and legendary events remain separate pending work.
+- **Notion sync:** updated Relic Series HQ, PRU canonical data/moves/sprites page, PRU National Pokédex, and added a Build & Test Log record on 18 Oct. PJR release branch and `CREDITS.md` preserved.
+
+
 ## 18 October 2026 — 444-species source registration and summary numbering audit
 
 - **Branch:** `pru/444-species-dex-audit-20261018`, stacked on draft `pru/move-expert-stones-tm-labels-20261017` (PR #14). **Draft PR #15**: https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/pull/15
