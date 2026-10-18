@@ -101,4 +101,15 @@ assert "if (PruNameMatchesSpeciesIgnoringCase(data, canonical))" in pokemon_src
 assert "PruNameMatchesSpeciesIgnoringCase(GetSpeciesName(oldSpecies), gStringVar1)" in pokemon_src
 assert "lines < 3" in summary
 
+
+# Scary Face is a true Fear-causing status move, not a mere Speed drop.
+scary_face = re.search(r'^\\s*\\[MOVE_SCARY_FACE\\]\\s*=\\s*\\{([\\s\\S]*?)^\\s*\\},', moves, re.M)
+assert scary_face, "Scary Face missing"
+assert ".effect = EFFECT_SPEED_DOWN_2" in scary_face.group(1), "Speed -2 must remain"
+assert "inflicts Fear on the target" in scary_face.group(1), "missing Fear tooltip"
+battle_script = read("data/battle_scripts_1.s")
+fear_part = battle_script.split("BattleScript_StatDownEnd::", 1)[1].split("BattleScript_MirrorArmorReflect::", 1)[0]
+assert "MOVE_SCARY_FACE, BattleScript_PRU_ScaryFaceFear" in fear_part
+assert "seteffectprimary BS_ATTACKER, BS_TARGET, MOVE_EFFECT_FEAR" in fear_part
+
 print("PRU_PLAYTEST_FIXES_PASS: 5 move descriptions, Skulberus evolution, voice relearning, Stygian Rush summary, 10 Eeveelution party icons")
