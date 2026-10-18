@@ -60,7 +60,7 @@ assert re.search(r"EVO_ITEM,\s*ITEM_MOON_STONE,\s*SPECIES_NOXICHU", pikachu)
 
 # PRU must not expose alternate-generation or out-of-roster branches.
 roster = read("src/data/pokemon/pru_dex_order.h")
-approved = set(re.findall(r"^\\s*(SPECIES_[A-Z0-9_]+),\\s*//\\s*\\d+", roster, re.M))
+approved = set(re.findall(r"^\s*(SPECIES_[A-Z0-9_]+),\s*//\s*\d+", roster, re.M))
 assert len(approved) == 444, len(approved)
 assert "SPECIES_RAICHU_ALOLA" not in approved
 assert "SPECIES_SYLVEON" not in approved
@@ -75,7 +75,7 @@ assert "Task_LoadEvolutionScreen;" in dex
 assert "i < sPokedexView->sEvoScreenData.eeveePage * PRU_EEVEE_EVOS_PER_PAGE" in dex
 start = mon_block(gen1, "EEVEE")
 pru = start.split("#if IS_HNS", 1)[1].split("#else", 1)[0]
-routes = re.findall(r"\\{EVO_ITEM,\\s*ITEM_[A-Z0-9_]+,\\s*(SPECIES_[A-Z0-9_]+)\\}", pru)
+routes = re.findall(r"\{EVO_ITEM,\s*ITEM_[A-Z0-9_]+,\s*(SPECIES_[A-Z0-9_]+)\}", pru)
 assert len(routes) == len(set(routes)) == 15, (len(routes), routes)
 assert all(p in approved for p in routes), routes
 
