@@ -586,12 +586,12 @@
         "It dives at high speed before locking\n"
         "its mighty horns around its foe."),
     .pokemonScale = 256, .pokemonOffset = 2, .trainerScale = 257, .trainerOffset = 0,
-    .frontPic = gMonFrontPic_PinsirMega, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 5,
+    .frontPic = gMonFrontPic_Pinsirex, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 5,
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-    .backPic = gMonBackPic_PinsirMega, .backPicSize = MON_COORDS_SIZE(64, 56), .backPicYOffset = 6,
+    .backPic = gMonBackPic_Pinsirex, .backPicSize = MON_COORDS_SIZE(64, 56), .backPicYOffset = 6,
     .backAnimId = BACK_ANIM_V_SHAKE_LOW,
-    .palette = gMonPalette_PinsirMega, .shinyPalette = gMonShinyPalette_PinsirMega,
-    .iconSprite = gMonIcon_PinsirMega, .iconPalIndex = 2,
+    .palette = gMonPalette_Pinsirex, .shinyPalette = gMonShinyPalette_Pinsirex,
+    .iconSprite = gMonIcon_Pinsirex, .iconPalIndex = 2,
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sPinsirexLevelUpLearnset,
     .teachableLearnset = sPinsirTeachableLearnset,
@@ -725,32 +725,32 @@ PJR_FINAL_SPECIES(SPECIES_GHOULBAT, 95, 110, 90, 80, 95, 130, TYPE_GHOST, TYPE_F
 PJR_RED_SPECIES(SPECIES_EDENSAUR, 95, 80, 110, 135, 105, 55, TYPE_GRASS, TYPE_POISON,
     ABILITY_GRASSY_SURGE, "EDENSAUR", CRY_VENUSAUR, NATIONAL_DEX_VENUSAUR, BODY_COLOR_GREEN,
     gMonFrontPic_Edensaur, gMonBackPic_Edensaur, gMonPalette_Edensaur, gMonShinyPalette_Edensaur, gMonIcon_Edensaur,
-    sVenusaurLevelUpLearnset, sVenusaurTeachableLearnset),
+    sEdensaurLevelUpLearnset, sVenusaurTeachableLearnset),
 
 PJR_RED_SPECIES(SPECIES_CHARAXIS, 80, 120, 85, 90, 80, 125, TYPE_FIRE, TYPE_FLYING,
     ABILITY_GALE_WINGS, "CHARAXIS", CRY_CHARIZARD, NATIONAL_DEX_CHARIZARD, BODY_COLOR_RED,
     gMonFrontPic_Charaxis, gMonBackPic_Charaxis, gMonPalette_Charaxis, gMonShinyPalette_Charaxis, gMonIcon_Charaxis,
-    sCharizardLevelUpLearnset, sCharizardTeachableLearnset),
+    sCharaxisLevelUpLearnset, sCharizardTeachableLearnset),
 
 PJR_RED_SPECIES(SPECIES_FORTOTOISE, 95, 80, 155, 100, 105, 50, TYPE_WATER, TYPE_STEEL,
     ABILITY_STURDY, "FORTOTOISE", CRY_BLASTOISE, NATIONAL_DEX_BLASTOISE, BODY_COLOR_BLUE,
     gMonFrontPic_Fortotoise, gMonBackPic_Fortotoise, gMonPalette_Fortotoise, gMonShinyPalette_Fortotoise, gMonIcon_Fortotoise,
-    sBlastoiseLevelUpLearnset, sBlastoiseTeachableLearnset),
+    sFortotoiseLevelUpLearnset, sBlastoiseTeachableLearnset),
 
 PJR_RED_SPECIES(SPECIES_KHANG, 105, 105, 95, 50, 90, 110, TYPE_NORMAL, TYPE_NORMAL,
     ABILITY_PARENTAL_BOND, "KHANG", CRY_KANGASKHAN, NATIONAL_DEX_KANGASKHAN, BODY_COLOR_BROWN,
-    gMonFrontPic_Khang, gMonBackPic_Khang, gMonPalette_Khang, gMonShinyPalette_Khang, gMonIcon_Kangaskhan,
-    sKangaskhanLevelUpLearnset, sKangaskhanTeachableLearnset),
+    gMonFrontPic_Khang, gMonBackPic_Khang, gMonPalette_Khang, gMonShinyPalette_Khang, gMonIcon_Khang,
+    sKhangLevelUpLearnset, sKangaskhanTeachableLearnset),
 
 PJR_RED_SPECIES(SPECIES_NOLAX, 100, 130, 80, 45, 90, 130, TYPE_NORMAL, TYPE_NORMAL,
     ABILITY_INSOMNIA, "NOLAX", CRY_SNORLAX, NATIONAL_DEX_SNORLAX, BODY_COLOR_BLUE,
-    gMonFrontPic_Nolax, gMonBackPic_Nolax, gMonPalette_Nolax, gMonShinyPalette_Nolax, gMonIcon_Snorlax,
-    sSnorlaxLevelUpLearnset, sSnorlaxTeachableLearnset),
+    gMonFrontPic_Nolax, gMonBackPic_Nolax, gMonPalette_Nolax, gMonShinyPalette_Nolax, gMonIcon_Nolax,
+    sNolaxLevelUpLearnset, sSnorlaxTeachableLearnset),
 
 PJR_RED_SPECIES(SPECIES_NOXICHU, 70, 110, 70, 110, 80, 125, TYPE_ELECTRIC, TYPE_DARK,
     ABILITY_INFILTRATOR, "NOXICHU", CRY_PIKACHU, NATIONAL_DEX_PIKACHU, BODY_COLOR_YELLOW,
-    gMonFrontPic_Noxichu, gMonBackPic_Noxichu, gMonPalette_Noxichu, gMonShinyPalette_Noxichu, gMonIcon_Pikachu,
-    sPikachuLevelUpLearnset, sPikachuTeachableLearnset),
+    gMonFrontPic_Noxichu, gMonBackPic_Noxichu, gMonPalette_Noxichu, gMonShinyPalette_Noxichu, gMonIcon_Noxichu,
+    sNoxichuLevelUpLearnset, sPikachuTeachableLearnset),
 
 #undef PJR_RED_SPECIES
 

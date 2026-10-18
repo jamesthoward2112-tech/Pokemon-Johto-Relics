@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+"""Install only active, approved PRL battle/party sprites ahead of a PRU ROM build.
+
+The PRL commit is pinned. Original PJR graphics remain in place; active custom
+species references are redirected to graphics/pokemon/prl_authoritative/.
+Run before make hns. This script never edits a saved game or adds species IDs.
+"""
+from __future__ import annotations
+import concurrent.futures
+import hashlib
+import json
+import re
+import urllib.error
+import urllib.request
+from pathlib import Path
+
+PRL_SHA = "6ee9b984521ac6f2beaf995f771a726379e55c88"
+ROOT = "https://raw.githubusercontent.com/jamesthoward2112-tech/Pokemon-Relic-Legacy/" + PRL_SHA
+GFX_HEADERS = [Path("src/data/graphics/pjr.h"), Path("src/data/graphics/pru_pokemon.h")]
+FILES = ("front.png", "back.png", "icon.png", "normal.pal", "shiny.pal")
+KINDS = {
+    "FrontPic": "front.4bpp.smol", "BackPic": "back.4bpp.smol",
+    "Palette": "normal.gbapal", "ShinyPalette": "shiny.gbapal",
+    "Icon": "icon.4bpp",
+}
+REQUIRED = {"noxichu", "edensaur", "charaxis", "fortotoise", "khang", "nolax", "pinsirex"}
+NOXICHU_BLOBS = {
+    "front.png": "7e866622e368249babadc1382dea74902ddba960",
+    "back.png": "3d8f20356388bc46839f4f84d43c04c8977338bd",
+    "icon.png": "5bd90fbf7339e86f6f44e5697230a9b016e075d0",
+}
+def request(name: str) -> bytes:
+    with urllib.request.urlopen(urllib.request.Request(
+        ROOT + "/" + name, headers={"User-Agent": "PRU-pinned-PRL-art-import/1.0"}), timeout=40
+    ) as response:
+        return response.read()
+
+def git_blob_sha(payload: bytes) -> str:
+    return hashlib.sha1(b"blob " + str(len(payload)).encode() + b"\0" + payload).hexdigest()
+
+def donor_assets(data: tuple[str, str]):
+    symbol, slug = data
+    paths = [f"graphics/pokemon/{slug}/{asset}" for asset in FILES]
+    results = {}
+    for name, path in zip(FILES, paths):
+        try:
+            results[name] = request(path)
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                return symbol, slug, None, path
+            raise
+    return symbol, slug, results, None
+
+def main():
+    # Canonical PRL species list, not names guessed from unrelated sprite folders.
+    donor_species = request("src/data/pokemon/species_info/prl_custom.h").decode()
+    names = sorted(set(re.findall(r"\[SPECIES_([A-Z0-9_]+)\]\s*=", donor_species)) | {"NOXICHU"})
+    headers = {str(path): path.read_text() for path in GFX_HEADERS}
+    active = []
+    for name in names:
+        symbol = "".join(part.capitalize() for part in name.split("_"))
+        slug = name.lower()
+        if name in ("NU_MEW", "NUMEW"):
+            continue  # User-superseded donor; not an approved PRU species.
+        if any("gMonFrontPic_" + symbol + "[]" in source for source in headers.values()):
+            active.append((symbol, slug))
+    print("PRL canonical species", len(names), "PRU active graphics", len(active))
+    print("Active PRL sprite slugs:", sorted(slug for _, slug in active))
+    assert REQUIRED.issubset({slug for _, slug in active}), "Required PRL Relic graphics symbols missing: " + repr(sorted(REQUIRED - {slug for _, slug in active}))
+
+    manifest = []
+    failures = []
+    with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+        results = list(pool.map(donor_assets, active))
+    for symbol, slug, assets, missing in results:
+        if assets is None:
+            failures.append({"species": slug, "missing": missing})
+            continue
+        for filename, contents in assets.items():
+            if slug == "noxichu" and filename in NOXICHU_BLOBS:
+                assert git_blob_sha(contents) == NOXICHU_BLOBS[filename], (
+                    "PRL Noxichu donor changed: " + filename
+                )
+            dest = Path("graphics/pokemon/prl_authoritative") / slug / filename
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            if not dest.exists() or dest.read_bytes() != contents:
+                dest.write_bytes(contents)
+        for key, source in list(headers.items()):
+            for kind, filename in KINDS.items():
+                # Only replace the exact graphics symbol of an active PRL species.
+                rx = re.compile(
+                    r'(const u(?:8|16|32) gMon' + kind + '_' + symbol +
+                    r'\[\] = INCBIN_U(?:8|16|32)\(")' +
+                    r'graphics/pokemon/[^"]+("\);)'
+                )
+                source = rx.sub(
+                    lambda m: m.group(1) + "graphics/pokemon/prl_authoritative/" +
+                    slug + "/" + filename + m.group(2), source
+                )
+            headers[key] = source
+        manifest.append({
+            "species": slug, "symbols": symbol, "source_commit": PRL_SHA,
+            "asset_sha256": {name: hashlib.sha256(val).hexdigest() for name, val in assets.items()}
+        })
+    assert not (REQUIRED & {f["species"] for f in failures}), (
+        "Missing required approved PRL art: " + str(failures)
+    )
+    for name, text in headers.items():
+        Path(name).write_text(text)
+    report = Path("PRU-QA/prl-sprite-parity.json")
+    report.parent.mkdir(exist_ok=True)
+    report.write_text(json.dumps({
+        "pinned_prl_commit": PRL_SHA, "active_PRL_species": len(active),
+        "ported": manifest, "unavailable_donor_sprites": failures
+    }, indent=2) + "\n")
+    print("PRL artwork imported", len(manifest), "species", "skipped", len(failures))
+    if failures:
+        print("DONOR GAPS", failures)
+
+if __name__ == "__main__":
+    main()

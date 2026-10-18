@@ -1,0 +1,65 @@
+name: Publish direct PRU ROM download
+
+on:
+  push:
+    branches:
+      - pru/prl-sprite-evolution-parity-20261018
+    paths:
+      - .github/workflows/pru-direct-rom-release.yml
+
+permissions:
+  contents: write
+  actions: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  publish-gba:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Retrieve verified PRU compiled ROM artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/pru_rom"
+          gh run download 39115510891 --repo "$GITHUB_REPOSITORY" --name PRU-Consolidated-WIP --dir "$RUNNER_TEMP/pru_rom"
+          mapfile -d '' roms < <(find "$RUNNER_TEMP/pru_rom" -type f -iname '*.gba' -print0)
+          printf 'ROM files found: %s\n' "${#roms[@]}"
+          if [[ ${#roms[@]} -ne 1 ]]; then
+            printf 'Expected exactly one ROM, aborting rather than publishing an ambiguous build.\n'
+            find "$RUNNER_TEMP/pru_rom" -maxdepth 3 -type f -printf '%P\n'
+            exit 1
+          fi
+          cp "${roms[0]}" "$RUNNER_TEMP/Pokemon-Relics-Ultimate-2026-10-18.gba"
+          test -s "$RUNNER_TEMP/Pokemon-Relics-Ultimate-2026-10-18.gba"
+          printf 'Verified GBA ROM: '
+          ls -lh "$RUNNER_TEMP/Pokemon-Relics-Ultimate-2026-10-18.gba"
+          printf 'sha256: '
+          sha256sum "$RUNNER_TEMP/Pokemon-Relics-Ultimate-2026-10-18.gba"
+
+      - name: Publish direct GBA asset to prerelease
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag='pru-2026-10-18-prl-sprites-evolution-moves'
+          rom="$RUNNER_TEMP/Pokemon-Relics-Ultimate-2026-10-18.gba"
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$tag" "$rom" --repo "$GITHUB_REPOSITORY" --clobber
+          else
+            gh release create "$tag" "$rom" \
+              --repo "$GITHUB_REPOSITORY" \
+              --target b0289f244c8dc594c71273fa616fb7d3ca355484 \
+              --title 'PRU test ROM — PRL sprites and Relic moves — 18 October 2026' \
+              --notes 'Direct .gba download of the successful PRU build from GitHub Actions run 39115510891 (artifact 12131683842). Includes PRL-authoritative custom species sprites and six Relic evolution learnset repairs. Development test release; not fully gameplay-tested.' \
+              --prerelease
+          fi
+          gh release view "$tag" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[] | [.name, .size, .url] | @tsv'
+          # Post a link only if the release exists with the exact .gba asset.
+          url="https://github.com/$GITHUB_REPOSITORY/releases/download/$tag/Pokemon-Relics-Ultimate-2026-10-18.gba"
+          gh release view "$tag" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name' | grep -Fx 'Pokemon-Relics-Ultimate-2026-10-18.gba'
+          gh pr comment 18 --repo "$GITHUB_REPOSITORY" --body "Direct ROM (.gba, no ZIP): $url — published from successful verified Actions run 39115510891."
+
