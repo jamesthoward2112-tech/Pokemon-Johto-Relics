@@ -1,0 +1,89 @@
+name: Derive Valkiri green base and blue shiny from RelicDex
+
+on:
+  push:
+    branches: [pru/prl-sprite-position-icons-tm-20261018]
+    paths: [.github/workflows/pru-valkiri-derive.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  derive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compare RelicDex actual normal and shiny art against PRL
+        run: |
+          set -euo pipefail
+          python3 -m pip install --user pillow
+          python3 - <<'PY'
+          from urllib.request import urlopen
+          import zipfile,io,collections,json,os
+          from PIL import Image
+          source='https://raw.githubusercontent.com/jamesthoward2112-tech/RelicDex/main/archive/relicdex-beta3.zip'
+          donor='https://raw.githubusercontent.com/jamesthoward2112-tech/Pokemon-Relic-Legacy/6ee9b984521ac6f2beaf995f771a726379e55c88/graphics/pokemon/valkyvoir/'
+          z=zipfile.ZipFile(io.BytesIO(urlopen(source, timeout=90).read()))
+          images={
+            'dex_front':Image.open(io.BytesIO(z.read('assets/sprites/valkyvoir/front.png'))).convert('RGBA'),
+            'dex_shiny':Image.open(io.BytesIO(z.read('assets/sprites/valkyvoir/shiny.png'))).convert('RGBA'),
+            'prl_front':Image.open(io.BytesIO(urlopen(donor+'front.png', timeout=30).read())).convert('RGBA'),
+            'prl_back':Image.open(io.BytesIO(urlopen(donor+'back.png', timeout=30).read())).convert('RGBA'),
+          }
+          report=['# RelicDex Valkiri normal/shiny pixel mapping','']
+          for name,im in images.items():
+            pixels=[p for p in im.getdata() if p[3]>0]
+            report += [f'## {name} {im.size}, {len(set(pixels))} opaque colours', '',
+                       str(collections.Counter(pixels).most_common(14)), '']
+          a,b,c=images['prl_front'],images['dex_front'],images['dex_shiny']
+          for k in ['dex_front','dex_shiny']:
+            im=images[k]
+            if im.size != a.size:
+              report.append(f'{k} dimensions DIFFER from PRL {a.size} -> {im.size}')
+              continue
+            alpha_neq=sum((p[3]>0)!=(q[3]>0) for p,q in zip(a.getdata(),im.getdata()))
+            mapping={}
+            contradictions=set()
+            for p,q in zip(a.getdata(),im.getdata()):
+              if p[3]==0 or q[3]==0: continue
+              src=p[:3];dest=q[:3]
+              if src in mapping and mapping[src]!=dest:contradictions.add(src)
+              mapping[src]=dest
+            report+=['',f'{k}: alpha mismatches={alpha_neq}; inconsistent recolour indices={len(contradictions)}',
+                  'Pixel-index mapping: '+json.dumps({str(key):val for key,val in mapping.items()})]
+          # Derive the exact green replacement colours based on PRL source pixel indices.
+          # Refuse to claim that a different drawing can be fixed by swapping a palette.
+          green=images['dex_shiny']
+          mapping={}
+          contradictions=set()
+          if green.size==a.size:
+            for p,q in zip(a.getdata(),green.getdata()):
+              if not p[3] or not q[3]: continue
+              if p[:3] in mapping and mapping[p[:3]]!=q[:3]: contradictions.add(p[:3])
+              mapping[p[:3]]=q[:3]
+            if not contradictions and all((p[3]>0)==(q[3]>0) for p,q in zip(a.getdata(),green.getdata())):
+              entries=[tuple(map(int,s.split())) for s in urlopen(donor+'normal.pal',timeout=30).read().decode().splitlines()[3:19]]
+              assert len(entries)==16
+              new_entries=[mapping.get(rgb,rgb) for rgb in entries]
+              os.makedirs('assets/pru_valkiri',exist_ok=True)
+              def write(path,arr):
+                open(path,'w').write('JASC-PAL\n0100\n16\n'+'\n'.join(' '.join(map(str,rgb)) for rgb in arr)+'\n')
+              write('assets/pru_valkiri/normal.pal',new_entries)
+              write('assets/pru_valkiri/shiny.pal',entries)
+              report+=['','VALID: The Dex shiny source maps exactly onto PRL art indices.','Prepared green normal and PRL blue shiny 16-colour JASC palettes.']
+            else:
+              report+=['','NOT SAFE: Dex green version differs in geometry or palette mapping; do not auto swap.']
+          os.makedirs('docs',exist_ok=True)
+          open('docs/PRU_VALKIRI_PIXEL_AUDIT.md','w').write('\n'.join(report)+'\n')
+          print('\n'.join(report)[:14000])
+          PY
+      - name: Publish derived palettes and evidence
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/PRU_VALKIRI_PIXEL_AUDIT.md assets/pru_valkiri/ || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'art(pru): derive Valkiri green normal and blue shiny from RelicDex'
+            git push origin HEAD:pru/prl-sprite-position-icons-tm-20261018
+          fi
