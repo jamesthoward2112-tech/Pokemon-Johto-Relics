@@ -81,8 +81,11 @@ def require(ok, reason):
     if not ok:
         errors.append(reason)
 
-require(len(records & set(canonical)) == 444,
-        f"Canonical entries with species definitions: {len(records & set(canonical))}/444")
+# Castform and Deoxys are canonical aliases whose registered records are *_NORMAL.
+canonical_records = {(name if name not in {"CASTFORM", "DEOXYS"} else name + "_NORMAL")
+                     for name in canonical}
+require(len(records & canonical_records) == 444,
+        f"Canonical entries with species definitions: {len(records & canonical_records)}/444")
 require(len(set(canonical)) == 444, "Duplicate canonical species constants")
 for name, row in canonical.items():
     require(f"#define SPECIES_{name}" in species_constants or
@@ -112,9 +115,9 @@ for source, target, item in [
             f"Missing {source} to {target} using {item}")
 for x in edges:
     if x["base"] in canonical and x["target"] in custom and x["method"] == "EVO_ITEM":
-        require(f"#define {x['param']}" in items_constants or
-                re.search(r"^#define\s+" + re.escape(x["param"]) + r"\s", items_constants, re.M),
-                f"{x['base']} to {x['target']}: item constant {x['param']} missing")
+        # Items are enum members in include/constants/items.h, not macros.
+        require(bool(re.search(r"^\s*" + re.escape(x["param"]) + r"\s*=", items_constants, re.M)),
+                f"{x['base']} to {x['target']}: item enum {x['param']} missing")
 
 for name in INDEPENDENT_SPECIAL | REMOVED_FROM_CANON:
     require(not incoming[name], f"{name}: forbidden ordinary evolution route present")
