@@ -245,6 +245,8 @@ enum {
     PALTAG_MON_ICON_3, // Used implicitly in CreateMonIconSprite
     PALTAG_MON_ICON_4, // Used implicitly in CreateMonIconSprite
     PALTAG_MON_ICON_5, // Used implicitly in CreateMonIconSprite
+    PALTAG_MON_ICON_6, // PRL Noxichu: unique icon palette must not overlap display-mon tag
+    PALTAG_MON_ICON_7, // PRL Eeveeon: unique cream/brown palette
     PALTAG_DISPLAY_MON,
     PALTAG_MISC_1,
     PALTAG_MARKING_COMBO,
