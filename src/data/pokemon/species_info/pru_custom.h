@@ -32,7 +32,7 @@
     .genderRatio = PERCENT_FEMALE(50), .eggCycles = 20, .friendship = 35,
     .growthRate = GROWTH_SLOW, .eggGroups = RALTS_FAMILY_EGG_GROUPS,
     .abilities = { ABILITY_PIXILATE, ABILITY_NONE, ABILITY_NONE }, .bodyColor = BODY_COLOR_WHITE,
-    .speciesName = _("Valkyvoir"), .cryId = CRY_GARDEVOIR, .natDexNum = NATIONAL_DEX_GARDEVOIR,
+    .speciesName = _("Valkiri"), .cryId = CRY_GARDEVOIR, .natDexNum = NATIONAL_DEX_GARDEVOIR,
     .categoryName = _("Relic"), .height = 16, .weight = 484,
     .description = COMPOUND_STRING("A Pokemon awakened by Relic Resonance.\nIts ancient power has taken a new form."),
     .pokemonScale = 256, .pokemonOffset = 0, .trainerScale = 256, .trainerOffset = 0,
