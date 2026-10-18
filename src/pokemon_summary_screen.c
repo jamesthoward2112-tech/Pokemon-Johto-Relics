@@ -645,7 +645,8 @@ static const struct WindowTemplate sPageInfoTemplate[] =
         .tilemapLeft = 11,
         .tilemapTop = 9,
         .width = 18,
-        .height = 4,
+        // Five tile rows allow two readable description lines beneath the name.
+        .height = 5,
         .paletteNum = 6,
         .baseBlock = 503,
     },
@@ -656,7 +657,8 @@ static const struct WindowTemplate sPageInfoTemplate[] =
         .width = 18,
         .height = 6,
         .paletteNum = 6,
-        .baseBlock = 575,
+        // Avoid sharing window character memory with the enlarged ability box.
+        .baseBlock = 593,
     },
 };
 static const struct WindowTemplate sPageSkillsTemplate[] =
@@ -3791,16 +3793,68 @@ static void PrintMonOTID(void)
     }
 }
 
+// On PRU, the old one-line ability summary clipped many custom abilities.
+// Wrap by actual GBA font pixel width, not a fragile per-ability word count.
+// The dedicated static buffer remains valid until the instant text printer ends.
+#define PRU_ABILITY_DESC_WIDTH 140
+static u8 sPruAbilitySummaryText[128];
+
+static void WrapPruAbilitySummaryText(const u8 *source)
+{
+    u16 out = 0;
+    u16 lineStart = 0;
+    s16 breakAt = -1;
+    u8 lines = 1;
+
+    while (*source != EOS && out < sizeof(sPruAbilitySummaryText) - 2)
+    {
+        u8 c = *source++;
+        sPruAbilitySummaryText[out++] = c;
+        sPruAbilitySummaryText[out] = EOS;
+        if (c == CHAR_NEWLINE)
+        {
+            lineStart = out;
+            breakAt = -1;
+            lines++;
+            continue;
+        }
+        if (c == CHAR_SPACE)
+            breakAt = out - 1;
+        if (GetStringWidth(FONT_SMALL, &sPruAbilitySummaryText[lineStart], 0) > PRU_ABILITY_DESC_WIDTH
+            && breakAt >= lineStart && lines < 2)
+        {
+            sPruAbilitySummaryText[breakAt] = CHAR_NEWLINE;
+            lineStart = breakAt + 1;
+            breakAt = -1;
+            lines++;
+        }
+    }
+    sPruAbilitySummaryText[out] = EOS;
+}
+
 static void PrintMonAbilityName(void)
 {
     enum Ability ability = GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum);
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_ABILITY), gAbilitiesInfo[ability].name, 0, 1, 0, 1);
+    u8 windowId = AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_ABILITY);
+
+    if (IS_HNS)
+        PrintTextOnWindowWithFont(windowId, gAbilitiesInfo[ability].name, 0, 0, 0, 1, FONT_SHORT);
+    else
+        PrintTextOnWindow(windowId, gAbilitiesInfo[ability].name, 0, 1, 0, 1);
 }
 
 static void PrintMonAbilityDescription(void)
 {
     enum Ability ability = GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum);
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_ABILITY), gAbilitiesInfo[ability].description, 0, 17, 0, 0);
+    u8 windowId = AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_ABILITY);
+
+    if (IS_HNS)
+    {
+        WrapPruAbilitySummaryText(gAbilitiesInfo[ability].description);
+        PrintTextOnWindowWithFont(windowId, sPruAbilitySummaryText, 0, 14, 0, 0, FONT_SMALL);
+    }
+    else
+        PrintTextOnWindow(windowId, gAbilitiesInfo[ability].description, 0, 17, 0, 0);
 }
 
 static void BufferMonTrainerMemo(void)
