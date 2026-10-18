@@ -75,6 +75,7 @@ GoldenrodDeptStore2_Pokemart:
 	.2byte ITEM_MOON_STONE
 	.2byte ITEM_SUN_STONE
 	.2byte ITEM_ANCIENT_STONE
+	.2byte ITEM_THROAT_SPRAY // Valkiri sound-boosting held item, purchasable in Goldenrod
 	.2byte ITEM_EXPERT_BELT
 	.2byte ITEM_SILVER_POWDER
 	.2byte ITEM_SOFT_SAND
