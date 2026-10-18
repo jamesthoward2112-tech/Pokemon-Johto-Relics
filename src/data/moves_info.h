@@ -15230,15 +15230,22 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     [MOVE_BOOMBURST] =
     {
         .name = COMPOUND_STRING("BOOMBURST"),
+#if IS_HNS
+        // PRU only: Boomburst is an enemy-only spread move in double battles.
+        .description = COMPOUND_STRING(
+            "Hits opposing Pokémon\n"
+            "with a huge sound wave."),
+#else
         .description = COMPOUND_STRING(
             "Attacks everything with a\n"
             "destructive sound wave."),
+#endif
         .effect = EFFECT_HIT,
         .power = 140,
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .pp = 10,
-        .target = TARGET_FOES_AND_ALLY,
+        .target = IS_HNS ? TARGET_BOTH : TARGET_FOES_AND_ALLY,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .ignoresSubstitute = B_UPDATED_MOVE_FLAGS >= GEN_6,

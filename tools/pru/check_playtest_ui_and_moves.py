@@ -34,6 +34,15 @@ custom = moves.split("    [MOVE_AMBER_BLADE] =", 1)[1]
 for match in re.finditer(r"^\s*\[MOVE_([A-Z0-9_]+)\]\s*=\s*\{([\s\S]*?)^\s*\},", custom, re.M):
     assert ".description = " in match.group(2), match.group(1)
 
+# Boomburst must exclude teammates ONLY in PRU/HNS, preserving the 140 BP
+# sound move, Pixilate interactions and other ROM variants.
+boomburst = moves.split("    [MOVE_BOOMBURST] =", 1)[1].split("    [MOVE_FAIRY_LOCK] =", 1)[0]
+assert ".target = IS_HNS ? TARGET_BOTH : TARGET_FOES_AND_ALLY," in boomburst
+assert ".power = 140," in boomburst and ".soundMove = TRUE," in boomburst
+assert "#if IS_HNS" in boomburst and "#else" in boomburst
+assert "Hits opposing Pokémon" in boomburst
+assert "destructive sound wave." in boomburst
+
 custom_levels = read("src/data/pokemon/level_up_learnsets/pru.h")
 skulberus = custom_levels.split("sSkulberusLevelUpLearnset[]", 1)[1].split("LEVEL_UP_END", 1)[0]
 assert "LEVEL_UP_MOVE(0, MOVE_SHADOW_FANGS)" in skulberus, "missing Skulberus on-evolution attack"
