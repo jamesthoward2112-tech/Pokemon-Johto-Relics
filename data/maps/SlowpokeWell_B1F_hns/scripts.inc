@@ -5,17 +5,21 @@ SlowpokeWell_B1F_hns_MapScripts::
 
 SlowpokeWell_B1F_EventScript_JessieJamesTransition::
 	setflag FLAG_TEMP_1
+	setvar VAR_TEMP_0, 1
+	goto_if_set FLAG_PJR_JESSIE_JAMES_1_DEFEATED, SlowpokeWell_B1F_EventScript_JessieJamesTransitionDone
+	checktrainerflag TRAINER_GRUNT_21_HNS
+	goto_if_eq TRUE, SlowpokeWell_B1F_EventScript_JessieJamesMarkPreviousWin
 	setvar VAR_TEMP_0, 0
+	end
+SlowpokeWell_B1F_EventScript_JessieJamesMarkPreviousWin::
+	setflag FLAG_PJR_JESSIE_JAMES_1_DEFEATED
+SlowpokeWell_B1F_EventScript_JessieJamesTransitionDone::
 	end
 
 SlowpokeWell_B1F_EventScript_JessieJamesLoad::
-	call_if_unset FLAG_PJR_JESSIE_JAMES_1_DEFEATED, SlowpokeWell_B1F_EventScript_JessieJamesLoad_ResetTrainer
+	setflag FLAG_TEMP_1
 	call_if_set FLAG_PJR_JESSIE_JAMES_1_DEFEATED, SlowpokeWell_B1F_EventScript_LegacyRocketRescue
 	end
-
-SlowpokeWell_B1F_EventScript_JessieJamesLoad_ResetTrainer::
-	cleartrainerflag TRAINER_GRUNT_21_HNS
-	return
 
 SlowpokeWell_B1F_EventScript_LegacyRocketRescue::
 	goto_if_set FLAG_HIDE_SLOWPOKE_WELL_KURT, SlowpokeWell_B1F_EventScript_LegacyRocketRescueDone
@@ -50,68 +54,25 @@ SlowpokeWell_B1F_EventScript_Kurt::
 	closemessage
 	end
 
+// Invisible coordinate challenge. No NPC reveal or retreat animation.
 SlowpokeWell_B1F_EventScript_JessieJamesTrigger::
 	goto_if_set FLAG_PJR_JESSIE_JAMES_1_DEFEATED, SlowpokeWell_B1F_EventScript_JessieJamesAlreadyDefeated
-	lockall
-	// On any of the three entry tiles, James steps directly in front of
-	// the player, Jessie takes the adjacent tile and Meowth follows behind.
-	// Spawn within the current screen; the previous six-tile approach
-	// could leave Meowth absent and staged the duo beside the player.
-	getplayerxy VAR_0x8004, VAR_0x8005
-	copyvar VAR_0x8006, VAR_0x8004
-	goto_if_eq VAR_0x8004, 28, SlowpokeWell_B1F_EventScript_JessieJamesApproachFromRight
-	addvar VAR_0x8006, 1
-	goto SlowpokeWell_B1F_EventScript_JessieJamesApproachReady
-SlowpokeWell_B1F_EventScript_JessieJamesApproachFromRight::
-	subvar VAR_0x8006, 1
-SlowpokeWell_B1F_EventScript_JessieJamesApproachReady::
-	clearflag FLAG_TEMP_1
-	addobject 10
-	addobject 11
-	addobject 28
-	setobjectxy 10, VAR_0x8004, 13
-	setobjectxy 11, VAR_0x8006, 13
-	setobjectxy 28, VAR_0x8004, 12
-	applymovement 10, SlowpokeWell_B1F_Movement_JessieJamesRunIn
-	applymovement 11, SlowpokeWell_B1F_Movement_JessieJamesRunIn
-	applymovement 28, SlowpokeWell_B1F_Movement_JessieJamesRunIn
-	waitmovementall
-	applymovement 10, Common_Movement_FacePlayer
-	applymovement 11, Common_Movement_FacePlayer
-	applymovement 28, Common_Movement_FacePlayer
-	waitmovementall
-	setvar VAR_TEMP_0, 1
-	releaseall
-	setvar VAR_LAST_TALKED, 10
 	goto SlowpokeWell_B1F_EventScript_JessieJamesBattle
 
 SlowpokeWell_B1F_EventScript_JessieJamesInteract::
-	goto_if_set FLAG_PJR_JESSIE_JAMES_1_DEFEATED, SlowpokeWell_B1F_EventScript_JessieJamesAlreadyDefeated
-	setvar VAR_TEMP_0, 1
-	setvar VAR_LAST_TALKED, 10
-	goto SlowpokeWell_B1F_EventScript_JessieJamesBattle
+	goto SlowpokeWell_B1F_EventScript_JessieJamesTrigger
 
 SlowpokeWell_B1F_EventScript_JessieJamesBattle::
 	trainerbattle_double TRAINER_GRUNT_21_HNS, SlowpokeWell_B1F_Text_JessieJamesSeen, SlowpokeWell_B1F_Text_JessieJamesBeaten, SlowpokeWell_B1F_Text_JessieJamesNeedTwo, SlowpokeWell_B1F_EventScript_JessieJamesAfterBattle
 	goto SlowpokeWell_B1F_EventScript_JessieJamesAfterBattle
 
 SlowpokeWell_B1F_EventScript_JessieJamesAfterBattle::
-	msgbox SlowpokeWell_B1F_Text_JessieJamesAfter, MSGBOX_DEFAULT
-	closemessage
-	// No prolonged backwards walk: hold the trio in front of the player
-	// during the farewell, then conceal their departure with a short fade.
-	turnobject 10, DIR_NORTH
-	turnobject 11, DIR_NORTH
-	turnobject 28, DIR_NORTH
-	delay 8
-	fadescreen FADE_TO_BLACK
-	removeobject 10
-	removeobject 11
-	removeobject 28
-	fadescreen FADE_FROM_BLACK
+	lockall
 	setflag FLAG_PJR_JESSIE_JAMES_1_DEFEATED
 	setflag FLAG_TEMP_1
 	setvar VAR_TEMP_0, 1
+	msgbox SlowpokeWell_B1F_Text_JessieJamesAfter, MSGBOX_DEFAULT
+	closemessage
 	releaseall
 	end
 

@@ -23,6 +23,27 @@ EventScript_TryDoNormalTrainerBattle::
 EventScript_NoNormalTrainerBattle::
 	gotopostbattlescript
 
+// Scripted Rocket duo challenges have no physical overworld actor.
+// Do not face/reveal VAR_LAST_TALKED (that would move or stall a hidden NPC).
+EventScript_TryDoInvisibleRocketDoubleBattle::
+	lockall
+	specialvar VAR_RESULT, GetTrainerFlag
+	goto_if_ne VAR_RESULT, FALSE, EventScript_NoInvisibleRocketDoubleBattle
+	special HasEnoughMonsForDoubleBattle
+	goto_if_ne VAR_RESULT, PLAYER_HAS_TWO_USABLE_MONS, EventScript_NotEnoughMonsForInvisibleRocketDoubleBattle
+	special PlayTrainerEncounterMusic
+	goto EventScript_ShowTrainerIntroMsg
+
+EventScript_NotEnoughMonsForInvisibleRocketDoubleBattle::
+	special ShowTrainerCantBattleSpeech
+	waitmessage
+	waitbuttonpress
+	releaseall
+	end
+
+EventScript_NoInvisibleRocketDoubleBattle::
+	gotopostbattlescript
+
 EventScript_TryDoDoubleTrainerBattle::
 	lock
 	faceplayer
