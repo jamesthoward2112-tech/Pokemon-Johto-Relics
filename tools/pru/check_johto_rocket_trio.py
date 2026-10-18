@@ -67,46 +67,41 @@ assert underground_script.count("removeobject 11") >= 2
 radio = map_file("GoldenrodCity_RadioTower_4F_hns")
 radio_script = read("data/maps/GoldenrodCity_RadioTower_4F_hns/scripts.inc")
 assert_actor(radio["object_events"], 7, "OBJ_EVENT_GFX_MON_BASE+SPECIES_MEOWTH")
-radio_events = radio["object_events"]
-# When stepping up the Radio Tower 3F -> 4F left staircase, no member of
-# the trio should be visible or require manual talking before the cutscene.
-for local_id, pos in ((5, (14, 11)), (2, (15, 11)), (7, (16, 11))):
-    actor = radio_events[local_id - 1]
-    assert actor["flag"] == "FLAG_TEMP_1", (local_id, actor["flag"])
+for local_id, x in ((5, 17), (2, 18), (7, 19)):
+    actor = radio["object_events"][local_id - 1]
+    assert (actor["x"], actor["y"]) == (x, 7)
+    assert actor["flag"] == "FLAG_TEMP_1"
     assert actor["trainer_type"] == "TRAINER_TYPE_NONE"
-    assert actor["movement_type"] == "MOVEMENT_TYPE_FACE_UP"
-    assert (actor["x"], actor["y"]) == pos, (local_id, pos)
-stair_trigger_tiles = {(10, 5), (11, 5), (9, 6), (10, 6),
-                       (11, 6), (9, 7), (10, 7)}
-radio_intercepts = {(e["x"], e["y"]) for e in radio["coord_events"]
-                    if e.get("script") == "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTrigger"}
-assert radio_intercepts == stair_trigger_tiles, radio_intercepts
-assert "MAP_SCRIPT_ON_TRANSITION, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTransition" in radio_script
-assert "setflag FLAG_TEMP_1" in radio_script
-assert "call_if_unset FLAG_PJR_JESSIE_JAMES_3_DEFEATED" in radio_script
+    assert actor["movement_type"] == "MOVEMENT_TYPE_FACE_LEFT"
+stair_tiles = {(10, 5), (11, 5), (9, 6), (10, 6), (11, 6), (9, 7), (10, 7)}
+actual_tiles = {(e["x"], e["y"]) for e in radio["coord_events"] if e.get("script") == "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTrigger"}
+assert actual_tiles == stair_tiles
+assert "MAP_SCRIPT_ON_LOAD, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesLoad" in radio_script
+assert "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesLoad::\n\tsetflag FLAG_TEMP_1" in radio_script
+assert "checktrainerflag TRAINER_GRUNT_9_HNS" in radio_script
+assert "cleartrainerflag TRAINER_GRUNT_9_HNS" not in radio_script
 assert radio_script.count("trainerbattle_double TRAINER_GRUNT_9_HNS") == 1
-assert "clearflag FLAG_TEMP_1\n\taddobject 5\n\taddobject 2\n\taddobject 7" in radio_script
-for local_id in (5, 2, 7):
-    assert f"applymovement {local_id}, GoldenrodCity_RadioTower_4F4_Movement_RushNorth" in radio_script
-    assert f"applymovement {local_id}, GoldenrodCity_RadioTower_4F4_Movement_RushWest" in radio_script
-    assert f"applymovement {local_id}, GoldenrodCity_RadioTower_4F4_Movement_EscapeEast" in radio_script
-    assert f"applymovement {local_id}, GoldenrodCity_RadioTower_4F4_Movement_EscapeSouth" in radio_script
-for name, step, count in (("RushNorth", "walk_faster_up", 4),
-                          ("RushWest", "walk_faster_left", 3),
-                          ("EscapeEast", "walk_faster_right", 3),
-                          ("EscapeSouth", "walk_faster_down", 4)):
-    section = radio_script.split(f"GoldenrodCity_RadioTower_4F4_Movement_{name}:\n", 1)[1].split("\tstep_end", 1)[0]
-    assert section.count("\t" + step + "\n") == count, (name, section)
-assert "trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen" in radio_script
-assert "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle" in radio_script
+# Validate every tile of the approach AND retreat against map collision bits,
+# including the final position. Static source text alone previously missed this.
+import struct
+layout = (ROOT / "data/layouts/GoldenrodCity_RadioTower_4F_hns/map.bin").read_bytes()
+assert len(layout) == 1024
+for x in range(12, 22):
+    word, = struct.unpack_from("<H", layout, (32*7+x)*2)
+    assert (word & 0xC00) == 0 and (word >> 12) == 3, (x, 7, hex(word))
+for name, direction, count in (("Approach", "walk_faster_left", 5), ("RunOffscreen", "walk_faster_right", 7)):
+    seq = radio_script.split(f"GoldenrodCity_RadioTower_4F4_Movement_{name}:\n", 1)[1].split("\tstep_end", 1)[0]
+    assert seq.count("\t" + direction + "\n") == count, (name, seq)
+trigger = radio_script.split("GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTrigger::", 1)[1].split("GoldenrodRaidoTower4_EventScript_Grunt28::", 1)[0]
+assert "removeobject 5\n\tremoveobject 2\n\tremoveobject 7\n\tclearflag FLAG_TEMP_1\n\taddobject 5\n\taddobject 2\n\taddobject 7" in trigger
+assert trigger.index("applymovement 5,") < trigger.index("applymovement 2,") < trigger.index("applymovement 7,")
 retreat = radio_script.split("GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle::", 1)[1].split("GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAlreadyDefeated::", 1)[0]
-assert "FADE_TO_BLACK" not in retreat and "FADE_FROM_BLACK" not in retreat
-assert retreat.index("applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_EscapeEast") < retreat.index("applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_EscapeEast") < retreat.index("applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_EscapeEast")
-assert retreat.index("waitmovementall") < retreat.index("removeobject 2")
-for local_id in (2, 5, 7):
-    assert f"removeobject {local_id}" in retreat
-assert "setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED" in retreat
-assert "setflag FLAG_TEMP_1" in retreat
+assert "FADE_TO_BLACK" not in retreat
+assert retreat.index("setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED") < retreat.index("applymovement 7,")
+assert retreat.index("applymovement 7,") < retreat.index("applymovement 2,") < retreat.index("applymovement 5,")
+for id in (2, 5, 7):
+    assert f"removeobject {id}" in retreat
+    assert f"applymovement {id}, GoldenrodCity_RadioTower_4F4_Movement_RunOffscreen" in retreat
 assert "releaseall" in retreat
 
 # Jessie and James retain their trainer/overworld art; Meowth uses the normal

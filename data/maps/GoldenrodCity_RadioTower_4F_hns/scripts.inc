@@ -3,25 +3,24 @@ GoldenrodCity_RadioTower_4F_hns_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesLoad
 	.byte 0
 
-// Reset the coordinate-trigger gate on every visit without clearing wins.
+// On map load hide Jessie, James and Meowth before NPC rendering.
+GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesLoad::
+	setflag FLAG_TEMP_1
+	end
+
+// A victory on an old build must not be erased on re-entry.
 GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTransition::
-	// The trio exists only during their staircase ambush; never idle in view.
 	setflag FLAG_TEMP_1
 	setvar VAR_TEMP_3, 1
-	call_if_unset FLAG_PJR_JESSIE_JAMES_3_DEFEATED, GoldenrodCity_RadioTower_4F4_EventScript_ArmJessieJames
-	end
-
-GoldenrodCity_RadioTower_4F4_EventScript_ArmJessieJames::
+	goto_if_set FLAG_PJR_JESSIE_JAMES_3_DEFEATED, GoldenrodCity_RadioTower_4F4_EventScript_TransitionDone
+	checktrainerflag TRAINER_GRUNT_9_HNS
+	goto_if_eq TRUE, GoldenrodCity_RadioTower_4F4_EventScript_MarkPreviousWin
 	setvar VAR_TEMP_3, 0
-	return
-
-GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesLoad::
-	call_if_unset FLAG_PJR_JESSIE_JAMES_3_DEFEATED, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesLoad_ResetTrainer
 	end
-
-GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesLoad_ResetTrainer::
-	cleartrainerflag TRAINER_GRUNT_9_HNS
-	return
+GoldenrodCity_RadioTower_4F4_EventScript_MarkPreviousWin::
+	setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED
+GoldenrodCity_RadioTower_4F4_EventScript_TransitionDone::
+	end
 
 GoldenrodCity_RadioTower_4F4_EventScript_Sign1::
 	lock
@@ -54,20 +53,19 @@ GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTrigger::
 	goto_if_set FLAG_PJR_JESSIE_JAMES_3_DEFEATED, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAlreadyDefeated
 	lockall
 	setvar VAR_TEMP_3, 1
+	// Despawn stale old-build positions before each scripted reveal.
+	removeobject 5
+	removeobject 2
+	removeobject 7
 	clearflag FLAG_TEMP_1
 	addobject 5
 	addobject 2
 	addobject 7
-	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_RushNorth
-	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_RushNorth
-	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_RushNorth
-	waitmovementall
-	// Crossing actors are ordered from left to right to avoid collision.
-	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_RushWest
+	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_Approach
 	waitmovement 5
-	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_RushWest
+	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_Approach
 	waitmovement 2
-	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_RushWest
+	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_Approach
 	waitmovement 7
 	call GoldenrodCity_RadioTower_4F4_EventScript_FaceJessieJames
 	releaseall
@@ -92,21 +90,21 @@ GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesBattle::
 
 GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle::
 	lockall
+	// Persistent story flag is set before actors retreat.
+	setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED
 	msgbox GoldenrodCity_RadioTower_4F4_Text_JessieJamesAfter, MSGBOX_DEFAULT
 	closemessage
 	// Actual on-screen retreat: clear the centre aisle in the opposite
 	// order of the ambush, sprint away and vanish only once out of view.
 	// No fade to black, backward shuffle or teleport from the player.
-	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_EscapeEast
+	// Rightmost Meowth runs east first, then James, then Jessie.
+	// Everyone travels a proven empty corridor, past camera x=18.
+	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_RunOffscreen
 	waitmovement 7
-	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_EscapeEast
+	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_RunOffscreen
 	waitmovement 2
-	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_EscapeEast
+	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_RunOffscreen
 	waitmovement 5
-	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_EscapeSouth
-	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_EscapeSouth
-	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_EscapeSouth
-	waitmovementall
 	setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED
 	setflag FLAG_TEMP_1
 	removeobject 2
@@ -117,33 +115,31 @@ GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle::
 	end
 
 GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAlreadyDefeated::
+	setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED
+	setflag FLAG_TEMP_1
 	setvar VAR_TEMP_3, 1
+	removeobject 2
+	removeobject 5
+	removeobject 7
 	end
 
-GoldenrodCity_RadioTower_4F4_Movement_RushNorth:
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	step_end
-
-GoldenrodCity_RadioTower_4F4_Movement_RushWest:
+// All actors arrive along one passable hall row, not the furniture tiles.
+GoldenrodCity_RadioTower_4F4_Movement_Approach:
+	walk_faster_left
+	walk_faster_left
 	walk_faster_left
 	walk_faster_left
 	walk_faster_left
 	step_end
 
-GoldenrodCity_RadioTower_4F4_Movement_EscapeEast:
+GoldenrodCity_RadioTower_4F4_Movement_RunOffscreen:
 	walk_faster_right
 	walk_faster_right
 	walk_faster_right
-	step_end
-
-GoldenrodCity_RadioTower_4F4_Movement_EscapeSouth:
-	walk_faster_down
-	walk_faster_down
-	walk_faster_down
-	walk_faster_down
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
 	step_end
 
 GoldenrodRaidoTower4_EventScript_Proton::
