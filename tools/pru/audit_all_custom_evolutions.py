@@ -116,7 +116,7 @@ for source, target, item in [
 for x in edges:
     if x["base"] in canonical and x["target"] in custom and x["method"] == "EVO_ITEM":
         # Items are enum members in include/constants/items.h, not macros.
-        require(bool(re.search(r"^\s*" + re.escape(x["param"]) + r"\s*=", items_constants, re.M)),
+        require(bool(re.search(r"^\s*" + re.escape(x["param"]) + r"\s*(?:=|,)", items_constants, re.M)),
                 f"{x['base']} to {x['target']}: item enum {x['param']} missing")
 
 for name in INDEPENDENT_SPECIAL | REMOVED_FROM_CANON:
