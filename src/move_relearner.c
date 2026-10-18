@@ -1057,6 +1057,46 @@ static void CreateLearnableMovesList(void)
         break;
     }
 
+    // PRU: players using an existing Lv36+ Gardevoir may have missed its
+    // newly added sound attacks. Keep them visible at the top of the Move
+    // Expert's LEVEL-UP list, even when inherited moves make the list long.
+    if (IS_HNS && gMoveRelearnerState == MOVE_RELEARNER_LEVEL_UP_MOVES
+        && GetBoxMonData(boxmon, MON_DATA_SPECIES_OR_EGG) == SPECIES_GARDEVOIR)
+    {
+        const u16 priorityMoves[] = { MOVE_HYPER_VOICE, MOVE_ROUND };
+        u32 currentLevel = GetLevelFromBoxMonExp(boxmon);
+
+        for (u32 p = 0; p < ARRAY_COUNT(priorityMoves); p++)
+        {
+            u16 move = priorityMoves[p];
+            u32 requiredLevel = move == MOVE_HYPER_VOICE ? 38 : 36;
+            s32 found = -1;
+
+            if (currentLevel < requiredLevel || BoxMonKnowsMove(boxmon, move))
+                continue;
+            for (u32 j = 0; j < sMoveRelearnerStruct->numMenuChoices; j++)
+            {
+                if (sMoveRelearnerStruct->movesToLearn[j] == move)
+                {
+                    found = j;
+                    break;
+                }
+            }
+            if (found < 0 && sMoveRelearnerStruct->numMenuChoices < MAX_RELEARNER_MOVES)
+            {
+                found = sMoveRelearnerStruct->numMenuChoices;
+                sMoveRelearnerStruct->movesToLearn[sMoveRelearnerStruct->numMenuChoices++] = move;
+            }
+            if (found >= 0)
+            {
+                // Move to the first displayed slot without duplicating it.
+                for (u32 j = found; j > 0; j--)
+                    sMoveRelearnerStruct->movesToLearn[j] = sMoveRelearnerStruct->movesToLearn[j - 1];
+                sMoveRelearnerStruct->movesToLearn[0] = move;
+            }
+        }
+    }
+
     for (i = 0; i < sMoveRelearnerStruct->numMenuChoices; i++)
     {
         sMoveRelearnerStruct->menuItems[i].name = GetMoveName(sMoveRelearnerStruct->movesToLearn[i]);
