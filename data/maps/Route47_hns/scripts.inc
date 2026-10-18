@@ -1,3 +1,13 @@
+Route47_EventScript_Steevee::
+	trainerbattle_double TRAINER_STEEVE_NEEVEE_ROUTE47_HNS, Route47_Text_SteeveeSeen, Route47_Text_TwinsBeaten, Route104_Text_GinaNotEnoughMons
+	msgbox Route47_Text_SteeveeAfter, MSGBOX_AUTOCLOSE
+	end
+
+Route47_EventScript_Neevee::
+	trainerbattle_double TRAINER_STEEVE_NEEVEE_ROUTE47_HNS, Route47_Text_NeeveeSeen, Route47_Text_TwinsBeaten, Route104_Text_GinaNotEnoughMons
+	msgbox Route47_Text_NeeveeAfter, MSGBOX_AUTOCLOSE
+	end
+
 Route47_hns_MapScripts::
 	.byte 0
 
@@ -159,3 +169,24 @@ Route47_EventScript_Chinchou::
 
 Route47_Text_Chinchou:
 	.string "CHINCHOU: Chou!$"
+
+Route47_Text_SteeveeSeen:
+	.string "STEEVEE: There you are again!\p"
+	.string "NEEVEE: Our EEVEE have evolved!$"
+
+Route47_Text_NeeveeSeen:
+	.string "NEEVEE: We took different paths.\p"
+	.string "STEEVEE: Now we battle as one!$"
+
+Route47_Text_TwinsBeaten:
+	.string "NEEVEE: So much for our plan!\p"
+	.string "STEEVEE: Our journey goes on!$"
+
+Route47_Text_SteeveeAfter:
+	.string "STEEVEE: Next time we'll have\n"
+	.string "even more evolutions to show!$"
+
+Route47_Text_NeeveeAfter:
+	.string "NEEVEE: We found unusual EEVEE\n"
+	.string "evolutions in ancient stories.$"
+

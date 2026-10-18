@@ -35,7 +35,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
-      "script": "Route37_EventScript_TwinAnn",
+      "script": "Route37_EventScript_Steevee",
       "flag": "0"
     },
     {
@@ -48,7 +48,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
-      "script": "Route37_EventScript_TwinAnne",
+      "script": "Route37_EventScript_Neevee",
       "flag": "0"
     },
     {

@@ -706,6 +706,13 @@
 #define TRAINER_STEEVE_NEEVEE_TOWER_HNS        677
 #define TRAINER_STEEVE_NEEVEE_ROUTE23_HNS      678
 
+// Stable numeric trainer IDs: rename the four unused donor encounters by aliases.
+// Existing IDs 675-678, victory flags and the PRL transition switch remain intact.
+#define TRAINER_STEEVE_NEEVEE_ROUTE37_HNS      TRAINER_STEEVE_NEEVEE_ROUTE3_HNS
+#define TRAINER_STEEVE_NEEVEE_ROUTE47_HNS      TRAINER_STEEVE_NEEVEE_SS_ANNE_HNS
+#define TRAINER_STEEVE_NEEVEE_ROUTE44_HNS      TRAINER_STEEVE_NEEVEE_TOWER_HNS
+#define TRAINER_STEEVE_NEEVEE_KANTO_ROUTE3_HNS TRAINER_STEEVE_NEEVEE_ROUTE23_HNS
+
 #define TRAINERS_COUNT_HNS                       679
 #define MAX_TRAINERS_COUNT_HNS                   864
 

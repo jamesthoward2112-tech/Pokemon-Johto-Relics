@@ -9,18 +9,14 @@ Route37_OnTransition:
 
 
 
-Route37_EventScript_TwinAnn::
-	trainerbattle_double TRAINER_ANN_AND_ANNE_HNS, Route37_Text_TwinsAnnAndAnne1_Seen, Route37_Text_TwinsAnnAndAnne1_Beaten, Route104_Text_GinaNotEnoughMons
-	special GetPlayerBigGuyGirlString
-	msgbox Route37_Text_TwinsAnnAndAnne1_After, MSGBOX_DEFAULT
-	release
+Route37_EventScript_Steevee::
+	trainerbattle_double TRAINER_STEEVE_NEEVEE_ROUTE37_HNS, Route37_Text_SteeveeSeen, Route37_Text_TwinsBeaten, Route104_Text_GinaNotEnoughMons
+	msgbox Route37_Text_SteeveeAfter, MSGBOX_AUTOCLOSE
 	end
-	
-Route37_EventScript_TwinAnne::
-	trainerbattle_double TRAINER_ANN_AND_ANNE_HNS, Route37_Text_TwinsAnnAndAnne2_Seen, Route37_Text_TwinsAnnAndAnne2_Beaten, Route104_Text_GinaNotEnoughMons
-	special GetPlayerBigGuyGirlString
-	msgbox Route37_Text_TwinsAnnAndAnne2_After, MSGBOX_DEFAULT
-	release
+
+Route37_EventScript_Neevee::
+	trainerbattle_double TRAINER_STEEVE_NEEVEE_ROUTE37_HNS, Route37_Text_NeeveeSeen, Route37_Text_TwinsBeaten, Route104_Text_GinaNotEnoughMons
+	msgbox Route37_Text_NeeveeAfter, MSGBOX_AUTOCLOSE
 	end
 
 Route37_EventScript_Greg::
@@ -80,29 +76,25 @@ Route37_EventScript_Sign::
 	release
 	end
 
-Route37_Text_TwinsAnnAndAnne1_Seen:
-	.string "ANN: ANNE and I are in this\n"
-	.string "together!$"
+Route37_Text_SteeveeSeen:
+	.string "STEEVEE: Hey, we're the EEVEE\n"
+	.string "twins! Ready for doubles?$"
 
-Route37_Text_TwinsAnnAndAnne1_Beaten:
-	.string "ANN & ANNE: Nnn… A little too\n"
-	.string "strong.$"
+Route37_Text_NeeveeSeen:
+	.string "NEEVEE: Our partners grow with us!\p"
+	.string "STEEVEE: Come and see!$"
 
-Route37_Text_TwinsAnnAndAnne1_After:
-	.string "ANN: I can tell what my sister and\n"
-	.string "my POKéMON are thinking.$"
+Route37_Text_TwinsBeaten:
+	.string "STEEVEE: You beat us together!\p"
+	.string "NEEVEE: We'll train even harder!$"
 
-Route37_Text_TwinsAnnAndAnne2_Seen:
-	.string "ANNE: ANN and I are in this\n"
-	.string "together!$"
+Route37_Text_SteeveeAfter:
+	.string "STEEVEE: I'm STEEVEE, and my twin\n"
+	.string "is NEEVEE. See you out there!$"
 
-Route37_Text_TwinsAnnAndAnne2_Beaten:
-	.string "ANN & ANNE: Nnn… A little too\n"
-	.string "strong.$"
-
-Route37_Text_TwinsAnnAndAnne2_After:
-	.string "ANNE: We share the same feelings as\n"
-	.string "our POKéMON.$"
+Route37_Text_NeeveeAfter:
+	.string "NEEVEE: EEVEE can become so many\n"
+	.string "different POKéMON! Watch us!$"
 
 Route37_Text_PsychicGreg_Seen:
 	.string "POKéMON can't do a thing if they are\n"

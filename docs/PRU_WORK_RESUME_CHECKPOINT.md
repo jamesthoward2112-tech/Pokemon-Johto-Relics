@@ -1,5 +1,13 @@
 # PRU Work Resume Checkpoint
 
+## 18 October 2026 — Steevee/Neevee recurring encounter implementation
+
+- Working branch `pru/steevee-neevee-encounters-20261018` builds on complete Johto balance PR #19, source SHA `4a936819cb636906a98835d7fff9dbab35955212`; no trainer ID, story flag, or save schema remapping.
+- Connected all four imported PRL twin trainer IDs to live double-battle map events: Route 37 (replaces Ann & Anne), Route 47, Route 44, Kanto Route 3. New dialogue and progressively stronger teams, with Omeon/Toxeon/Nimbeon/Eeveeon on later teams. Existing PRL twin BG0 battle transition already routes all four IDs.
+- Regression test: `tools/pru/check_steevee_neevee_encounters.py`; scenario/coordinates: `docs/PRU_STEEVEE_NEEVEE_ENCOUNTERS_20261018.md`.
+- Status: source changes staged; GitHub CI compilation and actual playfield/route navigation QA must verify before distributing a new ROM. Existing Johto rebalance and Valkiri release remain unchanged.
+
+
 ## 18 October 2026 — full Johto-wide difficulty rebalance verified and direct ROM published
 
 - **Source:** separate preserved branch `pru/johto-full-rebalance-20261018`, draft [PR #19](https://github.com/jamesthoward2112-tech/Pokemon-Johto-Relics/pull/19); based on Valkiri branch `pru/prl-sprite-position-icons-tm-20261018` after Kanto future-TODO commit `6c1275b`.
