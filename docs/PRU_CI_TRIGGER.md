@@ -104,3 +104,8 @@ QA exception: TestMap1_hns has an intentionally unreachable Chansey placeholder 
 
 ### Johto Gym leader rebalance — source + full ROM compile (17 October)
 Rebuild PRU after commit b3a89998b37c7ca60a54850da82dba9bc466cfde updates all eight Johto leaders, badge-order conditional teams and rematch Relic species in src/data/trainers_hns.party. Verify trainerproc, complete make hns, packaged 32-MiB ROM, and preserved Noxichu Last Wish, Chansey, rare-gift systems. Details: docs/PRU_JOHTO_GYM_AUDIT_20261017.md. Reward scripts already contain 10,000 bonus, TM and special item for each gym; in-game full-bag retry QA remains outstanding.
+
+
+## 18 October 2026 — PRU 444-only Eeveelution full ROM build
+
+Explicit user-requested GitHub Actions rebuild on `pru/canonical-444-eevee-simple-items-20261018` after PR #17 registered all 15 Eevee item routes, PRU-only item-use behavior, 444 target whitelist, and Goldenrod shop stock. Run `tools/pru/check_canonical_eeveelutions.py` plus existing 444-species and 54-custom-evolution checks, then full `make hns`, compiled ROM audit, mGBA title boot capture, and upload `PRU-Consolidated-WIP` and `PRU-Noxichu-LastWish-TEST` with SHA256. Preserve all credits and prior verified ROMs. Compilation and boot evidence do not certify in-game stone consumption or Pokédex seen/caught tracking.
