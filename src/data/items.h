@@ -10892,7 +10892,11 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_THROAT_SPRAY] =
     {
         .name = ITEM_NAME("THROAT SPRAY"),
+#if IS_HNS
+        .price = 10000, // Available to Goldenrod playtesters; other games unchanged.
+#else
         .price = (I_PRICE >= GEN_9) ? 20000 : 4000,
+#endif
         .holdEffect = HOLD_EFFECT_THROAT_SPRAY,
         .description = COMPOUND_STRING(
             "Raises Sp. Atk. if\n"
