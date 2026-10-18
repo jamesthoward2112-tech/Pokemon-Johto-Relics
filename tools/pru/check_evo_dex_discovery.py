@@ -32,6 +32,7 @@ assert match, "missing EVO detail formatter"
 evo = dex[match.end():].split("static void Task_SwitchScreensFromEvolutionScreen", 1)[0]
 for token in (
     "GetSpeciesEvolutions(species)", "IsSpeciesEnabled(targetSpecies)",
+    "IsPruEvoDexSpecies(targetSpecies)",
     "case EVO_ITEM:", 'COMPOUND_STRING("Use {STR_VAR_2}")',
     "case IF_MIN_LEVEL:", 'COMPOUND_STRING("Lv ")',
     "evolutions[i].params[j].arg1",
@@ -57,4 +58,25 @@ assert re.search(r"EVO_ITEM,\s*ITEM_ANCIENT_STONE,\s*SPECIES_VALKYVOIR,\s*CONDIT
 pikachu = mon_block(gen1, "PIKACHU")
 assert re.search(r"EVO_ITEM,\s*ITEM_MOON_STONE,\s*SPECIES_NOXICHU", pikachu)
 
-print("PRU_EVO_DEX_DISCOVERY_PASS: seen-species EVO access, stone and Lv45+ methods, canonical examples")
+# PRU must not expose alternate-generation or out-of-roster branches.
+roster = read("src/data/pokemon/pru_dex_order.h")
+approved = set(re.findall(r"^\\s*(SPECIES_[A-Z0-9_]+),\\s*//\\s*\\d+", roster, re.M))
+assert len(approved) == 444, len(approved)
+assert "SPECIES_RAICHU_ALOLA" not in approved
+assert "SPECIES_SYLVEON" not in approved
+assert "IsPruEvoDexSpecies(i)" in dex, "pre-evolutions should use canonical roster"
+assert 'sPruDexSpecies[i] == species' in dex, "EVO filter must use canonical 444 array"
+
+# The Eevee page limit must be 5, not the old truncated 10/8 display.
+assert "#define PRU_EEVEE_EVOS_PER_PAGE 5" in dex
+assert "#define PRU_EEVEE_EVO_PAGES 3" in dex
+assert "eeveePage" in dex
+assert "Task_LoadEvolutionScreen;" in dex
+assert "i < sPokedexView->sEvoScreenData.eeveePage * PRU_EEVEE_EVOS_PER_PAGE" in dex
+start = mon_block(gen1, "EEVEE")
+pru = start.split("#if IS_HNS", 1)[1].split("#else", 1)[0]
+routes = re.findall(r"\\{EVO_ITEM,\\s*ITEM_[A-Z0-9_]+,\\s*(SPECIES_[A-Z0-9_]+)\\}", pru)
+assert len(routes) == len(set(routes)) == 15, (len(routes), routes)
+assert all(p in approved for p in routes), routes
+
+print("PRU_EVO_DEX_DISCOVERY_PASS: 444-only species, 15 Eevee branches in 3 pages, relic EVO access")
