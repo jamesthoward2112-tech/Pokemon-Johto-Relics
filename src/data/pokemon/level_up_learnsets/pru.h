@@ -332,3 +332,29 @@ static const struct LevelUpMove sMewsionLevelUpLearnset[] =
     LEVEL_UP_MOVE(56, MOVE_SUPER_GLITCH),
     LEVEL_UP_END
 };
+
+
+// Valkiri keeps Gardevoir's familiar Psychic support, plus three sound moves.
+// Evolution gives BOOMBURST via the level-zero move; Round and Hyper Voice
+// remain obtainable through ordinary leveling and the Move Relearner.
+static const struct LevelUpMove sValkiriLevelUpLearnset[] =
+{
+    LEVEL_UP_MOVE( 0, MOVE_BOOMBURST),
+    LEVEL_UP_MOVE( 1, MOVE_GROWL),
+    LEVEL_UP_MOVE( 1, MOVE_CONFUSION),
+    LEVEL_UP_MOVE( 1, MOVE_DOUBLE_TEAM),
+    LEVEL_UP_MOVE( 1, MOVE_TELEPORT),
+    LEVEL_UP_MOVE( 1, MOVE_ROUND),
+    LEVEL_UP_MOVE( 6, MOVE_CONFUSION),
+    LEVEL_UP_MOVE(11, MOVE_DOUBLE_TEAM),
+    LEVEL_UP_MOVE(16, MOVE_TELEPORT),
+    LEVEL_UP_MOVE(21, MOVE_CALM_MIND),
+    LEVEL_UP_MOVE(26, MOVE_PSYCHIC),
+    LEVEL_UP_MOVE(33, MOVE_IMPRISON),
+    LEVEL_UP_MOVE(38, MOVE_HYPER_VOICE),
+    LEVEL_UP_MOVE(42, MOVE_FUTURE_SIGHT),
+    LEVEL_UP_MOVE(51, MOVE_HYPNOSIS),
+    LEVEL_UP_MOVE(55, MOVE_BOOMBURST),
+    LEVEL_UP_MOVE(60, MOVE_DREAM_EATER),
+    LEVEL_UP_END
+};
