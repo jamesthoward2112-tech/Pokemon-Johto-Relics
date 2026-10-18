@@ -71,17 +71,12 @@ assert "GetRelearnerEggMoves(boxmon" in relearner
 assert "GetRelearnerTutorMoves(boxmon" in relearner
 assert "sBulbasaurEggMoveLearnset[]" in read("src/data/pokemon/egg_moves.h")
 
-items = read("src/data/items.h")
-pattern = r'\[ITEM_(TM|HM)_([A-Z0-9_]+)\]\s*=\s*\{\s*\.name\s*=\s*ITEM_NAME\("([^"]+)"\)'
-named = [(kind, name, value) for kind, name, value in re.findall(pattern, items) if name != "CASE"]
-assert len(named) == 59, len(named)
-for kind, name, value in named:
-    assert value == name.replace("_", " "), (kind, name, value)
-    assert len(value) <= 14, (kind, name, value)
-assert "TM CASE" in items
+# Check the entire HNS machine catalogue without changing non-HNS engine labels.
+import subprocess
+subprocess.run(["python3", "tools/pru/check_tm_full_names.py"], check=True)
 
 print("PASS: 27 canonical level-45 Ancient Stone Relic evolutions, Eevee/Frytning preserved,")
 print("      legacy catalysts off Mart shelves, Moon/Ancient Stones available,")
-print("      free Egg/Tutor eligibility gates removed, 59 TMs/HMs show move names.")
+print("      free Egg/Tutor eligibility gates removed, 92 TMs and 8 HMs show number and move.")
 print("PASS: Charizard -> Charaxis and 26 other canonical Lv45 Ancient Stone evolutions.")
 print("PASS: Pikachu -> Noxichu by Moon Stone; separate Coelossus and removed Sudowarden.")
