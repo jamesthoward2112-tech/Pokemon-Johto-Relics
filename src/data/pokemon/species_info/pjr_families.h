@@ -40,12 +40,12 @@
     .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
     .backPic = gMonBackPic_Scarabub,
     .backPicSize = MON_COORDS_SIZE(64, 64),
-    .backPicYOffset = 8,
+    .backPicYOffset = 0,
     .backAnimId = BACK_ANIM_JOLT_RIGHT,
     .palette = gMonPalette_Scarabub,
     .shinyPalette = gMonShinyPalette_Scarabub,
     .iconSprite = gMonIcon_Scarabub,
-    .iconPalIndex = 3,
+    .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 2 : 0,
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sScarabubLevelUpLearnset,
     .teachableLearnset = sHeracrossTeachableLearnset,
@@ -72,13 +72,13 @@
     .categoryName = _("Relic Horn"), .height = 18, .weight = 625,
     .description = COMPOUND_STRING("Its ancient horn can pierce stone.\nIt stands firm while protecting\nweaker Pokémon."),
     .pokemonScale = 256, .trainerScale = 256,
-    .frontPic = gMonFrontPic_Heracurion, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 3,
+    .frontPic = gMonFrontPic_Heracurion, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 0,
     .frontAnimFrames = sAnims_SingleFramePlaceHolder,
     .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-    .backPic = gMonBackPic_Heracurion, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 6,
+    .backPic = gMonBackPic_Heracurion, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0,
     .backAnimId = BACK_ANIM_V_SHAKE_LOW,
     .palette = gMonPalette_Heracurion, .shinyPalette = gMonShinyPalette_Heracurion,
-    .iconSprite = gMonIcon_Heracurion, .iconPalIndex = 3,
+    .iconSprite = gMonIcon_Heracurion, .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 2 : 0,
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sHeracurionLevelUpLearnset, .teachableLearnset = sHeracrossTeachableLearnset,
 },
@@ -122,12 +122,12 @@
     .frontAnimId = ANIM_V_STRETCH,
     .backPic = gMonBackPic_Skarmet,
     .backPicSize = MON_COORDS_SIZE(64, 64),
-    .backPicYOffset = 8,
+    .backPicYOffset = 0,
     .backAnimId = BACK_ANIM_JOLT_RIGHT,
     .palette = gMonPalette_Skarmet,
     .shinyPalette = gMonShinyPalette_Skarmet,
     .iconSprite = gMonIcon_Skarmet,
-    .iconPalIndex = 3,
+    .iconPalIndex = 0,
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sSkarmetLevelUpLearnset,
     .teachableLearnset = sSkarmoryTeachableLearnset,
@@ -149,14 +149,14 @@
     .categoryName = _("Relic Armor"), .height = 20, .weight = 610,
     .description = COMPOUND_STRING("Its relic-plated wings ring like\nforged steel. It rides violent winds\nwithout yielding."),
     .pokemonScale = 256, .trainerScale = 256,
-    .frontPic = gMonFrontPic_Skarmadon, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 2,
+    .frontPic = gMonFrontPic_Skarmadon, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 0,
     .frontAnimFrames = sAnims_SingleFramePlaceHolder,
     .frontAnimId = ANIM_V_STRETCH,
-    .backPic = gMonBackPic_Skarmadon, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 6,
+    .backPic = gMonBackPic_Skarmadon, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0,
     .backAnimId = BACK_ANIM_H_SHAKE,
     .palette = gMonPalette_Skarmadon, .shinyPalette = gMonShinyPalette_Skarmadon,
     .iconSprite = gMonIcon_Skarmadon,
-    .iconPalIndex = 2,
+    .iconPalIndex = 0,
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sSkarmadonLevelUpLearnset, .teachableLearnset = sSkarmoryTeachableLearnset,
 },
@@ -200,12 +200,12 @@
     .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE_SLOW,
     .backPic = gMonBackPic_Mootiny,
     .backPicSize = MON_COORDS_SIZE(64, 64),
-    .backPicYOffset = 8,
+    .backPicYOffset = 0,
     .backAnimId = BACK_ANIM_H_SLIDE,
     .palette = gMonPalette_Mootiny,
     .shinyPalette = gMonShinyPalette_Mootiny,
     .iconSprite = gMonIcon_Mootiny,
-    .iconPalIndex = 2,
+    .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 1 : 0,
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sMootinyLevelUpLearnset,
     .teachableLearnset = sMiltankTeachableLearnset,
@@ -233,7 +233,7 @@
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH,
     .backPic = gMonBackPic_Champeon, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Champeon, .shinyPalette = gMonPalette_Champeon,
-    .iconSprite = gMonIcon_Champeon, .iconPalIndex = 3, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+    .iconSprite = gMonIcon_Champeon, .iconPalIndex = 2, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sChampeonLevelUpLearnset, .teachableLearnset = sChampeonInfinityTeachableLearnset,
 },
 
@@ -279,7 +279,7 @@
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH,
     .backPic = gMonBackPic_Guardeon, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Guardeon, .shinyPalette = gMonPalette_Guardeon,
-    .iconSprite = gMonIcon_Guardeon, .iconPalIndex = 3, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+    .iconSprite = gMonIcon_Guardeon, .iconPalIndex = 2, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sGuardeonLevelUpLearnset, .teachableLearnset = sGuardeonInfinityTeachableLearnset,
 },
 
@@ -302,7 +302,7 @@
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH,
     .backPic = gMonBackPic_Obsideon, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Obsideon, .shinyPalette = gMonPalette_Obsideon,
-    .iconSprite = gMonIcon_Obsideon, .iconPalIndex = 3, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+    .iconSprite = gMonIcon_Obsideon, .iconPalIndex = 2, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sObsideonLevelUpLearnset, .teachableLearnset = sObsideonInfinityTeachableLearnset,
 },
 
@@ -321,7 +321,7 @@
     .categoryName = _("Chimera"), .height = 11, .weight = 230,
     .description = COMPOUND_STRING("A rare evolution awakened by unusual\n" "conditions in JOHTO. Its altered form\n" "draws out a new kind of strength."),
     .pokemonScale = 256, .pokemonOffset = 0, .trainerScale = 256, .trainerOffset = 0,
-    .frontPic = gMonFrontPic_Toxeon, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 0,
+    .frontPic = gMonFrontPic_Toxeon, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 5,
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH,
     .backPic = gMonBackPic_Toxeon, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Toxeon, .shinyPalette = gMonPalette_Toxeon,
@@ -348,7 +348,7 @@
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH,
     .backPic = gMonBackPic_Sphynxeon, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Sphynxeon, .shinyPalette = gMonPalette_Sphynxeon,
-    .iconSprite = gMonIcon_Sphynxeon, .iconPalIndex = 0, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+    .iconSprite = gMonIcon_Sphynxeon, .iconPalIndex = 2, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sSphynxeonLevelUpLearnset, .teachableLearnset = sSphynxeonInfinityTeachableLearnset,
 },
 
@@ -367,7 +367,7 @@
     .categoryName = _("Omen"), .height = 11, .weight = 180,
     .description = COMPOUND_STRING("A rare evolution awakened by unusual\n" "conditions in JOHTO. Its altered form\n" "draws out a new kind of strength."),
     .pokemonScale = 256, .pokemonOffset = 0, .trainerScale = 256, .trainerOffset = 0,
-    .frontPic = gMonFrontPic_Omeon, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 0,
+    .frontPic = gMonFrontPic_Omeon, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 7,
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH,
     .backPic = gMonBackPic_Omeon, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Omeon, .shinyPalette = gMonPalette_Omeon,
@@ -394,7 +394,7 @@
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH,
     .backPic = gMonBackPic_Jollibird, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Jollibird, .shinyPalette = gMonPalette_Jollibird,
-    .iconSprite = gMonIcon_Jollibird, .iconPalIndex = 5, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+    .iconSprite = gMonIcon_Jollibird, .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 0 : 1, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sJollibirdLevelUpLearnset, .teachableLearnset = sJollibirdInfinityTeachableLearnset,
 },
 
@@ -417,7 +417,7 @@
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH,
     .backPic = gMonBackPic_Grimfowl, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Grimfowl, .shinyPalette = gMonPalette_Grimfowl,
-    .iconSprite = gMonIcon_Grimfowl, .iconPalIndex = 0, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+    .iconSprite = gMonIcon_Grimfowl, .iconPalIndex = 2, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sGrimfowlLevelUpLearnset, .teachableLearnset = sGrimfowlInfinityTeachableLearnset,
 },
 
@@ -513,7 +513,7 @@
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH,
     .backPic = gMonBackPic_Osteodian, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Osteodian, .shinyPalette = gMonShinyPalette_Osteodian,
-    .iconSprite = gMonIcon_Osteodian, .iconPalIndex = 0, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+    .iconSprite = gMonIcon_Osteodian, .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 1 : 2, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sMarowakLevelUpLearnset, .teachableLearnset = sMarowakTeachableLearnset,
 },
 
@@ -540,7 +540,7 @@
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
     .backPic = gMonBackPic_Maroghost, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Maroghost, .shinyPalette = gMonShinyPalette_Maroghost,
-    .iconSprite = gMonIcon_Maroghost, .iconPalIndex = 2, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+    .iconSprite = gMonIcon_Maroghost, .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 1 : 2, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sMarowakLevelUpLearnset, .teachableLearnset = sMarowakTeachableLearnset,
 },
 
@@ -563,7 +563,7 @@
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH,
     .backPic = gMonBackPic_Alphoracle, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 0, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Alphoracle, .shinyPalette = gMonPalette_Alphoracle,
-    .iconSprite = gMonIcon_Alphoracle, .iconPalIndex = 4, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+    .iconSprite = gMonIcon_Alphoracle, .iconPalIndex = 0, .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sAlphoracleLevelUpLearnset, .teachableLearnset = sAlphoracleInfinityTeachableLearnset,
 },
 
@@ -586,9 +586,9 @@
         "It dives at high speed before locking\n"
         "its mighty horns around its foe."),
     .pokemonScale = 256, .pokemonOffset = 2, .trainerScale = 257, .trainerOffset = 0,
-    .frontPic = gMonFrontPic_Pinsirex, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 5,
+    .frontPic = gMonFrontPic_Pinsirex, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 0,
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-    .backPic = gMonBackPic_Pinsirex, .backPicSize = MON_COORDS_SIZE(64, 56), .backPicYOffset = 6,
+    .backPic = gMonBackPic_Pinsirex, .backPicSize = MON_COORDS_SIZE(64, 56), .backPicYOffset = 0,
     .backAnimId = BACK_ANIM_V_SHAKE_LOW,
     .palette = gMonPalette_Pinsirex, .shinyPalette = gMonShinyPalette_Pinsirex,
     .iconSprite = gMonIcon_Pinsirex, .iconPalIndex = 2,
@@ -597,7 +597,7 @@
     .teachableLearnset = sPinsirTeachableLearnset,
 },
 
-#define PJR_FINAL_SPECIES(species, hp, atk, def, spa, spd, spe, type1, type2, ability1, ability2, hidden, name, cry, natdex, category, color, front, back, pal, shiny, icon, iconPal, levelMoves, teachMoves) \
+#define PJR_FINAL_SPECIES(species, hp, atk, def, spa, spd, spe, type1, type2, ability1, ability2, hidden, name, cry, natdex, category, color, front, back, pal, shiny, icon, iconPal, levelMoves, teachMoves, frontY, backY) \
 [species] = { \
     .baseHP = hp, .baseAttack = atk, .baseDefense = def, .baseSpAttack = spa, .baseSpDefense = spd, .baseSpeed = spe, \
     .types = MON_TYPES(type1, type2), .catchRate = 45, .expYield = 220, .genderRatio = PERCENT_FEMALE(50), \
@@ -606,9 +606,9 @@
     .speciesName = _(name), .cryId = cry, .natDexNum = natdex, .categoryName = _(category), .height = 16, .weight = 600, \
     .description = COMPOUND_STRING("Relic energy awakened this final form.\nIts ancient strength protects JOHTO\nand all who travel beside it."), \
     .pokemonScale = 256, .trainerScale = 256, \
-    .frontPic = front, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 2, \
+    .frontPic = front, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = frontY, \
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH, \
-    .backPic = back, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 6, .backAnimId = BACK_ANIM_NONE, \
+    .backPic = back, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = backY, .backAnimId = BACK_ANIM_NONE, \
     .palette = pal, .shinyPalette = shiny, .iconSprite = icon, .iconPalIndex = iconPal, \
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE, .levelUpLearnset = levelMoves, .teachableLearnset = teachMoves, \
 }
@@ -616,47 +616,47 @@
 PJR_FINAL_SPECIES(SPECIES_MILTITAN, 110, 120, 105, 45, 100, 75, TYPE_NORMAL, TYPE_FAIRY,
     ABILITY_THICK_FAT, ABILITY_SCRAPPY, ABILITY_SAP_SIPPER, "MILTITAN", CRY_MILTANK,
     NATIONAL_DEX_MILTANK, "Relic Cow", BODY_COLOR_PINK, gMonFrontPic_Miltitan, gMonBackPic_Miltitan,
-    gMonPalette_Miltitan, gMonShinyPalette_Miltitan, gMonIcon_Miltitan, 0, sMiltitanLevelUpLearnset, sMiltankTeachableLearnset),
+    gMonPalette_Miltitan, gMonShinyPalette_Miltitan, gMonIcon_Miltitan, P_GBA_STYLE_SPECIES_ICONS ? 1 : 0, sMiltitanLevelUpLearnset, sMiltankTeachableLearnset, 0, 0),
 
 PJR_FINAL_SPECIES(SPECIES_SHUCKOLOSSE, 40, 30, 230, 30, 230, 20, TYPE_BUG, TYPE_ROCK,
     ABILITY_ANCIENT_BASTION, ABILITY_NONE, ABILITY_NONE, "SHUCKOLOSSE", CRY_SHUCKLE,
     NATIONAL_DEX_SHUCKLE, "Bastion", BODY_COLOR_YELLOW, gMonFrontPic_Shuckolosse, gMonBackPic_Shuckolosse,
-    gMonPalette_Shuckolosse, gMonShinyPalette_Shuckolosse, gMonIcon_Shuckolosse, 1, sShuckolosseLevelUpLearnset, sShuckleTeachableLearnset),
+    gMonPalette_Shuckolosse, gMonShinyPalette_Shuckolosse, gMonIcon_Shuckolosse, 1, sShuckolosseLevelUpLearnset, sShuckleTeachableLearnset, 0, 0),
 
 PJR_FINAL_SPECIES(SPECIES_SUDOWARDEN, 90, 125, 145, 40, 95, 40, TYPE_ROCK, TYPE_GRASS,
     ABILITY_STURDY, ABILITY_ROCK_HEAD, ABILITY_SAP_SIPPER, "SUDOWARDEN", CRY_SUDOWOODO,
     NATIONAL_DEX_SUDOWOODO, "Ancient Tree", BODY_COLOR_BROWN, gMonFrontPic_Sudowarden, gMonBackPic_Sudowarden,
-    gMonPalette_Sudowarden, gMonShinyPalette_Sudowarden, gMonIcon_Sudowarden, 1, sSudowardenLevelUpLearnset, sSudowoodoTeachableLearnset),
+    gMonPalette_Sudowarden, gMonShinyPalette_Sudowarden, gMonIcon_Sudowarden, 1, sSudowardenLevelUpLearnset, sSudowoodoTeachableLearnset, 2, 6),
 
 PJR_FINAL_SPECIES(SPECIES_DONPHALANX, 110, 140, 135, 60, 85, 60, TYPE_GROUND, TYPE_DARK,
     ABILITY_STAMINA, ABILITY_INTIMIDATE, ABILITY_SAND_RUSH, "DONPHALANX", CRY_DONPHAN,
     NATIONAL_DEX_DONPHAN, "War Tusk", BODY_COLOR_GRAY, gMonFrontPic_Donphalanx, gMonBackPic_Donphalanx,
-    gMonPalette_Donphalanx, gMonShinyPalette_Donphalanx, gMonIcon_Donphalanx, 2, sDonphalanxLevelUpLearnset, sDonphanTeachableLearnset),
+    gMonPalette_Donphalanx, gMonShinyPalette_Donphalanx, gMonIcon_Donphalanx, 0, sDonphalanxLevelUpLearnset, sDonphanTeachableLearnset, 0, 0),
 
 PJR_FINAL_SPECIES(SPECIES_FAERANIUM, 100, 85, 115, 105, 120, 65, TYPE_GRASS, TYPE_FAIRY,
     ABILITY_ANCIENT_BLOOM, ABILITY_NONE, ABILITY_NONE, "FAERANIUM", CRY_MEGANIUM,
     NATIONAL_DEX_MEGANIUM, "Bloom Relic", BODY_COLOR_GREEN, gMonFrontPic_Faeranium, gMonBackPic_Faeranium,
-    gMonPalette_Faeranium, gMonShinyPalette_Faeranium, gMonIcon_Faeranium, 1, sFaeraniumLevelUpLearnset, sMeganiumTeachableLearnset),
+    gMonPalette_Faeranium, gMonShinyPalette_Faeranium, gMonIcon_Faeranium, 1, sFaeraniumLevelUpLearnset, sMeganiumTeachableLearnset, 0, 0),
 
 PJR_FINAL_SPECIES(SPECIES_PYROCLAST, 85, 95, 85, 130, 90, 105, TYPE_FIRE, TYPE_GHOST,
     ABILITY_CINDER_VEIL, ABILITY_NONE, ABILITY_NONE, "PYROCLAST", CRY_TYPHLOSION,
     NATIONAL_DEX_TYPHLOSION, "Cinder Relic", BODY_COLOR_RED, gMonFrontPic_Pyroclast, gMonBackPic_Pyroclast,
-    gMonPalette_Pyroclast, gMonShinyPalette_Pyroclast, gMonIcon_Pyroclast, 1, sPyroclastLevelUpLearnset, sTyphlosionTeachableLearnset),
+    gMonPalette_Pyroclast, gMonShinyPalette_Pyroclast, gMonIcon_Pyroclast, P_GBA_STYLE_SPECIES_ICONS ? 1 : 3, sPyroclastLevelUpLearnset, sTyphlosionTeachableLearnset, 0, 0),
 
 PJR_FINAL_SPECIES(SPECIES_FERALODON, 105, 135, 105, 70, 85, 80, TYPE_WATER, TYPE_DRAGON,
     ABILITY_TIDAL_ROAR, ABILITY_NONE, ABILITY_NONE, "FERALODON", CRY_FERALIGATR,
     NATIONAL_DEX_FERALIGATR, "Tidal Relic", BODY_COLOR_BLUE, gMonFrontPic_Feralodon, gMonBackPic_Feralodon,
-    gMonPalette_Feralodon, gMonShinyPalette_Feralodon, gMonIcon_Feralodon, 3, sFeralodonLevelUpLearnset, sFeraligatrTeachableLearnset),
+    gMonPalette_Feralodon, gMonShinyPalette_Feralodon, gMonIcon_Feralodon, P_GBA_STYLE_SPECIES_ICONS ? 2 : 0, sFeralodonLevelUpLearnset, sFeraligatrTeachableLearnset, 0, 0),
 
 PJR_FINAL_SPECIES(SPECIES_DRAKEON, 75, 130, 85, 110, 65, 80, TYPE_DRAGON, TYPE_DRAGON,
     ABILITY_INTIMIDATE, ABILITY_NONE, ABILITY_MULTISCALE, "DRAKEON", CRY_EEVEE,
     NATIONAL_DEX_EEVEE, "Wyvern", BODY_COLOR_BLUE, gMonFrontPic_Drakeon, gMonBackPic_Drakeon,
-    gMonPalette_Drakeon, gMonShinyPalette_Drakeon, gMonIcon_Drakeon, 0, sDrakeonLevelUpLearnset, sEeveeTeachableLearnset),
+    gMonPalette_Drakeon, gMonShinyPalette_Drakeon, gMonIcon_Drakeon, 2, sDrakeonLevelUpLearnset, sEeveeTeachableLearnset, 0, 0),
 
 PJR_FINAL_SPECIES(SPECIES_GHOULBAT, 95, 110, 90, 80, 95, 130, TYPE_GHOST, TYPE_FLYING,
     ABILITY_INFILTRATOR, ABILITY_PRESSURE, ABILITY_CURSED_BODY, "GHOULBAT", CRY_CROBAT,
     NATIONAL_DEX_CROBAT, "Wraith", BODY_COLOR_PURPLE, gMonFrontPic_Ghoulbat, gMonBackPic_Ghoulbat,
-    gMonPalette_Ghoulbat, gMonShinyPalette_Ghoulbat, gMonIcon_Ghoulbat, 0, sGhoulbatLevelUpLearnset, sCrobatTeachableLearnset),
+    gMonPalette_Ghoulbat, gMonShinyPalette_Ghoulbat, gMonIcon_Ghoulbat, 2, sGhoulbatLevelUpLearnset, sCrobatTeachableLearnset, 0, 0),
 
 [SPECIES_RELIC_HO_OH] =
 {
@@ -706,7 +706,7 @@ PJR_FINAL_SPECIES(SPECIES_GHOULBAT, 95, 110, 90, 80, 95, 130, TYPE_GHOST, TYPE_F
 
 #undef PJR_FINAL_SPECIES
 
-#define PJR_RED_SPECIES(species, hp, atk, def, spa, spd, spe, type1, type2, ability, name, cry, natdex, color, front, back, pal, shiny, icon, levelMoves, teachMoves) \
+#define PJR_RED_SPECIES(species, hp, atk, def, spa, spd, spe, type1, type2, ability, name, cry, natdex, color, front, back, pal, shiny, icon, levelMoves, teachMoves, frontY, backY, iconPal) \
 [species] = { \
     .baseHP = hp, .baseAttack = atk, .baseDefense = def, .baseSpAttack = spa, .baseSpDefense = spd, .baseSpeed = spe, \
     .types = MON_TYPES(type1, type2), .catchRate = 45, .expYield = 250, .genderRatio = PERCENT_FEMALE(50), \
@@ -715,42 +715,42 @@ PJR_FINAL_SPECIES(SPECIES_GHOULBAT, 95, 110, 90, 80, 95, 130, TYPE_GHOST, TYPE_F
     .speciesName = _(name), .cryId = cry, .natDexNum = natdex, .categoryName = _("Relic"), .height = 16, .weight = 600, \
     .description = COMPOUND_STRING("A champion of KANTO's Relic age.\nIts Resonance has been refined through\ncountless battles beside RED."), \
     .pokemonScale = 256, .trainerScale = 256, \
-    .frontPic = front, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = 2, \
+    .frontPic = front, .frontPicSize = MON_COORDS_SIZE(64, 64), .frontPicYOffset = frontY, \
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_STRETCH, \
-    .backPic = back, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 6, .backAnimId = BACK_ANIM_NONE, \
-    .palette = pal, .shinyPalette = shiny, .iconSprite = icon, .iconPalIndex = 0, \
+    .backPic = back, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = backY, .backAnimId = BACK_ANIM_NONE, \
+    .palette = pal, .shinyPalette = shiny, .iconSprite = icon, .iconPalIndex = iconPal, \
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE, .levelUpLearnset = levelMoves, .teachableLearnset = teachMoves, \
 }
 
 PJR_RED_SPECIES(SPECIES_EDENSAUR, 95, 80, 110, 135, 105, 55, TYPE_GRASS, TYPE_POISON,
     ABILITY_GRASSY_SURGE, "EDENSAUR", CRY_VENUSAUR, NATIONAL_DEX_VENUSAUR, BODY_COLOR_GREEN,
     gMonFrontPic_Edensaur, gMonBackPic_Edensaur, gMonPalette_Edensaur, gMonShinyPalette_Edensaur, gMonIcon_Edensaur,
-    sEdensaurLevelUpLearnset, sVenusaurTeachableLearnset),
+    sEdensaurLevelUpLearnset, sVenusaurTeachableLearnset, 0, 7, P_GBA_STYLE_SPECIES_ICONS ? 1 : 4),
 
 PJR_RED_SPECIES(SPECIES_CHARAXIS, 80, 120, 85, 90, 80, 125, TYPE_FIRE, TYPE_FLYING,
     ABILITY_GALE_WINGS, "CHARAXIS", CRY_CHARIZARD, NATIONAL_DEX_CHARIZARD, BODY_COLOR_RED,
     gMonFrontPic_Charaxis, gMonBackPic_Charaxis, gMonPalette_Charaxis, gMonShinyPalette_Charaxis, gMonIcon_Charaxis,
-    sCharaxisLevelUpLearnset, sCharizardTeachableLearnset),
+    sCharaxisLevelUpLearnset, sCharizardTeachableLearnset, 0, 1, 0),
 
 PJR_RED_SPECIES(SPECIES_FORTOTOISE, 95, 80, 155, 100, 105, 50, TYPE_WATER, TYPE_STEEL,
     ABILITY_STURDY, "FORTOTOISE", CRY_BLASTOISE, NATIONAL_DEX_BLASTOISE, BODY_COLOR_BLUE,
     gMonFrontPic_Fortotoise, gMonBackPic_Fortotoise, gMonPalette_Fortotoise, gMonShinyPalette_Fortotoise, gMonIcon_Fortotoise,
-    sFortotoiseLevelUpLearnset, sBlastoiseTeachableLearnset),
+    sFortotoiseLevelUpLearnset, sBlastoiseTeachableLearnset, 0, 5, 2),
 
 PJR_RED_SPECIES(SPECIES_KHANG, 105, 105, 95, 50, 90, 110, TYPE_NORMAL, TYPE_NORMAL,
     ABILITY_PARENTAL_BOND, "KHANG", CRY_KANGASKHAN, NATIONAL_DEX_KANGASKHAN, BODY_COLOR_BROWN,
     gMonFrontPic_Khang, gMonBackPic_Khang, gMonPalette_Khang, gMonShinyPalette_Khang, gMonIcon_Khang,
-    sKhangLevelUpLearnset, sKangaskhanTeachableLearnset),
+    sKhangLevelUpLearnset, sKangaskhanTeachableLearnset, 0, 0, P_GBA_STYLE_SPECIES_ICONS ? 1 : 2),
 
 PJR_RED_SPECIES(SPECIES_NOLAX, 100, 130, 80, 45, 90, 130, TYPE_NORMAL, TYPE_NORMAL,
     ABILITY_INSOMNIA, "NOLAX", CRY_SNORLAX, NATIONAL_DEX_SNORLAX, BODY_COLOR_BLUE,
     gMonFrontPic_Nolax, gMonBackPic_Nolax, gMonPalette_Nolax, gMonShinyPalette_Nolax, gMonIcon_Nolax,
-    sNolaxLevelUpLearnset, sSnorlaxTeachableLearnset),
+    sNolaxLevelUpLearnset, sSnorlaxTeachableLearnset, 0, 8, 3),
 
 PJR_RED_SPECIES(SPECIES_NOXICHU, 70, 110, 70, 110, 80, 125, TYPE_ELECTRIC, TYPE_DARK,
     ABILITY_INFILTRATOR, "NOXICHU", CRY_PIKACHU, NATIONAL_DEX_PIKACHU, BODY_COLOR_YELLOW,
     gMonFrontPic_Noxichu, gMonBackPic_Noxichu, gMonPalette_Noxichu, gMonShinyPalette_Noxichu, gMonIcon_Noxichu,
-    sNoxichuLevelUpLearnset, sPikachuTeachableLearnset),
+    sNoxichuLevelUpLearnset, sPikachuTeachableLearnset, 0, 20, 6),
 
 #undef PJR_RED_SPECIES
 
