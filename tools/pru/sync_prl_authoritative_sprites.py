@@ -76,52 +76,18 @@ def main():
         if assets is None:
             failures.append({"species": slug, "missing": missing})
             continue
-    # PRU sprite approval: Valkiri (same save ID as Valkyvoir) is GREEN normally,
-    # BLUE when shiny. PRL's pinned normal/shiny palettes are both blue, whereas
-    # RelicDex's separate shiny frame carries the approved green recolour.
-    # Preserve original art geometry/pixel indices; remap normal PNG colours and
-    # palettes together to avoid image/palette indexing mismatches in gbagfx.
-    if slug == "valkyvoir":
-        from io import BytesIO
-        from PIL import Image
-        def entries(raw):
-            lines = raw.decode("ascii").splitlines()
-            assert lines[:3] == ["JASC-PAL", "0100", "16"]
-            return [tuple(map(int, row.split())) for row in lines[3:19]]
-        blue = entries(assets["normal.pal"])
-        green_palette = Path("assets/pru_valkiri/normal.pal").read_bytes()
-        blue_palette = Path("assets/pru_valkiri/shiny.pal").read_bytes()
-        green = entries(green_palette)
-        assert len(blue) == len(green) == 16
-        colour_map = {a: b for a, b in zip(blue, green)}
-        # The reference archive's green shiny sprite has identical pixel geometry;
-        # only blue-to-green palette entries differ.
-        assert blue != green and len({p for p in green if p not in blue}) > 2
-        for name in ("front.png", "back.png"):
-            source = Image.open(BytesIO(assets[name])).convert("RGBA")
-            pixels = list(source.getdata())
-            assert source.size == (64, 64)
-            assert {p[:3] for p in pixels if p[3]}.issubset(set(blue))
-            # gbagfx requires indexed PNG (colour type 3): RGBA PNGs are rejected.
-            # Explicitly preserve PRL donor index mapping, including the opaque
-            # black shared with the transparent slot in its original palette.
-            index_for_opaque = {}
-            for index, rgb in enumerate(blue):
-                if index > 0:
-                    index_for_opaque[rgb] = index
-            indexed = Image.new("P", source.size)
-            indexed.putpalette([component for rgb in green for component in rgb] + [0] * (768 - 48))
-            indexed.putdata([
-                0 if p[3] == 0 else index_for_opaque[p[:3]]
-                for p in pixels
-            ])
-            indexed.info["transparency"] = 0
-            output = BytesIO()
-            indexed.save(output, format="PNG")
-            assets[name] = output.getvalue()
-        assets["normal.pal"] = green_palette
-        assets["shiny.pal"] = blue_palette
-        print("VALKIRI: verified green base + blue shiny, front/back pixel shapes unchanged")
+        # No sprite recolouring: RelicDex/PRL share Valkiri's indexed art.
+        # The renderer uses the same front/back pixel indices with two palettes.
+        # RelicDex's green shiny palette becomes PRU's normal; the original
+        # PRL blue normal palette becomes PRU's shiny. Preserve PNG bytes.
+        if slug == "valkyvoir":
+            green = Path("assets/pru_valkiri/normal.pal").read_bytes()
+            blue = Path("assets/pru_valkiri/shiny.pal").read_bytes()
+            assert green != blue
+            assert b"86 160 93" in green and b"71 117 213" in blue
+            assets["normal.pal"] = green
+            assets["shiny.pal"] = blue
+            print("VALKIRI: original indexed sprites unchanged; green normal / blue shiny palettes")
         for filename, contents in assets.items():
             if slug == "noxichu" and filename in NOXICHU_BLOBS:
                 assert git_blob_sha(contents) == NOXICHU_BLOBS[filename], (
