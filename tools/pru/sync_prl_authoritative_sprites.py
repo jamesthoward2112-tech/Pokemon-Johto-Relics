@@ -76,6 +76,41 @@ def main():
         if assets is None:
             failures.append({"species": slug, "missing": missing})
             continue
+    # PRU sprite approval: Valkiri (same save ID as Valkyvoir) is GREEN normally,
+    # BLUE when shiny. PRL's pinned normal/shiny palettes are both blue, whereas
+    # RelicDex's separate shiny frame carries the approved green recolour.
+    # Preserve original art geometry/pixel indices; remap normal PNG colours and
+    # palettes together to avoid image/palette indexing mismatches in gbagfx.
+    if slug == "valkyvoir":
+        from io import BytesIO
+        from PIL import Image
+        def entries(raw):
+            lines = raw.decode("ascii").splitlines()
+            assert lines[:3] == ["JASC-PAL", "0100", "16"]
+            return [tuple(map(int, row.split())) for row in lines[3:19]]
+        blue = entries(assets["normal.pal"])
+        green_palette = Path("assets/pru_valkiri/normal.pal").read_bytes()
+        blue_palette = Path("assets/pru_valkiri/shiny.pal").read_bytes()
+        green = entries(green_palette)
+        assert len(blue) == len(green) == 16
+        colour_map = {a: b for a, b in zip(blue, green)}
+        # The reference archive's green shiny sprite has identical pixel geometry;
+        # only blue-to-green palette entries differ.
+        assert blue != green and len({p for p in green if p not in blue}) > 2
+        for name in ("front.png", "back.png"):
+            img = Image.open(BytesIO(assets[name])).convert("RGBA")
+            pixels = list(img.getdata())
+            assert img.size == (64, 64)
+            assert {p[:3] for p in pixels if p[3]}.issubset(set(blue))
+            new_pixels = [(*colour_map.get(p[:3], p[:3]), p[3]) if p[3] else p
+                          for p in pixels]
+            img.putdata(new_pixels)
+            output = BytesIO()
+            img.save(output, format="PNG")
+            assets[name] = output.getvalue()
+        assets["normal.pal"] = green_palette
+        assets["shiny.pal"] = blue_palette
+        print("VALKIRI: verified green base + blue shiny, front/back pixel shapes unchanged")
         for filename, contents in assets.items():
             if slug == "noxichu" and filename in NOXICHU_BLOBS:
                 assert git_blob_sha(contents) == NOXICHU_BLOBS[filename], (
