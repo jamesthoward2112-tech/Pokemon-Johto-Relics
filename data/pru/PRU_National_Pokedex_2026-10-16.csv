@@ -317,7 +317,7 @@ PRU_No,Name,Species_Key,Species_Constant,Category,Type_Source,Source_Tier,Notes
 316,Ralts,ralts,SPECIES_RALTS,Standard Kanto–Johto–Hoenn,"MON_TYPES(TYPE_PSYCHIC, RALTS_FAMILY_TYPE2)",PRL-Hoenn,
 317,Kirlia,kirlia,SPECIES_KIRLIA,Standard Kanto–Johto–Hoenn,"MON_TYPES(TYPE_PSYCHIC, RALTS_FAMILY_TYPE2)",PRL-Hoenn,
 318,Gardevoir,gardevoir,SPECIES_GARDEVOIR,Standard Kanto–Johto–Hoenn,"MON_TYPES(TYPE_PSYCHIC, RALTS_FAMILY_TYPE2)",PRL-Hoenn,
-319,Valkyvoir,valkyvoir,SPECIES_VALKYVOIR,PRU custom / exception,"MON_TYPES(TYPE_PSYCHIC, TYPE_FAIRY)",PRL-custom,Distinct PRU custom Pokémon; family integrated (source import/ROM QA pending).
+319,Valkiri,valkyvoir,SPECIES_VALKYVOIR,PRU custom / exception,"MON_TYPES(TYPE_PSYCHIC, TYPE_FAIRY)",PRL-custom,Distinct PRU custom Pokémon; family integrated (source import/ROM QA pending).
 320,Surskit,surskit,SPECIES_SURSKIT,Standard Kanto–Johto–Hoenn,"MON_TYPES(TYPE_BUG, TYPE_WATER)",PRL-Hoenn,
 321,Masquerain,masquerain,SPECIES_MASQUERAIN,Standard Kanto–Johto–Hoenn,"MON_TYPES(TYPE_BUG, TYPE_FLYING)",PRL-Hoenn,
 322,Shroomish,shroomish,SPECIES_SHROOMISH,Standard Kanto–Johto–Hoenn,MON_TYPES(TYPE_GRASS),PRL-Hoenn,
