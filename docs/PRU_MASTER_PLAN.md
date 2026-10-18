@@ -49,6 +49,14 @@ Status: **development only; not playable-approved**.
 - GitHub compilation verifies source integration only. Fresh-save playtesting must check early access, wild catch rate, progression and evolved-stage availability; do not equate a successful build with in-game success.
 - Any further Pokémon encounter pass must preserve this early starter availability as a regression gate.
 
+## Deferred Kanto gameplay TODO — requested 18 October 2026
+
+**STATUS: BACKLOG ONLY — do not implement during the current Johto-wide trainer and encounter difficulty rebalance.** Complete/verify the Johto curve first; preserve existing PRU story, sprite, evolution and credit work.
+
+- [ ] **Kanto roaming legendary birds:** Articuno, Zapdos and Moltres should independently roam randomly throughout appropriate Kanto outdoor routes as true roaming encounters, rather than being restricted to stationary encounters. Audit the inherited roamer engine for three simultaneous active roamers and ensure roaming movement, encounter probability, Pokédex/map tracking where supported, capture/defeat persistence, re-encounter rules and any existing legendary story flags are compatible. Choose the Kanto access/unlock point during implementation; do not assume existing story encounters can be removed without a continuity audit.
+- [ ] **Kanto wild encounter species should fit their levels:** audit Route 1 and all Kanto areas, replacing implausibly high-level unevolved wild Pokémon with their suitable evolutions. Example: a high-level Pidgey should generally be Pidgeot (or Pidgeotto at an appropriate lower level), and a high-level Rattata should generally be Raticate. Set stages based on evolution rules, encounter levels, location ecology and the player's post-Johto progression; retain appropriate opportunities to obtain earlier evolutionary stages elsewhere so the 444-species acquisition plan remains viable.
+- [ ] Validate Kanto day/night, grass, Surf, fishing, Rock Smash, swarm and special encounters without accidentally replacing required unique species; check encounter difficulty and story progression in an actual compiled ROM and emulator. Keep Kanto work separate from the active Johto rebalance.
+
 ## Evidence
 - `data/maps/NewBarkTown_Lab_hns/scripts.inc`: Elm, starter gift, Silver theft and multiple later Egg gift flows.
 - `data/maps/PokemonLeague_WillsRoom_hns/scripts.inc`: original, Johto Champion rematch and post-Sinjoh rematch branches.
