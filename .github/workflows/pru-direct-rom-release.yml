@@ -56,3 +56,8 @@ jobs:
               --prerelease
           fi
           gh release view "$tag" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[] | [.name, .size, .url] | @tsv'
+          # Post a link only if the release exists with the exact .gba asset.
+          url="https://github.com/$GITHUB_REPOSITORY/releases/download/$tag/Pokemon-Relics-Ultimate-2026-10-18.gba"
+          gh release view "$tag" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name' | grep -Fx 'Pokemon-Relics-Ultimate-2026-10-18.gba'
+          gh pr comment 18 --repo "$GITHUB_REPOSITORY" --body "Direct ROM (.gba, no ZIP): $url — published from successful verified Actions run 39115510891."
+
