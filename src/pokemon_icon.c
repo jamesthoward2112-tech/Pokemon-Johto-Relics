@@ -7,6 +7,7 @@
 #include "sprite.h"
 #include "data.h"
 #include "constants/pokemon_icon.h"
+#include "constants/rgb.h"
 
 struct MonIconSpriteTemplate
 {
@@ -21,6 +22,25 @@ struct MonIconSpriteTemplate
 static u8 CreateMonIconSprite(struct MonIconSpriteTemplate *, s16, s16, u8);
 static void FreeAndDestroyMonIconSprite_(struct Sprite *sprite);
 
+// Exact PRL Noxichu palette #6 (JASC-PAL donor at PRL 6ee9b984).
+// It must remain separate from the six shared vanilla icon palettes.
+static const u16 sPRLNoxichuIconPalette[16] =
+{
+    RGB(0, 0, 0), RGB(1, 1, 1), RGB(3, 3, 4), RGB(5, 5, 6),
+    RGB(8, 8, 9), RGB(13, 13, 13), RGB(13, 8, 2), RGB(20, 13, 3),
+    RGB(27, 19, 3), RGB(30, 23, 5), RGB(31, 28, 12), RGB(18, 2, 2),
+    RGB(30, 7, 2), RGB(31, 30, 24), RGB(0, 0, 0), RGB(0, 0, 0),
+};
+
+// PRL's bespoke Eeveeon palette #7; shared icon colours remain unchanged.
+static const u16 sPRLEeveeonIconPalette[16] =
+{
+    RGB(0, 0, 0), RGB(31, 29, 29), RGB(29, 26, 22), RGB(22, 20, 17),
+    RGB(25, 18, 10), RGB(18, 13, 9), RGB(26, 13, 5), RGB(19, 6, 4),
+    RGB(12, 7, 3), RGB(8, 8, 8), RGB(0, 0, 0), RGB(0, 0, 0),
+    RGB(0, 0, 0), RGB(0, 0, 0), RGB(0, 0, 0), RGB(0, 0, 0),
+};
+
 const struct SpritePalette gMonIconPaletteTable[] =
 {
     { gMonIconPalettes[0], POKE_ICON_BASE_PAL_TAG + 0 },
@@ -29,6 +49,8 @@ const struct SpritePalette gMonIconPaletteTable[] =
     { gMonIconPalettes[3], POKE_ICON_BASE_PAL_TAG + 3 },
     { gMonIconPalettes[4], POKE_ICON_BASE_PAL_TAG + 4 },
     { gMonIconPalettes[5], POKE_ICON_BASE_PAL_TAG + 5 },
+    { sPRLNoxichuIconPalette, POKE_ICON_BASE_PAL_TAG + 6 },
+    { sPRLEeveeonIconPalette, POKE_ICON_BASE_PAL_TAG + 7 },
 };
 
 static const struct OamData sMonIconOamData =
