@@ -23468,7 +23468,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     [MOVE_AMBER_BLADE] =
     {
         .name = COMPOUND_STRING("AMBER BLADE"),
-        .description = COMPOUND_STRING("PRL signature move."),
+        .description = COMPOUND_STRING("A high-crit leaf slash.\nMay lower foe's Defense."),
         .effect = EFFECT_HIT,
         .power = 95,
         .type = TYPE_GRASS,
@@ -23485,7 +23485,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     [MOVE_SUN_RITE] =
     {
         .name = COMPOUND_STRING("SUN RITE"),
-        .description = COMPOUND_STRING("PRL signature move."),
+        .description = COMPOUND_STRING("A blazing ceremonial blow.\nMay raise user's Speed."),
         .effect = EFFECT_HIT,
         .power = 95,
         .type = TYPE_FIRE,
@@ -23501,7 +23501,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     [MOVE_TECTONIC_TIDE] =
     {
         .name = COMPOUND_STRING("TECTONIC TIDE"),
-        .description = COMPOUND_STRING("PRL signature move."),
+        .description = COMPOUND_STRING("A crashing tidal strike.\nMay lower target's Defense."),
         .effect = EFFECT_HIT,
         .power = 95,
         .type = TYPE_WATER,
@@ -23517,7 +23517,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     [MOVE_EPOCH_CRASH] =
     {
         .name = COMPOUND_STRING("EPOCH CRASH"),
-        .description = COMPOUND_STRING("PRL signature move."),
+        .description = COMPOUND_STRING("A devastating ancient hit.\nMay lower target's Defense."),
         .effect = EFFECT_HIT,
         .power = 120,
         .type = TYPE_ROCK,
@@ -23533,7 +23533,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     [MOVE_RELIC_WISH] =
     {
         .name = COMPOUND_STRING("RELIC WISH"),
-        .description = COMPOUND_STRING("PRL signature move."),
+        .description = COMPOUND_STRING("Releases a powerful burst\nof ancient fairy energy."),
         .effect = EFFECT_HIT,
         .power = 100,
         .type = TYPE_FAIRY,

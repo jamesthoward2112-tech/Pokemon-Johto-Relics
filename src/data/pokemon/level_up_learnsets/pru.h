@@ -64,6 +64,8 @@ static const struct LevelUpMove sSwamplithLevelUpLearnset[] =
 };
 static const struct LevelUpMove sSkulberusLevelUpLearnset[] =
 {
+    // Offer its signature Dark attack immediately on Ancient Stone evolution.
+    LEVEL_UP_MOVE(0, MOVE_SHADOW_FANGS),
     LEVEL_UP_MOVE(1, MOVE_HOWL),
     LEVEL_UP_MOVE(1, MOVE_HYPER_FANG),
     LEVEL_UP_MOVE(1, MOVE_ODOR_SLEUTH),

@@ -24,6 +24,13 @@ KINDS = {
     "Icon": "icon.4bpp",
 }
 REQUIRED = {"noxichu", "edensaur", "charaxis", "fortotoise", "khang", "nolax", "pinsirex"}
+# These icons were already converted to the GBA shared party-icon palettes.
+# The donor's indexed PNGs have different palettes, so pointing their
+# icon graphics at PRL-authoritative artwork made party icons look corrupt.
+NORMALIZED_EEVEE_ICONS = {
+    "champeon", "lepideon", "guardeon", "obsideon", "toxeon",
+    "sphynxeon", "omeon", "drakeon", "eeveeon", "nimbeon",
+}
 NOXICHU_BLOBS = {
     "front.png": "7e866622e368249babadc1382dea74902ddba960",
     "back.png": "3d8f20356388bc46839f4f84d43c04c8977338bd",
@@ -99,6 +106,9 @@ def main():
                 dest.write_bytes(contents)
         for key, source in list(headers.items()):
             for kind, filename in KINDS.items():
+                if kind == "Icon" and slug in NORMALIZED_EEVEE_ICONS:
+                    # Leave the palette-compatible repository party icons intact.
+                    continue
                 # Only replace the exact graphics symbol of an active PRL species.
                 rx = re.compile(
                     r'(const u(?:8|16|32) gMon' + kind + '_' + symbol +

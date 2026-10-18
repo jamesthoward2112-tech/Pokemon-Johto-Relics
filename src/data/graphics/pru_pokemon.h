@@ -82,13 +82,13 @@ const u32 gMonFrontPic_Eeveeon[] = INCBIN_U32("graphics/pokemon/prl_authoritativ
 const u16 gMonPalette_Eeveeon[] = INCBIN_U16("graphics/pokemon/prl_authoritative/eeveeon/normal.gbapal");
 const u32 gMonBackPic_Eeveeon[] = INCBIN_U32("graphics/pokemon/prl_authoritative/eeveeon/back.4bpp.smol");
 const u16 gMonShinyPalette_Eeveeon[] = INCBIN_U16("graphics/pokemon/prl_authoritative/eeveeon/shiny.gbapal");
-const u8 gMonIcon_Eeveeon[] = INCBIN_U8("graphics/pokemon/prl_authoritative/eeveeon/icon.4bpp");
+const u8 gMonIcon_Eeveeon[] = INCBIN_U8("graphics/pokemon/eeveeon/icon.4bpp");
 
 const u32 gMonFrontPic_Nimbeon[] = INCBIN_U32("graphics/pokemon/prl_authoritative/nimbeon/front.4bpp.smol");
 const u16 gMonPalette_Nimbeon[] = INCBIN_U16("graphics/pokemon/prl_authoritative/nimbeon/normal.gbapal");
 const u32 gMonBackPic_Nimbeon[] = INCBIN_U32("graphics/pokemon/prl_authoritative/nimbeon/back.4bpp.smol");
 const u16 gMonShinyPalette_Nimbeon[] = INCBIN_U16("graphics/pokemon/prl_authoritative/nimbeon/shiny.gbapal");
-const u8 gMonIcon_Nimbeon[] = INCBIN_U8("graphics/pokemon/prl_authoritative/nimbeon/icon.4bpp");
+const u8 gMonIcon_Nimbeon[] = INCBIN_U8("graphics/pokemon/nimbeon/icon.4bpp");
 
 const u32 gMonFrontPic_Adnokana[] = INCBIN_U32("graphics/pokemon/adnokana/front.4bpp.smol");
 const u16 gMonPalette_Adnokana[] = INCBIN_U16("graphics/pokemon/adnokana/normal.gbapal");
