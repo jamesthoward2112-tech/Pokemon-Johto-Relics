@@ -36,7 +36,7 @@ def request(name: str) -> bytes:
         return response.read()
 
 def git_blob_sha(payload: bytes) -> str:
-    return hashlib.sha1(b"blob " + str(len(payload)).encode() + b"\\0" + payload).hexdigest()
+    return hashlib.sha1(b"blob " + str(len(payload)).encode() + b"\0" + payload).hexdigest()
 
 def donor_assets(data: tuple[str, str]):
     symbol, slug = data
@@ -54,7 +54,7 @@ def donor_assets(data: tuple[str, str]):
 def main():
     # Canonical PRL species list, not names guessed from unrelated sprite folders.
     donor_species = request("src/data/pokemon/species_info/prl_custom.h").decode()
-    names = sorted(set(re.findall(r"\\[SPECIES_([A-Z0-9_]+)\\]\\s*=", donor_species)))
+    names = sorted(set(re.findall(r"\[SPECIES_([A-Z0-9_]+)\]\s*=", donor_species)))
     headers = {str(path): path.read_text() for path in GFX_HEADERS}
     active = []
     for name in names:
@@ -89,15 +89,8 @@ def main():
                 # Only replace the exact graphics symbol of an active PRL species.
                 rx = re.compile(
                     r'(const u(?:8|16|32) gMon' + kind + '_' + symbol +
-                    r'\\[\\] = INCBIN_U(?:8|16|32)\\(")' +
-                    r'graphics/pokemon/[^"]+("];?)'
-                )
-                # The declaration suffix contains \");, not a bracket. Match its
-                # original path by finding the entire INCBIN expression instead.
-                rx = re.compile(
-                    r'(const u(?:8|16|32) gMon' + kind + '_' + symbol +
-                    r'\\[\\] = INCBIN_U(?:8|16|32)\\(")' +
-                    r'graphics/pokemon/[^"]+("\\);)'
+                    r'\[\] = INCBIN_U(?:8|16|32)\(")' +
+                    r'graphics/pokemon/[^"]+("\);)'
                 )
                 source = rx.sub(
                     lambda m: m.group(1) + "graphics/pokemon/prl_authoritative/" +
@@ -118,7 +111,7 @@ def main():
     report.write_text(json.dumps({
         "pinned_prl_commit": PRL_SHA, "active_PRL_species": len(active),
         "ported": manifest, "unavailable_donor_sprites": failures
-    }, indent=2) + "\\n")
+    }, indent=2) + "\n")
     print("PRL artwork imported", len(manifest), "species", "skipped", len(failures))
     if failures:
         print("DONOR GAPS", failures)
