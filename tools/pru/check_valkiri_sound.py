@@ -21,6 +21,13 @@ gardevoir = gardevoir_data.split("sGardevoirLevelUpLearnset[]", 1)[1].split("LEV
 assert "#if IS_HNS" in gardevoir
 assert "LEVEL_UP_MOVE(36, MOVE_ROUND)" in gardevoir
 assert "LEVEL_UP_MOVE(38, MOVE_HYPER_VOICE)" in gardevoir
+# Previously levelled Gardevoir can visit the Move Expert immediately, or
+# receive both missing moves once again at level 43 in an old save.
+assert "LEVEL_UP_MOVE(43, MOVE_ROUND)" in gardevoir
+assert "LEVEL_UP_MOVE(43, MOVE_HYPER_VOICE)" in gardevoir
+relearner = Path("src/move_relearner.c").read_text()
+assert "GetSpeciesLevelUpLearnset(species)" in relearner
+assert "GetLevelFromBoxMonExp(mon)" in relearner
 
 
 shop = Path("data/maps/GoldenrodCity_DepartmentStore_2F_hns/scripts.inc").read_text()
