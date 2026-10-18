@@ -264,3 +264,12 @@ const u32 gMonFrontPic_VictreebelReduxJJ[] = INCBIN_U32("graphics/pokemon/victre
 const u16 gMonPalette_VictreebelReduxJJ[] = INCBIN_U16("graphics/pokemon/victreebel/redux/front.gbapal");
 const u32 gMonFrontPic_TyranitarReduxJJ[] = INCBIN_U32("graphics/pokemon/tyranitar/mega_redux/front.4bpp.smol");
 const u16 gMonPalette_TyranitarReduxJJ[] = INCBIN_U16("graphics/pokemon/tyranitar/mega_redux/front.gbapal");
+
+// Approved PRL icon used by the dedicated Relic species.
+const u8 gMonIcon_Noxichu[] = INCBIN_U8("graphics/pokemon/prl_authoritative/noxichu/icon.4bpp");
+
+// Approved PRL icon used by the dedicated Relic species.
+const u8 gMonIcon_Khang[] = INCBIN_U8("graphics/pokemon/prl_authoritative/khang/icon.4bpp");
+
+// Approved PRL icon used by the dedicated Relic species.
+const u8 gMonIcon_Nolax[] = INCBIN_U8("graphics/pokemon/prl_authoritative/nolax/icon.4bpp");
