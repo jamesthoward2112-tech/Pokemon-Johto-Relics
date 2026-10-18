@@ -1,0 +1,52 @@
+name: Publish direct Johto-rebalanced PRU GBA
+
+on:
+  push:
+    branches:
+      - pru/johto-full-rebalance-20261018
+    paths:
+      - .github/workflows/pru-johto-direct-rom-release.yml
+
+permissions:
+  contents: write
+  actions: read
+  pull-requests: write
+
+jobs:
+  publish-direct-rom:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require successful verified Johto build
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          conclusion="$(gh run view 39124329130 --repo "$GITHUB_REPOSITORY" --json conclusion --jq '.conclusion')"
+          echo "Verified source build conclusion: $conclusion"
+          test "$conclusion" = success
+      - name: Retrieve verified GBA and publish non-ZIP prerelease
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/rebalanced_rom"
+          gh run download 39124329130 --repo "$GITHUB_REPOSITORY" --name PRU-Consolidated-WIP --dir "$RUNNER_TEMP/rebalanced_rom"
+          test "$(find "$RUNNER_TEMP/rebalanced_rom" -type f -name '*.gba' | wc -l)" -eq 1
+          original="$(find "$RUNNER_TEMP/rebalanced_rom" -type f -name '*.gba' -print -quit)"
+          rom="$RUNNER_TEMP/Pokemon-Relics-Ultimate-Johto-Rebalanced-2026-10-18.gba"
+          cp "$original" "$rom"
+          test "$(stat -c%s "$rom")" -eq 33554432
+          sha256sum "$rom"
+          tag="pru-johto-rebalanced-2026-10-18"
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$tag" "$rom" --repo "$GITHUB_REPOSITORY" --clobber
+          else
+            gh release create "$tag" "$rom" --repo "$GITHUB_REPOSITORY" \
+              --target 4eb748dd6c4376c6a56094844be98289122d0ca0 \
+              --title "Pokémon Relics Ultimate — Johto rebalance test ROM" \
+              --notes "Verified PRU Johto balance build from GitHub Actions run 39124329130. Rebalanced 202 trainer teams, 37 wild map areas and 145 level-appropriate wild evolution slots. The exact .gba is playable as a test build; fresh trainer/battle and existing-save gameplay QA remain outstanding. Source: PR #19." \
+              --prerelease
+          fi
+          gh release view "$tag" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[] | [.name,.size,.url] | @tsv'
