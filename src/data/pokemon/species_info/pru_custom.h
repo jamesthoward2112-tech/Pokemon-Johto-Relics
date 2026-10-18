@@ -42,7 +42,7 @@
     .palette = gMonPalette_Valkyvoir, .shinyPalette = gMonShinyPalette_Valkyvoir,
     .iconSprite = gMonIcon_Valkyvoir, .iconPalIndex = 1,
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-    .levelUpLearnset = sGardevoirLevelUpLearnset, .teachableLearnset = sGardevoirTeachableLearnset,
+    .levelUpLearnset = sValkiriLevelUpLearnset, .teachableLearnset = sGardevoirTeachableLearnset,
 },
 [SPECIES_SCEPTITAN] =
 {
