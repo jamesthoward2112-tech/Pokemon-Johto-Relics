@@ -18,7 +18,7 @@ def team_levels(party, name):
 slots = {
     "Route37": ("TRAINER_STEEVE_NEEVEE_ROUTE37_HNS", [(13,29), (14,29)], [30,30,31,32], "TRAINER_STEEVE_NEEVEE_ROUTE3_HNS"),
     "Route47": ("TRAINER_STEEVE_NEEVEE_ROUTE47_HNS", [(83,29), (84,29)], [38,38,39,40], "TRAINER_STEEVE_NEEVEE_SS_ANNE_HNS"),
-    "Route44": ("TRAINER_STEEVE_NEEVEE_ROUTE44_HNS", [(61,13), (62,13)], [44,44,45,45,46,47], "TRAINER_STEEVE_NEEVEE_TOWER_HNS"),
+    "Route44": ("TRAINER_STEEVE_NEEVEE_ROUTE44_HNS", [(65,15), (66,15)], [44,44,45,45,46,47], "TRAINER_STEEVE_NEEVEE_TOWER_HNS"),
     "Route3": ("TRAINER_STEEVE_NEEVEE_KANTO_ROUTE3_HNS", [(33,3), (34,3)], [61,61,62,62,63,64], "TRAINER_STEEVE_NEEVEE_ROUTE23_HNS"),
 }
 party = read("src/data/trainers_hns.party")
@@ -30,6 +30,20 @@ for area,(alias,coords,levels,original) in slots.items():
     script = read(f"data/maps/{area}_hns/scripts.inc")
     assert f"#define {alias} " in opponents and original in opponents.split(f"#define {alias} ",1)[1].splitlines()[0],alias
     assert team_levels(party,original)==levels,(area,team_levels(party,original))
+    # Actual map block passability, not just non-overlap: prevent spawning
+    # recurring trainers on impassable cliffs/water (Route 44 originally did).
+    layout = next(
+        item for item in json.loads(read("data/layouts/layouts.json"))["layouts"]
+        if item["id"] == entry["layout"]
+    )
+    tiles = (ROOT / layout["blockdata_filepath"]).read_bytes()
+    assert len(tiles) == layout["width"] * layout["height"] * 2, area
+    for x, y in coords:
+        assert 0 <= x < layout["width"] and 0 <= y < layout["height"], (area,x,y)
+        offset = (y * layout["width"] + x) * 2
+        block = int.from_bytes(tiles[offset:offset + 2], "little")
+        assert (block >> 10) & 3 == 0, (area,x,y,"blocked collision")
+        assert block >> 12 in (3,4), (area,x,y,"unexpected elevation")
     for name,xy in zip(("Steevee","Neevee"),coords):
         label=f"{area}_EventScript_{name}"
         obj=[o for o in entry["object_events"] if o["script"]==label]

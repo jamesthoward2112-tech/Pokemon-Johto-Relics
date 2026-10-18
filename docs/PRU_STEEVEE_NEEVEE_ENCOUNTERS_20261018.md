@@ -6,7 +6,7 @@
 |---|---|---|---|
 | 1 | Johto Route 37, replacing Ann & Anne at x13/14 y29 | Eevee 30; Eevee 30; Espeon 31; Umbreon 32 | 675 |
 | 2 | Johto Route 47, two new NPCs beside the existing couple (x83/84 y29) | Vaporeon 38; Jolteon 38; Flareon 39; Omeon 40 | 676 |
-| 3 | Johto Route 44, x61/62 y13 before Blackthorn | Flareon 44; Omeon 44; Espeon 45; Umbreon 45; Toxeon 46; Nimbeon 47 | 677 |
+| 3 | Johto Route 44, x65/66 y15 before Blackthorn | Flareon 44; Omeon 44; Espeon 45; Umbreon 45; Toxeon 46; Nimbeon 47 | 677 |
 | 4 | Kanto Route 3, x33/34 y3 past Pewter | Vaporeon 61; Jolteon 61; Flareon 62; Toxeon 62; Nimbeon 63; Eeveeon 64 | 678 |
 
 - Both NPCs trigger the same **double battle** at each location; both have independent post-battle dialogue. Separate trainer IDs mean defeating one visit does not cancel another.
