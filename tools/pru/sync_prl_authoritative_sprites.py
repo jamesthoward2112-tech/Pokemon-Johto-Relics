@@ -27,6 +27,10 @@ REQUIRED = {"noxichu", "edensaur", "charaxis", "fortotoise", "khang", "nolax", "
 # These icons were already converted to the GBA shared party-icon palettes.
 # The donor's indexed PNGs have different palettes, so pointing their
 # icon graphics at PRL-authoritative artwork made party icons look corrupt.
+# Feralodon has an original blue/cyan PJR sprite pack distinct from the dark
+# later PRL version. The player explicitly requested the original non-black
+# PJR visual; preserve this one battle-graphics exception across PRL syncs.
+PJR_VISUAL_OVERRIDES = {"feralodon"}
 NORMALIZED_EEVEE_ICONS = {
     "champeon", "lepideon", "guardeon", "obsideon", "toxeon",
     "sphynxeon", "omeon", "drakeon", "eeveeon", "nimbeon",
@@ -105,6 +109,8 @@ def main():
             if not dest.exists() or dest.read_bytes() != contents:
                 dest.write_bytes(contents)
         for key, source in list(headers.items()):
+            if slug in PJR_VISUAL_OVERRIDES:
+                continue  # Keep the original PJR blue/cyan front/back and palettes.
             for kind, filename in KINDS.items():
                 if kind == "Icon" and slug in NORMALIZED_EEVEE_ICONS:
                     # Leave the palette-compatible repository party icons intact.

@@ -79,6 +79,21 @@ for slug in slugs:
 assert 'kind == "Icon" and slug in NORMALIZED_EEVEE_ICONS' in sync
 
 
+# Original PJR Feralodon is a different, blue/cyan 64x64 indexed sprite,
+# not the black PRL-authoritative/locked variation.
+for asset in ("front.4bpp.smol", "back.4bpp.smol", "normal.gbapal", "shiny.gbapal"):
+    expected = 'graphics/pokemon/pjr/feralodon/' + asset
+    assert expected in gfx, "PJR Feralodon battle art was overwritten: " + asset
+assert 'PJR_VISUAL_OVERRIDES = {"feralodon"}' in sync
+assert 'if slug in PJR_VISUAL_OVERRIDES:' in sync
+pjr_feralodon_palette = read("graphics/pokemon/pjr/feralodon/normal.pal")
+assert "0 222 255" in pjr_feralodon_palette and "246 82 90" in pjr_feralodon_palette
+for name in ("front", "back"):
+    file_data = (Path("graphics/pokemon/pjr/feralodon") / (name + ".png")).read_bytes()
+    assert file_data[:8] == bytes.fromhex("89504e470d0a1a0a"), name
+    width, height, depth, mode, *_ = struct.unpack(">IIBBBBB", file_data[16:29])
+    assert (width, height, depth, mode) == (64, 64, 4, 3), (name, width, height, depth, mode)
+
 # Every PRU canonical species and move must use the same display casing.
 for gen in (1, 2, 3):
     families = read(f"src/data/pokemon/species_info/gen_{gen}_families.h")
