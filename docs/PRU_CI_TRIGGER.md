@@ -104,3 +104,10 @@ QA exception: TestMap1_hns has an intentionally unreachable Chansey placeholder 
 
 ### Johto Gym leader rebalance — source + full ROM compile (17 October)
 Rebuild PRU after commit b3a89998b37c7ca60a54850da82dba9bc466cfde updates all eight Johto leaders, badge-order conditional teams and rematch Relic species in src/data/trainers_hns.party. Verify trainerproc, complete make hns, packaged 32-MiB ROM, and preserved Noxichu Last Wish, Chansey, rare-gift systems. Details: docs/PRU_JOHTO_GYM_AUDIT_20261017.md. Reward scripts already contain 10,000 bonus, TM and special item for each gym; in-game full-bag retry QA remains outstanding.
+
+
+## 18 October — PRU Ancient Stone / Move Expert / TM labels verified ROM build
+
+This is a rebuild of PR #14's actual branch, not the older PR #13 compiled artifact. The previously distributed verified PRU-Consolidated-WIP ROM (source 3237ae9b) still displays ANCIENT TUSK / FROST MIRROR / ANCIENT HORN / ANCIENT PLUME / ANCIENT BELL in the department-store purchase screen; that is expected of the old ROM and must not be described as proof these fixes made it into a playable binary.
+
+Run python3 tools/pru/check_relic_stone_services.py, all existing source and donor checks, full make hns, compiled ROM audit, mGBA boot/title checks, and upload a SHA-256-labelled ROM artifact from this exact head. Preserve existing donor credits, PRL Jessie/James and Eevee Twins additions, original Last Wish/Noxichu title, Rocket trio fixes and all 444 species. Distinguish boot from gameplay QA; in-game shop stock, Move Expert and Lv45 Ancient Stone evolutions still require save-state gameplay tests.
