@@ -273,3 +273,8 @@ const u8 gMonIcon_Khang[] = INCBIN_U8("graphics/pokemon/prl_authoritative/khang/
 
 // Approved PRL icon used by the dedicated Relic species.
 const u8 gMonIcon_Nolax[] = INCBIN_U8("graphics/pokemon/prl_authoritative/nolax/icon.4bpp");
+const u32 gMonFrontPic_Pinsirex[] = INCBIN_U32("graphics/pokemon/prl_authoritative/pinsirex/front.4bpp.smol");
+const u32 gMonBackPic_Pinsirex[] = INCBIN_U32("graphics/pokemon/prl_authoritative/pinsirex/back.4bpp.smol");
+const u16 gMonPalette_Pinsirex[] = INCBIN_U16("graphics/pokemon/prl_authoritative/pinsirex/normal.gbapal");
+const u16 gMonShinyPalette_Pinsirex[] = INCBIN_U16("graphics/pokemon/prl_authoritative/pinsirex/shiny.gbapal");
+const u8 gMonIcon_Pinsirex[] = INCBIN_U8("graphics/pokemon/prl_authoritative/pinsirex/icon.4bpp");
