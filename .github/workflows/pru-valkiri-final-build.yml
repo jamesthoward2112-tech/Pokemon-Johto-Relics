@@ -1,0 +1,330 @@
+name: PRU Valkiri, sprites and TM final build
+
+on:
+  push:
+    branches: [pru/complete-selective-integration-20261016, pru/pretest-story-services-20261016, pru/noxichu-last-wish-title-test-20261017, pru/johto-rocket-trio-fix-20261017, pru/move-expert-stones-tm-labels-20261017, pru/444-species-dex-audit-20261018, pru/full-custom-evolution-audit-20261018, pru/canonical-444-eevee-simple-items-20261018, pru/prl-sprite-position-icons-tm-20261018]
+    paths:
+      - docs/PRU_CI_TRIGGER.md
+      - tools/pru/build_noxichu_intro_trial.py
+      - tools/pru/export_battle_background_library.py
+      - tools/pru/fit_chansey_portrait.py
+      - tools/pru/verify_compiled_rom.py
+      - src/pokemon.c
+      - src/data/graphics/pjr.h
+      - src/data/graphics/pru_pokemon.h
+      - src/data/pokemon/species_info/pjr_families.h
+      - src/data/pokemon/level_up_learnsets/prl_evolution_overrides.h
+      - tools/pru/sync_prl_authoritative_sprites.py
+      - tools/pru/check_relic_evolution_moves.py
+      - data/maps/VioletCity_hns/scripts.inc
+      - tools/pru/check_rare_gifts.py
+      - assets/pru_chansey/**
+      - assets/pru_title/**
+      - .github/workflows/pru-valkiri-final-build.yml
+      - .github/workflows/pru-battle-port.yml
+      - data/maps/SlowpokeWell_B1F_hns/**
+      - data/maps/GoldenrodCity_UndergroundSwitches_hns/**
+      - data/maps/GoldenrodCity_RadioTower_4F_hns/**
+      - tools/pru/check_pretest_story.py
+      - tools/pru/check_chansey_training.py
+      - tools/pru/check_johto_rocket_trio.py
+      - tools/pru/install_prl_duo_assets.py
+      - assets/prl_duo_20261011.json
+      - include/battle_transition.h
+      - include/constants/items.h
+      - src/data/items.h
+      - include/constants/opponents_hns.h
+      - src/battle_setup.c
+      - src/battle_transition.c
+      - src/data/trainers_hns.party
+      - src/data/pokemon/species_info/gen_1_families.h
+      - tools/pru/check_relic_stone_services.py
+      - tools/pru/check_444_species_dex.py
+      - tools/pru/audit_all_custom_evolutions.py
+      - tools/pru/check_canonical_eeveelutions.py
+      - src/data/pokemon/species_info/gen_6_families.h
+      - data/pru/PRU_National_Pokedex_2026-10-16.csv
+      - src/data/pokemon/pru_dex_order.h
+      - src/move_relearner.c
+      - include/constants/pokemon.h
+      - src/data/pokemon/species_info/gen_2_families.h
+      - src/data/pokemon/species_info/gen_3_families.h
+      - data/maps/GoldenrodCity_DepartmentStore_2F_hns/scripts.inc
+  workflow_dispatch:
+
+concurrency:
+  group: pru-test-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+env:
+  UNUSED_ERROR: 0
+  DEPRECATED_ERROR: 1
+
+jobs:
+  three-starter-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify PRU first-adventure fossil/Pikachu and Relic dialogue
+        if: github.ref_name == 'pru/pretest-story-services-20261016' || (github.ref_name == 'pru/noxichu-last-wish-title-test-20261017' || (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018'))))))
+        run: python3 tools/pru/check_pretest_story.py
+      - name: Upload PRU dialogue scan report
+        if: github.ref_name == 'pru/pretest-story-services-20261016' || (github.ref_name == 'pru/noxichu-last-wish-title-test-20261017' || (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018'))))))
+        uses: actions/upload-artifact@v4
+        with:
+          name: PRU-Pretest-Story-Scan
+          path: PRU-Pretest-Story-Scan.md
+          if-no-files-found: error
+      - name: Verify repeatable PRU Chansey training doubles
+        if: (github.ref_name == 'pru/noxichu-last-wish-title-test-20261017' || (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018'))))))
+        run: python3 tools/pru/check_chansey_training.py
+      - name: Add low-level Poochyena to Route 30 wild grass
+        if: (github.ref_name == 'pru/noxichu-last-wish-title-test-20261017' || (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018'))))))
+        run: python3 tools/pru/add_route30_poochyena.py
+      - name: Verify PRU rare optional gift replacements
+        if: (github.ref_name == 'pru/noxichu-last-wish-title-test-20261017' || (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018'))))))
+        run: python3 tools/pru/check_rare_gifts.py
+      - name: Install approved PRL Jessie/James and Steevee/Neevee intros
+        if: (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018')))))
+        run: python3 tools/pru/install_prl_duo_assets.py
+      - name: Verify PRU Johto Team Rocket and PRL duo integration
+        if: (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018')))))
+        run: python3 tools/pru/check_johto_rocket_trio.py
+      - name: Verify PRU Relic Stone evolution and move-learning service regression
+        run: python3 tools/pru/check_relic_stone_services.py
+      - name: Verify all 444 PRU species and HNS summary Dex numbering
+        run: python3 tools/pru/check_444_species_dex.py
+      - name: Audit ALL 54 canonical custom evolution targets and all source evolution branches
+        run: python3 tools/pru/audit_all_custom_evolutions.py
+      - name: Upload full 444-species custom evolution audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PRU-All-Custom-Evolutions-Audit
+          path: PRU-All-Custom-Evolutions-Audit.md
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Verify 444-only evolution targets and all easy Eeveelutions
+        run: python3 tools/pru/check_canonical_eeveelutions.py
+      - name: Verify PRL evolution-level moves and all retained PJR custom learnsets
+        run: python3 tools/pru/check_relic_evolution_moves.py
+      - name: Verify PRL signature move integration
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          enum = Path('include/constants/moves.h').read_text()
+          info = Path('src/data/moves_info.h').read_text()
+          source = Path('tools/pru/donors/prl_custom_move_records.reference.h').read_text()
+          names = ('AMBER_BLADE','SUN_RITE','TECTONIC_TIDE','EPOCH_CRASH','RELIC_WISH',
+                   'EDEN_BLOOM','SCORCHWING','BASTION_CANNON','EERIE_FOG')
+          for suffix in names:
+              name = 'MOVE_' + suffix
+              assert ('    ' + name + ',') in enum or (name + ' =') in enum
+              assert ('[' + name + ']') in info
+              assert ('[' + name + ']') in source
+          assert '.weatherType = BATTLE_WEATHER_FOG' in info
+          print('PASS: 9 PRL signature move records present in the active engine tables')
+          PY
+      - name: Verify native PRL ability integration
+        run: python3 tools/pru/verify_custom_abilities.py
+      - name: Check authentic PRU move references before costly compilation
+        run: python3 tools/pru/check_custom_move_registration.py
+      - name: Verify 25 donor moves and PRL signature effect parity in source
+        run: python3 tools/pru/verify_25_donor_moves.py
+      - name: Restore exact Azul Agua donor tiles
+        run: |
+          base64 -d assets/pjr_azul_agua/building_tiles.png.b64 > data/tilesets/primary/azul_agua_building_hns/tiles.png
+          base64 -d assets/pjr_azul_agua/rock_shop_tiles.png.b64 > data/tilesets/secondary/azul_agua_rock_shop_hns/tiles.png
+          echo "19d1988dc7426e0be5957918de876e7a500ae327cc99bf53ef55d172d6a0f240  data/tilesets/primary/azul_agua_building_hns/tiles.png" | sha256sum -c -
+          echo "5dac0833356b45617e3321e3686a15460a4f88d3f631cd1697071802f21bcc6a  data/tilesets/secondary/azul_agua_rock_shop_hns/tiles.png" | sha256sum -c -
+      - name: Install toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3 python3-pil
+      - name: Archive 38 PRL Crystal Redux battle backgrounds (library only)
+        if: (github.ref_name == 'pru/noxichu-last-wish-title-test-20261017' || (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018'))))))
+        run: python3 tools/pru/export_battle_background_library.py
+      - uses: actions/upload-artifact@v4
+        if: (github.ref_name == 'pru/noxichu-last-wish-title-test-20261017' || (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018'))))))
+        with:
+          name: PRU-Battle-Background-Library-38
+          path: |
+            PRU-Battle-Background-Library-38.zip
+            PRU-Battle-Background-Library/README.md
+            PRU-Battle-Background-Library/manifest.json
+            PRU-Battle-Background-Library/Previews/Crystal_Redux_All_38_Contact_Sheet.png
+          if-no-files-found: error
+          retention-days: 30
+      - name: Install PJR Infinity donor assets
+        run: |
+          cat \
+            assets/pjr_infinity/parts/part00.txt \
+            assets/pjr_infinity/parts/part01.txt \
+            assets/pjr_infinity/parts/part02.txt \
+            assets/pjr_infinity/fixed/part030.txt \
+            assets/pjr_infinity/fixed/part031.txt \
+            assets/pjr_infinity/fixed/part032.txt \
+            assets/pjr_infinity/fixed/part0330.txt \
+            assets/pjr_infinity/fixed/part0331.txt \
+            assets/pjr_infinity/fixed/part0332.txt \
+            assets/pjr_infinity/fixed/part0333.txt \
+            assets/pjr_infinity/parts/part04.txt \
+            assets/pjr_infinity/parts/part05.txt \
+            assets/pjr_infinity/parts/part06.txt \
+            | base64 -d > /tmp/pjr-infinity-assets.zip
+          python3 - <<'PY'
+          import pathlib, shutil, zipfile
+          src = pathlib.Path('/tmp/pjr-infinity-assets')
+          with zipfile.ZipFile('/tmp/pjr-infinity-assets.zip') as zf:
+              zf.extractall(src)
+          approved_non_core = {
+              'alphoracle', 'champeon', 'guardeon', 'lepideon', 'obsideon',
+              'omeon', 'toxeon', 'sphynxeon', 'jollibird', 'grimfowl',
+              'kablowfish', 'sunflorid',
+          }
+          for species_dir in src.iterdir():
+              if not species_dir.is_dir() or species_dir.name not in approved_non_core:
+                  continue
+              dst = pathlib.Path('graphics/pokemon') / species_dir.name
+              dst.mkdir(parents=True, exist_ok=True)
+              # Party icons in the repo are palette-normalized GBA conversions of the donor icons.
+              # Keep those conversions; copying the donor PNGs here corrupts party-menu rendering.
+              for name in ('front.png', 'back.png'):
+                  shutil.copy2(species_dir / name, dst / name)
+          PY
+      - name: Check Tin Tower shortcut and final encounter
+        run: python3 tools/check_pjr_tintower_shortcut.py
+      - name: Convert approved RGBA donor sprites to indexed GBA art
+        run: python3 tools/pru/prepare_external_donor_art.py
+      - name: Assemble original Hoenn's Last Wish and approved Noxichu title
+        if: (github.ref_name == 'pru/noxichu-last-wish-title-test-20261017' || (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018'))))))
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/pru/build_noxichu_intro_trial.py
+      - name: Install approved softer natural-proportion twin Chansey trainer art
+        if: (github.ref_name == 'pru/noxichu-last-wish-title-test-20261017' || (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018'))))))
+        run: |
+          base64 -d assets/pru_chansey/approved_natural_64.png.b64 > graphics/trainers/front_pics/pru_chansey_twins.png
+          echo "aabcca878b1e775d67886aa869e386fc9af99176945af1c377924654393123b1  graphics/trainers/front_pics/pru_chansey_twins.png" | sha256sum -c -
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          img = Image.open('graphics/trainers/front_pics/pru_chansey_twins.png')
+          assert img.size == (64,64) and img.mode == 'P'
+          assert img.info.get('transparency') == 0
+          assert 1 <= len(img.getcolors()) <= 16
+          assert img.getbbox() is not None
+          Path('PRU-QA').mkdir(exist_ok=True)
+          img.save('PRU-QA/approved-soft-chansey-64x64.png')
+          print('PRU_CHANSEY_APPROVED_SOFT_PASS: true 64x64 indexed, palette slot 0 transparent, original proportions')
+          PY
+      - name: Audit Eye-Unown donor image and palette
+        if: (github.ref_name == 'pru/noxichu-last-wish-title-test-20261017' || (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018'))))))
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          Path('PRU-QA').mkdir(exist_ok=True)
+          for name in ('front.png', 'back.png', 'shiny_front.png', 'shiny_back.png', 'icon.png'):
+              path = Path('graphics/pokemon/unown_eye') / name
+              if not path.exists():
+                  continue
+              image = Image.open(path)
+              print('EYE_UNOWN_ASSET', name, image.mode, image.size, 'used-colours', len(image.convert('RGB').getcolors(maxcolors=100000) or []))
+              image.save(Path('PRU-QA') / ('eye-unown-' + name))
+          PY
+      - name: Install pinned PRL-authoritative Relic front back icon and palettes
+        if: github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018'
+        run: python3 tools/pru/sync_prl_authoritative_sprites.py
+      - name: Verify final Valkiri visuals, sound moves and held item
+        run: python3 tools/pru/check_valkiri_sound.py
+      - name: Build PRU consolidated integration
+        run: |
+          if make hns -j2 -O > /tmp/pru-build.log 2>&1; then
+            echo "ROM compilation completed successfully."
+          else
+            echo "First compiler/linker errors:"
+            grep -n -m 70 -E 'error:|Error:|undefined reference|make: \*\*\*' /tmp/pru-build.log || true
+            echo "Build log tail:"
+            tail -n 55 /tmp/pru-build.log
+            exit 1
+          fi
+      - name: Audit actual compiled PRU binary and mark distinct test header
+        run: |
+          arm-none-eabi-nm -n pokehns.elf > PRU-QA-symbols.sym
+          python3 tools/pru/verify_compiled_rom.py
+      - name: Boot the compiled ROM in mGBA and capture gameplay evidence
+        if: (github.ref_name == 'pru/noxichu-last-wish-title-test-20261017' || (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018'))))))
+        run: |
+          set -e
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends xvfb mgba-sdl ffmpeg
+          mkdir -p PRU-QA
+          Xvfb :99 -screen 0 1024x768x24 -nolisten tcp > PRU-QA/xvfb.log 2>&1 &
+          export DISPLAY=:99 SDL_VIDEODRIVER=x11 SDL_AUDIODRIVER=dummy
+          sleep 2
+          mgba -3 pokehns.gba > PRU-QA/mgba.log 2>&1 &
+          EMU_PID=$!
+          sleep 6
+          kill -0 "$EMU_PID" || (cat PRU-QA/mgba.log; exit 1)
+          ffmpeg -hide_banner -loglevel error -f x11grab -video_size 1024x768 -framerate 1 -i :99.0 -t 90 -c:v libx264 -preset ultrafast -pix_fmt yuv420p PRU-QA/boot-evidence.mp4
+          kill "$EMU_PID" || true
+          # Screenshot the two KNOWN Celebi/Jirachi passes (verified in run #76).
+          # A boot-only process check missed these frames in earlier reviews.
+          ffmpeg -hide_banner -loglevel error -y -ss 9 -i PRU-QA/boot-evidence.mp4 -frames:v 1 PRU-QA/celebi-jirachi-forest.png
+          ffmpeg -hide_banner -loglevel error -y -ss 17 -i PRU-QA/boot-evidence.mp4 -frames:v 1 PRU-QA/celebi-jirachi-moon.png
+          ffmpeg -hide_banner -loglevel error -y -ss 35 -i PRU-QA/boot-evidence.mp4 -frames:v 1 PRU-QA/noxichu-title-visible.png
+          test -s PRU-QA/celebi-jirachi-forest.png
+          test -s PRU-QA/celebi-jirachi-moon.png
+          test -s PRU-QA/noxichu-title-visible.png
+      - uses: actions/upload-artifact@v4
+        if: always() && (github.ref_name == 'pru/noxichu-last-wish-title-test-20261017' || (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018'))))))
+        with:
+          name: PRU-MGBA-BOOT-EVIDENCE
+          path: PRU-QA/
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Commit verified PRL sprite imports to the PRU development branch
+        if: github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/data/graphics/pjr.h src/data/graphics/pru_pokemon.h graphics/pokemon/prl_authoritative/
+          if ! git diff --cached --quiet; then
+            git commit -m 'art(pru): persist verified authoritative PRL Relic sprites'
+            git push origin HEAD:pru/prl-sprite-position-icons-tm-20261018
+          fi
+      - name: Package PRU ROM for testing
+        run: |
+          cp pokehns.gba PRU-Consolidated-WIP.gba
+          arm-none-eabi-nm -n pokehns.elf > PRU-Consolidated-WIP.sym
+          sha256sum PRU-Consolidated-WIP.gba > PRU-Consolidated-WIP-SHA256.txt
+          printf "%s\n" "$GITHUB_SHA" > PRU-Consolidated-WIP-Commit.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PRU-Consolidated-WIP
+          path: |
+            PRU-Consolidated-WIP.gba
+            PRU-Consolidated-WIP.sym
+            PRU-Consolidated-WIP-SHA256.txt
+            PRU-Consolidated-WIP-Commit.txt
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Package approved Noxichu + Last Wish title test
+        if: (github.ref_name == 'pru/noxichu-last-wish-title-test-20261017' || (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018'))))))
+        run: |
+          cp pokehns.gba PRU-Noxichu-LastWish-TEST.gba
+          sha256sum PRU-Noxichu-LastWish-TEST.gba > PRU-Noxichu-LastWish-TEST.sha256
+      - uses: actions/upload-artifact@v4
+        if: (github.ref_name == 'pru/noxichu-last-wish-title-test-20261017' || (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018'))))))
+        with:
+          name: PRU-Noxichu-LastWish-TEST
+          path: |
+            PRU-Noxichu-LastWish-TEST.gba
+            PRU-Noxichu-LastWish-TEST.sha256
+          if-no-files-found: error
+          retention-days: 14
