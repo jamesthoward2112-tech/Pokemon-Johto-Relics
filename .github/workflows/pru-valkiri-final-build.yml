@@ -456,8 +456,8 @@ jobs:
         if: github.ref_name == 'pru/radio4f-stair-ambush-noxichu-20261018'
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: pru-combined-pjr-feralodon-2026-10-18
-          ROM: Pokemon-Relics-Ultimate-PJR-Feralodon-Final-2026-10-18.gba
+          TAG: pru-rocket-fixed-mega-feraligatr-2026-10-18
+          ROM: Pokemon-Relics-Ultimate-Rocket-Fixed-Mega-Feraligatr-2026-10-18.gba
         run: |
           test "$(stat -c %s pokehns.gba)" -eq 33554432
           cp pokehns.gba "$ROM"
@@ -468,7 +468,7 @@ jobs:
             gh release create "$TAG" "$ROM" \
               --repo "${{ github.repository }}" \
               --target "$GITHUB_SHA" \
-              --title "PRU combined Rocket, Noxichu, Boomburst, Fear and original PJR Feralodon" \
-              --notes "Direct 32 MiB GBA. Jessie and James with Meowth enter only after 4F left staircase automatically, rush into position and run out after battle without fading. Includes all PR #26 Boomburst enemy-only 140 BP, Scary Face Fear, name/move casing and ability improvements, plus all six PJR Red Relic names corrected (including Noxichu from existing saves). Full make hns, compiled-ROM audit and mGBA boot verified by pipeline; real-save in-game encounter QA still needed. Feralodon now uses the original non-black PJR blue/cyan battle sprites and palettes, with no recolour; legacy PJR has no separate party icon, so its existing icon is retained." \
+              --title "PRU Rocket stair repair and temporary Mega Feraligatr Feralodon" \
+              --notes "Direct 32 MiB GBA. Jessie and James with Meowth enter only after 4F left staircase automatically, rush into position and run out after battle without fading. Includes all PR #26 Boomburst enemy-only 140 BP, Scary Face Fear, name/move casing and ability improvements, plus all six PJR Red Relic names corrected (including Noxichu from existing saves). Full make hns, compiled-ROM audit and mGBA boot verified by pipeline; real-save in-game encounter QA still needed. Feralodon now uses the complete in-repo Mega Feraligatr front/back/icon and normal/shiny palettes as temporary art. Radio Tower Jessie/James/Meowth have a new collision-audited hallway ambush, off-camera escape and victory flag persistence; previous approved PRU fixes retained. Live saved-game Rocket QA still required." \
               --prerelease
           fi

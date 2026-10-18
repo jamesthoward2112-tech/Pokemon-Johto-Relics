@@ -646,7 +646,7 @@ PJR_FINAL_SPECIES(SPECIES_PYROCLAST, 85, 95, 85, 130, 90, 105, TYPE_FIRE, TYPE_G
 PJR_FINAL_SPECIES(SPECIES_FERALODON, 105, 135, 105, 70, 85, 80, TYPE_WATER, TYPE_DRAGON,
     ABILITY_TIDAL_ROAR, ABILITY_NONE, ABILITY_NONE, "Feralodon", CRY_FERALIGATR,
     NATIONAL_DEX_FERALIGATR, "Tidal Relic", BODY_COLOR_BLUE, gMonFrontPic_Feralodon, gMonBackPic_Feralodon,
-    gMonPalette_Feralodon, gMonShinyPalette_Feralodon, gMonIcon_Feralodon, P_GBA_STYLE_SPECIES_ICONS ? 2 : 0, sFeralodonLevelUpLearnset, sFeraligatrTeachableLearnset, 0, 0),
+    gMonPalette_Feralodon, gMonShinyPalette_Feralodon, gMonIcon_Feralodon, 0, sFeralodonLevelUpLearnset, sFeraligatrTeachableLearnset, 0, 0),
 
 PJR_FINAL_SPECIES(SPECIES_DRAKEON, 75, 130, 85, 110, 65, 80, TYPE_DRAGON, TYPE_DRAGON,
     ABILITY_INTIMIDATE, ABILITY_NONE, ABILITY_MULTISCALE, "Drakeon", CRY_EEVEE,

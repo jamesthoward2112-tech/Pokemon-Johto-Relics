@@ -79,20 +79,19 @@ for slug in slugs:
 assert 'kind == "Icon" and slug in NORMALIZED_EEVEE_ICONS' in sync
 
 
-# Original PJR Feralodon is a different, blue/cyan 64x64 indexed sprite,
-# not the black PRL-authoritative/locked variation.
-for asset in ("front.4bpp.smol", "back.4bpp.smol", "normal.gbapal", "shiny.gbapal"):
-    expected = 'graphics/pokemon/pjr/feralodon/' + asset
-    assert expected in gfx, "PJR Feralodon battle art was overwritten: " + asset
-assert 'PJR_VISUAL_OVERRIDES = {"feralodon"}' in sync
-assert 'if slug in PJR_VISUAL_OVERRIDES:' in sync
-pjr_feralodon_palette = read("graphics/pokemon/pjr/feralodon/normal.pal")
-assert "0 222 255" in pjr_feralodon_palette and "246 82 90" in pjr_feralodon_palette
-for name in ("front", "back"):
-    file_data = (Path("graphics/pokemon/pjr/feralodon") / (name + ".png")).read_bytes()
-    assert file_data[:8] == bytes.fromhex("89504e470d0a1a0a"), name
-    width, height, depth, mode, *_ = struct.unpack(">IIBBBBB", file_data[16:29])
-    assert (width, height, depth, mode) == (64, 64, 4, 3), (name, width, height, depth, mode)
+# Temporary Feralodon art must be the full in-repo Mega Feraligatr sprite set.
+# No new species ID, base Feraligatr art or battle mechanics are modified.
+for asset in ("front.4bpp.smol", "back.4bpp.smol", "normal.gbapal", "shiny.gbapal", "icon.4bpp"):
+    assert "graphics/pokemon/feraligatr/mega/" + asset in gfx
+assert 'PRU_VISUAL_OVERRIDES = {"feralodon"}' in sync
+assert 'if slug in PRU_VISUAL_OVERRIDES:' in sync
+for kind in ("front", "back", "icon"):
+    path = Path("graphics/pokemon/feraligatr/mega") / (kind + ".png")
+    data = path.read_bytes()
+    assert data[:8] == bytes.fromhex("89504e470d0a1a0a"), kind
+    w, h, depth, color_type, *_ = struct.unpack(">IIBBBBB", data[16:29])
+    assert (w, h) == ((32, 64) if kind == "icon" else (64, 64)), (kind, w, h)
+    assert color_type == 3 and depth in (1, 2, 4, 8), (kind, depth, color_type)
 
 # Every PRU canonical species and move must use the same display casing.
 for gen in (1, 2, 3):
