@@ -1,0 +1,49 @@
+name: Inspect RelicDex Valkiri source
+
+on:
+  push:
+    branches: [pru/prl-sprite-position-icons-tm-20261018]
+    paths: [.github/workflows/pru-valkiri-relicdex-inspect.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect RelicDex authoritative artwork
+        run: |
+          set -euo pipefail
+          curl -fLsS --retry 3 -o /tmp/relicdex-beta3.zip 'https://raw.githubusercontent.com/jamesthoward2112-tech/RelicDex/main/archive/relicdex-beta3.zip'
+          python3 - <<'PY'
+          import zipfile,re,io,collections,json
+          z=zipfile.ZipFile('/tmp/relicdex-beta3.zip')
+          names=z.namelist()
+          report=['# RelicDex Valkiri art inspection','',f'{len(names)} total archive entries','']
+          for s in names:
+            if re.search('valk|gardevoir|shiny|sprites|sprite|data|index|manifest|html|js|json',s,re.I):
+              report.append(f'- {s} ({z.getinfo(s).file_size} bytes)')
+          report+=['','## Text matches']
+          for s in names:
+            info=z.getinfo(s)
+            if info.file_size > 14_000_000: continue
+            if not re.search(r'\.(html|js|json|ts|css|csv|md|txt)$',s,re.I):continue
+            contents=z.read(s)
+            text=contents.decode('utf-8','replace')
+            for m in list(re.finditer('valkiri|valkyvoir',text,re.I))[:8]:
+              report.append(f'{s}: {text[max(0,m.start()-500):min(len(text),m.end()+600)][:1100]}')
+          open('docs/PRU_VALKIRI_RELICDEX_AUDIT.md','w').write('\n'.join(report)+'\n')
+          print('\n'.join(report)[:17000])
+          PY
+      - name: Store inspected donor metadata on this branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/PRU_VALKIRI_RELICDEX_AUDIT.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'docs(pru): inspect RelicDex normal/shiny Valkiri sprite data'
+            git push origin HEAD:pru/prl-sprite-position-icons-tm-20261018
+          fi
