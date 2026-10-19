@@ -1,0 +1,74 @@
+name: Publish PRU Move Bro and Dragon's Den twins direct GBA
+
+on:
+  push:
+    branches: [pru/radio4f-stair-ambush-noxichu-20261018]
+    paths:
+      - .github/workflows/pru-movebro-dragonsden-direct-release.yml
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  verified-direct-gba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BUILD_RUN: '39311024556'
+      BUILD_SHA: '8afb10eb60137ff8412d241cda00cf75a524e780'
+      TAG: 'pru-movebro-dragonsden-twins-2026-10-19'
+      ROM_NAME: 'Pokemon-Relics-Ultimate-MoveBro-DragonsDen-Twins-2026-10-19.gba'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify new encounter and free relearner source
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/pru/check_steevee_neevee_encounters.py
+          python3 - <<'PY'
+          from pathlib import Path
+          src = Path("data/maps/BlackthornCity_House3_hns/scripts.inc").read_text()
+          assert "ITEM_HEART_SCALE" not in src, "Blackthorn still requests Heart Scale"
+          assert "special TeachMoveRelearnerMove\n\twaitstate\n\tgoto BlackthornCity_MoveRelearnersHouse_EventScript_ChooseMon" in src, "Relearner must loop after teaching"
+          print("PASS: Blackthorn Move Bro is free and repeatable.")
+          PY
+      - name: Require complete green full ROM build and mGBA boot
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh run watch "$BUILD_RUN" --repo "$GITHUB_REPOSITORY" --interval 10 --exit-status
+          ACTUAL_SHA="$(gh run view "$BUILD_RUN" --repo "$GITHUB_REPOSITORY" --json headSha --jq '.headSha')"
+          CONCLUSION="$(gh run view "$BUILD_RUN" --repo "$GITHUB_REPOSITORY" --json conclusion --jq '.conclusion')"
+          echo "Built SHA: $ACTUAL_SHA; conclusion: $CONCLUSION"
+          test "$CONCLUSION" = success
+          test "$ACTUAL_SHA" = "$BUILD_SHA"
+      - name: Verify exact built ROM, hash, SHA provenance and 32 MiB size
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/pru_verified"
+          gh run download "$BUILD_RUN" --repo "$GITHUB_REPOSITORY" --name PRU-Consolidated-WIP --dir "$RUNNER_TEMP/pru_verified"
+          cd "$RUNNER_TEMP/pru_verified"
+          test "$(cat PRU-Consolidated-WIP-Commit.txt)" = "$BUILD_SHA"
+          sha256sum -c PRU-Consolidated-WIP-SHA256.txt
+          test "$(stat -c %s PRU-Consolidated-WIP.gba)" -eq 33554432
+          cp PRU-Consolidated-WIP.gba "$RUNNER_TEMP/$ROM_NAME"
+          sha256sum "$RUNNER_TEMP/$ROM_NAME"
+      - name: Publish standalone non-ZIP GBA prerelease
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROM="$RUNNER_TEMP/$ROM_NAME"
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$ROM" --clobber --repo "$GITHUB_REPOSITORY"
+          else
+            gh release create "$TAG" "$ROM" \
+              --repo "$GITHUB_REPOSITORY" \
+              --target "$BUILD_SHA" \
+              --title "PRU: Free Move Bro and Dragon's Den Steevee/Neevee" \
+              --notes "Direct uncompressed 32 MiB .gba for Pokemon Relics Ultimate. Built at source commit $BUILD_SHA after complete source audits, ROM compile and mGBA boot verification in GitHub Actions run $BUILD_RUN. Blackthorn Move Bro no longer asks for Heart Scales and is repeatable. Dragon's Den Lea and Pia are replaced by the fifth Steevee and Neevee double battle led by level 53 Drakeon, with their custom battle introduction. Existing trainer flags are preserved. Original save-file traversal and actual live twins battle still require user playtesting." \
+              --prerelease
+          fi
+          gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets,url --jq '{url:.url,assets:[.assets[]|{name,size,url}]}'
