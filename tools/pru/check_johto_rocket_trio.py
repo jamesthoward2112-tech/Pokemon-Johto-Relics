@@ -54,29 +54,63 @@ for name,ids,local_ids,trainer,flag,old_trigger in scenes:
         assert "localId=LOCALID_RADIO4F_JAMES" in script
         intercept = script.split("EventScript_JessieJamesStairIntercept::", 1)[1].split(
             "EventScript_NeedTwoPokemon::", 1)[0]
-        for id in (2, 5, 7):
-            assert f"applymovement {id}, GoldenrodCity_RadioTower_4F4_Movement_ApproachNorth" in intercept
-            assert f"turnobject {id}, DIR_WEST" in intercept
-        assert intercept.count("waitmovementall") == 1
+        assert "getplayerxy VAR_0x8000, VAR_0x8001" in intercept
+        assert "goto_if_eq VAR_0x8001, 5," in intercept
+        assert "goto_if_eq VAR_0x8001, 6," in intercept
+        assert "goto_if_eq VAR_0x8000, 11," in intercept
         assert "HasEnoughMonsForDoubleBattle" in intercept
-        retreat = script.split("EventScript_JessieJamesAfterBattle::",1)[1].split(
-            "EventScript_JessieJamesAlreadyDefeated::",1)[0]
-        assert "setflag "+flag in retreat
-        for id in (2, 5, 7):
-            assert f"applymovement {id}, GoldenrodCity_RadioTower_4F4_Movement_RetreatSouth" in retreat
-            assert f"removeobject {id}" in retreat
+        for local_id in (2, 5, 7):
+            for direction, steps in (("North", (3, 4, 5)), ("West", (3, 4))):
+                for count in steps:
+                    number = {3: "Three", 4: "Four", 5: "Five"}[count]
+                    cmd = f"applymovement {local_id}, GoldenrodCity_RadioTower_4F4_Movement_{direction}{number}"
+                    assert cmd in intercept, cmd
+            assert f"turnobject {local_id}, DIR_NORTH" in intercept
+        assert intercept.count("waitmovementall") == 2
+        assert "turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH" in intercept
+
+        retreat = script.split("EventScript_JessieJamesAfterBattle::", 1)[1].split(
+            "EventScript_JessieJamesAlreadyDefeated::", 1)[0]
+        assert "setflag " + flag in retreat
+        assert "goto_if_ne VAR_TEMP_3, 1," in retreat  # direct-interaction fallback
+        assert "getplayerxy VAR_0x8000, VAR_0x8001" in retreat
+        assert "goto_if_eq VAR_0x8000, 11," in retreat
+        assert "goto_if_eq VAR_0x8001, 5," in retreat
+        assert "goto_if_eq VAR_0x8001, 6," in retreat
+        for local_id in (2, 5, 7):
+            for direction, steps in (("East", (3, 4)), ("South", (3, 4, 5))):
+                for count in steps:
+                    number = {3: "Three", 4: "Four", 5: "Five"}[count]
+                    cmd = f"applymovement {local_id}, GoldenrodCity_RadioTower_4F4_Movement_{direction}{number}"
+                    assert cmd in retreat, cmd
+            assert f"removeobject {local_id}" in retreat
+        assert retreat.count("waitmovementall") == 2
         assert retreat.index("waitmovementall") < retreat.index("fadescreen FADE_TO_BLACK") < retreat.index("removeobject 5")
-        for motion, opcode in (("ApproachNorth", "walk_up"), ("RetreatSouth", "walk_faster_down")):
-            movement = script.split(f"GoldenrodCity_RadioTower_4F4_Movement_{motion}:\\n".replace("\\n", "\n"),1)[1].split("\tstep_end",1)[0]
-            assert movement.count("\t" + opcode + "\n") == 4, (motion, movement)
-        # Actual map collision data: the three NPCs move through x=13..15,
-        # y=7..11; the whole staircase intercept set is also walkable.
+        for name, opcode, count in (
+            ("NorthThree", "walk_up", 3), ("NorthFour", "walk_up", 4),
+            ("NorthFive", "walk_up", 5), ("WestThree", "walk_left", 3),
+            ("WestFour", "walk_left", 4), ("EastThree", "walk_faster_right", 3),
+            ("EastFour", "walk_faster_right", 4), ("SouthThree", "walk_faster_down", 3),
+            ("SouthFour", "walk_faster_down", 4), ("SouthFive", "walk_faster_down", 5),
+        ):
+            movement = script.split(f"GoldenrodCity_RadioTower_4F4_Movement_{name}:\\n".replace("\\n", "\n"), 1)[1].split("\tstep_end", 1)[0]
+            assert movement.count("\t" + opcode + "\n") == count, (name, movement)
+
+        # Collision and adjacency checks for every possible staircase landing:
+        # At the end, Jessie or James must stand directly below the player.
         import struct
-        blob=(ROOT / "data/layouts/GoldenrodCity_RadioTower_4F_hns/map.bin").read_bytes()
-        assert len(blob) == 32*16*2
-        for xx, yy in sorted(stair | {(xx,yy) for xx in (13,14,15) for yy in range(7,12)}):
-            tile,=struct.unpack_from("<H",blob, (yy*32+xx)*2)
+        blob = (ROOT / "data/layouts/GoldenrodCity_RadioTower_4F_hns/map.bin").read_bytes()
+        assert len(blob) == 32 * 16 * 2
+        aisle = {(x, y) for y in (6, 7, 8) for x in range(9, 16)}
+        columns = {(x, y) for y in range(6, 12) for x in (13, 14, 15)}
+        for xx, yy in sorted(stair | aisle | columns):
+            tile, = struct.unpack_from("<H", blob, (yy * 32 + xx) * 2)
             assert (tile & 0xC00) == 0 and (tile >> 12) == 3, (xx, yy, hex(tile))
+        for px, py in stair:
+            line = (10, 11, 12) if px == 11 else (9, 10, 11)
+            assert px in line[:2], (px, py, line)  # a trainer is 1 tile ahead
+            assert all((xx, py + 1) in aisle for xx in line)
+
         continue
     assert all(obj["flag"]==flag for obj in (james,jessie,meowth)),name
     assert all(obj["trainer_type"]=="TRAINER_TYPE_NORMAL" for obj in (james,jessie)),name
