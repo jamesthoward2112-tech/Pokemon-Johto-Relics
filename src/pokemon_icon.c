@@ -209,7 +209,7 @@ u8 CreateMonIconIsEgg(u16 species, void (*callback)(struct Sprite *), s16 x, s16
 #if P_GENDER_DIFFERENCES
     else if (gSpeciesInfo[species].iconSpriteFemale != NULL && IsPersonalityFemale(species, personality))
     {
-        iconTemplate.paletteTag = POKE_ICON_BASE_PAL_TAG + GetPruCustomIconPaletteIndex(species, GetPruCustomIconPaletteIndex(species, gSpeciesInfo[species].iconPalIndex)Female);
+        iconTemplate.paletteTag = POKE_ICON_BASE_PAL_TAG + GetPruCustomIconPaletteIndex(species, gSpeciesInfo[species].iconPalIndexFemale);
     }
 #endif
 
@@ -315,7 +315,7 @@ void LoadMonIconPalettePersonality(u16 species, u32 personality)
     species = SanitizeSpeciesId(species);
 #if P_GENDER_DIFFERENCES
     if (gSpeciesInfo[species].iconSpriteFemale != NULL && IsPersonalityFemale(species, personality))
-        palIndex = GetPruCustomIconPaletteIndex(species, GetPruCustomIconPaletteIndex(species, gSpeciesInfo[species].iconPalIndex)Female);
+        palIndex = GetPruCustomIconPaletteIndex(species, gSpeciesInfo[species].iconPalIndexFemale);
     else
 #endif
         palIndex = GetPruCustomIconPaletteIndex(species, gSpeciesInfo[species].iconPalIndex);
