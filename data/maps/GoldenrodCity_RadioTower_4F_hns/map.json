@@ -30,14 +30,14 @@
     {
       "local_id": "LOCALID_RADIO4F_JAMES",
       "graphics_id": "OBJ_EVENT_GFX_JAMES_HNS",
-      "x": 18,
-      "y": 7,
+      "x": 14,
+      "y": 11,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "4",
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "GoldenrodRaidoTower4_EventScript_Grunt9",
       "flag": "FLAG_PJR_JESSIE_JAMES_3_DEFEATED"
     },
@@ -70,14 +70,14 @@
     {
       "local_id": "LOCALID_RADIO4F_JESSIE",
       "graphics_id": "OBJ_EVENT_GFX_JESSIE_HNS",
-      "x": 17,
-      "y": 7,
+      "x": 13,
+      "y": 11,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "4",
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "GoldenrodRaidoTower4_EventScript_Grunt28",
       "flag": "FLAG_PJR_JESSIE_JAMES_3_DEFEATED"
     },
@@ -96,10 +96,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MON_BASE+SPECIES_MEOWTH",
-      "x": 19,
-      "y": 7,
+      "x": 15,
+      "y": 11,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -156,6 +156,69 @@
       "var": "VAR_GOLDENROD_CITY_STATE",
       "var_value": "10",
       "script": "GoldenrodCity_RadioTower_5F_EventScript_Trigger_NPCS"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesStairIntercept"
+    },
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesStairIntercept"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesStairIntercept"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesStairIntercept"
+    },
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesStairIntercept"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesStairIntercept"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesStairIntercept"
     }
   ],
   "bg_events": [

@@ -22,8 +22,8 @@ def assert_actor(events, local_id, graphics):
     assert events[local_id - 1]["graphics_id"] == graphics, (local_id, graphics)
 
 
-# PRL donor pattern: individual trainers, one double-battle opponent, with
-# explicit localId= per actor. No scripted walk-in, forced facing or run-away.
+# PRL donor pattern remains in Slowpoke Well and Goldenrod Underground.
+# Radio Tower uses a stair intercept with a synchronized physical approach and retreat.
 scenes=(
     ("SlowpokeWell_B1F_hns",(10,11,28),("10","11"),"TRAINER_GRUNT_21_HNS","FLAG_PJR_JESSIE_JAMES_1_DEFEATED","SlowpokeWell_B1F_EventScript_JessieJamesTrigger"),
     ("GoldenrodCity_UndergroundSwitches_hns",(3,6,11),("LOCALID_UNDERGROUND_JAMES","LOCALID_UNDERGROUND_JESSIE"),"TRAINER_GRUNT_10_HNS","FLAG_PJR_JESSIE_JAMES_2_DEFEATED","GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesTrigger"),
@@ -33,6 +33,51 @@ for name,ids,local_ids,trainer,flag,old_trigger in scenes:
     mapdata=map_file(name)
     script=read(f"data/maps/{name}/scripts.inc")
     james,jessie,meowth=(mapdata["object_events"][id-1] for id in ids)
+    if name == "GoldenrodCity_RadioTower_4F_hns":
+        # Unavoidable interception immediately after the LEFT 3F staircase.
+        assert all(obj["flag"] == flag for obj in (james, jessie, meowth)), name
+        assert all(obj["trainer_type"] == "TRAINER_TYPE_NONE" for obj in (james, jessie, meowth)), name
+        assert all(obj["movement_type"] == "MOVEMENT_TYPE_FACE_UP" for obj in (james, jessie, meowth)), name
+        assert all(obj["trainer_sight_or_berry_tree_id"] == "0" for obj in (james, jessie)), name
+        assert [(o["x"], o["y"]) for o in (jessie, james, meowth)] == [(13, 11), (14, 11), (15, 11)]
+        stair = {(10,5), (11,5), (9,6), (10,6), (11,6), (9,7), (10,7)}
+        coords = {(e["x"], e["y"]) for e in mapdata["coord_events"]
+                  if e["script"] == "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesStairIntercept"}
+        assert coords == stair, coords
+        assert all(e["var"] == "VAR_TEMP_3" and str(e["var_value"]) == "0"
+                   for e in mapdata["coord_events"]
+                   if e["script"] == "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesStairIntercept")
+        assert "setvar VAR_TEMP_3, 0" in script  # reset on map transition
+        assert "checktrainerflag " + trainer in script  # older saved victories
+        assert "cleartrainerflag " + trainer not in script
+        assert script.count("trainerbattle_double " + trainer + ",") == 1
+        assert "localId=LOCALID_RADIO4F_JAMES" in script
+        intercept = script.split("EventScript_JessieJamesStairIntercept::", 1)[1].split(
+            "EventScript_NeedTwoPokemon::", 1)[0]
+        for id in (2, 5, 7):
+            assert f"applymovement {id}, GoldenrodCity_RadioTower_4F4_Movement_ApproachNorth" in intercept
+            assert f"turnobject {id}, DIR_WEST" in intercept
+        assert intercept.count("waitmovementall") == 1
+        assert "HasEnoughMonsForDoubleBattle" in intercept
+        retreat = script.split("EventScript_JessieJamesAfterBattle::",1)[1].split(
+            "EventScript_JessieJamesAlreadyDefeated::",1)[0]
+        assert "setflag "+flag in retreat
+        for id in (2, 5, 7):
+            assert f"applymovement {id}, GoldenrodCity_RadioTower_4F4_Movement_RetreatSouth" in retreat
+            assert f"removeobject {id}" in retreat
+        assert retreat.index("waitmovementall") < retreat.index("fadescreen FADE_TO_BLACK") < retreat.index("removeobject 5")
+        for motion, opcode in (("ApproachNorth", "walk_up"), ("RetreatSouth", "walk_faster_down")):
+            movement = script.split(f"GoldenrodCity_RadioTower_4F4_Movement_{motion}:\\n".replace("\\n", "\n"),1)[1].split("\tstep_end",1)[0]
+            assert movement.count("\t" + opcode + "\n") == 4, (motion, movement)
+        # Actual map collision data: the three NPCs move through x=13..15,
+        # y=7..11; the whole staircase intercept set is also walkable.
+        import struct
+        blob=(ROOT / "data/layouts/GoldenrodCity_RadioTower_4F_hns/map.bin").read_bytes()
+        assert len(blob) == 32*16*2
+        for xx, yy in sorted(stair | {(xx,yy) for xx in (13,14,15) for yy in range(7,12)}):
+            tile,=struct.unpack_from("<H",blob, (yy*32+xx)*2)
+            assert (tile & 0xC00) == 0 and (tile >> 12) == 3, (xx, yy, hex(tile))
+        continue
     assert all(obj["flag"]==flag for obj in (james,jessie,meowth)),name
     assert all(obj["trainer_type"]=="TRAINER_TYPE_NORMAL" for obj in (james,jessie)),name
     assert meowth["trainer_type"]=="TRAINER_TYPE_NONE",name

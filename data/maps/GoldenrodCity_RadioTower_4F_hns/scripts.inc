@@ -36,26 +36,88 @@ GoldenrodCity_RadioTower_4F4_EventScript_Sign2::
 	release
 	end
 
-// PRL-style encounter: Jessie and James are separate native trainer NPCs,
-// but either one triggers the SAME two-Pokemon Jessie/James double battle.
-GoldenrodRaidoTower4_EventScript_Grunt9::
-	trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen, GoldenrodCity_RadioTower_4F4_Text_JessieJamesBeaten, GoldenrodCity_RadioTower_4F4_Text_JessieJamesNeedTwo, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle, localId=LOCALID_RADIO4F_JAMES
+// Radio Tower 4F LEFT-STAIR intercept (3F warp arrives at 9,5).
+// Seven adjacent coordinate triggers cover every walkable way off this stair.
+// Jessie and James and Meowth wait at (13,11),(14,11),(15,11), below
+// the initial landing. All three WALK UP TOGETHER four collision-free tiles
+// to the open y=7 aisle. The two trainers remain separate overworld actors
+// but share a single PRL-intro double battle. NPC sight must not pre-empt
+// the scripted group approach, so all three actor templates are non-trainers.
+GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesStairIntercept::
+	goto_if_set FLAG_PJR_JESSIE_JAMES_3_DEFEATED, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAlreadyDefeated
+	lockall
+	special HasEnoughMonsForDoubleBattle
+	goto_if_ne VAR_RESULT, PLAYER_HAS_TWO_USABLE_MONS, GoldenrodCity_RadioTower_4F4_EventScript_NeedTwoPokemon
+	setvar VAR_TEMP_3, 1
+	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_ApproachNorth
+	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_ApproachNorth
+	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_ApproachNorth
+	waitmovementall
+	turnobject 5, DIR_WEST
+	turnobject 2, DIR_WEST
+	turnobject 7, DIR_WEST
+	releaseall
+	setvar VAR_LAST_TALKED, LOCALID_RADIO4F_JAMES
+	goto GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesBattle
+
+GoldenrodCity_RadioTower_4F4_EventScript_NeedTwoPokemon::
+	special ShowTrainerCantBattleSpeech
+	waitmessage
+	waitbuttonpress
+	releaseall
 	end
 
+// Even if the map is reached through an unusual debug warp, talking to
+// either trainer invokes the SAME two-Pokemon double-battle encounter.
+GoldenrodRaidoTower4_EventScript_Grunt9::
+	goto_if_set FLAG_PJR_JESSIE_JAMES_3_DEFEATED, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAlreadyDefeated
+	goto GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesBattle
 GoldenrodRaidoTower4_EventScript_Grunt28::
-	trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen, GoldenrodCity_RadioTower_4F4_Text_JessieJamesBeaten, GoldenrodCity_RadioTower_4F4_Text_JessieJamesNeedTwo, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle, localId=LOCALID_RADIO4F_JESSIE
-	end
+	goto_if_set FLAG_PJR_JESSIE_JAMES_3_DEFEATED, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAlreadyDefeated
+	goto GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesBattle
+
+GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesBattle::
+	trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen, GoldenrodCity_RadioTower_4F4_Text_JessieJamesBeaten, GoldenrodCity_RadioTower_4F4_Text_JessieJamesNeedTwo, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle, localId=LOCALID_RADIO4F_JAMES
+	goto GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle
 
 GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle::
 	lockall
 	setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED
+	setvar VAR_TEMP_3, 1
 	msgbox GoldenrodCity_RadioTower_4F4_Text_JessieJamesAfter, MSGBOX_DEFAULT
 	closemessage
-	removeobject 2
+	// Retreat in parallel along the same empty columns used on entry.
+	// Fade only AFTER they have physically run toward the bottom edge,
+	// avoiding the abrupt post-battle removal of the previous ROM.
+	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_RetreatSouth
+	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_RetreatSouth
+	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_RetreatSouth
+	waitmovementall
+	fadescreen FADE_TO_BLACK
 	removeobject 5
+	removeobject 2
 	removeobject 7
+	fadescreen FADE_FROM_BLACK
 	releaseall
 	end
+
+GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAlreadyDefeated::
+	setvar VAR_TEMP_3, 1
+	end
+
+GoldenrodCity_RadioTower_4F4_Movement_ApproachNorth:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+GoldenrodCity_RadioTower_4F4_Movement_RetreatSouth:
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	step_end
 
 GoldenrodRaidoTower4_EventScript_Proton::
 	trainerbattle_single TRAINER_PROTON_2_HNS, GoldenrodCity_RadioTower_4F4_Text_Proton_Seen, GoldenrodCity_RadioTower_4F4_Text_Proton_Beaten

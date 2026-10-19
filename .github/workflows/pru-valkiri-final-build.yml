@@ -459,8 +459,8 @@ jobs:
         if: github.ref_name == 'pru/radio4f-stair-ambush-noxichu-20261018'
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: pru-rocket-donor-full-walk-2026-10-19
-          ROM: Pokemon-Relics-Ultimate-Rocket-Full-Walk-2026-10-19.gba
+          TAG: pru-rocket-unavoidable-stair-duo-2026-10-19
+          ROM: Pokemon-Relics-Ultimate-Unavoidable-Rocket-Duo-2026-10-19.gba
         run: |
           test "$(stat -c %s pokehns.gba)" -eq 33554432
           cp pokehns.gba "$ROM"
@@ -471,7 +471,7 @@ jobs:
             gh release create "$TAG" "$ROM" \
               --repo "${{ github.repository }}" \
               --target "$GITHUB_SHA" \
-              --title "PRU Jessie and James full Team Rocket ROM walking sprites, shared Rocket battles" \
-              --notes "Direct 32 MiB GBA. Replaces the crab-walking Jessie and James overworld artwork and palettes using all nine ORIGINAL 16x32 4bpp directional frames from the approved uploaded Team Rocket Jessie and James ROM donor. The 16x288 vertically stacked PNGs compile with exact original frame byte SHA256 checks in CI, and use matching RGB555 palettes. Both are distinct visible overworld trainers who trigger a shared double battle in Slowpoke Well, Goldenrod Underground and Radio Tower 4F. Meowth is a separate stationary overworld sprite. Victory hides the trio. PRL duo transition, enemy-only Boomburst, Scary Face Fear, Mega Feraligatr placeholder Feralodon and earlier fixes preserved. Full source checks, ROM compile, compiled sprite audit, binary audit, and mGBA boot precede release; user save gameplay encounter verification remains pending. DIRECT GBA ONLY, NO ZIP." \
+              --title "PRU unavoidable left-stair Rocket duo, synchronized walking and real post-battle retreat" \
+              --notes "Direct 32 MiB GBA; no ZIP. Jessie, James and Meowth begin together below the left staircase on Radio Tower 4F. Seven stair exit triggers force a shared Jessie-James double battle; they first walk north four collision-checked tiles together, then run south four tiles together after battle before fading and disappearing. Original Team Rocket donor nine-frame directional overworld sprites retained and compiled-source collision regression added, avoiding crab-walking. Separate PRL-style shared double battles in Slowpoke Well and Goldenrod Underground unchanged. PRL Jessie/James intro, temporary Mega Feraligatr Feralodon, enemies-only Boomburst, Scary Face Fear, spelling and ability UI fixes preserved. Full compilation, compiled ROM audit, and mGBA boot are mandatory; live-save Radio Tower encounter QA still needed." \
               --prerelease
           fi
