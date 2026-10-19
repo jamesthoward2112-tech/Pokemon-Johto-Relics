@@ -103,7 +103,7 @@
     .frontAnimFrames = sAnims_SingleFramePlaceHolder, .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
     .backPic = gMonBackPic_Swamplith, .backPicSize = MON_COORDS_SIZE(64, 64), .backPicYOffset = 6, .backAnimId = BACK_ANIM_NONE,
     .palette = gMonPalette_Swamplith, .shinyPalette = gMonShinyPalette_Swamplith,
-    .iconSprite = gMonIcon_Swamplith, .iconPalIndex = 8,
+    .iconSprite = gMonIcon_Swamplith, .iconPalIndex = 0,
     .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
     .levelUpLearnset = sSwamplithLevelUpLearnset, .teachableLearnset = sSwampertTeachableLearnset,
 },
