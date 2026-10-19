@@ -181,18 +181,14 @@ DragonsDen_Cavern_EventScript_Cara::
 	msgbox DragonsDen_Cavern_Text_CooltrainerfCaraAfter, MSGBOX_AUTOCLOSE
 	end
 
-DragonsDen_Cavern_EventScript_TwinLea::
-	trainerbattle_double TRAINER_LEA_AND_PIA_HNS, DragonsDen_Cavern_Text_TwinsLeaandPia1Seen, DragonsDen_Cavern_Text_TwinsLeaandPia1Beaten, Route104_Text_GinaNotEnoughMons
-	special GetPlayerBigGuyGirlString
-	msgbox DragonsDen_Cavern_Text_TwinsLeaandPia1After, MSGBOX_DEFAULT
-	release
+DragonsDen_Cavern_EventScript_Steevee::
+	trainerbattle_double TRAINER_STEEVE_NEEVEE_DRAGONS_DEN_HNS, DragonsDen_Cavern_Text_SteeveeSeen, DragonsDen_Cavern_Text_TwinsBeaten, Route104_Text_GinaNotEnoughMons
+	msgbox DragonsDen_Cavern_Text_SteeveeAfter, MSGBOX_AUTOCLOSE
 	end
-	
-DragonsDen_Cavern_EventScript_TwinPia::
-	trainerbattle_double TRAINER_LEA_AND_PIA_HNS, DragonsDen_Cavern_Text_TwinsLeaandPia2Seen, DragonsDen_Cavern_Text_TwinsLeaandPia2Beaten, Route104_Text_GinaNotEnoughMons
-	special GetPlayerBigGuyGirlString
-	msgbox DragonsDen_Cavern_Text_TwinsLeaandPia2After, MSGBOX_DEFAULT
-	release
+
+DragonsDen_Cavern_EventScript_Neevee::
+	trainerbattle_double TRAINER_STEEVE_NEEVEE_DRAGONS_DEN_HNS, DragonsDen_Cavern_Text_NeeveeSeen, DragonsDen_Cavern_Text_TwinsBeaten, Route104_Text_GinaNotEnoughMons
+	msgbox DragonsDen_Cavern_Text_NeeveeAfter, MSGBOX_AUTOCLOSE
 	end
 
 DragonsDen_Cavern_EventScript_Item_Dragon_Fang::
@@ -254,22 +250,23 @@ DragonsDen_Cavern_Text_CooltrainerfCaraAfter:
     .string "admirable dragon trainer and gain\l"
     .string "our MASTER's approval.$"
 
-DragonsDen_Cavern_Text_TwinsLeaandPia1Seen:
-    .string "It's a stranger we don't know.$"
+DragonsDen_Cavern_Text_SteeveeSeen:
+	.string "STEEVEE: There you are!\p"
+	.string "In the DRAGON'S DEN, our\n"
+	.string "EEVEELUTIONS have a surprise!$"
 
-DragonsDen_Cavern_Text_TwinsLeaandPia1Beaten:
-    .string "Ouchies.$"
+DragonsDen_Cavern_Text_NeeveeSeen:
+	.string "NEEVEE: Heard of DRAKEON?\p"
+	.string "Our dragons are ready to battle!$"
 
-DragonsDen_Cavern_Text_TwinsLeaandPia1After:
-    .string "It was like having to battle\n"
-    .string "LANCE.$"
+DragonsDen_Cavern_Text_TwinsBeaten:
+	.string "STEEVEE: Even DRAKEON lost?\p"
+	.string "NEEVEE: We'll get stronger!$"
 
-DragonsDen_Cavern_Text_TwinsLeaandPia2Seen:
-    .string "Who are you?$"
+DragonsDen_Cavern_Text_SteeveeAfter:
+	.string "STEEVEE: That was a great match!\n"
+	.string "See you again in KANTO!$"
 
-DragonsDen_Cavern_Text_TwinsLeaandPia2Beaten:
-    .string "Meanie.$"
-
-DragonsDen_Cavern_Text_TwinsLeaandPia2After:
-    .string "We'll tell on you.\p"
-    .string "MASTER will be angry with you.$"
+DragonsDen_Cavern_Text_NeeveeAfter:
+	.string "NEEVEE: Next time we'll bring\n"
+	.string "an even stronger team!$"
