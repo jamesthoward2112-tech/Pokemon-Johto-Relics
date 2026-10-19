@@ -41,6 +41,16 @@ static const u16 sPRLEeveeonIconPalette[16] =
     RGB(0, 0, 0), RGB(0, 0, 0), RGB(0, 0, 0), RGB(0, 0, 0),
 };
 
+// PRU Swamplith uses a green-detailed PRL donor icon, not Swampert's
+// shared orange icon palette. Preserve the 16 indexed colours of its PNG.
+static const u16 sPRUSwamplithIconPalette[16] =
+{
+    RGB(12, 19, 16), RGB(16, 16, 14), RGB(23, 23, 23), RGB(31, 31, 31),
+    RGB(16, 19, 11), RGB(22, 26, 14), RGB(10, 15, 9), RGB(15, 21, 10),
+    RGB(17, 15, 31), RGB(12, 9, 25), RGB(29, 14, 19), RGB(31, 22, 20),
+    RGB(20, 24, 31), RGB(13, 21, 19), RGB(12, 12, 11), RGB(8, 8, 8),
+};
+
 const struct SpritePalette gMonIconPaletteTable[] =
 {
     { gMonIconPalettes[0], POKE_ICON_BASE_PAL_TAG + 0 },
@@ -51,6 +61,7 @@ const struct SpritePalette gMonIconPaletteTable[] =
     { gMonIconPalettes[5], POKE_ICON_BASE_PAL_TAG + 5 },
     { sPRLNoxichuIconPalette, POKE_ICON_BASE_PAL_TAG + 6 },
     { sPRLEeveeonIconPalette, POKE_ICON_BASE_PAL_TAG + 7 },
+    { sPRUSwamplithIconPalette, POKE_ICON_BASE_PAL_TAG + 8 },
 };
 
 static const struct OamData sMonIconOamData =
