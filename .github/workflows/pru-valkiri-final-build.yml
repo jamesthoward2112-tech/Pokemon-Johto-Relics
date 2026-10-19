@@ -43,6 +43,10 @@ on:
       - tools/pru/check_pretest_story.py
       - tools/pru/check_chansey_training.py
       - tools/pru/check_johto_rocket_trio.py
+      - tools/pru/check_maho_merchant_progression.py
+      - data/maps/Mahoganytown_hns/**
+      - data/maps/MahoganyTown_Gym_hns/**
+      - data/maps/GoldenrodCity_hns/**
       - tools/pru/install_prl_duo_assets.py
       - tools/pru/check_prl_duo_palette.py
       - assets/prl_duo_20261011.json
@@ -117,6 +121,9 @@ jobs:
       - name: Verify Jessie and James intro has opaque bright-white artwork
         if: github.ref_name == 'pru/radio4f-stair-ambush-noxichu-20261018'
         run: python3 tools/pru/check_prl_duo_palette.py
+      - name: Verify Mahogany RageCandy merchant and Radio Tower story-state repair
+        if: github.ref_name == 'pru/radio4f-stair-ambush-noxichu-20261018'
+        run: python3 tools/pru/check_maho_merchant_progression.py
       - name: Verify PRU Johto Team Rocket and PRL duo integration
         if: (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || (github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018' || (github.ref_name == 'pru/johto-full-rebalance-20261018' || (github.ref_name == 'pru/steevee-neevee-encounters-20261018' || (github.ref_name == 'pru/pokedex-evo-discovery-20261018' || (github.ref_name == 'pru/evo-dex-444-pagination-20261018' || (github.ref_name == 'pru/party-icons-relearner-skulberus-20261018' || (github.ref_name == 'pru/global-name-move-ability-layout-20261018' || (github.ref_name == 'pru/consolidated-rocket-feralodon-fear-20261018' || github.ref_name == 'pru/radio4f-stair-ambush-noxichu-20261018')))))))))))))
         run: python3 tools/pru/check_johto_rocket_trio.py
@@ -463,8 +470,8 @@ jobs:
         if: github.ref_name == 'pru/radio4f-stair-ambush-noxichu-20261018'
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: pru-radio-tower-final-underground-removed-2026-10-19
-          ROM: Pokemon-Relics-Ultimate-No-Goldenrod-Underground-Duo-2026-10-19.gba
+          TAG: pru-mahogany-rage-candy-story-unlock-2026-10-19
+          ROM: Pokemon-Relics-Ultimate-Mahogany-RageCandy-Fix-2026-10-19.gba
         run: |
           test "$(stat -c %s pokehns.gba)" -eq 33554432
           cp pokehns.gba "$ROM"
@@ -475,7 +482,7 @@ jobs:
             gh release create "$TAG" "$ROM" \
               --repo "${{ github.repository }}" \
               --target "$GITHUB_SHA" \
-              --title "PRU approved Radio Tower duo; Goldenrod Underground duplicate removed" \
-              --notes "Direct 32 MiB GBA; no ZIP. Removes redundant Jessie, James and Meowth encounter from Goldenrod Underground switch basement, hiding all three even for pre-existing saves, with actor slots retained for local-ID compatibility. Original switch puzzle, Silver rival, grunts and items are unchanged. The approved synchronized Radio Tower 4F duo approach, battle, retreat and restored white battle-intro palette remain unchanged. Includes PRU fixes from prior build. Full build, scene regression, ROM audit and emulator boot verified; final live-save check welcome." \
+              --title "PRU Mahogany RageCandyBar progression repair and approved Rocket duo" \
+              --notes "Direct 32 MiB GBA, no ZIP. Fixes RageCandyBar merchant falsely blocking Route 44/Ice Path after Pryce or completed Rocket Tower. Prevents seventh badge from triggering the Rocket takeover a second time, repairs existing 16/6 Mahogany/Goldenrod progression regression using the completed Radio Tower Director permanent flag, and clears merchant coordinate intercepts without changing early story. Preserves approved Radio Tower Jessie and James, transition palette, and Underground removal. Story regression, compiled ROM audit and mGBA boot checked; continued live-save QA welcome." \
               --prerelease
           fi

@@ -4,13 +4,29 @@ Mahoganytown_hns_MapScripts::
 	.byte 0
 
 Mahoganytown_OnLoad::
+	// A later seventh badge must never revive the already-finished Rocket takeover.
+	// Repair in-place for old saves (state 16/6) using the permanent Director 5F flag.
+	call_if_set FLAG_HIDE_GOLDENROD_RADIOTOWER_DIRECTOR_2, MahoganyTown_EventScript_RepairClearedRadioTowerState
 	call_if_ge VAR_MAHOGANY_TOWN_STATE, 13, MahoganyTown_EventScript_FixTree
 	@ Repair saves made by builds where beating Pryce before badge 7 failed to arm the takeover.
 	call_if_eq VAR_MAHOGANY_TOWN_STATE, 15, MahoganyTown_EventScript_RepairRocketTakeoverTrigger
 	end
 
 MahoganyTown_EventScript_RepairRocketTakeoverTrigger::
+	goto_if_set FLAG_HIDE_GOLDENROD_RADIOTOWER_DIRECTOR_2, MahoganyTown_EventScript_RepairRocketTakeoverDone
 	setvar VAR_TRIGGER_ELM_ROCKET_CALL, 1
+MahoganyTown_EventScript_RepairRocketTakeoverDone::
+	return
+
+// Reusable, idempotent repair: the Director leaving Radio Tower 5F proves
+// the Rocket storyline was ALREADY completed. Old saves can have their
+// Mahogany and Goldenrod state variables rolled back by a late gym badge.
+MahoganyTown_EventScript_RepairClearedRadioTowerState::
+	setvar VAR_MAHOGANY_TOWN_STATE, 17
+	setvar VAR_GOLDENROD_CITY_STATE, 11
+	setvar VAR_TRIGGER_ELM_ROCKET_CALL, 2
+	setflag FLAG_HIDE_GOLDENROD_ROCKETS
+	clearflag FLAG_HIDE_GOLDENROD_NPCS
 	return
 
 MahoganyTown_EventScript_FixTree::
@@ -23,6 +39,7 @@ Mahoganytown_OnFrame::
 	.2byte 0
 
 Mahoganytown_EventScript_RocketTrigger::
+	goto_if_set FLAG_HIDE_GOLDENROD_RADIOTOWER_DIRECTOR_2, Mahoganytown_EventScript_RocketAlreadyCleared
 	lock
 	setspeaker Route30_Text_ElmName
 	pokenavcall ElmPhoneRadioTowerRocketTakeoverText
@@ -36,6 +53,10 @@ Mahoganytown_EventScript_RocketTrigger::
 	setvar VAR_TRIGGER_ELM_ROCKET_CALL, 2
 	delay 10
 	release
+	end
+
+Mahoganytown_EventScript_RocketAlreadyCleared::
+	call MahoganyTown_EventScript_RepairClearedRadioTowerState
 	end
 
 MahoganyTown_EventScript_TownTrigger::
@@ -96,6 +117,10 @@ MahoganyTown_EventScript_TownTrigger::
 	end
 
 MahoganyTown_EventScript_MerchantTrigger::
+	// Pryce's badge or a finished Radio Tower clears access to Route 44.
+	// A re-entered save must not get shoved back by the merchant.
+	goto_if_set FLAG_DEFEATED_MAHOGANY_TOWN_GYM, MahoganyTown_EventScript_MerchantAllowPassage
+	goto_if_set FLAG_HIDE_GOLDENROD_RADIOTOWER_DIRECTOR_2, MahoganyTown_EventScript_MerchantAllowPassage
 	lock
 	turnobject LOCALID_MAHOGANY_MERCHANT, DIR_SOUTH
 	playse SE_PIN
@@ -123,6 +148,9 @@ MahoganyTown_EventScript_MerchantTrigger::
 	release
 	end
 
+MahoganyTown_EventScript_MerchantAllowPassage::
+	end
+
 MahoganyTown_EventScript_WalkUp1::
 	applymovement OBJ_EVENT_ID_PLAYER, MahoganyTown_Movement_PlayerMerchant1
 	waitmovement 0
@@ -136,6 +164,8 @@ MahoganyTown_EventScript_WalkUp2::
 MahoganyTown_EventScript_Merchant::
 	lock
 	faceplayer
+	goto_if_set FLAG_DEFEATED_MAHOGANY_TOWN_GYM, MahoganyTown_EventScript_MerchantAfter
+	goto_if_set FLAG_HIDE_GOLDENROD_RADIOTOWER_DIRECTOR_2, MahoganyTown_EventScript_MerchantAfter
 	goto_if_eq VAR_MAHOGANY_TOWN_STATE, 17, MahoganyTown_EventScript_MerchantAfter
 	showmoneybox 0, 0
 	msgbox MahoganyTown_Text_RageCandyBarMerchantTryOne, MSGBOX_YESNO

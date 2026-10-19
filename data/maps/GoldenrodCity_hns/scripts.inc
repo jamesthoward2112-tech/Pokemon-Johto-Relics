@@ -1,5 +1,11 @@
 GoldenrodCity_hns_MapScripts::
+	// Also heal the rolled-back story if the player enters Goldenrod first.
+	map_script MAP_SCRIPT_ON_TRANSITION, GoldenrodCity_EventScript_RepairClearedRadioTowerOnEntry
 	.byte 0
+
+GoldenrodCity_EventScript_RepairClearedRadioTowerOnEntry::
+	call_if_set FLAG_HIDE_GOLDENROD_RADIOTOWER_DIRECTOR_2, MahoganyTown_EventScript_RepairClearedRadioTowerState
+	end
 
 GoldenrodCity_EventScript_Trigger:: @flagheap
 	call_if_unset FLAG_SHOWN_ELM_TOGEPI, GoldenrodCity_Elm_Togepi_Call
