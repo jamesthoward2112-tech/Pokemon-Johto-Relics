@@ -470,8 +470,8 @@ jobs:
         if: github.ref_name == 'pru/radio4f-stair-ambush-noxichu-20261018'
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: pru-mahogany-rage-candy-story-unlock-2026-10-19
-          ROM: Pokemon-Relics-Ultimate-Mahogany-RageCandy-Fix-2026-10-19.gba
+          TAG: pru-route42-mahogany-save-recovery-2026-10-19
+          ROM: Pokemon-Relics-Ultimate-Route42-Mahogany-Save-Recovery-2026-10-19.gba
         run: |
           test "$(stat -c %s pokehns.gba)" -eq 33554432
           cp pokehns.gba "$ROM"
@@ -482,7 +482,7 @@ jobs:
             gh release create "$TAG" "$ROM" \
               --repo "${{ github.repository }}" \
               --target "$GITHUB_SHA" \
-              --title "PRU Mahogany RageCandyBar progression repair and approved Rocket duo" \
-              --notes "Direct 32 MiB GBA, no ZIP. Fixes RageCandyBar merchant falsely blocking Route 44/Ice Path after Pryce or completed Rocket Tower. Prevents seventh badge from triggering the Rocket takeover a second time, repairs existing 16/6 Mahogany/Goldenrod progression regression using the completed Radio Tower Director permanent flag, and clears merchant coordinate intercepts without changing early story. Preserves approved Radio Tower Jessie and James, transition palette, and Underground removal. Story regression, compiled ROM audit and mGBA boot checked; continued live-save QA welcome." \
+              --title "PRU Route 42 to Mahogany prior-save story recovery test" \
+              --notes "Direct 32 MiB GBA, no ZIP. Targets reported Pizza Boy A crash near Route 42 east->Mahogany transition and confirmed RageCandyBar story rollback in a 29:21 save (Mahogany/Goldenrod 16/6 but already completed Radio Tower). The previous Archer trainer flag check fails in this save; recognize Director wing choice 1/2 instead, avoid checktrainerflag during town map load, restore 17/11/2, and allow merchant passage. Prior Rocket duo, white palette, Underground removal and PRU features retained. Compiled-ROM and mGBA boot checks pass before release; exact-user-save gameplay confirmation is STILL REQUIRED. Original save not committed." \
               --prerelease
           fi
