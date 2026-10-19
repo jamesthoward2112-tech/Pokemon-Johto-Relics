@@ -463,8 +463,8 @@ jobs:
         if: github.ref_name == 'pru/radio4f-stair-ambush-noxichu-20261018'
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: pru-jessie-james-white-palette-2026-10-19
-          ROM: Pokemon-Relics-Ultimate-JessieJames-White-Palette-Fix-2026-10-19.gba
+          TAG: pru-radio-tower-final-underground-removed-2026-10-19
+          ROM: Pokemon-Relics-Ultimate-No-Goldenrod-Underground-Duo-2026-10-19.gba
         run: |
           test "$(stat -c %s pokehns.gba)" -eq 33554432
           cp pokehns.gba "$ROM"
@@ -475,7 +475,7 @@ jobs:
             gh release create "$TAG" "$ROM" \
               --repo "${{ github.repository }}" \
               --target "$GITHUB_SHA" \
-              --title "PRU Jessie and James opaque-white transition and close-up stair ambush" \
-              --notes "Direct 32 MiB GBA; no ZIP. Jessie and James white banner, silhouette and smoke highlights now render opaquely: GBA 4bpp palette entry zero was near-white, and duplicated black entries 14 and 15 allow a lossless remap of all 15 original artwork colours, without replacing approved donor art or changing the PRL animation. Original unpacked asset package/checksum remains unchanged. Retains prior close-up unavoidable left-stair trio ambush, synchronized approach and retreat, and all PRU gameplay fixes. Full build, asset regression, ROM audit and mGBA boot passed; visual gameplay QA still requested." \
+              --title "PRU approved Radio Tower duo; Goldenrod Underground duplicate removed" \
+              --notes "Direct 32 MiB GBA; no ZIP. Removes redundant Jessie, James and Meowth encounter from Goldenrod Underground switch basement, hiding all three even for pre-existing saves, with actor slots retained for local-ID compatibility. Original switch puzzle, Silver rival, grunts and items are unchanged. The approved synchronized Radio Tower 4F duo approach, battle, retreat and restored white battle-intro palette remain unchanged. Includes PRU fixes from prior build. Full build, scene regression, ROM audit and emulator boot verified; final live-save check welcome." \
               --prerelease
           fi
