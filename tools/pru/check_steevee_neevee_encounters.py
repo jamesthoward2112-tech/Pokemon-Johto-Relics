@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Source regression for the four playable PRL Steevee/Neevee double battles."""
+"""Source regression for the five playable PRL Steevee/Neevee double battles."""
 import json
 import re
 from pathlib import Path
@@ -66,4 +66,30 @@ for ext in ("4bpp", "bin", "gbapal"):
     assert f'graphics/battle_transitions/prl/eevee_twins.{ext}' in transition
 assert "tools/pru/install_prl_duo_assets.py" in read(".github/workflows/pru-valkiri-final-build.yml")
 assert team_levels(party,"TRAINER_ANN_AND_ANNE_HNS")==[30,30]  # original donor data retained
-print("PRU_EEVEE_TWINS_PASS: four distinct save-stable double battles, map NPCs, escalating teams, PRL transition wiring")
+
+# Dragon's Den adds a fifth visit with its own trainer flag (679), rather than
+# recycling Lea/Pia's defeated flag (393) or any of the four other visits.
+den_map = json.loads(read("data/maps/DragonsDen_Cavern_hns/map.json"))
+den_script = read("data/maps/DragonsDen_Cavern_hns/scripts.inc")
+den_id = "TRAINER_STEEVE_NEEVEE_DRAGONS_DEN_HNS"
+assert f"#define {den_id}     679" in opponents
+assert "#define TRAINERS_COUNT_HNS                       680" in opponents
+assert "case TRAINER_STEEVE_NEEVEE_DRAGONS_DEN_HNS:" in battle
+assert team_levels(party, den_id) == [53,51,50,50,52,52]
+den_team = party.split(f"=== {den_id} ===",1)[1]
+assert "Drakeon @ Sitrus Berry" in den_team
+assert "Name: STEEVEE" in den_team
+for name, xy in (("Steevee",(7,31)),("Neevee",(7,32))):
+    label = f"DragonsDen_Cavern_EventScript_{name}"
+    actors = [o for o in den_map["object_events"] if o["script"] == label]
+    assert len(actors) == 1, (name, actors)
+    assert (actors[0]["x"],actors[0]["y"]) == xy
+    assert actors[0]["graphics_id"] == "OBJ_EVENT_GFX_TWIN_HNS"
+    assert actors[0]["trainer_type"] == "TRAINER_TYPE_NORMAL"
+    assert f"trainerbattle_double {den_id}," in den_script.split(label+"::",1)[1].split("\n\tend",1)[0]
+assert "DragonsDen_Cavern_EventScript_TwinLea" not in read("data/maps/DragonsDen_Cavern_hns/map.json")
+assert "DragonsDen_Cavern_EventScript_TwinPia" not in read("data/maps/DragonsDen_Cavern_hns/map.json")
+assert "TRAINER_LEA_AND_PIA_HNS" in opponents and team_levels(party,"TRAINER_LEA_AND_PIA_HNS") == [48,53,48,53]
+assert "STEEVEE:" in den_script and "NEEVEE:" in den_script and "DRAKEON" in den_script
+
+print("PRU_EEVEE_TWINS_PASS: five distinct save-stable double battles, Dragon\u0027s Den Drakeon, map NPCs, escalating teams, PRL intro")
