@@ -29,8 +29,10 @@ REQUIRED = {"noxichu", "edensaur", "charaxis", "fortotoise", "khang", "nolax", "
 # icon graphics at PRL-authoritative artwork made party icons look corrupt.
 # Temporary Feralodon placeholder: use the complete Mega Feraligatr sprite
 # already registered in this engine, without altering its species or forms.
-# Skip just this one automatic PRL graphic rewrite until new art is approved.
-PRU_VISUAL_OVERRIDES = {"feralodon"}
+# Donphalanx is intentionally backed by Great Tusk's exact sprites: the pinned
+# PRL species data uses GreatTusk symbols, NOT the older donphalanx art folder.
+# Do not overwrite either explicit visual decision on repeat builds.
+PRU_VISUAL_OVERRIDES = {"feralodon", "donphalanx"}
 NORMALIZED_EEVEE_ICONS = {
     "champeon", "lepideon", "guardeon", "obsideon", "toxeon",
     "sphynxeon", "omeon", "drakeon", "eeveeon", "nimbeon",
