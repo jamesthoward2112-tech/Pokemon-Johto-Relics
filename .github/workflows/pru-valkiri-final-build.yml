@@ -44,6 +44,7 @@ on:
       - tools/pru/check_chansey_training.py
       - tools/pru/check_johto_rocket_trio.py
       - tools/pru/install_prl_duo_assets.py
+      - tools/pru/check_prl_duo_palette.py
       - assets/prl_duo_20261011.json
       - include/battle_transition.h
       - include/constants/items.h
@@ -113,6 +114,9 @@ jobs:
       - name: Install approved PRL Jessie/James and Steevee/Neevee intros
         if: (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || (github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018' || (github.ref_name == 'pru/johto-full-rebalance-20261018' || (github.ref_name == 'pru/steevee-neevee-encounters-20261018' || (github.ref_name == 'pru/pokedex-evo-discovery-20261018' || (github.ref_name == 'pru/evo-dex-444-pagination-20261018' || (github.ref_name == 'pru/party-icons-relearner-skulberus-20261018' || (github.ref_name == 'pru/global-name-move-ability-layout-20261018' || (github.ref_name == 'pru/consolidated-rocket-feralodon-fear-20261018' || github.ref_name == 'pru/radio4f-stair-ambush-noxichu-20261018')))))))))))))
         run: python3 tools/pru/install_prl_duo_assets.py
+      - name: Verify Jessie and James intro has opaque bright-white artwork
+        if: github.ref_name == 'pru/radio4f-stair-ambush-noxichu-20261018'
+        run: python3 tools/pru/check_prl_duo_palette.py
       - name: Verify PRU Johto Team Rocket and PRL duo integration
         if: (github.ref_name == 'pru/johto-rocket-trio-fix-20261017' || (github.ref_name == 'pru/move-expert-stones-tm-labels-20261017' || (github.ref_name == 'pru/444-species-dex-audit-20261018' || (github.ref_name == 'pru/full-custom-evolution-audit-20261018' || (github.ref_name == 'pru/canonical-444-eevee-simple-items-20261018' || (github.ref_name == 'pru/prl-sprite-position-icons-tm-20261018' || (github.ref_name == 'pru/johto-full-rebalance-20261018' || (github.ref_name == 'pru/steevee-neevee-encounters-20261018' || (github.ref_name == 'pru/pokedex-evo-discovery-20261018' || (github.ref_name == 'pru/evo-dex-444-pagination-20261018' || (github.ref_name == 'pru/party-icons-relearner-skulberus-20261018' || (github.ref_name == 'pru/global-name-move-ability-layout-20261018' || (github.ref_name == 'pru/consolidated-rocket-feralodon-fear-20261018' || github.ref_name == 'pru/radio4f-stair-ambush-noxichu-20261018')))))))))))))
         run: python3 tools/pru/check_johto_rocket_trio.py
@@ -459,8 +463,8 @@ jobs:
         if: github.ref_name == 'pru/radio4f-stair-ambush-noxichu-20261018'
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: pru-rocket-unavoidable-stair-duo-2026-10-19
-          ROM: Pokemon-Relics-Ultimate-Unavoidable-Rocket-Duo-2026-10-19.gba
+          TAG: pru-jessie-james-white-palette-2026-10-19
+          ROM: Pokemon-Relics-Ultimate-JessieJames-White-Palette-Fix-2026-10-19.gba
         run: |
           test "$(stat -c %s pokehns.gba)" -eq 33554432
           cp pokehns.gba "$ROM"
@@ -471,7 +475,7 @@ jobs:
             gh release create "$TAG" "$ROM" \
               --repo "${{ github.repository }}" \
               --target "$GITHUB_SHA" \
-              --title "PRU unavoidable left-stair Rocket duo, synchronized walking and real post-battle retreat" \
-              --notes "Direct 32 MiB GBA; no ZIP. Jessie, James and Meowth begin together below the left staircase on Radio Tower 4F. Seven stair exit triggers force a shared Jessie-James double battle; they first walk north four collision-checked tiles together, then run south four tiles together after battle before fading and disappearing. Original Team Rocket donor nine-frame directional overworld sprites retained and compiled-source collision regression added, avoiding crab-walking. Separate PRL-style shared double battles in Slowpoke Well and Goldenrod Underground unchanged. PRL Jessie/James intro, temporary Mega Feraligatr Feralodon, enemies-only Boomburst, Scary Face Fear, spelling and ability UI fixes preserved. Full compilation, compiled ROM audit, and mGBA boot are mandatory; live-save Radio Tower encounter QA still needed." \
+              --title "PRU Jessie and James opaque-white transition and close-up stair ambush" \
+              --notes "Direct 32 MiB GBA; no ZIP. Jessie and James white banner, silhouette and smoke highlights now render opaquely: GBA 4bpp palette entry zero was near-white, and duplicated black entries 14 and 15 allow a lossless remap of all 15 original artwork colours, without replacing approved donor art or changing the PRL animation. Original unpacked asset package/checksum remains unchanged. Retains prior close-up unavoidable left-stair trio ambush, synchronized approach and retreat, and all PRU gameplay fixes. Full build, asset regression, ROM audit and mGBA boot passed; visual gameplay QA still requested." \
               --prerelease
           fi
