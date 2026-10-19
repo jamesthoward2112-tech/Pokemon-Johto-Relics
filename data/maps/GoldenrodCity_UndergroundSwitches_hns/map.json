@@ -46,13 +46,13 @@
       "x": 23,
       "y": 3,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesInteract",
-      "flag": "FLAG_TEMP_1"
+      "script": "NULL",
+      "flag": "FLAG_PJR_JESSIE_JAMES_2_DEFEATED"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BURGLAR_HNS",
@@ -91,8 +91,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesInteract",
-      "flag": "FLAG_TEMP_1"
+      "script": "NULL",
+      "flag": "FLAG_PJR_JESSIE_JAMES_2_DEFEATED"
     },
     {
       "local_id": "LOCALID_GOLDENROD_UNDERGROUND_SILVER",
@@ -157,8 +157,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesInteract",
-      "flag": "FLAG_TEMP_1"
+      "script": "NULL",
+      "flag": "FLAG_PJR_JESSIE_JAMES_2_DEFEATED"
     }
   ],
   "warp_events": [
@@ -600,42 +600,6 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "GoldenrodCity_UndergroundSwitches_InDoorAntiLock"
-    },
-    {
-      "type": "trigger",
-      "x": 24,
-      "y": 3,
-      "elevation": 0,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 24,
-      "y": 4,
-      "elevation": 0,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 18,
-      "y": 3,
-      "elevation": 0,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 18,
-      "y": 4,
-      "elevation": 0,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesTrigger"
     }
   ],
   "bg_events": [

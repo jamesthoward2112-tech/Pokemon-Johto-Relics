@@ -79,6 +79,20 @@ for slug in slugs:
 assert 'kind == "Icon" and slug in NORMALIZED_EEVEE_ICONS' in sync
 
 
+# Temporary Feralodon art must be the full in-repo Mega Feraligatr sprite set.
+# No new species ID, base Feraligatr art or battle mechanics are modified.
+for asset in ("front.4bpp.smol", "back.4bpp.smol", "normal.gbapal", "shiny.gbapal", "icon.4bpp"):
+    assert "graphics/pokemon/feraligatr/mega/" + asset in gfx
+assert 'PRU_VISUAL_OVERRIDES = {"feralodon"}' in sync
+assert 'if slug in PRU_VISUAL_OVERRIDES:' in sync
+for kind in ("front", "back", "icon"):
+    path = Path("graphics/pokemon/feraligatr/mega") / (kind + ".png")
+    data = path.read_bytes()
+    assert data[:8] == bytes.fromhex("89504e470d0a1a0a"), kind
+    w, h, depth, color_type, *_ = struct.unpack(">IIBBBBB", data[16:29])
+    assert (w, h) == ((32, 64) if kind == "icon" else (64, 64)), (kind, w, h)
+    assert color_type == 3 and depth in (1, 2, 4, 8), (kind, depth, color_type)
+
 # Every PRU canonical species and move must use the same display casing.
 for gen in (1, 2, 3):
     families = read(f"src/data/pokemon/species_info/gen_{gen}_families.h")
@@ -87,6 +101,19 @@ for gen in (1, 2, 3):
 pjr = read("src/data/pokemon/species_info/pjr_families.h")
 assert '.speciesName = _("Scarabub")' in pjr
 assert '"Feralodon", CRY_FERALIGATR' in pjr
+# PJR's six Red Relics use macro-injected species names, not .speciesName
+# literals.  Existing save party data stores NOXICHU in uppercase; the
+# GetBoxMonData nickname getter will now show Noxichu, not NOXICHU.
+red_relics = {
+    "EDENSAUR": "Edensaur", "CHARAXIS": "Charaxis",
+    "FORTOTOISE": "Fortotoise", "KHANG": "Khang",
+    "NOLAX": "Nolax", "NOXICHU": "Noxichu",
+}
+for token, proper in red_relics.items():
+    expr = rf'PJR_RED_SPECIES\(SPECIES_{token},[\s\S]*?ABILITY_[A-Z0-9_]+, "([^"]+)", CRY_'
+    matched = re.search(expr, pjr)
+    assert matched and matched.group(1) == proper, (token, matched.group(1) if matched else None)
+
 assert not re.search(r'\.speciesName\s*=\s*_\("[A-Z][A-Z -]*"\)', pjr), "legacy PJR allcaps species"
 pru = read("src/data/pokemon/species_info/pru_custom.h")
 assert '.speciesName = _("Valkiri")' in pru

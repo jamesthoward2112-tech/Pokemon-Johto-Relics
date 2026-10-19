@@ -22,75 +22,156 @@ def assert_actor(events, local_id, graphics):
     assert events[local_id - 1]["graphics_id"] == graphics, (local_id, graphics)
 
 
-well = map_file("SlowpokeWell_B1F_hns")
-well_script = read("data/maps/SlowpokeWell_B1F_hns/scripts.inc")
-assert len(well["object_events"]) == 28
-assert_actor(well["object_events"], 10, "OBJ_EVENT_GFX_JAMES_HNS")
-assert_actor(well["object_events"], 11, "OBJ_EVENT_GFX_JESSIE_HNS")
-assert_actor(well["object_events"], 28, "OBJ_EVENT_GFX_MON_BASE+SPECIES_MEOWTH")
-assert well["object_events"][27]["flag"] == "FLAG_TEMP_1"
-# Template actors must spawn close enough to render when the trigger fires.
-assert (well["object_events"][9]["x"], well["object_events"][9]["y"]) == (28, 13)
-assert (well["object_events"][10]["x"], well["object_events"][10]["y"]) == (27, 13)
-assert (well["object_events"][27]["x"], well["object_events"][27]["y"]) == (27, 12)
-coords = {
-    (ev["x"], ev["y"]) for ev in well["coord_events"]
-    if ev.get("script") == "SlowpokeWell_B1F_EventScript_JessieJamesTrigger"
-}
-assert coords == {(26, 15), (27, 15), (28, 15)}, coords
-assert "getplayerxy VAR_0x8004, VAR_0x8005" in well_script
-assert "setobjectxy 10, VAR_0x8004, 13" in well_script
-assert "setobjectxy 11, VAR_0x8006, 13" in well_script
-assert "setobjectxy 28, VAR_0x8004, 12" in well_script
-assert well_script.count("applymovement 28, ") == 2
-approach_steps = well_script.split("SlowpokeWell_B1F_Movement_JessieJamesRunIn:\n", 1)[1].split("\tstep_end", 1)[0]
-assert approach_steps == "\twalk_faster_down\n", approach_steps
-assert "SlowpokeWell_B1F_Movement_JessieJamesRunOut" not in well_script
-assert "applymovement 10, SlowpokeWell_B1F_Movement_JessieJamesRunOut" not in well_script
-assert "fadescreen FADE_TO_BLACK\n\tremoveobject 10\n\tremoveobject 11\n\tremoveobject 28" in well_script
-assert "trainerbattle_double TRAINER_GRUNT_21_HNS" in well_script
-assert "setflag FLAG_PJR_JESSIE_JAMES_1_DEFEATED" in well_script
-assert "removeobject 28" in well_script
-assert "SlowpokeWell_B1F_EventScript_LegacyRocketRescue" in well_script
-assert "SlowpokeWell_B1F_EventScript_Proton" in well_script
+# Keep the first PRL-style encounter at Slowpoke Well.
+# Remove the duplicate Goldenrod Underground encounter while retaining object slots.
+# The approved Radio Tower approach and retreat must remain untouched.
+scenes=(
+    ("SlowpokeWell_B1F_hns",(10,11,28),("10","11"),"TRAINER_GRUNT_21_HNS","FLAG_PJR_JESSIE_JAMES_1_DEFEATED","SlowpokeWell_B1F_EventScript_JessieJamesTrigger"),
+    ("GoldenrodCity_RadioTower_4F_hns",(2,5,7),("LOCALID_RADIO4F_JAMES","LOCALID_RADIO4F_JESSIE"),"TRAINER_GRUNT_9_HNS","FLAG_PJR_JESSIE_JAMES_3_DEFEATED","GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTrigger"),
+)
+for name,ids,local_ids,trainer,flag,old_trigger in scenes:
+    mapdata=map_file(name)
+    script=read(f"data/maps/{name}/scripts.inc")
+    james,jessie,meowth=(mapdata["object_events"][id-1] for id in ids)
+    if name == "GoldenrodCity_RadioTower_4F_hns":
+        # Unavoidable interception immediately after the LEFT 3F staircase.
+        assert all(obj["flag"] == flag for obj in (james, jessie, meowth)), name
+        assert all(obj["trainer_type"] == "TRAINER_TYPE_NONE" for obj in (james, jessie, meowth)), name
+        assert all(obj["movement_type"] == "MOVEMENT_TYPE_FACE_UP" for obj in (james, jessie, meowth)), name
+        assert all(obj["trainer_sight_or_berry_tree_id"] == "0" for obj in (james, jessie)), name
+        assert [(o["x"], o["y"]) for o in (jessie, james, meowth)] == [(13, 11), (14, 11), (15, 11)]
+        stair = {(10,5), (11,5), (9,6), (10,6), (11,6), (9,7), (10,7)}
+        coords = {(e["x"], e["y"]) for e in mapdata["coord_events"]
+                  if e["script"] == "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesStairIntercept"}
+        assert coords == stair, coords
+        assert all(e["var"] == "VAR_TEMP_3" and str(e["var_value"]) == "0"
+                   for e in mapdata["coord_events"]
+                   if e["script"] == "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesStairIntercept")
+        assert "setvar VAR_TEMP_3, 0" in script  # reset on map transition
+        assert "checktrainerflag " + trainer in script  # older saved victories
+        assert "cleartrainerflag " + trainer not in script
+        assert script.count("trainerbattle_double " + trainer + ",") == 1
+        assert "localId=LOCALID_RADIO4F_JAMES" in script
+        intercept = script.split("EventScript_JessieJamesStairIntercept::", 1)[1].split(
+            "EventScript_NeedTwoPokemon::", 1)[0]
+        assert "getplayerxy VAR_0x8000, VAR_0x8001" in intercept
+        assert "goto_if_eq VAR_0x8001, 5," in intercept
+        assert "goto_if_eq VAR_0x8001, 6," in intercept
+        assert "goto_if_eq VAR_0x8000, 11," in intercept
+        assert "HasEnoughMonsForDoubleBattle" in intercept
+        for local_id in (2, 5, 7):
+            for direction, steps in (("North", (3, 4, 5)), ("West", (3, 4))):
+                for count in steps:
+                    number = {3: "Three", 4: "Four", 5: "Five"}[count]
+                    cmd = f"applymovement {local_id}, GoldenrodCity_RadioTower_4F4_Movement_{direction}{number}"
+                    assert cmd in intercept, cmd
+            assert f"turnobject {local_id}, DIR_NORTH" in intercept
+        assert intercept.count("waitmovementall") == 2
+        assert "turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH" in intercept
 
-underground = map_file("GoldenrodCity_UndergroundSwitches_hns")
+        retreat = script.split("EventScript_JessieJamesAfterBattle::", 1)[1].split(
+            "EventScript_JessieJamesAlreadyDefeated::", 1)[0]
+        assert "setflag " + flag in retreat
+        assert "goto_if_ne VAR_TEMP_3, 1," in retreat  # direct-interaction fallback
+        assert "getplayerxy VAR_0x8000, VAR_0x8001" in retreat
+        assert "goto_if_eq VAR_0x8000, 11," in retreat
+        assert "goto_if_eq VAR_0x8001, 5," in retreat
+        assert "goto_if_eq VAR_0x8001, 6," in retreat
+        for local_id in (2, 5, 7):
+            for direction, steps in (("East", (3, 4)), ("South", (3, 4, 5))):
+                for count in steps:
+                    number = {3: "Three", 4: "Four", 5: "Five"}[count]
+                    cmd = f"applymovement {local_id}, GoldenrodCity_RadioTower_4F4_Movement_{direction}{number}"
+                    assert cmd in retreat, cmd
+            assert f"removeobject {local_id}" in retreat
+        assert retreat.count("waitmovementall") == 2
+        assert retreat.index("waitmovementall") < retreat.index("fadescreen FADE_TO_BLACK") < retreat.index("removeobject 5")
+        for name, opcode, count in (
+            ("NorthThree", "walk_up", 3), ("NorthFour", "walk_up", 4),
+            ("NorthFive", "walk_up", 5), ("WestThree", "walk_left", 3),
+            ("WestFour", "walk_left", 4), ("EastThree", "walk_faster_right", 3),
+            ("EastFour", "walk_faster_right", 4), ("SouthThree", "walk_faster_down", 3),
+            ("SouthFour", "walk_faster_down", 4), ("SouthFive", "walk_faster_down", 5),
+        ):
+            movement = script.split(f"GoldenrodCity_RadioTower_4F4_Movement_{name}:\\n".replace("\\n", "\n"), 1)[1].split("\tstep_end", 1)[0]
+            assert movement.count("\t" + opcode + "\n") == count, (name, movement)
+
+        # Collision and adjacency checks for every possible staircase landing:
+        # At the end, Jessie or James must stand directly below the player.
+        import struct
+        blob = (ROOT / "data/layouts/GoldenrodCity_RadioTower_4F_hns/map.bin").read_bytes()
+        assert len(blob) == 32 * 16 * 2
+        aisle = {(x, y) for y in (6, 7, 8) for x in range(9, 16)}
+        columns = {(x, y) for y in range(6, 12) for x in (13, 14, 15)}
+        for xx, yy in sorted(stair | aisle | columns):
+            tile, = struct.unpack_from("<H", blob, (yy * 32 + xx) * 2)
+            assert (tile & 0xC00) == 0 and (tile >> 12) == 3, (xx, yy, hex(tile))
+        for px, py in stair:
+            line = (10, 11, 12) if px == 11 else (9, 10, 11)
+            assert px in line[:2], (px, py, line)  # a trainer is 1 tile ahead
+            assert all((xx, py + 1) in aisle for xx in line)
+
+        continue
+    assert all(obj["flag"]==flag for obj in (james,jessie,meowth)),name
+    assert all(obj["trainer_type"]=="TRAINER_TYPE_NORMAL" for obj in (james,jessie)),name
+    assert meowth["trainer_type"]=="TRAINER_TYPE_NONE",name
+    assert all(obj["movement_type"].startswith("MOVEMENT_TYPE_FACE_") for obj in (james,jessie,meowth)),name
+    assert all(int(obj["trainer_sight_or_berry_tree_id"])>=1 for obj in (james,jessie)),name
+    assert not any(e.get("script")==old_trigger for e in mapdata["coord_events"]),name
+    assert f"checktrainerflag {trainer}" in script,name
+    assert f"cleartrainerflag {trainer}" not in script,name
+    assert script.count(f"trainerbattle_double {trainer},")==2,(name,"battle count")
+    for local_id in local_ids:
+        assert f"localId={local_id}" in script,(name,local_id)
+    assert f"setflag {flag}" in script
+    victory=script.split("EventScript_JessieJamesAfterBattle::",1)[1].split("\n\tend",1)[0]
+    assert "removeobject" in victory and "applymovement" not in victory,name
+    assert "setflag "+flag in victory,name
+
+# Underground switch puzzle, rival battle, grunts and items are untouched.
+# The retired trio retains the same local IDs, but must never appear or battle,
+# even when loading a saved game from inside this room.
+underground_map = map_file("GoldenrodCity_UndergroundSwitches_hns")
 underground_script = read("data/maps/GoldenrodCity_UndergroundSwitches_hns/scripts.inc")
-assert len(underground["object_events"]) == 11
-assert_actor(underground["object_events"], 11, "OBJ_EVENT_GFX_MON_BASE+SPECIES_MEOWTH")
-assert underground["object_events"][10]["flag"] == "FLAG_TEMP_1"
-assert "trainerbattle_double TRAINER_GRUNT_10_HNS" in underground_script
-assert "setflag FLAG_PJR_JESSIE_JAMES_2_DEFEATED" in underground_script
-assert "applymovement 11, GoldenrodCity_UndergroundSwitches_Movement_MeowthRunIn" in underground_script
-assert underground_script.count("removeobject 11") >= 2
+assert len(underground_map["object_events"]) == 11
+for local_id, graphics in (
+    (3, "OBJ_EVENT_GFX_JAMES_HNS"),
+    (6, "OBJ_EVENT_GFX_JESSIE_HNS"),
+    (11, "OBJ_EVENT_GFX_MON_BASE+SPECIES_MEOWTH"),
+):
+    actor = underground_map["object_events"][local_id - 1]
+    assert actor["graphics_id"] == graphics, local_id
+    assert actor["flag"] == "FLAG_PJR_JESSIE_JAMES_2_DEFEATED", local_id
+    assert actor["script"] == "NULL", local_id
+    assert actor["trainer_type"] == "TRAINER_TYPE_NONE", local_id
+    assert actor["trainer_sight_or_berry_tree_id"] == "0", local_id
+head = underground_script.split("GoldenrodUnderground1_JessieJamesTransition::",1)[1].split("GoldenrodUnderground1_OnLoad::",1)[0]
+load = underground_script.split("GoldenrodUnderground1_OnLoad::",1)[1].split("GoldenrodUnderground1_ClearTheWay::",1)[0]
+assert "setflag FLAG_PJR_JESSIE_JAMES_2_DEFEATED" in head
+assert "setflag FLAG_PJR_JESSIE_JAMES_2_DEFEATED" in load
+for local_id in ("LOCALID_UNDERGROUND_JAMES", "LOCALID_UNDERGROUND_JESSIE", "11"):
+    assert f"removeobject {local_id}" in load
+assert "trainerbattle_double TRAINER_GRUNT_10_HNS" not in underground_script
+for label in (
+    "GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesInteract",
+    "GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesJessie",
+    "GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesAfterBattle",
+):
+    assert underground_script.split(label+"::",1)[1].lstrip().startswith("end")
+assert "trainerbattle_single TRAINER_GRUNT_11_HNS" in underground_script
+assert "GoldenrodCity_UndergroundSwitches_EventScript_SilverTriggerTop::" in underground_script
+assert "GoldenrodCity_UndergroundSwitches_EventScript_Panel1::" in underground_script
 
-radio = map_file("GoldenrodCity_RadioTower_4F_hns")
-radio_script = read("data/maps/GoldenrodCity_RadioTower_4F_hns/scripts.inc")
-assert_actor(radio["object_events"], 7, "OBJ_EVENT_GFX_MON_BASE+SPECIES_MEOWTH")
-assert (radio["object_events"][6]["x"], radio["object_events"][6]["y"]) == (16, 11)
-assert radio["object_events"][6]["flag"] == "FLAG_PJR_JESSIE_JAMES_3_DEFEATED"
-# Radio Tower's previous one-tile vision never intercepted the player;
-# its Meowth also wandered off even before the battle.  Make the encounter
-# coordinate-driven and treat all three actors as one locked cutscene.
-radio_events = radio["object_events"]
-assert radio_events[1]["trainer_type"] == "TRAINER_TYPE_NONE"
-assert radio_events[4]["trainer_type"] == "TRAINER_TYPE_NONE"
-assert radio_events[6]["movement_type"] == "MOVEMENT_TYPE_FACE_UP"
-radio_intercepts = {(e["x"], e["y"]) for e in radio["coord_events"]
-                    if e.get("script") == "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTrigger"}
-assert radio_intercepts == {(14, 9), (15, 9), (12, 11), (18, 11),
-                            (13, 10), (16, 10), (14, 12), (15, 12)}
-assert radio_script.count("trainerbattle_double TRAINER_GRUNT_9_HNS") == 1
-assert "MAP_SCRIPT_ON_TRANSITION, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTransition" in radio_script
-assert "setvar VAR_TEMP_3, 1" in radio_script
-assert "getplayerxy VAR_0x8004, VAR_0x8005" in radio_script
-for move in ("ApproachNorth", "ApproachWest", "ApproachEast"):
-    assert f"GoldenrodCity_RadioTower_4F4_Movement_{move}" in radio_script
-assert "trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen" in radio_script
-assert "GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle" in radio_script
-assert "fadescreen FADE_TO_BLACK\n\tremoveobject 2\n\tremoveobject 5\n\tremoveobject 7" in radio_script
-assert "setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED" in radio_script
-assert "releaseall" in radio_script
+macro=read("asm/macros/event.inc")
+block=macro.split(".macro trainerbattle_double ",1)[1].split(".endm",1)[0]
+assert "localId=LOCALID_NONE" in block
+assert all((mode+", \\localId") in block for mode in (
+    "TRAINER_BATTLE_DOUBLE","TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE","TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC"))
+source=read("src/battle_setup.c")
+step=source.split("case TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE:",1)[1].split("return EventScript_TryDoDoubleTrainerBattle;",1)[0]
+assert "EventScript_TryDoInvisibleRocketDoubleBattle" not in step
+assert "SetMapVarsToTrainerA();" in step
+assert "EventScript_TryDoInvisibleRocketDoubleBattle" not in read("include/event_scripts.h")
 
 # Jessie and James retain their trainer/overworld art; Meowth uses the normal
 # species overworld sheet, so these scenes do not alter wild Meowth.
@@ -165,4 +246,4 @@ for trainer in (
 assert "Nimbeon @ Sitrus Berry" in party
 assert "Eeveeon @ Sitrus Berry" in party
 
-print("PASS: Johto Rocket trio staged one tile ahead with visible Meowth template and no post-battle backwards walk; PRL duo assets and twins source wired (emulator scene QA still required).")
+print("PASS: three Johto Rocket encounters use PRL-style individual trainer actors sharing each duo's double battle ID; no forced movement (live-save QA pending).")

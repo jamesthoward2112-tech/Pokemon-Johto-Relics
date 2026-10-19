@@ -27,6 +27,10 @@ REQUIRED = {"noxichu", "edensaur", "charaxis", "fortotoise", "khang", "nolax", "
 # These icons were already converted to the GBA shared party-icon palettes.
 # The donor's indexed PNGs have different palettes, so pointing their
 # icon graphics at PRL-authoritative artwork made party icons look corrupt.
+# Temporary Feralodon placeholder: use the complete Mega Feraligatr sprite
+# already registered in this engine, without altering its species or forms.
+# Skip just this one automatic PRL graphic rewrite until new art is approved.
+PRU_VISUAL_OVERRIDES = {"feralodon"}
 NORMALIZED_EEVEE_ICONS = {
     "champeon", "lepideon", "guardeon", "obsideon", "toxeon",
     "sphynxeon", "omeon", "drakeon", "eeveeon", "nimbeon",
@@ -105,6 +109,8 @@ def main():
             if not dest.exists() or dest.read_bytes() != contents:
                 dest.write_bytes(contents)
         for key, source in list(headers.items()):
+            if slug in PRU_VISUAL_OVERRIDES:
+                continue  # Preserve Mega Feraligatr artwork on Feralodon only.
             for kind, filename in KINDS.items():
                 if kind == "Icon" and slug in NORMALIZED_EEVEE_ICONS:
                     # Leave the palette-compatible repository party icons intact.

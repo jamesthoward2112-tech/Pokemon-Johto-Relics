@@ -3,23 +3,24 @@ GoldenrodCity_RadioTower_4F_hns_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesLoad
 	.byte 0
 
-// Reset the coordinate-trigger gate on every visit without clearing wins.
-GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTransition::
-	setvar VAR_TEMP_3, 1
-	call_if_unset FLAG_PJR_JESSIE_JAMES_3_DEFEATED, GoldenrodCity_RadioTower_4F4_EventScript_ArmJessieJames
-	end
-
-GoldenrodCity_RadioTower_4F4_EventScript_ArmJessieJames::
-	setvar VAR_TEMP_3, 0
-	return
-
+// Legacy temporary hide flag does not affect the trio: native trainers use persistent victory flags.
 GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesLoad::
-	call_if_unset FLAG_PJR_JESSIE_JAMES_3_DEFEATED, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesLoad_ResetTrainer
+	setflag FLAG_TEMP_1
 	end
 
-GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesLoad_ResetTrainer::
-	cleartrainerflag TRAINER_GRUNT_9_HNS
-	return
+// A victory on an old build must not be erased on re-entry.
+GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTransition::
+	setflag FLAG_TEMP_1
+	setvar VAR_TEMP_3, 1
+	goto_if_set FLAG_PJR_JESSIE_JAMES_3_DEFEATED, GoldenrodCity_RadioTower_4F4_EventScript_TransitionDone
+	checktrainerflag TRAINER_GRUNT_9_HNS
+	goto_if_eq TRUE, GoldenrodCity_RadioTower_4F4_EventScript_MarkPreviousWin
+	setvar VAR_TEMP_3, 0
+	end
+GoldenrodCity_RadioTower_4F4_EventScript_MarkPreviousWin::
+	setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED
+GoldenrodCity_RadioTower_4F4_EventScript_TransitionDone::
+	end
 
 GoldenrodCity_RadioTower_4F4_EventScript_Sign1::
 	lock
@@ -35,82 +36,127 @@ GoldenrodCity_RadioTower_4F4_EventScript_Sign2::
 	release
 	end
 
-GoldenrodCity_RadioTower_4F4_EventScript_FaceJessieJames::
-	applymovement 2, Common_Movement_FacePlayer
-	applymovement 5, Common_Movement_FacePlayer
-	applymovement 7, Common_Movement_FacePlayer
-	waitmovementall
-	return
-
-// Trigger from the main upper aisle and from either side, rather than
-// relying on the former one-tile trainer vision.  Keep the three actors
-// in view, never move anyone into the tile occupied by the player.
-GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTrigger::
+// LEFT STAIRCASE: Jessie, James and Meowth walk to the player's actual tile.
+// Spawn positions: Jessie (13,11), James (14,11), Meowth (15,11).
+// All three take the same two-stage collision-safe route: north to one row
+// below the player, then west until Jessie or James is directly in front.
+// This covers every stair trigger (x=9..11, y=5..7) without teleporting or
+// letting the battle begin from the other side of the room.
+GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesStairIntercept::
 	goto_if_set FLAG_PJR_JESSIE_JAMES_3_DEFEATED, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAlreadyDefeated
 	lockall
+	special HasEnoughMonsForDoubleBattle
+	goto_if_ne VAR_RESULT, PLAYER_HAS_TWO_USABLE_MONS, GoldenrodCity_RadioTower_4F4_EventScript_NeedTwoPokemon
 	setvar VAR_TEMP_3, 1
-	getplayerxy VAR_0x8004, VAR_0x8005
-	goto_if_eq VAR_0x8005, 9, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesFromNorth
-	goto_if_eq VAR_0x8004, 12, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesFromWest
-	goto_if_eq VAR_0x8004, 18, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesFromEast
-	goto GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesApproachDone
+	getplayerxy VAR_0x8000, VAR_0x8001
+	goto_if_eq VAR_0x8001, 5, GoldenrodCity_RadioTower_4F4_EventScript_ApproachNorthFive
+	goto_if_eq VAR_0x8001, 6, GoldenrodCity_RadioTower_4F4_EventScript_ApproachNorthFour
+	goto GoldenrodCity_RadioTower_4F4_EventScript_ApproachNorthThree
 
-GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesFromNorth::
-	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_ApproachNorth
-	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_ApproachNorth
+GoldenrodCity_RadioTower_4F4_EventScript_ApproachNorthFive::
+	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_NorthFive
+	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_NorthFive
+	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_NorthFive
+	goto GoldenrodCity_RadioTower_4F4_EventScript_ApproachAfterNorth
+GoldenrodCity_RadioTower_4F4_EventScript_ApproachNorthFour::
+	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_NorthFour
+	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_NorthFour
+	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_NorthFour
+	goto GoldenrodCity_RadioTower_4F4_EventScript_ApproachAfterNorth
+GoldenrodCity_RadioTower_4F4_EventScript_ApproachNorthThree::
+	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_NorthThree
+	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_NorthThree
+	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_NorthThree
+
+GoldenrodCity_RadioTower_4F4_EventScript_ApproachAfterNorth::
 	waitmovementall
-	goto GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesApproachDone
+	goto_if_eq VAR_0x8000, 11, GoldenrodCity_RadioTower_4F4_EventScript_ApproachWestThree
+	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_WestFour
+	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_WestFour
+	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_WestFour
+	goto GoldenrodCity_RadioTower_4F4_EventScript_ApproachFacePlayer
+GoldenrodCity_RadioTower_4F4_EventScript_ApproachWestThree::
+	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_WestThree
+	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_WestThree
+	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_WestThree
 
-// Move in staggered order so actor collision cannot block the approach.
-GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesFromWest::
-	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_ApproachWest
-	waitmovement 5
-	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_ApproachWest
-	waitmovement 2
-	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_ApproachWest
-	waitmovement 7
-	goto GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesApproachDone
-
-GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesFromEast::
-	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_ApproachEast
-	waitmovement 7
-	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_ApproachEast
-	waitmovement 2
-	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_ApproachEast
-	waitmovement 5
-
-GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesApproachDone::
-	call GoldenrodCity_RadioTower_4F4_EventScript_FaceJessieJames
+GoldenrodCity_RadioTower_4F4_EventScript_ApproachFacePlayer::
+	waitmovementall
+	turnobject 5, DIR_NORTH
+	turnobject 2, DIR_NORTH
+	turnobject 7, DIR_NORTH
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
 	releaseall
-	setvar VAR_LAST_TALKED, 2
+	setvar VAR_LAST_TALKED, LOCALID_RADIO4F_JAMES
 	goto GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesBattle
 
-// Both Jessie and James must share one battle/cleanup path.
-GoldenrodRaidoTower4_EventScript_Grunt28::
-	setvar VAR_TEMP_3, 1
-	setvar VAR_LAST_TALKED, 2
-	goto GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesBattle
+GoldenrodCity_RadioTower_4F4_EventScript_NeedTwoPokemon::
+	special ShowTrainerCantBattleSpeech
+	waitmessage
+	waitbuttonpress
+	releaseall
+	end
 
+// Emergency/debug interactions still start the same shared double battle.
 GoldenrodRaidoTower4_EventScript_Grunt9::
-	setvar VAR_TEMP_3, 1
-	setvar VAR_LAST_TALKED, 2
+	goto_if_set FLAG_PJR_JESSIE_JAMES_3_DEFEATED, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAlreadyDefeated
+	goto GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesBattle
+GoldenrodRaidoTower4_EventScript_Grunt28::
+	goto_if_set FLAG_PJR_JESSIE_JAMES_3_DEFEATED, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAlreadyDefeated
 	goto GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesBattle
 
 GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesBattle::
-	call GoldenrodCity_RadioTower_4F4_EventScript_FaceJessieJames
-	trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen, GoldenrodCity_RadioTower_4F4_Text_JessieJamesBeaten, GoldenrodCity_RadioTower_4F4_Text_JessieJamesNeedTwo, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle
+	trainerbattle_double TRAINER_GRUNT_9_HNS, GoldenrodCity_RadioTower_4F4_Text_JessieJamesSeen, GoldenrodCity_RadioTower_4F4_Text_JessieJamesBeaten, GoldenrodCity_RadioTower_4F4_Text_JessieJamesNeedTwo, GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle, localId=LOCALID_RADIO4F_JAMES
 	goto GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle
 
 GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAfterBattle::
 	lockall
+	setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED
 	msgbox GoldenrodCity_RadioTower_4F4_Text_JessieJamesAfter, MSGBOX_DEFAULT
 	closemessage
+	// Manual/debug starts skip the intercept route; never send actors through walls.
+	goto_if_ne VAR_TEMP_3, 1, GoldenrodCity_RadioTower_4F4_EventScript_RetreatCleanup
+	getplayerxy VAR_0x8000, VAR_0x8001
+	// First retrace the open aisle to each actor's original column.
+	goto_if_eq VAR_0x8000, 11, GoldenrodCity_RadioTower_4F4_EventScript_RetreatEastThree
+	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_EastFour
+	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_EastFour
+	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_EastFour
+	goto GoldenrodCity_RadioTower_4F4_EventScript_RetreatAfterEast
+GoldenrodCity_RadioTower_4F4_EventScript_RetreatEastThree::
+	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_EastThree
+	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_EastThree
+	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_EastThree
+
+GoldenrodCity_RadioTower_4F4_EventScript_RetreatAfterEast::
+	waitmovementall
+	// Finish off-screen at y=11, rather than colliding with furniture at y=9/12.
+	goto_if_eq VAR_0x8001, 5, GoldenrodCity_RadioTower_4F4_EventScript_RetreatSouthFive
+	goto_if_eq VAR_0x8001, 6, GoldenrodCity_RadioTower_4F4_EventScript_RetreatSouthFour
+	goto GoldenrodCity_RadioTower_4F4_EventScript_RetreatSouthThree
+
+GoldenrodCity_RadioTower_4F4_EventScript_RetreatSouthFive::
+	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_SouthFive
+	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_SouthFive
+	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_SouthFive
+	goto GoldenrodCity_RadioTower_4F4_EventScript_RetreatAfterSouth
+GoldenrodCity_RadioTower_4F4_EventScript_RetreatSouthFour::
+	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_SouthFour
+	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_SouthFour
+	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_SouthFour
+	goto GoldenrodCity_RadioTower_4F4_EventScript_RetreatAfterSouth
+GoldenrodCity_RadioTower_4F4_EventScript_RetreatSouthThree::
+	applymovement 5, GoldenrodCity_RadioTower_4F4_Movement_SouthThree
+	applymovement 2, GoldenrodCity_RadioTower_4F4_Movement_SouthThree
+	applymovement 7, GoldenrodCity_RadioTower_4F4_Movement_SouthThree
+
+GoldenrodCity_RadioTower_4F4_EventScript_RetreatAfterSouth::
+	waitmovementall
+GoldenrodCity_RadioTower_4F4_EventScript_RetreatCleanup::
 	fadescreen FADE_TO_BLACK
-	removeobject 2
 	removeobject 5
+	removeobject 2
 	removeobject 7
-	setflag FLAG_PJR_JESSIE_JAMES_3_DEFEATED
-	setvar VAR_TEMP_3, 1
 	fadescreen FADE_FROM_BLACK
 	releaseall
 	end
@@ -119,16 +165,72 @@ GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesAlreadyDefeated::
 	setvar VAR_TEMP_3, 1
 	end
 
-GoldenrodCity_RadioTower_4F4_Movement_ApproachNorth:
-	walk_faster_up
+GoldenrodCity_RadioTower_4F4_Movement_NorthThree:
+	walk_up
+	walk_up
+	walk_up
 	step_end
 
-GoldenrodCity_RadioTower_4F4_Movement_ApproachWest:
-	walk_faster_left
+GoldenrodCity_RadioTower_4F4_Movement_NorthFour:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
 	step_end
 
-GoldenrodCity_RadioTower_4F4_Movement_ApproachEast:
+GoldenrodCity_RadioTower_4F4_Movement_NorthFive:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+GoldenrodCity_RadioTower_4F4_Movement_WestThree:
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+GoldenrodCity_RadioTower_4F4_Movement_WestFour:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+GoldenrodCity_RadioTower_4F4_Movement_EastThree:
 	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	step_end
+
+GoldenrodCity_RadioTower_4F4_Movement_EastFour:
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	step_end
+
+GoldenrodCity_RadioTower_4F4_Movement_SouthThree:
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	step_end
+
+GoldenrodCity_RadioTower_4F4_Movement_SouthFour:
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	step_end
+
+GoldenrodCity_RadioTower_4F4_Movement_SouthFive:
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
 	step_end
 
 GoldenrodRaidoTower4_EventScript_Proton::

@@ -95,8 +95,14 @@ MahoganyTown_Gym_EventScript_PryceVictory::
 	end
 
 MahoganyTown_Gym_EventScript_SetupElmRocketCall::
-    setvar VAR_TRIGGER_ELM_ROCKET_CALL, 1
-    return
+	// This helper is also called when Chuck/Jasmine becomes the 7th badge.
+	// Replaying it after defeating Archer used to undo the Radio Tower clear.
+	goto_if_eq VAR_LUGIA_OR_HOOH, 1, MahoganyTown_Gym_EventScript_RocketCallAlreadyCleared
+	goto_if_eq VAR_LUGIA_OR_HOOH, 2, MahoganyTown_Gym_EventScript_RocketCallAlreadyCleared
+	goto_if_ge VAR_GOLDENROD_CITY_STATE, 10, MahoganyTown_Gym_EventScript_RocketCallAlreadyCleared
+	setvar VAR_TRIGGER_ELM_ROCKET_CALL, 1
+MahoganyTown_Gym_EventScript_RocketCallAlreadyCleared::
+	return
 
 MahoganyTown_Gym_EventScript_OlivineCheckCianwood::
 	goto_if_set FLAG_DEFEATED_CIANWOOD_GYM, MahoganyTown_Gym_EventScript_Pryce_Battle3

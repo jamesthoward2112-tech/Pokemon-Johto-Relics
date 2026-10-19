@@ -191,6 +191,7 @@ for expected_id, trainer in enumerate((
     "TRAINER_STEEVE_NEEVEE_ROUTE23_HNS",
 ), start=675):
     assert f"#define {trainer}" in chansey_ids and str(expected_id) in chansey_ids.split(trainer, 1)[1].splitlines()[0]
-assert "TRAINERS_COUNT_HNS                       679" in chansey_ids
+assert "TRAINER_STEEVE_NEEVEE_DRAGONS_DEN_HNS     679" in chansey_ids
+assert "TRAINERS_COUNT_HNS                       680" in chansey_ids
 print("PASS: 21 nurse-side Chansey tiers: repeatable genuine double battles, 2 Chansey each, no money.")
 

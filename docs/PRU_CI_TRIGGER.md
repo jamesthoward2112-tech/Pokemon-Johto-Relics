@@ -114,3 +114,7 @@ Explicit user-requested GitHub Actions rebuild on `pru/canonical-444-eevee-simpl
 ## 18 October 2026 — Valkiri move progression and original art palette-only build
 
 Use the latest commit on `pru/prl-sprite-position-icons-tm-20261018`. The user approved retaining unmodified GBA front/back/indexed sprite pixels and only reversing Valkiri normal/shiny palette assignments, green normal and blue shiny. Gardevoir learns Round at Lv36 and Hyper Voice at Lv38 (HNS only), so both are obtainable before the Lv45 Ancient Stone evolution. Valkiri learns Boomburst on evolution, with a Lv55 reacquisition, preserving original species ID. Verify Noxichu icon palette, 100 TM/HM name labels, PRL sprite positioning, and Goldenrod 2F Throat Spray stock at ₽10,000. Run `tools/pru/check_valkiri_sound.py`, full `make hns`, binary audit and emulator boot. Publish direct `.gba` to user, never a ZIP.
+
+
+## PRU 19 October: Dragon's Den Steevee/Neevee + no-Heart-Scale Blackthorn
+Compile the current branch with latest commits: Blackthorn Move Relearner is free and repeatable, Dragon's Den Lea/Pia replaced by fifth Steevee/Neevee double battle led by Drakeon at level 53, and verify scripts, party ID 679, custom intro and save flags. Run source checks, full make hns, binary audit and mGBA boot before publishing direct uncompressed .gba. Do not claim live gameplay testing without an actual battle playthrough.

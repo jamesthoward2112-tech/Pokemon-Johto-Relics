@@ -713,7 +713,10 @@
 #define TRAINER_STEEVE_NEEVEE_ROUTE44_HNS      TRAINER_STEEVE_NEEVEE_TOWER_HNS
 #define TRAINER_STEEVE_NEEVEE_KANTO_ROUTE3_HNS TRAINER_STEEVE_NEEVEE_ROUTE23_HNS
 
-#define TRAINERS_COUNT_HNS                       679
+// Dragon's Den: new save-stable fifth Steevee & Neevee encounter.
+#define TRAINER_STEEVE_NEEVEE_DRAGONS_DEN_HNS     679
+
+#define TRAINERS_COUNT_HNS                       680
 #define MAX_TRAINERS_COUNT_HNS                   864
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_HNS_H
