@@ -16819,3 +16819,60 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Hyper Voice
 - Double-Edge
 - Baton Pass
+
+=== TRAINER_STEEVE_NEEVEE_DRAGONS_DEN_HNS ===
+Name: STEEVEE
+Class: Twins Hns
+Pic: Twins Hns
+Gender: Male
+Music: Hg Girl 2
+Double Battle: Yes
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Drakeon @ Sitrus Berry
+Level: 53
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Dragon Rush
+- Iron Head
+- Crunch
+- Dragon Dance
+
+Nimbeon @ Sitrus Berry
+Level: 51
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Air Slash
+- Roost
+- Tailwind
+- Icy Wind
+
+Leafeon @ Sitrus Berry
+Level: 50
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Leaf Blade
+- Quick Attack
+- Swords Dance
+- Bite
+
+Glaceon @ Sitrus Berry
+Level: 50
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Ice Beam
+- Icy Wind
+- Quick Attack
+- Bite
+
+Omeon @ Sitrus Berry
+Level: 52
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Shadow Ball
+- Bite
+- Confuse Ray
+- Quick Attack
+
+Toxeon @ Sitrus Berry
+Level: 52
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Poison Jab
+- Bite
+- Toxic
+- Quick Attack
