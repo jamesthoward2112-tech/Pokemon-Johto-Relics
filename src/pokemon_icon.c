@@ -41,6 +41,16 @@ static const u16 sPRLEeveeonIconPalette[16] =
     RGB(0, 0, 0), RGB(0, 0, 0), RGB(0, 0, 0), RGB(0, 0, 0),
 };
 
+// PRU Swamplith uses a green-detailed PRL donor icon, not Swampert's
+// shared orange icon palette. Preserve the 16 indexed colours of its PNG.
+static const u16 sPRUSwamplithIconPalette[16] =
+{
+    RGB(12, 19, 16), RGB(16, 16, 14), RGB(23, 23, 23), RGB(31, 31, 31),
+    RGB(16, 19, 11), RGB(22, 26, 14), RGB(10, 15, 9), RGB(15, 21, 10),
+    RGB(17, 15, 31), RGB(12, 9, 25), RGB(29, 14, 19), RGB(31, 22, 20),
+    RGB(20, 24, 31), RGB(13, 21, 19), RGB(12, 12, 11), RGB(8, 8, 8),
+};
+
 const struct SpritePalette gMonIconPaletteTable[] =
 {
     { gMonIconPalettes[0], POKE_ICON_BASE_PAL_TAG + 0 },
@@ -51,6 +61,7 @@ const struct SpritePalette gMonIconPaletteTable[] =
     { gMonIconPalettes[5], POKE_ICON_BASE_PAL_TAG + 5 },
     { sPRLNoxichuIconPalette, POKE_ICON_BASE_PAL_TAG + 6 },
     { sPRLEeveeonIconPalette, POKE_ICON_BASE_PAL_TAG + 7 },
+    { sPRUSwamplithIconPalette, POKE_ICON_BASE_PAL_TAG + 8 },
 };
 
 static const struct OamData sMonIconOamData =
@@ -156,6 +167,15 @@ static const u16 sSpriteImageSizes[3][4] =
     },
 };
 
+// SpeciesInfo stores iconPalIndex in three bits. Preserve its ABI; the PRL
+// Swamplith party icon selects its bespoke ninth palette when rendered.
+static u8 GetPruCustomIconPaletteIndex(u16 species, u8 original)
+{
+    if (species == SPECIES_SWAMPLITH)
+        return 8;
+    return original;
+}
+
 u8 CreateMonIcon(u16 species, void (*callback)(struct Sprite *), s16 x, s16 y, u8 subpriority, u32 personality)
 {
     return CreateMonIconIsEgg(species, callback, x, y, subpriority, personality, FALSE);
@@ -171,7 +191,7 @@ u8 CreateMonIconIsEgg(u16 species, void (*callback)(struct Sprite *), s16 x, s16
         .anims = sMonIconAnims,
         .affineAnims = sMonIconAffineAnims,
         .callback = callback,
-        .paletteTag = POKE_ICON_BASE_PAL_TAG + gSpeciesInfo[species].iconPalIndex,
+        .paletteTag = POKE_ICON_BASE_PAL_TAG + GetPruCustomIconPaletteIndex(species, gSpeciesInfo[species].iconPalIndex),
     };
     species = SanitizeSpeciesId(species);
 
@@ -189,7 +209,7 @@ u8 CreateMonIconIsEgg(u16 species, void (*callback)(struct Sprite *), s16 x, s16
 #if P_GENDER_DIFFERENCES
     else if (gSpeciesInfo[species].iconSpriteFemale != NULL && IsPersonalityFemale(species, personality))
     {
-        iconTemplate.paletteTag = POKE_ICON_BASE_PAL_TAG + gSpeciesInfo[species].iconPalIndexFemale;
+        iconTemplate.paletteTag = POKE_ICON_BASE_PAL_TAG + GetPruCustomIconPaletteIndex(species, gSpeciesInfo[species].iconPalIndexFemale);
     }
 #endif
 
@@ -215,7 +235,7 @@ u8 CreateMonIconNoPersonalityIsEgg(u16 species, void (*callback)(struct Sprite *
         .anims = sMonIconAnims,
         .affineAnims = sMonIconAffineAnims,
         .callback = callback,
-        .paletteTag = POKE_ICON_BASE_PAL_TAG + gSpeciesInfo[species].iconPalIndex,
+        .paletteTag = POKE_ICON_BASE_PAL_TAG + GetPruCustomIconPaletteIndex(species, gSpeciesInfo[species].iconPalIndex),
     };
 
     iconTemplate.image = GetMonIconTilesIsEgg(species, 0, isEgg);
@@ -277,14 +297,14 @@ void LoadMonIconPalettes(void)
 void SafeLoadMonIconPalette(u16 species)
 {
     u8 palIndex;
-    palIndex = gSpeciesInfo[SanitizeSpeciesId(species)].iconPalIndex;
+    palIndex = GetPruCustomIconPaletteIndex(SanitizeSpeciesId(species), gSpeciesInfo[SanitizeSpeciesId(species)].iconPalIndex);
     if (IndexOfSpritePaletteTag(gMonIconPaletteTable[palIndex].tag) == 0xFF)
         LoadSpritePalette(&gMonIconPaletteTable[palIndex]);
 }
 
 void LoadMonIconPalette(u16 species)
 {
-    u8 palIndex = gSpeciesInfo[SanitizeSpeciesId(species)].iconPalIndex;
+    u8 palIndex = GetPruCustomIconPaletteIndex(SanitizeSpeciesId(species), gSpeciesInfo[SanitizeSpeciesId(species)].iconPalIndex);
     if (IndexOfSpritePaletteTag(gMonIconPaletteTable[palIndex].tag) == 0xFF)
         LoadSpritePalette(&gMonIconPaletteTable[palIndex]);
 }
@@ -295,10 +315,10 @@ void LoadMonIconPalettePersonality(u16 species, u32 personality)
     species = SanitizeSpeciesId(species);
 #if P_GENDER_DIFFERENCES
     if (gSpeciesInfo[species].iconSpriteFemale != NULL && IsPersonalityFemale(species, personality))
-        palIndex = gSpeciesInfo[species].iconPalIndexFemale;
+        palIndex = GetPruCustomIconPaletteIndex(species, gSpeciesInfo[species].iconPalIndexFemale);
     else
 #endif
-        palIndex = gSpeciesInfo[species].iconPalIndex;
+        palIndex = GetPruCustomIconPaletteIndex(species, gSpeciesInfo[species].iconPalIndex);
     if (IndexOfSpritePaletteTag(gMonIconPaletteTable[palIndex].tag) == 0xFF)
         LoadSpritePalette(&gMonIconPaletteTable[palIndex]);
 }
@@ -314,14 +334,14 @@ void FreeMonIconPalettes(void)
 void SafeFreeMonIconPalette(u16 species)
 {
     u8 palIndex;
-    palIndex = gSpeciesInfo[SanitizeSpeciesId(species)].iconPalIndex;
+    palIndex = GetPruCustomIconPaletteIndex(SanitizeSpeciesId(species), gSpeciesInfo[SanitizeSpeciesId(species)].iconPalIndex);
     FreeSpritePaletteByTag(gMonIconPaletteTable[palIndex].tag);
 }
 
 void FreeMonIconPalette(u16 species)
 {
     u8 palIndex;
-    palIndex = gSpeciesInfo[SanitizeSpeciesId(species)].iconPalIndex;
+    palIndex = GetPruCustomIconPaletteIndex(SanitizeSpeciesId(species), gSpeciesInfo[SanitizeSpeciesId(species)].iconPalIndex);
     FreeSpritePaletteByTag(gMonIconPaletteTable[palIndex].tag);
 }
 
@@ -380,17 +400,17 @@ void TryLoadAllMonIconPalettesAtOffset(u16 offset)
 
 u8 GetValidMonIconPalIndex(u16 species)
 {
-    return gSpeciesInfo[SanitizeSpeciesId(species)].iconPalIndex;
+    return GetPruCustomIconPaletteIndex(SanitizeSpeciesId(species), gSpeciesInfo[SanitizeSpeciesId(species)].iconPalIndex);
 }
 
 u8 GetMonIconPaletteIndexFromSpecies(u16 species)
 {
-    return gSpeciesInfo[SanitizeSpeciesId(species)].iconPalIndex;
+    return GetPruCustomIconPaletteIndex(SanitizeSpeciesId(species), gSpeciesInfo[SanitizeSpeciesId(species)].iconPalIndex);
 }
 
 const u16 *GetValidMonIconPalettePtr(u16 species)
 {
-    return gMonIconPaletteTable[gSpeciesInfo[SanitizeSpeciesId(species)].iconPalIndex].data;
+    return gMonIconPaletteTable[GetPruCustomIconPaletteIndex(SanitizeSpeciesId(species), gSpeciesInfo[SanitizeSpeciesId(species)].iconPalIndex)].data;
 }
 
 u8 UpdateMonIconFrame(struct Sprite *sprite)
