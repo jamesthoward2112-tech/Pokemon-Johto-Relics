@@ -138,11 +138,11 @@ const u16 gMonShinyPalette_Sudowarden[] = INCBIN_U16("graphics/pokemon/pjr_locke
 const u32 gMonBackPic_Sudowarden[] = INCBIN_U32("graphics/pokemon/pjr_locked/sudowarden/back.4bpp.smol");
 const u8 gMonIcon_Sudowarden[] = INCBIN_U8("graphics/pokemon/pjr_locked/sudowarden/icon.4bpp");
 
-const u32 gMonFrontPic_Donphalanx[] = INCBIN_U32("graphics/pokemon/prl_authoritative/donphalanx/front.4bpp.smol");
-const u16 gMonPalette_Donphalanx[] = INCBIN_U16("graphics/pokemon/prl_authoritative/donphalanx/normal.gbapal");
-const u16 gMonShinyPalette_Donphalanx[] = INCBIN_U16("graphics/pokemon/prl_authoritative/donphalanx/shiny.gbapal");
-const u32 gMonBackPic_Donphalanx[] = INCBIN_U32("graphics/pokemon/prl_authoritative/donphalanx/back.4bpp.smol");
-const u8 gMonIcon_Donphalanx[] = INCBIN_U8("graphics/pokemon/prl_authoritative/donphalanx/icon.4bpp");
+const u32 gMonFrontPic_Donphalanx[] = INCBIN_U32("graphics/pokemon/great_tusk/front.4bpp.smol");
+const u16 gMonPalette_Donphalanx[] = INCBIN_U16("graphics/pokemon/great_tusk/normal.gbapal");
+const u16 gMonShinyPalette_Donphalanx[] = INCBIN_U16("graphics/pokemon/great_tusk/shiny.gbapal");
+const u32 gMonBackPic_Donphalanx[] = INCBIN_U32("graphics/pokemon/great_tusk/back.4bpp.smol");
+const u8 gMonIcon_Donphalanx[] = INCBIN_U8("graphics/pokemon/great_tusk/icon.4bpp");
 
 const u32 gMonFrontPic_Faeranium[] = INCBIN_U32("graphics/pokemon/prl_authoritative/faeranium/front.4bpp.smol");
 const u16 gMonPalette_Faeranium[] = INCBIN_U16("graphics/pokemon/prl_authoritative/faeranium/normal.gbapal");
