@@ -4,7 +4,7 @@ GoldenrodCity_hns_MapScripts::
 	.byte 0
 
 GoldenrodCity_EventScript_RepairClearedRadioTowerOnEntry::
-	call_if_set FLAG_HIDE_GOLDENROD_RADIOTOWER_DIRECTOR_2, MahoganyTown_EventScript_RepairClearedRadioTowerState
+	call MahoganyTown_EventScript_RepairClearedRadioTowerState
 	end
 
 GoldenrodCity_EventScript_Trigger:: @flagheap

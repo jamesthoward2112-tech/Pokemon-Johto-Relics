@@ -97,7 +97,8 @@ MahoganyTown_Gym_EventScript_PryceVictory::
 MahoganyTown_Gym_EventScript_SetupElmRocketCall::
 	// This helper is also called when Chuck/Jasmine becomes the 7th badge.
 	// Replaying it after defeating Archer used to undo the Radio Tower clear.
-	goto_if_set FLAG_HIDE_GOLDENROD_RADIOTOWER_DIRECTOR_2, MahoganyTown_Gym_EventScript_RocketCallAlreadyCleared
+	checktrainerflag TRAINER_ARCHER_HNS
+	goto_if_eq TRUE, MahoganyTown_Gym_EventScript_RocketCallAlreadyCleared
 	goto_if_ge VAR_GOLDENROD_CITY_STATE, 10, MahoganyTown_Gym_EventScript_RocketCallAlreadyCleared
 	setvar VAR_TRIGGER_ELM_ROCKET_CALL, 1
 MahoganyTown_Gym_EventScript_RocketCallAlreadyCleared::
