@@ -1153,6 +1153,7 @@ enum BattleTransition GetTrainerBattleTransition(void)
     case TRAINER_STEEVE_NEEVEE_SS_ANNE_HNS:
     case TRAINER_STEEVE_NEEVEE_TOWER_HNS:
     case TRAINER_STEEVE_NEEVEE_ROUTE23_HNS:
+    case TRAINER_STEEVE_NEEVEE_DRAGONS_DEN_HNS:
         return B_TRANSITION_EEVEE_TWINS;
     }
 #endif
