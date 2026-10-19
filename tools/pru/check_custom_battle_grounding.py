@@ -24,7 +24,10 @@ for species_id, sprite, slug in (
     print(f"{species_id}: offset=6, alpha bounds={img.getchannel('A').getbbox()}")
 
 swamp = re.search(r"\[SPECIES_SWAMPLITH\]\s*=\s*\{(.*?)\n\},", species_file, re.S).group(1)
-assert ".iconSprite = gMonIcon_Swamplith, .iconPalIndex = 8" in swamp
+assert ".iconSprite = gMonIcon_Swamplith, .iconPalIndex = 0" in swamp  # 3-bit SpeciesInfo field
+assert "static u8 GetPruCustomIconPaletteIndex" in icon_source
+assert "if (species == SPECIES_SWAMPLITH)" in icon_source
+assert "return 8;" in icon_source
 assert 'graphics/pokemon/prl_authoritative/swamplith/icon.4bpp' in graphics_source
 assert "{ sPRUSwamplithIconPalette, POKE_ICON_BASE_PAL_TAG + 8 }" in icon_source
 palette_block = re.search(r"static const u16 sPRUSwamplithIconPalette\[16\]\s*=\s*\{(.*?)\};", icon_source, re.S)
