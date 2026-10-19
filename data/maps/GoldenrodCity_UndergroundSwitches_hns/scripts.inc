@@ -3,21 +3,23 @@ GoldenrodCity_UndergroundSwitches_hns_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, GoldenrodUnderground1_OnLoad
 	.byte 0
 
+// Jessie and James are removed from the Goldenrod Underground switch basement.
+// The approved Radio Tower 4F ambush is their final Goldenrod encounter.
+// Keep all three object slots in map.json (to protect stable local IDs in saves),
+// but permanently hide them on every transition, regardless of old save flags.
 GoldenrodUnderground1_JessieJamesTransition::
 	setflag FLAG_TEMP_1
 	setvar VAR_TEMP_3, 1
-	goto_if_set FLAG_PJR_JESSIE_JAMES_2_DEFEATED, GoldenrodUnderground1_JessieJamesTransitionDone
-	checktrainerflag TRAINER_GRUNT_10_HNS
-	goto_if_eq TRUE, GoldenrodUnderground1_JessieJamesMarkPreviousWin
-	setvar VAR_TEMP_3, 0
-	end
-GoldenrodUnderground1_JessieJamesMarkPreviousWin::
 	setflag FLAG_PJR_JESSIE_JAMES_2_DEFEATED
-GoldenrodUnderground1_JessieJamesTransitionDone::
 	end
 
 GoldenrodUnderground1_OnLoad::
 	setflag FLAG_TEMP_1
+	setflag FLAG_PJR_JESSIE_JAMES_2_DEFEATED
+	// Also despawn the trio on existing saves already inside this room.
+	removeobject LOCALID_UNDERGROUND_JAMES
+	removeobject LOCALID_UNDERGROUND_JESSIE
+	removeobject 11
 	setvar VAR_TEMP_0, 0
 	call_if_set FLAG_COMPLETED_SWITCHES, GoldenrodUnderground1_ClearTheWay
 	clearflag FLAG_GOLDENROD_SWITCH_1
@@ -494,24 +496,16 @@ GoldenrodCity_UndergroundSwitches_Movement_SilverLeaveBot:
 	face_right
 	step_end	
 
-// Native PRL-style duo: two separate trainer sprites, shared opponent ID.
+// Legacy labels retained for compatibility, but the duplicate Underground
+// Rocket duo cannot be interacted with or fought here. The trio's templates
+// are non-trainers, hidden, and have no scripts.
 GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesInteract::
-	trainerbattle_double TRAINER_GRUNT_10_HNS, GoldenrodUnderground_Text_JessieJamesSeen, GoldenrodUnderground_Text_JessieJamesBeaten, GoldenrodUnderground_Text_JessieJamesNeedTwo, GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesAfterBattle, localId=LOCALID_UNDERGROUND_JAMES
 	end
 
 GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesJessie::
-	trainerbattle_double TRAINER_GRUNT_10_HNS, GoldenrodUnderground_Text_JessieJamesSeen, GoldenrodUnderground_Text_JessieJamesBeaten, GoldenrodUnderground_Text_JessieJamesNeedTwo, GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesAfterBattle, localId=LOCALID_UNDERGROUND_JESSIE
 	end
 
 GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesAfterBattle::
-	lockall
-	setflag FLAG_PJR_JESSIE_JAMES_2_DEFEATED
-	msgbox GoldenrodUnderground_Text_JessieJamesAfter, MSGBOX_DEFAULT
-	closemessage
-	removeobject LOCALID_UNDERGROUND_JAMES
-	removeobject LOCALID_UNDERGROUND_JESSIE
-	removeobject 11
-	releaseall
 	end
 
 GoldenrodCity_UndergroundSwitches_EventScript_Grunt20::

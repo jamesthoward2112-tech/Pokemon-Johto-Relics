@@ -22,11 +22,11 @@ def assert_actor(events, local_id, graphics):
     assert events[local_id - 1]["graphics_id"] == graphics, (local_id, graphics)
 
 
-# PRL donor pattern remains in Slowpoke Well and Goldenrod Underground.
-# Radio Tower uses a stair intercept with a synchronized physical approach and retreat.
+# Keep the first PRL-style encounter at Slowpoke Well.
+# Remove the duplicate Goldenrod Underground encounter while retaining object slots.
+# The approved Radio Tower approach and retreat must remain untouched.
 scenes=(
     ("SlowpokeWell_B1F_hns",(10,11,28),("10","11"),"TRAINER_GRUNT_21_HNS","FLAG_PJR_JESSIE_JAMES_1_DEFEATED","SlowpokeWell_B1F_EventScript_JessieJamesTrigger"),
-    ("GoldenrodCity_UndergroundSwitches_hns",(3,6,11),("LOCALID_UNDERGROUND_JAMES","LOCALID_UNDERGROUND_JESSIE"),"TRAINER_GRUNT_10_HNS","FLAG_PJR_JESSIE_JAMES_2_DEFEATED","GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesTrigger"),
     ("GoldenrodCity_RadioTower_4F_hns",(2,5,7),("LOCALID_RADIO4F_JAMES","LOCALID_RADIO4F_JESSIE"),"TRAINER_GRUNT_9_HNS","FLAG_PJR_JESSIE_JAMES_3_DEFEATED","GoldenrodCity_RadioTower_4F4_EventScript_JessieJamesTrigger"),
 )
 for name,ids,local_ids,trainer,flag,old_trigger in scenes:
@@ -127,6 +127,40 @@ for name,ids,local_ids,trainer,flag,old_trigger in scenes:
     victory=script.split("EventScript_JessieJamesAfterBattle::",1)[1].split("\n\tend",1)[0]
     assert "removeobject" in victory and "applymovement" not in victory,name
     assert "setflag "+flag in victory,name
+
+# Underground switch puzzle, rival battle, grunts and items are untouched.
+# The retired trio retains the same local IDs, but must never appear or battle,
+# even when loading a saved game from inside this room.
+underground_map = map_file("GoldenrodCity_UndergroundSwitches_hns")
+underground_script = read("data/maps/GoldenrodCity_UndergroundSwitches_hns/scripts.inc")
+assert len(underground_map["object_events"]) == 11
+for local_id, graphics in (
+    (3, "OBJ_EVENT_GFX_JAMES_HNS"),
+    (6, "OBJ_EVENT_GFX_JESSIE_HNS"),
+    (11, "OBJ_EVENT_GFX_MON_BASE+SPECIES_MEOWTH"),
+):
+    actor = underground_map["object_events"][local_id - 1]
+    assert actor["graphics_id"] == graphics, local_id
+    assert actor["flag"] == "FLAG_PJR_JESSIE_JAMES_2_DEFEATED", local_id
+    assert actor["script"] == "NULL", local_id
+    assert actor["trainer_type"] == "TRAINER_TYPE_NONE", local_id
+    assert actor["trainer_sight_or_berry_tree_id"] == "0", local_id
+head = underground_script.split("GoldenrodUnderground1_JessieJamesTransition::",1)[1].split("GoldenrodUnderground1_OnLoad::",1)[0]
+load = underground_script.split("GoldenrodUnderground1_OnLoad::",1)[1].split("GoldenrodUnderground1_ClearTheWay::",1)[0]
+assert "setflag FLAG_PJR_JESSIE_JAMES_2_DEFEATED" in head
+assert "setflag FLAG_PJR_JESSIE_JAMES_2_DEFEATED" in load
+for local_id in ("LOCALID_UNDERGROUND_JAMES", "LOCALID_UNDERGROUND_JESSIE", "11"):
+    assert f"removeobject {local_id}" in load
+assert "trainerbattle_double TRAINER_GRUNT_10_HNS" not in underground_script
+for label in (
+    "GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesInteract",
+    "GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesJessie",
+    "GoldenrodCity_UndergroundSwitches_EventScript_JessieJamesAfterBattle",
+):
+    assert underground_script.split(label+"::",1)[1].lstrip().startswith("end")
+assert "trainerbattle_single TRAINER_GRUNT_11_HNS" in underground_script
+assert "GoldenrodCity_UndergroundSwitches_EventScript_SilverTriggerTop::" in underground_script
+assert "GoldenrodCity_UndergroundSwitches_EventScript_Panel1::" in underground_script
 
 macro=read("asm/macros/event.inc")
 block=macro.split(".macro trainerbattle_double ",1)[1].split(".endm",1)[0]
