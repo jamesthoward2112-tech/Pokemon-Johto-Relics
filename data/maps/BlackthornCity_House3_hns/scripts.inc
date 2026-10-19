@@ -116,11 +116,9 @@ BlackthornCity_MoveRelearnersHouse_EventScript_MoveRelearner::
 	end
 
 BlackthornCity_MoveRelearnersHouse_EventScript_AskTeachMove::
-	checkitem ITEM_HEART_SCALE
-	goto_if_eq VAR_RESULT, FALSE, BlackthornCity_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale
-	msgbox BlackthornCity_MoveRelearnersHouse_Text_ThatsAHeartScaleWantMeToTeachMove, MSGBOX_YESNO
+	msgbox BlackthornCity_MoveRelearnersHouse_Text_WantMeToTeachMove, MSGBOX_YESNO
 	switch VAR_RESULT
-	case NO, BlackthornCity_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale
+	case NO, BlackthornCity_MoveRelearnersHouse_EventScript_AllDone
 	goto BlackthornCity_MoveRelearnersHouse_EventScript_ChooseMon
 	end
 
@@ -129,7 +127,7 @@ BlackthornCity_MoveRelearnersHouse_EventScript_ChooseMon::
 	setmoverelearnerstate MOVE_RELEARNER_LEVEL_UP_MOVES
 	chooseboxmon SELECT_PC_MON_MOVE_RELEARNER
 	waitstate
-	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, BlackthornCity_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, BlackthornCity_MoveRelearnersHouse_EventScript_AllDone
 	special IsSelectedMonEgg
 	goto_if_eq VAR_RESULT, TRUE, BlackthornCity_MoveRelearnersHouse_EventScript_CantTeachEgg
 	special HasMovesToRelearn
@@ -141,10 +139,7 @@ BlackthornCity_MoveRelearnersHouse_EventScript_ChooseMove::
 	msgbox BlackthornCity_MoveRelearnersHouse_Text_TeachWhichMove, MSGBOX_DEFAULT
 	special TeachMoveRelearnerMove
 	waitstate
-	goto_if_eq VAR_0x8004, 0, BlackthornCity_MoveRelearnersHouse_EventScript_ChooseMon
-	msgbox BlackthornCity_MoveRelearnersHouse_Text_HandedOverHeartScale, MSGBOX_DEFAULT
-	removeitem ITEM_HEART_SCALE
-	goto BlackthornCity_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale
+	goto BlackthornCity_MoveRelearnersHouse_EventScript_ChooseMon
 	end
 
 BlackthornCity_MoveRelearnersHouse_EventScript_NoMoveToTeachMon::
@@ -157,8 +152,8 @@ BlackthornCity_MoveRelearnersHouse_EventScript_CantTeachEgg::
 	goto BlackthornCity_MoveRelearnersHouse_EventScript_ChooseMon
 	end
 
-BlackthornCity_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale::
-	msgbox BlackthornCity_MoveRelearnersHouse_Text_ComeBackWithHeartScale, MSGBOX_DEFAULT
+BlackthornCity_MoveRelearnersHouse_EventScript_AllDone::
+	msgbox BlackthornCity_MoveRelearnersHouse_Text_AllDone, MSGBOX_DEFAULT
 	closemessage
 	releaseall
 	end
@@ -179,14 +174,12 @@ BlackthornCity_MoveRelearnersHouse_Text_ImTheMoveTutor:
 	.string "teach POKéMON those moves.\p"
 	.string "I can teach a move to a POKéMON\n"
 	.string "of yours if you'd like.\p"
-	.string "I'll do it for a HEART SCALE.\n"
-	.string "I'm collecting those now.$"
+	.string "I teach these moves for free.\n"
+	.string "Come by whenever you like!$"
 
-BlackthornCity_MoveRelearnersHouse_Text_ThatsAHeartScaleWantMeToTeachMove:
-	.string "Oh! That's it! That's an honest to\n"
-	.string "goodness HEART SCALE!\p"
-	.string "Let me guess, you want me to teach\n"
-	.string "a move?$"
+BlackthornCity_MoveRelearnersHouse_Text_WantMeToTeachMove:
+	.string "Would you like me to help\n"
+	.string "your POKéMON relearn a move?$"
 
 BlackthornCity_MoveRelearnersHouse_Text_TutorWhichMon:
 	.string "Which POKéMON needs tutoring?$"
@@ -199,13 +192,9 @@ BlackthornCity_MoveRelearnersHouse_Text_DontHaveMoveToTeachPokemon:
 	.string "It doesn't appear as if I have any move\n"
 	.string "I can teach that POKéMON.$"
 
-BlackthornCity_MoveRelearnersHouse_Text_HandedOverHeartScale:
-	.string "{PLAYER} handed over one HEART SCALE\n"
-	.string "in exchange.$"
-
-BlackthornCity_MoveRelearnersHouse_Text_ComeBackWithHeartScale:
-	.string "If your POKéMON need to learn a move,\n"
-	.string "come back with a HEART SCALE.$"
+BlackthornCity_MoveRelearnersHouse_Text_AllDone:
+	.string "Come back whenever you want\n"
+	.string "to relearn a move. It's free!$"
 
 BlackthornCity_MoveRelearnersHouse_Text_CantTeachEgg:
 	.string "Hunh? There isn't a single move that\n"
