@@ -803,6 +803,13 @@ static enum ItemEffect TryCureAnyStatus(enum BattlerId battler)
             StringCopy(gBattleTextBuff1, gStatusConditionString_IceJpn);
             string++;
         }
+        // PRU: Bleeding is a full nonvolatile status. Name it in the
+        // Lum Berry cure message rather than playing an empty status name.
+        if (IS_HNS && (gBattleMons[battler].status1 & STATUS1_BLEED))
+        {
+            StringCopy(gBattleTextBuff1, COMPOUND_STRING("bleeding"));
+            string++;
+        }
         if (gBattleMons[battler].volatiles.confusionTurns > 0)
         {
             StringCopy(gBattleTextBuff1, gStatusConditionString_ConfusionJpn);
