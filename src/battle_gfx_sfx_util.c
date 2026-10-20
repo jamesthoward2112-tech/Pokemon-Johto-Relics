@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "battle_setup.h"
 #include "battle_controllers.h"
 #include "battle_ai_main.h"
 #include "battle_anim.h"
@@ -62,7 +63,7 @@ static enum PruKimonoGhostVisual GetPruKimonoGhostVisual(enum BattlerId battler,
 
     // Both the roster and the trainer ID must match. Other enemy trainers,
     // wild encounters, the player, and any other game editions are untouched.
-    switch (gTrainerBattleOpponent_A)
+    switch (TRAINER_BATTLE_PARAM.opponentA)
     {
     case TRAINER_ZUKI_HNS:
         return species == SPECIES_GENGAR ? KIMONO_GHOST_VISUAL_GENGAR_MEGA : KIMONO_GHOST_VISUAL_NONE;
