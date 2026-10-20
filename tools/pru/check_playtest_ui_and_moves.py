@@ -83,7 +83,7 @@ assert 'kind == "Icon" and slug in NORMALIZED_EEVEE_ICONS' in sync
 # No new species ID, base Feraligatr art or battle mechanics are modified.
 for asset in ("front.4bpp.smol", "back.4bpp.smol", "normal.gbapal", "shiny.gbapal", "icon.4bpp"):
     assert "graphics/pokemon/feraligatr/mega/" + asset in gfx
-assert 'PRU_VISUAL_OVERRIDES = {"feralodon"}' in sync
+assert 'PRU_VISUAL_OVERRIDES = {"feralodon", "donphalanx", "skarmet"}' in sync
 assert 'if slug in PRU_VISUAL_OVERRIDES:' in sync
 for kind in ("front", "back", "icon"):
     path = Path("graphics/pokemon/feraligatr/mega") / (kind + ".png")
