@@ -99,6 +99,7 @@ concurrency:
 
 permissions:
   contents: write
+  issues: write
 
 env:
   UNUSED_ERROR: 0
@@ -607,6 +608,7 @@ jobs:
             --prerelease
 
       - name: Publish PRU corrected Kimono Mega art and Eerie Fog direct GBA
+        id: kimono_release
         if: github.ref_name == 'pru/kimono-ritual-mega-art-20261020'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -628,3 +630,45 @@ jobs:
             --title "PRU: Ghost Kimono Mega sprite-frame and Eerie Fog fix" \
             --notes "Direct 32 MiB .gba; NO ZIP. Corrects the three Kimono Mega costume sprite animation slots (no wrong-colour/black original frames) and automatically opens all five Dance Theatre battles with native eight-turn Eerie Fog and its Ghost/Psychic protection. Five Ecruteak Dance Theatre Ghost+Eerie Fog Lv48 singles preserved. Zuki's Gengar, Miki's Banette and Sayo's Sableye display existing Mega artwork only. Naoko's Misdreavus and Kuni's Dusclops have ritual-tinted palettes. Restricted to five opponent trainer IDs; Mega mechanics disabled; species/stats/evolutions/444/save, Elm/Legendary/League story unchanged. Prior Eight-Badge polish included. Source/ROM/mGBA checks passed; user's actual save battle-visual playtest still pending." \
             --prerelease
+
+      - name: Report corrected Kimono ROM publication to issue 32
+        if: always() && github.ref_name == 'pru/kimono-ritual-mega-art-20261020'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_OUTCOME: ${{ steps.kimono_release.outcome }}
+          JOB_OUTCOME: ${{ job.status }}
+        run: |
+          TAG=pru-kimono-sprite-fog-fix-2026-10-20
+          ROM=Pokemon-Relics-Ultimate-Kimono-Sprite-Fog-Fix-2026-10-20.gba
+          ASSET_STATE=NOT_FOUND
+          if gh release view "$TAG" --repo "${{ github.repository }}" --json assets --jq '.assets[].name' 2>/dev/null | grep -Fxq "$ROM"; then
+            ASSET_STATE=PUBLISHED
+          fi
+          {
+            echo "### Corrected Kimono ROM — actual GitHub Actions result"
+            echo
+            echo "- Workflow run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            echo "- Commit: \`${{ github.sha }}\`"
+            echo "- Job outcome: \`$JOB_OUTCOME\`"
+            echo "- ROM release-step outcome: \`$RELEASE_OUTCOME\`"
+            echo "- Verified direct GBA asset: **$ASSET_STATE**"
+            echo "- Expected filename: \`$ROM\`"
+            if test "$ASSET_STATE" = PUBLISHED; then
+              echo "- Direct .gba: https://github.com/${{ github.repository }}/releases/download/$TAG/$ROM"
+            fi
+            if test "$ASSET_STATE" != PUBLISHED && test -f /tmp/pru-build.log; then
+              echo
+              echo "First compiler errors (if any):"
+              echo '\`\`\`text'
+              grep -n -m 12 -E 'error:|Error:|undefined reference|make: \\\*\\\*\\\*' /tmp/pru-build.log || true
+              echo '\`\`\`'
+              echo 'Last build lines:'
+              echo '\`\`\`text'
+              tail -n 12 /tmp/pru-build.log
+              echo '\`\`\`'
+            fi
+          } > /tmp/kimono-ci-report.md
+          gh issue comment 32 --repo "${{ github.repository }}" --body-file /tmp/kimono-ci-report.md
+          if test "$ASSET_STATE" != PUBLISHED; then
+            echo "::warning::PRU direct GBA release asset is not published"
+          fi
