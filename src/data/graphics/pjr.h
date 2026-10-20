@@ -7,11 +7,11 @@ const u16 gMonShinyPalette_Scarabub[] = INCBIN_U16("graphics/pokemon/prl_authori
 const u32 gMonBackPic_Scarabub[] = INCBIN_U32("graphics/pokemon/prl_authoritative/scarabub/back.4bpp.smol");
 const u8 gMonIcon_Scarabub[] = INCBIN_U8("graphics/pokemon/prl_authoritative/scarabub/icon.4bpp");
 
-const u32 gMonFrontPic_Skarmet[] = INCBIN_U32("graphics/pokemon/prl_authoritative/skarmet/front.4bpp.smol");
-const u16 gMonPalette_Skarmet[] = INCBIN_U16("graphics/pokemon/prl_authoritative/skarmet/normal.gbapal");
-const u16 gMonShinyPalette_Skarmet[] = INCBIN_U16("graphics/pokemon/prl_authoritative/skarmet/shiny.gbapal");
-const u32 gMonBackPic_Skarmet[] = INCBIN_U32("graphics/pokemon/prl_authoritative/skarmet/back.4bpp.smol");
-const u8 gMonIcon_Skarmet[] = INCBIN_U8("graphics/pokemon/prl_authoritative/skarmet/icon.4bpp");
+const u32 gMonFrontPic_Skarmet[] = INCBIN_U32("graphics/pokemon/skarmet/front.4bpp.smol");
+const u16 gMonPalette_Skarmet[] = INCBIN_U16("graphics/pokemon/skarmet/normal.gbapal");
+const u16 gMonShinyPalette_Skarmet[] = INCBIN_U16("graphics/pokemon/skarmet/shiny.gbapal");
+const u32 gMonBackPic_Skarmet[] = INCBIN_U32("graphics/pokemon/skarmet/back.4bpp.smol");
+const u8 gMonIcon_Skarmet[] = INCBIN_U8("graphics/pokemon/skarmet/icon.4bpp");
 
 const u32 gMonFrontPic_Mootiny[] = INCBIN_U32("graphics/pokemon/prl_authoritative/mootiny/front.4bpp.smol");
 const u16 gMonPalette_Mootiny[] = INCBIN_U16("graphics/pokemon/prl_authoritative/mootiny/normal.gbapal");

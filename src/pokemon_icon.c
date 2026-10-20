@@ -51,6 +51,16 @@ static const u16 sPRUSwamplithIconPalette[16] =
     RGB(20, 24, 31), RGB(13, 21, 19), RGB(12, 12, 11), RGB(8, 8, 8),
 };
 
+// Purple Skarmet icon derived from Tourmaline v1.1.1 Skarby artwork.
+// 32x64 two-frame indexed icon, own palette #9; do not alter 3-bit SpeciesInfo ABI.
+static const u16 sPRUSkarmetIconPalette[16] =
+{
+    RGB(0, 0, 0), RGB(7, 6, 15), RGB(31, 31, 31), RGB(18, 15, 23),
+    RGB(25, 23, 28), RGB(2, 2, 2), RGB(22, 19, 26), RGB(25, 18, 0),
+    RGB(31, 27, 0), RGB(11, 8, 4), RGB(18, 2, 3), RGB(12, 12, 21),
+    RGB(29, 27, 31), RGB(0, 0, 0), RGB(0, 0, 0), RGB(0, 0, 0),
+};
+
 const struct SpritePalette gMonIconPaletteTable[] =
 {
     { gMonIconPalettes[0], POKE_ICON_BASE_PAL_TAG + 0 },
@@ -62,6 +72,7 @@ const struct SpritePalette gMonIconPaletteTable[] =
     { sPRLNoxichuIconPalette, POKE_ICON_BASE_PAL_TAG + 6 },
     { sPRLEeveeonIconPalette, POKE_ICON_BASE_PAL_TAG + 7 },
     { sPRUSwamplithIconPalette, POKE_ICON_BASE_PAL_TAG + 8 },
+    { sPRUSkarmetIconPalette, POKE_ICON_BASE_PAL_TAG + 9 },
 };
 
 static const struct OamData sMonIconOamData =
@@ -173,6 +184,8 @@ static u8 GetPruCustomIconPaletteIndex(u16 species, u8 original)
 {
     if (species == SPECIES_SWAMPLITH)
         return 8;
+    if (species == SPECIES_SKARMET)
+        return 9;
     return original;
 }
 

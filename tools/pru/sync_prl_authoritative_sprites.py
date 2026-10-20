@@ -31,8 +31,8 @@ REQUIRED = {"noxichu", "edensaur", "charaxis", "fortotoise", "khang", "nolax", "
 # already registered in this engine, without altering its species or forms.
 # Donphalanx is intentionally backed by Great Tusk's exact sprites: the pinned
 # PRL species data uses GreatTusk symbols, NOT the older donphalanx art folder.
-# Do not overwrite either explicit visual decision on repeat builds.
-PRU_VISUAL_OVERRIDES = {"feralodon", "donphalanx"}
+# Do not overwrite approved Feralodon, Donphalanx or Tourmaline-Skarmet art on repeat builds.
+PRU_VISUAL_OVERRIDES = {"feralodon", "donphalanx", "skarmet"}
 NORMALIZED_EEVEE_ICONS = {
     "champeon", "lepideon", "guardeon", "obsideon", "toxeon",
     "sphynxeon", "omeon", "drakeon", "eeveeon", "nimbeon",
@@ -112,7 +112,7 @@ def main():
                 dest.write_bytes(contents)
         for key, source in list(headers.items()):
             if slug in PRU_VISUAL_OVERRIDES:
-                continue  # Preserve Mega Feraligatr artwork on Feralodon only.
+                continue  # Preserve all approved explicit PRU visual overrides.
             for kind, filename in KINDS.items():
                 if kind == "Icon" and slug in NORMALIZED_EEVEE_ICONS:
                     # Leave the palette-compatible repository party icons intact.
