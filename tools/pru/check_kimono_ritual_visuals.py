@@ -50,6 +50,6 @@ assert "DecompressDataWithHeaderWram(gMonFrontPic_BanetteMega" in visuals
 assert "DecompressDataWithHeaderWram(gMonFrontPic_SableyeMega" in visuals
 assert "GetMonSpritePalFromSpeciesAndPersonality(species, TRUE" in visuals
 assert "setvar VAR_ECRUTEAK_CITY_THEATER, 4" in elm
-assert "goto_if_lt VAR_ECRUTEAK_CITY_THEATER, 8" in gate
+assert "goto_if_lt VAR_ECRUTEAK_CITY_THEATER, 8" in (root / "data/maps/ReceptionGate_hns/scripts.inc").read_text()
 
 print("PASS: five Kimono Ghost visuals restricted to trainer art, no Mega engine/roster change")
