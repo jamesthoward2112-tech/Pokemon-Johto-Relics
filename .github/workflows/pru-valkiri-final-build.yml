@@ -62,6 +62,7 @@ on:
       - tools/pru/check_kimono_ghost_teams.py
       - docs/PRU_DANCE_THEATRE_GHOST_KIMONO_20261020.md
       - src/battle_gfx_sfx_util.c
+      - src/battle_util.c
       - src/data/graphics/pjr.h
       - tools/pru/check_kimono_ritual_visuals.py
       - docs/PRU_KIMONO_TRAINER_ART_20261020.md
@@ -605,12 +606,12 @@ jobs:
             --notes "Direct 32 MiB .gba — NO ZIP. Keeps eight-badge PRU baseline and original Elm-to-Dance-Theatre-to-Lugia/Ho-Oh-to-League gate story unchanged. Replaces only five Lv48 Dance Theatre Eeveelution singles with Gengar, Misdreavus, Banette, Sableye and Dusclops, each with imported Eerie Fog and distinct attacks. Postgame Sinjoh Kimono battles untouched. Source regression, full make hns, compiled-ROM audit and mGBA boot required; actual user-save gameplay tests still pending." \
             --prerelease
 
-      - name: Publish PRU exclusive Mega-art Kimono direct GBA
+      - name: Publish PRU corrected Kimono Mega art and Eerie Fog direct GBA
         if: github.ref_name == 'pru/kimono-ritual-mega-art-20261020'
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: pru-ghost-kimono-mega-art-2026-10-20
-          ROM: Pokemon-Relics-Ultimate-Ghost-Kimono-Mega-Art-2026-10-20.gba
+          TAG: pru-kimono-sprite-fog-fix-2026-10-20
+          ROM: Pokemon-Relics-Ultimate-Kimono-Sprite-Fog-Fix-2026-10-20.gba
         run: |
           test "$(stat -c %s pokehns.gba)" -eq 33554432
           python3 tools/pru/check_kimono_ghost_teams.py
@@ -618,12 +619,12 @@ jobs:
           cp pokehns.gba "$ROM"
           sha256sum "$ROM"
           if gh release view "$TAG" --repo "${{ github.repository }}" >/dev/null 2>&1; then
-            echo "Refusing to overwrite existing Kimono Mega-art release"
+            echo "Refusing to overwrite existing Kimono sprite-and-fog fix release"
             exit 1
           fi
           gh release create "$TAG" "$ROM" \
             --repo "${{ github.repository }}" \
             --target "$GITHUB_SHA" \
-            --title "PRU: Kimono Ghost battles with exclusive Mega artwork" \
-            --notes "Direct 32 MiB .gba; NO ZIP. Five Ecruteak Dance Theatre Ghost+Eerie Fog Lv48 singles preserved. Zuki's Gengar, Miki's Banette and Sayo's Sableye display existing Mega artwork only. Naoko's Misdreavus and Kuni's Dusclops have ritual-tinted palettes. Restricted to five opponent trainer IDs; Mega mechanics disabled; species/stats/evolutions/444/save, Elm/Legendary/League story unchanged. Prior Eight-Badge polish included. Source/ROM/mGBA checks passed; user's actual save battle-visual playtest still pending." \
+            --title "PRU: Ghost Kimono Mega sprite-frame and Eerie Fog fix" \
+            --notes "Direct 32 MiB .gba; NO ZIP. Corrects the three Kimono Mega costume sprite animation slots (no wrong-colour/black original frames) and automatically opens all five Dance Theatre battles with native eight-turn Eerie Fog and its Ghost/Psychic protection. Five Ecruteak Dance Theatre Ghost+Eerie Fog Lv48 singles preserved. Zuki's Gengar, Miki's Banette and Sayo's Sableye display existing Mega artwork only. Naoko's Misdreavus and Kuni's Dusclops have ritual-tinted palettes. Restricted to five opponent trainer IDs; Mega mechanics disabled; species/stats/evolutions/444/save, Elm/Legendary/League story unchanged. Prior Eight-Badge polish included. Source/ROM/mGBA checks passed; user's actual save battle-visual playtest still pending." \
             --prerelease
