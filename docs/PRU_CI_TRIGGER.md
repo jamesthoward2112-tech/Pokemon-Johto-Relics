@@ -121,3 +121,8 @@ Compile the current branch with latest commits: Blackthorn Move Relearner is fre
 
 ## 20 October 2026 — verified Tourmaline Skarmet PNGs and Great Tusk Donphalanx
 Source commit 969faac6 fixed exact indexed front/back/icon payloads. Verify the Skarmet 64x64 front/back, 32x64 icon palette #9, PRU-only override paths, preserved Great Tusk Donphalanx, full HNS build, compiled ROM audit, mGBA boot, and a NEW direct .gba release. Do not overwrite older releases or claim live gameplay tests.
+
+
+## Forced Kimono sprite + Eerie Fog release rebuild — 20 October 2026
+
+Explicit user-requested CI rebuild of branch `pru/kimono-ritual-mega-art-20261020` after committing the fixes for Gengar, Banette and Sableye costume animation frames and automatic native eight-turn Eerie Fog in the five pre-League Ecruteak Dance Theatre battles. The GitHub Actions push workflow includes this file in its path filter, so this new commit forces the full PRU static checks, `make hns`, compiled ROM audit and mGBA boot test, then the `pru-kimono-sprite-fog-fix-2026-10-20` direct .gba release step. Do not report the ROM published until the release asset is confirmed. Live user-save gameplay visual inspection remains distinct from automated boot.
