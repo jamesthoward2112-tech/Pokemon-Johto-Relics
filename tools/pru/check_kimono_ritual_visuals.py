@@ -13,7 +13,7 @@ asset_refs = (root / "src/data/graphics/pjr.h").read_text()
 config = (root / "include/config/species_enabled.h").read_text()
 party = (root / "src/data/trainers_hns.party").read_text()
 elm = (root / "data/maps/NewBarkTown_Lab_hns/scripts.inc").read_text()
-gate = (root / "data/maps/ReceptionGate_hns/scripts.inc")
+gate = (root / "data/maps/ReceptionGate_hns/scripts.inc").read_text()
 
 assert re.search(r"#define P_MEGA_EVOLUTIONS\s+FALSE", config), "Mega forms must stay disabled"
 assert "#include \"constants/opponents_hns.h\"" in visuals
