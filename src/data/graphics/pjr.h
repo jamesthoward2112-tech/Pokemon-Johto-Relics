@@ -100,6 +100,15 @@ const u8 gMonIcon_Alphoracle[] = INCBIN_U8("graphics/pokemon/prl_authoritative/a
 
 
 #if !P_MEGA_EVOLUTIONS
+// Pre-League Kimono Girls use these *visuals only*; PRU Mega Evolution stays
+// disabled.  Do not register Mega forms as species or expose this art globally.
+const u32 gMonFrontPic_GengarMega[] = INCBIN_U32("graphics/pokemon/gengar/mega/front.4bpp.smol");
+const u16 gMonPalette_GengarMega[] = INCBIN_U16("graphics/pokemon/gengar/mega/normal.gbapal");
+const u32 gMonFrontPic_BanetteMega[] = INCBIN_U32("graphics/pokemon/banette/mega/front.4bpp.smol");
+const u16 gMonPalette_BanetteMega[] = INCBIN_U16("graphics/pokemon/banette/mega/normal.gbapal");
+const u32 gMonFrontPic_SableyeMega[] = INCBIN_U32("graphics/pokemon/sableye/mega/front.4bpp.smol");
+const u16 gMonPalette_SableyeMega[] = INCBIN_U16("graphics/pokemon/sableye/mega/normal.gbapal");
+
 const u32 gMonFrontPic_PinsirMega[] = INCBIN_U32("graphics/pokemon/pinsir/mega/front.4bpp.smol");
 const u16 gMonPalette_PinsirMega[] = INCBIN_U16("graphics/pokemon/pinsir/mega/normal.gbapal");
 const u32 gMonBackPic_PinsirMega[] = INCBIN_U32("graphics/pokemon/pinsir/mega/back.4bpp.smol");
