@@ -118,3 +118,6 @@ Use the latest commit on `pru/prl-sprite-position-icons-tm-20261018`. The user a
 
 ## PRU 19 October: Dragon's Den Steevee/Neevee + no-Heart-Scale Blackthorn
 Compile the current branch with latest commits: Blackthorn Move Relearner is free and repeatable, Dragon's Den Lea/Pia replaced by fifth Steevee/Neevee double battle led by Drakeon at level 53, and verify scripts, party ID 679, custom intro and save flags. Run source checks, full make hns, binary audit and mGBA boot before publishing direct uncompressed .gba. Do not claim live gameplay testing without an actual battle playthrough.
+
+## 20 October 2026 — verified Tourmaline Skarmet PNGs and Great Tusk Donphalanx
+Source commit 969faac6 fixed exact indexed front/back/icon payloads. Verify the Skarmet 64x64 front/back, 32x64 icon palette #9, PRU-only override paths, preserved Great Tusk Donphalanx, full HNS build, compiled ROM audit, mGBA boot, and a NEW direct .gba release. Do not overwrite older releases or claim live gameplay tests.
