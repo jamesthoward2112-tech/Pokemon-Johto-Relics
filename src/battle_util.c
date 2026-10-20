@@ -51,6 +51,7 @@
 #include "constants/songs.h"
 #include "constants/species.h"
 #include "constants/trainers.h"
+#include "constants/opponents_hns.h"
 #include "constants/weather.h"
 #include "randomizer.h"
 #include "constants/pokemon.h"
@@ -2991,6 +2992,29 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
         }
         break;
     case FIELD_EFFECT_OVERWORLD_WEATHER:
+        // The five pre-League Kimono Girls' Ghost battles are an Eerie Fog
+        // ritual. Previously all five simply knew the move, so the AI could
+        // choose not to use it at all. Start native PRL Eerie Fog before the
+        // first turn with the usual fog announcement and weather animation.
+        // The built-in weather system handles the eight-turn expiry and 20%
+        // Ghost/Psychic protection; no new field state or save flag is used.
+        if (IS_HNS
+         && (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+         && !(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED))
+         && (TRAINER_BATTLE_PARAM.opponentA == TRAINER_ZUKI_HNS
+          || TRAINER_BATTLE_PARAM.opponentA == TRAINER_NAOKO_HNS
+          || TRAINER_BATTLE_PARAM.opponentA == TRAINER_MIKI_HNS
+          || TRAINER_BATTLE_PARAM.opponentA == TRAINER_SAYO_HNS
+          || TRAINER_BATTLE_PARAM.opponentA == TRAINER_KUNI_HNS)
+         && TryChangeBattleWeather(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT),
+                                   BATTLE_WEATHER_FOG, ABILITY_NONE))
+        {
+            gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_FOG_DIAGONAL;
+            gBattleScripting.animArg1 = B_ANIM_FOG_CONTINUES;
+            BattleScriptPushCursorAndCallback(BattleScript_OverworldWeatherStarts);
+            effect = TRUE;
+            break;
+        }
         if (!(gBattleTypeFlags & BATTLE_TYPE_RECORDED))
         {
             switch (GetCurrentWeather())
