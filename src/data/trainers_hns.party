@@ -6897,13 +6897,13 @@ Double Battle: No
 AI: Basic Trainer
 Mugshot: Pink
 
-Lepideon
+Misdreavus
 Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Signal Beam
-- Air Slash
-- Sleep Powder
-- Charge Beam
+- Eerie Fog
+- Shadow Ball
+- Psychic
+- Pain Split
 
 === TRAINER_SAYO_HNS ===
 Name: SAYO
@@ -6915,13 +6915,13 @@ Double Battle: No
 AI: Basic Trainer
 Mugshot: Yellow
 
-Guardeon
+Sableye
 Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Flash Cannon
-- Dragon Pulse
-- Kings Shield
-- Extrasensory
+- Eerie Fog
+- Shadow Ball
+- Recover
+- Confuse Ray
 
 === TRAINER_ZUKI_HNS ===
 Name: ZUKI
@@ -6933,13 +6933,13 @@ Double Battle: No
 AI: Basic Trainer
 Mugshot: Purple
 
-Omeon
+Gengar
 Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Shadow Claw
-- Knock Off
-- Will O Wisp
-- Confuse Ray
+- Eerie Fog
+- Shadow Ball
+- Sludge Bomb
+- Hypnosis
 
 === TRAINER_KUNI_HNS ===
 Name: KUNI
@@ -6951,13 +6951,13 @@ Double Battle: No
 AI: Basic Trainer
 Mugshot: Light Blue
 
-Drakeon
+Dusclops
 Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Dragon Rush
-- Iron Head
-- Crunch
-- Dragon Dance
+- Eerie Fog
+- Night Shade
+- Will O Wisp
+- Pain Split
 
 === TRAINER_MIKI_HNS ===
 Name: MIKI
@@ -6969,13 +6969,13 @@ Double Battle: No
 AI: Basic Trainer
 Mugshot: Dark Red
 
-Champeon
+Banette
 Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Jump Kick
-- Mega Kick
-- Swords Dance
-- Low Sweep
+- Eerie Fog
+- Shadow Claw
+- Will O Wisp
+- Knock Off
 
 === TRAINER_AMY_AND_MAY_HNS ===
 Name: AMY&MAY
