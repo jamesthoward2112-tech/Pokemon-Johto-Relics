@@ -761,6 +761,22 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, enum BattlerId battler)
         break;
     }
 
+    // The Kimono costumed opponents still use their base species' animated
+    // sprite frame table. The previous art override changed only frame 0,
+    // leaving frames 1-3 with unmatched vanilla art/palette: this produced
+    // pink Gengar/Banette and a black Sableye during the send-out animation.
+    // Repeat the correct trainer-only frame in all four animation slots.
+    // This has no effect on the real species, other trainers or party icons.
+    if (kimonoVisual == KIMONO_GHOST_VISUAL_GENGAR_MEGA
+     || kimonoVisual == KIMONO_GHOST_VISUAL_BANETTE_MEGA
+     || kimonoVisual == KIMONO_GHOST_VISUAL_SABLEYE_MEGA)
+    {
+        for (u32 frame = 1; frame < 4; frame++)
+            Dma3CopyLarge32_(gMonSpritesGfxPtr->spritesGfx[position],
+                             &gMonSpritesGfxPtr->spritesGfx[position][MON_PIC_SIZE * frame],
+                             MON_PIC_SIZE);
+    }
+
     paletteOffset = OBJ_PLTT_ID(battler);
 
     if (gBattleSpritesDataPtr->battlerData[battler].transformSpecies == SPECIES_NONE)
