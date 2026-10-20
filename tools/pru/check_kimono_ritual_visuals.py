@@ -18,6 +18,8 @@ gate = (root / "data/maps/ReceptionGate_hns/scripts.inc")
 assert re.search(r"#define P_MEGA_EVOLUTIONS\s+FALSE", config), "Mega forms must stay disabled"
 assert "#include \"constants/opponents_hns.h\"" in visuals
 assert "GetPruKimonoGhostVisual" in visuals
+assert '#include "battle_setup.h"' in visuals
+assert "switch (TRAINER_BATTLE_PARAM.opponentA)" in visuals
 for condition in ("!IS_HNS", "BATTLE_TYPE_TRAINER", "IsOnPlayerSide(battler)",
                   "gBattleSpritesDataPtr->battlerData[battler].transformSpecies != SPECIES_NONE"):
     assert condition in visuals, f"Missing opponent-only safeguard: {condition}"
