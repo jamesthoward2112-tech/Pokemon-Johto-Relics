@@ -31,6 +31,53 @@
 #include "constants/battle_palace.h"
 #include "constants/battle_move_effects.h"
 #include "constants/event_objects.h" // only for SHADOW_SIZE constants
+#include "constants/opponents_hns.h"
+
+// PRU battle-only Kimono art uses existing Mega sprite *pictures* without
+// enabling Mega Evolution or changing the underlying species/444 Pokédex.
+extern const u32 gMonFrontPic_GengarMega[];
+extern const u16 gMonPalette_GengarMega[];
+extern const u32 gMonFrontPic_BanetteMega[];
+extern const u16 gMonPalette_BanetteMega[];
+extern const u32 gMonFrontPic_SableyeMega[];
+extern const u16 gMonPalette_SableyeMega[];
+
+enum PruKimonoGhostVisual
+{
+    KIMONO_GHOST_VISUAL_NONE,
+    KIMONO_GHOST_VISUAL_GENGAR_MEGA,
+    KIMONO_GHOST_VISUAL_MISDREAVUS_RITUAL,
+    KIMONO_GHOST_VISUAL_BANETTE_MEGA,
+    KIMONO_GHOST_VISUAL_SABLEYE_MEGA,
+    KIMONO_GHOST_VISUAL_DUSCLOPS_RITUAL,
+};
+
+static enum PruKimonoGhostVisual GetPruKimonoGhostVisual(enum BattlerId battler, u32 species)
+{
+    if (!IS_HNS
+     || !(gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+     || IsOnPlayerSide(battler)
+     || gBattleSpritesDataPtr->battlerData[battler].transformSpecies != SPECIES_NONE)
+        return KIMONO_GHOST_VISUAL_NONE;
+
+    // Both the roster and the trainer ID must match. Other enemy trainers,
+    // wild encounters, the player, and any other game editions are untouched.
+    switch (gTrainerBattleOpponent_A)
+    {
+    case TRAINER_ZUKI_HNS:
+        return species == SPECIES_GENGAR ? KIMONO_GHOST_VISUAL_GENGAR_MEGA : KIMONO_GHOST_VISUAL_NONE;
+    case TRAINER_NAOKO_HNS:
+        return species == SPECIES_MISDREAVUS ? KIMONO_GHOST_VISUAL_MISDREAVUS_RITUAL : KIMONO_GHOST_VISUAL_NONE;
+    case TRAINER_MIKI_HNS:
+        return species == SPECIES_BANETTE ? KIMONO_GHOST_VISUAL_BANETTE_MEGA : KIMONO_GHOST_VISUAL_NONE;
+    case TRAINER_SAYO_HNS:
+        return species == SPECIES_SABLEYE ? KIMONO_GHOST_VISUAL_SABLEYE_MEGA : KIMONO_GHOST_VISUAL_NONE;
+    case TRAINER_KUNI_HNS:
+        return species == SPECIES_DUSCLOPS ? KIMONO_GHOST_VISUAL_DUSCLOPS_RITUAL : KIMONO_GHOST_VISUAL_NONE;
+    default:
+        return KIMONO_GHOST_VISUAL_NONE;
+    }
+}
 
 bool8 UseGen4BattleUI(void)
 {
@@ -693,6 +740,26 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, enum BattlerId battler)
                              gMonSpritesGfxPtr->spritesGfx[position],
                              species, personalityValue);
 
+    // Art-only costumes for the five Lv48 Ecruteak Kimono Ghost battles.
+    // Mega Evolution is disabled; these are NOT Mega-form species or boosts.
+    // Draw the corresponding donor Mega front silhouette directly, while
+    // retaining the true species, moves, held items, AI, stats and battle data.
+    enum PruKimonoGhostVisual kimonoVisual = GetPruKimonoGhostVisual(battler, species);
+    switch (kimonoVisual)
+    {
+    case KIMONO_GHOST_VISUAL_GENGAR_MEGA:
+        DecompressDataWithHeaderWram(gMonFrontPic_GengarMega, gMonSpritesGfxPtr->spritesGfx[position]);
+        break;
+    case KIMONO_GHOST_VISUAL_BANETTE_MEGA:
+        DecompressDataWithHeaderWram(gMonFrontPic_BanetteMega, gMonSpritesGfxPtr->spritesGfx[position]);
+        break;
+    case KIMONO_GHOST_VISUAL_SABLEYE_MEGA:
+        DecompressDataWithHeaderWram(gMonFrontPic_SableyeMega, gMonSpritesGfxPtr->spritesGfx[position]);
+        break;
+    default:
+        break;
+    }
+
     paletteOffset = OBJ_PLTT_ID(battler);
 
     if (gBattleSpritesDataPtr->battlerData[battler].transformSpecies == SPECIES_NONE)
@@ -700,8 +767,41 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, enum BattlerId battler)
     else
         paletteData = GetMonSpritePalFromSpeciesAndPersonality(species, isShiny, personalityValue);
 
+    switch (kimonoVisual)
+    {
+    case KIMONO_GHOST_VISUAL_GENGAR_MEGA:
+        paletteData = gMonPalette_GengarMega;
+        break;
+    case KIMONO_GHOST_VISUAL_BANETTE_MEGA:
+        paletteData = gMonPalette_BanetteMega;
+        break;
+    case KIMONO_GHOST_VISUAL_SABLEYE_MEGA:
+        paletteData = gMonPalette_SableyeMega;
+        break;
+    case KIMONO_GHOST_VISUAL_MISDREAVUS_RITUAL:
+    case KIMONO_GHOST_VISUAL_DUSCLOPS_RITUAL:
+        // No official Mega art: start from their unused shiny palette and
+        // apply a subtle ritual tint on the opponent side only.
+        paletteData = GetMonSpritePalFromSpeciesAndPersonality(species, TRUE, personalityValue);
+        break;
+    default:
+        break;
+    }
+
     LoadPalette(paletteData, paletteOffset, PLTT_SIZE_4BPP);
     LoadPalette(paletteData, BG_PLTT_ID(8) + BG_PLTT_ID(battler), PLTT_SIZE_4BPP);
+
+    if (kimonoVisual == KIMONO_GHOST_VISUAL_MISDREAVUS_RITUAL
+     || kimonoVisual == KIMONO_GHOST_VISUAL_DUSCLOPS_RITUAL)
+    {
+        u16 tintColor = (kimonoVisual == KIMONO_GHOST_VISUAL_MISDREAVUS_RITUAL)
+                      ? RGB(20, 7, 27) : RGB(6, 16, 26);
+        BlendPalette(paletteOffset, 16, 5, tintColor);
+        CpuCopy32(gPlttBufferFaded + paletteOffset, gPlttBufferUnfaded + paletteOffset, PLTT_SIZEOF(16));
+        BlendPalette(BG_PLTT_ID(8) + BG_PLTT_ID(battler), 16, 5, tintColor);
+        CpuCopy32(gPlttBufferFaded + BG_PLTT_ID(8) + BG_PLTT_ID(battler),
+                  gPlttBufferUnfaded + BG_PLTT_ID(8) + BG_PLTT_ID(battler), PLTT_SIZEOF(16));
+    }
 
     // transform's pink color
     if (gBattleMons[battler].volatiles.transformed)
