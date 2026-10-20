@@ -26,7 +26,7 @@ eeveelution_signatures = {
     "Leafeon", "Glaceon", "Sylveon", "Omeon", "Lepideon", "Champeon",
     "Guardeon", "Drakeon", "Eeveeon", "Nimbeon", "Toxeon",
 }
-party_begins = list(re.finditer(r"^=== TRAINER_([^\\n]+?) ===$", parties, flags=re.MULTILINE))
+party_begins = list(re.finditer(r"^=== TRAINER_([^\n]+?) ===$", parties, flags=re.MULTILINE))
 party_map = {}
 for i, match in enumerate(party_begins):
     key = match.group(1)
@@ -39,10 +39,10 @@ for name, species in expected.items():
     block = party_map[key]
     assert "Class: Kimono Girl Hns" in block
     assert "Double Battle: No" in block, f"Changed the original five-battle format: {key}"
-    assert re.search(rf"^{re.escape(species)}\\s*$", block, flags=re.MULTILINE), f"Wrong species for {key}"
-    assert len(re.findall(r"^Level:\\s*48$", block, flags=re.MULTILINE)) == 1, f"Unexpected party size/level for {key}"
+    assert re.search(rf"^{re.escape(species)}\s*$", block, flags=re.MULTILINE), f"Wrong species for {key}"
+    assert len(re.findall(r"^Level:\s*48$", block, flags=re.MULTILINE)) == 1, f"Unexpected party size/level for {key}"
     assert "- Eerie Fog" in block, f"{key} cannot summon Eerie Fog"
-    species_lines = re.findall(r"^([A-Za-z][A-Za-z '-]+)\\nLevel: [0-9]+", block, flags=re.MULTILINE)
+    species_lines = re.findall(r"^([A-Za-z][A-Za-z '-]+)\nLevel: [0-9]+", block, flags=re.MULTILINE)
     assert len(species_lines) == 1, f"Multiple/missing Pokémon in {key}: {species_lines}"
     assert not (set(species_lines) & eeveelution_signatures), f"Eeveelution present in {key}"
     assert f"trainerbattle_no_intro TRAINER_{key}," in theater, f"Missing gauntlet battle {key}"
