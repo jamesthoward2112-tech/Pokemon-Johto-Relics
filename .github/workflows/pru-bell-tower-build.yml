@@ -1,0 +1,24 @@
+name: PRU Bell Tower ROM build
+on:
+  push:
+    branches:
+      - pru/bell-tower-final-rocket-lv58-20261020
+  workflow_dispatch:
+jobs:
+  build-hns:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install GBA build requirements
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3
+      - name: Compile Heart and Soul PRU ROM
+        run: make -j2 hns
+      - name: Upload direct GBA
+        uses: actions/upload-artifact@v4
+        with:
+          name: PRU-Bell-Tower-Lv58-GBA
+          path: ./*.gba
+          if-no-files-found: error

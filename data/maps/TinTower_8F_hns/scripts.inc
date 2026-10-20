@@ -1,5 +1,6 @@
 TinTower_8F_hns_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, TinTower_8F_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, TinTower_8F_OnFrame
 	.byte 0
 
 TinTower_8F_EventScript_SetWarp::
@@ -16,8 +17,29 @@ TinTower_8F_EventScript_SetWarpDay::
 
 
 TinTower_8F_OnTransition::
+	call TinTower_8F_EventScript_SyncFinalRocketState
 	call TinTower_OnTransition
 	end
+
+@ One-time mandatory Johto finale on 8F, in the statue gallery.
+@ Keep the existing Ho-Oh roof scripts independent.
+TinTower_8F_OnFrame::
+	map_script_2 VAR_TEMP_0, 1, TinTower_8F_EventScript_JessieJamesBattle
+	.2byte 0
+
+TinTower_8F_EventScript_SyncFinalRocketState::
+	setvar VAR_TEMP_0, 0
+	goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, TinTower_8F_EventScript_HideFinalRocket
+	goto_if_unset FLAG_PJR_RELIC_ALPHORACLE, TinTower_8F_EventScript_HideFinalRocket
+	goto_if_set FLAG_PJR_JESSIE_JAMES_FINAL_DEFEATED, TinTower_8F_EventScript_HideFinalRocket
+	setvar VAR_TEMP_0, 1
+	return
+
+TinTower_8F_EventScript_HideFinalRocket::
+	removeobject LOCALID_TINTOWER8F_JESSIE
+	removeobject LOCALID_TINTOWER8F_JAMES
+	removeobject 5  @ Meowth: fifth local object on this map
+	return
 
 TinTower_8F_EventScript_JessieJamesTrigger::
 	goto_if_unset FLAG_PJR_GOT_RAINBOW_CREST, TinTower_8F_EventScript_NoFinalRocket
@@ -40,6 +62,7 @@ TinTower_8F_EventScript_JessieJamesBattle::
 	msgbox TinTower_8F_Text_JessieJamesFinalAfter, MSGBOX_DEFAULT
 	removeobject LOCALID_TINTOWER8F_JESSIE
 	removeobject LOCALID_TINTOWER8F_JAMES
+	removeobject 5  @ Meowth
 	releaseall
 	end
 
@@ -54,7 +77,7 @@ TinTower_8F_Text_JessieJamesFinalSeen:
 
 TinTower_8F_Text_JessieJamesFinalBeaten:
 	.string "JESSIE & JAMES: Blasting off...\n"
-	.string "for the last time?!$"
+	.string "from JOHTO... for now!$"
 
 TinTower_8F_Text_JessieJamesFinalAfter:
 	.string "JESSIE: Fine! The summit is yours.\p"
