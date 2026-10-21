@@ -15543,21 +15543,21 @@ Level: 70
 - Swallow  
 - Spit Up  
 
-Weezing-Galar @ Fairy Feather  
+Weezing @ Fairy Feather  
 Ability: Levitate  
 Level: 70 
 IVs: 0 Atk  
-- Strange Steam  
+- Haze  
 - Sludge Bomb  
 - Flamethrower  
-- Corrosive Gas  
+- Will-O-Wisp  
 
-Muk-Alola @ Leftovers  
-Ability: Poison Touch  
+Muk @ Leftovers  
+Ability: Sticky Hold  
 Level: 70 
 - Gunk Shot  
 - Acid Armor  
-- Power-Up Punch  
+- Earthquake  
 - Disable  
 
 Crobat  
@@ -15568,13 +15568,12 @@ Level: 70
 - Brave Bird  
 - Toxic  
 
-Sneasler @ Flying Gem  
-Ability: Unburden  
+Adnokana @ Flying Gem  
 Level: 70 
-- Acrobatics  
-- Dire Claw  
-- Close Combat  
-- Fake Out  
+- Iron Head  
+- Poison Jab  
+- Earthquake  
+- Crunch  
 
 Toxeon @ Bright Powder  
 Ability: Shield Dust  
