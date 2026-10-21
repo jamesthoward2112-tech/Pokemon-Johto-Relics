@@ -27,6 +27,7 @@ SeafoamIslands_Gym_EventScript_Blaine::
 	msgbox SeafoamIslands_Gym_Text_Blaine_ExplainTM, MSGBOX_DEFAULT
 	setflag FLAG_BADGE15_GET
 	setflag FLAG_DEFEATED_CINNABAR_ISLAND_GYM
+	call SeafoamIslands_Gym_EventScript_PRUReward
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 15
 	clearflag FLAG_HIDE_SEAFOAM_BLAINE
@@ -45,6 +46,7 @@ SeafoamIslands_Gym_Movement_BlaineStepAside:
 	step_end
 
 SeafoamIslands_Gym_EventScript_Blaine_Defeated::
+	call SeafoamIslands_Gym_EventScript_PRUReward
 	msgbox SeafoamIslands_Gym_Text_BlaineAfterBattle, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -171,3 +173,31 @@ SeafoamIslands_Gym_Text_GymGuideWin2:
 	.string "SEAFOAM is his GYM now.\p"
 	.string "And you definitely earned that\n"
 	.string "VOLCANOBADGE.$"
+
+@ PRU first-clear Gym bonus. Do not consume reward flag with a full BAG.
+@ Previously defeated leaders can still award the bonus on return.
+SeafoamIslands_Gym_EventScript_PRUReward::
+	goto_if_set FLAG_PRU_KANTO_GYM_REWARD_BLAINE, SeafoamIslands_Gym_EventScript_PRURewardDone
+	msgbox SeafoamIslands_Gym_Text_PRURewardIntro, MSGBOX_DEFAULT
+	giveitem ITEM_LIFE_ORB
+	goto_if_eq VAR_RESULT, FALSE, SeafoamIslands_Gym_EventScript_PRURewardBagFull
+	addmoney 10000
+	setflag FLAG_PRU_KANTO_GYM_REWARD_BLAINE
+	msgbox SeafoamIslands_Gym_Text_PRURewardMoney, MSGBOX_DEFAULT
+SeafoamIslands_Gym_EventScript_PRURewardDone:
+	return
+SeafoamIslands_Gym_EventScript_PRURewardBagFull:
+	msgbox SeafoamIslands_Gym_Text_PRURewardBagFull, MSGBOX_DEFAULT
+	return
+
+SeafoamIslands_Gym_Text_PRURewardIntro:
+	.string "Your bonus prize for defeating\n"
+	.string "the GYM LEADER!$"
+
+SeafoamIslands_Gym_Text_PRURewardMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money!$"
+
+SeafoamIslands_Gym_Text_PRURewardBagFull:
+	.string "Your BAG is full! Make some room\n"
+	.string "and come back for your prize.$"
