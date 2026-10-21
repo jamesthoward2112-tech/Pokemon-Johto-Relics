@@ -1328,6 +1328,17 @@
 #define FLAG_PJR_RELIC_HO_OH                        (SYS_FLAGS + 0x74)
 #define FLAG_PJR_GYM_REWARD_CLAIR_TM                (SYS_FLAGS + 0x75)
 
+// PRU Kanto Gym bonuses: persistent unused system flag slots (0x76-0x7D).
+// Saved-game compatible: separate from map flags and visited-map flags.
+#define FLAG_PRU_KANTO_GYM_REWARD_BROCK           (SYS_FLAGS + 0x76)
+#define FLAG_PRU_KANTO_GYM_REWARD_MISTY           (SYS_FLAGS + 0x77)
+#define FLAG_PRU_KANTO_GYM_REWARD_SURGE           (SYS_FLAGS + 0x78)
+#define FLAG_PRU_KANTO_GYM_REWARD_ERIKA           (SYS_FLAGS + 0x79)
+#define FLAG_PRU_KANTO_GYM_REWARD_JANINE          (SYS_FLAGS + 0x7A)
+#define FLAG_PRU_KANTO_GYM_REWARD_SABRINA         (SYS_FLAGS + 0x7B)
+#define FLAG_PRU_KANTO_GYM_REWARD_BLAINE          (SYS_FLAGS + 0x7C)
+#define FLAG_PRU_KANTO_GYM_REWARD_BLUE            (SYS_FLAGS + 0x7D)
+
 // Visited / World Map flags
 #define FLAG_VISITED_NEWBARK_TOWN                   (SYS_FLAGS + 0x90)
 #define FLAG_VISITED_CHERRYGROVE_CITY               (SYS_FLAGS + 0x91)
