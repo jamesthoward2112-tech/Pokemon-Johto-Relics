@@ -16,6 +16,7 @@ CeladonCity_Gym_EventScript_Erika::
 	msgbox CeladonCity_Gym_Text_Erika_ExplainTM, MSGBOX_DEFAULT
 	setflag FLAG_BADGE12_GET
 	setflag FLAG_DEFEATED_CELADON_GYM
+	call CeladonCity_Gym_EventScript_PRUReward
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 12
 	call Common_EventScript_SetGymTrainers_hns
@@ -25,6 +26,7 @@ CeladonCity_Gym_EventScript_Erika::
 	end
 
 CeladonCity_Gym_EventScript_Erika_Defeated::
+	call CeladonCity_Gym_EventScript_PRUReward
 	msgbox CeladonCity_Gym_Text_ErikaAfterBattle, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -185,3 +187,31 @@ CeladonCity_Gym_Text_GymStatuePlayerWon::
     .string "LEADER: ERIKA\p"
     .string "WINNING TRAINERS:\n"
 	.string "BLUE, RED, {PLAYER}$"
+
+@ PRU first-clear Gym bonus. Never consume the reward flag while the BAG is full.
+@ Old saves with the badge can reclaim by speaking to the leader (or BLUE's Gym Guide).
+CeladonCity_Gym_EventScript_PRUReward::
+	goto_if_set FLAG_PRU_KANTO_GYM_REWARD_ERIKA, CeladonCity_Gym_EventScript_PRURewardDone
+	msgbox CeladonCity_Gym_Text_PRURewardIntro, MSGBOX_DEFAULT
+	giveitem ITEM_BIG_ROOT
+	goto_if_eq VAR_RESULT, FALSE, CeladonCity_Gym_EventScript_PRURewardBagFull
+	addmoney 10000
+	setflag FLAG_PRU_KANTO_GYM_REWARD_ERIKA
+	msgbox CeladonCity_Gym_Text_PRURewardMoney, MSGBOX_DEFAULT
+CeladonCity_Gym_EventScript_PRURewardDone:
+	return
+CeladonCity_Gym_EventScript_PRURewardBagFull:
+	msgbox CeladonCity_Gym_Text_PRURewardBagFull, MSGBOX_DEFAULT
+	return
+
+CeladonCity_Gym_Text_PRURewardIntro:
+	.string "Your bonus prize for defeating\n"
+	.string "the GYM LEADER!$"
+
+CeladonCity_Gym_Text_PRURewardMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money!$"
+
+CeladonCity_Gym_Text_PRURewardBagFull:
+	.string "Your BAG is full! Make some room\n"
+	.string "and come back for your prize.$"
