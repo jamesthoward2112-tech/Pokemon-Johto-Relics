@@ -25,6 +25,9 @@ with DEX.open(encoding="utf-8-sig", newline="") as stream:
     rows = list(csv.DictReader(stream))
 assert len(rows) == 444
 allowed = {normalize(r["Name"]) for r in rows}
+# Keep approved internal species constants as aliases for renamed custom mons
+# (e.g. Valkiri is still compiled as SPECIES_VALKYVOIR).
+allowed |= {normalize(r["Species_Constant"].removeprefix("SPECIES_")) for r in rows}
 text = PARTY.read_text(encoding="utf-8")
 blocks = re.split(r"(?=^=== TRAINER_)", text, flags=re.M)
 seen = set()
