@@ -55,6 +55,7 @@ FuchsiaCity_Gym_EventScript_Janine::
 	msgbox FuchsiaCity_Gym_Text_Janine_ExplainTM, MSGBOX_DEFAULT
 	setflag FLAG_BADGE14_GET
 	setflag FLAG_DEFEATED_FUCHSIA_GYM
+	call FuchsiaCity_Gym_EventScript_PRUReward
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 14
 	call Common_EventScript_SetGymTrainers_hns
@@ -80,6 +81,7 @@ FuchsiaCity_Gym_EventScript_Janine::
 	end
 
 FuchsiaCity_Gym_EventScript_Janine_Defeated::
+	call FuchsiaCity_Gym_EventScript_PRUReward
 	msgbox FuchsiaCity_Gym_Text_Janine_ApplyMyself, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -298,3 +300,30 @@ FuchsiaCity_Gym_Text_GuideWin:
 	.string "That was a great battle, trainer\n"
 	.string "from JOHTO!$"
 
+@ PRU first-clear Gym bonus. Never consume the reward flag while the BAG is full.
+@ Old saves with the badge can reclaim by speaking to the leader (or BLUE's Gym Guide).
+FuchsiaCity_Gym_EventScript_PRUReward::
+	goto_if_set FLAG_PRU_KANTO_GYM_REWARD_JANINE, FuchsiaCity_Gym_EventScript_PRURewardDone
+	msgbox FuchsiaCity_Gym_Text_PRURewardIntro, MSGBOX_DEFAULT
+	giveitem ITEM_BLACK_SLUDGE
+	goto_if_eq VAR_RESULT, FALSE, FuchsiaCity_Gym_EventScript_PRURewardBagFull
+	addmoney 10000
+	setflag FLAG_PRU_KANTO_GYM_REWARD_JANINE
+	msgbox FuchsiaCity_Gym_Text_PRURewardMoney, MSGBOX_DEFAULT
+FuchsiaCity_Gym_EventScript_PRURewardDone:
+	return
+FuchsiaCity_Gym_EventScript_PRURewardBagFull:
+	msgbox FuchsiaCity_Gym_Text_PRURewardBagFull, MSGBOX_DEFAULT
+	return
+
+FuchsiaCity_Gym_Text_PRURewardIntro:
+	.string "Your bonus prize for defeating\n"
+	.string "the GYM LEADER!$"
+
+FuchsiaCity_Gym_Text_PRURewardMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money!$"
+
+FuchsiaCity_Gym_Text_PRURewardBagFull:
+	.string "Your BAG is full! Make some room\n"
+	.string "and come back for your prize.$"
