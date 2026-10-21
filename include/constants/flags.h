@@ -1526,15 +1526,6 @@
 #define FLAG_PJR_GYM_REWARD_PRYCE                   FLAG_UNUSED_0x8EE
 #define FLAG_PJR_GYM_REWARD_CLAIR                   FLAG_UNUSED_0x8EF
 #define FLAG_PJR_GYM_REWARD_CLAIR_TM                FLAG_UNUSED_0x8F0
-// Persistent one-time Kanto Gym bonus (held item + 10,000). Save-safe unused flags.
-#define FLAG_PRU_KANTO_GYM_REWARD_BROCK         FLAG_UNUSED_0x8F1
-#define FLAG_PRU_KANTO_GYM_REWARD_MISTY         FLAG_UNUSED_0x8F2
-#define FLAG_PRU_KANTO_GYM_REWARD_SURGE         FLAG_UNUSED_0x8F3
-#define FLAG_PRU_KANTO_GYM_REWARD_ERIKA         FLAG_UNUSED_0x8F4
-#define FLAG_PRU_KANTO_GYM_REWARD_JANINE        FLAG_UNUSED_0x8F5
-#define FLAG_PRU_KANTO_GYM_REWARD_SABRINA       FLAG_UNUSED_0x8F6
-#define FLAG_PRU_KANTO_GYM_REWARD_BLAINE        FLAG_UNUSED_0x8F7
-#define FLAG_PRU_KANTO_GYM_REWARD_BLUE          FLAG_UNUSED_0x8F8
 #define FLAG_UNUSED_0x8E8                           (SYSTEM_FLAGS + 0x88) // Unused Flag
 #define FLAG_UNUSED_0x8E9                           (SYSTEM_FLAGS + 0x89) // Unused Flag
 #define FLAG_UNUSED_0x8EA                           (SYSTEM_FLAGS + 0x8A) // Unused Flag
