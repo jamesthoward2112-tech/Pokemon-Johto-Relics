@@ -8443,13 +8443,13 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Curse
 - Thunderbolt
 
-Kleavor @ Quick Claw
+Armaldo @ Quick Claw
 Level: 66
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Swords Dance
-- Stone Axe
+- Stone Edge
 - X Scissor
-- Agility
+- Earthquake
 
 === TRAINER_MISTY_HNS ===
 Name: MISTY
@@ -8529,7 +8529,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Thunder Wave
 - Explosion
 
-Magnezone
+Magneton
 Level: 59
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Thunder
@@ -8553,13 +8553,13 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Crunch
 - Electric Terrain
 
-Electivire @ Scope Lens
+Noxichu @ Scope Lens
 Level: 59
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Thunderbolt
-- Fire Punch
-- Ice Punch
-- Submission
+- Crunch
+- Dark Pulse
+- Thunder Wave
 
 Raichu @ Magnet
 Level: 60
@@ -8588,21 +8588,21 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Sleep Powder
 - Leech Seed
 
-Roserade
+Vileplume
 Level: 60
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Synthesis
-- Grass Whistle
+- Sleep Powder
 - Toxic
-- Petal Dance
+- Sludge Bomb
 
-Tangrowth
+Edensaur
 Level: 60
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Power Whip
-- Wring Out
+- Sludge Bomb
 - Grassy Terrain
-- Tickle
+- Leech Seed
 
 Venusaur @ Leftovers
 Level: 61
@@ -8765,13 +8765,13 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Flare Blitz
 - Solar Beam
 
-Magmortar @ Sitrus Berry
+Charaxis @ Sitrus Berry
 Level: 65
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Thunder Punch
+- Air Slash
 - Fire Blast
-- Psychic
-- Confuse Ray
+- Dragon Pulse
+- Roost
 
 Houndoom @ Miracle Seed
 Level: 66
@@ -8816,13 +8816,13 @@ AI: Basic Trainer
 Mugshot: Blue
 Items: Full Restore / Full Restore
 
-Rhyperior @ Sitrus Berry
+Donphalanx @ Sitrus Berry
 Level: 69
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Drill Run
+- Earthquake
 - Stone Edge
-- Rest
-- Toxic
+- Crunch
+- Ice Shard
 
 Pidgeot @ Sharp Beak
 Level: 68
@@ -10642,13 +10642,13 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Safeguard
 - Mega Punch
 
-Honchkrow
+Skulberus
 Level: 61
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Dark Pulse
-- Air Slash
-- Thief
-- Double Team
+- Sucker Punch
+- Crunch
+- Scary Face
 
 Nidoqueen
 Level: 61
@@ -15288,20 +15288,19 @@ AI: Smart Trainer / Prediction
 Mugshot: Orange
 Items: Full Restore / Full Restore
 
-Kleavor @ Razor Claw  
-Ability: Sharpness  
+Armaldo @ Razor Claw  
+Ability: Battle Armor  
 Level: 72 
-- Stone Axe  
+- Stone Edge  
 - X-Scissor  
-- Agility  
+- Earthquake  
 - Swords Dance  
 
-Gliscor @ Toxic Orb  
-Ability: Poison Heal  
+Donphalanx @ Toxic Orb  
 Level: 71 
-- Spikes  
+- Stone Edge  
 - Protect  
-- Crabhammer  
+- Crunch  
 - Earthquake  
 
 Aerodactyl  
@@ -15329,13 +15328,13 @@ Level: 70
 - Calm Mind  
 - Thunderbolt  
 
-Golem-Alola @ Magnet  
-Ability: Galvanize  
+Golem @ Magnet  
+Ability: Sturdy  
 Level: 72  
 - Stone Edge  
 - Body Slam  
-- Autotomize  
-- Charge  
+- Earthquake  
+- Explosion  
 
 === TRAINER_MISTY_POSTOBC_HNS ===
 Name: MISTY
@@ -15445,21 +15444,20 @@ Level: 70
 - Wild Charge  
 - Crunch  
 
-Electivire @ Scope Lens  
-Ability: Motor Drive  
+Noxichu @ Scope Lens  
 Level: 69  
-- Thunder Punch  
-- Ice Punch  
-- Cross Chop  
-- Bulk Up  
+- Thunderbolt  
+- Crunch  
+- Dark Pulse  
+- Thunder Wave  
 
-Raichu-Alola @ Electric Seed  
-Ability: Surge Surfer  
+Raichu @ Electric Seed  
+Ability: Static  
 Level: 71  
 IVs: 0 Atk  
-- Rising Voltage  
+- Thunderbolt  
 - Electric Terrain  
-- Psyshock  
+- Brick Break  
 - Calm Mind  
 
 === TRAINER_ERIKA_POSTOBC_HNS ===
@@ -15473,20 +15471,19 @@ AI: Smart Trainer / Prediction
 Mugshot: Green
 Items: Full Restore / Full Restore
 
-Roserade @ Focus Sash  
-Ability: Natural Cure  
+Vileplume @ Focus Sash  
+Ability: Chlorophyll  
 Level: 70
 IVs: 0 Atk  
-- Toxic Spikes  
-- Venoshock  
+- Sleep Powder  
+- Sludge Bomb  
 - Toxic  
 - Petal Dance  
 
-Tangrowth @ Leftovers  
-Ability: Chlorophyll  
+Edensaur @ Leftovers  
 Level: 71 
 IVs: 0 Atk  
-- Ingrain  
+- Leech Seed  
 - Giga Drain  
 - Grassy Terrain  
 - Protect  
@@ -15500,13 +15497,13 @@ IVs: 0 Atk
 - Synthesis  
 - Poison Powder  
 
-Electrode-Hisui @ Miracle Seed  
-Ability: Aftermath  
+Exeggutor @ Miracle Seed  
+Ability: Chlorophyll  
 Level: 71  
 IVs: 0 Atk  
-- Chloroblast  
-- Electro Ball  
-- Foul Play  
+- Solar Beam  
+- Psychic  
+- Sludge Bomb  
 
 Bellossom @ Lum Berry  
 Ability: Chlorophyll  
@@ -15599,19 +15596,19 @@ AI: Smart Trainer / Prediction
 Mugshot: Pink
 Items: Full Restore / Full Restore
 
-Mr. Mime-Galar @ Eviolite  
-Ability: Vital Spirit  
+Mr. Mime @ Eviolite  
+Ability: Soundproof  
 Level: 70
 IVs: 0 Atk  
 - Light Screen  
 - Reflect  
 - Psychic  
-- Freeze-Dry  
+- Dazzling Gleam  
 
-Slowbro-Galar @ Quick Claw  
-Ability: Quick Draw  
+Slowbro @ Quick Claw  
+Ability: Own Tempo  
 Level: 70 
-- Shell Side Arm  
+- Surf  
 - Calm Mind  
 - Psyshock  
 - Slack Off  
@@ -15625,13 +15622,13 @@ IVs: 0 Atk
 - Psychic Terrain  
 - Power Gem  
 
-Rapidash-Galar  
-Ability: Pastel Veil  
+Valkiri  
+Ability: Pixilate  
 Level: 70 
-- Play Rough  
-- Psycho Cut  
-- Wild Charge  
-- Swords Dance  
+- Hyper Voice  
+- Psychic  
+- Boomburst  
+- Calm Mind  
 
 Wobbuffet @ Leftovers  
 Ability: Shadow Tag  
@@ -15671,14 +15668,13 @@ IVs: 0 Spe
 - Gyro Ball  
 - Iron Defense  
 
-Magmortar @ Magnet  
-Ability: Flame Body  
+Charaxis @ Magnet  
 Level: 70 
 IVs: 0 Atk  
 - Fire Blast  
-- Thunderbolt  
-- Confuse Ray  
-- Clear Smog  
+- Air Slash  
+- Dragon Pulse  
+- Roost  
 
 Blaziken @ Scope Lens  
 Ability: Speed Boost  
@@ -15697,11 +15693,11 @@ IVs: 0 Atk
 - Recover  
 - Amnesia  
 
-Arcanine-Hisui @ Rock Incense  
-Ability: Rock Head  
+Arcanine @ Rock Incense  
+Ability: Intimidate  
 Level: 70 
-- Head Smash  
-- Raging Fury  
+- Flare Blitz  
+- Crunch  
 - Wild Charge  
 - Extreme Speed  
 
@@ -15725,12 +15721,11 @@ AI: Smart Trainer / Prediction
 Mugshot: Blue
 Items: Full Restore / Full Restore
 
-Rhyperior @ Loaded Dice  
-Ability: Solid Rock  
+Donphalanx @ Loaded Dice  
 Level: 70 
-- Rock Blast  
-- Drill Run  
-- Toxic  
+- Stone Edge  
+- Earthquake  
+- Crunch  
 - Stealth Rock  
 
 Pidgeot @ Quick Claw  
@@ -15749,12 +15744,12 @@ Level: 70
 - Stone Edge  
 - Bulk Up  
 
-Marowak-Alola @ Thick Club  
-Ability: Lightning Rod  
+Marowak @ Thick Club  
+Ability: Rock Head  
 Level: 71  
-- Shadow Bone  
-- Flame Charge  
-- Pain Split  
+- Shadow Claw  
+- Rock Slide  
+- Swords Dance  
 - Bonemerang  
 
 Tyranitar @ Rocky Helmet  
@@ -15857,13 +15852,12 @@ Level: 74
 - Nasty Plot
 - Thunder Fang
 
-Overqwil @ Black Sludge  
-Ability: Poison Point  
+Adnokana @ Black Sludge  
 Level: 75
-- Barb Barrage  
-- Lash Out  
+- Poison Jab  
+- Crunch  
 - Swords Dance  
-- Aqua Jet  
+- Iron Head  
 
 Ariados @ Blunder Policy  
 Ability: Sniper  
