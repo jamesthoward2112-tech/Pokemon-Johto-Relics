@@ -9,7 +9,7 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[2]
-FLAGS = (ROOT / "include/constants/flags.h").read_text(encoding="utf-8")
+FLAGS = (ROOT / "include/constants/flags_hns.h").read_text(encoding="utf-8")
 ITEMS = (ROOT / "include/constants/items.h").read_text(encoding="utf-8")
 GYMS = {
     "BROCK": ("PewterCity_Gym_hns", "FLAG_DEFEATED_PEWTER_GYM",
@@ -34,8 +34,8 @@ assert len(set(row[3] for row in GYMS.values())) == 8
 
 for index, (trainer, (map_name, defeated_flag, defeated_route, item)) in enumerate(GYMS.items()):
     reward_flag = f"FLAG_PRU_KANTO_GYM_REWARD_{trainer}"
-    reserved = f"FLAG_UNUSED_0x{0x8F1 + index:X}"
-    assert re.search(r"#define\s+" + reward_flag + r"\s+" + reserved + r"\b", FLAGS), (trainer, "flag slot")
+    reserved = rf"\(SYS_FLAGS \+ 0x{0x76 + index:X}\)"
+    assert re.search(r"#define\s+" + reward_flag + r"\s+" + reserved, FLAGS), (trainer, "HNS claim flag slot")
     assert f"ITEM_{item}" in ITEMS, (trainer, "item does not exist")
     source = (ROOT / "data/maps" / map_name / "scripts.inc").read_text(encoding="utf-8")
     prefix = map_name.removesuffix("_hns")
