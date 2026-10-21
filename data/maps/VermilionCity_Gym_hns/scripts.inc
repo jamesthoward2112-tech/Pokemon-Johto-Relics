@@ -260,6 +260,7 @@ VermilionCity_Gym_EventScript_Surge::
 	msgbox VermilionGym_Text_ThunderBadgeInfo, MSGBOX_DEFAULT
 	setflag FLAG_BADGE11_GET
 	setflag FLAG_DEFEATED_VERMILION_GYM
+	call VermilionCity_Gym_EventScript_PRUReward
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 11
 	call Common_EventScript_SetGymTrainers_hns
@@ -283,6 +284,7 @@ VermilionCity_Gym_EventScript_GiveTM::
 	return
 
 VermilionCity_Gym_EventScript_Surge_Defeated::
+	call VermilionCity_Gym_EventScript_PRUReward
 	msgbox VermilionGym_Text_LtSurgePostBattle, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -434,3 +436,30 @@ VermilionCity_Gym_Text_OnlyTrashLocksWereReset::
     .string "Hey!\n"
     .string "The electric locks were reset!$"
 
+@ PRU first-clear Gym bonus. Never consume the reward flag while the BAG is full.
+@ Old saves with the badge can reclaim by speaking to the leader (or BLUE's Gym Guide).
+VermilionCity_Gym_EventScript_PRUReward::
+	goto_if_set FLAG_PRU_KANTO_GYM_REWARD_SURGE, VermilionCity_Gym_EventScript_PRURewardDone
+	msgbox VermilionCity_Gym_Text_PRURewardIntro, MSGBOX_DEFAULT
+	giveitem ITEM_AIR_BALLOON
+	goto_if_eq VAR_RESULT, FALSE, VermilionCity_Gym_EventScript_PRURewardBagFull
+	addmoney 10000
+	setflag FLAG_PRU_KANTO_GYM_REWARD_SURGE
+	msgbox VermilionCity_Gym_Text_PRURewardMoney, MSGBOX_DEFAULT
+VermilionCity_Gym_EventScript_PRURewardDone:
+	return
+VermilionCity_Gym_EventScript_PRURewardBagFull:
+	msgbox VermilionCity_Gym_Text_PRURewardBagFull, MSGBOX_DEFAULT
+	return
+
+VermilionCity_Gym_Text_PRURewardIntro:
+	.string "Your bonus prize for defeating\n"
+	.string "the GYM LEADER!$"
+
+VermilionCity_Gym_Text_PRURewardMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money!$"
+
+VermilionCity_Gym_Text_PRURewardBagFull:
+	.string "Your BAG is full! Make some room\n"
+	.string "and come back for your prize.$"
