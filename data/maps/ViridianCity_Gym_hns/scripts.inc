@@ -33,6 +33,7 @@ ViridianCity_Gym_EventScript_Blue::
 	msgbox ViridianCity_Gym_Text_LeaderBlue_ExplainTM, MSGBOX_DEFAULT
 	setflag FLAG_BADGE16_GET
 	setflag FLAG_DEFEATED_VIRIDIAN_GYM
+	call ViridianCity_Gym_EventScript_PRUReward
 	setflag FLAG_HIDE_CINNABAR_BLUE
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 16
@@ -55,6 +56,7 @@ ViridianCity_Gym_EventScript_BlueNotReady::
 	end
 
 ViridianCity_Gym_EventScript_BlueGotoDojo::
+	call ViridianCity_Gym_EventScript_PRUReward
 	msgbox ViridianCity_Gym_Text_BlueGotoDojo, MSGBOX_DEFAULT
 	closemessage
 	fadescreenswapbuffers FADE_TO_BLACK
@@ -129,7 +131,12 @@ ViridianCity_Gym_EventScript_GymGuy::
 	end
 
 ViridianCity_Gym_EventScript_GymGuyAfter::
-	msgbox ViridianCity_Gym_Text_Guide_Win, MSGBOX_NPC
+	lock
+	faceplayer
+	call ViridianCity_Gym_EventScript_PRUReward
+	msgbox ViridianCity_Gym_Text_Guide_Win, MSGBOX_DEFAULT
+	closemessage
+	release
 	end
 
 ViridianCity_Gym_Text_Guide:
@@ -174,3 +181,30 @@ ViridianCity_Gym_Text_GymStatuePlayerWon::
     .string "WINNING TRAINERS:\n"
 	.string "BLUE, RED, {PLAYER}$"
 
+@ PRU first-clear Gym bonus. Do not consume reward flag with a full BAG.
+@ Previously defeated leaders can still award the bonus on return.
+ViridianCity_Gym_EventScript_PRUReward::
+	goto_if_set FLAG_PRU_KANTO_GYM_REWARD_BLUE, ViridianCity_Gym_EventScript_PRURewardDone
+	msgbox ViridianCity_Gym_Text_PRURewardIntro, MSGBOX_DEFAULT
+	giveitem ITEM_CHOICE_BAND
+	goto_if_eq VAR_RESULT, FALSE, ViridianCity_Gym_EventScript_PRURewardBagFull
+	addmoney 10000
+	setflag FLAG_PRU_KANTO_GYM_REWARD_BLUE
+	msgbox ViridianCity_Gym_Text_PRURewardMoney, MSGBOX_DEFAULT
+ViridianCity_Gym_EventScript_PRURewardDone:
+	return
+ViridianCity_Gym_EventScript_PRURewardBagFull:
+	msgbox ViridianCity_Gym_Text_PRURewardBagFull, MSGBOX_DEFAULT
+	return
+
+ViridianCity_Gym_Text_PRURewardIntro:
+	.string "Your bonus prize for defeating\n"
+	.string "the GYM LEADER!$"
+
+ViridianCity_Gym_Text_PRURewardMoney:
+	.string "You also received 10,000 in\n"
+	.string "GYM prize money!$"
+
+ViridianCity_Gym_Text_PRURewardBagFull:
+	.string "Your BAG is full! Make some room\n"
+	.string "and come back for your prize.$"
