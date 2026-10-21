@@ -83,6 +83,7 @@ on:
       - data/maps/SeafoamIslands_Gym_hns/**
       - data/maps/ViridianCity_Gym_hns/**
       - include/constants/flags.h
+      - include/constants/flags_hns.h
       - src/data/wild_encounters.json
       - tools/pru/check_johto_rebalance.py
       - tools/pru/check_steevee_neevee_encounters.py
