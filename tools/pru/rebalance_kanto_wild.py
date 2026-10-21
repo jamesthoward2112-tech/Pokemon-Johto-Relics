@@ -161,6 +161,8 @@ REPLACEMENTS.update({
     "SPECIES_URSALUNA": "SPECIES_URSARING",
     "SPECIES_URSALUNA_BLOODMOON": "SPECIES_URSARING",
     "SPECIES_KLEAVOR": "SPECIES_SCIZOR",
+    "SPECIES_MAGNEZONE": "SPECIES_MAGNETON",
+    "SPECIES_DUDUNSPARCE_THREE_SEGMENT": "SPECIES_DUNSPARCE",
 })
 KANTO_AREAS = (
     "MTMOON", "VIRIDIANFOREST", "DIGLETTSCAVE", "ROCKTUNNEL",
@@ -226,6 +228,10 @@ def patch(data, roster):
                     continue
                 original = slot.get("species")
                 if not isinstance(original, str):
+                    continue
+                # SPECIES_NONE is the deliberate placeholder for disabled
+                # water/fishing/grass tables and is never an encounter.
+                if original == "SPECIES_NONE":
                     continue
                 checked += 1
                 max_level = slot.get("max_level", slot.get("min_level", 0))
